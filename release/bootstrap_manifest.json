@@ -1,0 +1,442 @@
+{
+  "canonicalization": "V0-OSAP-CJ-1",
+  "checker_version": "0.1.0",
+  "coq_version": "pending-github-actions",
+  "files": [
+    {
+      "bytes": 478,
+      "path": ".github/workflows/coq.yml",
+      "sha256": "f6b28bd46b4665ede157a04b3adda23d30cd38e987268cb055f125a19495eacd"
+    },
+    {
+      "bytes": 579,
+      "path": ".github/workflows/lean4.yml",
+      "sha256": "81868c3cc6609bb5ff1b861b34406f88dca17768307f977014b8bb1910400453"
+    },
+    {
+      "bytes": 479,
+      "path": ".github/workflows/python-checker.yml",
+      "sha256": "b38764311126ba3b9b7d058a40a062d1251c769ceb00e546d6e332040f5d37b6"
+    },
+    {
+      "bytes": 776,
+      "path": ".github/workflows/release-readiness.yml",
+      "sha256": "93fd4381f7fb6f28dc7ecaa598338790696158d38751e5582ae8edb575424f27"
+    },
+    {
+      "bytes": 542,
+      "path": ".github/workflows/schema-check.yml",
+      "sha256": "2a03d0b07a1e7f4afd144659a51ef293d81ecb39c7629acdd8120eae4a951d53"
+    },
+    {
+      "bytes": 349,
+      "path": ".gitignore",
+      "sha256": "83528276b585f8b99d0f429a97df6b27c3d17b394eccbf94db99c4f92d9be8ca"
+    },
+    {
+      "bytes": 535,
+      "path": "CHANGELOG.md",
+      "sha256": "b189a09ce029e9b2a84ef164de16ae38f882603e817fb6f8611adbedde1feda0"
+    },
+    {
+      "bytes": 582,
+      "path": "CITATION.cff",
+      "sha256": "45610d3cc7d1001e6a5f856ab311cdfcb4f58170cf38b69a51d8d9a6c0296869"
+    },
+    {
+      "bytes": 612,
+      "path": "CONTRIBUTING.md",
+      "sha256": "a98bc83226d1463ed491fde86a9758c5ccadddfb54a55e216ef19d4d8c80deee"
+    },
+    {
+      "bytes": 1073,
+      "path": "LICENSE",
+      "sha256": "c6e845116e14d90a71687f7551876365edd699c90dc32479d0fc1683679ab0a3"
+    },
+    {
+      "bytes": 592,
+      "path": "Makefile",
+      "sha256": "9255b95a881dc2bd0ccacc5b80c7d72571a646713be7dff6acf84be3ac66413e"
+    },
+    {
+      "bytes": 3367,
+      "path": "README.md",
+      "sha256": "4df55c6f5bf10c1389556ca423ee5d8fbb418db14215564efe614a47c339c2ce"
+    },
+    {
+      "bytes": 321,
+      "path": "SECURITY.md",
+      "sha256": "a95daabe37688bfce47cb515748dd758d433cbd7961b25547a90f8e247f77e38"
+    },
+    {
+      "bytes": 731,
+      "path": "UPLOAD_INSTRUCTIONS.md",
+      "sha256": "d86af4df91005e97a13d60eb6b163e4ca631580256d95739ab73ad312d10af35"
+    },
+    {
+      "bytes": 62,
+      "path": "checker/v0_osap_fc1/__init__.py",
+      "sha256": "280043d0fbbe9395165d37e21e2faae78cce4c10e4e1dd45ebccd5920ca0f0b8"
+    },
+    {
+      "bytes": 48,
+      "path": "checker/v0_osap_fc1/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "bytes": 519,
+      "path": "checker/v0_osap_fc1/canonical.py",
+      "sha256": "6ec0fb35098f3750a9a86c56fcb44457934f83434be01859bb0defebc8000c3c"
+    },
+    {
+      "bytes": 2721,
+      "path": "checker/v0_osap_fc1/cli.py",
+      "sha256": "ac8ff6ee36ad0b2405e4e3511176cd1589f5ae16bdfcdb203369e3241e91433f"
+    },
+    {
+      "bytes": 1000,
+      "path": "checker/v0_osap_fc1/diagnostics.py",
+      "sha256": "e61e3e7efc7ca7e057a295584b27ab45e57db631ae6937684376222bc5fe2ec6"
+    },
+    {
+      "bytes": 1790,
+      "path": "checker/v0_osap_fc1/fixtures.py",
+      "sha256": "808ae1cb04bd558ee5db67fb3297775cddea383821628b8761b70e1c872726e2"
+    },
+    {
+      "bytes": 292,
+      "path": "checker/v0_osap_fc1/paths.py",
+      "sha256": "4771a3327e71930fb234a6f7838937ca5bc9d8b5e2038061d868e9bf63c2084a"
+    },
+    {
+      "bytes": 2748,
+      "path": "checker/v0_osap_fc1/schema_validation.py",
+      "sha256": "0710789808175ce7181703f45c8a592ac3a9aa640c80ebb02ee20a29054c8f55"
+    },
+    {
+      "bytes": 9334,
+      "path": "checker/v0_osap_fc1/semantic.py",
+      "sha256": "6fee9e1cc8e3123896015a89641b169b74e84eda5ec372099df8f48137fdd2cf"
+    },
+    {
+      "bytes": 301,
+      "path": "coq/Makefile",
+      "sha256": "8281f8ab9c27395222959c4a9998905f3b17178be7dceb57c954365785d54fcf"
+    },
+    {
+      "bytes": 200,
+      "path": "coq/_CoqProject",
+      "sha256": "1182c603e5157a731d586a578e6f0d98393d5e4eadbec6ef87eafbb449648fb4"
+    },
+    {
+      "bytes": 731,
+      "path": "coq/theories/BasicTypes.v",
+      "sha256": "0e5dbbbc452368f4ea76177dfebd9092ec191755b4de0124f8a8e5a6b3656f4d"
+    },
+    {
+      "bytes": 773,
+      "path": "coq/theories/Branches.v",
+      "sha256": "ed605f4c9f8ddc922c3559abfc7668a5e748832955e1f0fc4a3a60486c767f43"
+    },
+    {
+      "bytes": 1039,
+      "path": "coq/theories/DLE.v",
+      "sha256": "c2280ed760583a3acd0caca1e1f295cf854353703567b0956a1b3b8acd14a5b5"
+    },
+    {
+      "bytes": 694,
+      "path": "coq/theories/Guards.v",
+      "sha256": "56161dff4647f9ae416e9a2b382fbd6854b166874f4723c38f5e4464d32ed327"
+    },
+    {
+      "bytes": 677,
+      "path": "coq/theories/Observer.v",
+      "sha256": "69bd3617ff7e8e2a48a514ee5c8d514009a1a7ec16c86b894fb216215e8b9fec"
+    },
+    {
+      "bytes": 776,
+      "path": "coq/theories/Prerequisites.v",
+      "sha256": "a6a7475d70100d11032c3cf8b9ad97f2cec4b074477c464e27c0b3df8a914f58"
+    },
+    {
+      "bytes": 490,
+      "path": "coq/theories/Registry.v",
+      "sha256": "4b6aac7a9a8ff48cbe1571cc4876da500f4fb4b123a80dc08eb91ca536036913"
+    },
+    {
+      "bytes": 1218,
+      "path": "coq/theories/Residuals.v",
+      "sha256": "da09198cffa4982adb23ed5145965fd712ee9e052d4c282f2d1cefb759a80556"
+    },
+    {
+      "bytes": 178,
+      "path": "coq/theories/Theorems.v",
+      "sha256": "bac382c9dd5ce2e7553d4d103dbaa0d213152aed08e1d9be9b1f9bf5005c2981"
+    },
+    {
+      "bytes": 688,
+      "path": "docs/architecture.md",
+      "sha256": "4fa35130cf02d6450978d99887dabb918acaf4ae61c75a4cb12f9034a455582c"
+    },
+    {
+      "bytes": 904,
+      "path": "docs/formal_core_summary.md",
+      "sha256": "77a9eda078ff6d2d3e0229d33374349c210578f838a847e6f46a862fb6786748"
+    },
+    {
+      "bytes": 587747,
+      "path": "docs/specification/V0_OSAP_v1_1_Formal_Core_Canonical_Schemas_and_Proof_Assistant_Mapping_2026-07-10.pdf",
+      "sha256": "c6092a4b1435ff5513fc4152aad16f0a03f3755308df725783e95b5158360e0d"
+    },
+    {
+      "bytes": 615,
+      "path": "docs/status_and_nonclaims.md",
+      "sha256": "a2fa2c4ba1ba057eee5469a7afc8c7b47ade7fa9e6abe081ed3927da3bb547a7"
+    },
+    {
+      "bytes": 963,
+      "path": "docs/theorem_register.md",
+      "sha256": "b0329c0fbc011fbe1457fb28ad17b200d67f6a6161e4e3e1cc3ddb06315eda36"
+    },
+    {
+      "bytes": 429,
+      "path": "fixtures/manifest.json",
+      "sha256": "a0353d79e892c423fc07705a64ae6ce8467b5dc275ea7f46c93a4ae58126cd54"
+    },
+    {
+      "bytes": 473,
+      "path": "fixtures/negative/absolute_relative_firewall.fixture.json",
+      "sha256": "aa0ca40d83f2d656ee0db155c01ae6ba363af4b8717314fd2c7fd5b4ab313719"
+    },
+    {
+      "bytes": 1336,
+      "path": "fixtures/negative/absolute_relative_firewall.registry.json",
+      "sha256": "e082a87fa1cca4c5eead0026a08258c683426a8d08cfae446c8d308d3156fab9"
+    },
+    {
+      "bytes": 444,
+      "path": "fixtures/negative/missing_prerequisite.fixture.json",
+      "sha256": "172682fe11271f6459c2de11ba711fb000e30fa9703acaac68bdbc64b3910f23"
+    },
+    {
+      "bytes": 1793,
+      "path": "fixtures/negative/missing_prerequisite.registry.json",
+      "sha256": "a056d351518e93348e89cd7e647d19546a6761b7ea245fef3e975b16ccaf79be"
+    },
+    {
+      "bytes": 481,
+      "path": "fixtures/negative/observer_self_certificate.fixture.json",
+      "sha256": "eec968985eeb656aa9141dc906ff10e7733de6b6e9018a7c7b3cee92b0a7ba0a"
+    },
+    {
+      "bytes": 1280,
+      "path": "fixtures/negative/observer_self_certificate.registry.json",
+      "sha256": "e565e899a6bfed34f5d4b9ad6fda758df6ef243beb88ba59baa6fcf94dc44137"
+    },
+    {
+      "bytes": 417,
+      "path": "fixtures/negative/unguarded_value.fixture.json",
+      "sha256": "9002639e97235e50acb545fd0d8d56fefe84c35bb5f6f629bd9974b94ecc9bad"
+    },
+    {
+      "bytes": 1262,
+      "path": "fixtures/negative/unguarded_value.registry.json",
+      "sha256": "442493c827cb73ade5644f95003dd8c5b4dfa547a6d141262dc488ba3b6e4866"
+    },
+    {
+      "bytes": 379,
+      "path": "fixtures/positive/dle.fixture.json",
+      "sha256": "22cf99ed1466b784ac36eb4d8fb2a4ff01f5f08322c1c4d97ef264d5efd98c6d"
+    },
+    {
+      "bytes": 1543,
+      "path": "fixtures/positive/dle.registry.json",
+      "sha256": "2df091727134bdcee8610d17ad25adbc49a609eedf1a3b7518f196dde449fd65"
+    },
+    {
+      "bytes": 378,
+      "path": "fixtures/positive/live_guard.fixture.json",
+      "sha256": "b2c328a5743eb63ecab5ec3b36324e9204d99aba33b420971fbf97ebbea80f78"
+    },
+    {
+      "bytes": 1537,
+      "path": "fixtures/positive/live_guard.registry.json",
+      "sha256": "e86da04b110492ef45c17beabed63f135012115b6503953ab7d11895bb006268"
+    },
+    {
+      "bytes": 831,
+      "path": "lean/V0OSAP/BasicTypes.lean",
+      "sha256": "a31a2c2a5b0c4fe6db1498d216c911b1a5a43b5aeceff69846544aad5fe7a0ff"
+    },
+    {
+      "bytes": 688,
+      "path": "lean/V0OSAP/Branches.lean",
+      "sha256": "8680c565d05f420145858cb63578318d81605f15a053442d51b9c528f529ed2f"
+    },
+    {
+      "bytes": 851,
+      "path": "lean/V0OSAP/DLE.lean",
+      "sha256": "1e4781f1bbd0bfd3f1a3ab70a2c0eebbe3ce58e0aa6773150fe769a87786347e"
+    },
+    {
+      "bytes": 557,
+      "path": "lean/V0OSAP/Guards.lean",
+      "sha256": "705d9e14a93cedc2ef76b9d68dabd18a335fff93f64a3bca64051f17b1f13801"
+    },
+    {
+      "bytes": 565,
+      "path": "lean/V0OSAP/Observer.lean",
+      "sha256": "c9072e714c77395f8762cd0b1c79c47d81617762df234317f3075416544dcc81"
+    },
+    {
+      "bytes": 1005,
+      "path": "lean/V0OSAP/Prerequisites.lean",
+      "sha256": "52cf50de17fd02fa8d413d2a83382c5a4689809318b42bf3e70d570cc4a72fd8"
+    },
+    {
+      "bytes": 378,
+      "path": "lean/V0OSAP/Registry.lean",
+      "sha256": "c2b4ea784f90cbd9312d6ef0a2b8ba9a0384f58e4891ba46ccd30aed5500da3d"
+    },
+    {
+      "bytes": 990,
+      "path": "lean/V0OSAP/Residuals.lean",
+      "sha256": "ab62bccdf3803b1265223eddf82d4e25e47599fe999a3fb674fa6e018275c5b5"
+    },
+    {
+      "bytes": 1845,
+      "path": "lean/V0OSAP/Theorems.lean",
+      "sha256": "6a2f2b6d7aa73e015e8eff55cd35614dc8619cf80727d166a64c22291522a25f"
+    },
+    {
+      "bytes": 208,
+      "path": "lean/V0OSAP.lean",
+      "sha256": "ae746e5cf8de3c84e3a83f2f7715769e43f317633b65dd8a0222c363f2c7b2ef"
+    },
+    {
+      "bytes": 93,
+      "path": "lean/lakefile.toml",
+      "sha256": "52bb542fd48c12ab1c9c87eaddb6a62e0abbecc6ae8dbb4a7c4e825b505f3940"
+    },
+    {
+      "bytes": 25,
+      "path": "lean/lean-toolchain",
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    {
+      "bytes": 707,
+      "path": "pyproject.toml",
+      "sha256": "6ac9c5b446d114510d4b9bf9156c751f1c14249b8ecfd9004194bcb60f0eaf26"
+    },
+    {
+      "bytes": 462,
+      "path": "schemas/v1.1/README.md",
+      "sha256": "f98402979f4a931e91c055735da3eb77dc5c993eea7f0da8028e2de27beed7f0"
+    },
+    {
+      "bytes": 490,
+      "path": "schemas/v1.1/canonical_example_proof.json",
+      "sha256": "fc6ff854ecb0cac3eb4a0ced10e52f10719eb7a68128d0c19e15231fd6d54903"
+    },
+    {
+      "bytes": 1434,
+      "path": "schemas/v1.1/canonical_example_registry.json",
+      "sha256": "57279be50317b9f96551087be6ead46935f1d62d47f3a3b5d5422af592a699d7"
+    },
+    {
+      "bytes": 1067,
+      "path": "schemas/v1.1/common.schema.json",
+      "sha256": "c9bda9a9f57b687f84d9b66aeb53a481a012ec56d7a701187c0356dce063c723"
+    },
+    {
+      "bytes": 502,
+      "path": "schemas/v1.1/coq_mapping.md",
+      "sha256": "db06d8af553a728fce21da7fccc4854532c578b9da2bba49c68041bf99f5a9ff"
+    },
+    {
+      "bytes": 1467,
+      "path": "schemas/v1.1/diagnostic.schema.json",
+      "sha256": "7b0f01e5570f5fb738cb3c23872fac41b69f4c4cdd1d70c08162b7641ce2c275"
+    },
+    {
+      "bytes": 1738,
+      "path": "schemas/v1.1/evidence_object.schema.json",
+      "sha256": "9184df65ef1cb3f850d9823fbdfabf2a94e3859c277cf916e8e666f94543d35b"
+    },
+    {
+      "bytes": 1465,
+      "path": "schemas/v1.1/fixture.schema.json",
+      "sha256": "4f8fc46568a2f96bc476e3860f1a39d11254cfcdd35e5a67328f6861c0556846"
+    },
+    {
+      "bytes": 499,
+      "path": "schemas/v1.1/lean4_mapping.md",
+      "sha256": "8ed8bcca183a2c1cc2c2918907720c0d4f606ed96e5d9e07a791be5a203e3b86"
+    },
+    {
+      "bytes": 2119,
+      "path": "schemas/v1.1/proof_object.schema.json",
+      "sha256": "782362dc96f5590930339b10f2a11ca835ff132cc098780633c6bec1ff345a3c"
+    },
+    {
+      "bytes": 5570,
+      "path": "schemas/v1.1/registry_state.schema.json",
+      "sha256": "95b8ae64027d930426991ce8ad172ffdca97c7dbeedfdc9ab004c4d928481b78"
+    },
+    {
+      "bytes": 1535,
+      "path": "schemas/v1.1/release_manifest.schema.json",
+      "sha256": "28d7b543b5779c5bc259086d118371427288d496a079cb53fd5a2c1bd11679f8"
+    },
+    {
+      "bytes": 2550,
+      "path": "schemas/v1.1/schema_manifest.json",
+      "sha256": "3e831f57a942964376312150d3ef739d7ed3f7b62bb166a088a86664c5cb2b10"
+    },
+    {
+      "bytes": 1227,
+      "path": "scripts/build_manifest.py",
+      "sha256": "cba9353b4238ec06416fb4dcc72b2d75f0599015a7d2ed86ed9fe2338dda7e39"
+    },
+    {
+      "bytes": 333,
+      "path": "scripts/canonicalize_json.py",
+      "sha256": "d5991c8102d828fb034e72a8b37d44efc294e94fc5a64293be1fa7358f3eb7e1"
+    },
+    {
+      "bytes": 852,
+      "path": "scripts/check_no_proof_holes.py",
+      "sha256": "860a8912b5633051ef9eaf2ab045ba22eea7d0dc50e438b32fc58bc6f1576acc"
+    },
+    {
+      "bytes": 1123,
+      "path": "scripts/verify_manifest.py",
+      "sha256": "147e2b151bada1f2f5c12a5ba56a4a8ff399db6c1826f9f2524eb5cbf78fe7f3"
+    },
+    {
+      "bytes": 299,
+      "path": "tests/test_canonical.py",
+      "sha256": "f7066cb672f3c6323f352666614e3a5e86a9f654028f74844eebe55934f2b256"
+    },
+    {
+      "bytes": 200,
+      "path": "tests/test_fixtures.py",
+      "sha256": "15485585d0e5f1acbd60f20a800ca7b2e9f39dd43a5830425f3df0c0d24ed72f"
+    },
+    {
+      "bytes": 143,
+      "path": "tests/test_schema_bundle.py",
+      "sha256": "c1e1aaa394d4b4b21a346199f109eff9577e7862d9057c5aae14dd963b4e292a"
+    },
+    {
+      "bytes": 600,
+      "path": "tests/test_semantic.py",
+      "sha256": "996c06df019f693108003f08a5cfff46cfbe7f9a2fafd0e39ba7551d7942a004"
+    }
+  ],
+  "lean_version": "pending-github-actions",
+  "release_id": "V0_OSAP_v1_2_repository_bootstrap",
+  "schema_version": "v1.1",
+  "semantic_version": "v1.2.0",
+  "status": "SPECIFICATION_BASELINE_ACCEPTED"
+}

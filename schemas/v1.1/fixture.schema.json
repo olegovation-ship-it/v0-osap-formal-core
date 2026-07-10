@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/fixture.schema.json",
+  "title": "Fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "fixture_id",
+    "kind",
+    "semantic_version",
+    "input_file",
+    "expected_status",
+    "expected_diagnostics",
+    "theorem_targets",
+    "bound",
+    "oracle_source"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1.1"
+    },
+    "fixture_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "kind": {
+      "enum": [
+        "positive",
+        "countermodel",
+        "mutation"
+      ]
+    },
+    "semantic_version": {
+      "type": "string"
+    },
+    "input_file": {
+      "type": "string"
+    },
+    "expected_status": {
+      "enum": [
+        "REJECT",
+        "DEFERRED",
+        "INDETERMINATE",
+        "OUT-OF-SCOPE",
+        "PASS"
+      ]
+    },
+    "expected_diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9_]{2,127}$"
+      }
+    },
+    "theorem_targets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^T1[2-5][0-9]$"
+      },
+      "uniqueItems": true
+    },
+    "bound": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "oracle_source": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

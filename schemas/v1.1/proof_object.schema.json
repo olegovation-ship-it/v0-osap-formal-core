@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/proof_object.schema.json",
+  "title": "Proof Object",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "proof_id",
+    "claim_id",
+    "rule_id",
+    "premise_claim_ids",
+    "registry_state_id",
+    "context_id",
+    "selected_support_family_ids",
+    "evidence_ids",
+    "implementation_version",
+    "proof_status",
+    "replay_hash"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1.1"
+    },
+    "proof_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "rule_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "premise_claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      }
+    },
+    "registry_state_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "context_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "selected_support_family_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      },
+      "uniqueItems": true
+    },
+    "translation_class": {
+      "type": "string"
+    },
+    "conservativity_level": {
+      "type": "string"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      },
+      "uniqueItems": true
+    },
+    "implementation_version": {
+      "type": "string"
+    },
+    "proof_status": {
+      "enum": [
+        "SPECIFIED",
+        "SCHEMA-VALID",
+        "CHECKER-REPLAYED",
+        "MODEL-WITNESSED",
+        "PROOF-ASSISTANT-COMPILED",
+        "CROSS-ASSISTANT-REPLAYED"
+      ]
+    },
+    "replay_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

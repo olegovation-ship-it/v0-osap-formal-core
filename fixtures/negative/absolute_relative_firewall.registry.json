@@ -1,0 +1,67 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:negative:absolute_promotion",
+  "declarations": [
+    {
+      "id": "sector:A",
+      "sort": "Sector"
+    },
+    {
+      "id": "sector:B",
+      "sort": "Sector"
+    },
+    {
+      "id": "reg:presence",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:A",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:fixture",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:A"
+  ],
+  "tokens": [],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:fixture",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_2_bootstrap",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite bootstrap fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:relative:v0",
+      "kind": "relative_v0",
+      "carrier_id": "sector:B",
+      "context_id": "ctx:A"
+    },
+    {
+      "claim_id": "claim:absolute:v0",
+      "kind": "absolute_v0",
+      "source_claim_id": "claim:relative:v0"
+    }
+  ],
+  "metadata": {
+    "fixture": true
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/registry_state.schema.json",
+  "title": "Registry State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_version",
+    "registry_state_id",
+    "declarations",
+    "contexts",
+    "tokens",
+    "prerequisite_families",
+    "compatibility_constraints",
+    "protocols",
+    "residual_links",
+    "observers",
+    "branches",
+    "evidence_objects",
+    "claims",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1.1"
+    },
+    "language_version": {
+      "const": "FC-1-v1.1"
+    },
+    "registry_state_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "predecessor_state_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "declarations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "sort"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "sort": {
+            "enum": [
+              "Sector",
+              "NullMark",
+              "Register",
+              "Context",
+              "RegistryState",
+              "Token",
+              "Protocol",
+              "Observer",
+              "Branch",
+              "Evidence",
+              "Claim",
+              "ProofObject",
+              "Diagnostic"
+            ]
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      },
+      "uniqueItems": true
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "token_id",
+          "carrier_id",
+          "register_id",
+          "context_id",
+          "partition",
+          "introduced_in",
+          "source_evidence_id"
+        ],
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "carrier_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "register_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "context_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "partition": {
+            "enum": [
+              "live",
+              "historical",
+              "retired",
+              "deferred"
+            ]
+          },
+          "introduced_in": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "moved_in": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "source_evidence_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          }
+        }
+      }
+    },
+    "prerequisite_families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family_id",
+          "target_register_id",
+          "mode",
+          "prerequisite_register_ids",
+          "context_policy",
+          "evidence_ids",
+          "enabled"
+        ],
+        "properties": {
+          "family_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "target_register_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "mode": {
+            "enum": [
+              "all_of",
+              "one_of"
+            ]
+          },
+          "prerequisite_register_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "context_policy": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "uniqueItems": true
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "compatibility_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "residual_links": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "observers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence_objects": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence_object.schema.json"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "proof_id": "proof:example:001",
+  "claim_id": "claim:domhas:B:presence:A",
+  "rule_id": "rule:live-token-to-domhas",
+  "premise_claim_ids": [],
+  "registry_state_id": "state:example:001",
+  "context_id": "ctx:A",
+  "selected_support_family_ids": [],
+  "evidence_ids": [
+    "ev:live:0001"
+  ],
+  "implementation_version": "spec-only-v1.1",
+  "proof_status": "SPECIFIED",
+  "replay_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+}

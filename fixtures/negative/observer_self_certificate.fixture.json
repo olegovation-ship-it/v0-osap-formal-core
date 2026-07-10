@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:observer_self_certificate",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1",
+  "input_file": "observer_self_certificate.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "OBSERVER_SELF_CERTIFICATION_LIMIT"
+  ],
+  "theorem_targets": [
+    "T125"
+  ],
+  "bound": 1,
+  "oracle_source": "Manual FC-1 countermodel: terminal self-certificate has no external independent support."
+}

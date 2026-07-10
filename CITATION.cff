@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Please cite the archived release when a DOI becomes available."
+title: "V0 OSAP Formal Core: Executable FC-1 Checker and Dual-Backend Proof Skeleton"
+type: software
+authors:
+  - family-names: Panasenko
+    given-names: Dmytro
+    orcid: "https://orcid.org/0009-0008-2249-4562"
+repository-code: "https://github.com/olegovation-ship-it/v0-osap-formal-core"
+version: "1.2.0-dev"
+date-released: "2026-07-10"
+license: MIT
+keywords:
+  - formal semantics
+  - proof-carrying validation
+  - Lean 4
+  - Coq
+  - domain-license exhaustion
+  - structural activation

@@ -1,0 +1,79 @@
+{
+  "schema_version": "v1.1",
+  "bundle_id": "V0_OSAP_v1_1_schema_bundle",
+  "canonicalization": "V0-OSAP-CJ-1",
+  "status": "SCHEMA_VALID",
+  "validation": [
+    "PASS schema metaschema: common.schema.json",
+    "PASS schema metaschema: registry_state.schema.json",
+    "PASS schema metaschema: proof_object.schema.json",
+    "PASS schema metaschema: evidence_object.schema.json",
+    "PASS schema metaschema: fixture.schema.json",
+    "PASS schema metaschema: diagnostic.schema.json",
+    "PASS schema metaschema: release_manifest.schema.json",
+    "PASS example: canonical_example_registry.json",
+    "PASS example: canonical_example_proof.json"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "f98402979f4a931e91c055735da3eb77dc5c993eea7f0da8028e2de27beed7f0",
+      "bytes": 462
+    },
+    {
+      "path": "canonical_example_proof.json",
+      "sha256": "fc6ff854ecb0cac3eb4a0ced10e52f10719eb7a68128d0c19e15231fd6d54903",
+      "bytes": 490
+    },
+    {
+      "path": "canonical_example_registry.json",
+      "sha256": "57279be50317b9f96551087be6ead46935f1d62d47f3a3b5d5422af592a699d7",
+      "bytes": 1434
+    },
+    {
+      "path": "common.schema.json",
+      "sha256": "c9bda9a9f57b687f84d9b66aeb53a481a012ec56d7a701187c0356dce063c723",
+      "bytes": 1067
+    },
+    {
+      "path": "coq_mapping.md",
+      "sha256": "db06d8af553a728fce21da7fccc4854532c578b9da2bba49c68041bf99f5a9ff",
+      "bytes": 502
+    },
+    {
+      "path": "diagnostic.schema.json",
+      "sha256": "7b0f01e5570f5fb738cb3c23872fac41b69f4c4cdd1d70c08162b7641ce2c275",
+      "bytes": 1467
+    },
+    {
+      "path": "evidence_object.schema.json",
+      "sha256": "9184df65ef1cb3f850d9823fbdfabf2a94e3859c277cf916e8e666f94543d35b",
+      "bytes": 1738
+    },
+    {
+      "path": "fixture.schema.json",
+      "sha256": "4f8fc46568a2f96bc476e3860f1a39d11254cfcdd35e5a67328f6861c0556846",
+      "bytes": 1465
+    },
+    {
+      "path": "lean4_mapping.md",
+      "sha256": "8ed8bcca183a2c1cc2c2918907720c0d4f606ed96e5d9e07a791be5a203e3b86",
+      "bytes": 499
+    },
+    {
+      "path": "proof_object.schema.json",
+      "sha256": "782362dc96f5590930339b10f2a11ca835ff132cc098780633c6bec1ff345a3c",
+      "bytes": 2119
+    },
+    {
+      "path": "registry_state.schema.json",
+      "sha256": "95b8ae64027d930426991ce8ad172ffdca97c7dbeedfdc9ab004c4d928481b78",
+      "bytes": 5570
+    },
+    {
+      "path": "release_manifest.schema.json",
+      "sha256": "28d7b543b5779c5bc259086d118371427288d496a079cb53fd5a2c1bd11679f8",
+      "bytes": 1535
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/diagnostic.schema.json",
+  "title": "Diagnostic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "code",
+    "status",
+    "priority",
+    "message_template_id",
+    "instance_path",
+    "related_ids",
+    "evidence_ids",
+    "registry_state_id",
+    "implementation_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1.1"
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{2,127}$"
+    },
+    "status": {
+      "enum": [
+        "REJECT",
+        "DEFERRED",
+        "INDETERMINATE",
+        "OUT-OF-SCOPE",
+        "PASS"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "message_template_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "instance_path": {
+      "type": "string"
+    },
+    "related_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+      }
+    },
+    "registry_state_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "implementation_version": {
+      "type": "string"
+    }
+  }
+}

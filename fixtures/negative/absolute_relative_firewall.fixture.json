@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:absolute_relative_firewall",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1",
+  "input_file": "absolute_relative_firewall.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "ABSOLUTE_RELATIVE_FIREWALL"
+  ],
+  "theorem_targets": [
+    "T126"
+  ],
+  "bound": 2,
+  "oracle_source": "Manual FC-1 countermodel: branch/relative result cannot directly license absolute V0."
+}

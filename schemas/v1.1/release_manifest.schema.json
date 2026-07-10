@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/release_manifest.schema.json",
+  "title": "Release Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "semantic_version",
+    "canonicalization",
+    "files",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1.1"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "semantic_version": {
+      "type": "string"
+    },
+    "canonicalization": {
+      "const": "V0-OSAP-CJ-1"
+    },
+    "git_commit": {
+      "type": "string"
+    },
+    "checker_version": {
+      "type": "string"
+    },
+    "lean_version": {
+      "type": "string"
+    },
+    "coq_version": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "SPECIFICATION_BASELINE_ACCEPTED",
+        "CHECKER_BASELINE_ACCEPTED",
+        "DUAL_BACKEND_ACCEPTED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:live_guard",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1",
+  "input_file": "live_guard.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T121"
+  ],
+  "bound": 1,
+  "oracle_source": "Manual FC-1 oracle: matching live guard permits the value claim."
+}

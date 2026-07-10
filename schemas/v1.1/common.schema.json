@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/v0-osap/v1.1/common.schema.json",
+  "title": "V0 OSAP v1.1 Common Definitions",
+  "type": "object",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+    },
+    "result_status": {
+      "enum": [
+        "REJECT",
+        "DEFERRED",
+        "INDETERMINATE",
+        "OUT-OF-SCOPE",
+        "PASS"
+      ]
+    },
+    "token_partition": {
+      "enum": [
+        "live",
+        "historical",
+        "retired",
+        "deferred"
+      ]
+    },
+    "evidence_level": {
+      "enum": [
+        "E0_SPECIFIED",
+        "E1_SCHEMA_VALID",
+        "E2_CHECKER_REPLAYED",
+        "E3_MODEL_WITNESSED",
+        "E4_PROOF_ASSISTANT_COMPILED",
+        "E5_CROSS_ASSISTANT_REPLAYED"
+      ]
+    },
+    "id_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:positive:dle",
+  "declarations": [
+    {
+      "id": "sector:A",
+      "sort": "Sector"
+    },
+    {
+      "id": "sector:B",
+      "sort": "Sector"
+    },
+    {
+      "id": "reg:presence",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:A",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:fixture",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:A"
+  ],
+  "tokens": [
+    {
+      "token_id": "tok:B:presence:A:historical",
+      "carrier_id": "sector:B",
+      "register_id": "reg:presence",
+      "context_id": "ctx:A",
+      "partition": "historical",
+      "introduced_in": "state:prior:001",
+      "moved_in": "state:positive:dle",
+      "source_evidence_id": "ev:fixture"
+    }
+  ],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:fixture",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_2_bootstrap",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite bootstrap fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:dle:presence",
+      "kind": "dle",
+      "carrier_id": "sector:B",
+      "register_id": "reg:presence",
+      "context_id": "ctx:A"
+    }
+  ],
+  "metadata": {
+    "fixture": true
+  }
+}

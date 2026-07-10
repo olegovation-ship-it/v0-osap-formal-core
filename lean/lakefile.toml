@@ -1,0 +1,6 @@
+name = "v0_osap"
+version = "0.1.0"
+defaultTargets = ["V0OSAP"]
+
+[[lean_lib]]
+name = "V0OSAP"
