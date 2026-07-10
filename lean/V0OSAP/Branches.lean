@@ -12,19 +12,21 @@ structure AbsoluteClaim where
   sourceClaimId : Id
   deriving DecidableEq, Repr
 
+def DirectPromotion
+    (branchClaim : BranchClaim)
+    (absoluteClaim : AbsoluteClaim) : Prop :=
+  absoluteClaim.sourceClaimId = branchClaim.claimId
 
-def DirectPromotion (local : BranchClaim) (absolute : AbsoluteClaim) : Prop :=
-  absolute.sourceClaimId = local.claimId
-
-
-def FirewallSafe (local : BranchClaim) (absolute : AbsoluteClaim) : Prop :=
-  ¬ DirectPromotion local absolute
-
+def FirewallSafe
+    (branchClaim : BranchClaim)
+    (absoluteClaim : AbsoluteClaim) : Prop :=
+  ¬ DirectPromotion branchClaim absoluteClaim
 
 theorem direct_promotion_violates_firewall
-    (local : BranchClaim) (absolute : AbsoluteClaim)
-    (h : DirectPromotion local absolute) :
-    ¬ FirewallSafe local absolute := by
+    (branchClaim : BranchClaim)
+    (absoluteClaim : AbsoluteClaim)
+    (h : DirectPromotion branchClaim absoluteClaim) :
+    ¬ FirewallSafe branchClaim absoluteClaim := by
   intro hSafe
   exact hSafe h
 

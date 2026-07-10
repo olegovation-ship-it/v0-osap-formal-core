@@ -46,9 +46,9 @@ theorem T125
 
 
 theorem T126
-    (local : BranchClaim) (absolute : AbsoluteClaim)
-    (h : DirectPromotion local absolute) :
-    ¬ FirewallSafe local absolute :=
-  direct_promotion_violates_firewall local absolute h
+    (branchClaim : BranchClaim) (absoluteClaim : AbsoluteClaim)
+    (h : DirectPromotion branchClaim absoluteClaim) :
+    ¬ FirewallSafe branchClaim absoluteClaim :=
+  direct_promotion_violates_firewall branchClaim absoluteClaim h
 
 end V0OSAP
