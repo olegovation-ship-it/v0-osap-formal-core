@@ -6,13 +6,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "release" / "bootstrap_manifest.json"
+VERSIONS = ROOT / "release" / "compiler_versions.json"
 EXCLUDED = {OUTPUT.resolve()}
+EXCLUDED_PARTS = {
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    ".lake",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".tox",
+    ".nox",
+}
+EXCLUDED_SUFFIXES = {
+    ".pyc", ".pyo", ".vo", ".vok", ".vos", ".glob", ".aux",
+}
+EXCLUDED_NAMES = {
+    "Makefile.coq", "Makefile.coq.conf", ".coverage",
+}
+
+metadata = json.loads(VERSIONS.read_text(encoding="utf-8"))
 
 files = []
 for path in sorted(ROOT.rglob("*")):
-    if not path.is_file() or path.resolve() in EXCLUDED or ".git" in path.parts:
+    if not path.is_file() or path.resolve() in EXCLUDED:
         continue
-    if any(part in {"__pycache__", ".pytest_cache", ".lake"} for part in path.parts):
+    if any(part in EXCLUDED_PARTS or part.endswith(".egg-info") for part in path.parts):
+        continue
+    if path.suffix in EXCLUDED_SUFFIXES or path.name in EXCLUDED_NAMES:
         continue
     data = path.read_bytes()
     files.append({
@@ -23,14 +44,15 @@ for path in sorted(ROOT.rglob("*")):
 
 manifest = {
     "schema_version": "v1.1",
-    "release_id": "V0_OSAP_v1_2_repository_bootstrap",
+    "release_id": "V0_OSAP_v1_2_0_compiler_passed_closure",
     "semantic_version": "v1.2.0",
     "canonicalization": "V0-OSAP-CJ-1",
-    "checker_version": "0.1.0",
-    "lean_version": "pending-github-actions",
-    "coq_version": "pending-github-actions",
+    "git_commit": metadata["validated_commit"],
+    "checker_version": metadata["checker_version"],
+    "lean_version": metadata["lean_version"],
+    "coq_version": metadata["coq_version"],
     "files": files,
-    "status": "SPECIFICATION_BASELINE_ACCEPTED",
+    "status": "DUAL_BACKEND_ACCEPTED",
 }
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 OUTPUT.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")

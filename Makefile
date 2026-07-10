@@ -1,4 +1,4 @@
-.PHONY: install test schema fixtures canonical manifest verify-manifest lean coq no-holes all
+.PHONY: install test schema fixtures canonical manifest verify-manifest verify-closure lean coq no-holes all
 
 install:
 	python -m pip install -e '.[dev]'
@@ -21,6 +21,9 @@ manifest:
 verify-manifest:
 	python scripts/verify_manifest.py
 
+verify-closure:
+	python scripts/verify_closure.py
+
 lean:
 	cd lean && lake build
 
@@ -30,4 +33,4 @@ coq:
 no-holes:
 	python scripts/check_no_proof_holes.py
 
-all: test schema fixtures no-holes verify-manifest
+all: test schema fixtures no-holes verify-manifest verify-closure

@@ -1,0 +1,19 @@
+{
+  "checker_version": "0.1.0",
+  "ci_status": {
+    "coq": "PASS",
+    "lean4": "PASS",
+    "python_checker": "PASS",
+    "release_readiness": "PASS",
+    "schema_validation": "PASS"
+  },
+  "closure_version": "v1.2.0",
+  "coq_version": "The Coq Proof Assistant, version 8.18.0",
+  "generated_at_utc": "2026-07-10T22:33:40Z",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "nonclaim": "No completeness, cross-assistant equivalence, empirical V0, or DOI claim.",
+  "patch_base_commit": "660a9053320d27883c26a7c3e183064854e6cf1b",
+  "python_version": "Python 3.12.1",
+  "scope": "FC-1 initial mechanized subset T121-T126",
+  "validated_commit": "48db564c085aec411552e78eef6c1740bd27a5ac"
+}

@@ -24,7 +24,4 @@ jobs:
       - run: v0-osap-fc1 schema-bundle
       - run: v0-osap-fc1 fixtures
       - run: python scripts/verify_manifest.py
-      - name: Confirm pre-release status
-        run: |
-          grep -q 'pending-github-actions' release/bootstrap_manifest.json
-          grep -q 'not yet created' README.md
+      - run: python scripts/verify_closure.py

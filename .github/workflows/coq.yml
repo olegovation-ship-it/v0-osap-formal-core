@@ -18,6 +18,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y coq
+      - name: Record Coq version
+        run: coqc --version
       - name: Build Coq source
         working-directory: coq
         run: make

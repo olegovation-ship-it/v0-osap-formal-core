@@ -1,17 +1,17 @@
 {
   "canonicalization": "V0-OSAP-CJ-1",
   "checker_version": "0.1.0",
-  "coq_version": "pending-github-actions",
+  "coq_version": "The Coq Proof Assistant, version 8.18.0",
   "files": [
     {
-      "bytes": 478,
+      "bytes": 539,
       "path": ".github/workflows/coq.yml",
-      "sha256": "f6b28bd46b4665ede157a04b3adda23d30cd38e987268cb055f125a19495eacd"
+      "sha256": "9bfbefa92c717e55241b442030139430565ac30e269f5e66922352e432b0300d"
     },
     {
-      "bytes": 579,
+      "bytes": 673,
       "path": ".github/workflows/lean4.yml",
-      "sha256": "81868c3cc6609bb5ff1b861b34406f88dca17768307f977014b8bb1910400453"
+      "sha256": "63a991c3961719b82f00abeba50a04cd4a7c7d39bd8c49ca0b972ed66d2fade0"
     },
     {
       "bytes": 479,
@@ -19,9 +19,9 @@
       "sha256": "b38764311126ba3b9b7d058a40a062d1251c769ceb00e546d6e332040f5d37b6"
     },
     {
-      "bytes": 776,
+      "bytes": 645,
       "path": ".github/workflows/release-readiness.yml",
-      "sha256": "93fd4381f7fb6f28dc7ecaa598338790696158d38751e5582ae8edb575424f27"
+      "sha256": "2c1c3ec5052f8ddfd0ce0d762c42b284dd248ace86cb05a4764f501896768dd7"
     },
     {
       "bytes": 542,
@@ -34,14 +34,14 @@
       "sha256": "83528276b585f8b99d0f429a97df6b27c3d17b394eccbf94db99c4f92d9be8ca"
     },
     {
-      "bytes": 535,
+      "bytes": 1284,
       "path": "CHANGELOG.md",
-      "sha256": "b189a09ce029e9b2a84ef164de16ae38f882603e817fb6f8611adbedde1feda0"
+      "sha256": "616ef7efda3015df798592d219ddbfed651e221abc329d6ab8bf16898574e4a7"
     },
     {
-      "bytes": 582,
+      "bytes": 611,
       "path": "CITATION.cff",
-      "sha256": "45610d3cc7d1001e6a5f856ab311cdfcb4f58170cf38b69a51d8d9a6c0296869"
+      "sha256": "6981fe381c113aa828040a7f8d419d932bd56cc7d3b597897ca82b3a7b71cf62"
     },
     {
       "bytes": 612,
@@ -54,14 +54,14 @@
       "sha256": "c6e845116e14d90a71687f7551876365edd699c90dc32479d0fc1683679ab0a3"
     },
     {
-      "bytes": 592,
+      "bytes": 673,
       "path": "Makefile",
-      "sha256": "9255b95a881dc2bd0ccacc5b80c7d72571a646713be7dff6acf84be3ac66413e"
+      "sha256": "607a2ea98c79b50381effa2c9836d1d2c14815bde81ac3dd3136d7e9423dd3b6"
     },
     {
-      "bytes": 3367,
+      "bytes": 4312,
       "path": "README.md",
-      "sha256": "4df55c6f5bf10c1389556ca423ee5d8fbb418db14215564efe614a47c339c2ce"
+      "sha256": "5f86d427406259762d33b5142cfdbad8c604f69426d136c0e295aeb75d254caa"
     },
     {
       "bytes": 321,
@@ -189,14 +189,14 @@
       "sha256": "c6092a4b1435ff5513fc4152aad16f0a03f3755308df725783e95b5158360e0d"
     },
     {
-      "bytes": 615,
+      "bytes": 1008,
       "path": "docs/status_and_nonclaims.md",
-      "sha256": "a2fa2c4ba1ba057eee5469a7afc8c7b47ade7fa9e6abe081ed3927da3bb547a7"
+      "sha256": "bb0cbbaa5d8885a51cb7fc58bbc7666fed06a08071f62995ce9d202126ea9bcc"
     },
     {
-      "bytes": 963,
+      "bytes": 1252,
       "path": "docs/theorem_register.md",
-      "sha256": "b0329c0fbc011fbe1457fb28ad17b200d67f6a6161e4e3e1cc3ddb06315eda36"
+      "sha256": "174ded290f54cd922f89e6b470bd3d2ce82a1981dbd9ec77b456a873cab44c68"
     },
     {
       "bytes": 429,
@@ -314,6 +314,11 @@
       "sha256": "ae746e5cf8de3c84e3a83f2f7715769e43f317633b65dd8a0222c363f2c7b2ef"
     },
     {
+      "bytes": 113,
+      "path": "lean/lake-manifest.json",
+      "sha256": "2c17a6630dbfb0c495e7cd450f5e2e34253c2c1066721228886622cb8578a941"
+    },
+    {
       "bytes": 93,
       "path": "lean/lakefile.toml",
       "sha256": "52bb542fd48c12ab1c9c87eaddb6a62e0abbecc6ae8dbb4a7c4e825b505f3940"
@@ -327,6 +332,21 @@
       "bytes": 707,
       "path": "pyproject.toml",
       "sha256": "6ac9c5b446d114510d4b9bf9156c751f1c14249b8ecfd9004194bcb60f0eaf26"
+    },
+    {
+      "bytes": 1447,
+      "path": "release/RELEASE_NOTES_v1.2.0.md",
+      "sha256": "45bec1ae96cf4bf938de5aac1c096990f3f707fc214468739768b48e05bf49a3"
+    },
+    {
+      "bytes": 473,
+      "path": "release/closure_preflight.txt",
+      "sha256": "e71944c25d2efa9f652da84f678939765cc84a4686c21a1684a4fecf2f8c3991"
+    },
+    {
+      "bytes": 742,
+      "path": "release/compiler_versions.json",
+      "sha256": "aaf92b4b39f85696bd4f87c528b9748022f747a94c68e2b376de7edbe8ed4e9a"
     },
     {
       "bytes": 462,
@@ -394,9 +414,9 @@
       "sha256": "3e831f57a942964376312150d3ef739d7ed3f7b62bb166a088a86664c5cb2b10"
     },
     {
-      "bytes": 1227,
+      "bytes": 1780,
       "path": "scripts/build_manifest.py",
-      "sha256": "cba9353b4238ec06416fb4dcc72b2d75f0599015a7d2ed86ed9fe2338dda7e39"
+      "sha256": "5377aee685c99a61a9f6417c6bda1f2573ee59b5fccff61c37a2df550b41a2a3"
     },
     {
       "bytes": 333,
@@ -407,6 +427,11 @@
       "bytes": 852,
       "path": "scripts/check_no_proof_holes.py",
       "sha256": "860a8912b5633051ef9eaf2ab045ba22eea7d0dc50e438b32fc58bc6f1576acc"
+    },
+    {
+      "bytes": 1365,
+      "path": "scripts/verify_closure.py",
+      "sha256": "139ecb9dad4df72f62b0fbcca4fbaee3493544108e1aa8e85161783d663d00dc"
     },
     {
       "bytes": 1123,
@@ -434,9 +459,10 @@
       "sha256": "996c06df019f693108003f08a5cfff46cfbe7f9a2fafd0e39ba7551d7942a004"
     }
   ],
-  "lean_version": "pending-github-actions",
-  "release_id": "V0_OSAP_v1_2_repository_bootstrap",
+  "git_commit": "48db564c085aec411552e78eef6c1740bd27a5ac",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "release_id": "V0_OSAP_v1_2_0_compiler_passed_closure",
   "schema_version": "v1.1",
   "semantic_version": "v1.2.0",
-  "status": "SPECIFICATION_BASELINE_ACCEPTED"
+  "status": "DUAL_BACKEND_ACCEPTED"
 }
