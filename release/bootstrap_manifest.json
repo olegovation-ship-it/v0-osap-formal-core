@@ -314,11 +314,6 @@
       "sha256": "ae746e5cf8de3c84e3a83f2f7715769e43f317633b65dd8a0222c363f2c7b2ef"
     },
     {
-      "bytes": 113,
-      "path": "lean/lake-manifest.json",
-      "sha256": "2c17a6630dbfb0c495e7cd450f5e2e34253c2c1066721228886622cb8578a941"
-    },
-    {
       "bytes": 93,
       "path": "lean/lakefile.toml",
       "sha256": "52bb542fd48c12ab1c9c87eaddb6a62e0abbecc6ae8dbb4a7c4e825b505f3940"
