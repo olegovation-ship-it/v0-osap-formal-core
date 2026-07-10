@@ -269,9 +269,9 @@
       "sha256": "a31a2c2a5b0c4fe6db1498d216c911b1a5a43b5aeceff69846544aad5fe7a0ff"
     },
     {
-      "bytes": 688,
+      "bytes": 782,
       "path": "lean/V0OSAP/Branches.lean",
-      "sha256": "8680c565d05f420145858cb63578318d81605f15a053442d51b9c528f529ed2f"
+      "sha256": "de094fa51f5f824d5a09ac32085a005b0edd63e6fe2b19e0ba42860e84ff9894"
     },
     {
       "bytes": 851,
@@ -304,9 +304,9 @@
       "sha256": "ab62bccdf3803b1265223eddf82d4e25e47599fe999a3fb674fa6e018275c5b5"
     },
     {
-      "bytes": 1845,
+      "bytes": 1889,
       "path": "lean/V0OSAP/Theorems.lean",
-      "sha256": "6a2f2b6d7aa73e015e8eff55cd35614dc8619cf80727d166a64c22291522a25f"
+      "sha256": "bd6bde963bab518643808695061f7de7100b38d2a02a0c9545852e4b1a24b6b8"
     },
     {
       "bytes": 208,
