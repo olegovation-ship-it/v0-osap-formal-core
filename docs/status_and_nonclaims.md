@@ -4,6 +4,7 @@
 
 - Tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain immutable.
 - The archived baseline remains the bounded dual-backend compiler-passed T121-T126 release.
+- The immutable baseline CI job executes proof-hole, schema, fixture, manifest, and closure verification.
 - This Phase 1 package is a development patch and does not rewrite the archived release.
 
 ## v1.3.0 Phase 1 assertions
@@ -17,11 +18,14 @@
 
 ## Acceptance state
 
+- Phase 1 status: `ACCEPTED / CI PASS`.
 - Package-level static verification: PASS.
-- Python/schema fixture replay after repository installation: required.
-- Lean 4 build: CI pending.
-- Coq build: CI pending.
-- GitHub Actions all-green matrix: required before Phase 1 can be marked accepted.
+- Python test suite and schema/fixture replay: PASS.
+- Proof-hole scan: PASS.
+- Lean 4 build: PASS.
+- Coq build: PASS.
+- GitHub Actions all-green matrix: PASS.
+- Historical v1.2.0 manifest and closure preservation: PASS.
 
 ## Explicit non-claims
 

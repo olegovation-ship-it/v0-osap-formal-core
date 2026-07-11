@@ -26,6 +26,7 @@ jobs:
       - run: v0-osap-fc1 schema-bundle
       - run: v0-osap-fc1 fixtures
       - run: python scripts/verify_manifest.py
+      - run: python scripts/verify_closure.py
 
   phase1-development-readiness:
     runs-on: ubuntu-latest

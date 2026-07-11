@@ -1,7 +1,7 @@
 {
   "artifact_id": "V0_OSAP_v1_3_0_phase1_schema_addendum",
   "baseline_schema_version": "v1.1",
-  "status": "ERRATUM_PATCH_READY_CI_PENDING",
+  "status": "ERRATUM_ACCEPTED_CI_PASS",
   "files": [
     {
       "path": "schemas/v1.1/registry_state.schema.json",

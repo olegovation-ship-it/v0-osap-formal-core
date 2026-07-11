@@ -60,7 +60,36 @@ for text in (lean, coq):
 crosswalk = load("release/v1.3.0/theorem_crosswalk_phase1.json")
 records = {item["theorem_id"]: item for item in crosswalk["records"]}
 assert set(records) == {"T121", "T122", "T123", "T124", "T125", "T126"}
+assert crosswalk["status"] == "PHASE1_ACCEPTED_CI_PASS"
 for target in ("T122", "T124", "T125"):
-    assert records[target]["phase1_blocker_status"] == "CLOSED_BY_PATCH_PENDING_CI"
+    assert records[target]["phase1_blocker_status"] == "CLOSED_ACCEPTED_CI_PASS"
 
-print("PASS: V0 OSAP v1.3.0 Phase 1 semantic-alignment patch verified statically.")
+schema_manifest = load("release/v1.3.0/schema_erratum_manifest.json")
+assert schema_manifest["status"] == "ERRATUM_ACCEPTED_CI_PASS"
+
+workflow = (ROOT / ".github/workflows/release-readiness.yml").read_text(encoding="utf-8")
+assert "ref: v1.2.0" in workflow
+assert "python scripts/verify_manifest.py" in workflow
+assert "python scripts/verify_closure.py" in workflow
+assert "python scripts/verify_phase1_alignment.py" in workflow
+
+closure_docs = [
+    "README.md",
+    "docs/status_and_nonclaims.md",
+    "docs/theorem_register.md",
+    "release/v1.3.0/PHASE1_ACCEPTANCE_GATES.md",
+    "release/v1.3.0/PHASE1_SEMANTIC_ALIGNMENT_REPORT.md",
+    "release/v1.3.0/PHASE1_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md",
+]
+for path in closure_docs:
+    text = (ROOT / path).read_text(encoding="utf-8")
+    assert "CI_PENDING" not in text
+    assert "CLOSED_BY_PATCH_PENDING_CI" not in text
+
+changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+assert "## [1.2.0] - 2026-07-11" in changelog
+assert "48db564c085aec411552e78eef6c1740bd27a5ac" in changelog
+assert "10.5281/zenodo.21306969" in changelog
+assert "Closure verification script and final release-readiness gate." in changelog
+
+print("PASS: V0 OSAP v1.3.0 Phase 1 accepted, CI-closed, and historically preserved.")

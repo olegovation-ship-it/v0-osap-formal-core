@@ -1,6 +1,6 @@
 # Phase 1 acceptance gates
 
-Phase 1 may be marked `ACCEPTED` only when all gates pass on the installed repository state:
+Phase 1 is marked `ACCEPTED / CI PASS` because all gates passed on the installed repository state:
 
 1. `python -m pip install -e '.[dev]'`
 2. `pytest -q`
@@ -14,5 +14,7 @@ Phase 1 may be marked `ACCEPTED` only when all gates pass on the installed repos
 10. No T122 attribution remains on the missing-prerequisite countermodel.
 11. No T125 attribution remains on observer admissibility fixtures.
 12. The immutable `v1.2.0` tag remains unchanged.
+13. The immutable-v1.2.0 readiness job runs both `verify_manifest.py` and `verify_closure.py`.
+14. The detailed v1.2.0 changelog history is preserved.
 
-Until these gates pass, use `PATCH_READY / CI_PENDING`, not `compiler-passed`, `accepted`, or `v1.3.0 released`.
+This acceptance closes Phase 1 only. It does not create a v1.3.0 release, move the v1.2.0 tag, or enlarge the archived compiler-passed claim.

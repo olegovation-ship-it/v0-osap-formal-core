@@ -1,6 +1,6 @@
 # V0 OSAP v1.3.0 Phase 1 Semantic Alignment and Blocker Closure Patch v0.1
 
-Status: `PATCH_READY / CI_PENDING`
+Status: `ACCEPTED / CI_PASS`
 Date: 2026-07-11
 Baseline: immutable `v1.2.0`, DOI `10.5281/zenodo.21306969`
 
@@ -35,6 +35,21 @@ Close the three crosswalk blockers identified after the v1.3.0 build-plan audit 
 - Introduce `AdmissibleObserverCertificate` as a separate unnumbered predicate.
 - Replace the old conflated diagnostic with `OBSERVER_CERTIFICATION_SUPPORT_REQUIRED` and remove T125 attribution.
 
+## CI closure
+
+- Schema validation: PASS.
+- Python checker and regression suite: PASS.
+- Lean 4 build and proof-hole scan: PASS.
+- Coq build and proof-hole scan: PASS.
+- Release readiness: PASS.
+- Phase 1 semantic-alignment verifier: PASS.
+
+## Historical preservation
+
+- The immutable `v1.2.0` tag and DOI are unchanged.
+- The immutable-baseline workflow retains both `verify_manifest.py` and `verify_closure.py`.
+- The detailed v1.2.0 changelog record is preserved rather than collapsed into a summary line.
+
 ## Release discipline
 
-This package is not a v1.3.0 release. It must be applied on `v1.3.0-development` or an equivalent development branch. The tag `v1.2.0` must not be moved. Phase 1 closes only after Python, schema, Lean 4, Coq, proof-hole, and crosswalk checks are all green on the installed repository state.
+This package is not a v1.3.0 release. It applies on `v1.3.0-development` or an equivalent development branch. Phase 1 acceptance does not move the v1.2.0 tag, create a new DOI, or extend the archived compiler-passed claim.

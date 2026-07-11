@@ -11,7 +11,7 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 1 SEMANTIC ALIGNMENT PATCH - PATCH READY / CI PENDING**
+> **PHASE 1 SEMANTIC ALIGNMENT — ACCEPTED / CI PASS**
 
 The development branch aligns executable coverage for T122, T124, and T125:
 
@@ -20,11 +20,13 @@ The development branch aligns executable coverage for T122, T124, and T125:
 - T125: exact terminal-support-exhaustion rule, separated from observer admissibility;
 - checker development version: `0.2.0.dev1`.
 
-This is not a v1.3.0 release and is not yet a compiler-passed claim. See `release/v1.3.0/PHASE1_ACCEPTANCE_GATES.md`.
+The Phase 1 acceptance matrix passed for Schema validation, Python checker, Lean 4, Coq, and Release readiness. The immutable-v1.2.0 readiness job retains both manifest and closure verification.
+
+This is not a v1.3.0 release and does not extend the archived v1.2.0 compiler-passed claim. See `release/v1.3.0/PHASE1_ACCEPTANCE_GATES.md` and `release/v1.3.0/PHASE1_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ## v1.2.0 release status
 
-> **V0 OSAP v1.2.0 - DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
+> **V0 OSAP v1.2.0 — DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
 
 - Imported specification: **V0 OSAP v1.1 / FC-1-v1.1**.
 - Canonical JSON Schemas: JSON Schema Draft 2020-12.
@@ -53,6 +55,8 @@ python scripts/verify_phase1_alignment.py
 cd lean && lake build
 cd ../coq && make
 ```
+
+The archived baseline closure check is executed by the Release readiness workflow after checking out the immutable `v1.2.0` tag.
 
 ## License
 
