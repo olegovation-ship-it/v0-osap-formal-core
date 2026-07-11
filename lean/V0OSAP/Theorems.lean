@@ -5,6 +5,7 @@ import V0OSAP.Residuals
 import V0OSAP.Observer
 import V0OSAP.Branches
 import V0OSAP.Expansion
+import V0OSAP.Phase3
 
 namespace V0OSAP
 

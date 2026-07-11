@@ -1,6 +1,6 @@
 {
-  "bundle_id": "V0_OSAP_v1_3_0_phase2_fixture_corpus",
-  "semantic_version": "FC-1-v1.1+phase2",
+  "bundle_id": "V0_OSAP_v1_3_0_phase3_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase3",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
@@ -25,12 +25,24 @@
     "positive/t131_undefined_is_not_zero.fixture.json",
     "negative/t131_undefined_coerced_to_zero.fixture.json",
     "positive/t132_dle_history_adequacy.fixture.json",
-    "negative/t132_dle_without_history.fixture.json"
+    "negative/t132_dle_without_history.fixture.json",
+    "positive/t133_fresh_token_reactivation.fixture.json",
+    "negative/t133_reused_token_identifier.fixture.json",
+    "positive/t134_raw_relative_v0_no_live_residual.fixture.json",
+    "negative/t134_live_residual_obstruction.fixture.json",
+    "positive/t135_robust_relative_v0_no_live_noneliminable_residual.fixture.json",
+    "negative/t135_live_noneliminable_residual_obstruction.fixture.json",
+    "positive/t136_absolute_v0_independent_basis.fixture.json",
+    "negative/t136_relative_to_absolute_promotion.fixture.json",
+    "positive/t137_v0_identity_independent_basis.fixture.json",
+    "negative/t137_approximation_identity_promotion.fixture.json",
+    "positive/t138_cross_state_terminal_certificate.fixture.json",
+    "negative/t138_same_state_self_certification.fixture.json"
   ],
-  "status": "PHASE2_T127_T132_PATCH_ORACLE_SET",
+  "status": "PHASE3_T133_T138_PATCH_ORACLE_SET",
   "notes": [
-    "Phase 1 exact mappings are preserved.",
-    "T127-T132 each have a positive and decisive negative fixture.",
-    "Phase 2 remains BUILD_READY / CI_PENDING."
+    "Phase 1 and Phase 2 exact mappings are preserved.",
+    "T133-T138 each have a positive and decisive countermodel fixture.",
+    "Phase 3 remains BUILD_READY / CI_PENDING."
   ]
 }

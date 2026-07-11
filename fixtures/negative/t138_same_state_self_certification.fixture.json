@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t138_same_state_self_certification",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t138_same_state_self_certification.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "SAME_STATE_SELF_CERTIFICATION_FORBIDDEN"
+  ],
+  "theorem_targets": [
+    "T138"
+  ],
+  "bound": 2,
+  "oracle_source": "Same-state exhausted support attempts to certify itself."
+}

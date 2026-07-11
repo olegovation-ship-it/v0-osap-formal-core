@@ -54,7 +54,7 @@ for code in [
     assert code in semantic
 
 manifest = load("fixtures/manifest.json")
-assert manifest["semantic_version"] == "FC-1-v1.1+phase2"
+assert manifest["semantic_version"] in {"FC-1-v1.1+phase2", "FC-1-v1.1+phase3"}
 
 workflow = (ROOT / ".github/workflows/release-readiness.yml").read_text(
     encoding="utf-8"
@@ -68,9 +68,11 @@ for command in [
 ]:
     assert command in workflow
 
-assert 'version = "0.3.0.dev1"' in (ROOT / "pyproject.toml").read_text(
-    encoding="utf-8"
-)
-assert '"implementation_version": "v0-osap-fc1/0.3.0.dev1"' in semantic
+project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+assert any(version in project for version in ('version = "0.3.0.dev1"', 'version = "0.4.0.dev1"'))
+assert any(version in semantic for version in (
+    '"implementation_version": "v0-osap-fc1/0.3.0.dev1"',
+    '"implementation_version": "v0-osap-fc1/0.4.0.dev1"',
+))
 
 print("PASS: V0 OSAP v1.3.0 Phase 2 T127-T132 accepted expansion verified statically.")

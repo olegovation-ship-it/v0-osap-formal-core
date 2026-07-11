@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t134_live_residual_obstruction",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t134_live_residual_obstruction.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "LIVE_RESIDUAL_OBSTRUCTS_RAW_RELATIVE_V0"
+  ],
+  "theorem_targets": [
+    "T134"
+  ],
+  "bound": 2,
+  "oracle_source": "A live residual blocks raw relative nullity."
+}

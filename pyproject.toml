@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "v0-osap-fc1"
-version = "0.3.0.dev1"
+version = "0.4.0.dev1"
 description = "Executable checker for the V0 OSAP FC-1 registry fragment"
 readme = "README.md"
 requires-python = ">=3.11"

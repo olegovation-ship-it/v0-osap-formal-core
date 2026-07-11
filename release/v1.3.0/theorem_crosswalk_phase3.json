@@ -1,0 +1,180 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase3_theorem_crosswalk",
+  "artifact_version": "0.1",
+  "baseline_tag": "v1.2.0",
+  "baseline_doi": "10.5281/zenodo.21306969",
+  "phase1_status": "ACCEPTED_CI_PASS",
+  "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase3_status": "BUILD_READY_CI_PENDING",
+  "theorem_range": "T133-T138",
+  "records": [
+    {
+      "theorem_id": "T133",
+      "canonical_name": "fresh_token_reactivation",
+      "formal_signature": "FreshTokenReactivation(registry,prior,new) implies new.tokenId differs from prior.tokenId.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Reactivation cannot reuse the historical or retired token identifier.",
+      "natural_statement": "Reactivation cannot reuse the historical or retired token identifier.",
+      "lean_symbol": "V0OSAP.T133_fresh_token_reactivation",
+      "coq_symbol": "T133_fresh_token_reactivation",
+      "validator_rule": "fresh token identity separation",
+      "diagnostics": [
+        "REACTIVATION_TOKEN_ID_REUSED"
+      ],
+      "fixtures": [
+        "fixture:positive:t133_fresh_token_reactivation",
+        "fixture:negative:t133_reused_token_identifier"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "2da3a4a7ca0567b579b1f0e3cad693bc9c2df26a8db5196e5ad0a1c8b57d9373"
+    },
+    {
+      "theorem_id": "T134",
+      "canonical_name": "raw_residual_obstruction",
+      "formal_signature": "LiveResidual at a declared residual register implies not RawRelativeV0.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Any live residual blocks raw relative nullity.",
+      "natural_statement": "Any live residual blocks raw relative nullity.",
+      "lean_symbol": "V0OSAP.T134_raw_residual_obstruction",
+      "coq_symbol": "T134_raw_residual_obstruction",
+      "validator_rule": "raw residual live-set audit",
+      "diagnostics": [
+        "LIVE_RESIDUAL_OBSTRUCTS_RAW_RELATIVE_V0"
+      ],
+      "fixtures": [
+        "fixture:positive:t134_raw_relative_v0_no_live_residual",
+        "fixture:negative:t134_live_residual_obstruction"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "58eab9c062025ffc1a1c792cdd11562456664f53122b2f676d820da3334f42cd"
+    },
+    {
+      "theorem_id": "T135",
+      "canonical_name": "robust_residual_obstruction",
+      "formal_signature": "LiveResidual at a declared non-eliminable residual register implies not RobustRelativeV0NonEliminable.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "A live non-eliminable residual blocks robust relative nullity.",
+      "natural_statement": "A live non-eliminable residual blocks robust relative nullity.",
+      "lean_symbol": "V0OSAP.T135_robust_residual_obstruction",
+      "coq_symbol": "T135_robust_residual_obstruction",
+      "validator_rule": "non-eliminable residual live-set audit",
+      "diagnostics": [
+        "LIVE_NONELIMINABLE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0"
+      ],
+      "fixtures": [
+        "fixture:positive:t135_robust_relative_v0_no_live_noneliminable_residual",
+        "fixture:negative:t135_live_noneliminable_residual_obstruction"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "73d80a3be8e1ee97942f304f68a1d91ad1e668c655d487e8894ddd62b3865301"
+    },
+    {
+      "theorem_id": "T136",
+      "canonical_name": "relative_to_absolute_non_promotion",
+      "formal_signature": "Relative claim tier differs from absolute claim tier.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "No FC-1 rule promotes relative V0 to absolute V0.",
+      "natural_statement": "No FC-1 rule promotes relative V0 to absolute V0.",
+      "lean_symbol": "V0OSAP.T136_relative_to_absolute_non_promotion",
+      "coq_symbol": "T136_relative_to_absolute_non_promotion",
+      "validator_rule": "source-claim promotion firewall",
+      "diagnostics": [
+        "ABSOLUTE_RELATIVE_FIREWALL"
+      ],
+      "fixtures": [
+        "fixture:positive:t136_absolute_v0_independent_basis",
+        "fixture:negative:t136_relative_to_absolute_promotion"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "15ac52baef0a828ad24d200d1c99b5f774bb9824e3ae66fceea71cf6d0272635"
+    },
+    {
+      "theorem_id": "T137",
+      "canonical_name": "approximation_non_identity",
+      "formal_signature": "Approximation claim tier differs from identity claim tier.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Approximation certificates do not entail V0 identity.",
+      "natural_statement": "Approximation certificates do not entail V0 identity.",
+      "lean_symbol": "V0OSAP.T137_approximation_non_identity",
+      "coq_symbol": "T137_approximation_non_identity",
+      "validator_rule": "approximation-to-identity source firewall",
+      "diagnostics": [
+        "APPROXIMATION_DOES_NOT_ENTAIL_V0_IDENTITY"
+      ],
+      "fixtures": [
+        "fixture:positive:t137_v0_identity_independent_basis",
+        "fixture:negative:t137_approximation_identity_promotion"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "cb193d0dfed6153718fef1e9189c33ef35a0cfa0758da730e81ee5dfd67b4b17"
+    },
+    {
+      "theorem_id": "T138",
+      "canonical_name": "terminal_self_certification_limit",
+      "formal_signature": "Equal support and certification states imply terminal-exhaustion inadmissibility.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Same-state exhausted support cannot certify its own total exhaustion.",
+      "natural_statement": "Same-state exhausted support cannot certify its own total exhaustion.",
+      "lean_symbol": "V0OSAP.T138_terminal_self_certification_limit",
+      "coq_symbol": "T138_terminal_self_certification_limit",
+      "validator_rule": "cross-state certification requirement",
+      "diagnostics": [
+        "SAME_STATE_SELF_CERTIFICATION_FORBIDDEN"
+      ],
+      "fixtures": [
+        "fixture:positive:t138_cross_state_terminal_certificate",
+        "fixture:negative:t138_same_state_self_certification"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "CI acceptance pending"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "ce0b7004c27377f29750e0ea136d3064cfeccda9d3463bc3bd473c5dfd20a2ab"
+    }
+  ]
+}

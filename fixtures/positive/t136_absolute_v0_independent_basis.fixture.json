@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t136_absolute_v0_independent_basis",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t136_absolute_v0_independent_basis.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T136"
+  ],
+  "bound": 2,
+  "oracle_source": "Absolute claim is not sourced from a relative claim."
+}

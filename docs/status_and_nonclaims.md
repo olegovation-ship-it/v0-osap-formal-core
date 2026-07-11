@@ -1,5 +1,14 @@
 # Status and non-claims
 
+## v1.3.0 Phase 3
+
+- Scope: T133-T138.
+- Status: `BUILD_READY / CI_PENDING`.
+- Checker development version: `0.4.0.dev1`.
+- Twelve paired fixtures and Lean 4 / Coq modules are staged.
+- Phase 1 and Phase 2 accepted states remain preserved.
+- No v1.3.0 release, Phase 3 acceptance, theorem-completeness, proof-identity, or empirical claim.
+
 ## v1.3.0 Phase 2
 
 - Scope: T127-T132.
@@ -52,7 +61,7 @@
 ## Explicit non-claims
 
 - No release claim for v1.3.0.
-- No accepted theorem IDs beyond T132 in the current v1.3.0 development state.
+- No accepted theorem IDs beyond T132; T133-T138 are build-ready and CI-pending.
 - No complete mechanization claim for T1-T150 or T121-T150.
 - No formal equivalence or proof-term identity claim among Python, Lean 4, and Coq.
 - No checker-completeness claim.

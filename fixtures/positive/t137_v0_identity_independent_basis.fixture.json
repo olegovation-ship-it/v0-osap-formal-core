@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t137_v0_identity_independent_basis",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t137_v0_identity_independent_basis.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T137"
+  ],
+  "bound": 2,
+  "oracle_source": "Identity claim has an independent identity basis."
+}
