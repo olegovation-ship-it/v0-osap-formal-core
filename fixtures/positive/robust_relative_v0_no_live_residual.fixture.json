@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t124_no_live_residual",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase1",
+  "input_file": "robust_relative_v0_no_live_residual.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T124"
+  ],
+  "bound": 1,
+  "oracle_source": "T124 positive oracle: no declared residual register has a live token."
+}

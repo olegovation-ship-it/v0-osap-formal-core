@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "language_version": "FC-1-v1.1",
-  "registry_state_id": "state:negative:observer_admissible_support",
+  "registry_state_id": "state:positive:t125:exhausted",
   "declarations": [
     {
       "id": "sector:phase1",
@@ -46,9 +46,10 @@
   ],
   "claims": [
     {
-      "claim_id": "claim:observer:admissible",
-      "kind": "observer_admissible_certificate",
+      "claim_id": "claim:t125:terminal",
+      "kind": "observer_terminal_self_certificate",
       "observer_id": "observer:phase1",
+      "internal_support_ids": [],
       "external_evidence_ids": [],
       "independence_group_ids": []
     }

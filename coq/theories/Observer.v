@@ -12,10 +12,22 @@ Record observer_support : Type := mkObserverSupport {
 Definition terminal_self_certificate (support : observer_support) : Prop :=
   internal_support_ids support = [] /\ external_evidence_ids support = [].
 
+Definition admissible_observer_certificate (support : observer_support) : Prop :=
+  external_evidence_ids support <> [] /\ independence_group_ids support <> [].
+
 Theorem T125_terminal_self_certificate_exposes_empty_support :
   forall support,
     terminal_self_certificate support ->
     internal_support_ids support = [] /\ external_evidence_ids support = [].
+Proof.
+  intros support H.
+  exact H.
+Qed.
+
+Theorem admissible_observer_certificate_has_external_independent_support :
+  forall support,
+    admissible_observer_certificate support ->
+    external_evidence_ids support <> [] /\ independence_group_ids support <> [].
 Proof.
   intros support H.
   exact H.

@@ -1,21 +1,36 @@
 # Status and non-claims
 
-## v1.2.0 assertions
+## Immutable v1.2.0 baseline
 
-- The v1.1 normative PDF and canonical schemas are imported.
-- The schema bundle and canonical examples replay successfully.
-- The Python checker and fixture corpus replay successfully.
-- Lean 4 compiles the current FC-1 theorem subset T121-T126.
-- Coq compiles the corresponding current FC-1 theorem subset T121-T126.
-- Proof-hole markers are rejected by the repository scan.
-- The release manifest and closure metadata pass static integrity checks.
-- Evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
+- Tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain immutable.
+- The archived baseline remains the bounded dual-backend compiler-passed T121-T126 release.
+- The immutable baseline CI job executes proof-hole, schema, fixture, manifest, and closure verification.
+- This Phase 1 package is a development patch and does not rewrite the archived release.
+
+## v1.3.0 Phase 1 assertions
+
+- T122 receives an exact executable positive fixture for empty `all_of` vacuity.
+- T124 receives an explicit Python rule and paired positive/countermodel fixtures.
+- T125 is aligned with the Lean/Coq exhaustion predicate.
+- Observer admissibility is separated into an unnumbered operational predicate.
+- The old missing-prerequisite countermodel is no longer presented as T122 evidence.
+- The old observer-support countermodel is no longer presented as T125 evidence.
+
+## Acceptance state
+
+- Phase 1 status: `ACCEPTED / CI PASS`.
+- Package-level static verification: PASS.
+- Python test suite and schema/fixture replay: PASS.
+- Proof-hole scan: PASS.
+- Lean 4 build: PASS.
+- Coq build: PASS.
+- GitHub Actions all-green matrix: PASS.
+- Historical v1.2.0 manifest and closure preservation: PASS.
 
 ## Explicit non-claims
 
-- No mechanization-completeness claim for T1-T150 or even T121-T150.
-- No claim that the Python checker is formally equivalent to Lean 4 or Coq.
-- No claim that the Lean 4 and Coq encodings are proved semantically equivalent.
-- No empirical or physical validation of V0.
-- No cosmological, disappearance-mechanism, quantum-gravity, or multiverse confirmation.
-- No DOI claim before a tagged immutable release is archived.
+- No release claim for v1.3.0.
+- No new theorem IDs beyond T121-T126.
+- No complete mechanization claim for T1-T150 or T121-T150.
+- No formal equivalence claim among Python, Lean 4, and Coq.
+- No empirical, physical, cosmological, disappearance-mechanism, quantum-gravity, or multiverse validation claim.

@@ -1,0 +1,58 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase1_theorem_crosswalk",
+  "artifact_version": "0.1",
+  "baseline_tag": "v1.2.0",
+  "baseline_doi": "10.5281/zenodo.21306969",
+  "status": "PHASE1_ACCEPTED_CI_PASS",
+  "records": [
+    {
+      "theorem_id": "T121",
+      "canonical_title": "Live guard has a live token",
+      "python_mapping": "existing live_guard fixture",
+      "lean_mapping": "V0OSAP.T121",
+      "coq_mapping": "T121_live_guard_has_live_token",
+      "phase1_blocker_status": "NOT_A_PHASE1_BLOCKER"
+    },
+    {
+      "theorem_id": "T122",
+      "canonical_title": "Empty all-of prerequisite family is vacuously satisfied",
+      "python_mapping": "empty_all_prerequisites positive fixture and all([]) semantics",
+      "lean_mapping": "V0OSAP.T122",
+      "coq_mapping": "T122_empty_all_prerequisites_live",
+      "phase1_blocker_status": "CLOSED_ACCEPTED_CI_PASS"
+    },
+    {
+      "theorem_id": "T123",
+      "canonical_title": "DLE implies current no-live status",
+      "python_mapping": "existing DLE rule and fixture",
+      "lean_mapping": "V0OSAP.T123",
+      "coq_mapping": "T123_dle_implies_no_live",
+      "phase1_blocker_status": "NOT_A_PHASE1_BLOCKER"
+    },
+    {
+      "theorem_id": "T124",
+      "canonical_title": "Live residual obstructs robust relative V0",
+      "python_mapping": "robust_relative_v0 claim and LIVE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0",
+      "lean_mapping": "V0OSAP.T124",
+      "coq_mapping": "T124_live_residual_obstructs_robust_relative_v0",
+      "phase1_blocker_status": "CLOSED_ACCEPTED_CI_PASS"
+    },
+    {
+      "theorem_id": "T125",
+      "canonical_title": "Terminal self-certificate exposes empty internal and external support",
+      "python_mapping": "observer_terminal_self_certificate and TERMINAL_SELF_CERTIFICATE_NOT_EXHAUSTED",
+      "lean_mapping": "V0OSAP.T125 / TerminalSelfCertificate",
+      "coq_mapping": "T125_terminal_self_certificate_exposes_empty_support",
+      "phase1_blocker_status": "CLOSED_ACCEPTED_CI_PASS",
+      "non_theorem_operational_mapping": "observer_admissible_certificate / AdmissibleObserverCertificate"
+    },
+    {
+      "theorem_id": "T126",
+      "canonical_title": "Direct branch-local to absolute promotion violates the firewall",
+      "python_mapping": "existing absolute-relative firewall fixture",
+      "lean_mapping": "V0OSAP.T126",
+      "coq_mapping": "T126_direct_promotion_violates_firewall",
+      "phase1_blocker_status": "NOT_A_PHASE1_BLOCKER"
+    }
+  ]
+}

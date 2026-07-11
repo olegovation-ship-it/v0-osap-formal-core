@@ -2,12 +2,30 @@
 
 ## [Unreleased]
 
-### Changed
+### Phase 1 semantic alignment
+- Added exact executable coverage for T122 empty-`all_of` vacuity.
+- Added explicit T124 robust-relative-V0 residual-obstruction diagnostics and fixtures.
+- Aligned Python T125 semantics with the Lean 4 and Coq terminal-support-exhaustion predicate.
+- Split observer admissibility into a separate unnumbered predicate and diagnostic.
+- Added the Phase 1 theorem crosswalk, schema erratum, acceptance gates, static verifier, and development CI job.
+- Bumped the development checker version to `0.2.0.dev1`.
+
+### Phase 1 CI closure
+- Advanced Phase 1 from `PATCH_READY / CI_PENDING` to `ACCEPTED / CI_PASS`.
+- Recorded the all-green PR #1 matrix for Schema validation, Python checker, Lean 4, Coq, and Release readiness.
+- Restored `python scripts/verify_closure.py` to the immutable-v1.2.0 baseline job.
+- Added explicit CI-closure and historical-preservation verification.
+
+### Post-release metadata preservation
 - Added the Zenodo version DOI `10.5281/zenodo.21306969`.
 - Added repository and tagged-release backlinks to the citation metadata.
 - Finalized `CITATION.cff` for the archived v1.2.0 software release.
 - Updated the closure verifier to require finalized DOI metadata.
 - Preserved the immutable `v1.2.0` tag; this is a post-release metadata patch, not a retag.
+
+### Release discipline
+- Preserved the immutable `v1.2.0` tag and DOI `10.5281/zenodo.21306969`.
+- Phase 1 acceptance is not a v1.3.0 release or a full-v1.3.0 compiler-passed claim.
 
 ## [1.2.0] - 2026-07-11
 

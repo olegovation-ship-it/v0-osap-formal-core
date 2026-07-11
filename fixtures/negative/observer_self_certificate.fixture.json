@@ -1,16 +1,15 @@
 {
   "schema_version": "v1.1",
-  "fixture_id": "fixture:negative:observer_self_certificate",
+  "fixture_id": "fixture:negative:observer_admissible_support",
   "kind": "countermodel",
-  "semantic_version": "FC-1-v1.1",
+  "semantic_version": "FC-1-v1.1+phase1",
   "input_file": "observer_self_certificate.registry.json",
   "expected_status": "REJECT",
   "expected_diagnostics": [
-    "OBSERVER_SELF_CERTIFICATION_LIMIT"
+    "OBSERVER_CERTIFICATION_SUPPORT_REQUIRED"
   ],
-  "theorem_targets": [
-    "T125"
-  ],
+  "theorem_targets": [],
   "bound": 1,
-  "oracle_source": "Manual FC-1 countermodel: terminal self-certificate has no external independent support."
+  "oracle_source": "Operational observer-admissibility countermodel; intentionally not mapped to T125.",
+  "notes": "Legacy filename retained to avoid orphaning the bootstrap path."
 }

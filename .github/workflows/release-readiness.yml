@@ -2,7 +2,7 @@ name: Release readiness
 
 on:
   push:
-    branches: [main]
+    branches: [main, v1.3.0-development]
   pull_request:
   workflow_dispatch:
 
@@ -10,10 +10,12 @@ permissions:
   contents: read
 
 jobs:
-  static-readiness:
+  immutable-v1-2-baseline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v1.2.0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -25,3 +27,19 @@ jobs:
       - run: v0-osap-fc1 fixtures
       - run: python scripts/verify_manifest.py
       - run: python scripts/verify_closure.py
+
+  phase1-development-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e '.[dev]'
+      - run: pytest -q
+      - run: v0-osap-fc1 schema-bundle
+      - run: v0-osap-fc1 fixtures
+      - run: python scripts/check_no_proof_holes.py
+      - run: python scripts/verify_phase1_alignment.py

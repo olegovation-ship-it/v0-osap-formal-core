@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "language_version": "FC-1-v1.1",
-  "registry_state_id": "state:negative:observer_admissible_support",
+  "registry_state_id": "state:positive:observer_admissible_support",
   "declarations": [
     {
       "id": "sector:phase1",
@@ -18,6 +18,10 @@
     {
       "id": "observer:phase1",
       "sort": "Observer"
+    },
+    {
+      "id": "ev:external",
+      "sort": "Evidence"
     }
   ],
   "contexts": [
@@ -42,15 +46,33 @@
         "Finite Phase 1 semantic-alignment fixture."
       ],
       "metadata": {}
+    },
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:external",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase1",
+      "supports_claim_ids": [
+        "claim:observer:admissible:supported"
+      ],
+      "limitations": [
+        "Finite Phase 1 semantic-alignment fixture."
+      ],
+      "metadata": {}
     }
   ],
   "claims": [
     {
-      "claim_id": "claim:observer:admissible",
+      "claim_id": "claim:observer:admissible:supported",
       "kind": "observer_admissible_certificate",
       "observer_id": "observer:phase1",
-      "external_evidence_ids": [],
-      "independence_group_ids": []
+      "external_evidence_ids": [
+        "ev:external"
+      ],
+      "independence_group_ids": [
+        "group:independent"
+      ]
     }
   ],
   "metadata": {

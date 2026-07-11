@@ -1,0 +1,86 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:negative:t124:live_residual",
+  "declarations": [
+    {
+      "id": "sector:phase1",
+      "sort": "Sector"
+    },
+    {
+      "id": "ctx:phase1",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:fixture",
+      "sort": "Evidence"
+    },
+    {
+      "id": "reg:target",
+      "sort": "Register"
+    },
+    {
+      "id": "reg:residual",
+      "sort": "Register"
+    }
+  ],
+  "contexts": [
+    "ctx:phase1"
+  ],
+  "tokens": [
+    {
+      "token_id": "tok:t124:target:historical",
+      "carrier_id": "sector:phase1",
+      "register_id": "reg:target",
+      "context_id": "ctx:phase1",
+      "partition": "historical",
+      "introduced_in": "state:t124",
+      "source_evidence_id": "ev:fixture"
+    },
+    {
+      "token_id": "tok:t124:residual:live",
+      "carrier_id": "sector:phase1",
+      "register_id": "reg:residual",
+      "context_id": "ctx:phase1",
+      "partition": "live",
+      "introduced_in": "state:negative:t124:live_residual",
+      "source_evidence_id": "ev:fixture"
+    }
+  ],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:fixture",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase1",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite Phase 1 semantic-alignment fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t124:robust_relative_v0",
+      "kind": "robust_relative_v0",
+      "carrier_id": "sector:phase1",
+      "register_id": "reg:target",
+      "context_id": "ctx:phase1",
+      "residual_register_ids": [
+        "reg:residual"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": "v1.3.0-phase1"
+  }
+}

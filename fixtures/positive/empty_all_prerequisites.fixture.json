@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t122_empty_all_prerequisites",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase1",
+  "input_file": "empty_all_prerequisites.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T122"
+  ],
+  "bound": 0,
+  "oracle_source": "T122 executable oracle: empty all_of support is vacuously satisfied."
+}

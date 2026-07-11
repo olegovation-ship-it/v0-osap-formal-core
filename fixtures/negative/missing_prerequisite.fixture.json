@@ -8,9 +8,8 @@
   "expected_diagnostics": [
     "MISSING_PREREQUISITE"
   ],
-  "theorem_targets": [
-    "T122"
-  ],
-  "bound": 2,
-  "oracle_source": "Manual FC-1 countermodel: live metric token lacks required topology token."
+  "theorem_targets": [],
+  "bound": 1,
+  "oracle_source": "Operational FC-1 countermodel: an enabled nonempty prerequisite family is unsatisfied.",
+  "notes": "This fixture is no longer used as evidence for T122; T122 is covered by positive/empty_all_prerequisites.fixture.json."
 }
