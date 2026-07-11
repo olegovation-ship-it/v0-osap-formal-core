@@ -4,8 +4,16 @@
   "baseline_tag": "v1.2.0",
   "baseline_doi": "10.5281/zenodo.21306969",
   "phase1_status": "ACCEPTED_CI_PASS",
-  "phase2_status": "BUILD_READY_CI_PENDING",
+  "phase2_status": "ACCEPTED_CI_PASS_MERGED",
   "theorem_range": "T127-T132",
+  "pull_request": 2,
+  "head_commit": "90865cca5fafde161254b7e313621d369ae5efc5",
+  "merge_commit": "f494cd9401e2b9ff91d87de77e11f4eb2468726c",
+  "merged_at_utc": "2026-07-11T18:01:54Z",
+  "github_pr_checks": 8,
+  "python_tests": 111,
+  "historical_preservation": "PASS",
+  "closure_evidence": "release/v1.3.0/PHASE2_CI_CLOSURE_EVIDENCE.json",
   "records": [
     {
       "theorem_id": "T127",
@@ -31,7 +39,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "65aab2064dc6d0a47652e2cba1813a8e65c9e4e174db6d343d7a145577950a54"
     },
     {
@@ -59,7 +67,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "d9979d741f79844b2ac39ec8a36020eb31afc601cf89cc6231d55f90995e1bae"
     },
     {
@@ -87,7 +95,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "737cd617596ade973388e887213e2be9e83cde2722472296f977b8ec9d351713"
     },
     {
@@ -114,7 +122,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "16f11c1555e11ed71f77549f4ce2cfa3d20b5fae8f380f9d0f0634ea94d69aae"
     },
     {
@@ -142,7 +150,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "37dd0964fb46fb2e5644b41a9ed5f24ed47c98d98adace0a205d4c41f449f923"
     },
     {
@@ -170,7 +178,7 @@
       "claim_limitations": [
         "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "6acfbb93908aa1cbd03bb638bdabbe1d7520467ed057dbed0d509a65166b6c9f"
     }
   ]

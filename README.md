@@ -11,15 +11,21 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 2 T127-T132 EXPANSION - PATCH READY / CI PENDING**
+> **PHASE 2 T127-T132 EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 2 adds T127 closure minimality, T128 one_of support transparency,
 T129 compatibility preservation, T130 dimensional readiness, T131 undefined-domain
 separation from numeric zero, and T132 DLE history adequacy. Checker version: `0.3.0.dev1`.
 
+PR #2 passed 8/8 checks and merged head commit
+`90865cca5fafde161254b7e313621d369ae5efc5` into `main` as
+`f494cd9401e2b9ff91d87de77e11f4eb2468726c`. The local regression suite recorded
+111 passing tests, and both Lean 4 and Coq builds passed.
+
 The patch includes twelve paired fixtures, Lean 4 and Coq expansion modules, and a
-canonical statement-hash crosswalk. It is not yet an accepted or released v1.3.0 claim.
-See `release/v1.3.0/PHASE2_ACCEPTANCE_GATES.md`.
+canonical statement-hash crosswalk. This is an accepted v1.3.0 development state,
+not a v1.3.0 release. See `release/v1.3.0/PHASE2_ACCEPTANCE_GATES.md` and
+`release/v1.3.0/PHASE2_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ### Phase 1 closed baseline
 
@@ -38,7 +44,7 @@ This is not a v1.3.0 release and does not extend the archived v1.2.0 compiler-pa
 
 ## v1.2.0 release status
 
-> **V0 OSAP v1.2.0 — DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
+> **V0 OSAP v1.2.0 - DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
 
 - Imported specification: **V0 OSAP v1.1 / FC-1-v1.1**.
 - Canonical JSON Schemas: JSON Schema Draft 2020-12.
@@ -65,6 +71,7 @@ v0-osap-fc1 fixtures
 python scripts/check_no_proof_holes.py
 python scripts/verify_phase1_alignment.py
 python scripts/verify_phase2_expansion.py
+python scripts/verify_phase2_ci_closure.py
 cd lean && lake build
 cd ../coq && make
 ```
