@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t137_approximation_identity_promotion",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t137_approximation_identity_promotion.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "APPROXIMATION_DOES_NOT_ENTAIL_V0_IDENTITY"
+  ],
+  "theorem_targets": [
+    "T137"
+  ],
+  "bound": 2,
+  "oracle_source": "Approximation certificate is used as V0 identity evidence."
+}

@@ -313,6 +313,97 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                     path, (str(claim.get("claim_id")), str(claim.get("protocol_id"))),
                 ))
 
+    # Phase 3: T133-T138 reactivation, residual, promotion, identity, and self-certification firewall.
+    tokens_by_id = {
+        str(token.get("token_id")): token
+        for token in tokens
+        if isinstance(token, dict) and token.get("token_id")
+    }
+    phase3_claims_by_id = {
+        str(claim.get("claim_id")): claim
+        for claim in claims
+        if isinstance(claim, dict) and claim.get("claim_id")
+    }
+    for claim in claims:
+        if not isinstance(claim, dict):
+            continue
+        kind = claim.get("kind")
+        path = "/claims"
+        if kind == "reactivation":
+            prior_id = str(claim.get("prior_token_id"))
+            reactivated_id = str(claim.get("reactivated_token_id"))
+            if prior_id == reactivated_id:
+                diagnostics.append(Diagnostic(
+                    "REACTIVATION_TOKEN_ID_REUSED", "REJECT", 94,
+                    "Reactivation must allocate a token identifier distinct from the historical or retired token.",
+                    path, (str(claim.get("claim_id")), prior_id),
+                ))
+                continue
+            prior = tokens_by_id.get(prior_id)
+            reactivated = tokens_by_id.get(reactivated_id)
+            if prior is None or prior.get("partition") not in {"historical", "retired"}:
+                diagnostics.append(Diagnostic(
+                    "REACTIVATION_PRIOR_TOKEN_INVALID", "REJECT", 92,
+                    "The prior reactivation token must resolve and be historical or retired.",
+                    path, (str(claim.get("claim_id")), prior_id),
+                ))
+            if reactivated is None or reactivated.get("partition") != "live":
+                diagnostics.append(Diagnostic(
+                    "REACTIVATION_TARGET_NOT_LIVE", "REJECT", 92,
+                    "The reactivated token must resolve as live.",
+                    path, (str(claim.get("claim_id")), reactivated_id),
+                ))
+            if prior is not None and reactivated is not None:
+                coordinates = ("carrier_id", "register_id", "context_id")
+                if any(prior.get(field) != reactivated.get(field) for field in coordinates):
+                    diagnostics.append(Diagnostic(
+                        "REACTIVATION_COORDINATES_MISMATCH", "REJECT", 90,
+                        "Reactivation must preserve carrier, register, and context coordinates.",
+                        path, (str(claim.get("claim_id")), prior_id, reactivated_id),
+                    ))
+        elif kind == "raw_relative_v0":
+            carrier = str(claim.get("carrier_id"))
+            context = str(claim.get("context_id"))
+            offenders = _live_residual_registers(
+                tokens, carrier, context, claim.get("residual_register_ids", [])
+            )
+            if offenders:
+                diagnostics.append(Diagnostic(
+                    "LIVE_RESIDUAL_OBSTRUCTS_RAW_RELATIVE_V0", "REJECT", 92,
+                    "Any live residual blocks raw relative nullity.",
+                    path, tuple(str(x) for x in [claim.get("claim_id"), *offenders]),
+                ))
+        elif kind == "robust_relative_v0_noneliminable":
+            carrier = str(claim.get("carrier_id"))
+            context = str(claim.get("context_id"))
+            offenders = _live_residual_registers(
+                tokens, carrier, context, claim.get("non_eliminable_residual_register_ids", [])
+            )
+            if offenders:
+                diagnostics.append(Diagnostic(
+                    "LIVE_NONELIMINABLE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0", "REJECT", 93,
+                    "A live non-eliminable residual blocks robust relative nullity.",
+                    path, tuple(str(x) for x in [claim.get("claim_id"), *offenders]),
+                ))
+        elif kind == "v0_identity":
+            source_id = str(claim.get("source_claim_id"))
+            source = phase3_claims_by_id.get(source_id)
+            if source is not None and source.get("kind") == "approximation_v0":
+                diagnostics.append(Diagnostic(
+                    "APPROXIMATION_DOES_NOT_ENTAIL_V0_IDENTITY", "REJECT", 94,
+                    "An approximation certificate does not entail V0 identity.",
+                    path, (str(claim.get("claim_id")), source_id),
+                ))
+        elif kind == "terminal_exhaustion_certificate":
+            support_state = str(claim.get("support_state_id"))
+            certification_state = str(claim.get("certification_state_id"))
+            if support_state == certification_state:
+                diagnostics.append(Diagnostic(
+                    "SAME_STATE_SELF_CERTIFICATION_FORBIDDEN", "REJECT", 94,
+                    "Same-state exhausted support cannot certify its own total exhaustion.",
+                    path, (str(claim.get("claim_id")), support_state),
+                ))
+
     claims_by_id = {c.get("claim_id"): c for c in claims if isinstance(c, dict) and c.get("claim_id")}
     for i, claim in enumerate(claims):
         if not isinstance(claim, dict):
@@ -372,7 +463,10 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
         elif kind == "absolute_v0":
             source_id = claim.get("source_claim_id")
             source = claims_by_id.get(source_id)
-            if source and source.get("kind") in {"relative_v0", "dle", "approximation_v0", "heuristic_v0"}:
+            if source and source.get("kind") in {
+                "relative_v0", "raw_relative_v0", "robust_relative_v0",
+                "robust_relative_v0_noneliminable", "dle", "approximation_v0", "heuristic_v0"
+            }:
                 diagnostics.append(Diagnostic(
                     "ABSOLUTE_RELATIVE_FIREWALL", "REJECT", 92,
                     "A relative, DLE, approximation, or heuristic claim cannot directly license absolute V0.",
@@ -406,5 +500,5 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
         "registry_state_id": registry.get("registry_state_id"),
         "status": aggregate_status(diagnostics),
         "diagnostics": [d.to_dict() for d in diagnostics],
-        "implementation_version": "v0-osap-fc1/0.3.0.dev1",
+        "implementation_version": "v0-osap-fc1/0.4.0.dev1",
     }

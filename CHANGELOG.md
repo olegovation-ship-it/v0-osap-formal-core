@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Phase 3 theorem expansion T133-T138
+- Added executable fresh-token reactivation and residual-obstruction rules.
+- Extended the relative-to-absolute firewall and added approximation-identity and same-state certification firewalls.
+- Added twelve paired fixtures and Lean 4 / Coq Phase 3 modules.
+- Added a statement-hash theorem crosswalk and Phase 3 verifier.
+- Advanced the development checker to `0.4.0.dev1`.
+- Status is `BUILD_READY / CI_PENDING`; no v1.3.0 release or acceptance is claimed.
+
 ### Phase 2 theorem expansion T127-T132
 - Added executable rules for closure, one_of support selection, compatibility, protocol readiness, typed dimensional results, and exact DLE history mapping.
 - Added twelve paired fixtures and Lean 4 / Coq expansion modules.

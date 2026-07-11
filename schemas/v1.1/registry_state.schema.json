@@ -414,6 +414,30 @@
               "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
             },
             "uniqueItems": true
+          },
+          "prior_token_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "reactivated_token_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "non_eliminable_residual_register_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "uniqueItems": true
+          },
+          "support_state_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "certification_state_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
           }
         },
         "allOf": [
@@ -519,6 +543,109 @@
                 "kind",
                 "protocol_id",
                 "dimension_status"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "reactivation"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "prior_token_id",
+                "reactivated_token_id"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "raw_relative_v0"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "carrier_id",
+                "register_id",
+                "context_id",
+                "residual_register_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "robust_relative_v0_noneliminable"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "carrier_id",
+                "register_id",
+                "context_id",
+                "non_eliminable_residual_register_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "v0_identity"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "source_claim_id"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "terminal_exhaustion_certificate"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "support_state_id",
+                "certification_state_id"
               ]
             }
           }

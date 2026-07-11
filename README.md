@@ -11,6 +11,18 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
+> **PHASE 3 T133-T138 FIREWALL EXPANSION - BUILD READY / CI PENDING**
+
+Phase 3 adds fresh-token reactivation, raw and robust residual obstruction,
+relative-to-absolute non-promotion, approximation non-identity, and terminal
+same-state self-certification limits. Checker version: `0.4.0.dev1`.
+
+The patch includes twelve paired fixtures, Lean 4 and Coq Phase 3 modules, and a
+canonical statement-hash crosswalk. It is not yet accepted, merged, or released.
+See `release/v1.3.0/PHASE3_ACCEPTANCE_GATES.md`.
+
+### Phase 2 closed baseline
+
 > **PHASE 2 T127-T132 EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 2 adds T127 closure minimality, T128 one_of support transparency,
@@ -72,6 +84,7 @@ python scripts/check_no_proof_holes.py
 python scripts/verify_phase1_alignment.py
 python scripts/verify_phase2_expansion.py
 python scripts/verify_phase2_ci_closure.py
+python scripts/verify_phase3_expansion.py
 cd lean && lake build
 cd ../coq && make
 ```

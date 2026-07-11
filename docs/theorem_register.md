@@ -1,6 +1,6 @@
 # Theorem-target register
 
-The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim.
+The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 stages T133-T138 as build-ready and Actions-pending.
 
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 Phase 1 patch status: `ACCEPTED / CI PASS`.
@@ -35,3 +35,17 @@ Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 | T132 | DLE history adequacy | exact DLE fixtures | T132_dle_history_adequacy | T132_dle_history_adequacy | accepted; CI passed; merged |
 
 Phase 2 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI and does not claim completion of T133-T150.
+
+
+## Phase 3 theorem expansion
+
+| ID | Canonical name | Python | Lean 4 | Coq | Status |
+|---|---|---|---|---|---|
+| T133 | Fresh-token reactivation | token-history/fresh-ID audit | T133_fresh_token_reactivation | T133_fresh_token_reactivation | build-ready; Actions pending |
+| T134 | Raw residual obstruction | raw residual live-set audit | T134_raw_residual_obstruction | T134_raw_residual_obstruction | build-ready; Actions pending |
+| T135 | Robust residual obstruction | non-eliminable residual audit | T135_robust_residual_obstruction | T135_robust_residual_obstruction | build-ready; Actions pending |
+| T136 | Relative-to-absolute non-promotion | source-claim firewall | T136_relative_to_absolute_non_promotion | T136_relative_to_absolute_non_promotion | build-ready; Actions pending |
+| T137 | Approximation non-identity | approximation-identity firewall | T137_approximation_non_identity | T137_approximation_non_identity | build-ready; Actions pending |
+| T138 | Terminal self-certification limit | cross-state certification audit | T138_terminal_self_certification_limit | T138_terminal_self_certification_limit | build-ready; Actions pending |
+
+Phase 3 is not accepted or released until the full local and GitHub Actions matrix passes. The immutable v1.2.0 tag and DOI remain unchanged.

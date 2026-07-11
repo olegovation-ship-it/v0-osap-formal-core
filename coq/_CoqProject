@@ -8,4 +8,5 @@ theories/Residuals.v
 theories/Observer.v
 theories/Branches.v
 theories/Expansion.v
+theories/Phase3.v
 theories/Theorems.v

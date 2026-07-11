@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t136_relative_to_absolute_promotion",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t136_relative_to_absolute_promotion.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "ABSOLUTE_RELATIVE_FIREWALL"
+  ],
+  "theorem_targets": [
+    "T136"
+  ],
+  "bound": 2,
+  "oracle_source": "Raw relative V0 is directly promoted to absolute V0."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t138_cross_state_terminal_certificate",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t138_cross_state_terminal_certificate.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T138"
+  ],
+  "bound": 2,
+  "oracle_source": "Terminal exhaustion is certified from a distinct state."
+}

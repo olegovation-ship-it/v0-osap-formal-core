@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t134_raw_relative_v0_no_live_residual",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase3",
+  "input_file": "t134_raw_relative_v0_no_live_residual.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T134"
+  ],
+  "bound": 2,
+  "oracle_source": "No declared residual remains live."
+}
