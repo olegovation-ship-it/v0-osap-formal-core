@@ -1,9 +1,12 @@
 # Theorem-target register
 
-The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0.
+The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim.
 
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 Phase 1 patch status: `ACCEPTED / CI PASS`.
+Phase 2 head commit: `90865cca5fafde161254b7e313621d369ae5efc5`.
+Phase 2 merge commit: `f494cd9401e2b9ff91d87de77e11f4eb2468726c`.
+Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 
 | ID | Canonical name | Python after Phase 1 | Lean 4 | Coq | Phase 1 status |
 |---|---|---:|---:|---:|---|
@@ -24,9 +27,11 @@ Phase 1 patch status: `ACCEPTED / CI PASS`.
 
 | ID | Canonical name | Python | Lean 4 | Coq | Status |
 |---|---|---|---|---|---|
-| T127 | Closure minimality | least closure | T127_closure_minimality | T127_closure_minimality | CI pending |
-| T128 | Alternative-support transparency | selected live member | T128_alternative_support_transparency | T128_alternative_support_transparency | CI pending |
-| T129 | Compatibility preservation | pair exclusion | T129_compatibility_preservation | T129_compatibility_preservation | CI pending |
-| T130 | Dimensional readiness soundness | readiness audit | T130_dimensional_readiness_soundness | T130_dimensional_readiness_soundness | CI pending |
-| T131 | Undefined is not zero | typed disjointness | T131_undefined_is_not_zero | T131_undefined_is_not_zero | CI pending |
-| T132 | DLE history adequacy | exact DLE fixtures | T132_dle_history_adequacy | T132_dle_history_adequacy | CI pending |
+| T127 | Closure minimality | least closure | T127_closure_minimality | T127_closure_minimality | accepted; CI passed; merged |
+| T128 | Alternative-support transparency | selected live member | T128_alternative_support_transparency | T128_alternative_support_transparency | accepted; CI passed; merged |
+| T129 | Compatibility preservation | pair exclusion | T129_compatibility_preservation | T129_compatibility_preservation | accepted; CI passed; merged |
+| T130 | Dimensional readiness soundness | readiness audit | T130_dimensional_readiness_soundness | T130_dimensional_readiness_soundness | accepted; CI passed; merged |
+| T131 | Undefined is not zero | typed disjointness | T131_undefined_is_not_zero | T131_undefined_is_not_zero | accepted; CI passed; merged |
+| T132 | DLE history adequacy | exact DLE fixtures | T132_dle_history_adequacy | T132_dle_history_adequacy | accepted; CI passed; merged |
+
+Phase 2 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI and does not claim completion of T133-T150.

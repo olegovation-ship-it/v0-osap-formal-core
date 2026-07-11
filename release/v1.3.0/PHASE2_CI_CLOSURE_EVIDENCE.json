@@ -1,0 +1,83 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase2_ci_closure_evidence",
+  "artifact_version": "0.1",
+  "date": "2026-07-11",
+  "status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "theorem_range": "T127-T132",
+  "pull_request": {
+    "number": 2,
+    "title": "V0 OSAP v1.3.0 Phase 2: theorem expansion T127-T132",
+    "base": "main",
+    "head": "v1.3.0-development",
+    "head_sha": "90865cca5fafde161254b7e313621d369ae5efc5",
+    "merge_commit_sha": "f494cd9401e2b9ff91d87de77e11f4eb2468726c",
+    "merged_at_utc": "2026-07-11T18:01:54Z",
+    "commits": 2,
+    "changed_files": 49,
+    "additions": 2238,
+    "deletions": 19,
+    "pr_check_total": 8,
+    "pr_check_result": "PASS"
+  },
+  "workflow_runs": [
+    {
+      "name": "Release readiness",
+      "run_id": 29162429060,
+      "run_number": 20,
+      "conclusion": "success",
+      "jobs": [
+        "immutable-v1-2-baseline",
+        "phase1-development-readiness"
+      ]
+    },
+    {
+      "name": "Python checker",
+      "run_id": 29162429045,
+      "run_number": 14,
+      "conclusion": "success"
+    },
+    {
+      "name": "Lean 4",
+      "run_id": 29162429087,
+      "run_number": 14,
+      "conclusion": "success"
+    },
+    {
+      "name": "Schema validation",
+      "run_id": 29162429058,
+      "run_number": 14,
+      "conclusion": "success"
+    },
+    {
+      "name": "Coq",
+      "run_id": 29162429048,
+      "run_number": 14,
+      "conclusion": "success"
+    }
+  ],
+  "local_validation": {
+    "python_tests": 111,
+    "schema_bundle": "PASS",
+    "fixture_replay": "PASS",
+    "proof_hole_scan": "PASS",
+    "phase1_preservation": "PASS",
+    "phase2_verifier": "PASS",
+    "lean4_build": "PASS",
+    "coq_build": "PASS",
+    "diff_check": "PASS"
+  },
+  "historical_preservation": {
+    "baseline_tag": "v1.2.0",
+    "baseline_doi": "10.5281/zenodo.21306969",
+    "manifest_verifier_retained": true,
+    "closure_verifier_retained": true,
+    "tag_moved_or_retagged": false,
+    "new_doi_created": false
+  },
+  "claim_boundary": {
+    "v1_3_0_released": false,
+    "theorem_completeness_claimed": false,
+    "cross_assistant_proof_identity_claimed": false,
+    "empirical_or_physical_validation_claimed": false
+  }
+}

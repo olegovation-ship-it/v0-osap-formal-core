@@ -7,8 +7,16 @@
 - Added twelve paired fixtures and Lean 4 / Coq expansion modules.
 - Added a statement-hash theorem crosswalk and Phase 2 verifier.
 - Advanced the development checker to `0.3.0.dev1`.
-- Status remains `PATCH_READY / CI_PENDING`; no v1.3.0 release is claimed.
+- Status advanced to `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`; no v1.3.0 release is claimed.
 
+### Phase 2 CI closure
+- Recorded PR #2 with 8/8 successful checks.
+- Recorded head commit `90865cca5fafde161254b7e313621d369ae5efc5` and merge commit `f494cd9401e2b9ff91d87de77e11f4eb2468726c`.
+- Recorded 111 passing Python tests, schema and fixture PASS, proof-hole PASS, Phase 1 preservation PASS, Phase 2 verifier PASS, Lean 4 PASS, and Coq PASS.
+- Advanced T127-T132 theorem-crosswalk parity from `PATCH_READY_CI_PENDING` to `ACCEPTED_CI_PASS`.
+- Added a dedicated Phase 2 CI-closure and historical-preservation verifier.
+- Preserved the immutable v1.2.0 manifest and closure jobs, tag, DOI, and detailed release history.
+- Corrected the stale non-claim that the development tree contained no theorem IDs beyond T126.
 
 ### Phase 1 semantic alignment
 - Added exact executable coverage for T122 empty-`all_of` vacuity.
@@ -33,7 +41,7 @@
 
 ### Release discipline
 - Preserved the immutable `v1.2.0` tag and DOI `10.5281/zenodo.21306969`.
-- Phase 1 acceptance is not a v1.3.0 release or a full-v1.3.0 compiler-passed claim.
+- Phase 1 and Phase 2 acceptance are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
 
 ## [1.2.0] - 2026-07-11
 

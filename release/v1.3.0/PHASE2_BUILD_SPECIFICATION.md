@@ -4,7 +4,9 @@
 **Date:** 2026-07-11
 **Target branch:** `v1.3.0-development`
 **Baseline:** Phase 1 accepted and merged; immutable release `v1.2.0` remains unchanged
-**Patch state:** `BUILD_READY / CI_PENDING`
+**Implementation state:** `ACCEPTED / CI_PASS / MERGED / HISTORICALLY_PRESERVED`
+**Closure PR:** `#2`
+**Merge commit:** `f494cd9401e2b9ff91d87de77e11f4eb2468726c`
 **Author:** Dmytro Panasenko, Independent Researcher
 
 ## 1. Decision summary
@@ -70,26 +72,26 @@ A new Lean 4 module `V0OSAP.Expansion` and a matching Coq module `Expansion.v` d
 
 ## 6. Crosswalk and parity record
 
-Each theorem record contains stable ID, canonical name, normalized signature, assumptions, conclusion, backend symbols, validator rule, diagnostics, fixtures, source section, limitations, canonical statement hash, and parity state. Initial state is `PATCH_READY_CI_PENDING`.
+Each theorem record contains stable ID, canonical name, normalized signature, assumptions, conclusion, backend symbols, validator rule, diagnostics, fixtures, source section, limitations, canonical statement hash, and parity state. The implementation-time state was `PATCH_READY_CI_PENDING`; after PR #2 and its all-green matrix, the closure state is `ACCEPTED_CI_PASS`.
 
 ## 7. Acceptance gates
 
-1. Full Python test suite passes.
-2. Schema bundle and deterministic fixture replay pass.
-3. Phase 1 verifier remains green after being scoped to Phase 1 records.
-4. Phase 2 crosswalk/hash verifier passes.
-5. Proof-hole scan passes.
-6. Lean 4 build passes.
-7. Coq build passes.
-8. Release readiness preserves immutable v1.2.0 manifest and closure verification.
-9. `git diff --check` passes.
-10. GitHub Actions returns an all-green matrix.
-11. A later Phase 2 CI-closure audit removes stale pending metadata before merge.
+1. Full Python test suite passed: 111 tests.
+2. Schema bundle and deterministic fixture replay passed.
+3. Phase 1 verifier remained green after being scoped to Phase 1 records.
+4. Phase 2 crosswalk/hash verifier passed.
+5. Proof-hole scan passed.
+6. Lean 4 build passed.
+7. Coq build passed.
+8. Release readiness preserved immutable v1.2.0 manifest and closure verification.
+9. `git diff --check` passed.
+10. GitHub Actions returned an all-green matrix: 8/8 PR checks.
+11. The Phase 2 CI-closure audit removed stale pending metadata and recorded PR #2, head SHA, merge SHA, and historical-preservation evidence.
 
 ## 8. Release and claim boundary
 
 This patch does not alter the `v1.2.0` tag or DOI, claim complete T121-T150 mechanization, claim semantic equivalence or proof-term identity between Lean 4 and Coq, claim checker completeness, provide empirical or physical validation, or open a Zenodo release.
 
-## 9. Implementation sequence
+## 9. Closure sequence
 
-Upload the ZIP to `v1.3.0-development`, run the application script in Codespaces, review the diff, allow the script to commit and push, then open a new draft PR. Do not merge until the Phase 2 CI-closure and historical-preservation audit is complete.
+The implementation patch was uploaded to `v1.3.0-development`, locally validated, committed, pushed, and opened as draft PR #2. After 8/8 checks passed, PR #2 was marked ready, merged by merge commit `f494cd9401e2b9ff91d87de77e11f4eb2468726c`, and the development branch was fast-forward synchronized with `main`. This closure patch records that result and adds a dedicated historical-preservation verifier.
