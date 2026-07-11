@@ -1,0 +1,12 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:observer_admissible_support",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase1",
+  "input_file": "observer_admissible_certificate.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [],
+  "bound": 1,
+  "oracle_source": "Operational observer-admissibility positive oracle; intentionally not mapped to T125."
+}

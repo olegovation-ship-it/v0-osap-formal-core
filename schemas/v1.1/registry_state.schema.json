@@ -170,7 +170,6 @@
               "type": "string",
               "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
             },
-            "minItems": 1,
             "uniqueItems": true
           },
           "context_policy": {
@@ -187,7 +186,28 @@
           "enabled": {
             "type": "boolean"
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "mode": {
+                  "const": "one_of"
+                }
+              },
+              "required": [
+                "mode"
+              ]
+            },
+            "then": {
+              "properties": {
+                "prerequisite_register_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
       }
     },
     "compatibility_constraints": {

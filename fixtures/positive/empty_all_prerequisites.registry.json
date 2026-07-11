@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "language_version": "FC-1-v1.1",
-  "registry_state_id": "state:negative:observer_admissible_support",
+  "registry_state_id": "state:positive:t122:empty_all_of",
   "declarations": [
     {
       "id": "sector:phase1",
@@ -16,15 +16,37 @@
       "sort": "Evidence"
     },
     {
-      "id": "observer:phase1",
-      "sort": "Observer"
+      "id": "reg:target",
+      "sort": "Register"
     }
   ],
   "contexts": [
     "ctx:phase1"
   ],
-  "tokens": [],
-  "prerequisite_families": [],
+  "tokens": [
+    {
+      "token_id": "tok:t122:target:live",
+      "carrier_id": "sector:phase1",
+      "register_id": "reg:target",
+      "context_id": "ctx:phase1",
+      "partition": "live",
+      "introduced_in": "state:positive:t122:empty_all_of",
+      "source_evidence_id": "ev:fixture"
+    }
+  ],
+  "prerequisite_families": [
+    {
+      "family_id": "family:t122:empty_all_of",
+      "target_register_id": "reg:target",
+      "mode": "all_of",
+      "prerequisite_register_ids": [],
+      "context_policy": "same_context",
+      "evidence_ids": [
+        "ev:fixture"
+      ],
+      "enabled": true
+    }
+  ],
   "compatibility_constraints": [],
   "protocols": [],
   "residual_links": [],
@@ -44,15 +66,7 @@
       "metadata": {}
     }
   ],
-  "claims": [
-    {
-      "claim_id": "claim:observer:admissible",
-      "kind": "observer_admissible_certificate",
-      "observer_id": "observer:phase1",
-      "external_evidence_ids": [],
-      "independence_group_ids": []
-    }
-  ],
+  "claims": [],
   "metadata": {
     "fixture": true,
     "phase": "v1.3.0-phase1"

@@ -1,13 +1,23 @@
 {
-  "bundle_id": "V0_OSAP_v1_2_bootstrap_fixture_corpus",
-  "semantic_version": "FC-1-v1.1",
+  "bundle_id": "V0_OSAP_v1_3_0_phase1_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase1",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
+    "positive/empty_all_prerequisites.fixture.json",
+    "positive/robust_relative_v0_no_live_residual.fixture.json",
+    "positive/terminal_self_certificate_exhausted.fixture.json",
+    "positive/observer_admissible_certificate.fixture.json",
     "negative/unguarded_value.fixture.json",
     "negative/missing_prerequisite.fixture.json",
+    "negative/live_residual_obstruction.fixture.json",
+    "negative/terminal_self_certificate_not_exhausted.fixture.json",
     "negative/absolute_relative_firewall.fixture.json",
     "negative/observer_self_certificate.fixture.json"
   ],
-  "status": "BOOTSTRAP_ORACLE_SET"
+  "status": "PHASE1_ALIGNMENT_ORACLE_SET",
+  "notes": [
+    "T122, T124, and T125 now have exact theorem-target fixtures.",
+    "Observer admissibility is operational and is not assigned theorem ID T125."
+  ]
 }

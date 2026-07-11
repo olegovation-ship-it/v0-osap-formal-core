@@ -9,52 +9,39 @@
 
 Executable and proof-assistant-facing formal core for the **V0 Ontological and Structural-Activation Program (V0 OSAP)**.
 
+## v1.3.0 development status
+
+> **PHASE 1 SEMANTIC ALIGNMENT PATCH - PATCH READY / CI PENDING**
+
+The development branch aligns executable coverage for T122, T124, and T125:
+
+- T122: exact empty-`all_of` vacuity fixture and schema erratum;
+- T124: explicit robust-relative-V0 residual-obstruction rule and paired fixtures;
+- T125: exact terminal-support-exhaustion rule, separated from observer admissibility;
+- checker development version: `0.2.0.dev1`.
+
+This is not a v1.3.0 release and is not yet a compiler-passed claim. See `release/v1.3.0/PHASE1_ACCEPTANCE_GATES.md`.
+
 ## v1.2.0 release status
 
-> **V0 OSAP v1.2.0 — DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
+> **V0 OSAP v1.2.0 - DUAL-BACKEND COMPILER-PASSED FC-1 BASELINE**
 
 - Imported specification: **V0 OSAP v1.1 / FC-1-v1.1**.
 - Canonical JSON Schemas: JSON Schema Draft 2020-12.
-- Python checker: deterministic diagnostics and fixture replay, package version `0.1.0`.
-- Lean 4: `Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)`; `lake build` passed with the proof-hole scan.
-- Coq: `The Coq Proof Assistant, version 8.18.0`; `make` passed with the proof-hole scan.
-- CI evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
-- Closure metadata generated: `2026-07-10T22:33:40Z`.
+- Python checker release version: `0.1.0` in the immutable tag.
+- Lean 4 and Coq passed on the archived baseline.
 - GitHub Release: [v1.2.0](https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.2.0).
 - Zenodo version DOI: [10.5281/zenodo.21306969](https://doi.org/10.5281/zenodo.21306969).
 
-The compiler-passed claim is bounded to the current FC-1 implementation and the initial theorem subset T121-T126. It is not a claim that all T1-T150 are mechanized.
+The compiler-passed claim remains bounded to the archived FC-1 implementation and T121-T126. The tag `v1.2.0` must not be moved or retagged.
 
 ## Scope
 
-FC-1 checks a finite, typed registry fragment covering:
-
-- live, historical, retired, and deferred token separation;
-- guard-before-value discipline;
-- prerequisite-family support;
-- domain-license exhaustion (DLE);
-- residual obstruction;
-- observer-reflexive certification limits;
-- universe-branch locality and absolute/relative V0 separation;
-- canonical serialization and reproducible fixture replay.
+FC-1 checks a finite, typed registry fragment covering live-state guards, prerequisite support, domain-license exhaustion, residual obstruction, observer-certificate limits, branch locality, canonical serialization, and deterministic fixture replay.
 
 This repository is a formal-semantics and verification artifact. It is **not** empirical confirmation of a physical vacuum, cosmology, disappearance mechanism, quantum-gravity model, or multiverse.
 
-## Repository layout
-
-```text
-schemas/v1.1/       canonical v1.1 schema bundle
-fixtures/           positive and countermodel registry fixtures
-checker/            Python FC-1 checker
-lean/               Lean 4 formalization
-coq/                Coq formalization
-docs/               normative specification and architecture notes
-release/            compiler versions, manifest, preflight, and release notes
-scripts/            manifest, closure, and static-integrity utilities
-.github/workflows/  CI workflows
-```
-
-## Local checks
+## Local development checks
 
 ```bash
 python -m pip install -e '.[dev]'
@@ -62,35 +49,10 @@ pytest -q
 v0-osap-fc1 schema-bundle
 v0-osap-fc1 fixtures
 python scripts/check_no_proof_holes.py
-python scripts/verify_manifest.py
-python scripts/verify_closure.py
+python scripts/verify_phase1_alignment.py
+cd lean && lake build
+cd ../coq && make
 ```
-
-## Lean 4
-
-```bash
-cd lean
-lake build
-```
-
-## Coq
-
-```bash
-cd coq
-make
-```
-
-## Canonicalization
-
-The canonical JSON profile is `V0-OSAP-CJ-1`: UTF-8, object keys sorted lexicographically, no insignificant whitespace, arrays retained in declared order, and one terminal LF.
-
-## Evidence level
-
-For T121-T126, the repository establishes a bounded dual-backend compiled state: Lean 4 and Coq sources compile, proof-hole markers are rejected, and the Python fixtures replay. This does not prove proof-term identity, semantic equivalence between assistants, theorem completeness, or empirical truth of V0.
-
-## Release policy
-
-The annotated tag `v1.2.0` identifies the immutable compiler-passed FC-1 baseline. Its archived version DOI is [10.5281/zenodo.21306969](https://doi.org/10.5281/zenodo.21306969). Future software releases require a new semantic-version tag and a separate archival record; `v1.2.0` must not be moved or retagged.
 
 ## License
 

@@ -1,0 +1,17 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase1_schema_addendum",
+  "baseline_schema_version": "v1.1",
+  "status": "ERRATUM_PATCH_READY_CI_PENDING",
+  "files": [
+    {
+      "path": "schemas/v1.1/registry_state.schema.json",
+      "sha256": "35e9b2e321046200e9a7e63ae765fec68823ee0117ab07d0ac96bc1a1a67da5b",
+      "bytes": 6005
+    },
+    {
+      "path": "schemas/v1.1/ERRATA_PHASE1.md",
+      "sha256": "48b1b02d2d958ad55bb3e62e772ef47aa437a7abb069ee927287407eaf276bdf",
+      "bytes": 479
+    }
+  ]
+}

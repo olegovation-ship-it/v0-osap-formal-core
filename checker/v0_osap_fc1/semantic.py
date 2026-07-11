@@ -25,6 +25,16 @@ def _has_partition(
     return any(_token_matches(t, carrier, register, context) and t.get("partition") in partitions for t in tokens)
 
 
+def _live_residual_registers(
+    tokens: list[dict[str, Any]], carrier: str, context: str, residual_registers: Iterable[str]
+) -> list[str]:
+    return sorted({
+        str(register)
+        for register in residual_registers
+        if _has_partition(tokens, carrier, str(register), context, {"live"})
+    })
+
+
 def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
     diagnostics: list[Diagnostic] = []
     declarations = registry.get("declarations", [])
@@ -119,7 +129,11 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                 _has_partition(tokens, carrier, prereq, context, {"live"})
                 for prereq in prerequisites
             ]
-            satisfied = all(presence) if family.get("mode") == "all_of" else any(presence)
+            # T122 is represented exactly: an empty all_of family is vacuously satisfied.
+            if family.get("mode") == "all_of":
+                satisfied = all(presence)
+            else:
+                satisfied = any(presence)
             if not satisfied:
                 diagnostics.append(Diagnostic(
                     "MISSING_PREREQUISITE", "REJECT", 90,
@@ -164,6 +178,27 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                     tuple(str(x) for x in [claim.get("claim_id"), carrier, register, context]),
                 ))
 
+        elif kind == "robust_relative_v0":
+            residual_registers = claim.get("residual_register_ids", [])
+            offenders = _live_residual_registers(tokens, carrier, context, residual_registers)
+            if offenders:
+                evidence_for_offenders = sorted({
+                    str(token.get("source_evidence_id"))
+                    for token in tokens
+                    if token.get("partition") == "live"
+                    and token.get("carrier_id") == carrier
+                    and token.get("context_id") == context
+                    and str(token.get("register_id")) in offenders
+                    and token.get("source_evidence_id")
+                })
+                diagnostics.append(Diagnostic(
+                    "LIVE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0", "REJECT", 91,
+                    "A robust relative-V0 claim is obstructed by a live token in its declared residual family.",
+                    path,
+                    tuple(str(x) for x in [claim.get("claim_id"), carrier, register, context, *offenders]),
+                    tuple(evidence_for_offenders),
+                ))
+
         elif kind == "absolute_v0":
             source_id = claim.get("source_claim_id")
             source = claims_by_id.get(source_id)
@@ -175,12 +210,24 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                 ))
 
         elif kind == "observer_terminal_self_certificate":
+            internal = claim.get("internal_support_ids", [])
+            external = claim.get("external_evidence_ids", [])
+            if internal or external:
+                diagnostics.append(Diagnostic(
+                    "TERMINAL_SELF_CERTIFICATE_NOT_EXHAUSTED", "REJECT", 87,
+                    "T125 terminal self-certification requires both internal support and external evidence to be exhausted.",
+                    path,
+                    tuple(str(x) for x in [claim.get("claim_id"), *internal, *external]),
+                    tuple(str(x) for x in external),
+                ))
+
+        elif kind == "observer_admissible_certificate":
             external = claim.get("external_evidence_ids", [])
             independence = claim.get("independence_group_ids", [])
             if not external or not independence:
                 diagnostics.append(Diagnostic(
-                    "OBSERVER_SELF_CERTIFICATION_LIMIT", "REJECT", 87,
-                    "A terminal self-certificate requires externally preserved evidence and an independence group.",
+                    "OBSERVER_CERTIFICATION_SUPPORT_REQUIRED", "REJECT", 86,
+                    "An admissible observer certificate requires externally preserved evidence and an independence group.",
                     path, (str(claim.get("claim_id")),), tuple(str(x) for x in external)
                 ))
 
@@ -189,5 +236,5 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
         "registry_state_id": registry.get("registry_state_id"),
         "status": aggregate_status(diagnostics),
         "diagnostics": [d.to_dict() for d in diagnostics],
-        "implementation_version": "v0-osap-fc1/0.1.0",
+        "implementation_version": "v0-osap-fc1/0.2.0.dev1",
     }
