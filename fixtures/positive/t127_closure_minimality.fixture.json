@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t127_closure_minimality",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t127_closure_minimality.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T127"
+  ],
+  "bound": 1,
+  "oracle_source": "Least closure includes every all_of prerequisite."
+}

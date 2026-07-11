@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t128_missing_support_selection",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t128_missing_support_selection.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "ALTERNATIVE_SUPPORT_SELECTION_REQUIRED"
+  ],
+  "theorem_targets": [
+    "T128"
+  ],
+  "bound": 1,
+  "oracle_source": "Satisfied one_of has no selected member record."
+}

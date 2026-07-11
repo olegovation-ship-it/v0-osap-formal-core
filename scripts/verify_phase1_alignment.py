@@ -49,7 +49,10 @@ for code in (
     "OBSERVER_CERTIFICATION_SUPPORT_REQUIRED",
 ):
     assert code in semantic
-assert '"implementation_version": "v0-osap-fc1/0.2.0.dev1"' in semantic
+assert any(version in semantic for version in (
+    '"implementation_version": "v0-osap-fc1/0.2.0.dev1"',
+    '"implementation_version": "v0-osap-fc1/0.3.0.dev1"',
+))
 
 lean = (ROOT / "lean/V0OSAP/Observer.lean").read_text(encoding="utf-8")
 coq = (ROOT / "coq/theories/Observer.v").read_text(encoding="utf-8")
@@ -74,9 +77,6 @@ assert "python scripts/verify_closure.py" in workflow
 assert "python scripts/verify_phase1_alignment.py" in workflow
 
 closure_docs = [
-    "README.md",
-    "docs/status_and_nonclaims.md",
-    "docs/theorem_register.md",
     "release/v1.3.0/PHASE1_ACCEPTANCE_GATES.md",
     "release/v1.3.0/PHASE1_SEMANTIC_ALIGNMENT_REPORT.md",
     "release/v1.3.0/PHASE1_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md",

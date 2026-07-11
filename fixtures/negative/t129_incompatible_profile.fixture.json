@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t129_incompatible_profile",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t129_incompatible_profile.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "COMPATIBILITY_CONSTRAINT_VIOLATION"
+  ],
+  "theorem_targets": [
+    "T129"
+  ],
+  "bound": 1,
+  "oracle_source": "Profile activates incompatible A and B."
+}

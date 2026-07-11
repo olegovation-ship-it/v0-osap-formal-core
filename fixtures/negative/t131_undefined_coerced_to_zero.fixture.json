@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t131_undefined_coerced_to_zero",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t131_undefined_coerced_to_zero.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "UNDEFINED_DOMAIN_COERCED_TO_NUMERIC"
+  ],
+  "theorem_targets": [
+    "T131"
+  ],
+  "bound": 1,
+  "oracle_source": "Undefined domain is incorrectly coerced to zero."
+}

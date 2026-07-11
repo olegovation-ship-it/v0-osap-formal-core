@@ -19,3 +19,14 @@ Phase 1 patch status: `ACCEPTED / CI PASS`.
 `TerminalSelfCertificate` remains the T125 predicate: internal support and external evidence are both empty. `AdmissibleObserverCertificate` is a separate unnumbered operational predicate requiring external evidence and an independence group. The two predicates must not share a diagnostic code or theorem-target mapping.
 
 `compiled` remains bounded evidence that the corresponding module passed its backend build and proof-hole scan. It does not establish cross-assistant proof-term identity or semantic equivalence.
+
+## Phase 2 theorem expansion
+
+| ID | Canonical name | Python | Lean 4 | Coq | Status |
+|---|---|---|---|---|---|
+| T127 | Closure minimality | least closure | T127_closure_minimality | T127_closure_minimality | CI pending |
+| T128 | Alternative-support transparency | selected live member | T128_alternative_support_transparency | T128_alternative_support_transparency | CI pending |
+| T129 | Compatibility preservation | pair exclusion | T129_compatibility_preservation | T129_compatibility_preservation | CI pending |
+| T130 | Dimensional readiness soundness | readiness audit | T130_dimensional_readiness_soundness | T130_dimensional_readiness_soundness | CI pending |
+| T131 | Undefined is not zero | typed disjointness | T131_undefined_is_not_zero | T131_undefined_is_not_zero | CI pending |
+| T132 | DLE history adequacy | exact DLE fixtures | T132_dle_history_adequacy | T132_dle_history_adequacy | CI pending |

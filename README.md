@@ -11,7 +11,19 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 1 SEMANTIC ALIGNMENT — ACCEPTED / CI PASS**
+> **PHASE 2 T127-T132 EXPANSION - PATCH READY / CI PENDING**
+
+Phase 2 adds T127 closure minimality, T128 one_of support transparency,
+T129 compatibility preservation, T130 dimensional readiness, T131 undefined-domain
+separation from numeric zero, and T132 DLE history adequacy. Checker version: `0.3.0.dev1`.
+
+The patch includes twelve paired fixtures, Lean 4 and Coq expansion modules, and a
+canonical statement-hash crosswalk. It is not yet an accepted or released v1.3.0 claim.
+See `release/v1.3.0/PHASE2_ACCEPTANCE_GATES.md`.
+
+### Phase 1 closed baseline
+
+> **PHASE 1 SEMANTIC ALIGNMENT - ACCEPTED / CI PASS**
 
 The development branch aligns executable coverage for T122, T124, and T125:
 
@@ -52,6 +64,7 @@ v0-osap-fc1 schema-bundle
 v0-osap-fc1 fixtures
 python scripts/check_no_proof_holes.py
 python scripts/verify_phase1_alignment.py
+python scripts/verify_phase2_expansion.py
 cd lean && lake build
 cd ../coq && make
 ```

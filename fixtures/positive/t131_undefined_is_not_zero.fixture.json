@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t131_undefined_is_not_zero",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t131_undefined_is_not_zero.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T131"
+  ],
+  "bound": 1,
+  "oracle_source": "Undefined domain carries no numeric value."
+}

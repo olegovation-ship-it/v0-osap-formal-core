@@ -1,6 +1,6 @@
 {
-  "bundle_id": "V0_OSAP_v1_3_0_phase1_fixture_corpus",
-  "semantic_version": "FC-1-v1.1+phase1",
+  "bundle_id": "V0_OSAP_v1_3_0_phase2_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase2",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
@@ -13,11 +13,24 @@
     "negative/live_residual_obstruction.fixture.json",
     "negative/terminal_self_certificate_not_exhausted.fixture.json",
     "negative/absolute_relative_firewall.fixture.json",
-    "negative/observer_self_certificate.fixture.json"
+    "negative/observer_self_certificate.fixture.json",
+    "positive/t127_closure_minimality.fixture.json",
+    "negative/t127_nonminimal_closure.fixture.json",
+    "positive/t128_alternative_support_transparency.fixture.json",
+    "negative/t128_missing_support_selection.fixture.json",
+    "positive/t129_compatibility_preservation.fixture.json",
+    "negative/t129_incompatible_profile.fixture.json",
+    "positive/t130_dimensional_readiness.fixture.json",
+    "negative/t130_readiness_missing_prerequisite.fixture.json",
+    "positive/t131_undefined_is_not_zero.fixture.json",
+    "negative/t131_undefined_coerced_to_zero.fixture.json",
+    "positive/t132_dle_history_adequacy.fixture.json",
+    "negative/t132_dle_without_history.fixture.json"
   ],
-  "status": "PHASE1_ALIGNMENT_ORACLE_SET",
+  "status": "PHASE2_T127_T132_PATCH_ORACLE_SET",
   "notes": [
-    "T122, T124, and T125 now have exact theorem-target fixtures.",
-    "Observer admissibility is operational and is not assigned theorem ID T125."
+    "Phase 1 exact mappings are preserved.",
+    "T127-T132 each have a positive and decisive negative fixture.",
+    "Phase 2 remains BUILD_READY / CI_PENDING."
   ]
 }
