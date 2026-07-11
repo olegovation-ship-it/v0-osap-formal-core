@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t129_compatibility_preservation",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t129_compatibility_preservation.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T129"
+  ],
+  "bound": 1,
+  "oracle_source": "Profile has no incompatible pair."
+}

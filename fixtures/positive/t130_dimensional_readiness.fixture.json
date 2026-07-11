@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t130_dimensional_readiness",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t130_dimensional_readiness.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T130"
+  ],
+  "bound": 1,
+  "oracle_source": "All protocol prerequisites are live."
+}

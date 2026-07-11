@@ -1,0 +1,88 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:positive:t127",
+  "declarations": [
+    {
+      "id": "sector:S",
+      "sort": "Sector"
+    },
+    {
+      "id": "reg:A",
+      "sort": "Register"
+    },
+    {
+      "id": "reg:B",
+      "sort": "Register"
+    },
+    {
+      "id": "reg:C",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase2",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [],
+  "prerequisite_families": [
+    {
+      "family_id": "family:A",
+      "target_register_id": "reg:A",
+      "mode": "all_of",
+      "prerequisite_register_ids": [
+        "reg:B",
+        "reg:C"
+      ],
+      "context_policy": "same_context",
+      "evidence_ids": [
+        "ev:phase2"
+      ],
+      "enabled": true
+    }
+  ],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase2",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase2",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite Phase 2 theorem-target fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t127",
+      "kind": "prerequisite_closure",
+      "seed_register_ids": [
+        "reg:A"
+      ],
+      "computed_closure_register_ids": [
+        "reg:A",
+        "reg:B",
+        "reg:C"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 2
+  }
+}

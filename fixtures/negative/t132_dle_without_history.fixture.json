@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t132_dle_without_history",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t132_dle_without_history.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "DLE_WITHOUT_HISTORICAL_SOURCE"
+  ],
+  "theorem_targets": [
+    "T132"
+  ],
+  "bound": 1,
+  "oracle_source": "DLE has no prior evidence."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t132_dle_history_adequacy",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t132_dle_history_adequacy.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T132"
+  ],
+  "bound": 1,
+  "oracle_source": "DLE has historical evidence and no live token."
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t127_nonminimal_closure",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t127_nonminimal_closure.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "PREREQUISITE_CLOSURE_NOT_LEAST"
+  ],
+  "theorem_targets": [
+    "T127"
+  ],
+  "bound": 1,
+  "oracle_source": "Closure omits reg:C."
+}

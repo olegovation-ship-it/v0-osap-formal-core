@@ -1,5 +1,12 @@
 # Status and non-claims
 
+## v1.3.0 Phase 2
+
+- Scope: T127-T132.
+- Status: `PATCH_READY / CI_PENDING`.
+- Phase 1 remains accepted.
+- No release, theorem-completeness, proof-identity, or empirical claim.
+
 ## Immutable v1.2.0 baseline
 
 - Tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain immutable.

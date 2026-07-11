@@ -43,3 +43,4 @@ jobs:
       - run: v0-osap-fc1 fixtures
       - run: python scripts/check_no_proof_holes.py
       - run: python scripts/verify_phase1_alignment.py
+      - run: python scripts/verify_phase2_expansion.py

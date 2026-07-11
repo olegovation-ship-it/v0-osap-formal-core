@@ -1,0 +1,177 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase2_theorem_crosswalk",
+  "artifact_version": "0.1",
+  "baseline_tag": "v1.2.0",
+  "baseline_doi": "10.5281/zenodo.21306969",
+  "phase1_status": "ACCEPTED_CI_PASS",
+  "phase2_status": "BUILD_READY_CI_PENDING",
+  "theorem_range": "T127-T132",
+  "records": [
+    {
+      "theorem_id": "T127",
+      "canonical_name": "closure_minimality",
+      "natural_statement": "Computed closure is the least prerequisite-closed superset.",
+      "formal_signature": "ClosureCertificate(step,seed,closure) and closed candidate imply closure subset candidate.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Computed closure is the least prerequisite-closed superset.",
+      "lean_symbol": "V0OSAP.T127_closure_minimality",
+      "coq_symbol": "T127_closure_minimality",
+      "validator_rule": "least prerequisite fixed-point equality",
+      "diagnostics": [
+        "PREREQUISITE_CLOSURE_NOT_LEAST"
+      ],
+      "fixtures": [
+        "fixture:positive:t127_closure_minimality",
+        "fixture:negative:t127_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "65aab2064dc6d0a47652e2cba1813a8e65c9e4e174db6d343d7a145577950a54"
+    },
+    {
+      "theorem_id": "T128",
+      "canonical_name": "alternative_support_transparency",
+      "natural_statement": "Every accepted one_of obligation records its selected family member.",
+      "formal_signature": "Selected member and live support imply transparent support selection.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Every accepted one_of obligation records its selected family member.",
+      "lean_symbol": "V0OSAP.T128_alternative_support_transparency",
+      "coq_symbol": "T128_alternative_support_transparency",
+      "validator_rule": "explicit one_of support selection",
+      "diagnostics": [
+        "ALTERNATIVE_SUPPORT_SELECTION_REQUIRED",
+        "INVALID_ALTERNATIVE_SUPPORT_SELECTION"
+      ],
+      "fixtures": [
+        "fixture:positive:t128_alternative_support_transparency",
+        "fixture:negative:t128_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "d9979d741f79844b2ac39ec8a36020eb31afc601cf89cc6231d55f90995e1bae"
+    },
+    {
+      "theorem_id": "T129",
+      "canonical_name": "compatibility_preservation",
+      "natural_statement": "Accepted activation profiles satisfy all enabled compatibility constraints.",
+      "formal_signature": "CompatibilityPreserved implies no incompatible pair is jointly live.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Accepted activation profiles satisfy all enabled compatibility constraints.",
+      "lean_symbol": "V0OSAP.T129_compatibility_preservation",
+      "coq_symbol": "T129_compatibility_preservation",
+      "validator_rule": "incompatible pair exclusion",
+      "diagnostics": [
+        "COMPATIBILITY_CONSTRAINT_VIOLATION",
+        "ACTIVE_PROFILE_REGISTER_NOT_LIVE"
+      ],
+      "fixtures": [
+        "fixture:positive:t129_compatibility_preservation",
+        "fixture:negative:t129_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "737cd617596ade973388e887213e2be9e83cde2722472296f977b8ec9d351713"
+    },
+    {
+      "theorem_id": "T130",
+      "canonical_name": "dimensional_readiness_soundness",
+      "natural_statement": "READY_VALUE implies all protocol prerequisites are active.",
+      "formal_signature": "ProtocolReady implies AllPrerequisitesLive.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "READY_VALUE implies all protocol prerequisites are active.",
+      "lean_symbol": "V0OSAP.T130_dimensional_readiness_soundness",
+      "coq_symbol": "T130_dimensional_readiness_soundness",
+      "validator_rule": "READY_VALUE prerequisite audit",
+      "diagnostics": [
+        "PROTOCOL_READY_WITHOUT_LIVE_PREREQUISITES"
+      ],
+      "fixtures": [
+        "fixture:positive:t130_dimensional_readiness_soundness",
+        "fixture:negative:t130_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "16f11c1555e11ed71f77549f4ce2cfa3d20b5fae8f380f9d0f0634ea94d69aae"
+    },
+    {
+      "theorem_id": "T131",
+      "canonical_name": "undefined_is_not_zero",
+      "natural_statement": "UNDEFINED_DOMAIN cannot be coerced to a numeric dimension.",
+      "formal_signature": "undefinedDomain differs from readyValue(0).",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "UNDEFINED_DOMAIN cannot be coerced to a numeric dimension.",
+      "lean_symbol": "V0OSAP.T131_undefined_is_not_zero",
+      "coq_symbol": "T131_undefined_is_not_zero",
+      "validator_rule": "status/value disjointness",
+      "diagnostics": [
+        "UNDEFINED_DOMAIN_COERCED_TO_NUMERIC",
+        "READY_VALUE_MISSING_NUMERIC"
+      ],
+      "fixtures": [
+        "fixture:positive:t131_undefined_is_not_zero",
+        "fixture:negative:t131_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "37dd0964fb46fb2e5644b41a9ed5f24ed47c98d98adace0a205d4c41f449f923"
+    },
+    {
+      "theorem_id": "T132",
+      "canonical_name": "dle_history_adequacy",
+      "natural_statement": "Accepted DLE has prior live evidence and current no-license.",
+      "formal_signature": "DomainLicenseExhausted implies WasLive and NoLive.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Accepted DLE has prior live evidence and current no-license.",
+      "lean_symbol": "V0OSAP.T132_dle_history_adequacy",
+      "coq_symbol": "T132_dle_history_adequacy",
+      "validator_rule": "DLE history/current-state audit",
+      "diagnostics": [
+        "DLE_WITHOUT_HISTORICAL_SOURCE",
+        "DLE_CONFLICTS_WITH_LIVE_TOKEN"
+      ],
+      "fixtures": [
+        "fixture:positive:t132_dle_history_adequacy",
+        "fixture:negative:t132_countermodel"
+      ],
+      "source_section": "V0 OSAP v1.1 section 20",
+      "claim_limitations": [
+        "finite accepted fragment only"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "6acfbb93908aa1cbd03bb638bdabbe1d7520467ed057dbed0d509a65166b6c9f"
+    }
+  ]
+}

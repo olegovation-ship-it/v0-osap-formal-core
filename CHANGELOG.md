@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Phase 2 theorem expansion T127-T132
+- Added executable rules for closure, one_of support selection, compatibility, protocol readiness, typed dimensional results, and exact DLE history mapping.
+- Added twelve paired fixtures and Lean 4 / Coq expansion modules.
+- Added a statement-hash theorem crosswalk and Phase 2 verifier.
+- Advanced the development checker to `0.3.0.dev1`.
+- Status remains `PATCH_READY / CI_PENDING`; no v1.3.0 release is claimed.
+
+
 ### Phase 1 semantic alignment
 - Added exact executable coverage for T122 empty-`all_of` vacuity.
 - Added explicit T124 robust-relative-V0 residual-obstruction diagnostics and fixtures.

@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t130_readiness_missing_prerequisite",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase2",
+  "input_file": "t130_readiness_missing_prerequisite.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "PROTOCOL_READY_WITHOUT_LIVE_PREREQUISITES"
+  ],
+  "theorem_targets": [
+    "T130"
+  ],
+  "bound": 1,
+  "oracle_source": "reg:B is not live."
+}

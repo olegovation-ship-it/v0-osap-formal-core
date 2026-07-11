@@ -7,4 +7,5 @@ theories/DLE.v
 theories/Residuals.v
 theories/Observer.v
 theories/Branches.v
+theories/Expansion.v
 theories/Theorems.v

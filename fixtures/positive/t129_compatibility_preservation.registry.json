@@ -1,0 +1,89 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:positive:t129",
+  "declarations": [
+    {
+      "id": "sector:S",
+      "sort": "Sector"
+    },
+    {
+      "id": "reg:A",
+      "sort": "Register"
+    },
+    {
+      "id": "reg:B",
+      "sort": "Register"
+    },
+    {
+      "id": "reg:C",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase2",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [
+    {
+      "token_id": "tok:A:live",
+      "carrier_id": "sector:S",
+      "register_id": "reg:A",
+      "context_id": "ctx:C",
+      "partition": "live",
+      "introduced_in": "state:phase2",
+      "source_evidence_id": "ev:phase2"
+    }
+  ],
+  "prerequisite_families": [],
+  "compatibility_constraints": [
+    {
+      "constraint_id": "compat:A:B",
+      "left_register_id": "reg:A",
+      "right_register_id": "reg:B",
+      "relation": "incompatible",
+      "context_policy": "same_context",
+      "enabled": true
+    }
+  ],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase2",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase2",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite Phase 2 theorem-target fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t129",
+      "kind": "activation_profile",
+      "carrier_id": "sector:S",
+      "context_id": "ctx:C",
+      "active_register_ids": [
+        "reg:A"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 2
+  }
+}
