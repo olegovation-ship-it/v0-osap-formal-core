@@ -35,4 +35,10 @@ This release does not claim complete mechanization of T1-T150, cross-assistant p
 
 ## Archival status
 
-Zenodo DOI: pending. The DOI and repository backlink must be added in a later citation-finalization patch after archival.
+- Zenodo version DOI: [10.5281/zenodo.21306969](https://doi.org/10.5281/zenodo.21306969)
+- GitHub Release: [v1.2.0](https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.2.0)
+- Source repository: [https://github.com/olegovation-ship-it/v0-osap-formal-core](https://github.com/olegovation-ship-it/v0-osap-formal-core)
+- License: MIT
+- Archival date: 2026-07-11
+
+The DOI, repository backlink, and citation metadata are finalized. The `v1.2.0` tag remains immutable.

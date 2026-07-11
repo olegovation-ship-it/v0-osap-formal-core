@@ -34,14 +34,14 @@
       "sha256": "83528276b585f8b99d0f429a97df6b27c3d17b394eccbf94db99c4f92d9be8ca"
     },
     {
-      "bytes": 1284,
+      "bytes": 1595,
       "path": "CHANGELOG.md",
-      "sha256": "616ef7efda3015df798592d219ddbfed651e221abc329d6ab8bf16898574e4a7"
+      "sha256": "a2965ea288f9c6f17eb9a5db85f42b29b225923fe73d13f7118ee13c5e295edf"
     },
     {
-      "bytes": 611,
+      "bytes": 826,
       "path": "CITATION.cff",
-      "sha256": "6981fe381c113aa828040a7f8d419d932bd56cc7d3b597897ca82b3a7b71cf62"
+      "sha256": "5ed6889757d2cf41caa335ade895afd0235bc615a8836848a0dace6396119e46"
     },
     {
       "bytes": 612,
@@ -59,9 +59,9 @@
       "sha256": "607a2ea98c79b50381effa2c9836d1d2c14815bde81ac3dd3136d7e9423dd3b6"
     },
     {
-      "bytes": 4312,
+      "bytes": 4661,
       "path": "README.md",
-      "sha256": "5f86d427406259762d33b5142cfdbad8c604f69426d136c0e295aeb75d254caa"
+      "sha256": "03104a33c2d3e5b2052021e083f0ad689fe26c053b350a3c92bf40d63c092a76"
     },
     {
       "bytes": 321,
@@ -72,6 +72,11 @@
       "bytes": 731,
       "path": "UPLOAD_INSTRUCTIONS.md",
       "sha256": "d86af4df91005e97a13d60eb6b163e4ca631580256d95739ab73ad312d10af35"
+    },
+    {
+      "bytes": 2791,
+      "path": "V0_OSAP_v1_2_0_DOI_Closure_Patch_RECREATED.zip",
+      "sha256": "d32167e1be136b5487c9f13517c2f7963b299e1f52bf36f7059e1e579b5b0842"
     },
     {
       "bytes": 62,
@@ -314,6 +319,11 @@
       "sha256": "ae746e5cf8de3c84e3a83f2f7715769e43f317633b65dd8a0222c363f2c7b2ef"
     },
     {
+      "bytes": 113,
+      "path": "lean/lake-manifest.json",
+      "sha256": "2c17a6630dbfb0c495e7cd450f5e2e34253c2c1066721228886622cb8578a941"
+    },
+    {
       "bytes": 93,
       "path": "lean/lakefile.toml",
       "sha256": "52bb542fd48c12ab1c9c87eaddb6a62e0abbecc6ae8dbb4a7c4e825b505f3940"
@@ -329,9 +339,9 @@
       "sha256": "6ac9c5b446d114510d4b9bf9156c751f1c14249b8ecfd9004194bcb60f0eaf26"
     },
     {
-      "bytes": 1447,
+      "bytes": 1810,
       "path": "release/RELEASE_NOTES_v1.2.0.md",
-      "sha256": "45bec1ae96cf4bf938de5aac1c096990f3f707fc214468739768b48e05bf49a3"
+      "sha256": "ec888e871e9148c60b04fd1ae41feb07a63127295ec6004221a32e1fa5766e71"
     },
     {
       "bytes": 473,
@@ -424,9 +434,9 @@
       "sha256": "860a8912b5633051ef9eaf2ab045ba22eea7d0dc50e438b32fc58bc6f1576acc"
     },
     {
-      "bytes": 1365,
+      "bytes": 2021,
       "path": "scripts/verify_closure.py",
-      "sha256": "139ecb9dad4df72f62b0fbcca4fbaee3493544108e1aa8e85161783d663d00dc"
+      "sha256": "4071b8c94460d8541333f6c87c75879cc7978fd2a4b4b70829a829ea19e290fd"
     },
     {
       "bytes": 1123,

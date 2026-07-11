@@ -1,19 +1,26 @@
 cff-version: 1.2.0
-message: "Please cite the tagged v1.2.0 release. Add the Zenodo DOI once assigned."
-title: "V0 OSAP Formal Core v1.2.0: Executable FC-1 Checker and Dual-Backend Compiler-Passed Proof Skeleton"
+message: "Please cite the archived v1.2.0 software release using its Zenodo DOI."
+title: "V0 OSAP Formal Core v1.2.0 — Compiler-Passed FC-1 Baseline"
 type: software
 authors:
   - family-names: Panasenko
     given-names: Dmytro
     orcid: "https://orcid.org/0009-0008-2249-4562"
+doi: "10.5281/zenodo.21306969"
 repository-code: "https://github.com/olegovation-ship-it/v0-osap-formal-core"
+repository-artifact: "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.2.0"
+url: "https://doi.org/10.5281/zenodo.21306969"
 version: "1.2.0"
 date-released: "2026-07-11"
 license: MIT
 keywords:
+  - V0 OSAP
+  - formal verification
   - formal semantics
-  - proof-carrying validation
   - Lean 4
   - Coq
-  - domain-license exhaustion
+  - proof assistant
+  - ontology
   - structural activation
+  - domain-license exhaustion
+  - observer-reflexive certification

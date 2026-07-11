@@ -5,6 +5,7 @@
 [![Lean 4](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/lean4.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/lean4.yml)
 [![Coq](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/coq.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/coq.yml)
 [![Release readiness](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/release-readiness.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/release-readiness.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21306969.svg)](https://doi.org/10.5281/zenodo.21306969)
 
 Executable and proof-assistant-facing formal core for the **V0 Ontological and Structural-Activation Program (V0 OSAP)**.
 
@@ -19,7 +20,8 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 - Coq: `The Coq Proof Assistant, version 8.18.0`; `make` passed with the proof-hole scan.
 - CI evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 - Closure metadata generated: `2026-07-10T22:33:40Z`.
-- GitHub Release / Zenodo DOI: **DOI: pending** until the tagged release is archived.
+- GitHub Release: [v1.2.0](https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.2.0).
+- Zenodo version DOI: [10.5281/zenodo.21306969](https://doi.org/10.5281/zenodo.21306969).
 
 The compiler-passed claim is bounded to the current FC-1 implementation and the initial theorem subset T121-T126. It is not a claim that all T1-T150 are mechanized.
 
@@ -88,7 +90,7 @@ For T121-T126, the repository establishes a bounded dual-backend compiled state:
 
 ## Release policy
 
-The annotated tag `v1.2.0` may be created only after the closure commit passes all five workflows. A DOI must be added only after the immutable GitHub Release is archived by Zenodo.
+The annotated tag `v1.2.0` identifies the immutable compiler-passed FC-1 baseline. Its archived version DOI is [10.5281/zenodo.21306969](https://doi.org/10.5281/zenodo.21306969). Future software releases require a new semantic-version tag and a separate archival record; `v1.2.0` must not be moved or retagged.
 
 ## License
 

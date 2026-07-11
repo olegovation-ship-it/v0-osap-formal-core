@@ -2,8 +2,12 @@
 
 ## [Unreleased]
 
-### Pending
-- Zenodo DOI, repository backlink, and final citation update after the tagged GitHub Release is archived.
+### Changed
+- Added the Zenodo version DOI `10.5281/zenodo.21306969`.
+- Added repository and tagged-release backlinks to the citation metadata.
+- Finalized `CITATION.cff` for the archived v1.2.0 software release.
+- Updated the closure verifier to require finalized DOI metadata.
+- Preserved the immutable `v1.2.0` tag; this is a post-release metadata patch, not a retag.
 
 ## [1.2.0] - 2026-07-11
 
@@ -34,4 +38,4 @@
 - No theorem-completeness claim beyond the initial T121-T126 subset.
 - No proof-equivalence claim between Lean 4 and Coq.
 - No empirical or physical validation claim.
-- DOI remains pending until tagged-release archival.
+- Version 1.2.0 is archived under DOI `10.5281/zenodo.21306969`; the tagged source baseline remains immutable.
