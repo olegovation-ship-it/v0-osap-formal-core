@@ -1,5 +1,15 @@
 # Status and non-claims
 
+## v1.3.0 Phase 5
+
+- Scope: T145-T150.
+- Status: `BUILD_READY / CI PENDING`.
+- Baseline merge commit: `2a769d7723470cce59df81262b586abf19b9c750`.
+- Checker development version: `0.6.0.dev1`.
+- Twelve paired fixtures and Lean 4 / Coq modules are staged.
+- Phase 1 through Phase 4 accepted states remain preserved.
+- No Phase 5 acceptance, v1.3.0 release, theorem-completeness, proof-identity, checker-completeness, or empirical claim.
+
 ## v1.3.0 Phase 4
 
 - Scope: T139-T144.
@@ -82,8 +92,18 @@
 - T143 defers non-finite cardinality claims without typed meta-index and evidence.
 - T144 computes one deterministic primary status for every finite closed-status list.
 
+## v1.3.0 Phase 5 assertions
+
+- T145 checks one canonical V0-OSAP-CJ-1 byte/hash representation.
+- T146 checks canonical serialize/parse round-trip identity.
+- T147 checks canonical replay-result identity under pinned proof, registry, and ruleset hashes.
+- T148 rejects hidden parser coercion for schema or semantic-version changes.
+- T149 checks canonical statement-hash correspondence between mapped Lean and Coq entries.
+- T150 enforces only conditional accepted-fragment soundness under proved rule lemmas and implementation invariants.
+
 ## Acceptance state
 
+- Phase 5 status: `BUILD_READY / CI PENDING`.
 - Phase 1 status: `ACCEPTED / CI PASS`.
 - Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 3 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
@@ -99,7 +119,7 @@
 ## Explicit non-claims
 
 - No release claim for v1.3.0.
-- No accepted theorem IDs beyond T144 in the current v1.3.0 development state.
+- No accepted theorem IDs beyond T144 in the current v1.3.0 development state; T145-T150 are build-ready and CI-pending.
 - No complete mechanization claim for T1-T150 or T121-T150.
 - No formal equivalence or proof-term identity claim among Python, Lean 4, and Coq.
 - No checker-completeness claim.

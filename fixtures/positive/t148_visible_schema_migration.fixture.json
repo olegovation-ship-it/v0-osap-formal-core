@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t148_visible_schema_migration",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t148_visible_schema_migration.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T148"
+  ],
+  "bound": 5,
+  "oracle_source": "A semantic change is represented by an explicit migration record."
+}

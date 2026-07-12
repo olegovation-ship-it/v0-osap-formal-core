@@ -11,6 +11,17 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
+> **PHASE 5 T145-T150 CANONICALIZATION, REPLAY, MIGRATION, CORRESPONDENCE, AND SOUNDNESS EXPANSION - BUILD READY / CI PENDING**
+
+Phase 5 adds V0-OSAP-CJ-1 canonical serialization and round-trip audits, pinned replay determinism, explicit schema-migration visibility, backend statement-hash correspondence, and conditional accepted-fragment checker soundness. Checker version: `0.6.0.dev1`.
+
+The patch includes twelve paired fixtures, Lean 4 and Coq Phase 5 modules, and a canonical statement-hash crosswalk. Baseline merge commit:
+`2a769d7723470cce59df81262b586abf19b9c750`.
+
+This is a build-ready v1.3.0 development patch, not an accepted Phase 5 state and not a v1.3.0 release. See `release/v1.3.0/PHASE5_BUILD_SPECIFICATION.md` and `release/v1.3.0/PHASE5_ACCEPTANCE_GATES.md`.
+
+### Phase 4 closed baseline
+
 > **PHASE 4 T139-T144 ARCHIVE, BRANCH, CARDINALITY, AND DIAGNOSTIC EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 4 adds archive non-guard export, independent-witness conditional sufficiency,
@@ -114,6 +125,7 @@ python scripts/verify_phase3_expansion.py
 python scripts/verify_phase3_ci_closure.py
 python scripts/verify_phase4_expansion.py
 python scripts/verify_phase4_ci_closure.py
+python scripts/verify_phase5_expansion.py
 cd lean && lake build
 cd ../coq && make
 ```

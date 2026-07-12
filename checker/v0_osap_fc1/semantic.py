@@ -4,6 +4,7 @@ from collections import Counter
 from typing import Any, Iterable
 
 from .diagnostics import STATUS_RANK, Diagnostic, aggregate_status, sort_diagnostics
+from .phase5 import phase5_diagnostics
 
 
 def _duplicates(values: Iterable[str]) -> list[str]:
@@ -518,6 +519,11 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                     ]),
                 ))
 
+    # Phase 5: T145-T150 canonicalization, replay, migration, correspondence, and soundness audits.
+    for claim in claims:
+        if isinstance(claim, dict):
+            diagnostics.extend(phase5_diagnostics(claim))
+
     claims_by_id = {c.get("claim_id"): c for c in claims if isinstance(c, dict) and c.get("claim_id")}
     for i, claim in enumerate(claims):
         if not isinstance(claim, dict):
@@ -614,5 +620,5 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
         "registry_state_id": registry.get("registry_state_id"),
         "status": aggregate_status(diagnostics),
         "diagnostics": [d.to_dict() for d in diagnostics],
-        "implementation_version": "v0-osap-fc1/0.5.0.dev1",
+        "implementation_version": "v0-osap-fc1/0.6.0.dev1",
     }

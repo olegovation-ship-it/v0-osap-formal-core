@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t148_hidden_parser_coercion",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t148_hidden_parser_coercion.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "HIDDEN_SCHEMA_MIGRATION_COERCION"
+  ],
+  "theorem_targets": [
+    "T148"
+  ],
+  "bound": 5,
+  "oracle_source": "A version change hidden as parser coercion is rejected."
+}

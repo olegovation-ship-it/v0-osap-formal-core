@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t149_backend_statement_correspondence",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t149_backend_statement_correspondence.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T149"
+  ],
+  "bound": 5,
+  "oracle_source": "Lean and Coq mappings share the canonical statement hash."
+}

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Phase 5 theorem expansion T145-T150
+- Added strict V0-OSAP-CJ-1 canonical serialization, parsing, round-trip, SHA-256, and hash-envelope utilities.
+- Added executable replay-determinism, migration-visibility, backend-correspondence, and conditional checker-soundness audits.
+- Added twelve paired fixtures and Lean 4 / Coq Phase 5 modules.
+- Added a canonical statement-hash theorem crosswalk and Phase 5 verifier.
+- Advanced the development checker to `0.6.0.dev1`.
+- Baseline merge commit is `2a769d7723470cce59df81262b586abf19b9c750`.
+- Status is `BUILD_READY / CI_PENDING`; no Phase 5 acceptance or v1.3.0 release is claimed.
+
 ### Phase 4 theorem expansion T139-T144
 - Added executable archive/witness, no-container, branch-distinctness, cardinality, and diagnostic-precedence rules.
 - Added twelve paired fixtures and Lean 4 / Coq Phase 4 modules.

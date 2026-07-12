@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t147_nondeterministic_replay",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t147_nondeterministic_replay.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "REPLAY_NONDETERMINISTIC_RESULT"
+  ],
+  "theorem_targets": [
+    "T147"
+  ],
+  "bound": 5,
+  "oracle_source": "Different replay outputs under the same pins are rejected."
+}

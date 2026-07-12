@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t150_checker_pass_unsound",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t150_checker_pass_unsound.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "CHECKER_PASS_VIOLATES_ACCEPTED_FRAGMENT_SOUNDNESS"
+  ],
+  "theorem_targets": [
+    "T150"
+  ],
+  "bound": 5,
+  "oracle_source": "PASS cannot coexist with a failed obligation under proved premises."
+}

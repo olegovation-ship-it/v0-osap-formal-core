@@ -1,6 +1,6 @@
 # Theorem-target register
 
-The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary. Phase 4 adds the accepted development cluster T139-T144 under the same historical-preservation boundary from implementation baseline `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`.
+The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary. Phase 4 adds the accepted development cluster T139-T144 under the same historical-preservation boundary from implementation baseline `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`. Phase 5 stages the final reserved cluster T145-T150 from baseline `2a769d7723470cce59df81262b586abf19b9c750`.
 
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 Immutable baseline DOI: `10.5281/zenodo.21306969`.
@@ -69,3 +69,19 @@ Phase 3 acceptance is a v1.3.0 development result. It does not mutate the immuta
 | T144 | Diagnostic precedence totality | finite primary-status replay | T144_diagnostic_precedence_totality | T144_diagnostic_precedence_totality | accepted; CI passed; merged |
 
 Phase 4 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI `10.5281/zenodo.21306969` and does not claim completion of T145-T150.
+
+## Phase 5 theorem expansion
+
+Phase 5 baseline merge commit: `2a769d7723470cce59df81262b586abf19b9c750`.
+Phase 5 patch status: `BUILD_READY / CI PENDING`.
+
+| ID | Canonical name | Python | Lean 4 | Coq | Status |
+|---|---|---|---|---|---|
+| T145 | Canonical serialization determinism | canonical byte/hash audit | T145_canonical_serialization_determinism | T145_canonical_serialization_determinism | build-ready; CI pending |
+| T146 | Round-trip identity | canonical round-trip audit | T146_round_trip_identity | T146_round_trip_identity | build-ready; CI pending |
+| T147 | Replay determinism | pinned replay-result audit | T147_replay_determinism | T147_replay_determinism | build-ready; CI pending |
+| T148 | Schema migration visibility | migration/coercion audit | T148_schema_migration_visibility | T148_schema_migration_visibility | build-ready; CI pending |
+| T149 | Backend statement correspondence | canonical statement-hash audit | T149_backend_statement_correspondence | T149_backend_statement_correspondence | build-ready; CI pending |
+| T150 | Accepted-fragment checker soundness | conditional soundness audit | T150_accepted_fragment_checker_soundness | T150_accepted_fragment_checker_soundness | build-ready; CI pending |
+
+Phase 5 is not accepted or released until the complete local and GitHub Actions matrix passes. T150 is conditional on proved rule lemmas and implementation invariants. The immutable v1.2.0 tag and DOI `10.5281/zenodo.21306969` remain unchanged.
