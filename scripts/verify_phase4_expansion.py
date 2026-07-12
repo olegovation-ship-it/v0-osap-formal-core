@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -101,6 +102,11 @@ for text in (readme, status, register):
     assert any(marker in text for marker in ("BUILD_READY", "BUILD READY", "ACCEPTED / CI PASS"))
 assert "24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30" in readme
 assert "10.5281/zenodo.21306969" in status
-assert any(marker in status for marker in ("No accepted theorem IDs beyond T138", "No accepted theorem IDs beyond T144"))
+accepted_boundary = re.search(
+    r"No accepted theorem IDs beyond T(\d+)",
+    status,
+)
+assert accepted_boundary is not None
+assert int(accepted_boundary.group(1)) >= 144
 
 print("PASS: V0 OSAP v1.3.0 Phase 4 T139-T144 theorem cluster verified statically.")
