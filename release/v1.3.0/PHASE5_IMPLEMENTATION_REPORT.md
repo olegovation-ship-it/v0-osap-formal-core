@@ -1,9 +1,12 @@
 # Phase 5 Implementation Report
 
 **Scope:** T145-T150
-**Baseline merge commit:** `2a769d7723470cce59df81262b586abf19b9c750`
+**Implementation baseline merge commit:** `2a769d7723470cce59df81262b586abf19b9c750`
+**Implementation head commit:** `977c5404ebc5cdef9495edd1c46b08d3b0452acb`
+**Implementation merge commit:** `5c689de1a30104aa6c4e3860d5e7c26746e2d797`
+**Merged at:** `2026-07-12T19:11:41Z`
 **Target branch:** `v1.3.0-development`
-**State:** `BUILD_READY / CI_PENDING`
+**State:** `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`
 **Checker version:** `0.6.0.dev1`
 
 ## Implemented layers
@@ -16,10 +19,10 @@
 - Coq `Phase5.v` formalization;
 - canonical theorem statement-hash crosswalk;
 - Phase 5 static verifier and fixture test;
-- forward-compatible Phase 4 verifier boundary;
+- forward-compatible Phase 1-4 verifier boundaries;
 - README, changelog, theorem register, status, and Release readiness updates.
 
-## Intended local validation
+## Validated matrix
 
 ```bash
 python -m pip install -e '.[dev]'
@@ -40,7 +43,11 @@ python scripts/verify_phase5_expansion.py
 git diff --check
 ```
 
-Expected Python total after application: **14 tests**.
+Recorded result: **14 Python tests PASS**, schema and fixture replay PASS, proof-hole scan PASS, Phase 1-4 preservation/closure matrix PASS, Phase 5 verifier PASS, Lean 4 PASS, Coq PASS, and GitHub Actions 8/8 PASS.
+
+## Merge and closure result
+
+PR #8 merged two commits into `main`. Implementation head `977c5404ebc5cdef9495edd1c46b08d3b0452acb` was merged as `5c689de1a30104aa6c4e3860d5e7c26746e2d797` at `2026-07-12T19:11:41Z`. The dedicated closure evidence is recorded in `PHASE5_CI_CLOSURE_EVIDENCE.json`.
 
 ## Soundness boundary
 
@@ -48,4 +55,4 @@ T150 is not encoded as an unconditional declaration that the Python checker is g
 
 ## Release boundary
 
-Phase 5 is a development-stage implementation patch. Acceptance, historical-preservation closure, release tagging, DOI creation, or v1.3.0 publication require separate post-CI decisions.
+Phase 5 is accepted, CI-passed, merged, and historically preserved as a v1.3.0 development state. This closure does not create a v1.3.0 release, move or retag `v1.2.0`, alter DOI `10.5281/zenodo.21306969`, or create a new Zenodo version.

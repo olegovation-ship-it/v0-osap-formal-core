@@ -11,14 +11,22 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 5 T145-T150 CANONICALIZATION, REPLAY, MIGRATION, CORRESPONDENCE, AND SOUNDNESS EXPANSION - BUILD READY / CI PENDING**
+> **PHASE 5 T145-T150 CANONICALIZATION, REPLAY, MIGRATION, CORRESPONDENCE, AND SOUNDNESS EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 5 adds V0-OSAP-CJ-1 canonical serialization and round-trip audits, pinned replay determinism, explicit schema-migration visibility, backend statement-hash correspondence, and conditional accepted-fragment checker soundness. Checker version: `0.6.0.dev1`.
 
-The patch includes twelve paired fixtures, Lean 4 and Coq Phase 5 modules, and a canonical statement-hash crosswalk. Baseline merge commit:
-`2a769d7723470cce59df81262b586abf19b9c750`.
+PR #8 passed 8/8 checks and merged head commit
+`977c5404ebc5cdef9495edd1c46b08d3b0452acb` into `main` as
+`5c689de1a30104aa6c4e3860d5e7c26746e2d797`. The regression suite recorded
+14 passing tests, and both Lean 4 and Coq builds passed.
 
-This is a build-ready v1.3.0 development patch, not an accepted Phase 5 state and not a v1.3.0 release. See `release/v1.3.0/PHASE5_BUILD_SPECIFICATION.md` and `release/v1.3.0/PHASE5_ACCEPTANCE_GATES.md`.
+The implementation was built from the preserved Phase 4 closure baseline
+`2a769d7723470cce59df81262b586abf19b9c750`. The patch includes twelve paired fixtures,
+Lean 4 and Coq Phase 5 modules, and a canonical statement-hash crosswalk.
+This is an accepted v1.3.0 development state, not a v1.3.0 release. T150
+remains conditional on proved rule lemmas and implementation invariants. See
+`release/v1.3.0/PHASE5_ACCEPTANCE_GATES.md` and
+`release/v1.3.0/PHASE5_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ### Phase 4 closed baseline
 

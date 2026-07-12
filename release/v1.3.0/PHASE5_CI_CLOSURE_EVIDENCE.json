@@ -1,0 +1,97 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase5_ci_closure_evidence",
+  "artifact_version": "0.1",
+  "date": "2026-07-12",
+  "status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "theorem_range": "T145-T150",
+  "implementation_baseline_merge_commit": "2a769d7723470cce59df81262b586abf19b9c750",
+  "pull_request": {
+    "number": 8,
+    "title": "V0 OSAP v1.3.0 Phase 5: canonicalization, replay, migration, correspondence, and soundness T145-T150",
+    "base": "main",
+    "head": "v1.3.0-development",
+    "head_sha": "977c5404ebc5cdef9495edd1c46b08d3b0452acb",
+    "merge_commit_sha": "5c689de1a30104aa6c4e3860d5e7c26746e2d797",
+    "merged_at_utc": "2026-07-12T19:11:41Z",
+    "commits": 2,
+    "changed_files": 54,
+    "additions": 2142,
+    "deletions": 24,
+    "pr_check_total": 8,
+    "pr_check_result": "PASS"
+  },
+  "workflow_runs": [
+    {
+      "name": "Release readiness",
+      "run_id": 29205256775,
+      "run_number": 50,
+      "conclusion": "success",
+      "jobs": [
+        "immutable-v1-2-baseline",
+        "v1-3-development-readiness"
+      ]
+    },
+    {
+      "name": "Python checker",
+      "run_id": 29205256823,
+      "run_number": 26,
+      "conclusion": "success"
+    },
+    {
+      "name": "Lean 4",
+      "run_id": 29205256812,
+      "run_number": 26,
+      "conclusion": "success"
+    },
+    {
+      "name": "Schema validation",
+      "run_id": 29205256781,
+      "run_number": 26,
+      "conclusion": "success"
+    },
+    {
+      "name": "Coq",
+      "run_id": 29205256800,
+      "run_number": 26,
+      "conclusion": "success"
+    }
+  ],
+  "local_validation": {
+    "python_tests": 14,
+    "schema_bundle": "PASS",
+    "fixture_replay": "PASS",
+    "proof_hole_scan": "PASS",
+    "phase1_preservation": "PASS",
+    "phase2_expansion": "PASS",
+    "phase2_ci_closure": "PASS",
+    "phase3_expansion": "PASS",
+    "phase3_ci_closure": "PASS",
+    "phase4_expansion": "PASS",
+    "phase4_ci_closure": "PASS",
+    "phase5_expansion": "PASS",
+    "lean4_build": "PASS",
+    "coq_build": "PASS",
+    "diff_check": "PASS"
+  },
+  "historical_preservation": {
+    "baseline_tag": "v1.2.0",
+    "baseline_doi": "10.5281/zenodo.21306969",
+    "manifest_verifier_retained": true,
+    "closure_verifier_retained": true,
+    "phase1_record_retained": true,
+    "phase2_record_retained": true,
+    "phase3_record_retained": true,
+    "phase4_record_retained": true,
+    "branch_sync_to_merge_commit": true,
+    "tag_moved_or_retagged": false,
+    "new_doi_created": false
+  },
+  "claim_boundary": {
+    "v1_3_0_released": false,
+    "t150_unconditional_global_soundness_claimed": false,
+    "theorem_completeness_claimed": false,
+    "cross_assistant_proof_identity_claimed": false,
+    "checker_completeness_claimed": false,
+    "empirical_or_physical_validation_claimed": false
+  }
+}
