@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "fixture_id": "fixture:negative:t153_diagnostic_envelope_mutation",
-  "kind": "negative",
+  "kind": "countermodel",
   "semantic_version": "FC-1-v1.1+phase6",
   "input_file": "t153_diagnostic_envelope_mutation.registry.json",
   "expected_status": "REJECT",

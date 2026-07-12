@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "fixture_id": "fixture:negative:t154_evidence_provenance_cycle",
-  "kind": "negative",
+  "kind": "countermodel",
   "semantic_version": "FC-1-v1.1+phase6",
   "input_file": "t154_evidence_provenance_cycle.registry.json",
   "expected_status": "REJECT",

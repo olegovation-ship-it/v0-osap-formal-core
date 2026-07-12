@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from checker.v0_osap_fc1.semantic import check_registry
+from v0_osap_fc1.semantic import check_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 

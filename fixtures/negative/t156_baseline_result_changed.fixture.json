@@ -1,7 +1,7 @@
 {
   "schema_version": "v1.1",
   "fixture_id": "fixture:negative:t156_baseline_result_changed",
-  "kind": "negative",
+  "kind": "countermodel",
   "semantic_version": "FC-1-v1.1+phase6",
   "input_file": "t156_baseline_result_changed.registry.json",
   "expected_status": "REJECT",
