@@ -1,6 +1,6 @@
 # Theorem-target register
 
-The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary.
+The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary. Phase 4 stages T139-T144 as build-ready and CI-pending from closure merge commit `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`.
 
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 Immutable baseline DOI: `10.5281/zenodo.21306969`.
@@ -11,6 +11,8 @@ Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 Phase 3 head commit: `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4`.
 Phase 3 merge commit: `c02b05f667b82aa31ac8865c31219b94b1fc74d2`.
 Phase 3 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+Phase 4 baseline merge commit: `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`.
+Phase 4 patch status: `BUILD_READY / CI_PENDING`.
 
 | ID | Canonical name | Python after Phase 1 | Lean 4 | Coq | Phase 1 status |
 |---|---|---:|---:|---:|---|
@@ -52,3 +54,16 @@ Phase 2 acceptance is a v1.3.0 development result. It does not mutate the immuta
 | T138 | Terminal self-certification limit | cross-state certification audit | T138_terminal_self_certification_limit | T138_terminal_self_certification_limit | accepted; CI passed; merged |
 
 Phase 3 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI and does not claim completion of T139-T150.
+
+## Phase 4 theorem expansion
+
+| ID | Canonical name | Python | Lean 4 | Coq | Status |
+|---|---|---|---|---|---|
+| T139 | Archive non-guard-export | archive current-guard export audit | T139_archive_non_guard_export | T139_archive_non_guard_export | build-ready; CI pending |
+| T140 | Independent-witness conditional sufficiency | witness policy/independence audit | T140_independent_witness_conditional_sufficiency | T140_independent_witness_conditional_sufficiency | build-ready; CI pending |
+| T141 | No-container | NullMark ordinary-containment firewall | T141_no_container | T141_no_container | build-ready; CI pending |
+| T142 | Branch-label insufficiency | distinctness-basis audit | T142_branch_label_insufficiency | T142_branch_label_insufficiency | build-ready; CI pending |
+| T143 | Cardinality licensing | typed meta-index/evidence audit | T143_cardinality_licensing | T143_cardinality_licensing | build-ready; CI pending |
+| T144 | Diagnostic precedence totality | finite primary-status replay | T144_diagnostic_precedence_totality | T144_diagnostic_precedence_totality | build-ready; CI pending |
+
+Phase 4 is not accepted or released until the complete local and GitHub Actions matrix passes. The immutable v1.2.0 tag and DOI `10.5281/zenodo.21306969` remain unchanged.

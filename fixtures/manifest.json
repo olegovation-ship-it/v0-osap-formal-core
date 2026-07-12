@@ -1,6 +1,6 @@
 {
-  "bundle_id": "V0_OSAP_v1_3_0_phase3_fixture_corpus",
-  "semantic_version": "FC-1-v1.1+phase3",
+  "bundle_id": "V0_OSAP_v1_3_0_phase4_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase4",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
@@ -37,12 +37,24 @@
     "positive/t137_v0_identity_independent_basis.fixture.json",
     "negative/t137_approximation_identity_promotion.fixture.json",
     "positive/t138_cross_state_terminal_certificate.fixture.json",
-    "negative/t138_same_state_self_certification.fixture.json"
+    "negative/t138_same_state_self_certification.fixture.json",
+    "positive/t139_archive_non_guard_export.fixture.json",
+    "negative/t139_archive_guard_export.fixture.json",
+    "positive/t140_independent_witness_certificate.fixture.json",
+    "negative/t140_noncompliant_witness_certificate.fixture.json",
+    "positive/t141_no_container.fixture.json",
+    "negative/t141_v0_ordinary_contains_branch.fixture.json",
+    "positive/t142_policy_based_branch_distinctness.fixture.json",
+    "negative/t142_label_only_branch_distinctness.fixture.json",
+    "positive/t143_countable_cardinality_licensed.fixture.json",
+    "negative/t143_nonfinite_cardinality_unlicensed.fixture.json",
+    "positive/t144_diagnostic_precedence_totality.fixture.json",
+    "negative/t144_wrong_primary_status.fixture.json"
   ],
-  "status": "PHASE3_T133_T138_PATCH_ORACLE_SET",
+  "status": "PHASE4_T139_T144_PATCH_ORACLE_SET",
   "notes": [
-    "Phase 1 and Phase 2 exact mappings are preserved.",
-    "T133-T138 each have a positive and decisive countermodel fixture.",
-    "Phase 3 remains BUILD_READY / CI_PENDING."
+    "Phase 1, Phase 2, and Phase 3 accepted mappings are preserved.",
+    "T139-T144 each have a positive and decisive countermodel fixture.",
+    "Phase 4 remains BUILD_READY / CI_PENDING until local and GitHub Actions closure."
   ]
 }

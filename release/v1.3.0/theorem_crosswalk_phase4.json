@@ -1,0 +1,188 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase4_theorem_crosswalk",
+  "artifact_version": "0.1",
+  "baseline_tag": "v1.2.0",
+  "baseline_doi": "10.5281/zenodo.21306969",
+  "baseline_merge_commit": "24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30",
+  "phase1_status": "ACCEPTED_CI_PASS",
+  "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase4_status": "BUILD_READY_CI_PENDING",
+  "theorem_range": "T139-T144",
+  "implementation_version": "v0-osap-fc1/0.5.0.dev1",
+  "records": [
+    {
+      "theorem_id": "T139",
+      "canonical_name": "archive_non_guard_export",
+      "natural_statement": "An archive preserves evidence but does not create a current observer guard.",
+      "formal_signature": "ArchiveGuardExport(record) and exportsCurrentGuard=false imply archive non-guard export.",
+      "assumptions": [
+        "finite FC-1 archive/export record",
+        "typed observer, register, context, and archive identifiers"
+      ],
+      "conclusion": "An archive cannot export a current observer guard.",
+      "lean_symbol": "V0OSAP.T139_archive_non_guard_export",
+      "coq_symbol": "T139_archive_non_guard_export",
+      "validator_rule": "archive current-guard export prohibition",
+      "diagnostics": [
+        "ARCHIVE_CANNOT_EXPORT_CURRENT_GUARD"
+      ],
+      "fixtures": [
+        "fixture:positive:t139_archive_non_guard_export",
+        "fixture:negative:t139_archive_guard_export"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 11.3 and 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "archive integrity, access, and provenance remain separate obligations"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "aebb1470c81703c674936edb9bfc8f344604dd81452ca4516b4996b6f203adea"
+    },
+    {
+      "theorem_id": "T140",
+      "canonical_name": "independent_witness_conditional_sufficiency",
+      "natural_statement": "A policy-compliant independent witness may support an external certificate.",
+      "formal_signature": "PolicyCompliant and NonCircular and IdentityVerified and EvidenceVerified and nonempty external evidence/independence groups imply ExternalCertificateSupported.",
+      "assumptions": [
+        "finite FC-1 witness certificate",
+        "resolved external evidence identifiers",
+        "explicit independence policy and non-circularity"
+      ],
+      "conclusion": "The independent witness condition is sufficient for the bounded external-certificate predicate.",
+      "lean_symbol": "V0OSAP.T140_independent_witness_conditional_sufficiency",
+      "coq_symbol": "T140_independent_witness_conditional_sufficiency",
+      "validator_rule": "independent witness support audit",
+      "diagnostics": [
+        "INDEPENDENT_WITNESS_CERTIFICATE_UNSUPPORTED"
+      ],
+      "fixtures": [
+        "fixture:positive:t140_independent_witness_certificate",
+        "fixture:negative:t140_noncompliant_witness_certificate"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 11.3 and 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "sufficiency is conditional on declared policy fields"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "d304ebc9b96394e4bef4560373cce1f380908744fb26be88093db1e6e0e6ae7a"
+    },
+    {
+      "theorem_id": "T141",
+      "canonical_name": "no_container",
+      "natural_statement": "V0 has no ordinary Contains relation to a branch in FC-1.",
+      "formal_signature": "NullMark container and Branch target with ordinary containment mode imply rejection of ordinary containment.",
+      "assumptions": [
+        "container identifier has NullMark sort",
+        "contained identifier has Branch sort",
+        "ordinary containment mode is asserted"
+      ],
+      "conclusion": "Ordinary V0-to-branch containment is not licensed.",
+      "lean_symbol": "V0OSAP.T141_no_container",
+      "coq_symbol": "T141_no_container",
+      "validator_rule": "NullMark ordinary-containment firewall",
+      "diagnostics": [
+        "V0_ORDINARY_CONTAINS_FORBIDDEN",
+        "CONTAINMENT_REFERENCE_SORT_MISMATCH"
+      ],
+      "fixtures": [
+        "fixture:positive:t141_no_container",
+        "fixture:negative:t141_v0_ordinary_contains_branch"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 12.4 and 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "typed meta-structural relations are separate from ordinary containment"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "6fc052097ee11289e7f0a2fe67179da0e05f39cc0eac9d5d61e0801e6072b833"
+    },
+    {
+      "theorem_id": "T142",
+      "canonical_name": "branch_label_insufficiency",
+      "natural_statement": "Different labels do not prove branch distinctness.",
+      "formal_signature": "DistinctnessBasis=labelOnly implies failure of label-independent branch distinctness.",
+      "assumptions": [
+        "two finite branch records",
+        "explicit distinctness-basis field"
+      ],
+      "conclusion": "Label difference alone is not an admissible distinctness certificate.",
+      "lean_symbol": "V0OSAP.T142_branch_label_insufficiency",
+      "coq_symbol": "T142_branch_label_insufficiency",
+      "validator_rule": "branch distinctness basis audit",
+      "diagnostics": [
+        "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS",
+        "BRANCH_DISTINCTNESS_EVIDENCE_REQUIRED"
+      ],
+      "fixtures": [
+        "fixture:positive:t142_policy_based_branch_distinctness",
+        "fixture:negative:t142_label_only_branch_distinctness"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 12.3 and 20",
+      "claim_limitations": [
+        "finite accepted fragment only",
+        "physical universe distinctness is not claimed"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "7cf7b272ad78fcecb58afa0ac951447214e8f99654132f6985b8f4bc8908f3e0"
+    },
+    {
+      "theorem_id": "T143",
+      "canonical_name": "cardinality_licensing",
+      "natural_statement": "Non-finite cardinality claims require a typed meta-index and evidence.",
+      "formal_signature": "NonFiniteKind and CardinalityLicensed imply existence of a meta-index identifier and nonempty proof evidence.",
+      "assumptions": [
+        "finite FC-1 cardinality certificate",
+        "non-finite cardinality kind",
+        "meta-index evidence object has type meta_index_certificate"
+      ],
+      "conclusion": "A non-finite cardinality claim exposes a typed meta-index and proof evidence.",
+      "lean_symbol": "V0OSAP.T143_cardinality_licensing",
+      "coq_symbol": "T143_cardinality_licensing",
+      "validator_rule": "non-finite cardinality license audit",
+      "diagnostics": [
+        "DEFERRED_CARDINALITY_CERT"
+      ],
+      "fixtures": [
+        "fixture:positive:t143_countable_cardinality_licensed",
+        "fixture:negative:t143_nonfinite_cardinality_unlicensed"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 12.5 and 20",
+      "claim_limitations": [
+        "finite certificate representation only",
+        "no physical multiplicity or infinity claim"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "a2a610aebba5a9302279a3d64a74258cf4c49f01805fbfa29541118f7d3b4280"
+    },
+    {
+      "theorem_id": "T144",
+      "canonical_name": "diagnostic_precedence_totality",
+      "natural_statement": "Every finite diagnostic set has a unique primary status under the precedence order.",
+      "formal_signature": "For every finite DiagnosticStatus list, there exists exactly one status equal to primaryStatus(list).",
+      "assumptions": [
+        "finite list over the closed FC-1 status enum",
+        "fixed STATUS_RANK precedence"
+      ],
+      "conclusion": "The primary diagnostic status is total and unique.",
+      "lean_symbol": "V0OSAP.T144_diagnostic_precedence_totality",
+      "coq_symbol": "T144_diagnostic_precedence_totality",
+      "validator_rule": "finite diagnostic primary-status replay",
+      "diagnostics": [
+        "DIAGNOSTIC_PRIMARY_STATUS_MISMATCH"
+      ],
+      "fixtures": [
+        "fixture:positive:t144_diagnostic_precedence_totality",
+        "fixture:negative:t144_wrong_primary_status"
+      ],
+      "source_section": "V0 OSAP v1.1 sections 13.1-13.4 and 20",
+      "claim_limitations": [
+        "finite diagnostic sets only",
+        "message wording outside canonical templates is not compared"
+      ],
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "62804e8e051de8c850b24e0088d681d349852daed0ed1c17b96e58270d495218"
+    }
+  ]
+}

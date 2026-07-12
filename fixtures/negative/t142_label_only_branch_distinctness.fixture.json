@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t142_label_only_branch_distinctness",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t142_label_only_branch_distinctness.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS"
+  ],
+  "theorem_targets": [
+    "T142"
+  ],
+  "bound": 4,
+  "oracle_source": "Countermodel: different display labels are used as the only distinctness basis."
+}

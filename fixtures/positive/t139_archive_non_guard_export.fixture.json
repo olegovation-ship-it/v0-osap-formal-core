@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t139_archive_non_guard_export",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t139_archive_non_guard_export.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T139"
+  ],
+  "bound": 4,
+  "oracle_source": "An archive preserves evidence without exporting a current observer guard."
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t139_archive_guard_export",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t139_archive_guard_export.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "ARCHIVE_CANNOT_EXPORT_CURRENT_GUARD"
+  ],
+  "theorem_targets": [
+    "T139"
+  ],
+  "bound": 4,
+  "oracle_source": "Countermodel: archived evidence is incorrectly promoted to a current guard."
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t143_nonfinite_cardinality_unlicensed",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t143_nonfinite_cardinality_unlicensed.registry.json",
+  "expected_status": "DEFERRED",
+  "expected_diagnostics": [
+    "DEFERRED_CARDINALITY_CERT"
+  ],
+  "theorem_targets": [
+    "T143"
+  ],
+  "bound": 4,
+  "oracle_source": "Countermodel: a non-finite cardinality assertion lacks typed meta-index and proof evidence."
+}

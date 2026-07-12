@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t140_independent_witness_certificate",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t140_independent_witness_certificate.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T140"
+  ],
+  "bound": 4,
+  "oracle_source": "A policy-compliant, non-circular witness with verified identity/evidence supports the bounded certificate."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t142_policy_based_branch_distinctness",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t142_policy_based_branch_distinctness.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T142"
+  ],
+  "bound": 4,
+  "oracle_source": "Branch distinctness is licensed by a registered policy and evidence, not labels alone."
+}

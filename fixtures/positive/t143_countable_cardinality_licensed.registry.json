@@ -1,0 +1,110 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:positive:t143",
+  "declarations": [
+    {
+      "id": "null:V0",
+      "sort": "NullMark"
+    },
+    {
+      "id": "branch:U",
+      "sort": "Branch"
+    },
+    {
+      "id": "branch:V",
+      "sort": "Branch"
+    },
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase4",
+      "sort": "Evidence"
+    },
+    {
+      "id": "ev:distinct",
+      "sort": "Evidence"
+    },
+    {
+      "id": "ev:meta-index",
+      "sort": "Evidence"
+    },
+    {
+      "id": "ev:cardinality-proof",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase4",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase4",
+      "supports_claim_ids": [],
+      "limitations": [
+        "Finite Phase 4 theorem-target fixture."
+      ],
+      "metadata": {}
+    },
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:meta-index",
+      "evidence_type": "meta_index_certificate",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase4",
+      "supports_claim_ids": [
+        "claim:t143"
+      ],
+      "limitations": [
+        "Finite Phase 4 theorem-target fixture."
+      ],
+      "metadata": {}
+    },
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:cardinality-proof",
+      "evidence_type": "cardinality_proof",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase4",
+      "supports_claim_ids": [
+        "claim:t143"
+      ],
+      "limitations": [
+        "Finite Phase 4 theorem-target fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t143",
+      "kind": "branch_cardinality",
+      "cardinality_kind": "countable",
+      "branch_ids": [
+        "branch:U",
+        "branch:V"
+      ],
+      "meta_index_id": "ev:meta-index",
+      "evidence_ids": [
+        "ev:cardinality-proof"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 4
+  }
+}

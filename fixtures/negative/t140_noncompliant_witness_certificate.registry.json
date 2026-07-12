@@ -1,0 +1,76 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:negative:t140",
+  "declarations": [
+    {
+      "id": "observer:A",
+      "sort": "Observer"
+    },
+    {
+      "id": "observer:C",
+      "sort": "Observer"
+    },
+    {
+      "id": "reg:observer",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase4",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase4",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase4",
+      "supports_claim_ids": [
+        "claim:t140:countermodel"
+      ],
+      "limitations": [
+        "Finite Phase 4 theorem-target fixture."
+      ],
+      "metadata": {},
+      "independence_group_id": "ind:group:1"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t140:countermodel",
+      "kind": "external_witness_certificate",
+      "observer_id": "observer:A",
+      "witness_id": "observer:C",
+      "policy_compliant": false,
+      "non_circular": true,
+      "identity_verified": true,
+      "evidence_verified": true,
+      "external_evidence_ids": [
+        "ev:phase4"
+      ],
+      "independence_group_ids": [
+        "ind:group:1"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 4
+  }
+}

@@ -438,6 +438,120 @@
           "certification_state_id": {
             "type": "string",
             "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "archive_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "observer_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "witness_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "exports_current_guard": {
+            "type": "boolean"
+          },
+          "policy_compliant": {
+            "type": "boolean"
+          },
+          "non_circular": {
+            "type": "boolean"
+          },
+          "identity_verified": {
+            "type": "boolean"
+          },
+          "evidence_verified": {
+            "type": "boolean"
+          },
+          "container_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "contained_branch_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "containment_mode": {
+            "enum": [
+              "none",
+              "ordinary",
+              "typed_meta"
+            ]
+          },
+          "left_branch_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "right_branch_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "left_label": {
+            "type": "string"
+          },
+          "right_label": {
+            "type": "string"
+          },
+          "distinctness_basis": {
+            "enum": [
+              "label_only",
+              "non_isomorphism",
+              "incompatible_profile",
+              "observational_separation",
+              "registered_policy"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "uniqueItems": true
+          },
+          "branch_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "uniqueItems": true
+          },
+          "cardinality_kind": {
+            "enum": [
+              "finite_enumerated",
+              "countable",
+              "uncountable",
+              "proper_class"
+            ]
+          },
+          "meta_index_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "diagnostic_statuses": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "PASS",
+                "OUT-OF-SCOPE",
+                "INDETERMINATE",
+                "DEFERRED",
+                "REJECT"
+              ]
+            }
+          },
+          "expected_primary_status": {
+            "enum": [
+              "PASS",
+              "OUT-OF-SCOPE",
+              "INDETERMINATE",
+              "DEFERRED",
+              "REJECT"
+            ]
           }
         },
         "allOf": [
@@ -646,6 +760,140 @@
                 "kind",
                 "support_state_id",
                 "certification_state_id"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "archive_guard_export"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "archive_id",
+                "observer_id",
+                "register_id",
+                "context_id",
+                "exports_current_guard"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "external_witness_certificate"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "observer_id",
+                "witness_id",
+                "policy_compliant",
+                "non_circular",
+                "identity_verified",
+                "evidence_verified",
+                "external_evidence_ids",
+                "independence_group_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "v0_branch_containment"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "container_id",
+                "contained_branch_id",
+                "containment_mode"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "branch_distinctness"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "left_branch_id",
+                "right_branch_id",
+                "left_label",
+                "right_label",
+                "distinctness_basis",
+                "evidence_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "branch_cardinality"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "cardinality_kind",
+                "branch_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "diagnostic_precedence_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "diagnostic_statuses",
+                "expected_primary_status"
               ]
             }
           }
