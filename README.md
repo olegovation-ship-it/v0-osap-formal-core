@@ -11,15 +11,21 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 3 T133-T138 FIREWALL EXPANSION - BUILD READY / CI PENDING**
+> **PHASE 3 T133-T138 FIREWALL EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 3 adds fresh-token reactivation, raw and robust residual obstruction,
 relative-to-absolute non-promotion, approximation non-identity, and terminal
 same-state self-certification limits. Checker version: `0.4.0.dev1`.
 
+PR #4 passed 8/8 checks and merged head commit
+`2172591ed8a5ab3c1fa31f2a3a6575536f161fe4` into `main` as
+`c02b05f667b82aa31ac8865c31219b94b1fc74d2`. The regression suite recorded
+112 passing tests, and both Lean 4 and Coq builds passed.
+
 The patch includes twelve paired fixtures, Lean 4 and Coq Phase 3 modules, and a
-canonical statement-hash crosswalk. It is not yet accepted, merged, or released.
-See `release/v1.3.0/PHASE3_ACCEPTANCE_GATES.md`.
+canonical statement-hash crosswalk. This is an accepted v1.3.0 development state,
+not a v1.3.0 release. See `release/v1.3.0/PHASE3_ACCEPTANCE_GATES.md` and
+`release/v1.3.0/PHASE3_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ### Phase 2 closed baseline
 
@@ -85,6 +91,7 @@ python scripts/verify_phase1_alignment.py
 python scripts/verify_phase2_expansion.py
 python scripts/verify_phase2_ci_closure.py
 python scripts/verify_phase3_expansion.py
+python scripts/verify_phase3_ci_closure.py
 cd lean && lake build
 cd ../coq && make
 ```

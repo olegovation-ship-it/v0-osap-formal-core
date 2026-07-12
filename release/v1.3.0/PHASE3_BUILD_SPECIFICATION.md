@@ -4,8 +4,9 @@
 **Date:** 2026-07-11
 **Target branch:** `v1.3.0-development`
 **Baseline:** Phase 2 accepted, CI-closed, merged, and historically preserved; immutable `v1.2.0` remains unchanged
-**Implementation state:** `BUILD_READY / CI_PENDING`
+**Implementation state:** `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`
 **Phase 2 closure integration:** PR `#3`, merge commit `6f279860121c92e322e55271092f7ba05f483366`
+**Phase 3 implementation integration:** PR `#4`, head commit `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4`, merge commit `c02b05f667b82aa31ac8865c31219b94b1fc74d2`
 **Author:** Dmytro Panasenko, Independent Researcher
 
 ## 1. Decision summary
@@ -63,6 +64,8 @@ Each target has one positive fixture and one decisive countermodel. The statemen
 10. Coq build passes.
 11. `git diff --check` passes.
 12. GitHub Actions returns an all-green matrix before acceptance or merge.
+
+All gates passed for PR #4. The implementation is accepted, merged, and historically preserved. The machine-readable record is `PHASE3_CI_CLOSURE_EVIDENCE.json`; the narrative record is `PHASE3_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ## 8. Release and claim boundary
 

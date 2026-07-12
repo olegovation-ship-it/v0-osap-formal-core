@@ -1,12 +1,16 @@
 # Theorem-target register
 
-The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 stages T133-T138 as build-ready and Actions-pending.
+The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary.
 
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
+Immutable baseline DOI: `10.5281/zenodo.21306969`.
 Phase 1 patch status: `ACCEPTED / CI PASS`.
 Phase 2 head commit: `90865cca5fafde161254b7e313621d369ae5efc5`.
 Phase 2 merge commit: `f494cd9401e2b9ff91d87de77e11f4eb2468726c`.
 Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+Phase 3 head commit: `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4`.
+Phase 3 merge commit: `c02b05f667b82aa31ac8865c31219b94b1fc74d2`.
+Phase 3 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 
 | ID | Canonical name | Python after Phase 1 | Lean 4 | Coq | Phase 1 status |
 |---|---|---:|---:|---:|---|
@@ -36,16 +40,15 @@ Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 
 Phase 2 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI and does not claim completion of T133-T150.
 
-
 ## Phase 3 theorem expansion
 
 | ID | Canonical name | Python | Lean 4 | Coq | Status |
 |---|---|---|---|---|---|
-| T133 | Fresh-token reactivation | token-history/fresh-ID audit | T133_fresh_token_reactivation | T133_fresh_token_reactivation | build-ready; Actions pending |
-| T134 | Raw residual obstruction | raw residual live-set audit | T134_raw_residual_obstruction | T134_raw_residual_obstruction | build-ready; Actions pending |
-| T135 | Robust residual obstruction | non-eliminable residual audit | T135_robust_residual_obstruction | T135_robust_residual_obstruction | build-ready; Actions pending |
-| T136 | Relative-to-absolute non-promotion | source-claim firewall | T136_relative_to_absolute_non_promotion | T136_relative_to_absolute_non_promotion | build-ready; Actions pending |
-| T137 | Approximation non-identity | approximation-identity firewall | T137_approximation_non_identity | T137_approximation_non_identity | build-ready; Actions pending |
-| T138 | Terminal self-certification limit | cross-state certification audit | T138_terminal_self_certification_limit | T138_terminal_self_certification_limit | build-ready; Actions pending |
+| T133 | Fresh-token reactivation | token-history/fresh-ID audit | T133_fresh_token_reactivation | T133_fresh_token_reactivation | accepted; CI passed; merged |
+| T134 | Raw residual obstruction | raw residual live-set audit | T134_raw_residual_obstruction | T134_raw_residual_obstruction | accepted; CI passed; merged |
+| T135 | Robust residual obstruction | non-eliminable residual audit | T135_robust_residual_obstruction | T135_robust_residual_obstruction | accepted; CI passed; merged |
+| T136 | Relative-to-absolute non-promotion | source-claim firewall | T136_relative_to_absolute_non_promotion | T136_relative_to_absolute_non_promotion | accepted; CI passed; merged |
+| T137 | Approximation non-identity | approximation-identity firewall | T137_approximation_non_identity | T137_approximation_non_identity | accepted; CI passed; merged |
+| T138 | Terminal self-certification limit | cross-state certification audit | T138_terminal_self_certification_limit | T138_terminal_self_certification_limit | accepted; CI passed; merged |
 
-Phase 3 is not accepted or released until the full local and GitHub Actions matrix passes. The immutable v1.2.0 tag and DOI remain unchanged.
+Phase 3 acceptance is a v1.3.0 development result. It does not mutate the immutable v1.2.0 tag or DOI and does not claim completion of T139-T150.

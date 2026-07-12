@@ -5,8 +5,16 @@
   "baseline_doi": "10.5281/zenodo.21306969",
   "phase1_status": "ACCEPTED_CI_PASS",
   "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
-  "phase3_status": "BUILD_READY_CI_PENDING",
+  "phase3_status": "ACCEPTED_CI_PASS_MERGED",
   "theorem_range": "T133-T138",
+  "pull_request": 4,
+  "head_commit": "2172591ed8a5ab3c1fa31f2a3a6575536f161fe4",
+  "merge_commit": "c02b05f667b82aa31ac8865c31219b94b1fc74d2",
+  "merged_at_utc": "2026-07-11T21:56:58Z",
+  "github_pr_checks": 8,
+  "python_tests": 112,
+  "historical_preservation": "PASS",
+  "closure_evidence": "release/v1.3.0/PHASE3_CI_CLOSURE_EVIDENCE.json",
   "records": [
     {
       "theorem_id": "T133",
@@ -30,10 +38,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "2da3a4a7ca0567b579b1f0e3cad693bc9c2df26a8db5196e5ad0a1c8b57d9373"
     },
     {
@@ -58,10 +65,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "58eab9c062025ffc1a1c792cdd11562456664f53122b2f676d820da3334f42cd"
     },
     {
@@ -86,10 +92,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "73d80a3be8e1ee97942f304f68a1d91ad1e668c655d487e8894ddd62b3865301"
     },
     {
@@ -114,10 +119,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "15ac52baef0a828ad24d200d1c99b5f774bb9824e3ae66fceea71cf6d0272635"
     },
     {
@@ -142,10 +146,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "cb193d0dfed6153718fef1e9189c33ef35a0cfa0758da730e81ee5dfd67b4b17"
     },
     {
@@ -170,10 +173,9 @@
       ],
       "source_section": "V0 OSAP v1.1 section 20",
       "claim_limitations": [
-        "finite accepted fragment only",
-        "CI acceptance pending"
+        "finite accepted fragment only"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "ce0b7004c27377f29750e0ea136d3064cfeccda9d3463bc3bd473c5dfd20a2ab"
     }
   ]

@@ -1,0 +1,89 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_phase3_ci_closure_evidence",
+  "artifact_version": "0.1",
+  "date": "2026-07-12",
+  "status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "theorem_range": "T133-T138",
+  "pull_request": {
+    "number": 4,
+    "title": "V0 OSAP v1.3.0 Phase 3: firewall expansion T133-T138",
+    "base": "main",
+    "head": "v1.3.0-development",
+    "head_sha": "2172591ed8a5ab3c1fa31f2a3a6575536f161fe4",
+    "merge_commit_sha": "c02b05f667b82aa31ac8865c31219b94b1fc74d2",
+    "merged_at_utc": "2026-07-11T21:56:58Z",
+    "commits": 2,
+    "changed_files": 50,
+    "additions": 1848,
+    "deletions": 20,
+    "pr_check_total": 8,
+    "pr_check_result": "PASS"
+  },
+  "workflow_runs": [
+    {
+      "name": "Release readiness",
+      "run_id": 29169371389,
+      "run_number": 30,
+      "conclusion": "success",
+      "jobs": [
+        "immutable-v1-2-baseline",
+        "v1-3-development-readiness"
+      ]
+    },
+    {
+      "name": "Python checker",
+      "run_id": 29169371387,
+      "run_number": 18,
+      "conclusion": "success"
+    },
+    {
+      "name": "Lean 4",
+      "run_id": 29169371384,
+      "run_number": 18,
+      "conclusion": "success"
+    },
+    {
+      "name": "Schema validation",
+      "run_id": 29169371379,
+      "run_number": 18,
+      "conclusion": "success"
+    },
+    {
+      "name": "Coq",
+      "run_id": 29169371374,
+      "run_number": 18,
+      "conclusion": "success"
+    }
+  ],
+  "local_validation": {
+    "python_tests": 112,
+    "schema_bundle": "PASS",
+    "fixture_replay": "PASS",
+    "proof_hole_scan": "PASS",
+    "phase1_preservation": "PASS",
+    "phase2_expansion": "PASS",
+    "phase2_ci_closure": "PASS",
+    "phase3_verifier": "PASS",
+    "lean4_build": "PASS",
+    "coq_build": "PASS",
+    "diff_check": "PASS"
+  },
+  "historical_preservation": {
+    "baseline_tag": "v1.2.0",
+    "baseline_doi": "10.5281/zenodo.21306969",
+    "manifest_verifier_retained": true,
+    "closure_verifier_retained": true,
+    "phase1_record_retained": true,
+    "phase2_record_retained": true,
+    "branch_sync_to_merge_commit": true,
+    "tag_moved_or_retagged": false,
+    "new_doi_created": false
+  },
+  "claim_boundary": {
+    "v1_3_0_released": false,
+    "theorem_completeness_claimed": false,
+    "cross_assistant_proof_identity_claimed": false,
+    "checker_completeness_claimed": false,
+    "empirical_or_physical_validation_claimed": false
+  }
+}

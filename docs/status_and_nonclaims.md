@@ -3,11 +3,15 @@
 ## v1.3.0 Phase 3
 
 - Scope: T133-T138.
-- Status: `BUILD_READY / CI_PENDING`.
+- Status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+- PR #4: 8/8 checks passed.
+- Head commit: `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4`.
+- Merge commit: `c02b05f667b82aa31ac8865c31219b94b1fc74d2`.
 - Checker development version: `0.4.0.dev1`.
-- Twelve paired fixtures and Lean 4 / Coq modules are staged.
+- Python suite: 112 tests passed.
+- Twelve paired fixtures and Lean 4 / Coq modules are accepted in the development tree.
 - Phase 1 and Phase 2 accepted states remain preserved.
-- No v1.3.0 release, Phase 3 acceptance, theorem-completeness, proof-identity, or empirical claim.
+- No v1.3.0 release, theorem-completeness, proof-identity, checker-completeness, or empirical claim.
 
 ## v1.3.0 Phase 2
 
@@ -26,7 +30,7 @@
 - Tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain immutable.
 - The archived baseline remains the bounded dual-backend compiler-passed T121-T126 release.
 - The immutable baseline CI job executes proof-hole, schema, fixture, manifest, and closure verification.
-- The Phase 2 closure package is a development-history patch and does not rewrite the archived release.
+- The Phase 2 and Phase 3 closure packages are development-history patches and do not rewrite the archived release.
 
 ## v1.3.0 Phase 1 assertions
 
@@ -46,10 +50,20 @@
 - T131 separates `UNDEFINED_DOMAIN` from every numeric value, including zero.
 - T132 requires historical evidence and current no-live state for accepted DLE.
 
+## v1.3.0 Phase 3 assertions
+
+- T133 requires a distinct live token identifier for reactivation while preserving carrier, register, and context coordinates.
+- T134 blocks raw relative V0 when any declared residual remains live.
+- T135 blocks robust relative V0 when any declared non-eliminable residual remains live.
+- T136 prevents direct relative-to-absolute V0 promotion.
+- T137 prevents approximation certificates from licensing V0 identity.
+- T138 forbids same-state terminal self-certification.
+
 ## Acceptance state
 
 - Phase 1 status: `ACCEPTED / CI PASS`.
 - Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+- Phase 3 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Package-level static verification: PASS.
 - Python test suite and schema/fixture replay: PASS.
 - Proof-hole scan: PASS.
@@ -61,7 +75,7 @@
 ## Explicit non-claims
 
 - No release claim for v1.3.0.
-- No accepted theorem IDs beyond T132; T133-T138 are build-ready and CI-pending.
+- No accepted theorem IDs beyond T138 in the current v1.3.0 development state.
 - No complete mechanization claim for T1-T150 or T121-T150.
 - No formal equivalence or proof-term identity claim among Python, Lean 4, and Coq.
 - No checker-completeness claim.

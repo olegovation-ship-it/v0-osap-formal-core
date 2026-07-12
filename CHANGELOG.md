@@ -8,7 +8,16 @@
 - Added twelve paired fixtures and Lean 4 / Coq Phase 3 modules.
 - Added a statement-hash theorem crosswalk and Phase 3 verifier.
 - Advanced the development checker to `0.4.0.dev1`.
-- Status is `BUILD_READY / CI_PENDING`; no v1.3.0 release or acceptance is claimed.
+- Status advanced to `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`; no v1.3.0 release is claimed.
+
+### Phase 3 CI closure
+- Recorded PR #4 with 8/8 successful checks.
+- Recorded head commit `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4` and merge commit `c02b05f667b82aa31ac8865c31219b94b1fc74d2`.
+- Recorded 112 passing Python tests, schema and fixture PASS, proof-hole PASS, Phase 1 preservation PASS, Phase 2 expansion and closure PASS, Phase 3 verifier PASS, Lean 4 PASS, and Coq PASS.
+- Advanced T133-T138 theorem-crosswalk parity from `PATCH_READY_CI_PENDING` to `ACCEPTED_CI_PASS`.
+- Added a dedicated Phase 3 CI-closure and historical-preservation verifier.
+- Preserved the immutable v1.2.0 manifest and closure jobs, tag, DOI, and Phase 1 / Phase 2 closure history.
+- Recorded `main` and `v1.3.0-development` as synchronized at the Phase 3 merge commit.
 
 ### Phase 2 theorem expansion T127-T132
 - Added executable rules for closure, one_of support selection, compatibility, protocol readiness, typed dimensional results, and exact DLE history mapping.
@@ -35,7 +44,7 @@
 - Bumped the development checker version to `0.2.0.dev1`.
 
 ### Phase 1 CI closure
-- Advanced Phase 1 from `PATCH_READY / CI_PENDING` to `ACCEPTED / CI_PASS`.
+- Advanced Phase 1 from `PATCH_READY / CI_PENDING` to `ACCEPTED / CI PASS`.
 - Recorded the all-green PR #1 matrix for Schema validation, Python checker, Lean 4, Coq, and Release readiness.
 - Restored `python scripts/verify_closure.py` to the immutable-v1.2.0 baseline job.
 - Added explicit CI-closure and historical-preservation verification.
@@ -49,7 +58,7 @@
 
 ### Release discipline
 - Preserved the immutable `v1.2.0` tag and DOI `10.5281/zenodo.21306969`.
-- Phase 1 and Phase 2 acceptance are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
+- Phase 1, Phase 2, and Phase 3 acceptance are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
 
 ## [1.2.0] - 2026-07-11
 
