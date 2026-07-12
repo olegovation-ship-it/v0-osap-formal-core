@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t151_explicit_extension_provenance",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t151_explicit_extension_provenance.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T151"
+  ],
+  "bound": 6,
+  "oracle_source": "Explicit extension record preserves the v1.1 T150 ceiling and names T151-T156."
+}

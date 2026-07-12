@@ -1,6 +1,6 @@
 {
-  "bundle_id": "V0_OSAP_v1_3_0_phase5_fixture_corpus",
-  "semantic_version": "FC-1-v1.1+phase5",
+  "bundle_id": "V0_OSAP_v1_3_0_phase6_extension_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase6",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
@@ -61,12 +61,25 @@
     "positive/t149_backend_statement_correspondence.fixture.json",
     "negative/t149_backend_statement_hash_mismatch.fixture.json",
     "positive/t150_accepted_fragment_checker_soundness.fixture.json",
-    "negative/t150_checker_pass_unsound.fixture.json"
+    "negative/t150_checker_pass_unsound.fixture.json",
+    "positive/t151_explicit_extension_provenance.fixture.json",
+    "negative/t151_unrecorded_extension.fixture.json",
+    "positive/t152_declared_claim_vocabulary_closure.fixture.json",
+    "negative/t152_undeclared_claim_kind.fixture.json",
+    "positive/t153_diagnostic_envelope_determinism.fixture.json",
+    "negative/t153_diagnostic_envelope_mutation.fixture.json",
+    "positive/t154_evidence_provenance_acyclicity.fixture.json",
+    "negative/t154_evidence_provenance_cycle.fixture.json",
+    "positive/t155_version_lock_coherence.fixture.json",
+    "negative/t155_version_lock_mismatch.fixture.json",
+    "positive/t156_conservative_extension_noninterference.fixture.json",
+    "negative/t156_baseline_result_changed.fixture.json"
   ],
-  "status": "PHASE5_T145_T150_PATCH_ORACLE_SET",
+  "status": "PHASE6_T151_T156_EXTENSION_PATCH_ORACLE_SET",
   "notes": [
-    "Phase 1 through Phase 4 accepted mappings are preserved.",
-    "T145-T150 each have a positive and decisive countermodel fixture.",
-    "Phase 5 remains BUILD_READY / CI_PENDING until local and GitHub Actions closure."
+    "Phase 1 through Phase 5 accepted mappings are preserved.",
+    "T151-T156 are an explicit post-v1.1 v1.3.0 development extension.",
+    "T151-T156 each have a positive and decisive countermodel fixture.",
+    "Phase 6 remains BUILD_READY / CI_PENDING until local and GitHub Actions closure."
   ]
 }

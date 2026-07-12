@@ -640,6 +640,101 @@
           },
           "semantic_obligations_hold": {
             "type": "boolean"
+          },
+          "extension_record_id": {
+            "type": "string"
+          },
+          "extension_namespace": {
+            "type": "string"
+          },
+          "base_theorem_ceiling": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extension_theorem_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^T[0-9]+$"
+            },
+            "uniqueItems": true
+          },
+          "observed_claim_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "declared_claim_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "diagnostic_input_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "diagnostic_ruleset_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "first_diagnostic_envelope": {},
+          "second_diagnostic_envelope": {},
+          "provenance_path_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "version_lock_id": {
+            "type": "string"
+          },
+          "expected_schema_version": {
+            "type": "string"
+          },
+          "expected_language_version": {
+            "type": "string"
+          },
+          "expected_checker_version": {
+            "type": "string"
+          },
+          "expected_semantic_version": {
+            "type": "string"
+          },
+          "current_schema_version": {
+            "type": "string"
+          },
+          "current_language_version": {
+            "type": "string"
+          },
+          "current_checker_version": {
+            "type": "string"
+          },
+          "current_semantic_version": {
+            "type": "string"
+          },
+          "baseline_only_input": {
+            "type": "boolean"
+          },
+          "extension_handlers_isolated": {
+            "type": "boolean"
+          },
+          "baseline_rules_overridden": {
+            "type": "boolean"
+          },
+          "baseline_result_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "extended_result_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
           }
         },
         "allOf": [
@@ -1116,6 +1211,139 @@
                 "rule_lemmas_proved",
                 "implementation_invariants_hold",
                 "semantic_obligations_hold"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "theorem_extension_provenance_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "extension_record_id",
+                "extension_namespace",
+                "base_theorem_ceiling",
+                "extension_theorem_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "claim_vocabulary_closure_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "observed_claim_kinds",
+                "declared_claim_kinds"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "diagnostic_envelope_determinism_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "diagnostic_input_hash",
+                "diagnostic_ruleset_hash",
+                "first_diagnostic_envelope",
+                "second_diagnostic_envelope"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "evidence_provenance_acyclicity_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "provenance_path_ids"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "version_lock_coherence_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "version_lock_id",
+                "expected_schema_version",
+                "expected_language_version",
+                "expected_checker_version",
+                "expected_semantic_version",
+                "current_schema_version",
+                "current_language_version",
+                "current_checker_version",
+                "current_semantic_version"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "conservative_extension_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "baseline_only_input",
+                "extension_handlers_isolated",
+                "baseline_rules_overridden",
+                "baseline_result_hash",
+                "extended_result_hash"
               ]
             }
           }

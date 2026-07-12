@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t155_version_lock_coherence",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t155_version_lock_coherence.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T155"
+  ],
+  "bound": 6,
+  "oracle_source": "The active compatibility tuple equals the declared version lock."
+}

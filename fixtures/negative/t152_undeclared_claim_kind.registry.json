@@ -1,0 +1,69 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:negative:t152_undeclared_claim_kind",
+  "declarations": [
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase6:t152_undeclared_claim_kind",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase6:t152_undeclared_claim_kind",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase6",
+      "supports_claim_ids": [
+        "claim:t152:negative"
+      ],
+      "limitations": [
+        "Finite Phase 6 extension theorem-target fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t152:negative",
+      "kind": "claim_vocabulary_closure_audit",
+      "observed_claim_kinds": [
+        "theorem_extension_provenance_audit",
+        "claim_vocabulary_closure_audit",
+        "diagnostic_envelope_determinism_audit",
+        "evidence_provenance_acyclicity_audit",
+        "version_lock_coherence_audit",
+        "conservative_extension_audit",
+        "hidden_extension_kind"
+      ],
+      "declared_claim_kinds": [
+        "theorem_extension_provenance_audit",
+        "claim_vocabulary_closure_audit",
+        "diagnostic_envelope_determinism_audit",
+        "evidence_provenance_acyclicity_audit",
+        "version_lock_coherence_audit",
+        "conservative_extension_audit"
+      ]
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 6,
+    "extension": "post-v1.1"
+  }
+}

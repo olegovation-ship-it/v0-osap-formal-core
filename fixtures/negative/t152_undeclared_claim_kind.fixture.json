@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t152_undeclared_claim_kind",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t152_undeclared_claim_kind.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "UNDECLARED_EXTENSION_CLAIM_KIND"
+  ],
+  "theorem_targets": [
+    "T152"
+  ],
+  "bound": 6,
+  "oracle_source": "An undeclared extension claim kind is rejected."
+}
