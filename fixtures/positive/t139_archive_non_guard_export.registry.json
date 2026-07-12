@@ -1,0 +1,68 @@
+{
+  "schema_version": "v1.1",
+  "language_version": "FC-1-v1.1",
+  "registry_state_id": "state:positive:t139",
+  "declarations": [
+    {
+      "id": "observer:A",
+      "sort": "Observer"
+    },
+    {
+      "id": "observer:C",
+      "sort": "Observer"
+    },
+    {
+      "id": "reg:observer",
+      "sort": "Register"
+    },
+    {
+      "id": "ctx:C",
+      "sort": "Context"
+    },
+    {
+      "id": "ev:phase4",
+      "sort": "Evidence"
+    }
+  ],
+  "contexts": [
+    "ctx:C"
+  ],
+  "tokens": [],
+  "prerequisite_families": [],
+  "compatibility_constraints": [],
+  "protocols": [],
+  "residual_links": [],
+  "observers": [],
+  "branches": [],
+  "evidence_objects": [
+    {
+      "schema_version": "v1.1",
+      "evidence_id": "ev:phase4",
+      "evidence_type": "fixture_oracle",
+      "evidence_level": "E0_SPECIFIED",
+      "produced_by": "V0_OSAP_v1_3_0_phase4",
+      "supports_claim_ids": [
+        "claim:t139"
+      ],
+      "limitations": [
+        "Finite Phase 4 theorem-target fixture."
+      ],
+      "metadata": {}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim:t139",
+      "kind": "archive_guard_export",
+      "archive_id": "archive:A",
+      "observer_id": "observer:A",
+      "register_id": "reg:observer",
+      "context_id": "ctx:C",
+      "exports_current_guard": false
+    }
+  ],
+  "metadata": {
+    "fixture": true,
+    "phase": 4
+  }
+}

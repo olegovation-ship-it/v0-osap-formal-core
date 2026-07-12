@@ -83,7 +83,7 @@ for document in [acceptance, implementation, readme, changelog, status, register
 assert "passed 8/8 checks" in readme
 assert "111 passing tests" in readme
 assert "Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`." in status
-assert "CI pending" not in register
+assert "Phase 2 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`." in register
 
 for command in [
     "python scripts/verify_manifest.py",

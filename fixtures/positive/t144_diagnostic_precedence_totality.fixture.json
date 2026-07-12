@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t144_diagnostic_precedence_totality",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t144_diagnostic_precedence_totality.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T144"
+  ],
+  "bound": 4,
+  "oracle_source": "The closed precedence order deterministically selects REJECT from the full finite status set."
+}

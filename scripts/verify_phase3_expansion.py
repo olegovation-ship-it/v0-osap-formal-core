@@ -25,11 +25,11 @@ for code in [
  "APPROXIMATION_DOES_NOT_ENTAIL_V0_IDENTITY", "SAME_STATE_SELF_CERTIFICATION_FORBIDDEN"]:
     assert code in semantic
 manifest=load("fixtures/manifest.json")
-assert manifest["semantic_version"] == "FC-1-v1.1+phase3"
-assert manifest["status"] == "PHASE3_T133_T138_PATCH_ORACLE_SET"
+assert manifest["semantic_version"] in {"FC-1-v1.1+phase3", "FC-1-v1.1+phase4"}
+assert manifest["status"] in {"PHASE3_T133_T138_PATCH_ORACLE_SET", "PHASE4_T139_T144_PATCH_ORACLE_SET"}
 workflow=(ROOT/".github/workflows/release-readiness.yml").read_text(encoding="utf-8")
 for command in ["python scripts/verify_phase1_alignment.py","python scripts/verify_phase2_expansion.py","python scripts/verify_phase2_ci_closure.py","python scripts/verify_phase3_expansion.py","python scripts/verify_phase3_ci_closure.py","python scripts/verify_manifest.py","python scripts/verify_closure.py"]:
     assert command in workflow
-assert 'version = "0.4.0.dev1"' in (ROOT/"pyproject.toml").read_text(encoding="utf-8")
-assert '"implementation_version": "v0-osap-fc1/0.4.0.dev1"' in semantic
+assert any(version in (ROOT/"pyproject.toml").read_text(encoding="utf-8") for version in ('version = "0.4.0.dev1"', 'version = "0.5.0.dev1"'))
+assert any(version in semantic for version in ('"implementation_version": "v0-osap-fc1/0.4.0.dev1"', '"implementation_version": "v0-osap-fc1/0.5.0.dev1"'))
 print("PASS: V0 OSAP v1.3.0 accepted Phase 3 T133-T138 theorem cluster verified statically.")

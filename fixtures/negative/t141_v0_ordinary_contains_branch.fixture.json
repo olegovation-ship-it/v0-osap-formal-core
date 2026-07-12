@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t141_v0_ordinary_contains_branch",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t141_v0_ordinary_contains_branch.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "V0_ORDINARY_CONTAINS_FORBIDDEN"
+  ],
+  "theorem_targets": [
+    "T141"
+  ],
+  "bound": 4,
+  "oracle_source": "Countermodel: V0 is asserted to be an ordinary container of a branch."
+}

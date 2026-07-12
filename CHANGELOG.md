@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Phase 4 theorem expansion T139-T144
+- Added executable archive/witness, no-container, branch-distinctness, cardinality, and diagnostic-precedence rules.
+- Added twelve paired fixtures and Lean 4 / Coq Phase 4 modules.
+- Added a canonical statement-hash theorem crosswalk and Phase 4 verifier.
+- Advanced the development checker to `0.5.0.dev1`.
+- Baseline merge commit is `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`.
+- Status is `BUILD_READY / CI_PENDING`; no Phase 4 acceptance or v1.3.0 release is claimed.
+
 ### Phase 3 theorem expansion T133-T138
 - Added executable fresh-token reactivation and residual-obstruction rules.
 - Extended the relative-to-absolute firewall and added approximation-identity and same-state certification firewalls.
@@ -58,7 +66,7 @@
 
 ### Release discipline
 - Preserved the immutable `v1.2.0` tag and DOI `10.5281/zenodo.21306969`.
-- Phase 1, Phase 2, and Phase 3 acceptance are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
+- Phase 1, Phase 2, and Phase 3 acceptance, and the Phase 4 build-ready patch, are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
 
 ## [1.2.0] - 2026-07-11
 

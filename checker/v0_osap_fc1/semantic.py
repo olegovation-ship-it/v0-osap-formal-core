@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any, Iterable
 
-from .diagnostics import Diagnostic, aggregate_status, sort_diagnostics
+from .diagnostics import STATUS_RANK, Diagnostic, aggregate_status, sort_diagnostics
 
 
 def _duplicates(values: Iterable[str]) -> list[str]:
@@ -404,6 +404,120 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
                     path, (str(claim.get("claim_id")), support_state),
                 ))
 
+
+    # Phase 4: T139-T144 archive, witness, branch, cardinality, and diagnostic precedence.
+    evidence_by_id = {
+        str(item.get("evidence_id")): item
+        for item in evidence
+        if isinstance(item, dict) and item.get("evidence_id")
+    }
+    for claim in claims:
+        if not isinstance(claim, dict):
+            continue
+        kind = claim.get("kind")
+        path = "/claims"
+
+        if kind == "archive_guard_export":
+            if claim.get("exports_current_guard") is True:
+                diagnostics.append(Diagnostic(
+                    "ARCHIVE_CANNOT_EXPORT_CURRENT_GUARD", "REJECT", 86,
+                    "An archive preserves evidence but cannot export a current observer guard.",
+                    path, tuple(str(x) for x in [
+                        claim.get("claim_id"), claim.get("archive_id"), claim.get("observer_id")
+                    ]),
+                ))
+
+        elif kind == "external_witness_certificate":
+            external = [str(item) for item in claim.get("external_evidence_ids", [])]
+            independence = [str(item) for item in claim.get("independence_group_ids", [])]
+            admissible = (
+                claim.get("policy_compliant") is True
+                and claim.get("non_circular") is True
+                and claim.get("identity_verified") is True
+                and claim.get("evidence_verified") is True
+                and bool(external)
+                and bool(independence)
+                and all(item in evidence_ids for item in external)
+            )
+            if not admissible:
+                diagnostics.append(Diagnostic(
+                    "INDEPENDENT_WITNESS_CERTIFICATE_UNSUPPORTED", "REJECT", 85,
+                    "An external witness certificate requires policy compliance, non-circularity, verified identity/evidence, external evidence, and an independence group.",
+                    path, tuple(str(x) for x in [
+                        claim.get("claim_id"), claim.get("observer_id"), claim.get("witness_id")
+                    ]), tuple(external),
+                ))
+
+        elif kind == "v0_branch_containment":
+            container = str(claim.get("container_id"))
+            branch = str(claim.get("contained_branch_id"))
+            if declaration_sorts.get(container) != "NullMark" or declaration_sorts.get(branch) != "Branch":
+                diagnostics.append(Diagnostic(
+                    "CONTAINMENT_REFERENCE_SORT_MISMATCH", "REJECT", 82,
+                    "V0 containment audit requires a NullMark container reference and a Branch target reference.",
+                    path, (str(claim.get("claim_id")), container, branch),
+                ))
+            elif claim.get("containment_mode") == "ordinary":
+                diagnostics.append(Diagnostic(
+                    "V0_ORDINARY_CONTAINS_FORBIDDEN", "REJECT", 81,
+                    "V0 has no ordinary Contains relation to a branch in FC-1.",
+                    path, (str(claim.get("claim_id")), container, branch),
+                ))
+
+        elif kind == "branch_distinctness":
+            basis = claim.get("distinctness_basis")
+            proof_evidence = [str(item) for item in claim.get("evidence_ids", [])]
+            if basis == "label_only":
+                diagnostics.append(Diagnostic(
+                    "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS", "REJECT", 80,
+                    "Different branch labels do not prove branch distinctness.",
+                    path, tuple(str(x) for x in [
+                        claim.get("claim_id"), claim.get("left_branch_id"),
+                        claim.get("right_branch_id"), claim.get("left_label"), claim.get("right_label")
+                    ]),
+                ))
+            elif not proof_evidence or not all(item in evidence_ids for item in proof_evidence):
+                diagnostics.append(Diagnostic(
+                    "BRANCH_DISTINCTNESS_EVIDENCE_REQUIRED", "DEFERRED", 79,
+                    "A non-label branch-distinctness basis requires resolved evidence.",
+                    path, tuple(str(x) for x in [
+                        claim.get("claim_id"), claim.get("left_branch_id"), claim.get("right_branch_id")
+                    ]), tuple(proof_evidence),
+                ))
+
+        elif kind == "branch_cardinality":
+            cardinality_kind = claim.get("cardinality_kind")
+            if cardinality_kind != "finite_enumerated":
+                meta_index_id = str(claim.get("meta_index_id") or "")
+                meta_index = evidence_by_id.get(meta_index_id)
+                proof_evidence = [str(item) for item in claim.get("evidence_ids", [])]
+                licensed = (
+                    meta_index is not None
+                    and meta_index.get("evidence_type") == "meta_index_certificate"
+                    and bool(proof_evidence)
+                    and all(item in evidence_ids for item in proof_evidence)
+                )
+                if not licensed:
+                    diagnostics.append(Diagnostic(
+                        "DEFERRED_CARDINALITY_CERT", "DEFERRED", 78,
+                        "A non-finite cardinality claim requires a typed meta-index and proof evidence.",
+                        path, tuple(str(x) for x in [
+                            claim.get("claim_id"), cardinality_kind, meta_index_id
+                        ]), tuple(proof_evidence),
+                    ))
+
+        elif kind == "diagnostic_precedence_audit":
+            statuses = [str(item) for item in claim.get("diagnostic_statuses", [])]
+            primary = max(statuses, key=lambda item: STATUS_RANK[item]) if statuses else "PASS"
+            if str(claim.get("expected_primary_status")) != primary:
+                diagnostics.append(Diagnostic(
+                    "DIAGNOSTIC_PRIMARY_STATUS_MISMATCH", "REJECT", 77,
+                    "The declared primary status disagrees with the fixed diagnostic precedence.",
+                    path, tuple(str(x) for x in [
+                        claim.get("claim_id"), claim.get("expected_primary_status"), primary
+                    ]),
+                ))
+
     claims_by_id = {c.get("claim_id"): c for c in claims if isinstance(c, dict) and c.get("claim_id")}
     for i, claim in enumerate(claims):
         if not isinstance(claim, dict):
@@ -500,5 +614,5 @@ def check_registry(registry: dict[str, Any]) -> dict[str, Any]:
         "registry_state_id": registry.get("registry_state_id"),
         "status": aggregate_status(diagnostics),
         "diagnostics": [d.to_dict() for d in diagnostics],
-        "implementation_version": "v0-osap-fc1/0.4.0.dev1",
+        "implementation_version": "v0-osap-fc1/0.5.0.dev1",
     }

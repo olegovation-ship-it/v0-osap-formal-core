@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t140_noncompliant_witness_certificate",
+  "kind": "countermodel",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t140_noncompliant_witness_certificate.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "INDEPENDENT_WITNESS_CERTIFICATE_UNSUPPORTED"
+  ],
+  "theorem_targets": [
+    "T140"
+  ],
+  "bound": 4,
+  "oracle_source": "Countermodel: the witness is declared non-compliant with the independence policy."
+}

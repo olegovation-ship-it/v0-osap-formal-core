@@ -104,8 +104,7 @@ for document in [
 assert "passed 8/8 checks" in readme
 assert "112 passing tests" in readme
 assert "No accepted theorem IDs beyond T138" in status
-assert "CI pending" not in register
-assert "Actions pending" not in register
+assert "Phase 3 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`." in register
 
 for command in [
     "python scripts/verify_manifest.py",

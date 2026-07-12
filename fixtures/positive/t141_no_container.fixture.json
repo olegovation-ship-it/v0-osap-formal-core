@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t141_no_container",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase4",
+  "input_file": "t141_no_container.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T141"
+  ],
+  "bound": 4,
+  "oracle_source": "The NullMark-to-Branch record explicitly denies ordinary containment."
+}

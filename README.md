@@ -11,6 +11,22 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
+> **PHASE 4 T139-T144 ARCHIVE, BRANCH, CARDINALITY, AND DIAGNOSTIC EXPANSION - BUILD READY / CI PENDING**
+
+Phase 4 adds archive non-guard export, independent-witness conditional sufficiency,
+the no-container and branch-label firewalls, non-finite cardinality licensing, and
+finite diagnostic-precedence totality. Checker version: `0.5.0.dev1`.
+
+The patch includes twelve paired fixtures, Lean 4 and Coq Phase 4 modules, and a
+canonical statement-hash crosswalk. Baseline merge commit:
+`24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`.
+
+This is a build-ready v1.3.0 development patch, not an accepted Phase 4 state and
+not a v1.3.0 release. See `release/v1.3.0/PHASE4_BUILD_SPECIFICATION.md` and
+`release/v1.3.0/PHASE4_ACCEPTANCE_GATES.md`.
+
+### Phase 3 closed baseline
+
 > **PHASE 3 T133-T138 FIREWALL EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 3 adds fresh-token reactivation, raw and robust residual obstruction,
@@ -92,6 +108,7 @@ python scripts/verify_phase2_expansion.py
 python scripts/verify_phase2_ci_closure.py
 python scripts/verify_phase3_expansion.py
 python scripts/verify_phase3_ci_closure.py
+python scripts/verify_phase4_expansion.py
 cd lean && lake build
 cd ../coq && make
 ```
