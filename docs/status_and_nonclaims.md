@@ -3,12 +3,18 @@
 ## v1.3.0 Phase 5
 
 - Scope: T145-T150.
-- Status: `BUILD_READY / CI PENDING`.
-- Baseline merge commit: `2a769d7723470cce59df81262b586abf19b9c750`.
+- Status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+- Implementation baseline merge commit: `2a769d7723470cce59df81262b586abf19b9c750`.
+- PR #8: 8/8 checks passed.
+- Head commit: `977c5404ebc5cdef9495edd1c46b08d3b0452acb`.
+- Merge commit: `5c689de1a30104aa6c4e3860d5e7c26746e2d797`.
+- Merged at: `2026-07-12T19:11:41Z`.
 - Checker development version: `0.6.0.dev1`.
-- Twelve paired fixtures and Lean 4 / Coq modules are staged.
+- Python suite: 14 tests passed.
+- Twelve paired fixtures and Lean 4 / Coq modules are accepted in the development tree.
 - Phase 1 through Phase 4 accepted states remain preserved.
-- No Phase 5 acceptance, v1.3.0 release, theorem-completeness, proof-identity, checker-completeness, or empirical claim.
+- T150 remains conditional on proved rule lemmas and implementation invariants.
+- No v1.3.0 release, theorem-completeness, proof-identity, checker-completeness, unconditional global soundness, or empirical claim.
 
 ## v1.3.0 Phase 4
 
@@ -54,7 +60,7 @@
 - Tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain immutable.
 - The archived baseline remains the bounded dual-backend compiler-passed T121-T126 release.
 - The immutable baseline CI job executes proof-hole, schema, fixture, manifest, and closure verification.
-- The Phase 2, Phase 3, and Phase 4 closure packages are development-history patches and do not rewrite the archived release.
+- The Phase 2, Phase 3, Phase 4, and Phase 5 closure packages are development-history patches and do not rewrite the archived release.
 
 ## v1.3.0 Phase 1 assertions
 
@@ -103,7 +109,7 @@
 
 ## Acceptance state
 
-- Phase 5 status: `BUILD_READY / CI PENDING`.
+- Phase 5 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 1 status: `ACCEPTED / CI PASS`.
 - Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 3 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
@@ -119,7 +125,7 @@
 ## Explicit non-claims
 
 - No release claim for v1.3.0.
-- No accepted theorem IDs beyond T144 in the current v1.3.0 development state; T145-T150 are build-ready and CI-pending.
+- No accepted theorem IDs beyond T150 in the current v1.3.0 development state.
 - No complete mechanization claim for T1-T150 or T121-T150.
 - No formal equivalence or proof-term identity claim among Python, Lean 4, and Coq.
 - No checker-completeness claim.

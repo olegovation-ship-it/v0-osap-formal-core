@@ -11,6 +11,15 @@
 - Baseline merge commit is `2a769d7723470cce59df81262b586abf19b9c750`.
 - Status is `BUILD_READY / CI_PENDING`; no Phase 5 acceptance or v1.3.0 release is claimed.
 
+### Phase 5 CI closure
+- Recorded PR #8 with 8/8 successful checks.
+- Recorded head commit `977c5404ebc5cdef9495edd1c46b08d3b0452acb` and merge commit `5c689de1a30104aa6c4e3860d5e7c26746e2d797`.
+- Recorded 14 passing Python tests, schema and fixture PASS, proof-hole PASS, Phase 1 preservation PASS, Phase 2-4 expansion/closure PASS, Phase 5 verifier PASS, Lean 4 PASS, and Coq PASS.
+- Advanced T145-T150 theorem-crosswalk parity from `PATCH_READY_CI_PENDING` to `ACCEPTED_CI_PASS`.
+- Added a dedicated Phase 5 CI-closure and historical-preservation verifier.
+- Preserved the immutable v1.2.0 manifest and closure jobs, tag, DOI `10.5281/zenodo.21306969`, and Phase 1-4 closure history.
+- Recorded the Phase 5 implementation merge baseline `5c689de1a30104aa6c4e3860d5e7c26746e2d797` for development-branch synchronization.
+
 ### Phase 4 theorem expansion T139-T144
 - Added executable archive/witness, no-container, branch-distinctness, cardinality, and diagnostic-precedence rules.
 - Added twelve paired fixtures and Lean 4 / Coq Phase 4 modules.

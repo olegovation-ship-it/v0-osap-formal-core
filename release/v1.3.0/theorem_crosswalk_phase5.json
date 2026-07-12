@@ -6,7 +6,7 @@
   "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
   "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
   "phase4_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
-  "phase5_status": "BUILD_READY_CI_PENDING",
+  "phase5_status": "ACCEPTED_CI_PASS_MERGED",
   "checker_version": "0.6.0.dev1",
   "records": [
     {
@@ -29,7 +29,7 @@
       "countermodel_fixture": "fixture:negative:t145_wrong_canonical_hash",
       "limitation": "Hash equality identifies canonical bytes, not semantic truth or provenance truth.",
       "canonical_statement_sha256": "2df8857445301e8dda38d555647c198437ed9c9f482922f0880c8be7be1b5893",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     },
     {
       "theorem_id": "T146",
@@ -50,7 +50,7 @@
       "countermodel_fixture": "fixture:negative:t146_round_trip_mutation",
       "limitation": "The theorem covers the accepted JSON-compatible FC-1 representation only.",
       "canonical_statement_sha256": "3c453a5aa785c2f52c21720087ddb0f1ed47ed2256dbad87691bd8df6f4d8478",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     },
     {
       "theorem_id": "T147",
@@ -74,7 +74,7 @@
       "countermodel_fixture": "fixture:negative:t147_nondeterministic_replay",
       "limitation": "Determinism is conditional on fully pinned inputs and absence of hidden state.",
       "canonical_statement_sha256": "f762e4b5037e39b17724604a05323e91ecba573f41cda648778b1e65c431434e",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     },
     {
       "theorem_id": "T148",
@@ -96,7 +96,7 @@
       "countermodel_fixture": "fixture:negative:t148_hidden_parser_coercion",
       "limitation": "The audit establishes migration visibility, not automatic semantic compatibility.",
       "canonical_statement_sha256": "7e0d91ab43ca45ec56177e070e4faff0346e912ccae7f1ac7b6b08f917543074",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     },
     {
       "theorem_id": "T149",
@@ -117,7 +117,7 @@
       "countermodel_fixture": "fixture:negative:t149_backend_statement_hash_mismatch",
       "limitation": "Statement-hash correspondence does not imply proof-term identity.",
       "canonical_statement_sha256": "761c82d404861815d936b908ef52ff2d5514f7b62c7672e010dab8d0bb8938e2",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     },
     {
       "theorem_id": "T150",
@@ -140,7 +140,15 @@
       "countermodel_fixture": "fixture:negative:t150_checker_pass_unsound",
       "limitation": "This is a conditional accepted-fragment theorem, not checker completeness or full-theory soundness.",
       "canonical_statement_sha256": "1a755ddc81c06562926e634389401eb42e43fe8ea5f53a5792cd1e46a0012906",
-      "parity_status": "PATCH_READY_CI_PENDING"
+      "parity_status": "ACCEPTED_CI_PASS"
     }
-  ]
+  ],
+  "closure_evidence": "release/v1.3.0/PHASE5_CI_CLOSURE_EVIDENCE.json",
+  "pull_request": 8,
+  "head_commit": "977c5404ebc5cdef9495edd1c46b08d3b0452acb",
+  "merge_commit": "5c689de1a30104aa6c4e3860d5e7c26746e2d797",
+  "merged_at_utc": "2026-07-12T19:11:41Z",
+  "github_pr_checks": 8,
+  "python_tests": 14,
+  "historical_preservation": "PASS"
 }

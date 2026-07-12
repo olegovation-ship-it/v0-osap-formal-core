@@ -4,15 +4,18 @@
 **Date:** 2026-07-12
 **Target branch:** `v1.3.0-development`
 **Baseline:** Phase 4 accepted, CI-closed, merged, and historically preserved
-**Baseline merge commit:** `2a769d7723470cce59df81262b586abf19b9c750`
-**Implementation state:** `BUILD_READY / CI_PENDING`
+**Implementation baseline merge commit:** `2a769d7723470cce59df81262b586abf19b9c750`
+**Implementation head commit:** `977c5404ebc5cdef9495edd1c46b08d3b0452acb`
+**Implementation merge commit:** `5c689de1a30104aa6c4e3860d5e7c26746e2d797`
+**Merged at:** `2026-07-12T19:11:41Z`
+**Implementation state:** `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`
 **Immutable release baseline:** tag `v1.2.0`, DOI `10.5281/zenodo.21306969`
 **Checker development version:** `0.6.0.dev1`
 **Author:** Dmytro Panasenko, Independent Researcher
 
 ## 1. Decision summary
 
-Phase 5 completes the reserved v1.1 theorem-target interval T121-T150 by implementing the deterministic interchange, replay, migration, backend-correspondence, and conditional accepted-fragment soundness cluster T145-T150. It does not release v1.3.0 and does not enlarge or rewrite the archived v1.2.0 claim.
+Phase 5 completes the reserved v1.1 theorem-target interval T121-T150 by implementing the deterministic interchange, replay, migration, backend-correspondence, and conditional accepted-fragment soundness cluster T145-T150. PR #8 passed 8/8 checks and merged the implementation head `977c5404ebc5cdef9495edd1c46b08d3b0452acb` into `main` as `5c689de1a30104aa6c4e3860d5e7c26746e2d797`. This closes the Phase 5 development state; it does not release v1.3.0 and does not enlarge or rewrite the archived v1.2.0 claim.
 
 | ID | Canonical theorem target | Executable obligation |
 |---|---|---|
@@ -59,24 +62,26 @@ The canonical utility layer adds strict canonical parsing, round-trip replay, an
 
 ## 6. Fixture and crosswalk contract
 
-Each theorem target has one positive fixture and one decisive countermodel. The Phase 5 crosswalk records canonical statements, assumptions, conclusions, backend symbols, validator rules, diagnostics, fixture IDs, limitations, and SHA-256 statement hashes.
+Each theorem target has one positive fixture and one decisive countermodel. The Phase 5 crosswalk records canonical statements, assumptions, conclusions, backend symbols, validator rules, diagnostics, fixture IDs, limitations, and SHA-256 statement hashes. After CI closure every Phase 5 record has parity status `ACCEPTED_CI_PASS`.
 
-## 7. Acceptance gates
+## 7. Acceptance evidence
 
-1. Baseline merge commit `2a769d7723470cce59df81262b586abf19b9c750` is an ancestor of the development branch.
-2. Editable Python install passes.
-3. Full Python regression suite passes with expected total 14 tests.
-4. Schema bundle validation passes.
-5. Deterministic replay of all fixtures passes.
-6. Proof-hole scan passes.
-7. Phase 1 preservation passes.
-8. Phase 2, Phase 3, and Phase 4 expansion/closure verifiers pass.
-9. Phase 5 expansion verifier passes.
-10. Lean 4 build passes.
-11. Coq build passes.
-12. `git diff --check` passes.
-13. The complete GitHub Actions matrix passes before acceptance.
+1. Implementation baseline merge commit `2a769d7723470cce59df81262b586abf19b9c750` is preserved.
+2. Python regression suite passed with 14 tests.
+3. Schema bundle validation passed.
+4. Deterministic replay of all fixtures passed.
+5. Proof-hole scan passed.
+6. Phase 1 preservation and Phase 2-4 expansion/closure verifiers passed.
+7. Phase 5 expansion verifier passed.
+8. Lean 4 build passed.
+9. Coq build passed.
+10. `git diff --check` passed.
+11. PR #8 passed 8/8 GitHub Actions checks.
+12. Implementation head `977c5404ebc5cdef9495edd1c46b08d3b0452acb` merged into `main` as `5c689de1a30104aa6c4e3860d5e7c26746e2d797`.
+13. Historical-preservation audit passed.
+
+See `release/v1.3.0/PHASE5_CI_CLOSURE_EVIDENCE.json` and `release/v1.3.0/PHASE5_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ## 8. Claim boundary
 
-This patch does not move or retag `v1.2.0`, does not alter DOI `10.5281/zenodo.21306969`, does not create a v1.3.0 release, and does not claim checker completeness, proof-term identity, semantic equivalence of backend implementations, physical validity, or empirical validation. T150 remains conditional on proved rule lemmas and implementation invariants.
+This closure does not move or retag `v1.2.0`, does not alter DOI `10.5281/zenodo.21306969`, does not create a v1.3.0 release, and does not claim checker completeness, proof-term identity, semantic equivalence of backend implementations, physical validity, or empirical validation. T150 remains conditional on proved rule lemmas and implementation invariants.

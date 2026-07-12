@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,7 +14,7 @@ crosswalk = load("release/v1.3.0/theorem_crosswalk_phase5.json")
 assert crosswalk["theorem_range"] == "T145-T150"
 assert crosswalk["baseline_merge_commit"] == "2a769d7723470cce59df81262b586abf19b9c750"
 assert crosswalk["phase4_status"] == "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED"
-assert crosswalk["phase5_status"] == "BUILD_READY_CI_PENDING"
+assert crosswalk["phase5_status"] in {"BUILD_READY_CI_PENDING", "ACCEPTED_CI_PASS_MERGED"}
 
 lean = (ROOT / "lean/V0OSAP/Phase5.lean").read_text(encoding="utf-8")
 coq = (ROOT / "coq/theories/Phase5.v").read_text(encoding="utf-8")
@@ -39,7 +40,7 @@ for row in crosswalk["records"]:
     assert row["canonical_statement_sha256"] == expected
     assert row["lean_symbol"].split(".")[-1] in lean
     assert row["coq_symbol"] in coq
-    assert row["parity_status"] == "PATCH_READY_CI_PENDING"
+    assert row["parity_status"] in {"PATCH_READY_CI_PENDING", "ACCEPTED_CI_PASS"}
 
 for code in [
     "CANONICAL_SERIALIZATION_HASH_MISMATCH",
@@ -88,9 +89,11 @@ status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")
 register = (ROOT / "docs/theorem_register.md").read_text(encoding="utf-8")
 for text in (readme, status, register):
     assert "T145-T150" in text
-    assert any(marker in text for marker in ("BUILD_READY", "BUILD READY"))
+    assert any(marker in text for marker in ("BUILD_READY", "BUILD READY", "ACCEPTED / CI PASS"))
     assert "2a769d7723470cce59df81262b586abf19b9c750" in text
     assert "10.5281/zenodo.21306969" in text
 
-assert "No accepted theorem IDs beyond T144" in status
+accepted_boundary = re.search(r"No accepted theorem IDs beyond T(\d+)", status)
+assert accepted_boundary is not None
+assert int(accepted_boundary.group(1)) >= 144
 print("PASS: V0 OSAP v1.3.0 Phase 5 T145-T150 theorem cluster verified statically.")
