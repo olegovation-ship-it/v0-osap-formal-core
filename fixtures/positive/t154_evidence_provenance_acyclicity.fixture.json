@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t154_evidence_provenance_acyclicity",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t154_evidence_provenance_acyclicity.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T154"
+  ],
+  "bound": 6,
+  "oracle_source": "A finite provenance path with distinct identifiers is acyclic."
+}

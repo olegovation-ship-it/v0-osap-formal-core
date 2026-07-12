@@ -1,0 +1,150 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_PHASE6_T151_T156_EXTENSION",
+  "theorem_range": "T151-T156",
+  "extension_status": "POST_V1_1_EXPLICIT_DEVELOPMENT_EXTENSION",
+  "normative_v1_1_reserved_range": "T121-T150",
+  "baseline_merge_commit": "8053709c73045f59358244ec58afc84cfd0deeb6",
+  "phase1_status": "ACCEPTED_CI_PASS",
+  "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase4_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase5_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase6_status": "BUILD_READY_CI_PENDING",
+  "checker_version": "0.7.0.dev1",
+  "records": [
+    {
+      "theorem_id": "T151",
+      "canonical_name": "Explicit extension provenance",
+      "formal_signature": "ExtensionTarget(t) -> BaseCeiling=150 and ExtensionRecord(t) and Namespace(t)",
+      "assumptions": [
+        "POST_V1_1_EXTENSION",
+        "EXPLICIT_EXTENSION_RECORD",
+        "BASE_CEILING_T150"
+      ],
+      "conclusion": "Every theorem target beyond the normative v1.1 ceiling is introduced by an explicit, namespaced extension record.",
+      "lean_symbol": "V0OSAP.T151_explicit_extension_provenance",
+      "coq_symbol": "T151_explicit_extension_provenance",
+      "python_rule": "theorem_extension_provenance_audit",
+      "diagnostics": [
+        "EXTENSION_PROVENANCE_RECORD_REQUIRED",
+        "EXTENSION_BASE_CEILING_MISMATCH",
+        "EXTENSION_THEOREM_RANGE_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t151_explicit_extension_provenance",
+      "countermodel_fixture": "fixture:negative:t151_unrecorded_extension",
+      "limitation": "This establishes repository-local provenance for the T151-T156 development extension; it does not retroactively amend the normative v1.1 document.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "71b249ed11c2d9db6378b5ccbdd868a62321d4ff7d5c60a200b344b965c7042f"
+    },
+    {
+      "theorem_id": "T152",
+      "canonical_name": "Declared claim-vocabulary closure",
+      "formal_signature": "ObservedKinds(input) subset DeclaredKinds(extension)",
+      "assumptions": [
+        "FINITE_OBSERVED_KIND_SET",
+        "EXPLICIT_DECLARED_VOCABULARY"
+      ],
+      "conclusion": "Every observed extension claim kind belongs to the declared Phase 6 claim vocabulary.",
+      "lean_symbol": "V0OSAP.T152_declared_claim_vocabulary_closure",
+      "coq_symbol": "T152_declared_claim_vocabulary_closure",
+      "python_rule": "claim_vocabulary_closure_audit",
+      "diagnostics": [
+        "UNDECLARED_EXTENSION_CLAIM_KIND"
+      ],
+      "positive_fixture": "fixture:positive:t152_declared_claim_vocabulary_closure",
+      "countermodel_fixture": "fixture:negative:t152_undeclared_claim_kind",
+      "limitation": "Vocabulary closure is bounded to the audited claim-kind lists and is not a completeness claim for all future extensions.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "3fbe6f0a13dcd52915789ceb436da7ae4cad1c2bcca4f72c1103a7798917033a"
+    },
+    {
+      "theorem_id": "T153",
+      "canonical_name": "Diagnostic envelope determinism",
+      "formal_signature": "Pinned(input,ruleset) -> Hash(Diagnostics1)=Hash(Diagnostics2)",
+      "assumptions": [
+        "PINNED_DIAGNOSTIC_INPUT",
+        "PINNED_RULESET",
+        "CANONICAL_DIAGNOSTIC_ENVELOPE"
+      ],
+      "conclusion": "Repeated diagnostic evaluation under pinned inputs yields one canonical diagnostic envelope.",
+      "lean_symbol": "V0OSAP.T153_diagnostic_envelope_determinism",
+      "coq_symbol": "T153_diagnostic_envelope_determinism",
+      "python_rule": "diagnostic_envelope_determinism_audit",
+      "diagnostics": [
+        "DIAGNOSTIC_REPLAY_INPUTS_NOT_PINNED",
+        "DIAGNOSTIC_ENVELOPE_NONDETERMINISTIC"
+      ],
+      "positive_fixture": "fixture:positive:t153_diagnostic_envelope_determinism",
+      "countermodel_fixture": "fixture:negative:t153_diagnostic_envelope_mutation",
+      "limitation": "Determinism is conditional on pinned inputs, canonical serialization, and absence of hidden state.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "11c2da228164740868dcbad94fd08e073d8eaca1b6c3a6e31fbac6f9267648d6"
+    },
+    {
+      "theorem_id": "T154",
+      "canonical_name": "Evidence provenance acyclicity",
+      "formal_signature": "FinitePath(p) and Nodup(p) -> AcyclicEvidenceProvenance(p)",
+      "assumptions": [
+        "FINITE_PROVENANCE_PATH",
+        "IDENTIFIER_EQUALITY"
+      ],
+      "conclusion": "A finite evidence-provenance path with pairwise distinct evidence identifiers contains no cycle.",
+      "lean_symbol": "V0OSAP.T154_evidence_provenance_acyclicity",
+      "coq_symbol": "T154_evidence_provenance_acyclicity",
+      "python_rule": "evidence_provenance_acyclicity_audit",
+      "diagnostics": [
+        "EVIDENCE_PROVENANCE_CYCLE"
+      ],
+      "positive_fixture": "fixture:positive:t154_evidence_provenance_acyclicity",
+      "countermodel_fixture": "fixture:negative:t154_evidence_provenance_cycle",
+      "limitation": "The executable rule checks explicit finite paths; it does not infer omitted provenance edges.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "58385a599ea3e1854a9536a752b8bf7873c7f5e0fbc3ca3338c8379338cd861c"
+    },
+    {
+      "theorem_id": "T155",
+      "canonical_name": "Version-lock coherence",
+      "formal_signature": "CurrentTuple(schema,language,checker,semantics)=ExpectedLockTuple",
+      "assumptions": [
+        "EXPLICIT_VERSION_LOCK",
+        "FOUR_COMPONENT_COMPATIBILITY_TUPLE"
+      ],
+      "conclusion": "The active schema, language, checker, and semantic versions match the declared compatibility lock.",
+      "lean_symbol": "V0OSAP.T155_version_lock_coherence",
+      "coq_symbol": "T155_version_lock_coherence",
+      "python_rule": "version_lock_coherence_audit",
+      "diagnostics": [
+        "VERSION_LOCK_RECORD_REQUIRED",
+        "VERSION_LOCK_TUPLE_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t155_version_lock_coherence",
+      "countermodel_fixture": "fixture:negative:t155_version_lock_mismatch",
+      "limitation": "Tuple equality records compatibility intent; it does not prove semantic equivalence across arbitrary versions.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "50ff01353da45dc93e4684801ee108cc3c82e1c4e2fc670ec9fbebb96a5986c2"
+    },
+    {
+      "theorem_id": "T156",
+      "canonical_name": "Conservative extension non-interference",
+      "formal_signature": "BaselineOnly(x) and Isolated(E) and not Override(E) -> ResultBase(x)=ResultExtended(x)",
+      "assumptions": [
+        "BASELINE_ONLY_INPUT",
+        "EXTENSION_HANDLER_ISOLATION",
+        "NO_BASELINE_RULE_OVERRIDE"
+      ],
+      "conclusion": "Under explicit isolation premises, Phase 6 extension handlers do not change the canonical result for baseline-only inputs.",
+      "lean_symbol": "V0OSAP.T156_conservative_extension_noninterference",
+      "coq_symbol": "T156_conservative_extension_noninterference",
+      "python_rule": "conservative_extension_audit",
+      "diagnostics": [
+        "CONSERVATIVE_EXTENSION_PREMISES_UNPROVED",
+        "BASELINE_RESULT_CHANGED_BY_EXTENSION"
+      ],
+      "positive_fixture": "fixture:positive:t156_conservative_extension_noninterference",
+      "countermodel_fixture": "fixture:negative:t156_baseline_result_changed",
+      "limitation": "The theorem is conditional on handler isolation and no baseline override; it is not a global conservativity theorem for arbitrary code changes.",
+      "parity_status": "PATCH_READY_CI_PENDING",
+      "canonical_statement_sha256": "5eaaa1c210ee125c70fd5dfdc83fd1f4ccb46b54baa6d4e58086adc5e1cc495a"
+    }
+  ]
+}

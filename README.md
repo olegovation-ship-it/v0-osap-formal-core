@@ -11,6 +11,16 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
+> **PHASE 6 T151-T156 EXTENSION PROVENANCE, VOCABULARY, DIAGNOSTIC, EVIDENCE, VERSION-LOCK, AND CONSERVATIVITY EXPANSION - BUILD READY / CI PENDING**
+
+Phase 6 introduces an explicit post-v1.1 development extension for T151-T156. It adds extension provenance, declared claim-vocabulary closure, diagnostic-envelope determinism, finite evidence-provenance acyclicity, version-lock coherence, and conditional conservative non-interference. Checker version: `0.7.0.dev1`.
+
+The implementation baseline is Phase 5 closure merge commit `8053709c73045f59358244ec58afc84cfd0deeb6`. The patch includes twelve paired fixtures, Lean 4 and Coq Phase 6 modules, and a canonical statement-hash crosswalk.
+
+This is a build-ready v1.3.0 development patch, not an accepted Phase 6 state and not a v1.3.0 release. T151-T156 are explicit extension IDs beyond the normative v1.1 ceiling T150. See `release/v1.3.0/PHASE6_BUILD_SPECIFICATION.md` and `release/v1.3.0/PHASE6_ACCEPTANCE_GATES.md`.
+
+### Phase 5 closed baseline
+
 > **PHASE 5 T145-T150 CANONICALIZATION, REPLAY, MIGRATION, CORRESPONDENCE, AND SOUNDNESS EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 5 adds V0-OSAP-CJ-1 canonical serialization and round-trip audits, pinned replay determinism, explicit schema-migration visibility, backend statement-hash correspondence, and conditional accepted-fragment checker soundness. Checker version: `0.6.0.dev1`.

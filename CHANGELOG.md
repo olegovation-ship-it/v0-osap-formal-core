@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased] — Phase 6 build patch
+
+- Added explicit post-v1.1 extension cluster T151-T156.
+- Added extension provenance, declared claim-vocabulary closure, deterministic diagnostic envelopes, evidence-provenance acyclicity, version-lock coherence, and conditional conservative non-interference.
+- Added twelve paired fixtures, Lean 4 and Coq Phase 6 modules, schema extension note, crosswalk, verifier, and CI integration.
+- Baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
+- State: `BUILD_READY / CI_PENDING`.
+- Preserved immutable tag `v1.2.0` and DOI `10.5281/zenodo.21306969`.
+
 ## [Unreleased]
 
 ### Phase 5 theorem expansion T145-T150

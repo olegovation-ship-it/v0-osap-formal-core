@@ -1,5 +1,16 @@
 # Status and non-claims
 
+## v1.3.0 Phase 6
+
+- Scope: T151-T156 explicit post-v1.1 development extension.
+- Status: `BUILD_READY / CI_PENDING`.
+- Baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
+- Checker development version: `0.7.0.dev1`.
+- Twelve paired fixtures and Lean 4 / Coq modules are staged in the development tree.
+- Phase 1 through Phase 5 accepted states remain preserved.
+- T156 remains conditional on extension-handler isolation and no baseline-rule override.
+- No v1.3.0 release, normative-v1.1 amendment, global conservativity, checker-completeness, proof-identity, or empirical claim.
+
 ## v1.3.0 Phase 5
 
 - Scope: T145-T150.
@@ -107,8 +118,18 @@
 - T149 checks canonical statement-hash correspondence between mapped Lean and Coq entries.
 - T150 enforces only conditional accepted-fragment soundness under proved rule lemmas and implementation invariants.
 
+## v1.3.0 Phase 6 assertions
+
+- T151 requires explicit provenance for theorem IDs beyond the normative v1.1 ceiling T150.
+- T152 rejects observed extension claim kinds absent from the declared vocabulary.
+- T153 requires deterministic canonical diagnostic envelopes under pinned inputs.
+- T154 rejects repeated identifiers in explicit finite evidence-provenance paths.
+- T155 requires schema, language, checker, and semantic versions to match a declared lock tuple.
+- T156 preserves baseline-only result hashes only under explicit isolation and no-override premises.
+
 ## Acceptance state
 
+- Phase 6 status: `BUILD_READY / CI PENDING`.
 - Phase 5 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 1 status: `ACCEPTED / CI PASS`.
 - Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.

@@ -55,6 +55,7 @@ assert any(version in semantic for version in (
     '"implementation_version": "v0-osap-fc1/0.4.0.dev1"',
     '"implementation_version": "v0-osap-fc1/0.5.0.dev1"',
     '"implementation_version": "v0-osap-fc1/0.6.0.dev1"',
+    '"implementation_version": "v0-osap-fc1/0.7.0.dev1"',
 ))
 
 lean = (ROOT / "lean/V0OSAP/Observer.lean").read_text(encoding="utf-8")

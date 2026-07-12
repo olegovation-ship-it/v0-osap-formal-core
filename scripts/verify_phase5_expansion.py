@@ -56,8 +56,8 @@ assert 'CANONICALIZATION_ID = "V0-OSAP-CJ-1"' in canonical
 assert "phase5_diagnostics" in semantic
 
 manifest = load("fixtures/manifest.json")
-assert manifest["semantic_version"] == "FC-1-v1.1+phase5"
-assert manifest["status"] == "PHASE5_T145_T150_PATCH_ORACLE_SET"
+assert manifest["semantic_version"] in {"FC-1-v1.1+phase5", "FC-1-v1.1+phase6"}
+assert manifest["status"] in {"PHASE5_T145_T150_PATCH_ORACLE_SET", "PHASE6_T151_T156_EXTENSION_PATCH_ORACLE_SET"}
 
 required_fixtures = {
     "positive/t145_canonical_serialization_determinism.fixture.json",
@@ -81,8 +81,8 @@ assert "python scripts/verify_manifest.py" in workflow
 assert "python scripts/verify_closure.py" in workflow
 
 project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-assert 'version = "0.6.0.dev1"' in project
-assert '"implementation_version": "v0-osap-fc1/0.6.0.dev1"' in semantic
+assert any(version in project for version in ('version = "0.6.0.dev1"', 'version = "0.7.0.dev1"'))
+assert any(version in semantic for version in ('"implementation_version": "v0-osap-fc1/0.6.0.dev1"', '"implementation_version": "v0-osap-fc1/0.7.0.dev1"'))
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8")
 status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t156_conservative_extension_noninterference",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t156_conservative_extension_noninterference.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T156"
+  ],
+  "bound": 6,
+  "oracle_source": "Under explicit isolation premises, a baseline-only result hash is preserved."
+}

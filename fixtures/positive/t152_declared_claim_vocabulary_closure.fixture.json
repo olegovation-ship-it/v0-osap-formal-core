@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t152_declared_claim_vocabulary_closure",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t152_declared_claim_vocabulary_closure.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T152"
+  ],
+  "bound": 6,
+  "oracle_source": "Observed extension vocabulary is a subset of the declared Phase 6 vocabulary."
+}

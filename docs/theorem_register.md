@@ -2,6 +2,8 @@
 
 The normative v1.1 document reserves T121-T150. The immutable v1.2.0 release compiled the initial subset T121-T126. The v1.3.0 Phase 1 development patch corrects executable crosswalk coverage for T122, T124, and T125 without moving or retagging v1.2.0. Phase 2 adds the accepted development cluster T127-T132 without enlarging the archived v1.2.0 release claim. Phase 3 adds the accepted development cluster T133-T138 under the same historical-preservation boundary. Phase 4 adds the accepted development cluster T139-T144 under the same historical-preservation boundary from implementation baseline `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`. Phase 5 adds the accepted final reserved cluster T145-T150 from implementation baseline `2a769d7723470cce59df81262b586abf19b9c750` and merge commit `5c689de1a30104aa6c4e3860d5e7c26746e2d797`.
 
+Phase 6 introduces T151-T156 as an explicit post-v1.1 v1.3.0 development extension from baseline merge commit `8053709c73045f59358244ec58afc84cfd0deeb6`. These IDs are not part of the normative v1.1 reservation. They remain build-ready and CI-pending until dedicated closure.
+
 Baseline evidence commit: `48db564c085aec411552e78eef6c1740bd27a5ac`.
 Immutable baseline DOI: `10.5281/zenodo.21306969`.
 Phase 1 patch status: `ACCEPTED / CI PASS`.
@@ -89,3 +91,19 @@ Phase 5 patch status: `BUILD_READY / CI PENDING`.
 | T150 | Accepted-fragment checker soundness | conditional soundness audit | T150_accepted_fragment_checker_soundness | T150_accepted_fragment_checker_soundness | accepted; CI passed; merged |
 
 Phase 5 is accepted, CI-passed, merged, and historically preserved as a v1.3.0 development state. T150 is conditional on proved rule lemmas and implementation invariants. The immutable v1.2.0 tag and DOI `10.5281/zenodo.21306969` remain unchanged.
+
+## Phase 6 explicit extension
+
+Phase 6 baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
+Phase 6 patch status: `BUILD_READY / CI PENDING`.
+
+| ID | Canonical name | Python | Lean 4 | Coq | Status |
+|---|---|---|---|---|---|
+| T151 | Explicit extension provenance | extension provenance audit | T151_explicit_extension_provenance | T151_explicit_extension_provenance | build ready; CI pending |
+| T152 | Declared claim-vocabulary closure | vocabulary closure audit | T152_declared_claim_vocabulary_closure | T152_declared_claim_vocabulary_closure | build ready; CI pending |
+| T153 | Diagnostic envelope determinism | pinned diagnostic-envelope audit | T153_diagnostic_envelope_determinism | T153_diagnostic_envelope_determinism | build ready; CI pending |
+| T154 | Evidence provenance acyclicity | finite path duplicate audit | T154_evidence_provenance_acyclicity | T154_evidence_provenance_acyclicity | build ready; CI pending |
+| T155 | Version-lock coherence | compatibility tuple audit | T155_version_lock_coherence | T155_version_lock_coherence | build ready; CI pending |
+| T156 | Conservative extension non-interference | conditional baseline-result audit | T156_conservative_extension_noninterference | T156_conservative_extension_noninterference | build ready; CI pending |
+
+T151-T156 are explicit extension identifiers and do not amend the normative v1.1 T121-T150 reservation. The immutable v1.2.0 tag and DOI remain unchanged.

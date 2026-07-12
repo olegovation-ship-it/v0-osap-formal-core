@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:negative:t155_version_lock_mismatch",
+  "kind": "negative",
+  "semantic_version": "FC-1-v1.1+phase6",
+  "input_file": "t155_version_lock_mismatch.registry.json",
+  "expected_status": "REJECT",
+  "expected_diagnostics": [
+    "VERSION_LOCK_TUPLE_MISMATCH"
+  ],
+  "theorem_targets": [
+    "T155"
+  ],
+  "bound": 6,
+  "oracle_source": "A stale checker/semantic tuple violates the Phase 6 version lock."
+}
