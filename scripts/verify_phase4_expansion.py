@@ -15,7 +15,7 @@ crosswalk = load("release/v1.3.0/theorem_crosswalk_phase4.json")
 assert crosswalk["theorem_range"] == "T139-T144"
 assert crosswalk["baseline_merge_commit"] == "24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30"
 assert crosswalk["phase3_status"] == "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED"
-assert crosswalk["phase4_status"] == "BUILD_READY_CI_PENDING"
+assert crosswalk["phase4_status"] in {"BUILD_READY_CI_PENDING", "ACCEPTED_CI_PASS_MERGED"}
 
 lean = (ROOT / "lean/V0OSAP/Phase4.lean").read_text(encoding="utf-8")
 coq = (ROOT / "coq/theories/Phase4.v").read_text(encoding="utf-8")
@@ -42,7 +42,7 @@ for row in crosswalk["records"]:
     assert row["canonical_statement_sha256"] == expected
     assert row["lean_symbol"].split(".")[-1] in lean
     assert row["coq_symbol"] in coq
-    assert row["parity_status"] == "PATCH_READY_CI_PENDING"
+    assert row["parity_status"] in {"PATCH_READY_CI_PENDING", "ACCEPTED_CI_PASS"}
 
 for code in [
     "ARCHIVE_CANNOT_EXPORT_CURRENT_GUARD",
@@ -82,6 +82,7 @@ for command in [
     "python scripts/verify_phase3_expansion.py",
     "python scripts/verify_phase3_ci_closure.py",
     "python scripts/verify_phase4_expansion.py",
+    "python scripts/verify_phase4_ci_closure.py",
     "python scripts/verify_manifest.py",
     "python scripts/verify_closure.py",
 ]:
@@ -96,9 +97,9 @@ status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")
 register = (ROOT / "docs/theorem_register.md").read_text(encoding="utf-8")
 for text in (readme, status, register):
     assert "T139-T144" in text
-    assert "BUILD_READY" in text or "BUILD READY" in text
+    assert any(marker in text for marker in ("BUILD_READY", "BUILD READY", "ACCEPTED / CI PASS"))
 assert "24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30" in readme
 assert "10.5281/zenodo.21306969" in status
-assert "No accepted theorem IDs beyond T138" in status
+assert any(marker in status for marker in ("No accepted theorem IDs beyond T138", "No accepted theorem IDs beyond T144"))
 
 print("PASS: V0 OSAP v1.3.0 Phase 4 T139-T144 theorem cluster verified statically.")

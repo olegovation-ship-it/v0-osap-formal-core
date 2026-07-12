@@ -1,28 +1,18 @@
 # Phase 4 implementation report
 
-Status: `BUILD_READY / CI_PENDING`
+Status: `ACCEPTED / CI_PASS / MERGED / HISTORICALLY_PRESERVED`
 Date: 2026-07-12
 Theorem range: T139-T144
-Baseline merge commit: `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`
+Pull request: #6
+Implementation baseline merge commit: `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`
+Head commit: `9cec516c8ab026ce8d63fd2303f72ec5c1d36351`
+Merge commit: `417866ec94fb24891c00bdfc2e522095777532bf`
 Checker development version: `0.5.0.dev1`
 
-## Implemented surface
+The implementation adds archive, witness, containment, distinctness, cardinality, and diagnostic-precedence schema records; deterministic Python rules and diagnostics; twelve paired fixtures; Lean 4 and Coq Phase 4 modules; a statement-hash crosswalk; Phase 4 tests; and release-readiness integration.
 
-- Python archive, witness, containment, distinctness, cardinality, and diagnostic-precedence rules.
-- Eight Phase 4 diagnostics.
-- JSON Schema Phase 4 claim fields and conditional requirements.
-- Twelve paired positive/countermodel fixtures.
-- Lean 4 `V0OSAP.Phase4` module.
-- Coq `Phase4.v` module.
-- Canonical statement-hash theorem crosswalk.
-- Phase 4 static verifier and regression test.
-- Forward-compatible Phase 1-3 preservation verifiers.
-- README, changelog, theorem register, status, and release-readiness updates.
+Validation closed with 113 Python tests passing, all schema and fixture checks passing, the proof-hole scan passing, Phase 1 preservation, Phase 2 and Phase 3 expansion/closure, and Phase 4 static verifiers passing, both proof-assistant builds passing, and 8/8 PR checks passing. PR #6 merged the implementation into `main` on 2026-07-12.
 
-## Expected validation state
+The immutable v1.2.0 tag and DOI `10.5281/zenodo.21306969` remain unchanged. The archived compiler-passed claim remains bounded to T121-T126; the accepted T139-T144 scope is a v1.3.0 development state, not a release.
 
-The package is generated for local application and replay. Phase 4 remains `BUILD_READY / CI_PENDING` until the complete local matrix and GitHub Actions matrix pass and the implementation PR is merged.
-
-## Historical boundary
-
-The archived v1.2.0 compiler-passed claim remains bounded to T121-T126. Phase 1-3 accepted development evidence remains preserved. No v1.3.0 release, new tag, or new DOI is created.
+See `PHASE4_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md` and `PHASE4_CI_CLOSURE_EVIDENCE.json` for the closure and preservation record.

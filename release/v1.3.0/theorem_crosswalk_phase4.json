@@ -7,7 +7,7 @@
   "phase1_status": "ACCEPTED_CI_PASS",
   "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
   "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
-  "phase4_status": "BUILD_READY_CI_PENDING",
+  "phase4_status": "ACCEPTED_CI_PASS_MERGED",
   "theorem_range": "T139-T144",
   "implementation_version": "v0-osap-fc1/0.5.0.dev1",
   "records": [
@@ -36,7 +36,7 @@
         "finite accepted fragment only",
         "archive integrity, access, and provenance remain separate obligations"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "aebb1470c81703c674936edb9bfc8f344604dd81452ca4516b4996b6f203adea"
     },
     {
@@ -65,7 +65,7 @@
         "finite accepted fragment only",
         "sufficiency is conditional on declared policy fields"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "d304ebc9b96394e4bef4560373cce1f380908744fb26be88093db1e6e0e6ae7a"
     },
     {
@@ -95,7 +95,7 @@
         "finite accepted fragment only",
         "typed meta-structural relations are separate from ordinary containment"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "6fc052097ee11289e7f0a2fe67179da0e05f39cc0eac9d5d61e0801e6072b833"
     },
     {
@@ -124,7 +124,7 @@
         "finite accepted fragment only",
         "physical universe distinctness is not claimed"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "7cf7b272ad78fcecb58afa0ac951447214e8f99654132f6985b8f4bc8908f3e0"
     },
     {
@@ -153,7 +153,7 @@
         "finite certificate representation only",
         "no physical multiplicity or infinity claim"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "a2a610aebba5a9302279a3d64a74258cf4c49f01805fbfa29541118f7d3b4280"
     },
     {
@@ -181,8 +181,16 @@
         "finite diagnostic sets only",
         "message wording outside canonical templates is not compared"
       ],
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "62804e8e051de8c850b24e0088d681d349852daed0ed1c17b96e58270d495218"
     }
-  ]
+  ],
+  "pull_request": 6,
+  "head_commit": "9cec516c8ab026ce8d63fd2303f72ec5c1d36351",
+  "merge_commit": "417866ec94fb24891c00bdfc2e522095777532bf",
+  "merged_at_utc": "2026-07-12T11:04:10Z",
+  "github_pr_checks": 8,
+  "python_tests": 113,
+  "historical_preservation": "PASS",
+  "closure_evidence": "release/v1.3.0/PHASE4_CI_CLOSURE_EVIDENCE.json"
 }
