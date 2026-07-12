@@ -18,6 +18,15 @@
 - Advanced the development checker to `0.4.0.dev1`.
 - Status advanced to `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`; no v1.3.0 release is claimed.
 
+### Phase 4 CI closure
+- Recorded PR #6 with 8/8 successful checks.
+- Recorded head commit `9cec516c8ab026ce8d63fd2303f72ec5c1d36351` and merge commit `417866ec94fb24891c00bdfc2e522095777532bf`.
+- Recorded 113 passing Python tests, schema and fixture PASS, proof-hole PASS, Phase 1 preservation PASS, Phase 2 and Phase 3 expansion/closure PASS, Phase 4 verifier PASS, Lean 4 PASS, and Coq PASS.
+- Advanced T139-T144 theorem-crosswalk parity from `PATCH_READY_CI_PENDING` to `ACCEPTED_CI_PASS`.
+- Added a dedicated Phase 4 CI-closure and historical-preservation verifier.
+- Preserved the immutable v1.2.0 manifest and closure jobs, tag, DOI, and Phase 1-3 closure history.
+- Recorded the Phase 4 implementation merge baseline `417866ec94fb24891c00bdfc2e522095777532bf` for development-branch synchronization.
+
 ### Phase 3 CI closure
 - Recorded PR #4 with 8/8 successful checks.
 - Recorded head commit `2172591ed8a5ab3c1fa31f2a3a6575536f161fe4` and merge commit `c02b05f667b82aa31ac8865c31219b94b1fc74d2`.
@@ -66,7 +75,7 @@
 
 ### Release discipline
 - Preserved the immutable `v1.2.0` tag and DOI `10.5281/zenodo.21306969`.
-- Phase 1, Phase 2, and Phase 3 acceptance, and the Phase 4 build-ready patch, are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
+- Phase 1, Phase 2, Phase 3, and Phase 4 acceptance are not a v1.3.0 release or an enlargement of the archived v1.2.0 compiler-passed claim.
 
 ## [1.2.0] - 2026-07-11
 

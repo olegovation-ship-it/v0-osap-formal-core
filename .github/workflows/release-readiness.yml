@@ -48,3 +48,4 @@ jobs:
       - run: python scripts/verify_phase3_expansion.py
       - run: python scripts/verify_phase3_ci_closure.py
       - run: python scripts/verify_phase4_expansion.py
+      - run: python scripts/verify_phase4_ci_closure.py

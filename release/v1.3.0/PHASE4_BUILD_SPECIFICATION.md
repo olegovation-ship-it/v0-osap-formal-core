@@ -3,16 +3,17 @@
 **Artifact ID:** `V0_OSAP_v1_3_0_PHASE4_T139_T144`
 **Date:** 2026-07-12
 **Target branch:** `v1.3.0-development`
-**Baseline:** Phase 3 accepted, CI-closed, merged, and historically preserved
-**Baseline merge commit:** `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`
+**Baseline:** Phase 3 accepted, CI-closed, merged, and historically preserved; immutable `v1.2.0` remains unchanged
+**Implementation state:** `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`
+**Phase 3 closure integration:** PR `#5`, merge commit `24fc12fa0fce3d2b67ebe684e00ef7bb8537cf30`
+**Phase 4 implementation integration:** PR `#6`, head commit `9cec516c8ab026ce8d63fd2303f72ec5c1d36351`, merge commit `417866ec94fb24891c00bdfc2e522095777532bf`
 **Immutable release baseline:** tag `v1.2.0`, DOI `10.5281/zenodo.21306969`
-**Implementation state:** `BUILD_READY / CI_PENDING`
 **Checker development version:** `0.5.0.dev1`
 **Author:** Dmytro Panasenko, Independent Researcher
 
 ## 1. Decision summary
 
-Phase 4 extends the accepted development surface from T121-T138 to a build-ready T139-T144 cluster. It implements archive/witness discipline, branch and cardinality firewalls, and deterministic diagnostic precedence. It does not release v1.3.0 and does not enlarge the archived v1.2.0 claim.
+Phase 4 extends the accepted development surface from T121-T138 to T139-T144. It implements archive/witness discipline, branch and cardinality firewalls, and deterministic diagnostic precedence. It does not release v1.3.0 and does not enlarge the archived v1.2.0 claim.
 
 | ID | Canonical theorem target | Executable obligation |
 |---|---|---|
@@ -61,19 +62,21 @@ Each theorem target has one positive fixture and one decisive countermodel. The 
 
 ## 7. Acceptance gates
 
-1. Editable Python install succeeds.
-2. Full Python regression suite passes; expected total after this patch: 113 tests.
-3. Schema bundle validation passes.
-4. Deterministic replay of all fixtures passes.
-5. Proof-hole scan passes.
-6. Phase 1 preservation verifier passes.
-7. Phase 2 expansion and CI-closure verifiers pass.
-8. Phase 3 expansion and CI-closure verifiers pass.
-9. Phase 4 expansion verifier passes.
-10. Lean 4 build passes.
-11. Coq build passes.
-12. `git diff --check` passes.
-13. GitHub Actions returns an all-green matrix before acceptance or merge.
+1. Editable Python install passed.
+2. Full Python regression suite passed: 113 tests.
+3. Schema bundle validation passed.
+4. Deterministic replay of all fixtures passed.
+5. Proof-hole scan passed.
+6. Phase 1 preservation verifier passed.
+7. Phase 2 expansion and CI-closure verifiers passed.
+8. Phase 3 expansion and CI-closure verifiers passed.
+9. Phase 4 expansion verifier passed.
+10. Lean 4 build passed.
+11. Coq build passed.
+12. `git diff --check` passed.
+13. GitHub Actions returned an all-green 8/8 matrix for PR #6.
+
+All gates passed for PR #6. The implementation is accepted, merged, and historically preserved. The machine-readable record is `PHASE4_CI_CLOSURE_EVIDENCE.json`; the narrative record is `PHASE4_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ## 8. Claim boundary
 
