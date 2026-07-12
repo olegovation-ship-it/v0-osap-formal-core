@@ -1,6 +1,6 @@
 {
-  "bundle_id": "V0_OSAP_v1_3_0_phase4_fixture_corpus",
-  "semantic_version": "FC-1-v1.1+phase4",
+  "bundle_id": "V0_OSAP_v1_3_0_phase5_fixture_corpus",
+  "semantic_version": "FC-1-v1.1+phase5",
   "fixtures": [
     "positive/live_guard.fixture.json",
     "positive/dle.fixture.json",
@@ -49,12 +49,24 @@
     "positive/t143_countable_cardinality_licensed.fixture.json",
     "negative/t143_nonfinite_cardinality_unlicensed.fixture.json",
     "positive/t144_diagnostic_precedence_totality.fixture.json",
-    "negative/t144_wrong_primary_status.fixture.json"
+    "negative/t144_wrong_primary_status.fixture.json",
+    "positive/t145_canonical_serialization_determinism.fixture.json",
+    "negative/t145_wrong_canonical_hash.fixture.json",
+    "positive/t146_round_trip_identity.fixture.json",
+    "negative/t146_round_trip_mutation.fixture.json",
+    "positive/t147_replay_determinism.fixture.json",
+    "negative/t147_nondeterministic_replay.fixture.json",
+    "positive/t148_visible_schema_migration.fixture.json",
+    "negative/t148_hidden_parser_coercion.fixture.json",
+    "positive/t149_backend_statement_correspondence.fixture.json",
+    "negative/t149_backend_statement_hash_mismatch.fixture.json",
+    "positive/t150_accepted_fragment_checker_soundness.fixture.json",
+    "negative/t150_checker_pass_unsound.fixture.json"
   ],
-  "status": "PHASE4_T139_T144_PATCH_ORACLE_SET",
+  "status": "PHASE5_T145_T150_PATCH_ORACLE_SET",
   "notes": [
-    "Phase 1, Phase 2, and Phase 3 accepted mappings are preserved.",
-    "T139-T144 each have a positive and decisive countermodel fixture.",
-    "Phase 4 remains BUILD_READY / CI_PENDING until local and GitHub Actions closure."
+    "Phase 1 through Phase 4 accepted mappings are preserved.",
+    "T145-T150 each have a positive and decisive countermodel fixture.",
+    "Phase 5 remains BUILD_READY / CI_PENDING until local and GitHub Actions closure."
   ]
 }

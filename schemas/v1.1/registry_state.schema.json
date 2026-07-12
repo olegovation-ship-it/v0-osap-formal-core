@@ -552,6 +552,94 @@
               "DEFERRED",
               "REJECT"
             ]
+          },
+          "canonicalization": {
+            "type": "string"
+          },
+          "canonical_payload": {},
+          "expected_canonical_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "declared_round_trip_payload": {},
+          "proof_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "registry_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "ruleset_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "first_replay_result": {},
+          "second_replay_result": {},
+          "from_schema_version": {
+            "type": "string"
+          },
+          "to_schema_version": {
+            "type": "string"
+          },
+          "from_semantic_version": {
+            "type": "string"
+          },
+          "to_semantic_version": {
+            "type": "string"
+          },
+          "parser_coercion": {
+            "type": "boolean"
+          },
+          "migration_record_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "theorem_id": {
+            "type": "string",
+            "pattern": "^T[0-9]+$"
+          },
+          "canonical_statement_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "lean_statement_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "coq_statement_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "lean_symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "coq_symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accepted_fragment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checker_status": {
+            "enum": [
+              "PASS",
+              "OUT-OF-SCOPE",
+              "INDETERMINATE",
+              "DEFERRED",
+              "REJECT"
+            ]
+          },
+          "rule_lemmas_proved": {
+            "type": "boolean"
+          },
+          "implementation_invariants_hold": {
+            "type": "boolean"
+          },
+          "semantic_obligations_hold": {
+            "type": "boolean"
           }
         },
         "allOf": [
@@ -894,6 +982,140 @@
                 "kind",
                 "diagnostic_statuses",
                 "expected_primary_status"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "canonical_serialization_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "canonicalization",
+                "canonical_payload",
+                "expected_canonical_sha256"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "round_trip_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "canonical_payload",
+                "declared_round_trip_payload"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "replay_determinism_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "proof_hash",
+                "registry_hash",
+                "ruleset_hash",
+                "first_replay_result",
+                "second_replay_result"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "schema_migration_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "from_schema_version",
+                "to_schema_version",
+                "from_semantic_version",
+                "to_semantic_version",
+                "parser_coercion"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "backend_statement_mapping"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "theorem_id",
+                "canonical_statement_hash",
+                "lean_statement_hash",
+                "coq_statement_hash",
+                "lean_symbol",
+                "coq_symbol"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "accepted_fragment_soundness_audit"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "claim_id",
+                "kind",
+                "accepted_fragment_id",
+                "checker_status",
+                "rule_lemmas_proved",
+                "implementation_invariants_hold",
+                "semantic_obligations_hold"
               ]
             }
           }

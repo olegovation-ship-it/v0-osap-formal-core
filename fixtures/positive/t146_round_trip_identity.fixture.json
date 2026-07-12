@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t146_round_trip_identity",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t146_round_trip_identity.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T146"
+  ],
+  "bound": 5,
+  "oracle_source": "Canonical serialize/parse preserves the object."
+}

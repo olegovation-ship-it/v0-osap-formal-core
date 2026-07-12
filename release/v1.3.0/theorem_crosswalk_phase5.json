@@ -1,0 +1,146 @@
+{
+  "artifact_id": "V0_OSAP_v1_3_0_PHASE5_T145_T150",
+  "theorem_range": "T145-T150",
+  "baseline_merge_commit": "2a769d7723470cce59df81262b586abf19b9c750",
+  "phase1_status": "ACCEPTED_CI_PASS",
+  "phase2_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase4_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
+  "phase5_status": "BUILD_READY_CI_PENDING",
+  "checker_version": "0.6.0.dev1",
+  "records": [
+    {
+      "theorem_id": "T145",
+      "canonical_name": "Canonical serialization determinism",
+      "formal_signature": "WellFormed(x) -> exists! bytes, bytes = SerializeCJ1(x)",
+      "assumptions": [
+        "FC1_WELL_FORMED",
+        "V0_OSAP_CJ_1"
+      ],
+      "conclusion": "A well-formed object has one canonical V0-OSAP-CJ-1 byte representation.",
+      "lean_symbol": "V0OSAP.T145_canonical_serialization_determinism",
+      "coq_symbol": "T145_canonical_serialization_determinism",
+      "python_rule": "canonical_serialization_audit",
+      "diagnostics": [
+        "CANONICALIZATION_PROFILE_MISMATCH",
+        "CANONICAL_SERIALIZATION_HASH_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t145_canonical_serialization_determinism",
+      "countermodel_fixture": "fixture:negative:t145_wrong_canonical_hash",
+      "limitation": "Hash equality identifies canonical bytes, not semantic truth or provenance truth.",
+      "canonical_statement_sha256": "2df8857445301e8dda38d555647c198437ed9c9f482922f0880c8be7be1b5893",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    },
+    {
+      "theorem_id": "T146",
+      "canonical_name": "Round-trip identity",
+      "formal_signature": "WellFormed(x) -> Parse(SerializeCJ1(x)) = x",
+      "assumptions": [
+        "FC1_WELL_FORMED",
+        "V0_OSAP_CJ_1"
+      ],
+      "conclusion": "Canonical serialize/parse preserves well-formed FC-1 objects.",
+      "lean_symbol": "V0OSAP.T146_round_trip_identity",
+      "coq_symbol": "T146_round_trip_identity",
+      "python_rule": "round_trip_audit",
+      "diagnostics": [
+        "ROUND_TRIP_IDENTITY_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t146_round_trip_identity",
+      "countermodel_fixture": "fixture:negative:t146_round_trip_mutation",
+      "limitation": "The theorem covers the accepted JSON-compatible FC-1 representation only.",
+      "canonical_statement_sha256": "3c453a5aa785c2f52c21720087ddb0f1ed47ed2256dbad87691bd8df6f4d8478",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    },
+    {
+      "theorem_id": "T147",
+      "canonical_name": "Replay determinism",
+      "formal_signature": "Pinned(proof,registry,ruleset) -> Replay1 = Replay2",
+      "assumptions": [
+        "PINNED_PROOF",
+        "PINNED_REGISTRY",
+        "PINNED_RULESET",
+        "NO_HIDDEN_STATE"
+      ],
+      "conclusion": "Pinned proof, registry, and ruleset produce one canonical replay result.",
+      "lean_symbol": "V0OSAP.T147_replay_determinism",
+      "coq_symbol": "T147_replay_determinism",
+      "python_rule": "replay_determinism_audit",
+      "diagnostics": [
+        "REPLAY_INPUTS_NOT_PINNED",
+        "REPLAY_NONDETERMINISTIC_RESULT"
+      ],
+      "positive_fixture": "fixture:positive:t147_replay_determinism",
+      "countermodel_fixture": "fixture:negative:t147_nondeterministic_replay",
+      "limitation": "Determinism is conditional on fully pinned inputs and absence of hidden state.",
+      "canonical_statement_sha256": "f762e4b5037e39b17724604a05323e91ecba573f41cda648778b1e65c431434e",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    },
+    {
+      "theorem_id": "T148",
+      "canonical_name": "Schema migration visibility",
+      "formal_signature": "VersionChanged -> not ParserCoercion and exists MigrationRecord",
+      "assumptions": [
+        "VERSIONED_SCHEMA",
+        "VERSIONED_SEMANTICS"
+      ],
+      "conclusion": "A semantic-version change cannot be hidden as parser coercion.",
+      "lean_symbol": "V0OSAP.T148_schema_migration_visibility",
+      "coq_symbol": "T148_schema_migration_visibility",
+      "python_rule": "schema_migration_audit",
+      "diagnostics": [
+        "HIDDEN_SCHEMA_MIGRATION_COERCION",
+        "SCHEMA_MIGRATION_RECORD_REQUIRED"
+      ],
+      "positive_fixture": "fixture:positive:t148_visible_schema_migration",
+      "countermodel_fixture": "fixture:negative:t148_hidden_parser_coercion",
+      "limitation": "The audit establishes migration visibility, not automatic semantic compatibility.",
+      "canonical_statement_sha256": "7e0d91ab43ca45ec56177e070e4faff0346e912ccae7f1ac7b6b08f917543074",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    },
+    {
+      "theorem_id": "T149",
+      "canonical_name": "Backend statement correspondence",
+      "formal_signature": "Mapped(T) -> HashLean(T) = HashCanonical(T) = HashCoq(T)",
+      "assumptions": [
+        "CANONICAL_STATEMENT_NORMALIZATION",
+        "EXPLICIT_BACKEND_MAPPING"
+      ],
+      "conclusion": "Mapped Lean and Coq theorem entries share a canonical statement hash.",
+      "lean_symbol": "V0OSAP.T149_backend_statement_correspondence",
+      "coq_symbol": "T149_backend_statement_correspondence",
+      "python_rule": "backend_statement_mapping",
+      "diagnostics": [
+        "BACKEND_STATEMENT_HASH_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t149_backend_statement_correspondence",
+      "countermodel_fixture": "fixture:negative:t149_backend_statement_hash_mismatch",
+      "limitation": "Statement-hash correspondence does not imply proof-term identity.",
+      "canonical_statement_sha256": "761c82d404861815d936b908ef52ff2d5514f7b62c7672e010dab8d0bb8938e2",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    },
+    {
+      "theorem_id": "T150",
+      "canonical_name": "Accepted-fragment checker soundness",
+      "formal_signature": "RuleLemmas and Invariants and Check(x)=PASS -> FC1Obligations(x)",
+      "assumptions": [
+        "PROVED_RULE_LEMMAS",
+        "IMPLEMENTATION_INVARIANTS",
+        "ACCEPTED_FRAGMENT_BOUNDARY"
+      ],
+      "conclusion": "Conditional on proved rule lemmas, checker PASS implies the FC-1 semantic obligations hold.",
+      "lean_symbol": "V0OSAP.T150_accepted_fragment_checker_soundness",
+      "coq_symbol": "T150_accepted_fragment_checker_soundness",
+      "python_rule": "accepted_fragment_soundness_audit",
+      "diagnostics": [
+        "CHECKER_SOUNDNESS_PREMISES_UNPROVED",
+        "CHECKER_PASS_VIOLATES_ACCEPTED_FRAGMENT_SOUNDNESS"
+      ],
+      "positive_fixture": "fixture:positive:t150_accepted_fragment_checker_soundness",
+      "countermodel_fixture": "fixture:negative:t150_checker_pass_unsound",
+      "limitation": "This is a conditional accepted-fragment theorem, not checker completeness or full-theory soundness.",
+      "canonical_statement_sha256": "1a755ddc81c06562926e634389401eb42e43fe8ea5f53a5792cd1e46a0012906",
+      "parity_status": "PATCH_READY_CI_PENDING"
+    }
+  ]
+}

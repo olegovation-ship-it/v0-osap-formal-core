@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t147_replay_determinism",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t147_replay_determinism.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T147"
+  ],
+  "bound": 5,
+  "oracle_source": "Pinned inputs produce canonically identical replay results."
+}

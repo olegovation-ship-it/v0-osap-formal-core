@@ -55,8 +55,8 @@ for code in [
     assert code in semantic
 
 manifest = load("fixtures/manifest.json")
-assert manifest["semantic_version"] == "FC-1-v1.1+phase4"
-assert manifest["status"] == "PHASE4_T139_T144_PATCH_ORACLE_SET"
+assert manifest["semantic_version"] in {"FC-1-v1.1+phase4", "FC-1-v1.1+phase5"}
+assert manifest["status"] in {"PHASE4_T139_T144_PATCH_ORACLE_SET", "PHASE5_T145_T150_PATCH_ORACLE_SET"}
 
 required_fixtures = {
     "positive/t139_archive_non_guard_export.fixture.json",
@@ -83,14 +83,15 @@ for command in [
     "python scripts/verify_phase3_ci_closure.py",
     "python scripts/verify_phase4_expansion.py",
     "python scripts/verify_phase4_ci_closure.py",
+    "python scripts/verify_phase5_expansion.py",
     "python scripts/verify_manifest.py",
     "python scripts/verify_closure.py",
 ]:
     assert command in workflow
 
 project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-assert 'version = "0.5.0.dev1"' in project
-assert '"implementation_version": "v0-osap-fc1/0.5.0.dev1"' in semantic
+assert any(version in project for version in ('version = "0.5.0.dev1"', 'version = "0.6.0.dev1"'))
+assert any(version in semantic for version in ('"implementation_version": "v0-osap-fc1/0.5.0.dev1"', '"implementation_version": "v0-osap-fc1/0.6.0.dev1"'))
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8")
 status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")

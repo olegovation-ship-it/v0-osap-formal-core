@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t145_canonical_serialization_determinism",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t145_canonical_serialization_determinism.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T145"
+  ],
+  "bound": 5,
+  "oracle_source": "Equivalent key order normalizes to one V0-OSAP-CJ-1 hash."
+}

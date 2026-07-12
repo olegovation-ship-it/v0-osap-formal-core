@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1.1",
+  "fixture_id": "fixture:positive:t150_accepted_fragment_checker_soundness",
+  "kind": "positive",
+  "semantic_version": "FC-1-v1.1+phase5",
+  "input_file": "t150_accepted_fragment_checker_soundness.registry.json",
+  "expected_status": "PASS",
+  "expected_diagnostics": [],
+  "theorem_targets": [
+    "T150"
+  ],
+  "bound": 5,
+  "oracle_source": "Under proved premises, PASS accompanies the accepted-fragment obligations."
+}

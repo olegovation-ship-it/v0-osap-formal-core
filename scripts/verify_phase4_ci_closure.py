@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -123,7 +124,12 @@ for document in [
 
 assert "passed 8/8 checks" in readme
 assert "113 passing tests" in readme
-assert "No accepted theorem IDs beyond T144" in status
+accepted_boundary = re.search(
+    r"No accepted theorem IDs beyond T(\d+)",
+    status,
+)
+assert accepted_boundary is not None
+assert int(accepted_boundary.group(1)) >= 144
 assert (
     "Phase 4 patch status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`."
     in register
@@ -139,6 +145,7 @@ for command in [
     "python scripts/verify_phase3_ci_closure.py",
     "python scripts/verify_phase4_expansion.py",
     "python scripts/verify_phase4_ci_closure.py",
+    "python scripts/verify_phase5_expansion.py",
 ]:
     assert command in workflow
 
