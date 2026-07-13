@@ -1,20 +1,23 @@
 # Status and non-claims
 
 <!-- V0_OSAP_RC1_STATUS_BEGIN -->
-## v1.3.0 RC1 tag authorization and GitHub pre-release preparation
+## v1.3.0 RC1 release evidence closure and historical preservation
 
 - Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
-- Status: `RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED`.
+- Status: `RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED`.
 - Gate-audit PR: #12; merge commit: `29f9ec108efbb419fd030573b33ef5d30486d2ab`.
-- Release-closure PR: #13; merge commit and authorized tag target: `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Release-closure PR: #13; merge commit and exact tag target: `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Tag-authorization PR: #14; merge commit: `cc1148f4c01cec2e2fca05651d02edc18fdc7312`.
+- Annotated tag: `v1.3.0-rc1`; exact peeled target: `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- GitHub pre-release: `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1`.
+- Published at: `2026-07-13T18:15:33Z`; `isPrerelease=true`; `isDraft=false`.
 - Checker development version remains `0.7.0.dev1`.
-- Candidate tag name: `v1.3.0-rc1`.
 - Historical tag `v1.2.0` remains pinned to `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`.
 - Historical DOI remains `10.5281/zenodo.21306969`.
 - T121-T150 remain the normative v1.1 range; T151-T156 remain explicit post-v1.1 extensions.
 - T140, T150, and T156 remain conditional.
-- Tag-target authorization is complete; tag creation and GitHub pre-release publication are not yet complete.
-- The final tag `v1.3.0`, Zenodo version creation, and DOI mutation remain unauthorized.
+- The executable RC1 gate-audit verifier is restored and protected by a non-empty regression check.
+- The final tag `v1.3.0`, final GitHub Release, Zenodo version creation, and DOI mutation remain unauthorized.
 - No checker-completeness, unconditional global soundness, proof-term identity, global conservativity, empirical, physical, or cosmological claim is made.
 <!-- V0_OSAP_RC1_STATUS_END -->
 

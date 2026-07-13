@@ -19,6 +19,7 @@ from rc1_tag_release_lib import (
     repository_root,
     sha256_file,
 )
+from rc1_evidence_closure_lib import HUMAN_STATE, RECORD_PATH, tag_object_type
 
 ROOT = repository_root()
 
@@ -31,8 +32,19 @@ def require(condition: bool, message: str) -> None:
 def verify(require_tags: bool = False) -> None:
     require(commit_exists(CLOSURE_MERGE_COMMIT), "authorized closure commit is unavailable")
     require(is_ancestor(CLOSURE_MERGE_COMMIT), "authorized closure commit is not an ancestor of HEAD")
-    require(not local_tag_exists(CANDIDATE_TAG), f"candidate tag {CANDIDATE_TAG} already exists")
-    require(not local_tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} already exists")
+    require(not local_tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} exists prematurely")
+
+    evidence_mode = (ROOT / RECORD_PATH).is_file()
+    candidate_present = local_tag_exists(CANDIDATE_TAG)
+    if evidence_mode:
+        if require_tags:
+            require(candidate_present, f"candidate tag {CANDIDATE_TAG} is unavailable")
+        if candidate_present:
+            target = git("rev-list", "-n", "1", CANDIDATE_TAG).stdout.strip()
+            require(target == CLOSURE_MERGE_COMMIT, "candidate tag target mismatch")
+            require(tag_object_type(CANDIDATE_TAG) == "tag", "candidate tag is not annotated")
+    else:
+        require(not candidate_present, f"candidate tag {CANDIDATE_TAG} already exists")
 
     if require_tags:
         require(local_tag_exists(IMMUTABLE_TAG), f"historical tag {IMMUTABLE_TAG} is unavailable")
@@ -43,25 +55,26 @@ def verify(require_tags: bool = False) -> None:
     auth = read_json(ROOT / "release/v1.3.0/RC1_TAG_AUTHORIZATION_RECORD.json")
     prep = read_json(ROOT / "release/v1.3.0/RC1_TAG_PREPARATION_RECORD.json")
     metadata = read_json(ROOT / "release/v1.3.0/RC1_GITHUB_PRERELEASE_METADATA.json")
-    manifest = read_json(ROOT / "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json")
+    manifest_path = ROOT / "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json"
+    manifest = read_json(manifest_path)
 
-    require(auth["state"] == AUTHORIZED_STATE, "authorization record state mismatch")
+    require(auth["state"] == AUTHORIZED_STATE, "historical authorization record state mismatch")
     require(auth["closure_merge_commit"] == CLOSURE_MERGE_COMMIT, "closure merge mismatch")
     require(auth["authorized_tag_name"] == CANDIDATE_TAG, "authorized tag name mismatch")
     require(auth["authorized_tag_target_commit"] == CLOSURE_MERGE_COMMIT, "authorized target mismatch")
     require(auth["authorization_is_target_specific"] is True, "authorization is not target-specific")
     require(auth["post_merge_ci_evidence"]["overall_status"] == "PASS", "post-merge CI is not recorded PASS")
     require(auth["release_actions"]["tag_target_authorized"] is True, "target authorization is not true")
-    require(not auth["release_actions"]["rc1_tag_created"], "tag creation recorded prematurely")
-    require(not auth["release_actions"]["github_prerelease_created"], "pre-release creation recorded prematurely")
+    require(not auth["release_actions"]["rc1_tag_created"], "historical authorization record was mutated")
+    require(not auth["release_actions"]["github_prerelease_created"], "historical authorization record was mutated")
     require(not auth["final_tag_authorized"], "final tag is improperly authorized")
     require(not auth["zenodo_version_authorized"], "Zenodo version is improperly authorized")
     require(not auth["doi_change_authorized"], "DOI change is improperly authorized")
 
-    require(prep["state"] == AUTHORIZED_STATE, "tag-preparation state mismatch")
+    require(prep["state"] == AUTHORIZED_STATE, "historical tag-preparation state mismatch")
     require(prep["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "tag-preparation target mismatch")
     require(prep["release_actions"]["tag_target_authorized"] is True, "tag-preparation authorization missing")
-    for forbidden_key in [
+    for key in [
         "rc1_tag_created",
         "final_tag_created",
         "github_release_created",
@@ -69,7 +82,7 @@ def verify(require_tags: bool = False) -> None:
         "zenodo_version_created",
         "doi_changed",
     ]:
-        require(not prep["release_actions"][forbidden_key], f"premature action recorded: {forbidden_key}")
+        require(not prep["release_actions"][key], f"historical preparation record mutated: {key}")
 
     require(metadata["tag_name"] == CANDIDATE_TAG, "pre-release metadata tag mismatch")
     require(metadata["target_commit"] == CLOSURE_MERGE_COMMIT, "pre-release metadata target mismatch")
@@ -89,15 +102,24 @@ def verify(require_tags: bool = False) -> None:
     require("T140, T150, and T156 remain conditional" in notes, "conditionality statement missing")
     require(IMMUTABLE_DOI in notes, "pre-release notes lack immutable DOI")
 
-    for rel_path, expected_hash in manifest["files"].items():
-        path = ROOT / rel_path
-        require(path.is_file(), f"authorization-manifest target missing: {rel_path}")
-        require(sha256_file(path) == expected_hash, f"authorization-manifest hash mismatch: {rel_path}")
+    if evidence_mode:
+        closure = read_json(ROOT / RECORD_PATH)
+        frozen_hash = closure["frozen_historical_manifests"][
+            "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json"
+        ]
+        require(sha256_file(manifest_path) == frozen_hash, "frozen tag-authorization manifest changed")
+        expected_state = HUMAN_STATE
+    else:
+        for rel_path, expected_hash in manifest["files"].items():
+            path = ROOT / rel_path
+            require(path.is_file(), f"authorization-manifest target missing: {rel_path}")
+            require(sha256_file(path) == expected_hash, f"authorization-manifest hash mismatch: {rel_path}")
+        expected_state = "RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED"
+
     require(manifest["authorized_tag_target_commit"] == CLOSURE_MERGE_COMMIT, "manifest target mismatch")
 
-    expected_state = "RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED"
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
-        require(expected_state in (ROOT / rel_path).read_text(encoding="utf-8"), f"authorization state absent from {rel_path}")
+        require(expected_state in (ROOT / rel_path).read_text(encoding="utf-8"), f"lifecycle state absent from {rel_path}")
 
     workflow = (ROOT / ".github/workflows/rc1-tag-authorization.yml").read_text(encoding="utf-8")
     require("fetch-depth: 0" in workflow, "authorization workflow lacks full history")
@@ -107,7 +129,16 @@ def verify(require_tags: bool = False) -> None:
     forbidden = forbidden_release_commands(workflow)
     require(not forbidden, "authorization workflow contains release commands: " + ", ".join(forbidden))
 
-    print("PASS: RC1 exact-target tag authorization verified; tag and GitHub pre-release remain uncreated.")
+    if evidence_mode:
+        print(
+            "PASS: historical exact-target RC1 authorization preserved after annotated "
+            "tag and GitHub pre-release creation; final release remains unauthorized."
+        )
+    else:
+        print(
+            "PASS: RC1 exact-target tag authorization verified; "
+            "tag and GitHub pre-release remain uncreated."
+        )
 
 
 def main() -> int:

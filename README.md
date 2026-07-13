@@ -12,31 +12,31 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 ## v1.3.0 development status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 RC1 TAG AUTHORIZATION AND GITHUB PRERELEASE PREPARATION - RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED**
+> **V0 OSAP v1.3.0 RC1 RELEASE EVIDENCE CLOSURE AND HISTORICAL PRESERVATION - RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED**
 
-PR #13 completed the RC1 release-closure stage and merged as
-`cf9a05b46b9b6f29cd85942f99155f89a49817a7`. Post-merge GitHub Actions checks for Python, schema validation,
-RC1 gate audit, release readiness, clean-room release replay, Lean 4, and Coq
-were observed successful on `main`; the corresponding synchronized development
-checks also passed.
+Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
 
-This patch separately authorizes `cf9a05b46b9b6f29cd85942f99155f89a49817a7` as the only permitted target for the
-annotated tag `v1.3.0-rc1`. It installs a final tag message, target-specific
-authorization record, GitHub pre-release metadata and notes, deterministic
-authorization manifest, validation-only CI workflow, and explicit dry-run-first
-creation scripts.
+PR #14 merged the exact-target tag authorization as
+`cc1148f4c01cec2e2fca05651d02edc18fdc7312`. The annotated tag `v1.3.0-rc1` now exists and
+peels exactly to the separately authorized release-closure commit
+`cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
 
-Applying or merging this patch creates no tag and no GitHub Release. After the
-authorization PR itself passes CI and is merged, the annotated tag and pre-release
-must be created by separate explicit commands and then recorded by a subsequent
-evidence-closure patch.
+The GitHub object at `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1` is published as a non-draft pre-release
+(`isPrerelease=true`, `isDraft=false`) with publication time
+`2026-07-13T18:15:33Z`.
 
-Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain
-immutable. T140, T150, and T156 remain conditional. The final tag `v1.3.0`,
-Zenodo publication, and DOI mutation remain unauthorized.
+This evidence-closure layer records the external tag and pre-release evidence,
+freezes the earlier release-closure and authorization manifests by SHA-256, restores
+the executable RC1 gate-audit verifier, and adds validation-only CI replay.
 
-See `release/v1.3.0/RC1_TAG_AUTHORIZATION_AND_GITHUB_PRERELEASE_SPECIFICATION.md`
-and `release/v1.3.0/RC1_TAG_AUTHORIZATION_GATES.md`.
+Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI
+`10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional. The
+final tag `v1.3.0`, a final GitHub Release, Zenodo publication, and DOI mutation
+remain unauthorized.
+
+See
+`release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`
+and `release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 
