@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import hashlib
+import subprocess
+
 from scripts.rc1_evidence_closure_lib import (
     CANDIDATE_TAG,
     CANDIDATE_TARGET,
@@ -20,6 +23,17 @@ from scripts.rc1_evidence_closure_lib import (
 )
 
 ROOT = repository_root()
+HISTORICAL_SNAPSHOT_COMMIT = "13bf095688bcabd5b090f188e9bd28a16237edeb"
+
+
+def historical_sha256(rel_path: str) -> str:
+    result = subprocess.run(
+        ["git", "show", f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return hashlib.sha256(result.stdout).hexdigest()
 
 
 def test_recorded_github_prerelease_evidence_is_exact() -> None:
@@ -51,11 +65,12 @@ def test_evidence_closure_record_and_release_actions() -> None:
 def test_local_candidate_tag_target_when_tags_are_available() -> None:
     if local_tag_exists(CANDIDATE_TAG):
         assert local_tag_target(CANDIDATE_TAG) == CANDIDATE_TARGET
-    assert not local_tag_exists(FINAL_TAG)
+    if local_tag_exists(FINAL_TAG):
+        assert local_tag_target(FINAL_TAG) == HISTORICAL_SNAPSHOT_COMMIT
 
 
 def test_evidence_closure_manifest_hashes_replay() -> None:
     manifest = read_json(ROOT / MANIFEST_PATH)
     assert manifest["state"] == MACHINE_STATE
     for rel_path, expected_hash in manifest["files"].items():
-        assert sha256_file(ROOT / rel_path) == expected_hash
+        assert historical_sha256(rel_path) == expected_hash

@@ -12,31 +12,17 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 ## v1.3.0 development status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 RC1 RELEASE EVIDENCE CLOSURE AND HISTORICAL PRESERVATION - RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED**
+> **V0 OSAP v1.3.0 FINAL RELEASE AUTHORIZATION AND STABLE-TAG PREPARATION - FINAL_RELEASE_AUTHORIZED / STABLE_TAG_NOT_CREATED / FINAL_GITHUB_RELEASE_NOT_CREATED / ZENODO_NOT_PUBLISHED**
 
 Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
 
-PR #14 merged the exact-target tag authorization as
-`cc1148f4c01cec2e2fca05651d02edc18fdc7312`. The annotated tag `v1.3.0-rc1` now exists and
-peels exactly to the separately authorized release-closure commit
-`cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+PR #15 merged the RC1 release-evidence closure as exact stable target `13bf095688bcabd5b090f188e9bd28a16237edeb`. The annotated tag candidate is `v1.3.0`, but the tag and final GitHub Release are not created by this patch.
 
-The GitHub object at `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1` is published as a non-draft pre-release
-(`isPrerelease=true`, `isDraft=false`) with publication time
-`2026-07-13T18:15:33Z`.
+The historical RC1 tag `v1.3.0-rc1` remains at `cf9a05b46b9b6f29cd85942f99155f89a49817a7`. This authorization installs final tag text, GitHub release notes and metadata, deterministic manifest replay, exact-target verification, dry-run-first creation scripts, and validation-only CI.
 
-This evidence-closure layer records the external tag and pre-release evidence,
-freezes the earlier release-closure and authorization manifests by SHA-256, restores
-the executable RC1 gate-audit verifier, and adds validation-only CI replay.
+The embedded checker component remains `0.7.0.dev1` exactly as audited. Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional. Zenodo publication and DOI mutation remain unauthorized.
 
-Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI
-`10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional. The
-final tag `v1.3.0`, a final GitHub Release, Zenodo publication, and DOI mutation
-remain unauthorized.
-
-See
-`release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`
-and `release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
+See `release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_AND_STABLE_TAG_PREPARATION_SPECIFICATION.md` and `release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 
