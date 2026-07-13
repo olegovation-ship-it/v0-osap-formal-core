@@ -20,9 +20,23 @@ from rc1_release_closure_lib import (
     sha256_file,
     tag_exists,
 )
-from rc1_evidence_closure_lib import HUMAN_STATE, RECORD_PATH
+from rc1_evidence_closure_lib import (
+    HUMAN_STATE,
+    RECORD_PATH,
+    tag_object_type,
+)
 
 ROOT = repository_root()
+HISTORICAL_SNAPSHOT_COMMIT = "13bf095688bcabd5b090f188e9bd28a16237edeb"
+
+
+def historical_text(rel_path: str) -> str:
+    return git(
+        "show",
+        f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}",
+    ).stdout
+
+
 AUTHORIZED_STATE = "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED"
 CLOSURE_STATE = "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED"
 
@@ -42,7 +56,17 @@ def verify(require_tags: bool = False) -> None:
     require(is_ancestor(AUDIT_MERGE_COMMIT), "audit merge commit is not an ancestor of HEAD")
     require(commit_exists(CLOSURE_MERGE_COMMIT), "closure merge commit is unavailable")
     require(is_ancestor(CLOSURE_MERGE_COMMIT), "closure merge commit is not an ancestor of HEAD")
-    require(not tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} exists prematurely")
+    final_present = tag_exists(FINAL_TAG)
+    if final_present:
+        target = git("rev-list", "-n", "1", FINAL_TAG).stdout.strip()
+        require(
+            target == HISTORICAL_SNAPSHOT_COMMIT,
+            "final tag target mismatch",
+        )
+        require(
+            tag_object_type(FINAL_TAG) == "tag",
+            "final tag is not annotated",
+        )
 
     evidence_mode = (ROOT / RECORD_PATH).is_file()
     candidate_present = tag_exists(CANDIDATE_TAG)
@@ -119,12 +143,23 @@ def verify(require_tags: bool = False) -> None:
         )
 
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
+        body = (
+            historical_text(rel_path)
+            if evidence_mode
+            else (ROOT / rel_path).read_text(encoding="utf-8")
+        )
         require(
-            expected_state_text in (ROOT / rel_path).read_text(encoding="utf-8"),
+            expected_state_text in body,
             f"state absent from {rel_path}",
         )
 
-    workflow = (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(encoding="utf-8")
+    workflow = (
+        historical_text(".github/workflows/rc1-release-closure.yml")
+        if evidence_mode
+        else (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(
+            encoding="utf-8"
+        )
+    )
     require("fetch-depth: 0" in workflow, "closure workflow does not fetch full history")
     require("python -m pytest -q" in workflow, "closure workflow does not use module-mode pytest")
     require("verify_rc1_release_closure.py --require-tags" in workflow, "tag-preservation verification missing")
@@ -132,7 +167,13 @@ def verify(require_tags: bool = False) -> None:
     forbidden = forbidden_release_commands(workflow)
     require(not forbidden, "workflow contains release commands: " + ", ".join(forbidden))
 
-    draft = (ROOT / "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt").read_text(encoding="utf-8")
+    draft = (
+        historical_text("release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt")
+        if evidence_mode
+        else (ROOT / "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt").read_text(
+            encoding="utf-8"
+        )
+    )
     require(
         "DRAFT ONLY" in draft and "TAG CREATION IS NOT AUTHORIZED" in draft,
         "historical tag draft lacks its original hold notice",

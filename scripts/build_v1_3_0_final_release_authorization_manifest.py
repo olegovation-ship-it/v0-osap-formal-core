@@ -13,6 +13,9 @@ FILES=['README.md','CHANGELOG.md','docs/status_and_nonclaims.md','pyproject.toml
 'release/v1.3.0/V1_3_0_GITHUB_FINAL_RELEASE_METADATA.json','scripts/v1_3_0_final_release_authorization_lib.py',
 'scripts/build_v1_3_0_final_release_authorization_manifest.py','scripts/verify_v1_3_0_final_release_authorization.py',
 'scripts/create_v1_3_0_annotated_tag.py','scripts/create_v1_3_0_github_final_release.py',
+    "release/v1.3.0/RC1_RELEASE_MANIFEST.json",
+    "scripts/verify_rc1_release_closure.py",
+    "scripts/verify_rc1_tag_authorization.py",
 'tests/test_v1_3_0_final_release_authorization.py','.github/workflows/v1-3-0-final-release-authorization.yml']
 missing=[x for x in FILES if not (ROOT/x).is_file()]
 if missing: raise SystemExit('ERROR: missing manifest inputs: '+', '.join(missing))
