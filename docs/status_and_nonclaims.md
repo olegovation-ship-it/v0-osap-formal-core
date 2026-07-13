@@ -1,19 +1,19 @@
 # Status and non-claims
 
 <!-- V0_OSAP_RC1_STATUS_BEGIN -->
-## v1.3.0 RC1 gate audit and release freeze
+## v1.3.0 RC1 release closure and tag preparation
 
-- Candidate scope: T121-T156.
-- Status: `RC1_AUDIT_READY / CI_PENDING / NO RELEASE TAG`.
-- Baseline closure merge commit: `29201b4937cef220ef0933d852250b021f3f44d4`.
+- Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
+- Status: `RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED`.
+- Gate-audit PR: #12; merge commit: `29f9ec108efbb419fd030573b33ef5d30486d2ab`.
 - Checker development version remains `0.7.0.dev1`.
-- No theorem ID, claim kind, executable rule, Lean theorem, Coq theorem, or checker version is added.
-- T121-T150 remain the normative v1.1 range.
-- T151-T156 remain explicit post-v1.1 development extensions.
+- Candidate tag name is reserved as `v1.3.0-rc1`; exact target is unresolved.
+- Historical tag `v1.2.0` remains pinned to `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`.
+- Historical DOI remains `10.5281/zenodo.21306969`.
+- T121-T150 remain the normative v1.1 range; T151-T156 remain explicit post-v1.1 extensions.
 - T140, T150, and T156 remain conditional.
-- Structural-record parity is not proof-term identity or unrestricted semantic equivalence.
-- Immutable tag `v1.2.0` and DOI `10.5281/zenodo.21306969` remain unchanged.
-- No RC1 tag, final tag, GitHub Release, Zenodo version, or DOI is created by this patch.
+- No theorem, executable rule, Lean theorem, Coq theorem, checker version, tag, release, Zenodo version, or DOI is added by this patch.
+- No checker-completeness, unconditional global soundness, proof-term identity, global conservativity, empirical, physical, or cosmological claim is made.
 <!-- V0_OSAP_RC1_STATUS_END -->
 
 

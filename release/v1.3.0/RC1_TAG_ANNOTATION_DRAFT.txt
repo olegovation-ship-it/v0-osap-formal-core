@@ -1,0 +1,21 @@
+V0 OSAP v1.3.0-rc1
+
+DRAFT ONLY — TAG CREATION IS NOT AUTHORIZED BY THIS PATCH
+
+Release-candidate formal core for the V0 Ontological and Structural-Activation
+Program, covering the frozen theorem inventory T121-T156.
+
+The candidate includes executable Python validation, JSON Schema validation,
+positive and countermodel fixtures, Lean 4 and Coq mappings, canonical theorem
+crosswalks, deterministic RC1 manifests, structural-record parity evidence,
+negative release-gate testing, and historical-preservation controls.
+
+T140, T150, and T156 remain conditional. Structural-record parity does not claim
+proof-term identity, unrestricted semantic equivalence, checker completeness,
+unconditional global checker soundness, global conservativity, or empirical or
+physical validation.
+
+Historical release v1.2.0 and DOI 10.5281/zenodo.21306969 remain immutable.
+
+The exact tag target must be inserted only by a separate post-merge authorization
+record after the release-closure CI matrix and post-merge verifier pass.

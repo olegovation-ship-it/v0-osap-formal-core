@@ -12,19 +12,25 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 ## v1.3.0 development status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 RC1 GATE AUDIT AND RELEASE FREEZE - RC1_AUDIT_READY / CI_PENDING / NO RELEASE TAG**
+> **V0 OSAP v1.3.0 RC1 RELEASE CLOSURE AND TAG PREPARATION - RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED**
 
-The accepted development corpus T121-T156 is frozen for release-candidate gate
-auditing. This patch adds the consolidated theorem inventory, claim matrix,
-structural-record parity audit, negative release-gate fixtures, validator
-evidence contract, release manifest, and clean-room replay protocol.
+PR #12 completed the gate-audit freeze with ten successful GitHub Actions checks
+and merged the T121-T156 RC1 audit corpus as
+`29f9ec108efbb419fd030573b33ef5d30486d2ab`.
 
-Baseline closure merge commit: `29201b4937cef220ef0933d852250b021f3f44d4`. Historical tag `v1.2.0`
-and DOI `10.5281/zenodo.21306969` remain immutable. This is not a `v1.3.0-rc1` or
-`v1.3.0` release. T150 and T156 remain conditional.
+This patch installs the release-closure gate: deterministic closure-manifest
+replay, a full-history clean-room workflow, immutable-tag verification, a
+machine-readable tag-preparation record, and a draft annotated-tag message.
+The candidate tag name is `v1.3.0-rc1`, but no tag or release is created.
 
-See `release/v1.3.0/RC1_GATE_AUDIT_AND_RELEASE_FREEZE_SPECIFICATION.md` and
-`release/v1.3.0/RC1_ACCEPTANCE_GATES.md`.
+Historical tag `v1.2.0`, target
+`befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI
+`10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain
+conditional. The exact RC1 tag target remains unresolved until the closure PR
+is green, merged, synchronized, and separately authorized.
+
+See `release/v1.3.0/RC1_RELEASE_CLOSURE_AND_TAG_PREPARATION_SPECIFICATION.md` and
+`release/v1.3.0/RC1_RELEASE_CLOSURE_ACCEPTANCE_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 

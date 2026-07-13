@@ -75,8 +75,15 @@ for required in [
 readme = (ROOT / "README.md").read_text(encoding="utf-8")
 status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")
 for body in [readme, status]:
-    assert "RC1_AUDIT_READY" in body
-    assert "NO RELEASE TAG" in body or "NO_RELEASE_TAG" in body
+    assert (
+        "RC1_AUDIT_READY" in body
+        or "RC1_CLOSURE_READY" in body
+    )
+    assert (
+        "NO RELEASE TAG" in body
+        or "NO_RELEASE_TAG" in body
+        or "TAG_NOT_CREATED" in body
+    )
     assert "10.5281/zenodo.21306969" in body
     assert "T121-T156" in body
 
