@@ -1,16 +1,17 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [Unreleased] - v1.3.0 RC1 gate audit and release freeze
+## [Unreleased] - v1.3.0 RC1 release closure and tag preparation
 
-- Froze candidate theorem scope T121-T156 without adding theorem IDs or semantic rules.
-- Added a generated consolidated theorem inventory and one-owner collision audit.
-- Added the claim-classification matrix and retained T140, T150, and T156 conditionality.
-- Added structural-record parity evidence for Lean, Coq, fixtures, and canonical RC1 hashes.
-- Added twelve negative release-gate mutants and a dedicated gate verifier.
-- Added validator/evidence interchange contract, release manifest, known limitations, and clean-room replay protocol.
-- Preserved immutable tag `v1.2.0` and DOI `10.5281/zenodo.21306969`.
-- State: `RC1_AUDIT_READY / CI_PENDING / NO_RELEASE_TAG`.
+- Recorded PR #12 gate-audit merge commit `29f9ec108efbb419fd030573b33ef5d30486d2ab`.
+- Preserved the exact T121-T156 / 36-record candidate inventory and six source crosswalks.
+- Added deterministic release-closure manifest generation and verification.
+- Added a full-history clean-room replay workflow with Python, Lean 4, and Coq jobs.
+- Added a machine-readable tag-preparation record and draft annotation for `v1.3.0-rc1`.
+- Preserved T140, T150, and T156 conditionality and all global non-claims.
+- Preserved immutable tag `v1.2.0`, its target commit, and DOI `10.5281/zenodo.21306969`.
+- Created no RC1 tag, final tag, GitHub Release, Zenodo version, or DOI change.
+- State: `RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

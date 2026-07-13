@@ -1,0 +1,52 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_RELEASE_CLOSURE_MANIFEST",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "state": "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED",
+  "audit_merge_commit": "29f9ec108efbb419fd030573b33ef5d30486d2ab",
+  "candidate_tag_name": "v1.3.0-rc1",
+  "tag_target_commit": null,
+  "tag_target_policy": "MERGED_RC1_RELEASE_CLOSURE_COMMIT_AFTER_GREEN_CI_AND_POST_MERGE_VERIFICATION",
+  "immutable_tag": "v1.2.0",
+  "immutable_tag_target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+  "immutable_doi": "10.5281/zenodo.21306969",
+  "theorem_range": "T121-T156",
+  "record_count": 36,
+  "source_crosswalk_count": 6,
+  "audit_manifest_sha256": "7881d44b992f7ff0d176795ae5aad51610d1339f7cf3bf1db5d9227bc4e5b6e4",
+  "theorem_inventory_sha256": "1c46611734cb50b1866e2ea6428c1f061593eb1a26323dba519f94bfd2d7446d",
+  "files": {
+    "README.md": "e9abd514870c8a4a361127259c3ab7d8943924c17fd58634b8a5d9c1172ea0fb",
+    "CHANGELOG.md": "08a143a48c76d370bf9f00185b8ffb80ca0bef153a9773795578ef1b68c0ba5a",
+    "docs/status_and_nonclaims.md": "ef418eee612ed9595079ad7fba8f6ad24668927dbaf189e1c8c50f8be44e670b",
+    "release/v1.3.0/RC1_RELEASE_CLOSURE_AND_TAG_PREPARATION_SPECIFICATION.md": "b77b08fb2e2f916e1d1504c14f76574f3fdcf41cfb4eaade643e4b82937f2665",
+    "release/v1.3.0/RC1_RELEASE_CLOSURE_ACCEPTANCE_GATES.md": "a7f7c2dcb8a0c11384c28a47a72b7c3147b588efe5f89d5bcb0c8b44b0bbe83c",
+    "release/v1.3.0/RC1_TAG_PREPARATION_RECORD.json": "5219615c46dbee9275872ac1dd5075d23f710a181e2889aa7b8de251825169ed",
+    "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt": "e8a7c44764b745ba2f0fe9687bde205ed4234b7fad5f4d18b568684f16e01281",
+    "release/v1.3.0/RC1_RELEASE_MANIFEST.json": "7881d44b992f7ff0d176795ae5aad51610d1339f7cf3bf1db5d9227bc4e5b6e4",
+    "release/v1.3.0/RC1_THEOREM_INVENTORY.json": "1c46611734cb50b1866e2ea6428c1f061593eb1a26323dba519f94bfd2d7446d",
+    "release/v1.3.0/RC1_STATEMENT_PARITY_EVIDENCE.json": "491101f7690a1c2ed3750ebeed11cf751e7cc5d15b0de6bed4f1b747995c5029",
+    "release/v1.3.0/RC1_CLAIM_CLASSIFICATION_MATRIX.json": "61e30a80784dfe6fb9ed4498f962edd511a1e24036855aee686466328b30e9c7",
+    "scripts/rc1_release_closure_lib.py": "f054bc337f699a1011fba5496f3e0f10f3d81819a7174b641955c8a4d9f02fcc",
+    "scripts/build_rc1_release_closure_manifest.py": "1276042eaf9ad8ec34300f9cc9c5b81e44ff53e69d1dc1ca102383f5d127937a",
+    "scripts/verify_rc1_release_closure.py": "fec486921fd974ed6bcf416562035b0a036db6ff35b8fafd575e6c4895a5f6b2",
+    "scripts/capture_rc1_clean_room_evidence.py": "afd830d57d1fcb38813516a43d8212f21699a55dddcdb46620ab2cce0662a761",
+    "tests/test_rc1_release_closure.py": "dcea6f6b1583c56630ce96587b77a9b91281cc9c4ceeb819a82661acef49dd3d",
+    ".github/workflows/rc1-release-closure.yml": "7bdcaeb67d0b5a49a8d487b73e65a545b764c8f0c5284d3c34eee1fecec007d9"
+  },
+  "preserved_audit_release_actions": {
+    "rc1_tag_created": false,
+    "final_tag_created": false,
+    "github_release_created": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  },
+  "release_actions": {
+    "rc1_tag_created": false,
+    "final_tag_created": false,
+    "github_release_created": false,
+    "zenodo_version_created": false,
+    "doi_changed": false,
+    "tag_target_authorized": false
+  }
+}
