@@ -26,7 +26,54 @@ ROOT = repository_root()
 HISTORICAL_SNAPSHOT_COMMIT = "13bf095688bcabd5b090f188e9bd28a16237edeb"
 
 
+def ensure_historical_snapshot_available() -> None:
+    probe = subprocess.run(
+        [
+            "git",
+            "cat-file",
+            "-e",
+            f"{HISTORICAL_SNAPSHOT_COMMIT}^{{commit}}",
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+    )
+    if probe.returncode == 0:
+        return
+
+    subprocess.run(
+        [
+            "git",
+            "fetch",
+            "--no-tags",
+            "--depth=1",
+            "origin",
+            HISTORICAL_SNAPSHOT_COMMIT,
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+
+    verify = subprocess.run(
+        [
+            "git",
+            "cat-file",
+            "-e",
+            f"{HISTORICAL_SNAPSHOT_COMMIT}^{{commit}}",
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+    )
+    if verify.returncode != 0:
+        raise AssertionError(
+            "historical RC1 snapshot commit remains unavailable"
+        )
+
+
 def historical_sha256(rel_path: str) -> str:
+    ensure_historical_snapshot_available()
     result = subprocess.run(
         ["git", "show", f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}"],
         cwd=ROOT,

@@ -4,6 +4,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_MANIFEST.json'
 FILES=['README.md','CHANGELOG.md','docs/status_and_nonclaims.md','pyproject.toml',
 'release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json','release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json',
+    "scripts/verify_rc1_gate_audit.py",
     "scripts/verify_rc1_release_evidence_closure.py",
     "tests/test_rc1_release_evidence_closure.py",
 'release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_AND_STABLE_TAG_PREPARATION_SPECIFICATION.md',
