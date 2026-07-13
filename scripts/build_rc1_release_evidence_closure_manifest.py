@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import hashlib
+import json
+import subprocess
+
 from rc1_evidence_closure_lib import (
     AUTHORIZATION_MERGE_COMMIT,
     CANDIDATE_TAG,
     CANDIDATE_TARGET,
+    EVIDENCE_PATH,
     FINAL_TAG,
     HUMAN_STATE,
     IMMUTABLE_DOI,
@@ -12,15 +17,15 @@ from rc1_evidence_closure_lib import (
     MACHINE_STATE,
     MANIFEST_PATH,
     RECORD_PATH,
-    EVIDENCE_PATH,
-    read_json,
     repository_root,
-    sha256_file,
     write_json,
 )
 
 ROOT = repository_root()
 OUTPUT = ROOT / MANIFEST_PATH
+HISTORICAL_SNAPSHOT_COMMIT = (
+    "13bf095688bcabd5b090f188e9bd28a16237edeb"
+)
 
 TARGETS = [
     "README.md",
@@ -49,18 +54,36 @@ TARGETS = [
 ]
 
 
-def main() -> int:
-    missing = [rel for rel in TARGETS if not (ROOT / rel).is_file()]
-    if missing:
-        raise SystemExit(
-            "Missing RC1 evidence-closure manifest targets: " + ", ".join(missing)
-        )
+def historical_blob(rel_path: str) -> bytes:
+    result = subprocess.run(
+        [
+            "git",
+            "show",
+            f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}",
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return result.stdout
 
-    record = read_json(ROOT / RECORD_PATH)
-    evidence = read_json(ROOT / EVIDENCE_PATH)
+
+def historical_sha256(rel_path: str) -> str:
+    return hashlib.sha256(historical_blob(rel_path)).hexdigest()
+
+
+def historical_json(rel_path: str) -> dict:
+    return json.loads(historical_blob(rel_path).decode("utf-8"))
+
+
+def main() -> int:
+    record = historical_json(str(RECORD_PATH))
+    evidence = historical_json(str(EVIDENCE_PATH))
 
     payload = {
-        "artifact_id": "V0_OSAP_V1_3_0_RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST",
+        "artifact_id": (
+            "V0_OSAP_V1_3_0_RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST"
+        ),
         "version": "0.1",
         "date": "2026-07-13",
         "state": MACHINE_STATE,
@@ -73,16 +96,25 @@ def main() -> int:
         "immutable_tag_target_commit": IMMUTABLE_TAG_TARGET,
         "immutable_doi": IMMUTABLE_DOI,
         "github_prerelease_url": evidence["release"]["url"],
-        "github_prerelease_published_at": evidence["release"]["publishedAt"],
-        "frozen_historical_manifests": record["frozen_historical_manifests"],
-        "files": {rel: sha256_file(ROOT / rel) for rel in TARGETS},
+        "github_prerelease_published_at": (
+            evidence["release"]["publishedAt"]
+        ),
+        "frozen_historical_manifests": (
+            record["frozen_historical_manifests"]
+        ),
+        "files": {
+            rel_path: historical_sha256(rel_path)
+            for rel_path in TARGETS
+        },
         "release_actions": record["release_actions"],
         "claim_boundary": record["claim_boundary"],
     }
+
     write_json(OUTPUT, payload)
+
     print(
-        "PASS: RC1 release-evidence closure manifest generated with "
-        f"{len(TARGETS)} hashed files."
+        "PASS: historical RC1 release-evidence closure manifest "
+        f"replayed with {len(TARGETS)} hashed files."
     )
     return 0
 
