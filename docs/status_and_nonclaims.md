@@ -3,13 +3,18 @@
 ## v1.3.0 Phase 6
 
 - Scope: T151-T156 explicit post-v1.1 development extension.
-- Status: `BUILD_READY / CI_PENDING`.
-- Baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
+- Status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
+- Implementation baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
+- PR #10: 8/8 checks passed.
+- Head commit: `dd1b234647a96b31719da0f3c5ad5e91b40144da`.
+- Merge commit: `306f80dd36a70211b04f9a64215cc8807cbce709`.
+- Merged at: `2026-07-12T21:09:06Z`.
 - Checker development version: `0.7.0.dev1`.
-- Twelve paired fixtures and Lean 4 / Coq modules are staged in the development tree.
+- Python suite: 15 tests passed.
+- Twelve paired fixtures and Lean 4 / Coq modules are accepted in the development tree.
 - Phase 1 through Phase 5 accepted states remain preserved.
 - T156 remains conditional on extension-handler isolation and no baseline-rule override.
-- No v1.3.0 release, normative-v1.1 amendment, global conservativity, checker-completeness, proof-identity, or empirical claim.
+- No v1.3.0 release, normative-v1.1 amendment, global conservativity, checker-completeness, unconditional global checker-soundness, proof-identity, or empirical claim.
 
 ## v1.3.0 Phase 5
 
@@ -129,7 +134,7 @@
 
 ## Acceptance state
 
-- Phase 6 status: `BUILD_READY / CI PENDING`.
+- Phase 6 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 5 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 - Phase 1 status: `ACCEPTED / CI PASS`.
 - Phase 2 status: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
@@ -146,7 +151,7 @@
 ## Explicit non-claims
 
 - No release claim for v1.3.0.
-- No accepted theorem IDs beyond T150 in the current v1.3.0 development state.
+- No accepted theorem IDs beyond T156 in the current v1.3.0 development state.
 - No complete mechanization claim for T1-T150 or T121-T150.
 - No formal equivalence or proof-term identity claim among Python, Lean 4, and Coq.
 - No checker-completeness claim.

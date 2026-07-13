@@ -33,3 +33,6 @@ Thumbs.db
 
 # Generated release material
 release/generated/
+
+# Generated Coq dependency/configuration files
+coq/Makefile.coq.d

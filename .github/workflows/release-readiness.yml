@@ -52,3 +52,4 @@ jobs:
       - run: python scripts/verify_phase5_expansion.py
       - run: python scripts/verify_phase6_expansion.py
       - run: python scripts/verify_phase5_ci_closure.py
+      - run: python scripts/verify_phase6_ci_closure.py
