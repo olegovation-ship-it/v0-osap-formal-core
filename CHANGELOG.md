@@ -1,13 +1,14 @@
 # Changelog
 
-## [Unreleased] — Phase 6 build patch
+## [Unreleased] — Phase 6 accepted development state
 
-- Added explicit post-v1.1 extension cluster T151-T156.
-- Added extension provenance, declared claim-vocabulary closure, deterministic diagnostic envelopes, evidence-provenance acyclicity, version-lock coherence, and conditional conservative non-interference.
-- Added twelve paired fixtures, Lean 4 and Coq Phase 6 modules, schema extension note, crosswalk, verifier, and CI integration.
-- Baseline merge commit: `8053709c73045f59358244ec58afc84cfd0deeb6`.
-- State: `BUILD_READY / CI_PENDING`.
-- Preserved immutable tag `v1.2.0` and DOI `10.5281/zenodo.21306969`.
+- Accepted explicit post-v1.1 extension cluster T151-T156 after PR #10 passed 8/8 checks.
+- Recorded implementation baseline `8053709c73045f59358244ec58afc84cfd0deeb6`, head `dd1b234647a96b31719da0f3c5ad5e91b40144da`, and merge commit `306f80dd36a70211b04f9a64215cc8807cbce709`.
+- Recorded 15 passing Python tests, schema and deterministic fixture replay PASS, proof-hole PASS, Phase 1-5 preservation/closure PASS, Phase 6 verifier PASS, Lean 4 PASS, and Coq PASS.
+- Advanced T151-T156 theorem-crosswalk parity from `PATCH_READY_CI_PENDING` to `ACCEPTED_CI_PASS`.
+- Added a dedicated Phase 6 CI-closure and historical-preservation verifier.
+- Preserved the immutable v1.2.0 manifest and closure jobs, tag, DOI `10.5281/zenodo.21306969`, and Phase 1-5 closure history.
+- State: `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`.
 
 ## [Unreleased]
 

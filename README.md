@@ -11,13 +11,23 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
-> **PHASE 6 T151-T156 EXTENSION PROVENANCE, VOCABULARY, DIAGNOSTIC, EVIDENCE, VERSION-LOCK, AND CONSERVATIVITY EXPANSION - BUILD READY / CI PENDING**
+> **PHASE 6 T151-T156 EXTENSION PROVENANCE, VOCABULARY, DIAGNOSTIC, EVIDENCE, VERSION-LOCK, AND CONSERVATIVITY EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 6 introduces an explicit post-v1.1 development extension for T151-T156. It adds extension provenance, declared claim-vocabulary closure, diagnostic-envelope determinism, finite evidence-provenance acyclicity, version-lock coherence, and conditional conservative non-interference. Checker version: `0.7.0.dev1`.
 
-The implementation baseline is Phase 5 closure merge commit `8053709c73045f59358244ec58afc84cfd0deeb6`. The patch includes twelve paired fixtures, Lean 4 and Coq Phase 6 modules, and a canonical statement-hash crosswalk.
+PR #10 passed 8/8 checks and merged head commit
+`dd1b234647a96b31719da0f3c5ad5e91b40144da` into `main` as
+`306f80dd36a70211b04f9a64215cc8807cbce709`. The regression suite recorded
+15 passing tests, and both Lean 4 and Coq builds passed.
 
-This is a build-ready v1.3.0 development patch, not an accepted Phase 6 state and not a v1.3.0 release. T151-T156 are explicit extension IDs beyond the normative v1.1 ceiling T150. See `release/v1.3.0/PHASE6_BUILD_SPECIFICATION.md` and `release/v1.3.0/PHASE6_ACCEPTANCE_GATES.md`.
+The implementation was built from the preserved Phase 5 closure baseline
+`8053709c73045f59358244ec58afc84cfd0deeb6`. The patch includes twelve paired fixtures,
+Lean 4 and Coq Phase 6 modules, and a canonical statement-hash crosswalk.
+This is an accepted v1.3.0 development state, not a v1.3.0 release.
+T151-T156 remain explicit extension IDs beyond the normative v1.1 ceiling T150,
+and T156 remains conditional. See
+`release/v1.3.0/PHASE6_ACCEPTANCE_GATES.md` and
+`release/v1.3.0/PHASE6_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
 
 ### Phase 5 closed baseline
 
@@ -144,6 +154,9 @@ python scripts/verify_phase3_ci_closure.py
 python scripts/verify_phase4_expansion.py
 python scripts/verify_phase4_ci_closure.py
 python scripts/verify_phase5_expansion.py
+python scripts/verify_phase5_ci_closure.py
+python scripts/verify_phase6_expansion.py
+python scripts/verify_phase6_ci_closure.py
 cd lean && lake build
 cd ../coq && make
 ```

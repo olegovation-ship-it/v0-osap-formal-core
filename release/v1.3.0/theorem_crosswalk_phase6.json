@@ -9,7 +9,7 @@
   "phase3_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
   "phase4_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
   "phase5_status": "ACCEPTED_CI_PASS_MERGED_HISTORICALLY_PRESERVED",
-  "phase6_status": "BUILD_READY_CI_PENDING",
+  "phase6_status": "ACCEPTED_CI_PASS_MERGED",
   "checker_version": "0.7.0.dev1",
   "records": [
     {
@@ -33,7 +33,7 @@
       "positive_fixture": "fixture:positive:t151_explicit_extension_provenance",
       "countermodel_fixture": "fixture:negative:t151_unrecorded_extension",
       "limitation": "This establishes repository-local provenance for the T151-T156 development extension; it does not retroactively amend the normative v1.1 document.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "71b249ed11c2d9db6378b5ccbdd868a62321d4ff7d5c60a200b344b965c7042f"
     },
     {
@@ -54,7 +54,7 @@
       "positive_fixture": "fixture:positive:t152_declared_claim_vocabulary_closure",
       "countermodel_fixture": "fixture:negative:t152_undeclared_claim_kind",
       "limitation": "Vocabulary closure is bounded to the audited claim-kind lists and is not a completeness claim for all future extensions.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "3fbe6f0a13dcd52915789ceb436da7ae4cad1c2bcca4f72c1103a7798917033a"
     },
     {
@@ -77,7 +77,7 @@
       "positive_fixture": "fixture:positive:t153_diagnostic_envelope_determinism",
       "countermodel_fixture": "fixture:negative:t153_diagnostic_envelope_mutation",
       "limitation": "Determinism is conditional on pinned inputs, canonical serialization, and absence of hidden state.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "11c2da228164740868dcbad94fd08e073d8eaca1b6c3a6e31fbac6f9267648d6"
     },
     {
@@ -98,7 +98,7 @@
       "positive_fixture": "fixture:positive:t154_evidence_provenance_acyclicity",
       "countermodel_fixture": "fixture:negative:t154_evidence_provenance_cycle",
       "limitation": "The executable rule checks explicit finite paths; it does not infer omitted provenance edges.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "58385a599ea3e1854a9536a752b8bf7873c7f5e0fbc3ca3338c8379338cd861c"
     },
     {
@@ -120,7 +120,7 @@
       "positive_fixture": "fixture:positive:t155_version_lock_coherence",
       "countermodel_fixture": "fixture:negative:t155_version_lock_mismatch",
       "limitation": "Tuple equality records compatibility intent; it does not prove semantic equivalence across arbitrary versions.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "50ff01353da45dc93e4684801ee108cc3c82e1c4e2fc670ec9fbebb96a5986c2"
     },
     {
@@ -143,8 +143,16 @@
       "positive_fixture": "fixture:positive:t156_conservative_extension_noninterference",
       "countermodel_fixture": "fixture:negative:t156_baseline_result_changed",
       "limitation": "The theorem is conditional on handler isolation and no baseline override; it is not a global conservativity theorem for arbitrary code changes.",
-      "parity_status": "PATCH_READY_CI_PENDING",
+      "parity_status": "ACCEPTED_CI_PASS",
       "canonical_statement_sha256": "5eaaa1c210ee125c70fd5dfdc83fd1f4ccb46b54baa6d4e58086adc5e1cc495a"
     }
-  ]
+  ],
+  "closure_evidence": "release/v1.3.0/PHASE6_CI_CLOSURE_EVIDENCE.json",
+  "pull_request": 10,
+  "head_commit": "dd1b234647a96b31719da0f3c5ad5e91b40144da",
+  "merge_commit": "306f80dd36a70211b04f9a64215cc8807cbce709",
+  "merged_at_utc": "2026-07-12T21:09:06Z",
+  "github_pr_checks": 8,
+  "python_tests": 15,
+  "historical_preservation": "PASS"
 }

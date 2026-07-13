@@ -1,18 +1,20 @@
 # V0 OSAP v1.3.0 Phase 6 Build Specification and Implementation Patch v0.1
 
-**Artifact ID:** `V0_OSAP_v1_3_0_PHASE6_T151_T156_EXTENSION`  
-**Date:** 2026-07-12  
-**Target branch:** `v1.3.0-development`  
-**Baseline:** Phase 5 accepted, CI-closed, merged, and historically preserved  
-**Baseline merge commit:** `8053709c73045f59358244ec58afc84cfd0deeb6`  
-**Build state:** `BUILD_READY / CI_PENDING`  
-**Immutable release baseline:** tag `v1.2.0`, DOI `10.5281/zenodo.21306969`  
-**Checker development version:** `0.7.0.dev1`  
+**Artifact ID:** `V0_OSAP_v1_3_0_PHASE6_T151_T156_EXTENSION`
+**Date:** 2026-07-12
+**Target branch:** `v1.3.0-development`
+**Baseline:** Phase 5 accepted, CI-closed, merged, and historically preserved
+**Baseline merge commit:** `8053709c73045f59358244ec58afc84cfd0deeb6`
+**Implementation head commit:** `dd1b234647a96b31719da0f3c5ad5e91b40144da`
+**Implementation merge commit:** `306f80dd36a70211b04f9a64215cc8807cbce709`
+**Build state:** `ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED`
+**Immutable release baseline:** tag `v1.2.0`, DOI `10.5281/zenodo.21306969`
+**Checker development version:** `0.7.0.dev1`
 **Author:** Dmytro Panasenko, Independent Researcher
 
 ## 1. Decision summary
 
-The normative v1.1 theorem-target register ends at T150. Phase 6 therefore does **not** claim inherited v1.1 target status for T151-T156. It introduces an explicit, repository-local v1.3.0 development extension governed by T151 itself. The cluster hardens extension provenance, claim-vocabulary closure, deterministic diagnostic envelopes, finite evidence-provenance paths, compatibility version locks, and conditional conservative non-interference.
+The normative v1.1 theorem-target register ends at T150. Phase 6 does **not** claim inherited v1.1 target status for T151-T156. It introduces an explicit, repository-local v1.3.0 development extension governed by T151 itself. The cluster hardens extension provenance, claim-vocabulary closure, deterministic diagnostic envelopes, finite evidence-provenance paths, compatibility version locks, and conditional conservative non-interference.
 
 | ID | Canonical theorem target | Executable obligation |
 |---|---|---|
@@ -25,7 +27,7 @@ The normative v1.1 theorem-target register ends at T150. Phase 6 therefore does 
 
 ## 2. Extension-governance boundary
 
-- T151-T156 are new v1.3.0 development extension identifiers.
+- T151-T156 are accepted v1.3.0 development-extension identifiers.
 - They do not amend, reinterpret, or enlarge the normative v1.1 reservation T121-T150.
 - They do not alter the immutable v1.2.0 release, tag, DOI, or archived theorem claim.
 - T156 is conditional on explicit extension-handler isolation and absence of baseline-rule override.
@@ -62,23 +64,23 @@ New claim kinds:
 
 ## 6. Fixture and crosswalk contract
 
-Each theorem target has one positive fixture and one decisive countermodel. The Phase 6 crosswalk records canonical statements, assumptions, conclusions, backend symbols, validator rules, diagnostics, fixture IDs, limitations, and SHA-256 statement hashes. Build-stage parity status is `PATCH_READY_CI_PENDING`.
+Each theorem target has one positive fixture and one decisive countermodel. The Phase 6 crosswalk records canonical statements, assumptions, conclusions, backend symbols, validator rules, diagnostics, fixture IDs, limitations, and SHA-256 statement hashes. Accepted parity status is `ACCEPTED_CI_PASS`.
 
-## 7. Build acceptance matrix
+## 7. Accepted validation matrix
 
-1. Baseline merge commit `8053709c73045f59358244ec58afc84cfd0deeb6` is preserved.
-2. Python regression suite passes.
-3. Schema bundle validation passes.
-4. Deterministic replay of all fixtures passes.
-5. Proof-hole scan passes.
-6. Phase 1-5 preservation and closure verifiers pass.
-7. Phase 6 expansion verifier passes.
-8. Lean 4 build passes.
-9. Coq build passes.
-10. `git diff --check` passes.
-11. GitHub Actions matrix passes before acceptance.
-12. Historical-preservation audit passes.
+1. Baseline merge commit `8053709c73045f59358244ec58afc84cfd0deeb6` preserved: PASS.
+2. PR #10 implementation head `dd1b234647a96b31719da0f3c5ad5e91b40144da` recorded: PASS.
+3. Merge commit `306f80dd36a70211b04f9a64215cc8807cbce709` recorded: PASS.
+4. Pull-request matrix 8/8: PASS.
+5. Python regression suite, 15 tests: PASS.
+6. Schema bundle and deterministic fixture replay: PASS.
+7. Proof-hole scan: PASS.
+8. Phase 1-5 preservation and closure verifiers: PASS.
+9. Phase 6 expansion verifier: PASS.
+10. Lean 4 and Coq builds: PASS.
+11. Historical-preservation audit: PASS.
+12. Dedicated Phase 6 CI-closure verifier integrated: PASS.
 
 ## 8. Claim boundary
 
-This patch is `BUILD_READY / CI_PENDING`. It does not release v1.3.0, move or retag `v1.2.0`, alter DOI `10.5281/zenodo.21306969`, or record T151-T156 as accepted before CI and merge closure.
+This is an accepted v1.3.0 development state, not a v1.3.0 release. It does not move or retag `v1.2.0`, alter DOI `10.5281/zenodo.21306969`, or make T156 unconditional. The closure evidence is recorded in `PHASE6_CI_CLOSURE_EVIDENCE.json` and `PHASE6_CI_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md`.
