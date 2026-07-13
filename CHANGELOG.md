@@ -1,17 +1,19 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [Unreleased] - v1.3.0 RC1 release closure and tag preparation
+## [Unreleased] - v1.3.0 RC1 tag authorization and GitHub pre-release preparation
 
-- Recorded PR #12 gate-audit merge commit `29f9ec108efbb419fd030573b33ef5d30486d2ab`.
-- Preserved the exact T121-T156 / 36-record candidate inventory and six source crosswalks.
-- Added deterministic release-closure manifest generation and verification.
-- Added a full-history clean-room replay workflow with Python, Lean 4, and Coq jobs.
-- Added a machine-readable tag-preparation record and draft annotation for `v1.3.0-rc1`.
+- Recorded PR #13 closure merge commit `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Recorded successful post-merge CI for Python, schema, audit, readiness, clean-room replay, Lean 4, and Coq.
+- Separately authorized `cf9a05b46b9b6f29cd85942f99155f89a49817a7` as the exact target of `v1.3.0-rc1`.
+- Added final annotated-tag text, GitHub pre-release notes, and machine-readable metadata.
+- Added deterministic tag-authorization manifest and verifier.
+- Added dry-run-first scripts for annotated-tag and GitHub pre-release creation.
+- Added a validation-only CI workflow containing no tag or release command.
 - Preserved T140, T150, and T156 conditionality and all global non-claims.
 - Preserved immutable tag `v1.2.0`, its target commit, and DOI `10.5281/zenodo.21306969`.
 - Created no RC1 tag, final tag, GitHub Release, Zenodo version, or DOI change.
-- State: `RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED`.
+- State: `RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

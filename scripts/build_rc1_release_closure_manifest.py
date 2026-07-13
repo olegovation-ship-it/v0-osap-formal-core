@@ -1,10 +1,9 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 from rc1_release_closure_lib import (
     AUDIT_MERGE_COMMIT,
     CANDIDATE_TAG,
+    CLOSURE_MERGE_COMMIT,
     IMMUTABLE_DOI,
     IMMUTABLE_TAG,
     IMMUTABLE_TAG_TARGET,
@@ -51,14 +50,23 @@ def main() -> int:
     inventory = read_json(theorem_inventory_path)
     tag_record = read_json(tag_record_path)
 
+    authorized = bool(tag_record["release_actions"].get("tag_target_authorized"))
+    state = (
+        "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED"
+        if authorized
+        else "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED"
+    )
+    target = CLOSURE_MERGE_COMMIT if authorized else None
+
     payload = {
         "artifact_id": "V0_OSAP_V1_3_0_RC1_RELEASE_CLOSURE_MANIFEST",
-        "version": "0.1",
+        "version": "0.2" if authorized else "0.1",
         "date": "2026-07-13",
-        "state": "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED",
+        "state": state,
         "audit_merge_commit": AUDIT_MERGE_COMMIT,
+        "closure_merge_commit": CLOSURE_MERGE_COMMIT if authorized else None,
         "candidate_tag_name": CANDIDATE_TAG,
-        "tag_target_commit": None,
+        "tag_target_commit": target,
         "tag_target_policy": tag_record["tag_target_policy"],
         "immutable_tag": IMMUTABLE_TAG,
         "immutable_tag_target_commit": IMMUTABLE_TAG_TARGET,
@@ -70,14 +78,7 @@ def main() -> int:
         "theorem_inventory_sha256": sha256_file(theorem_inventory_path),
         "files": {path: sha256_file(ROOT / path) for path in TARGETS},
         "preserved_audit_release_actions": audit_manifest["release_actions"],
-        "release_actions": {
-            "rc1_tag_created": False,
-            "final_tag_created": False,
-            "github_release_created": False,
-            "zenodo_version_created": False,
-            "doi_changed": False,
-            "tag_target_authorized": False,
-        },
+        "release_actions": tag_record["release_actions"],
     }
     write_json(OUTPUT, payload)
     print(f"PASS: RC1 release-closure manifest generated with {len(TARGETS)} hashed files.")

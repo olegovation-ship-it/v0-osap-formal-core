@@ -1,0 +1,107 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_TAG_AUTHORIZATION_RECORD",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "state": "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "authorization_scope": "RC1_ANNOTATED_TAG_AND_GITHUB_PRERELEASE_ONLY",
+  "closure_pr": 13,
+  "closure_merge_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
+  "authorized_tag_name": "v1.3.0-rc1",
+  "authorized_tag_target_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
+  "authorization_is_target_specific": true,
+  "final_tag_authorized": false,
+  "zenodo_version_authorized": false,
+  "doi_change_authorized": false,
+  "post_merge_ci_evidence": {
+    "observed_date": "2026-07-13",
+    "overall_status": "PASS",
+    "main_runs": [
+      {
+        "workflow": "Coq",
+        "run_number": 42,
+        "status": "PASS"
+      },
+      {
+        "workflow": "Python checker",
+        "run_number": 42,
+        "status": "PASS"
+      },
+      {
+        "workflow": "RC1 gate audit",
+        "run_number": 14,
+        "status": "PASS"
+      },
+      {
+        "workflow": "Release readiness",
+        "run_number": 7,
+        "status": "PASS"
+      },
+      {
+        "workflow": "Schema validation",
+        "run_number": 42,
+        "status": "PASS"
+      },
+      {
+        "workflow": "RC1 release closure replay",
+        "run_number": 5,
+        "status": "PASS"
+      },
+      {
+        "workflow": "Lean 4",
+        "run_number": 42,
+        "status": "PASS"
+      }
+    ],
+    "synchronized_development_runs": [
+      {
+        "workflow": "RC1 gate audit",
+        "run_number": 15,
+        "status": "PASS"
+      },
+      {
+        "workflow": "RC1 release closure replay",
+        "run_number": 6,
+        "status": "PASS"
+      },
+      {
+        "workflow": "Release readiness",
+        "run_number": 8,
+        "status": "PASS"
+      }
+    ]
+  },
+  "immutable_history": {
+    "tag": "v1.2.0",
+    "target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+    "doi": "10.5281/zenodo.21306969"
+  },
+  "candidate_scope": {
+    "theorem_range": "T121-T156",
+    "record_count": 36,
+    "source_crosswalk_count": 6,
+    "negative_gate_mutant_count": 12,
+    "conditional_theorems": [
+      "T140",
+      "T150",
+      "T156"
+    ],
+    "checker_version": "0.7.0.dev1"
+  },
+  "release_actions": {
+    "tag_target_authorized": true,
+    "rc1_tag_created": false,
+    "github_prerelease_created": false,
+    "final_tag_created": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  },
+  "required_sequence": [
+    "apply and validate this authorization patch",
+    "merge the authorization PR after green CI",
+    "create the annotated tag at the exact authorized target",
+    "push the annotated tag",
+    "create a GitHub non-draft pre-release using the approved notes",
+    "record tag and pre-release evidence in a subsequent closure patch"
+  ]
+}
