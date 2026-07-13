@@ -1,0 +1,14 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_GITHUB_FINAL_RELEASE_METADATA",
+  "version": "0.1",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "tagName": "v1.3.0",
+  "name": "V0 OSAP v1.3.0 \u2014 Stable Release",
+  "targetCommit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "isDraft": false,
+  "isPrerelease": false,
+  "makeLatest": true,
+  "notesFile": "release/v1.3.0/V1_3_0_GITHUB_FINAL_RELEASE_NOTES.md",
+  "verifyRemoteTag": true,
+  "zenodoPublicationAuthorized": false
+}

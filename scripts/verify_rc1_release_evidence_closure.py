@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import subprocess
 
 from rc1_evidence_closure_lib import (
     AUTHORIZATION_MERGE_COMMIT,
@@ -30,6 +32,25 @@ from rc1_evidence_closure_lib import (
 from rc1_release_closure_lib import forbidden_release_commands
 
 ROOT = repository_root()
+HISTORICAL_SNAPSHOT_COMMIT = "13bf095688bcabd5b090f188e9bd28a16237edeb"
+
+
+def historical_blob(rel_path: str) -> bytes:
+    result = subprocess.run(
+        ["git", "show", f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return result.stdout
+
+
+def historical_sha256(rel_path: str) -> str:
+    return hashlib.sha256(historical_blob(rel_path)).hexdigest()
+
+
+def historical_text(rel_path: str) -> str:
+    return historical_blob(rel_path).decode("utf-8")
 
 
 def require(condition: bool, message: str) -> None:
@@ -62,7 +83,16 @@ def verify(require_tags: bool = False) -> None:
             "candidate tag is not an annotated tag object",
         )
 
-    require(not local_tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} exists prematurely")
+    final_present = local_tag_exists(FINAL_TAG)
+    if final_present:
+        require(
+            local_tag_target(FINAL_TAG) == HISTORICAL_SNAPSHOT_COMMIT,
+            "final tag target mismatch",
+        )
+        require(
+            tag_object_type(FINAL_TAG) == "tag",
+            "final tag is not an annotated tag object",
+        )
 
     historical_present = local_tag_exists(IMMUTABLE_TAG)
     if require_tags:
@@ -144,16 +174,18 @@ def verify(require_tags: bool = False) -> None:
         manifest["candidate_tag_target_commit"] == CANDIDATE_TARGET,
         "evidence manifest target mismatch",
     )
+    require(
+        commit_exists(HISTORICAL_SNAPSHOT_COMMIT),
+        "historical RC1 snapshot commit is unavailable",
+    )
     for rel_path, expected_hash in manifest["files"].items():
-        path = ROOT / rel_path
-        require(path.is_file(), f"evidence-manifest target missing: {rel_path}")
         require(
-            sha256_file(path) == expected_hash,
-            f"evidence-manifest hash mismatch: {rel_path}",
+            historical_sha256(rel_path) == expected_hash,
+            f"historical evidence-manifest hash mismatch: {rel_path}",
         )
 
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
-        body = (ROOT / rel_path).read_text(encoding="utf-8")
+        body = historical_text(rel_path)
         require(HUMAN_STATE in body, f"evidence-closure state absent from {rel_path}")
         require(IMMUTABLE_DOI in body, f"immutable DOI absent from {rel_path}")
         require(
@@ -167,7 +199,7 @@ def verify(require_tags: bool = False) -> None:
         ".github/workflows/rc1-release-evidence-closure.yml",
     ]
     for rel_path in workflows:
-        text = (ROOT / rel_path).read_text(encoding="utf-8")
+        text = historical_text(rel_path)
         require("fetch-depth: 0" in text, f"full history missing from {rel_path}")
         require(
             forbidden_release_commands(text) == [],

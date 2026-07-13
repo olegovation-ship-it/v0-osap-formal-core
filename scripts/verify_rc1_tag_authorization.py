@@ -22,6 +22,14 @@ from rc1_tag_release_lib import (
 from rc1_evidence_closure_lib import HUMAN_STATE, RECORD_PATH, tag_object_type
 
 ROOT = repository_root()
+HISTORICAL_SNAPSHOT_COMMIT = "13bf095688bcabd5b090f188e9bd28a16237edeb"
+
+
+def historical_text(rel_path: str) -> str:
+    return git(
+        "show",
+        f"{HISTORICAL_SNAPSHOT_COMMIT}:{rel_path}",
+    ).stdout
 
 
 def require(condition: bool, message: str) -> None:
@@ -32,7 +40,17 @@ def require(condition: bool, message: str) -> None:
 def verify(require_tags: bool = False) -> None:
     require(commit_exists(CLOSURE_MERGE_COMMIT), "authorized closure commit is unavailable")
     require(is_ancestor(CLOSURE_MERGE_COMMIT), "authorized closure commit is not an ancestor of HEAD")
-    require(not local_tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} exists prematurely")
+    final_present = local_tag_exists(FINAL_TAG)
+    if final_present:
+        target = git("rev-list", "-n", "1", FINAL_TAG).stdout.strip()
+        require(
+            target == HISTORICAL_SNAPSHOT_COMMIT,
+            "final tag target mismatch",
+        )
+        require(
+            tag_object_type(FINAL_TAG) == "tag",
+            "final tag is not annotated",
+        )
 
     evidence_mode = (ROOT / RECORD_PATH).is_file()
     candidate_present = local_tag_exists(CANDIDATE_TAG)
@@ -119,9 +137,23 @@ def verify(require_tags: bool = False) -> None:
     require(manifest["authorized_tag_target_commit"] == CLOSURE_MERGE_COMMIT, "manifest target mismatch")
 
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
-        require(expected_state in (ROOT / rel_path).read_text(encoding="utf-8"), f"lifecycle state absent from {rel_path}")
+        body = (
+            historical_text(rel_path)
+            if evidence_mode
+            else (ROOT / rel_path).read_text(encoding="utf-8")
+        )
+        require(
+            expected_state in body,
+            f"lifecycle state absent from {rel_path}",
+        )
 
-    workflow = (ROOT / ".github/workflows/rc1-tag-authorization.yml").read_text(encoding="utf-8")
+    workflow = (
+        historical_text(".github/workflows/rc1-tag-authorization.yml")
+        if evidence_mode
+        else (ROOT / ".github/workflows/rc1-tag-authorization.yml").read_text(
+            encoding="utf-8"
+        )
+    )
     require("fetch-depth: 0" in workflow, "authorization workflow lacks full history")
     require("verify_rc1_tag_authorization.py --require-tags" in workflow, "authorization verifier missing")
     require("create_rc1_annotated_tag.py" not in workflow, "workflow invokes tag creation script")

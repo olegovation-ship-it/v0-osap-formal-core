@@ -1,19 +1,17 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [Unreleased] - v1.3.0 RC1 release evidence closure and historical preservation
+## [Unreleased] - v1.3.0 final release authorization and stable-tag preparation
 
-- Recorded annotated tag `v1.3.0-rc1` at exact target `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
-- Recorded GitHub pre-release `V0 OSAP v1.3.0-rc1 — Release Candidate 1` at `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1`.
-- Recorded publication time `2026-07-13T18:15:33Z`, `isPrerelease=true`, and `isDraft=false`.
-- Froze the prior release-closure and tag-authorization manifests by SHA-256 without rewriting their historical pre-creation ledgers.
-- Restored the executable RC1 gate-audit verifier after detecting that the repository copy was empty.
-- Added a regression guard against an empty/no-op gate-audit verifier.
-- Added deterministic evidence-closure record, manifest, verifier, tests, and validation-only CI.
-- Preserved T140, T150, and T156 conditionality and all global non-claims.
-- Preserved immutable tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
-- Created no final `v1.3.0` tag, final GitHub Release, Zenodo version, or DOI change.
-- State: `RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED`.
+- Separately authorized exact stable target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Prepared annotated tag `v1.3.0` without creating or pushing it.
+- Prepared non-draft, non-prerelease GitHub final-release notes and metadata.
+- Added deterministic authorization manifest, verifier, dry-run-first creation scripts, tests, and validation-only CI.
+- Preserved RC1 tag `v1.3.0-rc1` at `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Preserved `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, DOI `10.5281/zenodo.21306969`, conditional records, and non-claims.
+- Retained embedded checker component version `0.7.0.dev1`.
+- Created no stable tag, final GitHub Release, Zenodo version, or DOI change.
+- State: `FINAL_RELEASE_AUTHORIZED / STABLE_TAG_NOT_CREATED / FINAL_GITHUB_RELEASE_NOT_CREATED / ZENODO_NOT_PUBLISHED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

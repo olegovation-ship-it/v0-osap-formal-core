@@ -1,0 +1,22 @@
+V0 OSAP v1.3.0
+
+Stable release of the V0 Ontological and Structural-Activation Program formal core,
+covering the frozen theorem inventory T121-T156.
+
+Authorized target:
+13bf095688bcabd5b090f188e9bd28a16237edeb
+
+The release includes executable Python validation, canonical JSON Schema validation,
+positive and countermodel fixtures, deterministic manifests, theorem crosswalks, Lean 4
+and Coq mappings, release-gate auditing, clean-room replay, RC1 publication evidence, and
+historical-preservation controls.
+
+T140, T150, and T156 remain conditional. Structural-record parity does not claim proof-term
+identity, unrestricted semantic equivalence, checker completeness, unconditional global
+checker soundness, global conservativity, or empirical, physical, or cosmological validation.
+
+The embedded checker component version remains 0.7.0.dev1 exactly as audited. The repository
+release identifier v1.3.0 does not silently rewrite that component version.
+
+Historical release v1.2.0 and DOI 10.5281/zenodo.21306969 remain immutable. Zenodo publication and DOI
+mutation require a separate authorization.
