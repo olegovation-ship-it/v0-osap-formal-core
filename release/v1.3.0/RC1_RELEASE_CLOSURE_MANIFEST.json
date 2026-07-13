@@ -14,7 +14,7 @@
   "theorem_range": "T121-T156",
   "record_count": 36,
   "source_crosswalk_count": 6,
-  "audit_manifest_sha256": "183ee999eb7e316c49ed11517de4896eae2a8c7e7b04d43f0f43868caf5028e4",
+  "audit_manifest_sha256": "f270f0355a9fe8674608b5a2bc0a3fa49c7a3b4aba71175abe5dfe3e81322232",
   "theorem_inventory_sha256": "1c46611734cb50b1866e2ea6428c1f061593eb1a26323dba519f94bfd2d7446d",
   "files": {
     "README.md": "1891e20439a172033440decf382bd7e13e71f3af31dd52f703e2d8b2057c6c11",
@@ -24,7 +24,7 @@
     "release/v1.3.0/RC1_RELEASE_CLOSURE_ACCEPTANCE_GATES.md": "a7f7c2dcb8a0c11384c28a47a72b7c3147b588efe5f89d5bcb0c8b44b0bbe83c",
     "release/v1.3.0/RC1_TAG_PREPARATION_RECORD.json": "c3d530f1c6cac2e5c24e8eac9f02c9c4863da875980a9f81f629af5e1d9e1231",
     "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt": "e8a7c44764b745ba2f0fe9687bde205ed4234b7fad5f4d18b568684f16e01281",
-    "release/v1.3.0/RC1_RELEASE_MANIFEST.json": "183ee999eb7e316c49ed11517de4896eae2a8c7e7b04d43f0f43868caf5028e4",
+    "release/v1.3.0/RC1_RELEASE_MANIFEST.json": "f270f0355a9fe8674608b5a2bc0a3fa49c7a3b4aba71175abe5dfe3e81322232",
     "release/v1.3.0/RC1_THEOREM_INVENTORY.json": "1c46611734cb50b1866e2ea6428c1f061593eb1a26323dba519f94bfd2d7446d",
     "release/v1.3.0/RC1_STATEMENT_PARITY_EVIDENCE.json": "491101f7690a1c2ed3750ebeed11cf751e7cc5d15b0de6bed4f1b747995c5029",
     "release/v1.3.0/RC1_CLAIM_CLASSIFICATION_MATRIX.json": "61e30a80784dfe6fb9ed4498f962edd511a1e24036855aee686466328b30e9c7",
