@@ -23,7 +23,7 @@
     "scripts/verify_rc1_statement_parity.py": "1044d5b0668b46787aceb4896ce532233ed7a2a7b6eb6da1f4f7eba10edaf555",
     "scripts/verify_rc1_gate_audit.py": "a95aba90124e61b404125aa49d88789c488b1b68cbd30f0b9680453aa506fe09",
     "tests/test_rc1_gate_audit.py": "7671ecd5a424d8d948067f79d937c4d7948cde51c32d4e0b997ceb25c9d2de18",
-    ".github/workflows/rc1-gate-audit.yml": "d4a66eba6e8cf487ce30b1f57a68ee9b9209de397375dcb43273525c55e484bb"
+    ".github/workflows/rc1-gate-audit.yml": "2252c73bb820ae2e8d802622c7307e2bea00dc73e5281747b018d7b69e0ddf87"
   },
   "release_actions": {
     "rc1_tag_created": false,
