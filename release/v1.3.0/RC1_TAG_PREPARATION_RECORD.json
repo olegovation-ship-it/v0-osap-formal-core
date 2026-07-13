@@ -1,15 +1,17 @@
 {
   "artifact_id": "V0_OSAP_V1_3_0_RC1_TAG_PREPARATION_RECORD",
-  "version": "0.1",
+  "version": "0.2",
   "date": "2026-07-13",
-  "state": "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED",
+  "state": "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED",
   "repository": "olegovation-ship-it/v0-osap-formal-core",
   "source_branch": "v1.3.0-development",
   "audit_pr": 12,
   "audit_merge_commit": "29f9ec108efbb419fd030573b33ef5d30486d2ab",
+  "closure_pr": 13,
+  "closure_merge_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
   "candidate_tag_name": "v1.3.0-rc1",
-  "tag_target_policy": "MERGED_RC1_RELEASE_CLOSURE_COMMIT_AFTER_GREEN_CI_AND_POST_MERGE_VERIFICATION",
-  "tag_target_commit": null,
+  "tag_target_policy": "EXACT_SEPARATELY_AUTHORIZED_CLOSURE_MERGE_COMMIT",
+  "tag_target_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
   "immutable_tag": "v1.2.0",
   "immutable_tag_target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
   "immutable_doi": "10.5281/zenodo.21306969",
@@ -27,15 +29,22 @@
     "rc1_tag_created": false,
     "final_tag_created": false,
     "github_release_created": false,
+    "github_prerelease_created": false,
     "zenodo_version_created": false,
     "doi_changed": false,
-    "tag_target_authorized": false
+    "tag_target_authorized": true
   },
-  "required_post_merge_steps": [
-    "record closure PR number and merge commit",
-    "synchronize main and v1.3.0-development",
-    "run closure verifier on the exact merge commit",
-    "record successful clean-room workflow run identifiers",
-    "issue a separate RC1 tag-authorization record"
+  "completed_post_merge_steps": [
+    "recorded closure PR number and merge commit",
+    "synchronized main and v1.3.0-development",
+    "verified closure state on exact merge commit",
+    "recorded successful post-merge workflow run numbers",
+    "issued separate RC1 tag-authorization record"
+  ],
+  "next_actions": [
+    "merge authorization patch after green CI",
+    "create and push annotated tag v1.3.0-rc1 at the exact authorized target",
+    "create GitHub pre-release from approved metadata",
+    "record external release evidence"
   ]
 }

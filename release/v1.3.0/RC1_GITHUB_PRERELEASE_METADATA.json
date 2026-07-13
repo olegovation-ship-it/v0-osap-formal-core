@@ -1,0 +1,16 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_GITHUB_PRERELEASE_METADATA",
+  "version": "0.1",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "tag_name": "v1.3.0-rc1",
+  "target_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
+  "name": "V0 OSAP v1.3.0-rc1 — Release Candidate 1",
+  "prerelease": true,
+  "draft": false,
+  "generate_release_notes": false,
+  "notes_file": "release/v1.3.0/RC1_GITHUB_PRERELEASE_NOTES.md",
+  "make_latest": false,
+  "assets": [],
+  "zenodo_action": "NOT_AUTHORIZED",
+  "doi_action": "NOT_AUTHORIZED"
+}

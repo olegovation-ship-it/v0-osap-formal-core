@@ -12,25 +12,31 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 ## v1.3.0 development status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 RC1 RELEASE CLOSURE AND TAG PREPARATION - RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED**
+> **V0 OSAP v1.3.0 RC1 TAG AUTHORIZATION AND GITHUB PRERELEASE PREPARATION - RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED**
 
-PR #12 completed the gate-audit freeze with ten successful GitHub Actions checks
-and merged the T121-T156 RC1 audit corpus as
-`29f9ec108efbb419fd030573b33ef5d30486d2ab`.
+PR #13 completed the RC1 release-closure stage and merged as
+`cf9a05b46b9b6f29cd85942f99155f89a49817a7`. Post-merge GitHub Actions checks for Python, schema validation,
+RC1 gate audit, release readiness, clean-room release replay, Lean 4, and Coq
+were observed successful on `main`; the corresponding synchronized development
+checks also passed.
 
-This patch installs the release-closure gate: deterministic closure-manifest
-replay, a full-history clean-room workflow, immutable-tag verification, a
-machine-readable tag-preparation record, and a draft annotated-tag message.
-The candidate tag name is `v1.3.0-rc1`, but no tag or release is created.
+This patch separately authorizes `cf9a05b46b9b6f29cd85942f99155f89a49817a7` as the only permitted target for the
+annotated tag `v1.3.0-rc1`. It installs a final tag message, target-specific
+authorization record, GitHub pre-release metadata and notes, deterministic
+authorization manifest, validation-only CI workflow, and explicit dry-run-first
+creation scripts.
 
-Historical tag `v1.2.0`, target
-`befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI
-`10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain
-conditional. The exact RC1 tag target remains unresolved until the closure PR
-is green, merged, synchronized, and separately authorized.
+Applying or merging this patch creates no tag and no GitHub Release. After the
+authorization PR itself passes CI and is merged, the annotated tag and pre-release
+must be created by separate explicit commands and then recorded by a subsequent
+evidence-closure patch.
 
-See `release/v1.3.0/RC1_RELEASE_CLOSURE_AND_TAG_PREPARATION_SPECIFICATION.md` and
-`release/v1.3.0/RC1_RELEASE_CLOSURE_ACCEPTANCE_GATES.md`.
+Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain
+immutable. T140, T150, and T156 remain conditional. The final tag `v1.3.0`,
+Zenodo publication, and DOI mutation remain unauthorized.
+
+See `release/v1.3.0/RC1_TAG_AUTHORIZATION_AND_GITHUB_PRERELEASE_SPECIFICATION.md`
+and `release/v1.3.0/RC1_TAG_AUTHORIZATION_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 

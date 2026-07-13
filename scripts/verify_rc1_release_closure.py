@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 
 from rc1_release_closure_lib import (
     AUDIT_MERGE_COMMIT,
     CANDIDATE_TAG,
+    CLOSURE_MERGE_COMMIT,
     FINAL_TAG,
     IMMUTABLE_DOI,
     IMMUTABLE_TAG,
@@ -22,6 +22,8 @@ from rc1_release_closure_lib import (
 )
 
 ROOT = repository_root()
+AUTHORIZED_STATE = "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED"
+CLOSURE_STATE = "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED"
 
 
 def require(condition: bool, message: str) -> None:
@@ -29,9 +31,16 @@ def require(condition: bool, message: str) -> None:
         raise SystemExit(f"RC1 release-closure verification failed: {message}")
 
 
+def no_external_release_action(actions: dict[str, bool]) -> bool:
+    allowed_true = {"tag_target_authorized"}
+    return all((not value) or key in allowed_true for key, value in actions.items())
+
+
 def verify(require_tags: bool = False) -> None:
     require(commit_exists(AUDIT_MERGE_COMMIT), "audit merge commit is unavailable")
     require(is_ancestor(AUDIT_MERGE_COMMIT), "audit merge commit is not an ancestor of HEAD")
+    require(commit_exists(CLOSURE_MERGE_COMMIT), "closure merge commit is unavailable")
+    require(is_ancestor(CLOSURE_MERGE_COMMIT), "closure merge commit is not an ancestor of HEAD")
 
     require(not tag_exists(CANDIDATE_TAG), f"candidate tag {CANDIDATE_TAG} already exists")
     require(not tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} already exists")
@@ -44,14 +53,19 @@ def verify(require_tags: bool = False) -> None:
         require(target == IMMUTABLE_TAG_TARGET, "immutable v1.2.0 tag target changed")
 
     tag_record = read_json(ROOT / "release/v1.3.0/RC1_TAG_PREPARATION_RECORD.json")
-    require(tag_record["state"] == "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED", "tag-record state mismatch")
+    require(tag_record["state"] in {CLOSURE_STATE, AUTHORIZED_STATE}, "tag-record state mismatch")
     require(tag_record["audit_merge_commit"] == AUDIT_MERGE_COMMIT, "audit baseline mismatch")
     require(tag_record["candidate_tag_name"] == CANDIDATE_TAG, "candidate tag name mismatch")
-    require(tag_record["tag_target_commit"] is None, "tag target was resolved prematurely")
     require(tag_record["immutable_tag_target_commit"] == IMMUTABLE_TAG_TARGET, "immutable target mismatch")
     require(tag_record["immutable_doi"] == IMMUTABLE_DOI, "immutable DOI mismatch")
     require(tag_record["conditional_theorems"] == ["T140", "T150", "T156"], "conditional theorem ledger changed")
-    require(not any(tag_record["release_actions"].values()), "a release action is marked true")
+    require(no_external_release_action(tag_record["release_actions"]), "external release action is marked true")
+    if tag_record["state"] == AUTHORIZED_STATE:
+        require(tag_record["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "authorized tag target mismatch")
+        require(tag_record["release_actions"]["tag_target_authorized"] is True, "target authorization missing")
+    else:
+        require(tag_record["tag_target_commit"] is None, "tag target was resolved prematurely")
+        require(not any(tag_record["release_actions"].values()), "closure state records a release action")
 
     audit_manifest = read_json(ROOT / "release/v1.3.0/RC1_RELEASE_MANIFEST.json")
     require(not any(audit_manifest["release_actions"].values()), "audit manifest records a release action")
@@ -75,18 +89,26 @@ def verify(require_tags: bool = False) -> None:
 
     manifest_path = ROOT / "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json"
     closure_manifest = read_json(manifest_path)
-    require(closure_manifest["state"] == "RC1_CLOSURE_READY_CI_PENDING_TAG_NOT_CREATED", "closure manifest state mismatch")
+    require(closure_manifest["state"] in {CLOSURE_STATE, AUTHORIZED_STATE}, "closure manifest state mismatch")
     require(closure_manifest["audit_merge_commit"] == AUDIT_MERGE_COMMIT, "closure audit baseline mismatch")
-    require(closure_manifest["tag_target_commit"] is None, "closure manifest resolves tag target prematurely")
-    require(not any(closure_manifest["release_actions"].values()), "closure manifest records a release action")
+    require(no_external_release_action(closure_manifest["release_actions"]), "closure manifest records external release action")
+    if closure_manifest["state"] == AUTHORIZED_STATE:
+        require(closure_manifest["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "closure target mismatch")
+        require(closure_manifest["release_actions"]["tag_target_authorized"] is True, "closure authorization missing")
+    else:
+        require(closure_manifest["tag_target_commit"] is None, "closure manifest resolves tag target prematurely")
     for rel_path, expected_hash in closure_manifest["files"].items():
         path = ROOT / rel_path
         require(path.is_file(), f"manifest target missing: {rel_path}")
         require(sha256_file(path) == expected_hash, f"manifest hash mismatch: {rel_path}")
 
-    expected_state_text = "RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED"
+    expected_state_text = (
+        "RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED"
+        if tag_record["state"] == AUTHORIZED_STATE
+        else "RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED"
+    )
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
-        require(expected_state_text in (ROOT / rel_path).read_text(encoding="utf-8"), f"closure state absent from {rel_path}")
+        require(expected_state_text in (ROOT / rel_path).read_text(encoding="utf-8"), f"state absent from {rel_path}")
 
     workflow = (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(encoding="utf-8")
     require("fetch-depth: 0" in workflow, "closure workflow does not fetch full history")
@@ -98,9 +120,9 @@ def verify(require_tags: bool = False) -> None:
     require(not forbidden, "workflow contains release commands: " + ", ".join(forbidden))
 
     draft = (ROOT / "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt").read_text(encoding="utf-8")
-    require("DRAFT ONLY" in draft and "TAG CREATION IS NOT AUTHORIZED" in draft, "tag draft lacks hold notice")
+    require("DRAFT ONLY" in draft and "TAG CREATION IS NOT AUTHORIZED" in draft, "historical tag draft lacks hold notice")
 
-    print("PASS: V0 OSAP v1.3.0 RC1 release closure and tag preparation verified; no tag authorized.")
+    print("PASS: V0 OSAP v1.3.0 RC1 release closure preserved; exact tag target authorization is recorded, no tag created.")
 
 
 def main() -> int:

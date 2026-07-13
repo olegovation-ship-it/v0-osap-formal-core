@@ -1,0 +1,20 @@
+V0 OSAP v1.3.0-rc1
+
+Release Candidate 1 for the V0 Ontological and Structural-Activation Program
+formal core, covering the frozen theorem inventory T121-T156.
+
+Authorized target:
+cf9a05b46b9b6f29cd85942f99155f89a49817a7
+
+The candidate includes executable Python validation, JSON Schema validation,
+positive and countermodel fixtures, Lean 4 and Coq mappings, canonical theorem
+crosswalks, deterministic RC1 manifests, structural-record parity evidence,
+negative release-gate testing, clean-room replay, and historical-preservation
+controls.
+
+T140, T150, and T156 remain conditional. Structural-record parity does not claim
+proof-term identity, unrestricted semantic equivalence, checker completeness,
+unconditional global checker soundness, global conservativity, or empirical,
+physical, or cosmological validation.
+
+Historical release v1.2.0 and DOI 10.5281/zenodo.21306969 remain immutable.

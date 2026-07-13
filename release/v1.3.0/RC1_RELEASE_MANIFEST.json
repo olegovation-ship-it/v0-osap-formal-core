@@ -21,7 +21,7 @@
     "scripts/rc1_audit_lib.py": "fcc12311b8b7c6c4c1321c09dee97b26104650a087e8f050b1b57d772af95b31",
     "scripts/build_rc1_release_inventory.py": "61047c2f8a736dc950ec0037c56b593b4a9eb979ce93573286e43277b77b9e36",
     "scripts/verify_rc1_statement_parity.py": "1044d5b0668b46787aceb4896ce532233ed7a2a7b6eb6da1f4f7eba10edaf555",
-    "scripts/verify_rc1_gate_audit.py": "0384918c4aaccf847a5203dba65a380cba671a731ce60c25b0fd0335d8e75cdd",
+    "scripts/verify_rc1_gate_audit.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "tests/test_rc1_gate_audit.py": "7671ecd5a424d8d948067f79d937c4d7948cde51c32d4e0b997ceb25c9d2de18",
     ".github/workflows/rc1-gate-audit.yml": "2252c73bb820ae2e8d802622c7307e2bea00dc73e5281747b018d7b69e0ddf87"
   },
