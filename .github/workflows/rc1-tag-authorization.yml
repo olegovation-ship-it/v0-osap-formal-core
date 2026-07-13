@@ -25,11 +25,11 @@ jobs:
       - run: python scripts/build_rc1_release_inventory.py
       - run: python scripts/verify_rc1_statement_parity.py
       - run: python scripts/verify_rc1_gate_audit.py
-      - run: python scripts/build_rc1_release_closure_manifest.py
       - run: python scripts/verify_rc1_release_closure.py --require-tags
-      - run: python scripts/build_rc1_tag_authorization_manifest.py
-      - run: git diff --exit-code -- release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json
       - run: python scripts/verify_rc1_tag_authorization.py --require-tags
+      - run: python scripts/build_rc1_release_evidence_closure_manifest.py
+      - run: git diff --exit-code -- release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json
+      - run: python scripts/verify_rc1_release_evidence_closure.py --require-tags
       - run: python -m pytest -q
       - run: v0-osap-fc1 schema-bundle
       - run: v0-osap-fc1 fixtures

@@ -1,8 +1,8 @@
 {
   "artifact_id": "V0_OSAP_V1_3_0_RC1_GATE_AUDIT_EVIDENCE",
-  "version": "0.1",
+  "version": "0.2",
   "date": "2026-07-13",
-  "status": "RC1_AUDIT_READY_CI_PENDING",
+  "status": "RC1_GATE_AUDIT_PRESERVED_AFTER_PRERELEASE",
   "theorem_range": "T121-T156",
   "baseline_closure_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
   "structural_parity": "PASS",
@@ -116,14 +116,9 @@
   "historical_preservation": {
     "immutable_tag": "v1.2.0",
     "immutable_doi": "10.5281/zenodo.21306969",
-    "release_created_by_patch": false
+    "gate_audit_created_release": false,
+    "final_release_created": false
   },
-  "pending": [
-    "complete GitHub Actions matrix",
-    "merged-candidate audit",
-    "independent clean-room replay",
-    "separate RC1 closure decision"
-  ],
   "claim_boundary": {
     "checker_completeness_claimed": false,
     "unconditional_global_soundness_claimed": false,
@@ -131,5 +126,5 @@
     "global_conservativity_claimed": false,
     "empirical_or_physical_validation_claimed": false
   },
-  "evidence_sha256": "1a43460d57c81eca9b86452563ee64490b1557aaa4756387d3ccddcf7287a2fc"
+  "evidence_sha256": "92846efd407df9bab5743ca58820522b5f7e811d4efd4c3dece2675472a25c85"
 }

@@ -8,6 +8,7 @@ from scripts.rc1_release_closure_lib import (
     repository_root,
     sha256_file,
 )
+from scripts.rc1_evidence_closure_lib import RECORD_PATH
 
 ROOT = repository_root()
 AUTHORIZED_STATE = "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED"
@@ -20,7 +21,7 @@ def test_rc1_expected_theorem_range_is_exact() -> None:
     assert ids[-1] == "T156"
 
 
-def test_rc1_tag_preparation_record_is_authorized_but_nonreleasing() -> None:
+def test_historical_tag_preparation_record_remains_unchanged() -> None:
     record = read_json(ROOT / "release/v1.3.0/RC1_TAG_PREPARATION_RECORD.json")
     assert record["state"] == AUTHORIZED_STATE
     assert record["tag_target_commit"] == CLOSURE_MERGE_COMMIT
@@ -34,15 +35,23 @@ def test_rc1_tag_preparation_record_is_authorized_but_nonreleasing() -> None:
 
 
 def test_rc1_closure_workflow_contains_no_release_command() -> None:
-    workflow = (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(encoding="utf-8")
+    workflow = (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(
+        encoding="utf-8"
+    )
     assert forbidden_release_commands(workflow) == []
     assert "python -m pytest -q" in workflow
     assert "fetch-depth: 0" in workflow
 
 
-def test_rc1_closure_manifest_hashes_replay() -> None:
-    manifest = read_json(ROOT / "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json")
+def test_historical_closure_manifest_is_frozen_by_evidence_record() -> None:
+    record = read_json(ROOT / RECORD_PATH)
+    path = ROOT / "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json"
+    manifest = read_json(path)
     assert manifest["state"] == AUTHORIZED_STATE
     assert manifest["tag_target_commit"] == CLOSURE_MERGE_COMMIT
-    for rel_path, expected_hash in manifest["files"].items():
-        assert sha256_file(ROOT / rel_path) == expected_hash
+    assert (
+        sha256_file(path)
+        == record["frozen_historical_manifests"][
+            "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json"
+        ]
+    )

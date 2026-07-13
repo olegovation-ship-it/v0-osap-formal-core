@@ -1,19 +1,19 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [Unreleased] - v1.3.0 RC1 tag authorization and GitHub pre-release preparation
+## [Unreleased] - v1.3.0 RC1 release evidence closure and historical preservation
 
-- Recorded PR #13 closure merge commit `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
-- Recorded successful post-merge CI for Python, schema, audit, readiness, clean-room replay, Lean 4, and Coq.
-- Separately authorized `cf9a05b46b9b6f29cd85942f99155f89a49817a7` as the exact target of `v1.3.0-rc1`.
-- Added final annotated-tag text, GitHub pre-release notes, and machine-readable metadata.
-- Added deterministic tag-authorization manifest and verifier.
-- Added dry-run-first scripts for annotated-tag and GitHub pre-release creation.
-- Added a validation-only CI workflow containing no tag or release command.
+- Recorded annotated tag `v1.3.0-rc1` at exact target `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Recorded GitHub pre-release `V0 OSAP v1.3.0-rc1 — Release Candidate 1` at `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1`.
+- Recorded publication time `2026-07-13T18:15:33Z`, `isPrerelease=true`, and `isDraft=false`.
+- Froze the prior release-closure and tag-authorization manifests by SHA-256 without rewriting their historical pre-creation ledgers.
+- Restored the executable RC1 gate-audit verifier after detecting that the repository copy was empty.
+- Added a regression guard against an empty/no-op gate-audit verifier.
+- Added deterministic evidence-closure record, manifest, verifier, tests, and validation-only CI.
 - Preserved T140, T150, and T156 conditionality and all global non-claims.
-- Preserved immutable tag `v1.2.0`, its target commit, and DOI `10.5281/zenodo.21306969`.
-- Created no RC1 tag, final tag, GitHub Release, Zenodo version, or DOI change.
-- State: `RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED`.
+- Preserved immutable tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
+- Created no final `v1.3.0` tag, final GitHub Release, Zenodo version, or DOI change.
+- State: `RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

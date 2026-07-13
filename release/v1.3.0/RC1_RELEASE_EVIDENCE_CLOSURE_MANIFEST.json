@@ -1,0 +1,62 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "state": "RC1_RELEASE_EVIDENCE_CLOSED_TAG_CREATED_PRERELEASE_CREATED_FINAL_RELEASE_NOT_CREATED",
+  "human_state": "RC1_RELEASE_EVIDENCE_CLOSED / TAG_CREATED / PRERELEASE_CREATED / FINAL_RELEASE_NOT_CREATED",
+  "authorization_merge_commit": "cc1148f4c01cec2e2fca05651d02edc18fdc7312",
+  "candidate_tag_name": "v1.3.0-rc1",
+  "candidate_tag_target_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
+  "final_tag_name": "v1.3.0",
+  "immutable_tag": "v1.2.0",
+  "immutable_tag_target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+  "immutable_doi": "10.5281/zenodo.21306969",
+  "github_prerelease_url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1",
+  "github_prerelease_published_at": "2026-07-13T18:15:33Z",
+  "frozen_historical_manifests": {
+    "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json": "6617ebf3eea40b978b049a1beeebaf5ebd1d88ccd1bfce3322f05d7a49a7ff04",
+    "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json": "6a78df7e21241e30983689034bbb5ab8ee8047d0777d125cf0a42a5a99d19c17"
+  },
+  "files": {
+    "README.md": "fdf8b94acaf706b71039849c279629091075193b294e384f0ef366c005cc56b9",
+    "CHANGELOG.md": "fdb8a97b06a759d63abed38b5e2e92f37140f5b11428cdb56bd7c077899dc92e",
+    "docs/status_and_nonclaims.md": "ed1d15050ffb2811267ff0a40ca2e32f77bc26f1e7623df320cffe91fba977ea",
+    "release/v1.3.0/RC1_GITHUB_PRERELEASE_EVIDENCE.json": "c476c1e557531a98d07b5d75d81cc03f94237290390984f7fd6cd2c270f8679f",
+    "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "6455294c271c5a518ec335dafdefe3d0a3bd96b7bc5240849e3aec19f40fbb36",
+    "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md": "80c4d364a8aeb3eaf53ae08f0573980c3779bc48617f9d56b5e850c640245d51",
+    "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md": "abc41da33451d0edda4f10632eef16262423fbae65bc6fdc86f5c31c4f560e58",
+    "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json": "6617ebf3eea40b978b049a1beeebaf5ebd1d88ccd1bfce3322f05d7a49a7ff04",
+    "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json": "6a78df7e21241e30983689034bbb5ab8ee8047d0777d125cf0a42a5a99d19c17",
+    "release/v1.3.0/RC1_GATE_AUDIT_EVIDENCE.json": "b0345c386b830f13f312414a0235e7387bc8f2c02e44cfbadff9a4a7cc77ef5c",
+    "scripts/rc1_evidence_closure_lib.py": "3f4db4fd9c468b34c3e0cb1f486da3fe02316f782d677240227c3ca7b79153af",
+    "scripts/build_rc1_release_evidence_closure_manifest.py": "cf5c2768cf8e68acc644b7715a880b1a2d3f0040b8403fa0315d0a1bd42ab0ac",
+    "scripts/verify_rc1_release_evidence_closure.py": "95582ba49371276a2f7ff75189ec1b0eb2e074cdfb50cab9e3c6de0a4cb5cb5e",
+    "scripts/verify_rc1_gate_audit.py": "17c0374cbbc2c34c65cbf372713062acdcc9032a4b64c065da03cc1b0b16bd4b",
+    "scripts/verify_rc1_release_closure.py": "f8e3c073ccfc99ffd81c4c14cc744d8bc25fb0f829f984673ce8ae576f747ef2",
+    "scripts/verify_rc1_tag_authorization.py": "3c0bd2891fe40ab6600f5013ae7415ace1e25412d5c3fa1f45eb2fc1405e4585",
+    "tests/test_rc1_gate_audit.py": "5376961397b42fc5ff7c3a312fa2944c8cbd7fee7214d89c9f17384f78967bd4",
+    "tests/test_rc1_release_closure.py": "262cab7a3a3a3dfab4882a5aed09d04b36d5912bf13e06eebfa15e248203ac2a",
+    "tests/test_rc1_tag_authorization.py": "08ef80fa2d3e4100ce88b4a678af4499a88d556ffdde7a554884d852e3e4e440",
+    "tests/test_rc1_release_evidence_closure.py": "ecffae6665da03c6b37b5b2e9364fefb959f002bd9940c2211fd0318ca6e0d53",
+    ".github/workflows/rc1-release-closure.yml": "a1a6a60b8a511ebebe20a08fed2f89b2e572b2da0ffc57e5967f46771a60b409",
+    ".github/workflows/rc1-tag-authorization.yml": "bcbfc3edab21b45ccdbb29cf8c5806f219d04648bc41b18c98f06938efe6b5a7",
+    ".github/workflows/rc1-release-evidence-closure.yml": "b5d33703c364fcbf54e7a94e40dbdb20eebe0ae7cdc85d81e2e2cd2381838eb2"
+  },
+  "release_actions": {
+    "tag_target_authorized": true,
+    "rc1_tag_created": true,
+    "github_prerelease_created": true,
+    "final_tag_created": false,
+    "github_final_release_created": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  },
+  "claim_boundary": {
+    "checker_completeness_claimed": false,
+    "unconditional_global_soundness_claimed": false,
+    "proof_term_identity_claimed": false,
+    "global_conservativity_claimed": false,
+    "empirical_or_physical_validation_claimed": false,
+    "cosmological_validation_claimed": false
+  }
+}

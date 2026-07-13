@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import json
@@ -22,3 +21,12 @@ def test_rc1_inventory_and_negative_gates() -> None:
     for mutant in mutants["mutants"]:
         diagnostics = audit_inventory(apply_mutation(inventory, mutant))
         assert mutant["expected"] in diagnostics, (mutant, diagnostics)
+
+
+def test_gate_audit_verifier_is_executable_and_not_empty() -> None:
+    path = ROOT / "scripts/verify_rc1_gate_audit.py"
+    text = path.read_text(encoding="utf-8")
+    assert len(text.splitlines()) > 100
+    assert "audit_inventory(inventory)" in text
+    assert "RC1_RELEASE_EVIDENCE_CLOSED" in text
+    assert "negative gate mutants killed" in text

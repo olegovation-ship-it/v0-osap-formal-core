@@ -1,4 +1,4 @@
-name: RC1 release closure replay
+name: RC1 release evidence closure
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  clean-room-python-replay:
+  evidence-closure-python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +22,14 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e '.[dev]'
+      - run: python scripts/build_rc1_release_inventory.py
+      - run: python scripts/verify_rc1_statement_parity.py
+      - run: python scripts/verify_rc1_gate_audit.py
+      - run: python scripts/verify_rc1_release_closure.py --require-tags
+      - run: python scripts/verify_rc1_tag_authorization.py --require-tags
+      - run: python scripts/build_rc1_release_evidence_closure_manifest.py
+      - run: git diff --exit-code -- release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json
+      - run: python scripts/verify_rc1_release_evidence_closure.py --require-tags
       - run: python -m pytest -q
       - run: v0-osap-fc1 schema-bundle
       - run: v0-osap-fc1 fixtures
@@ -37,25 +45,9 @@ jobs:
       - run: python scripts/verify_phase5_ci_closure.py
       - run: python scripts/verify_phase6_expansion.py
       - run: python scripts/verify_phase6_ci_closure.py
-      - name: Replay RC1 audit inventory
-        run: |
-          python scripts/build_rc1_release_inventory.py
-          git diff --exit-code -- release/v1.3.0/RC1_RELEASE_MANIFEST.json release/v1.3.0/RC1_THEOREM_INVENTORY.json
-      - run: python scripts/verify_rc1_statement_parity.py
-      - run: python scripts/verify_rc1_gate_audit.py
-      - run: python scripts/verify_rc1_release_closure.py --require-tags
-      - run: python scripts/verify_rc1_tag_authorization.py --require-tags
-      - run: python scripts/verify_rc1_release_evidence_closure.py --require-tags
-      - name: Capture clean-room replay evidence
-        run: python scripts/capture_rc1_clean_room_evidence.py --status PASS
-      - uses: actions/upload-artifact@v4
-        with:
-          name: rc1-clean-room-replay-${{ github.sha }}
-          path: artifacts/rc1_clean_room_replay_evidence.json
-          if-no-files-found: error
       - run: git diff --check
 
-  clean-room-lean4-replay:
+  evidence-closure-lean4:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -65,15 +57,12 @@ jobs:
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Record Lean version
-        working-directory: lean
-        run: lean --version
       - name: Build Lean source
         working-directory: lean
         run: lake build
       - run: python scripts/check_no_proof_holes.py
 
-  clean-room-coq-replay:
+  evidence-closure-coq:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,8 +72,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y coq
-      - name: Record Coq version
-        run: coqc --version
       - name: Build Coq source
         working-directory: coq
         run: make

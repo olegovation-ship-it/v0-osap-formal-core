@@ -1,0 +1,12 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_GITHUB_PRERELEASE_EVIDENCE",
+  "authorized_target_commit": "cf9a05b46b9b6f29cd85942f99155f89a49817a7",
+  "release": {
+    "isDraft": false,
+    "isPrerelease": true,
+    "name": "V0 OSAP v1.3.0-rc1 — Release Candidate 1",
+    "publishedAt": "2026-07-13T18:15:33Z",
+    "tagName": "v1.3.0-rc1",
+    "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0-rc1"
+  }
+}

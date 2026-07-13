@@ -20,6 +20,7 @@ from rc1_release_closure_lib import (
     sha256_file,
     tag_exists,
 )
+from rc1_evidence_closure_lib import HUMAN_STATE, RECORD_PATH
 
 ROOT = repository_root()
 AUTHORIZED_STATE = "RC1_TAG_AUTHORIZED_TAG_NOT_CREATED_PRERELEASE_NOT_CREATED"
@@ -41,9 +42,18 @@ def verify(require_tags: bool = False) -> None:
     require(is_ancestor(AUDIT_MERGE_COMMIT), "audit merge commit is not an ancestor of HEAD")
     require(commit_exists(CLOSURE_MERGE_COMMIT), "closure merge commit is unavailable")
     require(is_ancestor(CLOSURE_MERGE_COMMIT), "closure merge commit is not an ancestor of HEAD")
+    require(not tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} exists prematurely")
 
-    require(not tag_exists(CANDIDATE_TAG), f"candidate tag {CANDIDATE_TAG} already exists")
-    require(not tag_exists(FINAL_TAG), f"final tag {FINAL_TAG} already exists")
+    evidence_mode = (ROOT / RECORD_PATH).is_file()
+    candidate_present = tag_exists(CANDIDATE_TAG)
+    if evidence_mode:
+        if require_tags:
+            require(candidate_present, f"candidate tag {CANDIDATE_TAG} is unavailable")
+        if candidate_present:
+            target = git("rev-list", "-n", "1", CANDIDATE_TAG).stdout.strip()
+            require(target == CLOSURE_MERGE_COMMIT, "candidate RC1 tag target changed")
+    else:
+        require(not candidate_present, f"candidate tag {CANDIDATE_TAG} already exists")
 
     historical_tag_present = tag_exists(IMMUTABLE_TAG)
     if require_tags:
@@ -59,13 +69,9 @@ def verify(require_tags: bool = False) -> None:
     require(tag_record["immutable_tag_target_commit"] == IMMUTABLE_TAG_TARGET, "immutable target mismatch")
     require(tag_record["immutable_doi"] == IMMUTABLE_DOI, "immutable DOI mismatch")
     require(tag_record["conditional_theorems"] == ["T140", "T150", "T156"], "conditional theorem ledger changed")
-    require(no_external_release_action(tag_record["release_actions"]), "external release action is marked true")
-    if tag_record["state"] == AUTHORIZED_STATE:
-        require(tag_record["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "authorized tag target mismatch")
-        require(tag_record["release_actions"]["tag_target_authorized"] is True, "target authorization missing")
-    else:
-        require(tag_record["tag_target_commit"] is None, "tag target was resolved prematurely")
-        require(not any(tag_record["release_actions"].values()), "closure state records a release action")
+    require(no_external_release_action(tag_record["release_actions"]), "historical tag-preparation record mutated")
+    require(tag_record["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "authorized tag target mismatch")
+    require(tag_record["release_actions"]["tag_target_authorized"] is True, "target authorization missing")
 
     audit_manifest = read_json(ROOT / "release/v1.3.0/RC1_RELEASE_MANIFEST.json")
     require(not any(audit_manifest["release_actions"].values()), "audit manifest records a release action")
@@ -91,38 +97,57 @@ def verify(require_tags: bool = False) -> None:
     closure_manifest = read_json(manifest_path)
     require(closure_manifest["state"] in {CLOSURE_STATE, AUTHORIZED_STATE}, "closure manifest state mismatch")
     require(closure_manifest["audit_merge_commit"] == AUDIT_MERGE_COMMIT, "closure audit baseline mismatch")
-    require(no_external_release_action(closure_manifest["release_actions"]), "closure manifest records external release action")
-    if closure_manifest["state"] == AUTHORIZED_STATE:
-        require(closure_manifest["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "closure target mismatch")
-        require(closure_manifest["release_actions"]["tag_target_authorized"] is True, "closure authorization missing")
-    else:
-        require(closure_manifest["tag_target_commit"] is None, "closure manifest resolves tag target prematurely")
-    for rel_path, expected_hash in closure_manifest["files"].items():
-        path = ROOT / rel_path
-        require(path.is_file(), f"manifest target missing: {rel_path}")
-        require(sha256_file(path) == expected_hash, f"manifest hash mismatch: {rel_path}")
+    require(no_external_release_action(closure_manifest["release_actions"]), "historical closure manifest mutated")
+    require(closure_manifest["tag_target_commit"] == CLOSURE_MERGE_COMMIT, "closure target mismatch")
 
-    expected_state_text = (
-        "RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED"
-        if tag_record["state"] == AUTHORIZED_STATE
-        else "RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED"
-    )
+    if evidence_mode:
+        closure = read_json(ROOT / RECORD_PATH)
+        frozen_hash = closure["frozen_historical_manifests"][
+            "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json"
+        ]
+        require(sha256_file(manifest_path) == frozen_hash, "frozen release-closure manifest changed")
+        expected_state_text = HUMAN_STATE
+    else:
+        for rel_path, expected_hash in closure_manifest["files"].items():
+            path = ROOT / rel_path
+            require(path.is_file(), f"manifest target missing: {rel_path}")
+            require(sha256_file(path) == expected_hash, f"manifest hash mismatch: {rel_path}")
+        expected_state_text = (
+            "RC1_TAG_AUTHORIZED / TAG_NOT_CREATED / PRERELEASE_NOT_CREATED"
+            if tag_record["state"] == AUTHORIZED_STATE
+            else "RC1_CLOSURE_READY / CI_PENDING / TAG_NOT_CREATED"
+        )
+
     for rel_path in ["README.md", "CHANGELOG.md", "docs/status_and_nonclaims.md"]:
-        require(expected_state_text in (ROOT / rel_path).read_text(encoding="utf-8"), f"state absent from {rel_path}")
+        require(
+            expected_state_text in (ROOT / rel_path).read_text(encoding="utf-8"),
+            f"state absent from {rel_path}",
+        )
 
     workflow = (ROOT / ".github/workflows/rc1-release-closure.yml").read_text(encoding="utf-8")
     require("fetch-depth: 0" in workflow, "closure workflow does not fetch full history")
     require("python -m pytest -q" in workflow, "closure workflow does not use module-mode pytest")
-    require("build_rc1_release_closure_manifest.py" in workflow, "closure manifest replay missing")
     require("verify_rc1_release_closure.py --require-tags" in workflow, "tag-preservation verification missing")
     require("actions/upload-artifact@v4" in workflow, "clean-room evidence upload missing")
     forbidden = forbidden_release_commands(workflow)
     require(not forbidden, "workflow contains release commands: " + ", ".join(forbidden))
 
     draft = (ROOT / "release/v1.3.0/RC1_TAG_ANNOTATION_DRAFT.txt").read_text(encoding="utf-8")
-    require("DRAFT ONLY" in draft and "TAG CREATION IS NOT AUTHORIZED" in draft, "historical tag draft lacks hold notice")
+    require(
+        "DRAFT ONLY" in draft and "TAG CREATION IS NOT AUTHORIZED" in draft,
+        "historical tag draft lacks its original hold notice",
+    )
 
-    print("PASS: V0 OSAP v1.3.0 RC1 release closure preserved; exact tag target authorization is recorded, no tag created.")
+    if evidence_mode:
+        print(
+            "PASS: historical RC1 release-closure snapshot preserved after exact-target "
+            "tag and GitHub pre-release creation; no final release authorized."
+        )
+    else:
+        print(
+            "PASS: V0 OSAP v1.3.0 RC1 release closure preserved; "
+            "exact tag target authorization is recorded, no tag created."
+        )
 
 
 def main() -> int:
