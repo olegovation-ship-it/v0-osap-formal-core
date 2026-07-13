@@ -20,5 +20,5 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e '.[dev]'
-      - run: pytest -q
+      - run: python -m pytest -q
       - run: v0-osap-fc1 fixtures
