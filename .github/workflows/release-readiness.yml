@@ -53,3 +53,6 @@ jobs:
       - run: python scripts/verify_phase6_expansion.py
       - run: python scripts/verify_phase5_ci_closure.py
       - run: python scripts/verify_phase6_ci_closure.py
+      - run: python scripts/build_rc1_release_inventory.py
+      - run: python scripts/verify_rc1_statement_parity.py
+      - run: python scripts/verify_rc1_gate_audit.py

@@ -1,5 +1,19 @@
 # Changelog
 
+<!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
+## [Unreleased] - v1.3.0 RC1 gate audit and release freeze
+
+- Froze candidate theorem scope T121-T156 without adding theorem IDs or semantic rules.
+- Added a generated consolidated theorem inventory and one-owner collision audit.
+- Added the claim-classification matrix and retained T140, T150, and T156 conditionality.
+- Added structural-record parity evidence for Lean, Coq, fixtures, and canonical RC1 hashes.
+- Added twelve negative release-gate mutants and a dedicated gate verifier.
+- Added validator/evidence interchange contract, release manifest, known limitations, and clean-room replay protocol.
+- Preserved immutable tag `v1.2.0` and DOI `10.5281/zenodo.21306969`.
+- State: `RC1_AUDIT_READY / CI_PENDING / NO_RELEASE_TAG`.
+<!-- V0_OSAP_RC1_CHANGELOG_END -->
+
+
 ## [Unreleased] — Phase 6 accepted development state
 
 - Accepted explicit post-v1.1 extension cluster T151-T156 after PR #10 passed 8/8 checks.

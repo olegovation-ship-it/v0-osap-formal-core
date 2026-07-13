@@ -1,0 +1,135 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_GATE_AUDIT_EVIDENCE",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "status": "RC1_AUDIT_READY_CI_PENDING",
+  "theorem_range": "T121-T156",
+  "baseline_closure_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
+  "structural_parity": "PASS",
+  "negative_gate_mutants": {
+    "total": 12,
+    "killed": 12,
+    "result": "PASS",
+    "details": [
+      {
+        "id": "RC1-N01",
+        "expected": "THEOREM_COVERAGE_MISMATCH",
+        "diagnostics": [
+          "THEOREM_COVERAGE_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N02",
+        "expected": "DUPLICATE_THEOREM_ID",
+        "diagnostics": [
+          "DUPLICATE_THEOREM_ID",
+          "THEOREM_COVERAGE_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N03",
+        "expected": "PARITY_STATUS_NOT_ACCEPTED",
+        "diagnostics": [
+          "PARITY_STATUS_NOT_ACCEPTED"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N04",
+        "expected": "LEAN_SYMBOL_REQUIRED",
+        "diagnostics": [
+          "LEAN_SYMBOL_REQUIRED",
+          "RC1_RECORD_HASH_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N05",
+        "expected": "COQ_SYMBOL_REQUIRED",
+        "diagnostics": [
+          "COQ_SYMBOL_REQUIRED",
+          "RC1_RECORD_HASH_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N06",
+        "expected": "RC1_RECORD_HASH_MISMATCH",
+        "diagnostics": [
+          "RC1_RECORD_HASH_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N07",
+        "expected": "EXTENSION_CLASSIFICATION_MISMATCH",
+        "diagnostics": [
+          "EXTENSION_CLASSIFICATION_MISMATCH",
+          "RC1_RECORD_HASH_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N08",
+        "expected": "CONDITIONALITY_FIREWALL_FAILURE",
+        "diagnostics": [
+          "CONDITIONALITY_FIREWALL_FAILURE"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N09",
+        "expected": "IMMUTABLE_DOI_MISMATCH",
+        "diagnostics": [
+          "IMMUTABLE_DOI_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N10",
+        "expected": "IMMUTABLE_TAG_MISMATCH",
+        "diagnostics": [
+          "IMMUTABLE_TAG_MISMATCH"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N11",
+        "expected": "FORBIDDEN_COMPLETENESS_CLAIM",
+        "diagnostics": [
+          "FORBIDDEN_COMPLETENESS_CLAIM"
+        ],
+        "status": "KILLED"
+      },
+      {
+        "id": "RC1-N12",
+        "expected": "PREMATURE_RELEASE_CLAIM",
+        "diagnostics": [
+          "PREMATURE_RELEASE_CLAIM"
+        ],
+        "status": "KILLED"
+      }
+    ]
+  },
+  "historical_preservation": {
+    "immutable_tag": "v1.2.0",
+    "immutable_doi": "10.5281/zenodo.21306969",
+    "release_created_by_patch": false
+  },
+  "pending": [
+    "complete GitHub Actions matrix",
+    "merged-candidate audit",
+    "independent clean-room replay",
+    "separate RC1 closure decision"
+  ],
+  "claim_boundary": {
+    "checker_completeness_claimed": false,
+    "unconditional_global_soundness_claimed": false,
+    "proof_term_identity_claimed": false,
+    "global_conservativity_claimed": false,
+    "empirical_or_physical_validation_claimed": false
+  },
+  "evidence_sha256": "1a43460d57c81eca9b86452563ee64490b1557aaa4756387d3ccddcf7287a2fc"
+}

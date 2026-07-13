@@ -1,0 +1,79 @@
+{
+  "artifact_id": "V0_OSAP_RC1_NEGATIVE_GATE_FIXTURES",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "mutants": [
+    {
+      "id": "RC1-N01",
+      "mutation": "missing_theorem_record",
+      "target": "T132",
+      "expected": "THEOREM_COVERAGE_MISMATCH"
+    },
+    {
+      "id": "RC1-N02",
+      "mutation": "duplicate_theorem_id",
+      "target": "T133",
+      "expected": "DUPLICATE_THEOREM_ID"
+    },
+    {
+      "id": "RC1-N03",
+      "mutation": "stale_parity_status",
+      "target": "T145",
+      "expected": "PARITY_STATUS_NOT_ACCEPTED"
+    },
+    {
+      "id": "RC1-N04",
+      "mutation": "missing_lean_symbol",
+      "target": "T151",
+      "expected": "LEAN_SYMBOL_REQUIRED"
+    },
+    {
+      "id": "RC1-N05",
+      "mutation": "missing_coq_symbol",
+      "target": "T152",
+      "expected": "COQ_SYMBOL_REQUIRED"
+    },
+    {
+      "id": "RC1-N06",
+      "mutation": "rc1_hash_mismatch",
+      "target": "T153",
+      "expected": "RC1_RECORD_HASH_MISMATCH"
+    },
+    {
+      "id": "RC1-N07",
+      "mutation": "extension_misclassified_normative",
+      "target": "T151",
+      "expected": "EXTENSION_CLASSIFICATION_MISMATCH"
+    },
+    {
+      "id": "RC1-N08",
+      "mutation": "conditionality_removed",
+      "target": "T156",
+      "expected": "CONDITIONALITY_FIREWALL_FAILURE"
+    },
+    {
+      "id": "RC1-N09",
+      "mutation": "immutable_doi_changed",
+      "target": null,
+      "expected": "IMMUTABLE_DOI_MISMATCH"
+    },
+    {
+      "id": "RC1-N10",
+      "mutation": "immutable_tag_changed",
+      "target": null,
+      "expected": "IMMUTABLE_TAG_MISMATCH"
+    },
+    {
+      "id": "RC1-N11",
+      "mutation": "checker_completeness_claimed",
+      "target": null,
+      "expected": "FORBIDDEN_COMPLETENESS_CLAIM"
+    },
+    {
+      "id": "RC1-N12",
+      "mutation": "released_flag_true",
+      "target": null,
+      "expected": "PREMATURE_RELEASE_CLAIM"
+    }
+  ]
+}
