@@ -11,6 +11,23 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 
 ## v1.3.0 development status
 
+<!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
+> **V0 OSAP v1.3.0 RC1 GATE AUDIT AND RELEASE FREEZE - RC1_AUDIT_READY / CI_PENDING / NO RELEASE TAG**
+
+The accepted development corpus T121-T156 is frozen for release-candidate gate
+auditing. This patch adds the consolidated theorem inventory, claim matrix,
+structural-record parity audit, negative release-gate fixtures, validator
+evidence contract, release manifest, and clean-room replay protocol.
+
+Baseline closure merge commit: `29201b4937cef220ef0933d852250b021f3f44d4`. Historical tag `v1.2.0`
+and DOI `10.5281/zenodo.21306969` remain immutable. This is not a `v1.3.0-rc1` or
+`v1.3.0` release. T150 and T156 remain conditional.
+
+See `release/v1.3.0/RC1_GATE_AUDIT_AND_RELEASE_FREEZE_SPECIFICATION.md` and
+`release/v1.3.0/RC1_ACCEPTANCE_GATES.md`.
+<!-- V0_OSAP_RC1_GATE_AUDIT_END -->
+
+
 > **PHASE 6 T151-T156 EXTENSION PROVENANCE, VOCABULARY, DIAGNOSTIC, EVIDENCE, VERSION-LOCK, AND CONSERVATIVITY EXPANSION - ACCEPTED / CI PASS / MERGED / HISTORICALLY PRESERVED**
 
 Phase 6 introduces an explicit post-v1.1 development extension for T151-T156. It adds extension provenance, declared claim-vocabulary closure, diagnostic-envelope determinism, finite evidence-provenance acyclicity, version-lock coherence, and conditional conservative non-interference. Checker version: `0.7.0.dev1`.

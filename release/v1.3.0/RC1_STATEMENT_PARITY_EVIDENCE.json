@@ -1,0 +1,342 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_STRUCTURAL_RECORD_PARITY_EVIDENCE",
+  "version": "0.1",
+  "parity_kind": "STRUCTURAL_RECORD_PARITY",
+  "theorem_range": "T121-T156",
+  "record_count": 36,
+  "status": "PASS",
+  "records": [
+    {
+      "theorem_id": "T121",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "9a9b01a0e5720dd4d52847cd00bb5b9575cb0f85cb3a50759d3e09c833747e63",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T122",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "8299fb3984d623fa39d9971002b7960f286bbee753b9a8bdb51aeafdeb7715bb",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T123",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "59a3dc1d08348db27b3f89f03d9f3951b24c5c6af30abb005889533b1aa788b4",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T124",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "a8026ef5665f9d651bf1dbef2fc2b3596fa7ea465017a5255a1bd65b3de516ea",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T125",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "78283df37f1ee0d18c88941ac0f389c526ab7d323663859024ebd4b9c870348e",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T126",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "ed2343f98831a5a15b4a8374c3a99bb1ccfc70638b77d72d15a87b5ce1a1ee96",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T127",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "922b03142b1de10ac27d865734d4b7c0ec0f1de93c0e3008f7065bc78417c6c2",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T128",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "b42ce02828a8dca9a97dbd7b33f1ac5a09ee04ae52bcc56f6423976b950181ba",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T129",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "48bba6cae6252e2cfc2ac40d2e26c85aef9441fffb98395f8a990e280477848d",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T130",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "30bfe6f73d022c2ca584fe2c40c934b18af60609db03ab234fd23e6182be85e5",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T131",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "8645a5f40b41b8c744a66eae17247f919ebfb298195cc41b679a84d9362763dc",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T132",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "0176aeadc8b4fa0f43dd476a325b17a10ff21115cb11b26d8f30cbd0bfa9da83",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T133",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "c221de93eba3ce123312516a31627a82f13e17fc7b5f011fd44a694ce07993f0",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T134",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "b2b629b1350db044913b6ea0318ce6d40bbe40a9518c90fe26bc9ae599e51389",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T135",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "1ef69d2bc10c184441e6309ecbb0ef252929d137aad12e76197c8842b249d6ba",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T136",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "b52e45af5c891896857448369b14bfa2686736251a833268f6fb7a1bbea6e75f",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T137",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "b039979c4fb286fd29e8389553017a3b45144f9c0fcfa23eab33d283b750a248",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T138",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "c11338022e685162c2dc7cea37b47075939e7fd4434f561ddd335730746b890d",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T139",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "d4b6555e7c56d4ee3a4314e2432b107a0c5dd462becf16e078a2cf07255d5c58",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T140",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "1e4a34cbd8b0903906e81f73e74caa2b2c1ad39e22643937635379ef539e9a80",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T141",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "f9b3bfbd47daa547811644f61546701f65a70fbcd9f2ee26f765a9d305f48f94",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T142",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "8bacb298cd1f208a9f54ab15c24772bca45199d956e714774b2eee07f71d495b",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T143",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "cf055ce264fd426ab4ddfe726a5409ee7c76aa60c602f4e62b9b71b10d575b1f",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T144",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "30e8f992fd76a8fc79d3c26467211b62751d445ab7b5ed2354e47f9170e31ab8",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T145",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "6627a74a945ebb78eab0dad2232d29fc5d22af7b2a7e147cfca3c2e5ffe47bb9",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T146",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "541f6e00089ae507dcce54b65f440ec7c78f5b89caae8b5a0053bd9a6ae37f4c",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T147",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "1b5cd9009493cce61c1a13ff576f8567260d4c61926d3898a4d4daaf875536d6",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T148",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "dac265f5f620e91e2541a07c547e4412796f09278dc398cbad09512f5e941926",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T149",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "15ec3c5513bbc65d3447d52d246d300952f3e2f73a89b854cca6206c660cfbb1",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T150",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "62ed8d8388db6ce44382ca73450943cc7b449e53bd158b8f17945be22499e847",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T151",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "b3652f8cae3a4c2746a7d7fd61719173d8cddd218858c9dd5eb627a3f207bb7b",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T152",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "bc6d20317ae4590dd614ae8c915de8ee7bc33651f153de2ac620f06f9276924a",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T153",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "5270ae2bd620eae48b2c17dc738c5174992669a5b81cdbba71bc6f76953094f8",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T154",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "64ad77169413a95321b9fe5c0898bd62def8f14de9c4850b7766da406fca4ae4",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T155",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "43f712f743d8f676c0e678d917f12c00c40286aab1b52cc27441d5ba9e9499ab",
+      "verdict": "PASS"
+    },
+    {
+      "theorem_id": "T156",
+      "lean_symbol_found": true,
+      "coq_symbol_found": true,
+      "positive_fixture_found": true,
+      "countermodel_fixture_found": true,
+      "rc1_record_sha256": "272589a3bf9d96aecd0557dc2cac754e8548eee8dc2d6f742e11b2972bd5c828",
+      "verdict": "PASS"
+    }
+  ],
+  "limitations": [
+    "This is not proof-term identity.",
+    "This is not unrestricted semantic equivalence.",
+    "This is not checker completeness.",
+    "Compilation and symbol presence are evidence only for the encoded statements."
+  ],
+  "errors": [],
+  "evidence_sha256": "a712d550907bd65fb3a4c3651bf73f7ae54b7a1c7d210bff6e3e4bf641d60dc8"
+}

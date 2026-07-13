@@ -1,0 +1,1108 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_THEOREM_INVENTORY",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "status": "RC1_CANDIDATE_FROZEN_AUDIT_READY",
+  "theorem_range": "T121-T156",
+  "record_count": 36,
+  "source_crosswalks": [
+    "release/v1.3.0/theorem_crosswalk_phase1.json",
+    "release/v1.3.0/theorem_crosswalk_phase2.json",
+    "release/v1.3.0/theorem_crosswalk_phase3.json",
+    "release/v1.3.0/theorem_crosswalk_phase4.json",
+    "release/v1.3.0/theorem_crosswalk_phase5.json",
+    "release/v1.3.0/theorem_crosswalk_phase6.json"
+  ],
+  "release_metadata": {
+    "baseline_closure_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
+    "immutable_tag": "v1.2.0",
+    "immutable_doi": "10.5281/zenodo.21306969",
+    "checker_version": "0.7.0.dev1",
+    "v1_3_0_released": false,
+    "checker_completeness_claimed": false,
+    "parity_kind": "STRUCTURAL_RECORD_PARITY"
+  },
+  "records": [
+    {
+      "theorem_id": "T121",
+      "canonical_name": "live_guard_has_a_live_token",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "existing live_guard fixture",
+      "assumptions": [],
+      "conclusion": "Live guard has a live token",
+      "lean_symbol": "V0OSAP.T121",
+      "coq_symbol": "T121_live_guard_has_live_token",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:live_guard",
+      "countermodel_fixture": "fixture:negative:unguarded_value",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "9a9b01a0e5720dd4d52847cd00bb5b9575cb0f85cb3a50759d3e09c833747e63"
+    },
+    {
+      "theorem_id": "T122",
+      "canonical_name": "empty_all_of_prerequisite_family_is_vacuously_satisfied",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "empty_all_prerequisites positive fixture and all([]) semantics",
+      "assumptions": [],
+      "conclusion": "Empty all-of prerequisite family is vacuously satisfied",
+      "lean_symbol": "V0OSAP.T122",
+      "coq_symbol": "T122_empty_all_prerequisites_live",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:t122_empty_all_prerequisites",
+      "countermodel_fixture": "not_applicable:t122_vacuous_empty_family",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "8299fb3984d623fa39d9971002b7960f286bbee753b9a8bdb51aeafdeb7715bb"
+    },
+    {
+      "theorem_id": "T123",
+      "canonical_name": "dle_implies_current_no_live_status",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "existing DLE rule and fixture",
+      "assumptions": [],
+      "conclusion": "DLE implies current no-live status",
+      "lean_symbol": "V0OSAP.T123",
+      "coq_symbol": "T123_dle_implies_no_live",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:dle",
+      "countermodel_fixture": "not_available:accepted_phase1_no_dedicated_countermodel",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "59a3dc1d08348db27b3f89f03d9f3951b24c5c6af30abb005889533b1aa788b4"
+    },
+    {
+      "theorem_id": "T124",
+      "canonical_name": "live_residual_obstructs_robust_relative_v0",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "robust_relative_v0 claim and LIVE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0",
+      "assumptions": [],
+      "conclusion": "Live residual obstructs robust relative V0",
+      "lean_symbol": "V0OSAP.T124",
+      "coq_symbol": "T124_live_residual_obstructs_robust_relative_v0",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:t124_no_live_residual",
+      "countermodel_fixture": "fixture:negative:t124_live_residual_obstruction",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "a8026ef5665f9d651bf1dbef2fc2b3596fa7ea465017a5255a1bd65b3de516ea"
+    },
+    {
+      "theorem_id": "T125",
+      "canonical_name": "terminal_self_certificate_exposes_empty_internal_and_external_support",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "observer_terminal_self_certificate and TERMINAL_SELF_CERTIFICATE_NOT_EXHAUSTED",
+      "assumptions": [],
+      "conclusion": "Terminal self-certificate exposes empty internal and external support",
+      "lean_symbol": "V0OSAP.T125",
+      "coq_symbol": "T125_terminal_self_certificate_exposes_empty_support",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:t125_terminal_exhausted",
+      "countermodel_fixture": "fixture:negative:t125_terminal_not_exhausted",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "78283df37f1ee0d18c88941ac0f389c526ab7d323663859024ebd4b9c870348e"
+    },
+    {
+      "theorem_id": "T126",
+      "canonical_name": "direct_branch_local_to_absolute_promotion_violates_the_firewall",
+      "phase": 1,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase1.json",
+      "formal_signature": "existing absolute-relative firewall fixture",
+      "assumptions": [],
+      "conclusion": "Direct branch-local to absolute promotion violates the firewall",
+      "lean_symbol": "V0OSAP.T126",
+      "coq_symbol": "T126_direct_promotion_violates_firewall",
+      "validator_mapping": "PROCEDURAL_MAPPING_RECORDED_IN_SOURCE",
+      "diagnostics": [],
+      "positive_fixture": "fixture:positive:t136_absolute_v0_independent_basis",
+      "countermodel_fixture": "fixture:negative:absolute_relative_firewall",
+      "limitation": "Bounded to the encoded theorem record and declared assumptions.",
+      "source_statement_sha256": null,
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "ed2343f98831a5a15b4a8374c3a99bb1ccfc70638b77d72d15a87b5ce1a1ee96"
+    },
+    {
+      "theorem_id": "T127",
+      "canonical_name": "closure_minimality",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "ClosureCertificate(step,seed,closure) and closed candidate imply closure subset candidate.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Computed closure is the least prerequisite-closed superset.",
+      "lean_symbol": "V0OSAP.T127_closure_minimality",
+      "coq_symbol": "T127_closure_minimality",
+      "validator_mapping": "least prerequisite fixed-point equality",
+      "diagnostics": [
+        "PREREQUISITE_CLOSURE_NOT_LEAST"
+      ],
+      "positive_fixture": "fixture:positive:t127_closure_minimality",
+      "countermodel_fixture": "fixture:negative:t127_nonminimal_closure",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "65aab2064dc6d0a47652e2cba1813a8e65c9e4e174db6d343d7a145577950a54",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "922b03142b1de10ac27d865734d4b7c0ec0f1de93c0e3008f7065bc78417c6c2"
+    },
+    {
+      "theorem_id": "T128",
+      "canonical_name": "alternative_support_transparency",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "Selected member and live support imply transparent support selection.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Every accepted one_of obligation records its selected family member.",
+      "lean_symbol": "V0OSAP.T128_alternative_support_transparency",
+      "coq_symbol": "T128_alternative_support_transparency",
+      "validator_mapping": "explicit one_of support selection",
+      "diagnostics": [
+        "ALTERNATIVE_SUPPORT_SELECTION_REQUIRED",
+        "INVALID_ALTERNATIVE_SUPPORT_SELECTION"
+      ],
+      "positive_fixture": "fixture:positive:t128_alternative_support_transparency",
+      "countermodel_fixture": "fixture:negative:t128_missing_support_selection",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "d9979d741f79844b2ac39ec8a36020eb31afc601cf89cc6231d55f90995e1bae",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "b42ce02828a8dca9a97dbd7b33f1ac5a09ee04ae52bcc56f6423976b950181ba"
+    },
+    {
+      "theorem_id": "T129",
+      "canonical_name": "compatibility_preservation",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "CompatibilityPreserved implies no incompatible pair is jointly live.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Accepted activation profiles satisfy all enabled compatibility constraints.",
+      "lean_symbol": "V0OSAP.T129_compatibility_preservation",
+      "coq_symbol": "T129_compatibility_preservation",
+      "validator_mapping": "incompatible pair exclusion",
+      "diagnostics": [
+        "COMPATIBILITY_CONSTRAINT_VIOLATION",
+        "ACTIVE_PROFILE_REGISTER_NOT_LIVE"
+      ],
+      "positive_fixture": "fixture:positive:t129_compatibility_preservation",
+      "countermodel_fixture": "fixture:negative:t129_incompatible_profile",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "737cd617596ade973388e887213e2be9e83cde2722472296f977b8ec9d351713",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "48bba6cae6252e2cfc2ac40d2e26c85aef9441fffb98395f8a990e280477848d"
+    },
+    {
+      "theorem_id": "T130",
+      "canonical_name": "dimensional_readiness_soundness",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "ProtocolReady implies AllPrerequisitesLive.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "READY_VALUE implies all protocol prerequisites are active.",
+      "lean_symbol": "V0OSAP.T130_dimensional_readiness_soundness",
+      "coq_symbol": "T130_dimensional_readiness_soundness",
+      "validator_mapping": "READY_VALUE prerequisite audit",
+      "diagnostics": [
+        "PROTOCOL_READY_WITHOUT_LIVE_PREREQUISITES"
+      ],
+      "positive_fixture": "fixture:positive:t130_dimensional_readiness",
+      "countermodel_fixture": "fixture:negative:t130_readiness_missing_prerequisite",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "16f11c1555e11ed71f77549f4ce2cfa3d20b5fae8f380f9d0f0634ea94d69aae",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "30bfe6f73d022c2ca584fe2c40c934b18af60609db03ab234fd23e6182be85e5"
+    },
+    {
+      "theorem_id": "T131",
+      "canonical_name": "undefined_is_not_zero",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "undefinedDomain differs from readyValue(0).",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "UNDEFINED_DOMAIN cannot be coerced to a numeric dimension.",
+      "lean_symbol": "V0OSAP.T131_undefined_is_not_zero",
+      "coq_symbol": "T131_undefined_is_not_zero",
+      "validator_mapping": "status/value disjointness",
+      "diagnostics": [
+        "UNDEFINED_DOMAIN_COERCED_TO_NUMERIC",
+        "READY_VALUE_MISSING_NUMERIC"
+      ],
+      "positive_fixture": "fixture:positive:t131_undefined_is_not_zero",
+      "countermodel_fixture": "fixture:negative:t131_undefined_coerced_to_zero",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "37dd0964fb46fb2e5644b41a9ed5f24ed47c98d98adace0a205d4c41f449f923",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "8645a5f40b41b8c744a66eae17247f919ebfb298195cc41b679a84d9362763dc"
+    },
+    {
+      "theorem_id": "T132",
+      "canonical_name": "dle_history_adequacy",
+      "phase": 2,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase2.json",
+      "formal_signature": "DomainLicenseExhausted implies WasLive and NoLive.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Accepted DLE has prior live evidence and current no-license.",
+      "lean_symbol": "V0OSAP.T132_dle_history_adequacy",
+      "coq_symbol": "T132_dle_history_adequacy",
+      "validator_mapping": "DLE history/current-state audit",
+      "diagnostics": [
+        "DLE_WITHOUT_HISTORICAL_SOURCE",
+        "DLE_CONFLICTS_WITH_LIVE_TOKEN"
+      ],
+      "positive_fixture": "fixture:positive:t132_dle_history_adequacy",
+      "countermodel_fixture": "fixture:negative:t132_dle_without_history",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "6acfbb93908aa1cbd03bb638bdabbe1d7520467ed057dbed0d509a65166b6c9f",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "0176aeadc8b4fa0f43dd476a325b17a10ff21115cb11b26d8f30cbd0bfa9da83"
+    },
+    {
+      "theorem_id": "T133",
+      "canonical_name": "fresh_token_reactivation",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "FreshTokenReactivation(registry,prior,new) implies new.tokenId differs from prior.tokenId.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Reactivation cannot reuse the historical or retired token identifier.",
+      "lean_symbol": "V0OSAP.T133_fresh_token_reactivation",
+      "coq_symbol": "T133_fresh_token_reactivation",
+      "validator_mapping": "fresh token identity separation",
+      "diagnostics": [
+        "REACTIVATION_TOKEN_ID_REUSED"
+      ],
+      "positive_fixture": "fixture:positive:t133_fresh_token_reactivation",
+      "countermodel_fixture": "fixture:negative:t133_reused_token_identifier",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "2da3a4a7ca0567b579b1f0e3cad693bc9c2df26a8db5196e5ad0a1c8b57d9373",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "c221de93eba3ce123312516a31627a82f13e17fc7b5f011fd44a694ce07993f0"
+    },
+    {
+      "theorem_id": "T134",
+      "canonical_name": "raw_residual_obstruction",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "LiveResidual at a declared residual register implies not RawRelativeV0.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Any live residual blocks raw relative nullity.",
+      "lean_symbol": "V0OSAP.T134_raw_residual_obstruction",
+      "coq_symbol": "T134_raw_residual_obstruction",
+      "validator_mapping": "raw residual live-set audit",
+      "diagnostics": [
+        "LIVE_RESIDUAL_OBSTRUCTS_RAW_RELATIVE_V0"
+      ],
+      "positive_fixture": "fixture:positive:t134_raw_relative_v0_no_live_residual",
+      "countermodel_fixture": "fixture:negative:t134_live_residual_obstruction",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "58eab9c062025ffc1a1c792cdd11562456664f53122b2f676d820da3334f42cd",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "b2b629b1350db044913b6ea0318ce6d40bbe40a9518c90fe26bc9ae599e51389"
+    },
+    {
+      "theorem_id": "T135",
+      "canonical_name": "robust_residual_obstruction",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "LiveResidual at a declared non-eliminable residual register implies not RobustRelativeV0NonEliminable.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "A live non-eliminable residual blocks robust relative nullity.",
+      "lean_symbol": "V0OSAP.T135_robust_residual_obstruction",
+      "coq_symbol": "T135_robust_residual_obstruction",
+      "validator_mapping": "non-eliminable residual live-set audit",
+      "diagnostics": [
+        "LIVE_NONELIMINABLE_RESIDUAL_OBSTRUCTS_ROBUST_RELATIVE_V0"
+      ],
+      "positive_fixture": "fixture:positive:t135_robust_relative_v0_no_live_noneliminable_residual",
+      "countermodel_fixture": "fixture:negative:t135_live_noneliminable_residual_obstruction",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "73d80a3be8e1ee97942f304f68a1d91ad1e668c655d487e8894ddd62b3865301",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "1ef69d2bc10c184441e6309ecbb0ef252929d137aad12e76197c8842b249d6ba"
+    },
+    {
+      "theorem_id": "T136",
+      "canonical_name": "relative_to_absolute_non_promotion",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "Relative claim tier differs from absolute claim tier.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "No FC-1 rule promotes relative V0 to absolute V0.",
+      "lean_symbol": "V0OSAP.T136_relative_to_absolute_non_promotion",
+      "coq_symbol": "T136_relative_to_absolute_non_promotion",
+      "validator_mapping": "source-claim promotion firewall",
+      "diagnostics": [
+        "ABSOLUTE_RELATIVE_FIREWALL"
+      ],
+      "positive_fixture": "fixture:positive:t136_absolute_v0_independent_basis",
+      "countermodel_fixture": "fixture:negative:t136_relative_to_absolute_promotion",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "15ac52baef0a828ad24d200d1c99b5f774bb9824e3ae66fceea71cf6d0272635",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "b52e45af5c891896857448369b14bfa2686736251a833268f6fb7a1bbea6e75f"
+    },
+    {
+      "theorem_id": "T137",
+      "canonical_name": "approximation_non_identity",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "Approximation claim tier differs from identity claim tier.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Approximation certificates do not entail V0 identity.",
+      "lean_symbol": "V0OSAP.T137_approximation_non_identity",
+      "coq_symbol": "T137_approximation_non_identity",
+      "validator_mapping": "approximation-to-identity source firewall",
+      "diagnostics": [
+        "APPROXIMATION_DOES_NOT_ENTAIL_V0_IDENTITY"
+      ],
+      "positive_fixture": "fixture:positive:t137_v0_identity_independent_basis",
+      "countermodel_fixture": "fixture:negative:t137_approximation_identity_promotion",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "cb193d0dfed6153718fef1e9189c33ef35a0cfa0758da730e81ee5dfd67b4b17",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "b039979c4fb286fd29e8389553017a3b45144f9c0fcfa23eab33d283b750a248"
+    },
+    {
+      "theorem_id": "T138",
+      "canonical_name": "terminal_self_certification_limit",
+      "phase": 3,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase3.json",
+      "formal_signature": "Equal support and certification states imply terminal-exhaustion inadmissibility.",
+      "assumptions": [
+        "finite FC-1 records",
+        "explicit typed hypotheses"
+      ],
+      "conclusion": "Same-state exhausted support cannot certify its own total exhaustion.",
+      "lean_symbol": "V0OSAP.T138_terminal_self_certification_limit",
+      "coq_symbol": "T138_terminal_self_certification_limit",
+      "validator_mapping": "cross-state certification requirement",
+      "diagnostics": [
+        "SAME_STATE_SELF_CERTIFICATION_FORBIDDEN"
+      ],
+      "positive_fixture": "fixture:positive:t138_cross_state_terminal_certificate",
+      "countermodel_fixture": "fixture:negative:t138_same_state_self_certification",
+      "limitation": [
+        "finite accepted fragment only"
+      ],
+      "source_statement_sha256": "ce0b7004c27377f29750e0ea136d3064cfeccda9d3463bc3bd473c5dfd20a2ab",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "c11338022e685162c2dc7cea37b47075939e7fd4434f561ddd335730746b890d"
+    },
+    {
+      "theorem_id": "T139",
+      "canonical_name": "archive_non_guard_export",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "ArchiveGuardExport(record) and exportsCurrentGuard=false imply archive non-guard export.",
+      "assumptions": [
+        "finite FC-1 archive/export record",
+        "typed observer, register, context, and archive identifiers"
+      ],
+      "conclusion": "An archive cannot export a current observer guard.",
+      "lean_symbol": "V0OSAP.T139_archive_non_guard_export",
+      "coq_symbol": "T139_archive_non_guard_export",
+      "validator_mapping": "archive current-guard export prohibition",
+      "diagnostics": [
+        "ARCHIVE_CANNOT_EXPORT_CURRENT_GUARD"
+      ],
+      "positive_fixture": "fixture:positive:t139_archive_non_guard_export",
+      "countermodel_fixture": "fixture:negative:t139_archive_guard_export",
+      "limitation": [
+        "finite accepted fragment only",
+        "archive integrity, access, and provenance remain separate obligations"
+      ],
+      "source_statement_sha256": "aebb1470c81703c674936edb9bfc8f344604dd81452ca4516b4996b6f203adea",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "d4b6555e7c56d4ee3a4314e2432b107a0c5dd462becf16e078a2cf07255d5c58"
+    },
+    {
+      "theorem_id": "T140",
+      "canonical_name": "independent_witness_conditional_sufficiency",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "PolicyCompliant and NonCircular and IdentityVerified and EvidenceVerified and nonempty external evidence/independence groups imply ExternalCertificateSupported.",
+      "assumptions": [
+        "finite FC-1 witness certificate",
+        "resolved external evidence identifiers",
+        "explicit independence policy and non-circularity"
+      ],
+      "conclusion": "The independent witness condition is sufficient for the bounded external-certificate predicate.",
+      "lean_symbol": "V0OSAP.T140_independent_witness_conditional_sufficiency",
+      "coq_symbol": "T140_independent_witness_conditional_sufficiency",
+      "validator_mapping": "independent witness support audit",
+      "diagnostics": [
+        "INDEPENDENT_WITNESS_CERTIFICATE_UNSUPPORTED"
+      ],
+      "positive_fixture": "fixture:positive:t140_independent_witness_certificate",
+      "countermodel_fixture": "fixture:negative:t140_noncompliant_witness_certificate",
+      "limitation": [
+        "finite accepted fragment only",
+        "sufficiency is conditional on declared policy fields"
+      ],
+      "source_statement_sha256": "d304ebc9b96394e4bef4560373cce1f380908744fb26be88093db1e6e0e6ae7a",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "CONDITIONAL_THEOREM",
+      "conditional": true,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "1e4a34cbd8b0903906e81f73e74caa2b2c1ad39e22643937635379ef539e9a80"
+    },
+    {
+      "theorem_id": "T141",
+      "canonical_name": "no_container",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "NullMark container and Branch target with ordinary containment mode imply rejection of ordinary containment.",
+      "assumptions": [
+        "container identifier has NullMark sort",
+        "contained identifier has Branch sort",
+        "ordinary containment mode is asserted"
+      ],
+      "conclusion": "Ordinary V0-to-branch containment is not licensed.",
+      "lean_symbol": "V0OSAP.T141_no_container",
+      "coq_symbol": "T141_no_container",
+      "validator_mapping": "NullMark ordinary-containment firewall",
+      "diagnostics": [
+        "V0_ORDINARY_CONTAINS_FORBIDDEN",
+        "CONTAINMENT_REFERENCE_SORT_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t141_no_container",
+      "countermodel_fixture": "fixture:negative:t141_v0_ordinary_contains_branch",
+      "limitation": [
+        "finite accepted fragment only",
+        "typed meta-structural relations are separate from ordinary containment"
+      ],
+      "source_statement_sha256": "6fc052097ee11289e7f0a2fe67179da0e05f39cc0eac9d5d61e0801e6072b833",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "f9b3bfbd47daa547811644f61546701f65a70fbcd9f2ee26f765a9d305f48f94"
+    },
+    {
+      "theorem_id": "T142",
+      "canonical_name": "branch_label_insufficiency",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "DistinctnessBasis=labelOnly implies failure of label-independent branch distinctness.",
+      "assumptions": [
+        "two finite branch records",
+        "explicit distinctness-basis field"
+      ],
+      "conclusion": "Label difference alone is not an admissible distinctness certificate.",
+      "lean_symbol": "V0OSAP.T142_branch_label_insufficiency",
+      "coq_symbol": "T142_branch_label_insufficiency",
+      "validator_mapping": "branch distinctness basis audit",
+      "diagnostics": [
+        "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS",
+        "BRANCH_DISTINCTNESS_EVIDENCE_REQUIRED"
+      ],
+      "positive_fixture": "fixture:positive:t142_policy_based_branch_distinctness",
+      "countermodel_fixture": "fixture:negative:t142_label_only_branch_distinctness",
+      "limitation": [
+        "finite accepted fragment only",
+        "physical universe distinctness is not claimed"
+      ],
+      "source_statement_sha256": "7cf7b272ad78fcecb58afa0ac951447214e8f99654132f6985b8f4bc8908f3e0",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "8bacb298cd1f208a9f54ab15c24772bca45199d956e714774b2eee07f71d495b"
+    },
+    {
+      "theorem_id": "T143",
+      "canonical_name": "cardinality_licensing",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "NonFiniteKind and CardinalityLicensed imply existence of a meta-index identifier and nonempty proof evidence.",
+      "assumptions": [
+        "finite FC-1 cardinality certificate",
+        "non-finite cardinality kind",
+        "meta-index evidence object has type meta_index_certificate"
+      ],
+      "conclusion": "A non-finite cardinality claim exposes a typed meta-index and proof evidence.",
+      "lean_symbol": "V0OSAP.T143_cardinality_licensing",
+      "coq_symbol": "T143_cardinality_licensing",
+      "validator_mapping": "non-finite cardinality license audit",
+      "diagnostics": [
+        "DEFERRED_CARDINALITY_CERT"
+      ],
+      "positive_fixture": "fixture:positive:t143_countable_cardinality_licensed",
+      "countermodel_fixture": "fixture:negative:t143_nonfinite_cardinality_unlicensed",
+      "limitation": [
+        "finite certificate representation only",
+        "no physical multiplicity or infinity claim"
+      ],
+      "source_statement_sha256": "a2a610aebba5a9302279a3d64a74258cf4c49f01805fbfa29541118f7d3b4280",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "cf055ce264fd426ab4ddfe726a5409ee7c76aa60c602f4e62b9b71b10d575b1f"
+    },
+    {
+      "theorem_id": "T144",
+      "canonical_name": "diagnostic_precedence_totality",
+      "phase": 4,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase4.json",
+      "formal_signature": "For every finite DiagnosticStatus list, there exists exactly one status equal to primaryStatus(list).",
+      "assumptions": [
+        "finite list over the closed FC-1 status enum",
+        "fixed STATUS_RANK precedence"
+      ],
+      "conclusion": "The primary diagnostic status is total and unique.",
+      "lean_symbol": "V0OSAP.T144_diagnostic_precedence_totality",
+      "coq_symbol": "T144_diagnostic_precedence_totality",
+      "validator_mapping": "finite diagnostic primary-status replay",
+      "diagnostics": [
+        "DIAGNOSTIC_PRIMARY_STATUS_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t144_diagnostic_precedence_totality",
+      "countermodel_fixture": "fixture:negative:t144_wrong_primary_status",
+      "limitation": [
+        "finite diagnostic sets only",
+        "message wording outside canonical templates is not compared"
+      ],
+      "source_statement_sha256": "62804e8e051de8c850b24e0088d681d349852daed0ed1c17b96e58270d495218",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "30e8f992fd76a8fc79d3c26467211b62751d445ab7b5ed2354e47f9170e31ab8"
+    },
+    {
+      "theorem_id": "T145",
+      "canonical_name": "Canonical serialization determinism",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "WellFormed(x) -> exists! bytes, bytes = SerializeCJ1(x)",
+      "assumptions": [
+        "FC1_WELL_FORMED",
+        "V0_OSAP_CJ_1"
+      ],
+      "conclusion": "A well-formed object has one canonical V0-OSAP-CJ-1 byte representation.",
+      "lean_symbol": "V0OSAP.T145_canonical_serialization_determinism",
+      "coq_symbol": "T145_canonical_serialization_determinism",
+      "validator_mapping": "canonical_serialization_audit",
+      "diagnostics": [
+        "CANONICALIZATION_PROFILE_MISMATCH",
+        "CANONICAL_SERIALIZATION_HASH_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t145_canonical_serialization_determinism",
+      "countermodel_fixture": "fixture:negative:t145_wrong_canonical_hash",
+      "limitation": "Hash equality identifies canonical bytes, not semantic truth or provenance truth.",
+      "source_statement_sha256": "2df8857445301e8dda38d555647c198437ed9c9f482922f0880c8be7be1b5893",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "6627a74a945ebb78eab0dad2232d29fc5d22af7b2a7e147cfca3c2e5ffe47bb9"
+    },
+    {
+      "theorem_id": "T146",
+      "canonical_name": "Round-trip identity",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "WellFormed(x) -> Parse(SerializeCJ1(x)) = x",
+      "assumptions": [
+        "FC1_WELL_FORMED",
+        "V0_OSAP_CJ_1"
+      ],
+      "conclusion": "Canonical serialize/parse preserves well-formed FC-1 objects.",
+      "lean_symbol": "V0OSAP.T146_round_trip_identity",
+      "coq_symbol": "T146_round_trip_identity",
+      "validator_mapping": "round_trip_audit",
+      "diagnostics": [
+        "ROUND_TRIP_IDENTITY_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t146_round_trip_identity",
+      "countermodel_fixture": "fixture:negative:t146_round_trip_mutation",
+      "limitation": "The theorem covers the accepted JSON-compatible FC-1 representation only.",
+      "source_statement_sha256": "3c453a5aa785c2f52c21720087ddb0f1ed47ed2256dbad87691bd8df6f4d8478",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "541f6e00089ae507dcce54b65f440ec7c78f5b89caae8b5a0053bd9a6ae37f4c"
+    },
+    {
+      "theorem_id": "T147",
+      "canonical_name": "Replay determinism",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "Pinned(proof,registry,ruleset) -> Replay1 = Replay2",
+      "assumptions": [
+        "PINNED_PROOF",
+        "PINNED_REGISTRY",
+        "PINNED_RULESET",
+        "NO_HIDDEN_STATE"
+      ],
+      "conclusion": "Pinned proof, registry, and ruleset produce one canonical replay result.",
+      "lean_symbol": "V0OSAP.T147_replay_determinism",
+      "coq_symbol": "T147_replay_determinism",
+      "validator_mapping": "replay_determinism_audit",
+      "diagnostics": [
+        "REPLAY_INPUTS_NOT_PINNED",
+        "REPLAY_NONDETERMINISTIC_RESULT"
+      ],
+      "positive_fixture": "fixture:positive:t147_replay_determinism",
+      "countermodel_fixture": "fixture:negative:t147_nondeterministic_replay",
+      "limitation": "Determinism is conditional on fully pinned inputs and absence of hidden state.",
+      "source_statement_sha256": "f762e4b5037e39b17724604a05323e91ecba573f41cda648778b1e65c431434e",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "1b5cd9009493cce61c1a13ff576f8567260d4c61926d3898a4d4daaf875536d6"
+    },
+    {
+      "theorem_id": "T148",
+      "canonical_name": "Schema migration visibility",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "VersionChanged -> not ParserCoercion and exists MigrationRecord",
+      "assumptions": [
+        "VERSIONED_SCHEMA",
+        "VERSIONED_SEMANTICS"
+      ],
+      "conclusion": "A semantic-version change cannot be hidden as parser coercion.",
+      "lean_symbol": "V0OSAP.T148_schema_migration_visibility",
+      "coq_symbol": "T148_schema_migration_visibility",
+      "validator_mapping": "schema_migration_audit",
+      "diagnostics": [
+        "HIDDEN_SCHEMA_MIGRATION_COERCION",
+        "SCHEMA_MIGRATION_RECORD_REQUIRED"
+      ],
+      "positive_fixture": "fixture:positive:t148_visible_schema_migration",
+      "countermodel_fixture": "fixture:negative:t148_hidden_parser_coercion",
+      "limitation": "The audit establishes migration visibility, not automatic semantic compatibility.",
+      "source_statement_sha256": "7e0d91ab43ca45ec56177e070e4faff0346e912ccae7f1ac7b6b08f917543074",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "dac265f5f620e91e2541a07c547e4412796f09278dc398cbad09512f5e941926"
+    },
+    {
+      "theorem_id": "T149",
+      "canonical_name": "Backend statement correspondence",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "Mapped(T) -> HashLean(T) = HashCanonical(T) = HashCoq(T)",
+      "assumptions": [
+        "CANONICAL_STATEMENT_NORMALIZATION",
+        "EXPLICIT_BACKEND_MAPPING"
+      ],
+      "conclusion": "Mapped Lean and Coq theorem entries share a canonical statement hash.",
+      "lean_symbol": "V0OSAP.T149_backend_statement_correspondence",
+      "coq_symbol": "T149_backend_statement_correspondence",
+      "validator_mapping": "backend_statement_mapping",
+      "diagnostics": [
+        "BACKEND_STATEMENT_HASH_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t149_backend_statement_correspondence",
+      "countermodel_fixture": "fixture:negative:t149_backend_statement_hash_mismatch",
+      "limitation": "Statement-hash correspondence does not imply proof-term identity.",
+      "source_statement_sha256": "761c82d404861815d936b908ef52ff2d5514f7b62c7672e010dab8d0bb8938e2",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "15ec3c5513bbc65d3447d52d246d300952f3e2f73a89b854cca6206c660cfbb1"
+    },
+    {
+      "theorem_id": "T150",
+      "canonical_name": "Accepted-fragment checker soundness",
+      "phase": 5,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase5.json",
+      "formal_signature": "RuleLemmas and Invariants and Check(x)=PASS -> FC1Obligations(x)",
+      "assumptions": [
+        "PROVED_RULE_LEMMAS",
+        "IMPLEMENTATION_INVARIANTS",
+        "ACCEPTED_FRAGMENT_BOUNDARY"
+      ],
+      "conclusion": "Conditional on proved rule lemmas, checker PASS implies the FC-1 semantic obligations hold.",
+      "lean_symbol": "V0OSAP.T150_accepted_fragment_checker_soundness",
+      "coq_symbol": "T150_accepted_fragment_checker_soundness",
+      "validator_mapping": "accepted_fragment_soundness_audit",
+      "diagnostics": [
+        "CHECKER_SOUNDNESS_PREMISES_UNPROVED",
+        "CHECKER_PASS_VIOLATES_ACCEPTED_FRAGMENT_SOUNDNESS"
+      ],
+      "positive_fixture": "fixture:positive:t150_accepted_fragment_checker_soundness",
+      "countermodel_fixture": "fixture:negative:t150_checker_pass_unsound",
+      "limitation": "This is a conditional accepted-fragment theorem, not checker completeness or full-theory soundness.",
+      "source_statement_sha256": "1a755ddc81c06562926e634389401eb42e43fe8ea5f53a5792cd1e46a0012906",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "CONDITIONAL_THEOREM",
+      "conditional": true,
+      "normative_status": "NORMATIVE_V1_1_RESERVED",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "62ed8d8388db6ce44382ca73450943cc7b449e53bd158b8f17945be22499e847"
+    },
+    {
+      "theorem_id": "T151",
+      "canonical_name": "Explicit extension provenance",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "ExtensionTarget(t) -> BaseCeiling=150 and ExtensionRecord(t) and Namespace(t)",
+      "assumptions": [
+        "POST_V1_1_EXTENSION",
+        "EXPLICIT_EXTENSION_RECORD",
+        "BASE_CEILING_T150"
+      ],
+      "conclusion": "Every theorem target beyond the normative v1.1 ceiling is introduced by an explicit, namespaced extension record.",
+      "lean_symbol": "V0OSAP.T151_explicit_extension_provenance",
+      "coq_symbol": "T151_explicit_extension_provenance",
+      "validator_mapping": "theorem_extension_provenance_audit",
+      "diagnostics": [
+        "EXTENSION_PROVENANCE_RECORD_REQUIRED",
+        "EXTENSION_BASE_CEILING_MISMATCH",
+        "EXTENSION_THEOREM_RANGE_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t151_explicit_extension_provenance",
+      "countermodel_fixture": "fixture:negative:t151_unrecorded_extension",
+      "limitation": "This establishes repository-local provenance for the T151-T156 development extension; it does not retroactively amend the normative v1.1 document.",
+      "source_statement_sha256": "71b249ed11c2d9db6378b5ccbdd868a62321d4ff7d5c60a200b344b965c7042f",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "b3652f8cae3a4c2746a7d7fd61719173d8cddd218858c9dd5eb627a3f207bb7b"
+    },
+    {
+      "theorem_id": "T152",
+      "canonical_name": "Declared claim-vocabulary closure",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "ObservedKinds(input) subset DeclaredKinds(extension)",
+      "assumptions": [
+        "FINITE_OBSERVED_KIND_SET",
+        "EXPLICIT_DECLARED_VOCABULARY"
+      ],
+      "conclusion": "Every observed extension claim kind belongs to the declared Phase 6 claim vocabulary.",
+      "lean_symbol": "V0OSAP.T152_declared_claim_vocabulary_closure",
+      "coq_symbol": "T152_declared_claim_vocabulary_closure",
+      "validator_mapping": "claim_vocabulary_closure_audit",
+      "diagnostics": [
+        "UNDECLARED_EXTENSION_CLAIM_KIND"
+      ],
+      "positive_fixture": "fixture:positive:t152_declared_claim_vocabulary_closure",
+      "countermodel_fixture": "fixture:negative:t152_undeclared_claim_kind",
+      "limitation": "Vocabulary closure is bounded to the audited claim-kind lists and is not a completeness claim for all future extensions.",
+      "source_statement_sha256": "3fbe6f0a13dcd52915789ceb436da7ae4cad1c2bcca4f72c1103a7798917033a",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "bc6d20317ae4590dd614ae8c915de8ee7bc33651f153de2ac620f06f9276924a"
+    },
+    {
+      "theorem_id": "T153",
+      "canonical_name": "Diagnostic envelope determinism",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "Pinned(input,ruleset) -> Hash(Diagnostics1)=Hash(Diagnostics2)",
+      "assumptions": [
+        "PINNED_DIAGNOSTIC_INPUT",
+        "PINNED_RULESET",
+        "CANONICAL_DIAGNOSTIC_ENVELOPE"
+      ],
+      "conclusion": "Repeated diagnostic evaluation under pinned inputs yields one canonical diagnostic envelope.",
+      "lean_symbol": "V0OSAP.T153_diagnostic_envelope_determinism",
+      "coq_symbol": "T153_diagnostic_envelope_determinism",
+      "validator_mapping": "diagnostic_envelope_determinism_audit",
+      "diagnostics": [
+        "DIAGNOSTIC_REPLAY_INPUTS_NOT_PINNED",
+        "DIAGNOSTIC_ENVELOPE_NONDETERMINISTIC"
+      ],
+      "positive_fixture": "fixture:positive:t153_diagnostic_envelope_determinism",
+      "countermodel_fixture": "fixture:negative:t153_diagnostic_envelope_mutation",
+      "limitation": "Determinism is conditional on pinned inputs, canonical serialization, and absence of hidden state.",
+      "source_statement_sha256": "11c2da228164740868dcbad94fd08e073d8eaca1b6c3a6e31fbac6f9267648d6",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "5270ae2bd620eae48b2c17dc738c5174992669a5b81cdbba71bc6f76953094f8"
+    },
+    {
+      "theorem_id": "T154",
+      "canonical_name": "Evidence provenance acyclicity",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "FinitePath(p) and Nodup(p) -> AcyclicEvidenceProvenance(p)",
+      "assumptions": [
+        "FINITE_PROVENANCE_PATH",
+        "IDENTIFIER_EQUALITY"
+      ],
+      "conclusion": "A finite evidence-provenance path with pairwise distinct evidence identifiers contains no cycle.",
+      "lean_symbol": "V0OSAP.T154_evidence_provenance_acyclicity",
+      "coq_symbol": "T154_evidence_provenance_acyclicity",
+      "validator_mapping": "evidence_provenance_acyclicity_audit",
+      "diagnostics": [
+        "EVIDENCE_PROVENANCE_CYCLE"
+      ],
+      "positive_fixture": "fixture:positive:t154_evidence_provenance_acyclicity",
+      "countermodel_fixture": "fixture:negative:t154_evidence_provenance_cycle",
+      "limitation": "The executable rule checks explicit finite paths; it does not infer omitted provenance edges.",
+      "source_statement_sha256": "58385a599ea3e1854a9536a752b8bf7873c7f5e0fbc3ca3338c8379338cd861c",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "64ad77169413a95321b9fe5c0898bd62def8f14de9c4850b7766da406fca4ae4"
+    },
+    {
+      "theorem_id": "T155",
+      "canonical_name": "Version-lock coherence",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "CurrentTuple(schema,language,checker,semantics)=ExpectedLockTuple",
+      "assumptions": [
+        "EXPLICIT_VERSION_LOCK",
+        "FOUR_COMPONENT_COMPATIBILITY_TUPLE"
+      ],
+      "conclusion": "The active schema, language, checker, and semantic versions match the declared compatibility lock.",
+      "lean_symbol": "V0OSAP.T155_version_lock_coherence",
+      "coq_symbol": "T155_version_lock_coherence",
+      "validator_mapping": "version_lock_coherence_audit",
+      "diagnostics": [
+        "VERSION_LOCK_RECORD_REQUIRED",
+        "VERSION_LOCK_TUPLE_MISMATCH"
+      ],
+      "positive_fixture": "fixture:positive:t155_version_lock_coherence",
+      "countermodel_fixture": "fixture:negative:t155_version_lock_mismatch",
+      "limitation": "Tuple equality records compatibility intent; it does not prove semantic equivalence across arbitrary versions.",
+      "source_statement_sha256": "50ff01353da45dc93e4684801ee108cc3c82e1c4e2fc670ec9fbebb96a5986c2",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "PROVED_THEOREM",
+      "conditional": false,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "43f712f743d8f676c0e678d917f12c00c40286aab1b52cc27441d5ba9e9499ab"
+    },
+    {
+      "theorem_id": "T156",
+      "canonical_name": "Conservative extension non-interference",
+      "phase": 6,
+      "source_crosswalk": "release/v1.3.0/theorem_crosswalk_phase6.json",
+      "formal_signature": "BaselineOnly(x) and Isolated(E) and not Override(E) -> ResultBase(x)=ResultExtended(x)",
+      "assumptions": [
+        "BASELINE_ONLY_INPUT",
+        "EXTENSION_HANDLER_ISOLATION",
+        "NO_BASELINE_RULE_OVERRIDE"
+      ],
+      "conclusion": "Under explicit isolation premises, Phase 6 extension handlers do not change the canonical result for baseline-only inputs.",
+      "lean_symbol": "V0OSAP.T156_conservative_extension_noninterference",
+      "coq_symbol": "T156_conservative_extension_noninterference",
+      "validator_mapping": "conservative_extension_audit",
+      "diagnostics": [
+        "CONSERVATIVE_EXTENSION_PREMISES_UNPROVED",
+        "BASELINE_RESULT_CHANGED_BY_EXTENSION"
+      ],
+      "positive_fixture": "fixture:positive:t156_conservative_extension_noninterference",
+      "countermodel_fixture": "fixture:negative:t156_baseline_result_changed",
+      "limitation": "The theorem is conditional on handler isolation and no baseline override; it is not a global conservativity theorem for arbitrary code changes.",
+      "source_statement_sha256": "5eaaa1c210ee125c70fd5dfdc83fd1f4ccb46b54baa6d4e58086adc5e1cc495a",
+      "parity_status": "ACCEPTED_CI_PASS",
+      "claim_class": "CONDITIONAL_THEOREM",
+      "conditional": true,
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION",
+      "release_status": "RC1_CANDIDATE_FROZEN",
+      "physical_interpretation_level": 1,
+      "rc1_record_sha256": "272589a3bf9d96aecd0557dc2cac754e8548eee8dc2d6f742e11b2972bd5c828"
+    }
+  ],
+  "inventory_sha256": "2904e2b3422294831b48a1d6e233e371bbe38fb9b6f10abc52eb7cc286780575"
+}

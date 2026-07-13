@@ -1,0 +1,109 @@
+{
+  "artifact_id": "V0_PROGRAM_MASTER_INDEX_RC1",
+  "version": "1.0-rc1-audit",
+  "date": "2026-07-13",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "baseline_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
+  "canonical_artifacts": [
+    {
+      "artifact_id": "V0_OSAP_V1_2_0_IMMUTABLE_RELEASE",
+      "title": "V0 OSAP Formal Core v1.2.0",
+      "class": "software_release",
+      "version": "v1.2.0",
+      "status": "IMMUTABLE_HISTORICAL_BASELINE",
+      "doi": "10.5281/zenodo.21306969",
+      "theorem_range": "T121-T126",
+      "dependency_role": "historical_release_baseline",
+      "claim_class": "MECHANIZED_DUAL_BACKEND_BOUNDED",
+      "supersession": "not_superseded_by_this_patch"
+    },
+    {
+      "artifact_id": "V0_OSAP_V1_3_0_DEVELOPMENT_STATE",
+      "title": "V0 OSAP v1.3.0 accepted development corpus",
+      "class": "development_state",
+      "version": "0.7.0.dev1",
+      "status": "PHASES_1_6_ACCEPTED_CI_MERGED_HISTORICALLY_PRESERVED",
+      "repository_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
+      "theorem_range": "T121-T156",
+      "dependency_role": "rc1_candidate_source",
+      "claim_class": "FORMAL_AND_MECHANIZED_DEVELOPMENT"
+    },
+    {
+      "artifact_id": "V0_OSAP_V1_3_0_RC1_GATE_AUDIT",
+      "title": "RC1 Gate Audit and Release Freeze",
+      "class": "audit_patch",
+      "version": "0.1",
+      "status": "RC1_AUDIT_READY_CI_PENDING",
+      "theorem_range": "T121-T156",
+      "dependency_role": "release_governance",
+      "claim_class": "NON_CLAIM_GOVERNANCE"
+    },
+    {
+      "artifact_id": "RC1_THEOREM_INVENTORY",
+      "title": "Consolidated theorem inventory",
+      "class": "machine_readable_registry",
+      "version": "generated",
+      "status": "GENERATED_ON_APPLICATION",
+      "path": "release/v1.3.0/RC1_THEOREM_INVENTORY.json",
+      "theorem_range": "T121-T156",
+      "dependency_role": "canonical_release_inventory",
+      "claim_class": "FORMAL_METADATA"
+    },
+    {
+      "artifact_id": "RC1_CLAIM_CLASSIFICATION_MATRIX",
+      "title": "Claim classification and conditionality matrix",
+      "class": "governance_registry",
+      "version": "0.1",
+      "status": "PATCH_DEFINED",
+      "path": "release/v1.3.0/RC1_CLAIM_CLASSIFICATION_MATRIX.json",
+      "dependency_role": "claim_firewall",
+      "claim_class": "NON_CLAIM_GOVERNANCE"
+    },
+    {
+      "artifact_id": "RC1_STRUCTURAL_PARITY_EVIDENCE",
+      "title": "Cross-backend structural-record parity evidence",
+      "class": "audit_evidence",
+      "version": "generated",
+      "status": "GENERATED_ON_APPLICATION",
+      "path": "release/v1.3.0/RC1_STATEMENT_PARITY_EVIDENCE.json",
+      "dependency_role": "release_gate_evidence",
+      "claim_class": "DUAL_BACKEND_PARITY_VERIFIED"
+    },
+    {
+      "artifact_id": "RC1_VALIDATOR_EVIDENCE_CONTRACT",
+      "title": "Validator evidence interchange contract",
+      "class": "machine_contract",
+      "version": "0.1",
+      "status": "PATCH_DEFINED",
+      "path": "release/v1.3.0/RC1_VALIDATOR_EVIDENCE_INTERCHANGE_CONTRACT.json",
+      "dependency_role": "validator_integration_contract",
+      "claim_class": "FORMAL_DEFINITION"
+    },
+    {
+      "artifact_id": "RC1_RELEASE_MANIFEST",
+      "title": "RC1 audit release manifest",
+      "class": "integrity_manifest",
+      "version": "generated",
+      "status": "GENERATED_ON_APPLICATION",
+      "path": "release/v1.3.0/RC1_RELEASE_MANIFEST.json",
+      "dependency_role": "hash_evidence",
+      "claim_class": "EVIDENCE_METADATA"
+    },
+    {
+      "artifact_id": "RC1_CLEAN_ROOM_REPLAY",
+      "title": "Clean-room replay protocol",
+      "class": "reproducibility_protocol",
+      "version": "0.1",
+      "status": "DEFINED_REPLAY_PENDING",
+      "path": "release/v1.3.0/RC1_CLEAN_ROOM_REPLAY.md",
+      "dependency_role": "release_gate_protocol",
+      "claim_class": "NON_CLAIM_GOVERNANCE"
+    }
+  ],
+  "rules": {
+    "one_canonical_owner_per_theorem_id": true,
+    "immutable_tags_must_not_move": true,
+    "new_doi_required_only_for_new_version_release": true,
+    "private_editorial_evidence_excluded": true
+  }
+}

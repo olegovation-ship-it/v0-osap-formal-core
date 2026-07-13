@@ -1,0 +1,35 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_RELEASE_MANIFEST",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "state": "RC1_AUDIT_READY_CI_PENDING_NO_RELEASE_TAG",
+  "baseline_closure_commit": "29201b4937cef220ef0933d852250b021f3f44d4",
+  "immutable_tag": "v1.2.0",
+  "immutable_doi": "10.5281/zenodo.21306969",
+  "theorem_inventory_sha256": "2904e2b3422294831b48a1d6e233e371bbe38fb9b6f10abc52eb7cc286780575",
+  "files": {
+    "release/v1.3.0/RC1_GATE_AUDIT_AND_RELEASE_FREEZE_SPECIFICATION.md": "c77ba346b872237997ec238b24c6519e2f58455834d47728db80d1f0defabfdd",
+    "release/v1.3.0/RC1_ACCEPTANCE_GATES.md": "0ea692b70ccab82b52cea0dedb3a9568e6c11e6a2e57ce7c9d465f24bd23beac",
+    "release/v1.3.0/RC1_PROGRAM_MASTER_INDEX.json": "eb7160bf642f9bfafe2adce49d8dc9fbc1fcdc97ea5df5ac3212f7bdf29a5643",
+    "release/v1.3.0/RC1_CLAIM_CLASSIFICATION_MATRIX.json": "61e30a80784dfe6fb9ed4498f962edd511a1e24036855aee686466328b30e9c7",
+    "release/v1.3.0/RC1_VALIDATOR_EVIDENCE_INTERCHANGE_CONTRACT.json": "5d0d03fbc5d4d10ad6f98373c4d7cfc448da9bb0f497c1ed0261d157a13c3c25",
+    "release/v1.3.0/RC1_NEGATIVE_GATE_FIXTURES.json": "d6ccdb055de394ac6fd7e6740b64cff9c87adc1c0276532c96f8a6828fd2a55c",
+    "release/v1.3.0/RC1_KNOWN_LIMITATIONS.md": "e9d5ecd46ad526eb447592ddb30d8f25cf732ef1297585ce06bfdd9df341da7e",
+    "release/v1.3.0/RC1_CLEAN_ROOM_REPLAY.md": "adcee5a19b91dc60fc0f6c34a4c434f8fabc9cb07756da3ff92b007874593430",
+    "release/v1.3.0/RC1_RELEASE_NOTES_DRAFT.md": "c6e5702a95ed4dccf44268d899751940b8ab99c1c1ce0a540c1c18020703c49b",
+    "release/v1.3.0/RC1_THEOREM_INVENTORY.json": "1c46611734cb50b1866e2ea6428c1f061593eb1a26323dba519f94bfd2d7446d",
+    "scripts/rc1_audit_lib.py": "fcc12311b8b7c6c4c1321c09dee97b26104650a087e8f050b1b57d772af95b31",
+    "scripts/build_rc1_release_inventory.py": "61047c2f8a736dc950ec0037c56b593b4a9eb979ce93573286e43277b77b9e36",
+    "scripts/verify_rc1_statement_parity.py": "1044d5b0668b46787aceb4896ce532233ed7a2a7b6eb6da1f4f7eba10edaf555",
+    "scripts/verify_rc1_gate_audit.py": "a95aba90124e61b404125aa49d88789c488b1b68cbd30f0b9680453aa506fe09",
+    "tests/test_rc1_gate_audit.py": "7671ecd5a424d8d948067f79d937c4d7948cde51c32d4e0b997ceb25c9d2de18",
+    ".github/workflows/rc1-gate-audit.yml": "2252c73bb820ae2e8d802622c7307e2bea00dc73e5281747b018d7b69e0ddf87"
+  },
+  "release_actions": {
+    "rc1_tag_created": false,
+    "final_tag_created": false,
+    "github_release_created": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_RC1_CLAIM_CLASSIFICATION_MATRIX",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "classes": {
+    "FORMAL_DEFINITION": "Definition internal to the declared formal language.",
+    "PROVED_THEOREM": "Proved in the recorded formal encoding under its listed assumptions.",
+    "CONDITIONAL_THEOREM": "Conclusion depends on explicit assumptions or implementation invariants.",
+    "VALIDATOR_SOUNDNESS_CLAIM": "Soundness claim bounded to the declared supported fragment.",
+    "MECHANIZED_LEAN": "Lean 4 source builds for the encoded proposition.",
+    "MECHANIZED_COQ": "Coq source builds for the encoded proposition.",
+    "DUAL_BACKEND_PARITY_VERIFIED": "Structural release-record parity verified; not proof-term identity.",
+    "MODEL_INTERPRETATION": "Interpretation in a finite or toy model.",
+    "PHYSICAL_SPECULATION": "Hypothesis without empirical validation.",
+    "EMPIRICAL_CLAIM": "Requires observable, measurement protocol, uncertainty, and data.",
+    "NON_CLAIM": "Explicitly excluded interpretation or governance statement."
+  },
+  "range_rules": [
+    {
+      "theorem_range": "T121-T139",
+      "default_claim_class": "PROVED_THEOREM",
+      "exceptions": [],
+      "normative_status": "NORMATIVE_V1_1_RESERVED"
+    },
+    {
+      "theorem_range": "T140",
+      "default_claim_class": "CONDITIONAL_THEOREM",
+      "reason": "Independent-witness sufficiency is conditional on recorded premises.",
+      "normative_status": "NORMATIVE_V1_1_RESERVED"
+    },
+    {
+      "theorem_range": "T141-T149",
+      "default_claim_class": "PROVED_THEOREM",
+      "exceptions": [],
+      "normative_status": "NORMATIVE_V1_1_RESERVED"
+    },
+    {
+      "theorem_range": "T150",
+      "default_claim_class": "CONDITIONAL_THEOREM",
+      "reason": "Accepted-fragment checker soundness depends on proved rule lemmas and implementation invariants.",
+      "normative_status": "NORMATIVE_V1_1_RESERVED"
+    },
+    {
+      "theorem_range": "T151-T155",
+      "default_claim_class": "PROVED_THEOREM",
+      "exceptions": [],
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION"
+    },
+    {
+      "theorem_range": "T156",
+      "default_claim_class": "CONDITIONAL_THEOREM",
+      "reason": "Conservative-extension non-interference depends on handler isolation and no baseline override.",
+      "normative_status": "POST_V1_1_EXPLICIT_EXTENSION"
+    }
+  ],
+  "global_nonclaims": [
+    "checker completeness",
+    "unconditional global checker soundness",
+    "proof-term identity between Lean and Coq",
+    "unrestricted semantic equivalence of implementations",
+    "global extension conservativity",
+    "physical existence of V0",
+    "empirical validation of disappearance",
+    "cosmological or quantum-gravity confirmation"
+  ]
+}

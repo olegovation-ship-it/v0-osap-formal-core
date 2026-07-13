@@ -1,0 +1,42 @@
+{
+  "artifact_id": "V0_OSAP_RC1_VALIDATOR_EVIDENCE_INTERCHANGE_CONTRACT",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "status": "INTERFACE_DRAFT_FROZEN_FOR_RC1_AUDIT",
+  "input": {
+    "registry_state_id": "string",
+    "schema_version": "string",
+    "semantic_version": "string",
+    "claims": "array"
+  },
+  "evidence_reference": {
+    "validator_rule_id": "string or procedural label",
+    "theorem_id": "T121-T156 or null for procedural diagnostics",
+    "backend_status": {
+      "lean": "proved|not_mapped|failed",
+      "coq": "proved|not_mapped|failed"
+    },
+    "fixture_id": "string or null",
+    "evidence_hash": "sha256",
+    "schema_version": "string",
+    "toolchain_version": "string",
+    "release_commit": "git sha"
+  },
+  "outcomes": [
+    "CERTIFIED",
+    "REJECTED_GUARD_FAILURE",
+    "REJECTED_DLE_FAILURE",
+    "REJECTED_LIVE_RESIDUAL",
+    "REJECTED_NONELIM_OBSTRUCTION",
+    "REJECTED_BRANCH_PROMOTION",
+    "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+    "BACKEND_PARITY_FAILURE"
+  ],
+  "rules": [
+    "Every non-procedural outcome must trace to a theorem ID.",
+    "Every procedural diagnostic must be explicitly labeled procedural.",
+    "Unsupported syntax returns INCONCLUSIVE_UNSUPPORTED_FRAGMENT, not logical failure.",
+    "A PASS result without evidence lineage is forbidden.",
+    "CI success is not peer review, empirical confirmation, or physical validation."
+  ]
+}
