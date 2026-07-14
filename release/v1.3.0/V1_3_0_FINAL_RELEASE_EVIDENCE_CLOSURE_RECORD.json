@@ -1,0 +1,73 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "state": "FINAL_RELEASE_EVIDENCE_CLOSED_STABLE_TAG_CREATED_FINAL_GITHUB_RELEASE_CREATED_ZENODO_NOT_PUBLISHED",
+  "human_state": "FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "authorization_basis": {
+    "final_release_authorization_pr": 16,
+    "final_release_authorization_merge_commit": "80911df7aacdac7ff411b49dcced161b98ac2071",
+    "exact_stable_target_commit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "frozen_historical_artifacts_sha256": {
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_MANIFEST.json": "32b586e91ff3150a8ed27789ec991d8c522fdcbb2e1f6ee326e0ed06904aaf68",
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_RECORD.json": "19c1700af9c1b1cae87b4f8f757632105bf75e4960574901c0ed4658c87e31f0",
+      "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json": "a7e67e155fb010112241f9deede10a2022ea7af4b2161480871cb5d21983a1e1",
+      "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "6455294c271c5a518ec335dafdefe3d0a3bd96b7bc5240849e3aec19f40fbb36"
+    }
+  },
+  "stable_tag_evidence": {
+    "tagName": "v1.3.0",
+    "objectType": "tag",
+    "localObjectSha": "db57f4344a42ffc1c8e46d73366ec94847e0ac09",
+    "remoteObjectSha": "db57f4344a42ffc1c8e46d73366ec94847e0ac09",
+    "peeledTargetCommit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "remotePeeledTargetCommit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "isAnnotated": true
+  },
+  "github_final_release_evidence": {
+    "tagName": "v1.3.0",
+    "name": "V0 OSAP v1.3.0 — Stable Release",
+    "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0",
+    "publishedAt": "2026-07-13T21:40:22Z",
+    "targetCommitish": "main",
+    "isDraft": false,
+    "isPrerelease": false,
+    "isLatest": true,
+    "normalizedBodySha256": "2c53805825b731ef782c4500fe48aa7b5663eff8479809c990c6e38813510d8e"
+  },
+  "candidate_scope": {
+    "theorem_range": "T121-T156",
+    "record_count": 36,
+    "source_crosswalk_count": 6,
+    "conditional_theorems": [
+      "T140",
+      "T150",
+      "T156"
+    ],
+    "checker_component_version": "0.7.0.dev1"
+  },
+  "release_actions": {
+    "stable_tag_target_authorized": true,
+    "stable_tag_created": true,
+    "github_final_release_authorized": true,
+    "github_final_release_created": true,
+    "rc1_prerelease_modified": false,
+    "zenodo_version_authorized": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  },
+  "immutable_history": {
+    "tag": "v1.2.0",
+    "target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+    "doi": "10.5281/zenodo.21306969"
+  },
+  "claim_boundary": {
+    "checker_completeness_claimed": false,
+    "unconditional_global_soundness_claimed": false,
+    "proof_term_identity_claimed": false,
+    "global_conservativity_claimed": false,
+    "empirical_or_physical_validation_claimed": false,
+    "cosmological_validation_claimed": false
+  }
+}

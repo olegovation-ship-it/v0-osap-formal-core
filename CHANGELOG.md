@@ -1,17 +1,18 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [Unreleased] - v1.3.0 final release authorization and stable-tag preparation
+## [v1.3.0] - 2026-07-13 — final release evidence closure and historical preservation
 
-- Separately authorized exact stable target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
-- Prepared annotated tag `v1.3.0` without creating or pushing it.
-- Prepared non-draft, non-prerelease GitHub final-release notes and metadata.
-- Added deterministic authorization manifest, verifier, dry-run-first creation scripts, tests, and validation-only CI.
-- Preserved RC1 tag `v1.3.0-rc1` at `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
-- Preserved `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, DOI `10.5281/zenodo.21306969`, conditional records, and non-claims.
-- Retained embedded checker component version `0.7.0.dev1`.
-- Created no stable tag, final GitHub Release, Zenodo version, or DOI change.
-- State: `FINAL_RELEASE_AUTHORIZED / STABLE_TAG_NOT_CREATED / FINAL_GITHUB_RELEASE_NOT_CREATED / ZENODO_NOT_PUBLISHED`.
+- Recorded annotated stable tag `v1.3.0` at exact peeled target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Recorded final GitHub Release `V0 OSAP v1.3.0 — Stable Release`.
+- Recorded release URL `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0` and publication time `2026-07-13T21:40:22Z`.
+- Verified `isDraft=false`, `isPrerelease=false`, and `isLatest=true`.
+- Frozen the final-release authorization and RC1 evidence artifacts by SHA-256.
+- Historicalized the final-authorization manifest builder and verifier at merge commit `80911df7aacdac7ff411b49dcced161b98ac2071`.
+- Preserved RC1 tag `v1.3.0-rc1`, immutable tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
+- Retained checker component `0.7.0.dev1`; T140, T150, and T156 remain conditional.
+- Created no Zenodo version and made no DOI mutation.
+- State: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

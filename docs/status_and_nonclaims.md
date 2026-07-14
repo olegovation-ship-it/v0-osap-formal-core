@@ -1,20 +1,22 @@
 # Status and non-claims
 
 <!-- V0_OSAP_RC1_STATUS_BEGIN -->
-## v1.3.0 final release authorization and stable-tag preparation
+## v1.3.0 final release evidence closure and historical preservation
 
 - Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
-- Status: `FINAL_RELEASE_AUTHORIZED / STABLE_TAG_NOT_CREATED / FINAL_GITHUB_RELEASE_NOT_CREATED / ZENODO_NOT_PUBLISHED`.
-- RC1 evidence-closure PR: #15; exact stable target: `13bf095688bcabd5b090f188e9bd28a16237edeb`.
-- Stable tag candidate: `v1.3.0`; tag kind required: annotated.
+- Status: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
+- Final-release authorization PR: #16; merge commit: `80911df7aacdac7ff411b49dcced161b98ac2071`.
+- Stable annotated tag `v1.3.0` peels exactly to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Final GitHub Release: `V0 OSAP v1.3.0 — Stable Release`.
+- Release URL: `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0`.
+- Published at: `2026-07-13T21:40:22Z`.
+- Release flags: `isDraft=false`, `isPrerelease=false`, `isLatest=true`.
 - RC1 tag `v1.3.0-rc1` remains pinned to `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
-- GitHub final release is authorized only after this patch passes CI and is merged.
-- GitHub release must be non-draft, non-prerelease, and use `--verify-tag`.
 - Embedded checker component remains `0.7.0.dev1` exactly as audited.
 - T140, T150, and T156 remain conditional.
 - Historical tag `v1.2.0` remains pinned to `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`.
 - Historical DOI remains `10.5281/zenodo.21306969`.
-- Zenodo publication and DOI mutation remain unauthorized.
+- Zenodo publication and DOI mutation remain unauthorized and unexecuted.
 - No checker-completeness, unconditional global soundness, proof-term identity, global conservativity, empirical, physical, or cosmological claim is made.
 <!-- V0_OSAP_RC1_STATUS_END -->
 

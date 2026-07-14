@@ -1,13 +1,16 @@
-name: v1.3.0 final release authorization
+name: v1.3.0 final release evidence closure
+
 on:
   push:
     branches: [main, v1.3.0-development]
   pull_request:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
-  authorization-audit:
+  evidence-closure-audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +31,9 @@ jobs:
       - run: python scripts/verify_rc1_release_evidence_closure.py --require-tags
       - run: python scripts/build_v1_3_0_final_release_authorization_manifest.py
       - run: python scripts/verify_v1_3_0_final_release_authorization.py --require-tags --allow-stable-tag-created
+      - run: python scripts/build_v1_3_0_final_release_evidence_closure_manifest.py
+      - run: python scripts/verify_v1_3_0_final_release_evidence_closure.py --require-tags
       - run: python -m pytest -q
       - run: git diff --check
       - run: git diff --exit-code -- release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_MANIFEST.json
+      - run: git diff --exit-code -- release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json
