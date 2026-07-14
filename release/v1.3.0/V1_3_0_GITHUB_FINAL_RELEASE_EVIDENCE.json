@@ -1,0 +1,34 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_GITHUB_FINAL_RELEASE_EVIDENCE",
+  "version": "0.1",
+  "date": "2026-07-13",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "authorization_merge_commit": "80911df7aacdac7ff411b49dcced161b98ac2071",
+  "stable_tag": {
+    "tagName": "v1.3.0",
+    "objectType": "tag",
+    "localObjectSha": "db57f4344a42ffc1c8e46d73366ec94847e0ac09",
+    "remoteObjectSha": "db57f4344a42ffc1c8e46d73366ec94847e0ac09",
+    "peeledTargetCommit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "remotePeeledTargetCommit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "isAnnotated": true
+  },
+  "release": {
+    "tagName": "v1.3.0",
+    "name": "V0 OSAP v1.3.0 — Stable Release",
+    "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0",
+    "publishedAt": "2026-07-13T21:40:22Z",
+    "targetCommitish": "main",
+    "isDraft": false,
+    "isPrerelease": false,
+    "isLatest": true,
+    "normalizedBodySha256": "2c53805825b731ef782c4500fe48aa7b5663eff8479809c990c6e38813510d8e"
+  },
+  "release_actions": {
+    "stable_tag_created": true,
+    "github_final_release_created": true,
+    "zenodo_version_authorized": false,
+    "zenodo_version_created": false,
+    "doi_changed": false
+  }
+}
