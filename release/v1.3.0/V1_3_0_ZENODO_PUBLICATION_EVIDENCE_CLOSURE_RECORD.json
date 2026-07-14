@@ -1,0 +1,89 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_RECORD",
+  "version": "0.1",
+  "date": "2026-07-14",
+  "state": "ZENODO_PUBLICATION_EVIDENCE_CLOSED_DOI_FINALIZED_STABLE_TAG_CREATED_FINAL_GITHUB_RELEASE_CREATED_ZENODO_PUBLISHED",
+  "human_state": "ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "authorization_basis": {
+    "final_release_evidence_pr": 17,
+    "final_release_evidence_merge_commit": "7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8",
+    "exact_stable_target_commit": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+  },
+  "stable_release": {
+    "tag": "v1.3.0",
+    "exact_peeled_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "github_release_url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0",
+    "github_release_name": "V0 OSAP v1.3.0 — Stable Release"
+  },
+  "zenodo_publication": {
+    "record_id": 21346728,
+    "doi": "10.5281/zenodo.21346728",
+    "doi_url": "https://doi.org/10.5281/zenodo.21346728",
+    "record_url": "https://zenodo.org/records/21346728",
+    "title": "V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release",
+    "publication_date": "2026-07-13",
+    "version_display": "v1.3.0",
+    "version_normalized": "1.3.0",
+    "resource_type": "Software",
+    "access_right": "Open",
+    "creator": {
+      "family_name": "Panasenko",
+      "given_name": "Dmytro",
+      "orcid": "0009-0008-2249-4562"
+    },
+    "archived_file": "olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip",
+    "linked_repository": "olegovation-ship-it/v0-osap-formal-core",
+    "linked_release": "v1.3.0",
+    "indexed_in": [
+      "OpenAIRE"
+    ],
+    "communities_visible": [],
+    "title_metadata_normalized": true
+  },
+  "frozen_predecessor_artifacts_sha256": {
+    "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json": "0a94d03d047b9f2266ab1572a867468dbbf99f083399927527da8b2fb18e4a29",
+    "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "0e18cafbd80fc6d9e0fad46e96b39016399564a49a89a917ce4785c4302f96e4",
+    "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_MANIFEST.json": "32b586e91ff3150a8ed27789ec991d8c522fdcbb2e1f6ee326e0ed06904aaf68",
+    "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_RECORD.json": "19c1700af9c1b1cae87b4f8f757632105bf75e4960574901c0ed4658c87e31f0",
+    "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json": "a7e67e155fb010112241f9deede10a2022ea7af4b2161480871cb5d21983a1e1",
+    "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "6455294c271c5a518ec335dafdefe3d0a3bd96b7bc5240849e3aec19f40fbb36"
+  },
+  "immutable_history": {
+    "tag": "v1.2.0",
+    "target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+    "doi": "10.5281/zenodo.21306969",
+    "remains_immutable": true
+  },
+  "release_actions": {
+    "stable_tag_created": true,
+    "stable_tag_moved": false,
+    "github_final_release_created": true,
+    "github_final_release_republished": false,
+    "zenodo_version_published": true,
+    "version_doi_finalized": true,
+    "citation_surface_finalized": true,
+    "historical_doi_mutated": false,
+    "archive_rebuilt": false,
+    "new_duplicate_upload_created": false
+  },
+  "candidate_scope": {
+    "theorem_range": "T121-T156",
+    "record_count": 36,
+    "source_crosswalk_count": 6,
+    "conditional_theorems": [
+      "T140",
+      "T150",
+      "T156"
+    ],
+    "checker_component_version": "0.7.0.dev1"
+  },
+  "claim_boundary": {
+    "checker_completeness_claimed": false,
+    "unconditional_global_soundness_claimed": false,
+    "proof_term_identity_claimed": false,
+    "global_conservativity_claimed": false,
+    "empirical_or_physical_validation_claimed": false,
+    "cosmological_validation_claimed": false
+  }
+}

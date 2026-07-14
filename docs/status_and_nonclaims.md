@@ -1,22 +1,24 @@
 # Status and non-claims
 
 <!-- V0_OSAP_RC1_STATUS_BEGIN -->
-## v1.3.0 final release evidence closure and historical preservation
+## v1.3.0 Zenodo publication evidence closure and DOI finalization
 
 - Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
-- Status: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
-- Final-release authorization PR: #16; merge commit: `80911df7aacdac7ff411b49dcced161b98ac2071`.
-- Stable annotated tag `v1.3.0` peels exactly to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
-- Final GitHub Release: `V0 OSAP v1.3.0 — Stable Release`.
-- Release URL: `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0`.
-- Published at: `2026-07-13T21:40:22Z`.
-- Release flags: `isDraft=false`, `isPrerelease=false`, `isLatest=true`.
-- RC1 tag `v1.3.0-rc1` remains pinned to `cf9a05b46b9b6f29cd85942f99155f89a49817a7`.
+- Status: `ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED`.
+- Final GitHub release-evidence closure PR: #17; merge commit: `7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8`.
+- Stable annotated tag `v1.3.0` remains pinned to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Zenodo record: `https://zenodo.org/records/21346728`.
+- Zenodo title: `V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release`.
+- Zenodo version DOI: `10.5281/zenodo.21346728`.
+- Publication date shown by Zenodo: `2026-07-13`.
+- Resource type/access: `Software` / `Open`.
+- Archived file: `olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip`.
+- Linked GitHub release: `v1.3.0`.
 - Embedded checker component remains `0.7.0.dev1` exactly as audited.
 - T140, T150, and T156 remain conditional.
 - Historical tag `v1.2.0` remains pinned to `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`.
-- Historical DOI remains `10.5281/zenodo.21306969`.
-- Zenodo publication and DOI mutation remain unauthorized and unexecuted.
+- Historical DOI `10.5281/zenodo.21306969` remains immutable.
+- No tag movement, archive rebuild, Zenodo republication, or historical DOI mutation is performed.
 - No checker-completeness, unconditional global soundness, proof-term identity, global conservativity, empirical, physical, or cosmological claim is made.
 <!-- V0_OSAP_RC1_STATUS_END -->
 

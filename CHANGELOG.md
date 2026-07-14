@@ -1,18 +1,19 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [v1.3.0] - 2026-07-13 — final release evidence closure and historical preservation
+## [v1.3.0] - 2026-07-14 — Zenodo publication evidence closure and DOI finalization
 
-- Recorded annotated stable tag `v1.3.0` at exact peeled target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
-- Recorded final GitHub Release `V0 OSAP v1.3.0 — Stable Release`.
-- Recorded release URL `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0` and publication time `2026-07-13T21:40:22Z`.
-- Verified `isDraft=false`, `isPrerelease=false`, and `isLatest=true`.
-- Frozen the final-release authorization and RC1 evidence artifacts by SHA-256.
-- Historicalized the final-authorization manifest builder and verifier at merge commit `80911df7aacdac7ff411b49dcced161b98ac2071`.
-- Preserved RC1 tag `v1.3.0-rc1`, immutable tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
+- Recorded the published Zenodo record `https://zenodo.org/records/21346728`.
+- Finalized v1.3.0 version DOI `10.5281/zenodo.21346728`.
+- Recorded corrected title `V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release`.
+- Recorded version `v1.3.0`, resource type `Software`, access `Open`, and publication date `2026-07-13`.
+- Recorded archive `olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip` and linked GitHub release `v1.3.0`.
+- Advanced the README DOI badge and `CITATION.cff` to the v1.3.0 version DOI.
+- Frozen the final-release evidence, final-release authorization, and RC1 evidence artifacts by SHA-256.
+- Preserved stable target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Preserved historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
 - Retained checker component `0.7.0.dev1`; T140, T150, and T156 remain conditional.
-- Created no Zenodo version and made no DOI mutation.
-- State: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
+- State: `ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 
