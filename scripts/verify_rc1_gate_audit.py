@@ -84,6 +84,7 @@ accepted_lifecycle_markers = (
     "RC1_TAG_AUTHORIZED",
     "RC1_RELEASE_EVIDENCE_CLOSED",
     "FINAL_RELEASE_AUTHORIZED",
+    "FINAL_RELEASE_EVIDENCE_CLOSED",
 )
 for body in [readme, status]:
     assert any(marker in body for marker in accepted_lifecycle_markers)
