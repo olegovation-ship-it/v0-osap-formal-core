@@ -5,26 +5,28 @@
 [![Lean 4](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/lean4.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/lean4.yml)
 [![Coq](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/coq.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/coq.yml)
 [![Release readiness](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/release-readiness.yml/badge.svg)](https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/workflows/release-readiness.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21306969.svg)](https://doi.org/10.5281/zenodo.21306969)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21346728.svg)](https://doi.org/10.5281/zenodo.21346728)
 
 Executable and proof-assistant-facing formal core for the **V0 Ontological and Structural-Activation Program (V0 OSAP)**.
 
 ## v1.3.0 release status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 FINAL RELEASE EVIDENCE CLOSURE AND HISTORICAL PRESERVATION - FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED**
+> **V0 OSAP v1.3.0 ZENODO PUBLICATION EVIDENCE CLOSURE AND DOI FINALIZATION - ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED**
 
 Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
 
-PR #16 merged final-release authorization at `80911df7aacdac7ff411b49dcced161b98ac2071`. The stable annotated tag `v1.3.0` now exists and peels exactly to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+PR #17 merged the final GitHub release-evidence closure at `7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8`. The stable annotated tag `v1.3.0` remains pinned exactly to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
 
-The GitHub final release `V0 OSAP v1.3.0 — Stable Release` is published at `https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0` with publication time `2026-07-13T21:40:22Z`, `isDraft=false`, `isPrerelease=false`, and `isLatest=true`.
+The published Zenodo record is [V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release](https://zenodo.org/records/21346728), version `v1.3.0`, resource type `Software`, access `Open`, with version DOI [`10.5281/zenodo.21346728`](https://doi.org/10.5281/zenodo.21346728).
 
-This patch records external tag and release evidence, freezes the preceding authorization and RC1 evidence manifests by SHA-256, and installs validation-only historical replay. It does not create, move, replace, retag, edit, or republish a release object.
+The archived software file is `olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip`, linked to GitHub release `v1.3.0`. The record title has been normalized to the v1.3.0 T121-T156 stable-release title.
 
-The embedded checker component remains `0.7.0.dev1` exactly as audited. Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional. Zenodo publication and DOI mutation remain unauthorized.
+This patch closes publication evidence, freezes predecessor release artifacts by SHA-256, and finalizes repository citation surfaces. It does not move either release tag, rebuild the archived object, republish Zenodo, or mutate the historical v1.2.0 DOI.
 
-See `release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md` and `release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
+The embedded checker component remains `0.7.0.dev1` exactly as audited. Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional.
+
+See `release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_AND_DOI_FINALIZATION_REPORT.md` and `release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 

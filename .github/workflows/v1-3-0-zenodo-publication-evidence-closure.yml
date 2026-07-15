@@ -1,0 +1,31 @@
+name: v1.3.0 Zenodo publication evidence closure
+
+on:
+  push:
+    branches: [main, v1.3.0-development]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e '.[dev]'
+      - run: git fetch --force origin --tags
+      - run: python scripts/build_v1_3_0_zenodo_publication_evidence_closure_manifest.py
+      - name: Verify generated closure manifest is committed and deterministic
+        run: git diff --exit-code -- release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_MANIFEST.json
+      - run: python scripts/verify_v1_3_0_zenodo_publication_evidence_closure.py --require-tags
+      - run: python -m pytest -q
+      - run: git diff --check
