@@ -1,19 +1,15 @@
 # Changelog
 
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
-## [v1.3.0] - 2026-07-14 — Zenodo publication evidence closure and DOI finalization
+## [v1.3.0] - 2026-07-15 — post-merge archival closeout and development-branch synchronization
 
-- Recorded the published Zenodo record `https://zenodo.org/records/21346728`.
-- Finalized v1.3.0 version DOI `10.5281/zenodo.21346728`.
-- Recorded corrected title `V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release`.
-- Recorded version `v1.3.0`, resource type `Software`, access `Open`, and publication date `2026-07-13`.
-- Recorded archive `olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip` and linked GitHub release `v1.3.0`.
-- Advanced the README DOI badge and `CITATION.cff` to the v1.3.0 version DOI.
-- Frozen the final-release evidence, final-release authorization, and RC1 evidence artifacts by SHA-256.
-- Preserved stable target `13bf095688bcabd5b090f188e9bd28a16237edeb`.
-- Preserved historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969`.
-- Retained checker component `0.7.0.dev1`; T140, T150, and T156 remain conditional.
-- State: `ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED`.
+- Recorded PR #18 head `73719a160868ffb6cc631388b09dd285239f46cd`, merge commit `53dcd231aa7d5208a2360d737f01bc2e95e9450b`, and 36 successful checks.
+- Recorded `main` and `v1.3.0-development` synchronized at `53dcd231aa7d5208a2360d737f01bc2e95e9450b` before this patch.
+- Preserved tag `v1.3.0` at `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+- Preserved Zenodo DOI `10.5281/zenodo.21346728` and historical DOI `10.5281/zenodo.21306969`.
+- Confirmed post-Zenodo lifecycle replay and RC1 inventory replay compatibility.
+- Retained checker `0.7.0.dev1`; T140, T150, and T156 remain conditional.
+- State: `POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED / MAIN_DEVELOPMENT_SYNCHRONIZED / ZENODO_LIFECYCLE_REPLAY_COMPATIBLE / RELEASE_IMMUTABLE`.
 <!-- V0_OSAP_RC1_CHANGELOG_END -->
 
 

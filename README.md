@@ -12,21 +12,17 @@ Executable and proof-assistant-facing formal core for the **V0 Ontological and S
 ## v1.3.0 release status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->
-> **V0 OSAP v1.3.0 ZENODO PUBLICATION EVIDENCE CLOSURE AND DOI FINALIZATION - ZENODO_PUBLICATION_EVIDENCE_CLOSED / DOI_FINALIZED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_PUBLISHED**
+> **V0 OSAP v1.3.0 POST-MERGE ARCHIVAL CLOSEOUT AND DEVELOPMENT-BRANCH SYNCHRONIZATION - POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED / MAIN_DEVELOPMENT_SYNCHRONIZED / ZENODO_LIFECYCLE_REPLAY_COMPATIBLE / RELEASE_IMMUTABLE**
 
 Candidate scope: T121-T156 / 36 theorem records / 6 source crosswalks.
 
-PR #17 merged the final GitHub release-evidence closure at `7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8`. The stable annotated tag `v1.3.0` remains pinned exactly to `13bf095688bcabd5b090f188e9bd28a16237edeb`.
+PR #18 merged accepted head `73719a160868ffb6cc631388b09dd285239f46cd` into `main` as `53dcd231aa7d5208a2360d737f01bc2e95e9450b` after 36 successful checks. The `v1.3.0-development` branch was then fast-forwarded and pushed to the same commit `53dcd231aa7d5208a2360d737f01bc2e95e9450b`, the recorded post-merge synchronization point.
 
-The published Zenodo record is [V0 OSAP Formal Core v1.3.0 — T121–T156 Stable Release](https://zenodo.org/records/21346728), version `v1.3.0`, resource type `Software`, access `Open`, with version DOI [`10.5281/zenodo.21346728`](https://doi.org/10.5281/zenodo.21346728).
+Stable tag `v1.3.0` remains pinned to `13bf095688bcabd5b090f188e9bd28a16237edeb`. GitHub Release v1.3.0 and Zenodo record [21346728](https://zenodo.org/records/21346728), DOI [`10.5281/zenodo.21346728`](https://doi.org/10.5281/zenodo.21346728), remain immutable.
 
-The archived software file is `olegovation-ship-it/v0-osap-formal-core-v1.3.0.zip`, linked to GitHub release `v1.3.0`. The record title has been normalized to the v1.3.0 T121-T156 stable-release title.
+Post-Zenodo historical lifecycle replay and RC1 inventory replay are compatible with the finalized publication lifecycle. Checker `0.7.0.dev1` is unchanged; T140, T150, and T156 remain conditional.
 
-This patch closes publication evidence, freezes predecessor release artifacts by SHA-256, and finalizes repository citation surfaces. It does not move either release tag, rebuild the archived object, republish Zenodo, or mutate the historical v1.2.0 DOI.
-
-The embedded checker component remains `0.7.0.dev1` exactly as audited. Historical tag `v1.2.0`, target `befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3`, and DOI `10.5281/zenodo.21306969` remain immutable. T140, T150, and T156 remain conditional.
-
-See `release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_AND_DOI_FINALIZATION_REPORT.md` and `release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
+See `release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_REPORT.md` and `release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_ACCEPTANCE_GATES.md`.
 <!-- V0_OSAP_RC1_GATE_AUDIT_END -->
 
 

@@ -1,0 +1,21 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_MANIFEST",
+  "baseline_merge_commit": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+  "date": "2026-07-15",
+  "files": {
+    ".github/workflows/v1-3-0-post-merge-archival-closeout.yml": "d8cfc7d61da2b61a3834b6fc19649f75a1a11b08ec2415488aeac7d8e827c3eb",
+    "CHANGELOG.md": "dfa17a0ed02d0552295a1b4e3382e92cc8e70a18b158c2861525e8a70b60256c",
+    "README.md": "ac33412cb23ca1a44b1822ba343678076883582457e16e3597d8db6925b8447d",
+    "docs/status_and_nonclaims.md": "49cc49f733ac7d53787d3df2a7c606cc18e0872c48290c51583e526010092a1d",
+    "release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_ACCEPTANCE_GATES.md": "d8db7d0a16ef43acf7a09d365776503b1089e327ca5c25fa5602f69fd4554461",
+    "release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json": "2c0fd2a116a680271076fdc895d45e1292e6171401d5cc222e900b93aaeac012",
+    "release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_REPORT.md": "a768244eb01f5b1eb3d7940b530e42304de0f489a1a29ce7c54fd0510d06f9a9",
+    "scripts/build_v1_3_0_post_merge_archival_closeout_manifest.py": "e10b6dbe106ac035b0f3bed091d433cff5ab0a3863c248737e33f27a630b501c",
+    "scripts/verify_v1_3_0_post_merge_archival_closeout.py": "4864337b4e96703b3ab7e5b8b6ea1a580fc872daa2b37aad8c1b48f6e137c156",
+    "tests/test_v1_3_0_post_merge_archival_closeout.py": "c234e8fcdf285c3b148d368e3d8c1ff8597d85457819bb7004a65675dcc11025"
+  },
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "state": "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED_MAIN_DEVELOPMENT_SYNCHRONIZED_ZENODO_LIFECYCLE_REPLAY_COMPATIBLE_RELEASE_IMMUTABLE",
+  "version": "0.1",
+  "zenodo_version_doi": "10.5281/zenodo.21346728"
+}
