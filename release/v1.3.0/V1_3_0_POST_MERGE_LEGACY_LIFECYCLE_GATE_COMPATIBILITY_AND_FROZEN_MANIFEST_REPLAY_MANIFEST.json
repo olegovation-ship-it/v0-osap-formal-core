@@ -1,0 +1,20 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_FROZEN_MANIFEST_REPLAY_MANIFEST",
+  "baseline_merge_commit": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+  "date": "2026-07-15",
+  "files": {
+    ".github/workflows/v1-3-0-post-merge-legacy-lifecycle-compatibility.yml": "3019da834d0131675ee961ca205119f2bda804679861a9334ce325c6a33cbe67",
+    "release/v1.3.0/V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_FROZEN_MANIFEST_REPLAY_ACCEPTANCE_GATES.md": "fb60daf9a19a5f87a3faebf5ee1752f0d1714adc1731d0b71a1f6e1dfe17a16b",
+    "release/v1.3.0/V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_FROZEN_MANIFEST_REPLAY_RECORD.json": "1e66c0f34f93465cfca7c6eca636b6e35944e2f3e9cc87f874ff047a3b9f503f",
+    "release/v1.3.0/V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_FROZEN_MANIFEST_REPLAY_REPORT.md": "927b47ed452ce3e5541f1676961d2ffc4671eef07e531815bd40e60ec210866a",
+    "scripts/build_v1_3_0_post_merge_legacy_lifecycle_compatibility_manifest.py": "a2ae76c3fab097e9f9170bf8948848d8743e1dcd328734c4cda18161ad3df3b6",
+    "scripts/verify_rc1_gate_audit.py": "3f0c7751eab8bc3ef7e198c8654dfc985e01dcfff047c5df6aef7b67998bbaa4",
+    "scripts/verify_v1_3_0_post_merge_legacy_lifecycle_compatibility.py": "f41fe039f46da866dbb447a797fa7279e4fee82db1849ad6eae8b657bd7a19ca",
+    "tests/test_rc1_gate_audit.py": "1b3ab9b95b28a543305b013938edba3505987d798d36c02689bb11efec16e5e8",
+    "tests/test_v1_3_0_post_merge_legacy_lifecycle_compatibility.py": "655e664f7a2cbbeabe381ce30f7ec3a4985ab23053d75b8010a8fdbde1f2636e"
+  },
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "state": "POST_MERGE_LEGACY_LIFECYCLE_COMPATIBILITY_RECORDED_FROZEN_MANIFEST_REPLAY_PRESERVED",
+  "version": "0.1",
+  "zenodo_version_doi": "10.5281/zenodo.21346728"
+}

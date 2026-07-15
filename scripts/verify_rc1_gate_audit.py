@@ -88,11 +88,28 @@ accepted_lifecycle_markers = (
     "ZENODO_PUBLICATION_AUTHORIZED",
     "ZENODO_PUBLICATION_EVIDENCE_CLOSED",
     "DOI_FINALIZED",
+    "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED",
+    "MAIN_DEVELOPMENT_SYNCHRONIZED",
+    "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE",
+    "RELEASE_IMMUTABLE",
+)
+post_merge_marker = "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED"
+post_merge_companion_markers = (
+    "MAIN_DEVELOPMENT_SYNCHRONIZED",
+    "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE",
+    "RELEASE_IMMUTABLE",
 )
 for body in [readme, status]:
     assert any(marker in body for marker in accepted_lifecycle_markers)
     assert "10.5281/zenodo.21306969" in body
     assert "T121-T156" in body
+    if post_merge_marker in body:
+        assert all(marker in body for marker in post_merge_companion_markers)
+        assert "10.5281/zenodo.21346728" in body
+        assert "13bf095688bcabd5b090f188e9bd28a16237edeb" in body
+        assert "0.7.0.dev1" in body
+        for theorem_id in ("T140", "T150", "T156"):
+            assert theorem_id in body
 
 if EVIDENCE_CLOSURE_RECORD.is_file():
     closure = json.loads(EVIDENCE_CLOSURE_RECORD.read_text(encoding="utf-8"))

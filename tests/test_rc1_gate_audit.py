@@ -29,4 +29,9 @@ def test_gate_audit_verifier_is_executable_and_not_empty() -> None:
     assert len(text.splitlines()) > 100
     assert "audit_inventory(inventory)" in text
     assert "RC1_RELEASE_EVIDENCE_CLOSED" in text
+    assert "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED" in text
+    assert "MAIN_DEVELOPMENT_SYNCHRONIZED" in text
+    assert "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE" in text
+    assert "RELEASE_IMMUTABLE" in text
+    assert "post_merge_companion_markers" in text
     assert "negative gate mutants killed" in text
