@@ -1,0 +1,27 @@
+name: v1.3.0 post-merge archival closeout
+on:
+  push:
+    branches: [main, v1.3.0-development]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archival-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -e '.[dev]'
+      - run: git fetch --force origin --tags
+      - run: python scripts/verify_v1_3_0_post_zenodo_historical_replay_compatibility.py
+      - run: python scripts/build_v1_3_0_post_merge_archival_closeout_manifest.py
+      - run: git diff --exit-code -- release/v1.3.0/V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_MANIFEST.json
+      - run: python scripts/verify_v1_3_0_post_merge_archival_closeout.py --require-tags --require-remote-sync
+      - run: python -m pytest -q
+      - run: git diff --check

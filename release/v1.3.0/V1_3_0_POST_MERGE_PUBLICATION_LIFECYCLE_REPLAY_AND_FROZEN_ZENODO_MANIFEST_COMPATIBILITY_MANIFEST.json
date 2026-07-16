@@ -1,0 +1,24 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_AND_FROZEN_ZENODO_MANIFEST_COMPATIBILITY_MANIFEST",
+  "date": "2026-07-16",
+  "files": {
+    ".github/workflows/v1-3-0-post-merge-publication-lifecycle-replay-compatibility.yml": "fa93c20648756424e537b4f3c5f6d09b59e1884882f0ac38788887a7b9dd1dae",
+    "release/v1.3.0/V1_3_0_POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_AND_FROZEN_ZENODO_MANIFEST_COMPATIBILITY_ACCEPTANCE_GATES.md": "e91cef9e9cd34febed57142dcdede152934d617955b757be8da8ac0d1dc910e8",
+    "release/v1.3.0/V1_3_0_POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_AND_FROZEN_ZENODO_MANIFEST_COMPATIBILITY_RECORD.json": "b901c44ba5ff26290f3a511aea5b470e3aeb3bd3d3c419f029f1894b8fc7a06a",
+    "release/v1.3.0/V1_3_0_POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_AND_FROZEN_ZENODO_MANIFEST_COMPATIBILITY_REPORT.md": "c3defebd1136c629147f0e2affa166a29027914f4deab9e2ebfbc4ac146cf9ea",
+    "scripts/build_v1_3_0_post_merge_publication_lifecycle_replay_compatibility_manifest.py": "90cf66fc86626e4507642b00c986898df81e50347d3eef48d1c78e04a9b45ccc",
+    "scripts/build_v1_3_0_zenodo_publication_evidence_closure_manifest.py": "b309f6cafb12336e86ec5e1fa3bec57825b32188ae7345ad70fc539ef4b6e9df",
+    "scripts/verify_v1_3_0_final_release_evidence_closure.py": "83ee7d55242dada344d61965d90b44ca06e7e35f761779930c2fe0e34deed57b",
+    "scripts/verify_v1_3_0_post_merge_publication_lifecycle_replay_compatibility.py": "921ad5c95a8a13295c2ed757202000eea438c4d6bd9f038e5bac2dce7c4073a6",
+    "scripts/verify_v1_3_0_zenodo_publication_evidence_closure.py": "8b09858983d23870a91d346ac002c2f6ced910c2f0c9175efbe7fdf994b4c4b8",
+    "tests/test_v1_3_0_final_release_evidence_closure.py": "c0bfa9878c31aafa921985d93c86959c945b036c97786bc6f91d4a99cbd38350",
+    "tests/test_v1_3_0_post_merge_publication_lifecycle_replay_compatibility.py": "30121c948f6d3f94a4bfac0a7b43d871281c66a896f13083cbfe4eb6995abe14",
+    "tests/test_v1_3_0_zenodo_publication_evidence_closure.py": "7ac2d91b3660dcb4991f495f2c904f32dc4e7afc5ce9d81283dbf33a24608bf0"
+  },
+  "parent_commit": "c25983fa72aa98bd0d67352821b731ad6542a00b",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "state": "POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_COMPATIBLE_FROZEN_ZENODO_MANIFEST_REPLAY_PRESERVED",
+  "version": "0.1",
+  "zenodo_snapshot": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+  "zenodo_version_doi": "10.5281/zenodo.21346728"
+}

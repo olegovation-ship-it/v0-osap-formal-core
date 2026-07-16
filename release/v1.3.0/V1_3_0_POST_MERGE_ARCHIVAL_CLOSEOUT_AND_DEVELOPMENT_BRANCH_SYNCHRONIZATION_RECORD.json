@@ -1,0 +1,65 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD",
+  "version": "0.1",
+  "date": "2026-07-15",
+  "state": "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED_MAIN_DEVELOPMENT_SYNCHRONIZED_ZENODO_LIFECYCLE_REPLAY_COMPATIBLE_RELEASE_IMMUTABLE",
+  "human_state": "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED / MAIN_DEVELOPMENT_SYNCHRONIZED / ZENODO_LIFECYCLE_REPLAY_COMPATIBLE / RELEASE_IMMUTABLE",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "merge_closeout": {
+    "pull_request": 18,
+    "merged_head_commit": "73719a160868ffb6cc631388b09dd285239f46cd",
+    "merge_commit": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+    "successful_checks": 36,
+    "target_branch": "main",
+    "source_branch": "v1.3.0-development",
+    "post_merge_main_head": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+    "post_merge_development_head": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+    "synchronization_method": "fast-forward development branch to merged main",
+    "synchronization_recorded": true
+  },
+  "release_state": {
+    "stable_tag": "v1.3.0",
+    "stable_tag_peeled_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "github_release_url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/releases/tag/v1.3.0",
+    "zenodo_record": 21346728,
+    "zenodo_version_doi": "10.5281/zenodo.21346728",
+    "zenodo_record_url": "https://zenodo.org/records/21346728",
+    "resource_type": "Software",
+    "access_right": "Open",
+    "release_immutable": true
+  },
+  "preserved_lifecycle": {
+    "final_github_release_evidence_merge": "7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8",
+    "post_zenodo_lifecycle_replay_enabled": true,
+    "rc1_inventory_replay_enabled": true,
+    "zenodo_publication_evidence_closed": true,
+    "doi_finalized": true
+  },
+  "immutable_history": {
+    "tag": "v1.2.0",
+    "target_commit": "befa094ca3db4d5f28f5dcfbfdc4ed8a745972f3",
+    "doi": "10.5281/zenodo.21306969",
+    "remains_immutable": true
+  },
+  "candidate_scope": {
+    "theorem_range": "T121-T156",
+    "record_count": 36,
+    "source_crosswalk_count": 6,
+    "conditional_theorems": [
+      "T140",
+      "T150",
+      "T156"
+    ],
+    "checker_component_version": "0.7.0.dev1"
+  },
+  "non_actions": {
+    "stable_tag_moved": false,
+    "github_release_republished": false,
+    "zenodo_record_edited_or_republished": false,
+    "archive_rebuilt": false,
+    "doi_mutated": false,
+    "historical_doi_mutated": false,
+    "new_theorems_added": false,
+    "checker_component_promoted": false
+  }
+}

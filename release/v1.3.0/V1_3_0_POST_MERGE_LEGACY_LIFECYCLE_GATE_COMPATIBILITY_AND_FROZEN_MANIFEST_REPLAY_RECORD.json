@@ -1,0 +1,74 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_FROZEN_MANIFEST_REPLAY_RECORD",
+  "version": "0.1",
+  "date": "2026-07-15",
+  "state": "POST_MERGE_LEGACY_LIFECYCLE_COMPATIBILITY_RECORDED_FROZEN_MANIFEST_REPLAY_PRESERVED",
+  "human_state": "POST_MERGE_LEGACY_LIFECYCLE_COMPATIBILITY_RECORDED / FROZEN_MANIFEST_REPLAY_PRESERVED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "pull_request": 19,
+  "baseline": {
+    "post_merge_synchronization_commit": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+    "stable_tag": "v1.3.0",
+    "stable_tag_peeled_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "zenodo_version_doi": "10.5281/zenodo.21346728",
+    "historical_doi": "10.5281/zenodo.21306969"
+  },
+  "observed_failure": {
+    "workflow_count": 9,
+    "common_blocker": "scripts/verify_rc1_gate_audit.py rejected the post-merge lifecycle marker set",
+    "failing_assertion": "any(marker in body for marker in accepted_lifecycle_markers)",
+    "formal_core_checks_remained_green": [
+      "Python checker",
+      "Lean 4",
+      "Coq",
+      "Schema validation",
+      "v1.3.0 post-merge archival closeout"
+    ]
+  },
+  "repair": {
+    "accepted_post_merge_marker": "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED",
+    "required_companion_markers": [
+      "MAIN_DEVELOPMENT_SYNCHRONIZED",
+      "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE",
+      "RELEASE_IMMUTABLE"
+    ],
+    "required_release_evidence": {
+      "version_doi": "10.5281/zenodo.21346728",
+      "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+      "checker_component_version": "0.7.0.dev1",
+      "conditional_theorems": [
+        "T140",
+        "T150",
+        "T156"
+      ]
+    },
+    "acceptance_gates_weakened": false,
+    "historical_state_rewritten": false
+  },
+  "frozen_replay": {
+    "zenodo_predecessor_artifacts": {
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json": "0a94d03d047b9f2266ab1572a867468dbbf99f083399927527da8b2fb18e4a29",
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "0e18cafbd80fc6d9e0fad46e96b39016399564a49a89a917ce4785c4302f96e4",
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_MANIFEST.json": "32b586e91ff3150a8ed27789ec991d8c522fdcbb2e1f6ee326e0ed06904aaf68",
+      "release/v1.3.0/V1_3_0_FINAL_RELEASE_AUTHORIZATION_RECORD.json": "19c1700af9c1b1cae87b4f8f757632105bf75e4960574901c0ed4658c87e31f0",
+      "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json": "a7e67e155fb010112241f9deede10a2022ea7af4b2161480871cb5d21983a1e1",
+      "release/v1.3.0/RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json": "6455294c271c5a518ec335dafdefe3d0a3bd96b7bc5240849e3aec19f40fbb36"
+    },
+    "rc1_historical_manifests": {
+      "release/v1.3.0/RC1_RELEASE_CLOSURE_MANIFEST.json": "6617ebf3eea40b978b049a1beeebaf5ebd1d88ccd1bfce3322f05d7a49a7ff04",
+      "release/v1.3.0/RC1_TAG_AUTHORIZATION_MANIFEST.json": "6a78df7e21241e30983689034bbb5ab8ee8047d0777d125cf0a42a5a99d19c17"
+    },
+    "byte_for_byte_preservation_required": true
+  },
+  "non_actions": {
+    "stable_tag_moved": false,
+    "github_release_republished": false,
+    "zenodo_record_edited_or_republished": false,
+    "archive_rebuilt": false,
+    "doi_mutated": false,
+    "historical_doi_mutated": false,
+    "historical_manifest_rehashed_or_rewritten": false,
+    "new_theorems_added": false,
+    "checker_component_promoted": false
+  }
+}
