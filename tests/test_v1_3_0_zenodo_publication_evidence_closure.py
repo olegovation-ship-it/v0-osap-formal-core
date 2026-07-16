@@ -8,8 +8,10 @@ EVIDENCE = ROOT / "release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE.json"
 RECORD = ROOT / "release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_RECORD.json"
 MANIFEST = ROOT / "release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_MANIFEST.json"
 
+
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
 
 def test_zenodo_identity_is_exact() -> None:
     evidence = read_json(EVIDENCE)["zenodo_record"]
@@ -19,6 +21,7 @@ def test_zenodo_identity_is_exact() -> None:
     assert evidence["version_display"] == "v1.3.0"
     assert evidence["resource_type"] == "Software"
     assert evidence["access_right"] == "Open"
+
 
 def test_stable_target_and_historical_version_are_separate() -> None:
     record = read_json(RECORD)
@@ -30,6 +33,7 @@ def test_stable_target_and_historical_version_are_separate() -> None:
     assert record["release_actions"]["historical_doi_mutated"] is False
     assert record["release_actions"]["stable_tag_moved"] is False
 
+
 def test_citation_surface_targets_v1_3_0() -> None:
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -37,6 +41,7 @@ def test_citation_surface_targets_v1_3_0() -> None:
     assert 'version: "1.3.0"' in citation
     assert "10.5281/zenodo.21346728" in readme
     assert "10.5281/zenodo.21306969" in readme
+
 
 def test_manifest_and_screenshot_hashes_are_well_formed() -> None:
     manifest = read_json(MANIFEST)
@@ -46,3 +51,21 @@ def test_manifest_and_screenshot_hashes_are_well_formed() -> None:
     for digest in evidence["screenshot_sha256"].values():
         assert len(digest) == 64
         int(digest, 16)
+
+
+def test_post_merge_builder_uses_frozen_snapshot_replay() -> None:
+    builder = (
+        ROOT
+        / "scripts/build_v1_3_0_zenodo_publication_evidence_closure_manifest.py"
+    ).read_text(encoding="utf-8")
+    verifier = (
+        ROOT / "scripts/verify_v1_3_0_zenodo_publication_evidence_closure.py"
+    ).read_text(encoding="utf-8")
+    for text in (builder, verifier):
+        assert "53dcd231aa7d5208a2360d737f01bc2e95e9450b" in text
+        assert "POST_MERGE_RECORD" in text
+        assert "historical_blob" in text
+    assert "replay_frozen_manifest" in builder
+    assert "no current lifecycle surface was rehashed or rewritten" in builder
+    assert "snapshot manifest replay mismatch" in verifier
+    assert "POST_MERGE_MARKERS" in verifier

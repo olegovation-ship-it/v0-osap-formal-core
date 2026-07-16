@@ -6,6 +6,7 @@ EVIDENCE = ROOT / "release/v1.3.0/V1_3_0_GITHUB_FINAL_RELEASE_EVIDENCE.json"
 RECORD = ROOT / "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json"
 MANIFEST = ROOT / "release/v1.3.0/V1_3_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json"
 
+
 def test_final_release_evidence_shape():
     value = json.loads(EVIDENCE.read_text(encoding="utf-8"))
     assert value["stable_tag"]["tagName"] == "v1.3.0"
@@ -17,6 +18,7 @@ def test_final_release_evidence_shape():
     assert value["release"]["isPrerelease"] is False
     assert value["release"]["isLatest"] is True
 
+
 def test_closure_record_preserves_zenodo_boundary():
     value = json.loads(RECORD.read_text(encoding="utf-8"))
     assert value["release_actions"]["stable_tag_created"] is True
@@ -26,10 +28,12 @@ def test_closure_record_preserves_zenodo_boundary():
     assert value["release_actions"]["doi_changed"] is False
     assert value["immutable_history"]["doi"] == "10.5281/zenodo.21306969"
 
+
 def test_manifest_tracks_closure_files():
     value = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assert value["state"].startswith("FINAL_RELEASE_EVIDENCE_CLOSED")
     assert len(value["files"]) == 22
+
 
 def test_workflows_are_validation_only():
     for rel in (
@@ -42,9 +46,31 @@ def test_workflows_are_validation_only():
         assert "--execute" not in text
         assert "fetch-depth: 0" in text
 
+
 def test_component_and_conditional_boundary():
     assert 'version = "0.7.0.dev1"' in (
         ROOT / "pyproject.toml"
     ).read_text(encoding="utf-8")
     status = (ROOT / "docs/status_and_nonclaims.md").read_text(encoding="utf-8")
     assert all(item in status for item in ("T140", "T150", "T156"))
+
+
+def test_post_merge_successor_compatibility_is_guarded():
+    text = (
+        ROOT / "scripts/verify_v1_3_0_final_release_evidence_closure.py"
+    ).read_text(encoding="utf-8")
+    for token in (
+        "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED",
+        "MAIN_DEVELOPMENT_SYNCHRONIZED",
+        "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE",
+        "RELEASE_IMMUTABLE",
+        "POST_MERGE_RECORD",
+        "POST_MERGE_COMPANION_MARKERS",
+        "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+        "10.5281/zenodo.21346728",
+        "IMMUTABLE_DOI",
+        "T140",
+        "T150",
+        "T156",
+    ):
+        assert token in text

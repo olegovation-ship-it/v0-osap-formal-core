@@ -1,0 +1,72 @@
+{
+  "artifact_id": "V0_OSAP_V1_3_0_POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_AND_FROZEN_ZENODO_MANIFEST_COMPATIBILITY_RECORD",
+  "version": "0.1",
+  "date": "2026-07-16",
+  "state": "POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_COMPATIBLE_FROZEN_ZENODO_MANIFEST_REPLAY_PRESERVED",
+  "human_state": "POST_MERGE_PUBLICATION_LIFECYCLE_REPLAY_COMPATIBLE / FROZEN_ZENODO_MANIFEST_REPLAY_PRESERVED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "pull_request": 19,
+  "repair_parent_commit": "c25983fa72aa98bd0d67352821b731ad6542a00b",
+  "historical_snapshots": {
+    "final_release_evidence": "7b38ddd6cb9bcfdc7c5713ba73a2c45d6513fbb8",
+    "zenodo_publication_and_post_merge_baseline": "53dcd231aa7d5208a2360d737f01bc2e95e9450b",
+    "zenodo_manifest_path": "release/v1.3.0/V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_MANIFEST.json",
+    "zenodo_manifest_git_blob_sha": "49f8b2ae2f6c7229ef440f2fbeed824fb7995aca"
+  },
+  "observed_downstream_failures": [
+    {
+      "workflow": "v1.3.0 final release evidence closure",
+      "cause": "final-release evidence verifier did not accept the guarded post-merge archival-closeout successor state"
+    },
+    {
+      "workflow": "v1.3.0 Zenodo publication evidence closure",
+      "cause": "historical Zenodo builder rehashed current post-merge status surfaces and changed the frozen manifest"
+    },
+    {
+      "workflow": "v1.3.0 post-Zenodo historical lifecycle replay",
+      "cause": "replay chain stopped at the final-release evidence successor-state gate"
+    }
+  ],
+  "repair": {
+    "final_release_successor_markers": [
+      "ZENODO_PUBLICATION_AUTHORIZED",
+      "ZENODO_PUBLICATION_EVIDENCE_CLOSED",
+      "DOI_FINALIZED",
+      "POST_MERGE_ARCHIVAL_CLOSEOUT_RECORDED"
+    ],
+    "post_merge_companion_markers_required": [
+      "MAIN_DEVELOPMENT_SYNCHRONIZED",
+      "ZENODO_LIFECYCLE_REPLAY_COMPATIBLE",
+      "RELEASE_IMMUTABLE"
+    ],
+    "zenodo_builder_mode_after_closeout": "HISTORICAL_SNAPSHOT_REPLAY_NO_REWRITE",
+    "zenodo_verifier_rule": "REPLAY_MANIFEST_ENTRIES_FROM_53DCD231_SNAPSHOT_AND_VALIDATE_CURRENT_GUARDED_SUCCESSOR_SURFACES",
+    "acceptance_gates_weakened": false,
+    "historical_manifest_rewritten": false
+  },
+  "release_identity": {
+    "stable_tag": "v1.3.0",
+    "stable_tag_peeled_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "zenodo_record": 21346728,
+    "zenodo_version_doi": "10.5281/zenodo.21346728",
+    "historical_doi": "10.5281/zenodo.21306969",
+    "checker_component_version": "0.7.0.dev1",
+    "conditional_theorems": [
+      "T140",
+      "T150",
+      "T156"
+    ]
+  },
+  "non_actions": {
+    "stable_tag_moved": false,
+    "github_release_recreated_or_republished": false,
+    "zenodo_record_edited_or_republished": false,
+    "archive_rebuilt": false,
+    "version_doi_mutated": false,
+    "historical_doi_mutated": false,
+    "zenodo_manifest_regenerated": false,
+    "zenodo_manifest_hashes_replaced": false,
+    "theorem_inventory_extended": false,
+    "checker_component_promoted": false
+  }
+}
