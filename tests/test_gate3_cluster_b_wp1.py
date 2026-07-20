@@ -156,6 +156,7 @@ def test_wp0_post_merge_sha256_supersession_is_exact():
 
     superseded = {
         "scripts/verify_gate3_cluster_b_wp0.py",
+        "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
         "tests/test_gate3_cluster_b_wp0.py",
         "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
     }

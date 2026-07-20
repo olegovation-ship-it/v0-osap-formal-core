@@ -23,6 +23,7 @@ ALLOWED_FILES = {
     "scripts/verify_gate3_cluster_b_wp1.py",
     "tests/test_gate3_cluster_b_wp1.py",
     "scripts/verify_gate3_cluster_b_wp0.py",
+    "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
     "tests/test_gate3_cluster_b_wp0.py",
     "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
 }

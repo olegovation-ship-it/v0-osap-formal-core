@@ -30,6 +30,7 @@ def wp1_paths() -> list[Path]:
         ROOT / "docs/gate3/cluster_b/WP1_BUILD_SPECIFICATION.md",
         ROOT / "docs/gate3/cluster_b/WP1_CLUSTER_REGISTRY_STRONG_DLE_AND_ID_CLOSURE.md",
         ROOT / "scripts/verify_gate3_cluster_b_wp0.py",
+        ROOT / "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
         ROOT / "tests/test_gate3_cluster_b_wp0.py",
         ROOT / "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
         ROOT / "scripts/build_gate3_cluster_b_wp1.py",
