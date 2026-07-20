@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -13,15 +14,19 @@ TARGET_BRANCH = "v1.4.0-development"
 IPEC = "5474a2c6a3e1c274d17f674889d427c1c91572f7"
 VALIDATOR = "3540f47198140ca0a3612f247cfe356fa7fba2cb"
 
-ALLOWED_PREFIXES = (
+ALLOWED_FILES = {
     ".github/workflows/gate3-cluster-b-wp0.yml",
-    "docs/gate3/cluster_b/",
-    "release/v1.4.0/",
-    "schemas/v1.4.0/",
     "scripts/bootstrap_gate3_cluster_b_wp0.sh",
     "scripts/verify_gate3_cluster_b_wp0.py",
     "tests/test_gate3_cluster_b_wp0.py",
+}
+
+ALLOWED_DIRECTORIES = (
+    "docs/gate3/cluster_b/",
+    "release/v1.4.0/",
+    "schemas/v1.4.0/",
 )
+
 FORBIDDEN_PREFIXES = (
     "release/v1.3.0/", "checker/", "lean/", "coq/", "fixtures/", "schemas/v1.1/"
 )
@@ -73,34 +78,142 @@ def validate_json(repo: Path) -> list[str]:
     return errors
 
 
+
+def canonical_repo_path(value: str) -> str:
+    path = value.strip().replace("\\", "/")
+
+    if len(path) >= 2 and path[0] == path[-1] == '"':
+        path = path[1:-1]
+
+    while path.startswith("./"):
+        path = path[2:]
+
+    return path
+
+
+def is_allowed_path(value: str) -> bool:
+    path = canonical_repo_path(value)
+    return (
+        path in ALLOWED_FILES
+        or any(path.startswith(prefix) for prefix in ALLOWED_DIRECTORIES)
+    )
+
+
+
 def git_checks(repo: Path, allow_main: bool) -> list[str]:
     errors: list[str] = []
+
     if not (repo / ".git").exists():
         return ["not a git repository"]
-    branch = run("git", "-C", str(repo), "branch", "--show-current")
-    if branch != TARGET_BRANCH and not (allow_main and branch == "main"):
-        errors.append(f"unexpected branch {branch!r}")
+
+    branch = run(
+        "git",
+        "-C",
+        str(repo),
+        "branch",
+        "--show-current",
+    )
+
+    effective_branch = (
+        branch
+        or os.environ.get("GITHUB_HEAD_REF", "")
+        or os.environ.get("GITHUB_REF_NAME", "")
+    )
+
+    if effective_branch != TARGET_BRANCH and not (
+        allow_main and effective_branch == "main"
+    ):
+        errors.append(f"unexpected branch {effective_branch!r}")
+
     try:
-        run("git", "-C", str(repo), "cat-file", "-e", f"{BASE}^{{commit}}")
-        merge_base = run("git", "-C", str(repo), "merge-base", "HEAD", BASE)
-        if merge_base != BASE: errors.append(f"branch is not rooted at exact baseline: {merge_base}")
-        tag = run("git", "-C", str(repo), "rev-parse", "refs/tags/v1.3.0^{}")
-        if tag != TAG_TARGET: errors.append(f"stable tag target mismatch: {tag}")
+        run(
+            "git",
+            "-C",
+            str(repo),
+            "cat-file",
+            "-e",
+            f"{BASE}^{{commit}}",
+        )
+
+        merge_base = run(
+            "git",
+            "-C",
+            str(repo),
+            "merge-base",
+            "HEAD",
+            BASE,
+        )
+        if merge_base != BASE:
+            errors.append(
+                "branch is not rooted at exact baseline: "
+                f"{merge_base}"
+            )
+
+        tag_target = run(
+            "git",
+            "-C",
+            str(repo),
+            "rev-parse",
+            "refs/tags/v1.3.0^{}",
+        )
+        if tag_target != TAG_TARGET:
+            errors.append(
+                f"stable tag target mismatch: {tag_target}"
+            )
+
     except RuntimeError as exc:
         errors.append(str(exc))
-    changed = set()
-    out = run("git", "-C", str(repo), "diff", "--name-only", BASE, check=False)
-    changed.update(x for x in out.splitlines() if x)
-    status = run("git", "-C", str(repo), "status", "--porcelain", "--untracked-files=all", check=False)
-    for line in status.splitlines():
-        if len(line) >= 4:
-            path = line[3:]
-            if " -> " in path: path = path.split(" -> ", 1)[1]
+
+    changed: set[str] = set()
+
+    # Tracked paths changed relative to the frozen WP0 baseline.
+    diff_output = run(
+        "git",
+        "-C",
+        str(repo),
+        "-c",
+        "core.quotePath=false",
+        "diff",
+        "--name-only",
+        "--no-renames",
+        BASE,
+        "--",
+        check=False,
+    )
+
+    for value in diff_output.splitlines():
+        path = canonical_repo_path(value)
+        if path:
             changed.add(path)
+
+    # Untracked paths, obtained without parsing porcelain status columns.
+    untracked_output = run(
+        "git",
+        "-C",
+        str(repo),
+        "-c",
+        "core.quotePath=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        check=False,
+    )
+
+    for value in untracked_output.splitlines():
+        path = canonical_repo_path(value)
+        if path:
+            changed.add(path)
+
     for path in sorted(changed):
-        if path.startswith(FORBIDDEN_PREFIXES): errors.append(f"forbidden path changed: {path}")
-        if not any(path == p or path.startswith(p) for p in ALLOWED_PREFIXES):
-            errors.append(f"path outside WP0 allowlist: {path}")
+        if path.startswith(FORBIDDEN_PREFIXES):
+            errors.append(f"forbidden path changed: {path}")
+            continue
+
+        if not is_allowed_path(path):
+            errors.append(
+                f"path outside WP0 allowlist: {path!r}"
+            )
+
     return errors
 
 

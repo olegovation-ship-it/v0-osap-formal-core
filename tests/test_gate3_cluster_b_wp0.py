@@ -45,3 +45,42 @@ def test_verifier_package_only_passes():
 def test_wp0_does_not_add_implementation_surfaces():
     forbidden = [ROOT / "checker/v0_osap_fc1/cluster_b.py", ROOT / "lean/V0OSAP/ClusterB.lean", ROOT / "coq/theories/ClusterB.v"]
     assert all(not p.exists() for p in forbidden)
+
+
+def test_wp0_allowlist_covers_control_surfaces():
+    spec = importlib.util.spec_from_file_location(
+        "wp0_allowlist",
+        ROOT / "scripts/verify_gate3_cluster_b_wp0.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+
+    assert module.is_allowed_path(
+        "scripts/verify_gate3_cluster_b_wp0.py"
+    )
+    assert module.is_allowed_path(
+        ".github/workflows/gate3-cluster-b-wp0.yml"
+    )
+    assert module.is_allowed_path(
+        "release/v1.4.0/GATE3_CLUSTER_B_WP0_BASELINE_LOCK.json"
+    )
+    assert module.is_allowed_path(
+        "schemas/v1.4.0/gate3_cluster_b_wp0_baseline_lock.schema.json"
+    )
+
+    assert not module.is_allowed_path(
+        "checker/v0_osap_fc1/cluster_b.py"
+    )
+
+
+def test_wp0_full_git_firewall_accepts_current_patch():
+    spec = importlib.util.spec_from_file_location(
+        "wp0_full_git_firewall",
+        ROOT / "scripts/verify_gate3_cluster_b_wp0.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+
+    assert module.git_checks(ROOT, allow_main=False) == []
