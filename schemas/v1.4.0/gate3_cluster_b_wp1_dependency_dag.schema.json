@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG"
+    },
+    "cluster_node_count": {
+      "const": 16
+    },
+    "external_dependencies": {
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "nodes": {
+      "maxItems": 16,
+      "minItems": 16,
+      "type": "array"
+    },
+    "status": {
+      "const": "ACYCLIC_DEPENDENCIES_DECLARED"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "cluster_node_count",
+    "external_dependencies",
+    "nodes",
+    "status"
+  ],
+  "title": "WP1 dependency DAG",
+  "type": "object"
+}

@@ -1,0 +1,98 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP",
+  "date": "2026-07-20",
+  "owner_assignment_complete": true,
+  "proof_completion_deferred_to": "WP4",
+  "required_role_count": 7,
+  "roles": [
+    {
+      "definition": "Historical live support reaches current no-live/no-license through explicit DLE transition provenance.",
+      "inherited_owner_theorem_ids": [
+        "T123",
+        "T132"
+      ],
+      "new_owner_theorem_ids": [],
+      "registry_coverage": "COMPLETE_INHERITED_OWNER",
+      "role": "DLE_TRANSITION",
+      "role_id": "CB-R1"
+    },
+    {
+      "definition": "Named certification contract combining historical liveness, current exhaustion, and transition provenance.",
+      "inherited_owner_theorem_ids": [
+        "T132"
+      ],
+      "new_owner_theorem_ids": [
+        "T157"
+      ],
+      "registry_coverage": "COMPLETE_OWNER_ASSIGNED_PROOF_PENDING",
+      "role": "STRONG_DLE",
+      "role_id": "CB-R2"
+    },
+    {
+      "definition": "Residual liveness survives a certified non-interfering DLE transition.",
+      "inherited_owner_theorem_ids": [
+        "T124",
+        "T139"
+      ],
+      "new_owner_theorem_ids": [
+        "T158",
+        "T162"
+      ],
+      "registry_coverage": "COMPLETE_OWNER_ASSIGNED_PROOF_PENDING",
+      "role": "LIVE_RESIDUAL_PERSISTENCE",
+      "role_id": "CB-R3"
+    },
+    {
+      "definition": "Any live declared residual blocks raw relative V0.",
+      "inherited_owner_theorem_ids": [
+        "T134"
+      ],
+      "new_owner_theorem_ids": [
+        "T161"
+      ],
+      "registry_coverage": "COMPLETE_OWNER_ASSIGNED_COROLLARY_PENDING",
+      "role": "RAW_RESIDUAL_OBSTRUCTION",
+      "role_id": "CB-R4"
+    },
+    {
+      "definition": "An admissible shared-fragment model pair differing on a typed residual witnesses non-eliminability.",
+      "inherited_owner_theorem_ids": [
+        "T140",
+        "T142"
+      ],
+      "new_owner_theorem_ids": [
+        "T159",
+        "T160"
+      ],
+      "registry_coverage": "COMPLETE_OWNER_ASSIGNED_PROOF_PENDING",
+      "role": "MODEL_PAIR_NONELIMINABILITY",
+      "role_id": "CB-R5"
+    },
+    {
+      "definition": "A live declared non-eliminable residual blocks robust relative V0.",
+      "inherited_owner_theorem_ids": [
+        "T124",
+        "T135"
+      ],
+      "new_owner_theorem_ids": [],
+      "registry_coverage": "COMPLETE_INHERITED_OWNER",
+      "role": "ROBUST_OBSTRUCTION",
+      "role_id": "CB-R6"
+    },
+    {
+      "definition": "Relative or branch-local evidence cannot be promoted to absolute V0, and labels alone do not prove distinctness.",
+      "inherited_owner_theorem_ids": [
+        "T126",
+        "T136",
+        "T142"
+      ],
+      "new_owner_theorem_ids": [],
+      "registry_coverage": "COMPLETE_INHERITED_OWNER",
+      "role": "BRANCH_LOCAL_FIREWALL",
+      "role_id": "CB-R7"
+    }
+  ],
+  "runtime_fixture_completion_deferred_to": "WP2",
+  "status": "SEVEN_OF_SEVEN_CANONICAL_OWNERS_ASSIGNED",
+  "version": "0.1"
+}

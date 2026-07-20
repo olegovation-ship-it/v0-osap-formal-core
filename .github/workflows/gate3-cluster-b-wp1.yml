@@ -1,0 +1,47 @@
+name: V0 OSAP Gate 3 Cluster B WP1
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp1.yml'
+      - 'docs/gate3/cluster_b/WP1_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP1_*'
+      - 'release/v1.4.0/tools/patch_wp0_wp1_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp1_*'
+      - 'scripts/build_gate3_cluster_b_wp1.py'
+      - 'scripts/verify_gate3_cluster_b_wp1.py'
+      - 'scripts/verify_gate3_cluster_b_wp0.py'
+      - 'tests/test_gate3_cluster_b_wp1.py'
+      - 'tests/test_gate3_cluster_b_wp0.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wp1-registry-and-id-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch frozen tags
+        run: git fetch --force --tags origin
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install verification dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Verify WP0 allowlist extension
+        run: python release/v1.4.0/tools/patch_wp0_wp1_allowlist.py --check
+      - name: Verify inherited WP0 firewall
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp0.py
+      - name: Verify deterministic WP1 build
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp1.py --check
+      - name: Verify WP1 registry, roles, contracts, DAG, and collision audit
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp1.py
+      - name: Regression tests
+        run: PYTHONDONTWRITEBYTECODE=1 pytest -q tests/test_gate3_cluster_b_wp0.py tests/test_gate3_cluster_b_wp1.py -p no:cacheprovider
+      - name: Full-range whitespace check
+        run: git diff --check f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15...HEAD

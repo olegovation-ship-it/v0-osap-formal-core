@@ -1,0 +1,61 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_BASELINE_LOCK",
+  "date": "2026-07-20",
+  "frozen_osap_release": {
+    "doi": "10.5281/zenodo.21346728",
+    "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "mutation_authorized": false,
+    "tag": "v1.3.0"
+  },
+  "frozen_upstreams": [
+    {
+      "artifact": "V0 Integrated Proof-Evidence Contract v0.1",
+      "exact_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+      "mutation_authorized": false
+    },
+    {
+      "artifact": "V0 Validator Core v0.12",
+      "doi": "10.5281/zenodo.21285577",
+      "exact_tag": "v0.12-compiler-passed-freeze",
+      "exact_tag_target": "3540f47198140ca0a3612f247cfe356fa7fba2cb",
+      "mutation_authorized": false
+    },
+    {
+      "artifact": "Paper B submitted baseline",
+      "manuscript_id": "SCICO-D-26-00508",
+      "mutation_authorized": false,
+      "submitted": "2026-07-19"
+    },
+    {
+      "artifact": "Submission register v121",
+      "mutation_authorized": false,
+      "package_sha256": "9e75d4c27a6151195486641d3d1074aaab494e2b1a50f293d5a710be58903eaf"
+    }
+  ],
+  "target_branch": "v1.4.0-development",
+  "target_version": "v1.4.0",
+  "version": "0.1",
+  "wp0_source_merge_commit": "46c02d96c047e70fe0d54feb60a0aadce2de95c7",
+  "wp1_authorization": {
+    "canonicalization_effect": "BECOMES_CANONICAL_ONLY_AFTER_WP1_MERGE_INTO_MAIN",
+    "closed_wp0_record_mutation_authorized": false,
+    "ipec_v0_1_rewrite_authorized": false,
+    "proof_implementation_authorized": false,
+    "release_actions_authorized": false,
+    "reserved_theorem_ids": [
+      "T157",
+      "T158",
+      "T159",
+      "T160",
+      "T161",
+      "T162"
+    ],
+    "runtime_semantics_authorized": false,
+    "statement_and_dependency_lock": true
+  },
+  "wp1_start": {
+    "description": "Gate 3 Cluster B WP0 post-merge archival closeout merge commit",
+    "exact_commit": "f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15",
+    "source_pr": 21
+  }
+}

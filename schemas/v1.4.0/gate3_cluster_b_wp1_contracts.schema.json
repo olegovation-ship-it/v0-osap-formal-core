@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_CANONICAL_CONTRACTS"
+    },
+    "contracts": {
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "status": {
+      "const": "STATEMENT_AND_TYPE_CONTRACTS_LOCKED_PROOF_DEFERRED"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "contracts",
+    "status"
+  ],
+  "title": "WP1 canonical contracts",
+  "type": "object"
+}

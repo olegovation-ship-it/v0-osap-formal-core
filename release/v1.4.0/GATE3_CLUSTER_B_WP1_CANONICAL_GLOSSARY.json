@@ -1,0 +1,69 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_CANONICAL_GLOSSARY",
+  "date": "2026-07-20",
+  "entries": [
+    {
+      "definition": "A named bounded predicate requiring historical live evidence, current no-live status, and typed transition provenance.",
+      "term": "StrongDLE"
+    },
+    {
+      "definition": "A typed record connecting the prior licensed state, the exhaustion transition, and the resulting current state.",
+      "term": "DLETransitionProvenance"
+    },
+    {
+      "definition": "A DLE transition certified not to delete, rewrite, retype, or change the identity of a specified residual register.",
+      "term": "NonInterferingDLE"
+    },
+    {
+      "definition": "One of TARGET_PRESENCE, HISTORICAL, MEMORY, SIGNAL, CAUSAL, INFORMATION, or GENERIC_TRACE.",
+      "term": "ResidualType"
+    },
+    {
+      "definition": "An explicit typed map between residual classes with declared domain, codomain, and preservation obligations.",
+      "term": "AdmissibleTranslation"
+    },
+    {
+      "definition": "A relation permitted only when type identity or an admissible translation contract is supplied.",
+      "term": "Interchangeable"
+    },
+    {
+      "definition": "Two models with validated schemas, a non-label-only distinctness basis, and a declared shared fragment.",
+      "term": "AdmissibleModelPair"
+    },
+    {
+      "definition": "A certificate that two admissible models have equal interpretations on every symbol in a declared shared fragment.",
+      "term": "AgreeOn"
+    },
+    {
+      "definition": "A bounded model-pair witness that a residual fact is not determined by the declared shared fragment.",
+      "term": "NonEliminableFrom"
+    },
+    {
+      "definition": "A sufficient single-residual witness for raw-relative obstruction, without a converse or completeness claim.",
+      "term": "MinimalObstructionWitness"
+    },
+    {
+      "definition": "A typed archive/history token that records prior status but is not itself a current guard token.",
+      "term": "HistoricalToken"
+    },
+    {
+      "definition": "A typed event that creates a new current token from an explicitly recorded activation source.",
+      "term": "FreshActivation"
+    },
+    {
+      "definition": "A token currently licensed to serve as a live guard in the active registry state.",
+      "term": "CurrentLiveGuardToken"
+    }
+  ],
+  "residual_type_vocabulary": [
+    "TARGET_PRESENCE",
+    "HISTORICAL",
+    "MEMORY",
+    "SIGNAL",
+    "CAUSAL",
+    "INFORMATION",
+    "GENERIC_TRACE"
+  ],
+  "status": "CANONICAL_VOCABULARY_LOCK_PENDING_WP1_MERGE",
+  "version": "0.1"
+}

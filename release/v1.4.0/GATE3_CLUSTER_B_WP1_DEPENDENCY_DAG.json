@@ -1,0 +1,151 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG",
+  "cluster_node_count": 16,
+  "date": "2026-07-20",
+  "external_dependencies": [
+    {
+      "role": "typed residual and registry basis",
+      "source_release": "v1.3.0",
+      "theorem_id": "T131"
+    },
+    {
+      "role": "fresh-token reactivation basis",
+      "source_release": "v1.3.0",
+      "theorem_id": "T133"
+    }
+  ],
+  "external_dependency_count": 2,
+  "nodes": [
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T123"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T124"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T126"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [
+        "T123"
+      ],
+      "theorem_id": "T132"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T134"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [
+        "T124",
+        "T134"
+      ],
+      "theorem_id": "T135"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [
+        "T126"
+      ],
+      "theorem_id": "T136"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T139"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T140"
+    },
+    {
+      "class": "INHERITED",
+      "requires": [],
+      "theorem_id": "T142"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T123",
+        "T132"
+      ],
+      "theorem_id": "T157"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T124",
+        "T132",
+        "T139",
+        "T162"
+      ],
+      "theorem_id": "T158"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T131",
+        "T139"
+      ],
+      "theorem_id": "T159"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T134",
+        "T135",
+        "T140",
+        "T142",
+        "T159"
+      ],
+      "theorem_id": "T160"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T134"
+      ],
+      "theorem_id": "T161"
+    },
+    {
+      "class": "WP1_STATEMENT_TARGET",
+      "requires": [
+        "T133",
+        "T139"
+      ],
+      "theorem_id": "T162"
+    }
+  ],
+  "status": "ACYCLIC_DEPENDENCIES_DECLARED",
+  "topological_order": [
+    "T123",
+    "T124",
+    "T126",
+    "T131",
+    "T133",
+    "T134",
+    "T139",
+    "T140",
+    "T142",
+    "T132",
+    "T135",
+    "T136",
+    "T157",
+    "T159",
+    "T162",
+    "T158",
+    "T161",
+    "T160"
+  ],
+  "version": "0.1"
+}

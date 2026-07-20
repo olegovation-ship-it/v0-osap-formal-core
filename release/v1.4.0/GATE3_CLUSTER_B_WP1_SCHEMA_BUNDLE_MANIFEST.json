@@ -1,0 +1,27 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-20",
+  "documents": [
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_BASELINE_LOCK.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_ID_COLLISION_AUDIT.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_CANONICAL_GLOSSARY.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_CANONICAL_CONTRACTS.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_ACCEPTANCE_GATES.json"
+  ],
+  "schema_count": 8,
+  "schemas": [
+    "schemas/v1.4.0/gate3_cluster_b_wp1_acceptance_gates.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_baseline_lock.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_collision_audit.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_contracts.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_dependency_dag.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_glossary.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_semantic_role_map.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp1_theorem_registry.schema.json"
+  ],
+  "status": "COMPLETE",
+  "version": "0.1"
+}

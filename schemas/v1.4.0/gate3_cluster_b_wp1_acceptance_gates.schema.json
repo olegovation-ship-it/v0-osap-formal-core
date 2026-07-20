@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_ACCEPTANCE_GATES"
+    },
+    "gate_count": {
+      "const": 16
+    },
+    "gates": {
+      "maxItems": 16,
+      "minItems": 16,
+      "type": "array"
+    },
+    "local_decision": {
+      "const": "READY_FOR_HOSTED_CI"
+    },
+    "release_actions_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "gate_count",
+    "gates",
+    "local_decision",
+    "release_actions_authorized"
+  ],
+  "title": "WP1 acceptance gates",
+  "type": "object"
+}

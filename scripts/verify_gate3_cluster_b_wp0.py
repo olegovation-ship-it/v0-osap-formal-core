@@ -25,6 +25,10 @@ ALLOWED_FILES = {
     "scripts/synchronize_v1_4_0_development.sh",
     "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
     "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+    ".github/workflows/gate3-cluster-b-wp1.yml",
+    "scripts/build_gate3_cluster_b_wp1.py",
+    "scripts/verify_gate3_cluster_b_wp1.py",
+    "tests/test_gate3_cluster_b_wp1.py",
 }
 
 ALLOWED_DIRECTORIES = (
