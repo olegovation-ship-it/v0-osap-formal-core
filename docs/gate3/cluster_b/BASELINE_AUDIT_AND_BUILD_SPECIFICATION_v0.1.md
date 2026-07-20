@@ -1,10 +1,10 @@
 # Gate 3 Cluster B Baseline Audit and Build Specification v0.1
 
-**Program:** V0 OSAP Formal Core  
-**Target development version:** v1.4.0  
-**Target branch:** `v1.4.0-development`  
-**Date:** 2026-07-20  
-**Decision:** `PASS_WITH_IDENTIFIED_BUILD_GAPS / GO_TO_IMPLEMENTATION_SPEC`  
+**Program:** V0 OSAP Formal Core
+**Target development version:** v1.4.0
+**Target branch:** `v1.4.0-development`
+**Date:** 2026-07-20
+**Decision:** `PASS_WITH_IDENTIFIED_BUILD_GAPS / GO_TO_IMPLEMENTATION_SPEC`
 **Release authorization:** `NONE`
 
 ## 1. Purpose

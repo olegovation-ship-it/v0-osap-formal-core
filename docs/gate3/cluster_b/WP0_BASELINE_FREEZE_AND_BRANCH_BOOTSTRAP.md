@@ -1,10 +1,10 @@
 # Gate 3 Cluster B WP0 - Baseline Freeze and Branch Bootstrap
 
-**Program:** V0 OSAP Formal Core  
-**Target:** v1.4.0 development  
-**Branch:** `v1.4.0-development`  
-**Exact branch parent:** `a13a96fda4964dde1719c7d014f11878e1103b20`  
-**Date:** 2026-07-20  
+**Program:** V0 OSAP Formal Core
+**Target:** v1.4.0 development
+**Branch:** `v1.4.0-development`
+**Exact branch parent:** `a13a96fda4964dde1719c7d014f11878e1103b20`
+**Date:** 2026-07-20
 **State:** `BUILD_READY / BRANCH_APPLICATION_PENDING / HOSTED_CI_PENDING`
 
 ## Purpose
