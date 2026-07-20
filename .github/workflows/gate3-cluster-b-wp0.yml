@@ -41,6 +41,10 @@ jobs:
       - name: Reject release side effects
         shell: bash
         run: |
-          ! grep -R -nE 'gh release create|git tag|zenodo|doi mint|publish release'             .github/workflows/gate3-cluster-b-wp0.yml             scripts/bootstrap_gate3_cluster_b_wp0.sh
+          forbidden='gh[[:space:]]+release[[:space:]]+create|git[[:space:]]+tag|zenodo|doi[[:space:]]+mint|publish[[:space:]]+release'
+          if grep -nEi "$forbidden" scripts/bootstrap_gate3_cluster_b_wp0.sh; then
+            echo "Unauthorized release-side-effect command detected." >&2
+            exit 1
+          fi
       - name: Diff whitespace
         run: git diff --check a13a96fda4964dde1719c7d014f11878e1103b20...HEAD

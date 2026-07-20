@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -74,6 +77,17 @@ def test_wp0_allowlist_covers_control_surfaces():
     )
 
 
+def git_object_available(revision: str) -> bool:
+    result = subprocess.run(
+        ["git", "cat-file", "-e", revision],
+        cwd=ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return result.returncode == 0
+
+
 def test_wp0_full_git_firewall_accepts_current_patch():
     spec = importlib.util.spec_from_file_location(
         "wp0_full_git_firewall",
@@ -82,5 +96,15 @@ def test_wp0_full_git_firewall_accepts_current_patch():
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(module)
+
+    required_objects = (
+        f"{module.BASE}^{{commit}}",
+        "refs/tags/v1.3.0^{}",
+    )
+
+    if not all(git_object_available(obj) for obj in required_objects):
+        pytest.skip(
+            "full-history checkout with the frozen v1.3.0 tag is required"
+        )
 
     assert module.git_checks(ROOT, allow_main=False) == []
