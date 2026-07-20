@@ -1,0 +1,27 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_BRANCH_BOOTSTRAP_SPEC",
+  "creation_command": "git switch -c v1.4.0-development a13a96fda4964dde1719c7d014f11878e1103b20",
+  "date": "2026-07-20",
+  "hosted_ci_run": null,
+  "implementation_commit": null,
+  "merge_commit": null,
+  "postconditions": [
+    "target branch contains the WP0 overlay only",
+    "no release/v1.3.0 path is modified",
+    "no checker, Lean, Coq, or fixture implementation is modified",
+    "no tag, GitHub Release, Zenodo publication, or DOI action occurs"
+  ],
+  "remote_publication_command": "git push -u origin v1.4.0-development",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_preconditions": [
+    "origin/main equals the exact source commit",
+    "working tree has no tracked modifications",
+    "stable tag v1.3.0 peels to the frozen target",
+    "target branch is absent or already points exactly at the source commit"
+  ],
+  "source_commit": "a13a96fda4964dde1719c7d014f11878e1103b20",
+  "source_ref": "main",
+  "status": "BOOTSTRAP_AUTHORIZED_NOT_EXECUTED_BY_PACKAGE",
+  "target_branch": "v1.4.0-development",
+  "version": "0.1"
+}

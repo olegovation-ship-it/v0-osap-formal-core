@@ -1,0 +1,71 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_BASELINE_LOCK",
+  "branch_start": {
+    "exact_commit": "a13a96fda4964dde1719c7d014f11878e1103b20",
+    "ref": "main",
+    "required_relation": "TARGET_BRANCH_ROOTED_EXACTLY_AT_BRANCH_START"
+  },
+  "date": "2026-07-20",
+  "frozen_upstreams": [
+    {
+      "artifact": "V0 OSAP Formal Core v1.3.0",
+      "conditional_theorem_ids": [
+        "T140",
+        "T150",
+        "T156"
+      ],
+      "doi": "10.5281/zenodo.21346728",
+      "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+      "mutation_allowed": false,
+      "repository": "olegovation-ship-it/v0-osap-formal-core",
+      "stable_tag": "v1.3.0",
+      "theorem_count": 36,
+      "theorem_range": "T121-T156"
+    },
+    {
+      "artifact": "V0 Integrated Proof-Evidence Contract v0.1",
+      "exact_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+      "gate_status": "GATE2_CLOSED",
+      "mutation_allowed": false,
+      "repository": "olegovation-ship-it/v0-integrated-proof-evidence-contract",
+      "required_branch_relation": "main == gate2-development"
+    },
+    {
+      "artifact": "V0 Validator Core v0.12",
+      "doi": "10.5281/zenodo.21285577",
+      "exact_tag_target": "3540f47198140ca0a3612f247cfe356fa7fba2cb",
+      "mutation_allowed": false,
+      "repository": "olegovation-ship-it/v0-validator-core",
+      "stable_tag": "v0.12-compiler-passed-freeze"
+    },
+    {
+      "artifact": "Paper B submitted baseline",
+      "journal": "Science of Computer Programming",
+      "manuscript_id": "SCICO-D-26-00508",
+      "mutation_allowed": false,
+      "status": "SUBMITTED_RECEIVED_INITIAL_CHECK_PENDING",
+      "submission_date": "2026-07-19"
+    },
+    {
+      "artifact": "Submission register v121",
+      "mutation_allowed": false,
+      "package": "submission_register_density_phase_drives_updated_2026-07-20_v121_package.zip",
+      "sha256": "9e75d4c27a6151195486641d3d1074aaab494e2b1a50f293d5a710be58903eaf",
+      "status": "OPERATIVE_REGISTER_BASELINE"
+    }
+  ],
+  "release_actions_authorized": {
+    "doi": false,
+    "github_release": false,
+    "ipec_v0_1_mutation": false,
+    "osap_v1_3_0_mutation": false,
+    "paper_b_mutation": false,
+    "tag": false,
+    "validator_release_mutation": false,
+    "zenodo": false
+  },
+  "status": "BASELINE_FROZEN_FOR_BRANCH_BOOTSTRAP",
+  "target_branch": "v1.4.0-development",
+  "target_repository": "olegovation-ship-it/v0-osap-formal-core",
+  "version": "0.1"
+}

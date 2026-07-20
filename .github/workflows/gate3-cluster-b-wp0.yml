@@ -1,0 +1,46 @@
+name: V0 OSAP Gate 3 Cluster B WP0
+
+on:
+  push:
+    branches: ["v1.4.0-development"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  wp0-schema-and-records:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip jsonschema pytest
+      - run: python scripts/verify_gate3_cluster_b_wp0.py --online
+      - run: python -m pytest -q tests/test_gate3_cluster_b_wp0.py
+
+  wp0-git-and-preservation-firewall:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact baseline and stable tag
+        shell: bash
+        run: |
+          test "$(git merge-base HEAD a13a96fda4964dde1719c7d014f11878e1103b20)" = "a13a96fda4964dde1719c7d014f11878e1103b20"
+          test "$(git rev-parse 'refs/tags/v1.3.0^{}')" = "13bf095688bcabd5b090f188e9bd28a16237edeb"
+      - name: Verify WP0 changed-path boundary
+        shell: bash
+        run: |
+          python scripts/verify_gate3_cluster_b_wp0.py
+      - name: Reject release side effects
+        shell: bash
+        run: |
+          ! grep -R -nE 'gh release create|git tag|zenodo|doi mint|publish release'             .github/workflows/gate3-cluster-b-wp0.yml             scripts/bootstrap_gate3_cluster_b_wp0.sh
+      - name: Diff whitespace
+        run: git diff --check a13a96fda4964dde1719c7d014f11878e1103b20...HEAD
