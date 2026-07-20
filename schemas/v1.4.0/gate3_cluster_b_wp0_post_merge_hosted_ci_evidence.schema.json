@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gate 3 Cluster B WP0 Post-Merge Hosted CI Evidence",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "source_pr",
+    "source_head_sha",
+    "merge_commit",
+    "merged_at",
+    "check_summary",
+    "workflow_run_count",
+    "workflow_runs",
+    "mandatory_workflows",
+    "wp0_jobs",
+    "evidence_state",
+    "observation_source",
+    "canonical_sha256"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "date": {
+      "type": "string"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "source_pr": {
+      "const": 20
+    },
+    "source_head_sha": {
+      "const": "df4f8524b26e13eda34f96ff8ff48124a7cf9db0"
+    },
+    "merge_commit": {
+      "const": "46c02d96c047e70fe0d54feb60a0aadce2de95c7"
+    },
+    "merged_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "check_summary": {
+      "type": "object",
+      "required": [
+        "success",
+        "total",
+        "failure",
+        "pending",
+        "skipped"
+      ],
+      "properties": {
+        "success": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "workflow_run_count": {
+      "type": "integer",
+      "minimum": 6
+    },
+    "workflow_runs": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "workflow_name",
+          "run_number",
+          "status",
+          "conclusion",
+          "url"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "workflow_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "run_number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "status": {
+            "const": "completed"
+          },
+          "conclusion": {
+            "const": "success"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "mandatory_workflows": {
+      "type": "object",
+      "required": [
+        "wp0",
+        "python",
+        "lean",
+        "coq",
+        "schema",
+        "release_readiness"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "name",
+          "run_id",
+          "run_number",
+          "conclusion"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "run_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "run_number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "conclusion": {
+            "const": "success"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "wp0_jobs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "job_id",
+          "name",
+          "conclusion"
+        ],
+        "properties": {
+          "job_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conclusion": {
+            "const": "success"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_state": {
+      "const": "AUTHENTIC_GITHUB_API_EVIDENCE_RECORDED"
+    },
+    "observation_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

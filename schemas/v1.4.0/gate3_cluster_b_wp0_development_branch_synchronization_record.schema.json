@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gate 3 Cluster B WP0 Development Branch Synchronization Record",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "main_branch",
+    "development_branch",
+    "sync_mode",
+    "baseline_merge_commit",
+    "relation",
+    "status",
+    "history_rewrite_authorized",
+    "force_push_authorized",
+    "branch_deletion_authorized",
+    "final_sync_required_after_closeout_merge"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "date": {
+      "type": "string"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "main_branch": {
+      "const": "main"
+    },
+    "development_branch": {
+      "const": "v1.4.0-development"
+    },
+    "sync_mode": {
+      "const": "FAST_FORWARD_ONLY"
+    },
+    "baseline_merge_commit": {
+      "const": "46c02d96c047e70fe0d54feb60a0aadce2de95c7"
+    },
+    "pre_sync_development_tip": {
+      "const": "df4f8524b26e13eda34f96ff8ff48124a7cf9db0"
+    },
+    "observed_main_tip": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "current_main_tip": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "current_development_tip": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "compare_status": {
+      "enum": [
+        "identical",
+        "ahead",
+        "behind",
+        "diverged"
+      ]
+    },
+    "ahead_by": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "behind_by": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "relation": {
+      "enum": [
+        "SYNCHRONIZED_TO_CURRENT_MAIN",
+        "DEVELOPMENT_AHEAD_WITH_CLOSEOUT_PATCH",
+        "FAST_FORWARD_AVAILABLE"
+      ]
+    },
+    "status": {
+      "enum": [
+        "BASELINE_SYNCHRONIZATION_CONFIRMED",
+        "FINAL_FAST_FORWARD_REQUIRED",
+        "FINAL_SYNCHRONIZATION_CONFIRMED"
+      ]
+    },
+    "history_rewrite_authorized": {
+      "const": false
+    },
+    "force_push_authorized": {
+      "const": false
+    },
+    "branch_deletion_authorized": {
+      "const": false
+    },
+    "final_sync_required_after_closeout_merge": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

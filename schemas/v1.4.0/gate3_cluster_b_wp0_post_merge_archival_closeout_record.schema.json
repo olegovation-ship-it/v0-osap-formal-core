@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gate 3 Cluster B WP0 Post-Merge Archival Closeout Record",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "merged_pr",
+    "pre_merge_main",
+    "accepted_head_commit",
+    "merge_commit",
+    "merged_at",
+    "wp0_acceptance_gates",
+    "hosted_ci_checks",
+    "post_merge_ci",
+    "branch_relation_at_capture",
+    "status",
+    "decision",
+    "frozen_upstreams_modified",
+    "release_actions",
+    "final_sync_required_after_closeout_merge"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "date": {
+      "type": "string"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "target_version": {
+      "const": "v1.4.0"
+    },
+    "cluster": {
+      "const": "GATE3_CLUSTER_B"
+    },
+    "work_package": {
+      "const": "WP0"
+    },
+    "merged_pr": {
+      "const": 20
+    },
+    "pre_merge_main": {
+      "const": "a13a96fda4964dde1719c7d014f11878e1103b20"
+    },
+    "accepted_head_commit": {
+      "const": "df4f8524b26e13eda34f96ff8ff48124a7cf9db0"
+    },
+    "merge_commit": {
+      "const": "46c02d96c047e70fe0d54feb60a0aadce2de95c7"
+    },
+    "merged_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wp0_acceptance_gates": {
+      "type": "object",
+      "required": [
+        "pass",
+        "total",
+        "pending",
+        "fail"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fail": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "hosted_ci_checks": {
+      "type": "object",
+      "required": [
+        "pass",
+        "total",
+        "pending",
+        "fail",
+        "skipped"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "post_merge_ci": {
+      "const": "PASS_AUTHENTICATED"
+    },
+    "post_merge_ci_evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch_relation_at_capture": {
+      "enum": [
+        "SYNCHRONIZED_TO_CURRENT_MAIN",
+        "DEVELOPMENT_AHEAD_WITH_CLOSEOUT_PATCH",
+        "FAST_FORWARD_AVAILABLE"
+      ]
+    },
+    "observed_main_tip": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "observed_development_tip": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "status": {
+      "enum": [
+        "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+        "POST_MERGE_CLOSEOUT_MERGED"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "OPEN_WP0_POST_MERGE_CLOSEOUT_PR",
+        "CLOSE_WP0_POST_MERGE_ARCHIVE"
+      ]
+    },
+    "next_authorized_work_package": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frozen_upstreams_modified": {
+      "const": false
+    },
+    "submitted_paper_b_baseline_modified": {
+      "const": false
+    },
+    "submission_register_v121_modified": {
+      "const": false
+    },
+    "release_actions": {
+      "type": "object",
+      "required": [
+        "tag",
+        "github_release",
+        "zenodo",
+        "doi"
+      ],
+      "properties": {
+        "tag": {
+          "const": false
+        },
+        "github_release": {
+          "const": false
+        },
+        "zenodo": {
+          "const": false
+        },
+        "doi": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "final_sync_required_after_closeout_merge": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}
