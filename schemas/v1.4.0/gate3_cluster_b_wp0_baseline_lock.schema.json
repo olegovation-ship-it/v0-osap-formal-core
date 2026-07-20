@@ -1,0 +1,53 @@
+{
+  "$id": "https://v0-osap.example/spec/v1.4.0/gate3_cluster_b_wp0_baseline_lock.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_BASELINE_LOCK"
+    },
+    "branch_start": {
+      "required": [
+        "ref",
+        "exact_commit",
+        "required_relation"
+      ],
+      "type": "object"
+    },
+    "date": {
+      "type": "string"
+    },
+    "frozen_upstreams": {
+      "minItems": 5,
+      "type": "array"
+    },
+    "release_actions_authorized": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    },
+    "target_branch": {
+      "const": "v1.4.0-development"
+    },
+    "target_repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "status",
+    "target_repository",
+    "target_branch",
+    "branch_start",
+    "frozen_upstreams",
+    "release_actions_authorized"
+  ],
+  "title": "Gate 3 Cluster B WP0 Baseline Lock",
+  "type": "object"
+}

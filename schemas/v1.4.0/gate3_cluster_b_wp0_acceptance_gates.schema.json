@@ -1,0 +1,37 @@
+{
+  "$id": "https://v0-osap.example/spec/v1.4.0/gate3_cluster_b_wp0_acceptance_gates.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_ACCEPTANCE_GATES"
+    },
+    "gate_count": {
+      "const": 14
+    },
+    "gates": {
+      "items": {
+        "required": [
+          "gate_id",
+          "requirement",
+          "status"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "status",
+    "gate_count",
+    "gates",
+    "exit_condition"
+  ],
+  "title": "Gate 3 Cluster B WP0 Acceptance Gates",
+  "type": "object"
+}

@@ -1,0 +1,36 @@
+{
+  "$id": "https://v0-osap.example/spec/v1.4.0/gate3_cluster_b_wp0_preservation_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_FROZEN_UPSTREAM_PRESERVATION_RECORD"
+    },
+    "canonical_new_theorem_ids_authorized": {
+      "maxItems": 0
+    },
+    "protected_surfaces": {
+      "minItems": 10,
+      "type": "array"
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "wp0_allowed_repository_paths": {
+      "minItems": 7,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "status",
+    "protected_surfaces",
+    "wp0_allowed_repository_paths",
+    "canonical_new_theorem_ids_authorized",
+    "release_actions_authorized"
+  ],
+  "title": "Gate 3 Cluster B WP0 Preservation Record",
+  "type": "object"
+}

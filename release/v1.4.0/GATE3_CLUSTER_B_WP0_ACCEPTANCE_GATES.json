@@ -1,0 +1,80 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_ACCEPTANCE_GATES",
+  "date": "2026-07-20",
+  "exit_condition": "All fourteen gates PASS after branch application and hosted CI. WP1 remains unauthorized until WP0 CI evidence is accepted.",
+  "gate_count": 14,
+  "gates": [
+    {
+      "gate_id": "G3-WP0-01",
+      "requirement": "Baseline lock schema validates",
+      "status": "PASS_PACKAGE"
+    },
+    {
+      "gate_id": "G3-WP0-02",
+      "requirement": "OSAP branch source is exactly main at a13a96f...",
+      "status": "PASS_PACKAGE_EVIDENCE"
+    },
+    {
+      "gate_id": "G3-WP0-03",
+      "requirement": "Stable tag v1.3.0 target is frozen at 13bf095...",
+      "status": "PASS_PACKAGE_EVIDENCE"
+    },
+    {
+      "gate_id": "G3-WP0-04",
+      "requirement": "IPEC Gate 2 baseline is frozen at 5474a2c...",
+      "status": "PASS_PACKAGE_EVIDENCE"
+    },
+    {
+      "gate_id": "G3-WP0-05",
+      "requirement": "Validator Core v0.12 tag target is frozen",
+      "status": "PASS_PACKAGE_EVIDENCE"
+    },
+    {
+      "gate_id": "G3-WP0-06",
+      "requirement": "Paper B and register v121 identities are frozen",
+      "status": "PASS_PACKAGE_EVIDENCE"
+    },
+    {
+      "gate_id": "G3-WP0-07",
+      "requirement": "Target branch is created from the exact source commit",
+      "status": "PENDING_APPLICATION"
+    },
+    {
+      "gate_id": "G3-WP0-08",
+      "requirement": "WP0 overlay modifies only allowlisted paths",
+      "status": "PASS_PACKAGE"
+    },
+    {
+      "gate_id": "G3-WP0-09",
+      "requirement": "No release/v1.3.0, checker, Lean, Coq, fixture, or v1.1 schema path changes",
+      "status": "PASS_PACKAGE"
+    },
+    {
+      "gate_id": "G3-WP0-10",
+      "requirement": "No canonical T157-T162 theorem records are created",
+      "status": "PASS_PACKAGE"
+    },
+    {
+      "gate_id": "G3-WP0-11",
+      "requirement": "All WP0 JSON documents validate against the v1.4.0 schema bundle",
+      "status": "PASS_PACKAGE"
+    },
+    {
+      "gate_id": "G3-WP0-12",
+      "requirement": "Local verifier and regression tests pass in the target repository",
+      "status": "PENDING_APPLICATION"
+    },
+    {
+      "gate_id": "G3-WP0-13",
+      "requirement": "Hosted GitHub Actions WP0 workflow passes",
+      "status": "PENDING_HOSTED_CI"
+    },
+    {
+      "gate_id": "G3-WP0-14",
+      "requirement": "Tag, GitHub Release, Zenodo, and DOI actions remain unauthorized",
+      "status": "PASS_PACKAGE"
+    }
+  ],
+  "status": "BUILD_READY_APPLICATION_AND_HOSTED_CI_PENDING",
+  "version": "0.1"
+}

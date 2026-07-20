@@ -1,0 +1,12 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-20",
+  "schema_count": 4,
+  "schemas": [
+    "schemas/v1.4.0/gate3_cluster_b_wp0_baseline_lock.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp0_branch_bootstrap.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp0_preservation_record.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp0_acceptance_gates.schema.json"
+  ],
+  "version": "0.1"
+}
