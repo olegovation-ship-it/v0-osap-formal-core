@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gate 3 Cluster B WP0 Post-Merge Frozen Upstream Preservation Record",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "source_lock",
+    "preserved",
+    "conditional_theorem_ids_unchanged",
+    "canonical_new_theorem_ids_authorized",
+    "release_actions_authorized",
+    "proof_backends_modified",
+    "checker_implementation_modified",
+    "fixture_corpus_modified",
+    "status"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP0_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "date": {
+      "type": "string"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "source_lock": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preserved": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "artifact",
+          "modified"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "modified": {
+            "const": false
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "conditional_theorem_ids_unchanged": {
+      "const": [
+        "T140",
+        "T150",
+        "T156"
+      ]
+    },
+    "canonical_new_theorem_ids_authorized": {
+      "const": []
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "proof_backends_modified": {
+      "const": false
+    },
+    "checker_implementation_modified": {
+      "const": false
+    },
+    "fixture_corpus_modified": {
+      "const": false
+    },
+    "status": {
+      "const": "PRESERVATION_CONFIRMED"
+    }
+  },
+  "additionalProperties": false
+}

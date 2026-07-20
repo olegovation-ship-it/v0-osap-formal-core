@@ -1,0 +1,48 @@
+name: V0 OSAP Gate 3 Cluster B WP0 Post-Merge Closeout
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["v1.4.0-development", "main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  post-merge-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip jsonschema pytest
+      - run: python release/v1.4.0/tools/patch_wp0_post_merge_allowlist.py --check
+      - run: |
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            python scripts/verify_gate3_cluster_b_wp0.py --allow-main
+            python scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py --allow-main
+          else
+            python scripts/verify_gate3_cluster_b_wp0.py
+            python scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py
+          fi
+      - run: python -m pytest -q tests/test_gate3_cluster_b_wp0.py tests/test_gate3_cluster_b_wp0_post_merge_closeout.py
+      - run: bash -n scripts/synchronize_v1_4_0_development.sh
+      - run: git diff --check a13a96fda4964dde1719c7d014f11878e1103b20...HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp0-post-merge-closeout-${{ github.sha }}
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_HOSTED_CI_EVIDENCE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_CLOSEOUT_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt
+          if-no-files-found: error

@@ -1,0 +1,209 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_POST_MERGE_HOSTED_CI_EVIDENCE",
+  "version": "0.1",
+  "date": "2026-07-20",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_pr": 20,
+  "source_head_sha": "df4f8524b26e13eda34f96ff8ff48124a7cf9db0",
+  "merge_commit": "46c02d96c047e70fe0d54feb60a0aadce2de95c7",
+  "merged_at": "2026-07-20T16:55:43Z",
+  "check_summary": {
+    "success": 27,
+    "total": 27,
+    "failure": 0,
+    "pending": 0,
+    "skipped": 0
+  },
+  "workflow_run_count": 17,
+  "workflow_runs": [
+    {
+      "run_id": 29761401155,
+      "workflow_name": "Coq",
+      "run_number": 73,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401155"
+    },
+    {
+      "run_id": 29761401119,
+      "workflow_name": "Lean 4",
+      "run_number": 73,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401119"
+    },
+    {
+      "run_id": 29761401112,
+      "workflow_name": "Python checker",
+      "run_number": 73,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401112"
+    },
+    {
+      "run_id": 29761401027,
+      "workflow_name": "RC1 gate audit",
+      "run_number": 78,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401027"
+    },
+    {
+      "run_id": 29761401159,
+      "workflow_name": "RC1 release closure replay",
+      "run_number": 69,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401159"
+    },
+    {
+      "run_id": 29761400990,
+      "workflow_name": "RC1 release evidence closure",
+      "run_number": 55,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761400990"
+    },
+    {
+      "run_id": 29761401017,
+      "workflow_name": "RC1 tag authorization",
+      "run_number": 62,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401017"
+    },
+    {
+      "run_id": 29761400942,
+      "workflow_name": "Release readiness",
+      "run_number": 151,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761400942"
+    },
+    {
+      "run_id": 29761401026,
+      "workflow_name": "Schema validation",
+      "run_number": 73,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401026"
+    },
+    {
+      "run_id": 29761400989,
+      "workflow_name": "V0 OSAP Gate 3 Cluster B WP0",
+      "run_number": 7,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761400989"
+    },
+    {
+      "run_id": 29761401118,
+      "workflow_name": "v1.3.0 Zenodo publication evidence closure",
+      "run_number": 31,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401118"
+    },
+    {
+      "run_id": 29761401172,
+      "workflow_name": "v1.3.0 final release authorization",
+      "run_number": 50,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401172"
+    },
+    {
+      "run_id": 29761401105,
+      "workflow_name": "v1.3.0 final release evidence closure",
+      "run_number": 38,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401105"
+    },
+    {
+      "run_id": 29761401236,
+      "workflow_name": "v1.3.0 post-Zenodo historical lifecycle replay",
+      "run_number": 27,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401236"
+    },
+    {
+      "run_id": 29761401024,
+      "workflow_name": "v1.3.0 post-merge archival closeout",
+      "run_number": 16,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401024"
+    },
+    {
+      "run_id": 29761401051,
+      "workflow_name": "v1.3.0 post-merge legacy lifecycle compatibility",
+      "run_number": 12,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401051"
+    },
+    {
+      "run_id": 29761401075,
+      "workflow_name": "v1.3.0 post-merge publication lifecycle replay compatibility",
+      "run_number": 8,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/olegovation-ship-it/v0-osap-formal-core/actions/runs/29761401075"
+    }
+  ],
+  "mandatory_workflows": {
+    "wp0": {
+      "name": "V0 OSAP Gate 3 Cluster B WP0",
+      "run_id": 29761400989,
+      "run_number": 7,
+      "conclusion": "success"
+    },
+    "python": {
+      "name": "Python checker",
+      "run_id": 29761401112,
+      "run_number": 73,
+      "conclusion": "success"
+    },
+    "lean": {
+      "name": "Lean 4",
+      "run_id": 29761401119,
+      "run_number": 73,
+      "conclusion": "success"
+    },
+    "coq": {
+      "name": "Coq",
+      "run_id": 29761401155,
+      "run_number": 73,
+      "conclusion": "success"
+    },
+    "schema": {
+      "name": "Schema validation",
+      "run_id": 29761401026,
+      "run_number": 73,
+      "conclusion": "success"
+    },
+    "release_readiness": {
+      "name": "Release readiness",
+      "run_id": 29761400942,
+      "run_number": 151,
+      "conclusion": "success"
+    }
+  },
+  "wp0_jobs": [
+    {
+      "job_id": 88416637786,
+      "name": "wp0-schema-and-records",
+      "conclusion": "success"
+    },
+    {
+      "job_id": 88416637820,
+      "name": "wp0-git-and-preservation-firewall",
+      "conclusion": "success"
+    }
+  ],
+  "evidence_state": "AUTHENTIC_GITHUB_API_EVIDENCE_RECORDED",
+  "observation_source": "GITHUB_CLI_API",
+  "canonical_sha256": "cac3bd7cad17505e3d7b933b127ebb6b81d9db1e8c53234b177cf6d70116df0b"
+}

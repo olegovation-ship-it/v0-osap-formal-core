@@ -1,0 +1,70 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP0_POST_MERGE_CLOSEOUT_GATES",
+  "version": "0.1",
+  "date": "2026-07-20",
+  "gate_count": 12,
+  "gates": [
+    {
+      "id": "PM01",
+      "description": "PR #20 is merged and closed",
+      "status": "PASS"
+    },
+    {
+      "id": "PM02",
+      "description": "accepted head and merge commit are exact",
+      "status": "PASS"
+    },
+    {
+      "id": "PM03",
+      "description": "WP0 acceptance gates are 14/14 PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PM04",
+      "description": "hosted checks are 27/27 PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PM05",
+      "description": "mandatory Python, Lean, Coq, schema, readiness and WP0 workflows passed",
+      "status": "PASS"
+    },
+    {
+      "id": "PM06",
+      "description": "main and v1.4.0-development were synchronized to the merge commit",
+      "status": "PASS"
+    },
+    {
+      "id": "PM07",
+      "description": "branch divergence is 0/0 at capture",
+      "status": "PASS"
+    },
+    {
+      "id": "PM08",
+      "description": "v1.3.0 stable tag target is unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "PM09",
+      "description": "IPEC, Validator, Paper B and register v121 pins are unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "PM10",
+      "description": "no tag, GitHub Release, Zenodo publication or DOI mutation is authorized",
+      "status": "PASS"
+    },
+    {
+      "id": "PM11",
+      "description": "history rewrite, force push and automatic branch deletion are prohibited",
+      "status": "PASS"
+    },
+    {
+      "id": "PM12",
+      "description": "WP0 archival closeout authorizes transition only to WP1",
+      "status": "PASS"
+    }
+  ],
+  "decision": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "release_authorized": false
+}
