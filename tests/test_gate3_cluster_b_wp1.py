@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -130,3 +131,41 @@ def test_collision_scan_ignores_non_string_schema_theorem_ids(tmp_path):
         encoding="utf-8",
     )
     assert module.collision_scan(tmp_path) == []
+
+
+def test_wp0_post_merge_sha256_supersession_is_exact():
+    def read_ledger(rel: str) -> dict[str, str]:
+        entries: dict[str, str] = {}
+        for line in (ROOT / rel).read_text(
+            encoding="utf-8"
+        ).splitlines():
+            if not line.strip():
+                continue
+            expected, path = line.split("  ", 1)
+            entries[path] = expected
+        return entries
+
+    historical = read_ledger(
+        "release/v1.4.0/"
+        "GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt"
+    )
+    successor = read_ledger(
+        "release/v1.4.0/"
+        "GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+    )
+
+    superseded = {
+        "scripts/verify_gate3_cluster_b_wp0.py",
+        "tests/test_gate3_cluster_b_wp0.py",
+        "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+    }
+
+    assert set(historical) & set(successor) == superseded
+
+    for rel in superseded:
+        observed = hashlib.sha256(
+            (ROOT / rel).read_bytes()
+        ).hexdigest()
+
+        assert observed == successor[rel]
+        assert successor[rel] != historical[rel]
