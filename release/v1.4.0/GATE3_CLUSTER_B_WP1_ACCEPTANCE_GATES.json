@@ -1,0 +1,92 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_ACCEPTANCE_GATES",
+  "date": "2026-07-20",
+  "gate_count": 16,
+  "gates": [
+    {
+      "gate_id": "WP1-G01",
+      "requirement": "WP1 baseline is exact merge commit f79bc16...",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G02",
+      "requirement": "Frozen v1.3.0 tag target remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G03",
+      "requirement": "Closed WP0 records are not modified",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G04",
+      "requirement": "T157-T162 collision audit passes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G05",
+      "requirement": "Exactly six unique theorem ownership records exist",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G06",
+      "requirement": "All theorem names and statements are locked and nonempty",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G07",
+      "requirement": "Statement hashes reproduce deterministically",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G08",
+      "requirement": "All seven semantic roles have canonical owners",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G09",
+      "requirement": "StrongDLE contract is typed and provenance-bearing",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G10",
+      "requirement": "Residual contracts preserve type and current/archive separation",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G11",
+      "requirement": "Dependency DAG is acyclic",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G12",
+      "requirement": "Every dependency is a cluster node or declared external dependency",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G13",
+      "requirement": "Conditionality is explicit for T158 and T160 only",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G14",
+      "requirement": "Proof, runtime semantics, and IPEC bindings remain deferred to WP4/WP2/WP3",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G15",
+      "requirement": "Schema bundle and SHA ledger verify",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP1-G16",
+      "requirement": "No tag, GitHub Release, Zenodo, DOI, or frozen-upstream mutation is authorized",
+      "status": "PASS"
+    }
+  ],
+  "hosted_ci_status": "NOT_RUN",
+  "local_decision": "READY_FOR_HOSTED_CI",
+  "merge_rule": "WP1 may merge only after its dedicated workflow and inherited repository checks are green.",
+  "release_actions_authorized": false,
+  "version": "0.1"
+}

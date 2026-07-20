@@ -77,11 +77,51 @@ def test_schema_bundle_and_package_verifier():
     assert module.validate_records() == []
 
 
-def test_post_merge_sha256_ledger():
-    ledger = ROOT / R / "GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt"
-    for line in ledger.read_text(encoding="utf-8").splitlines():
-        if not line.strip(): continue
+WP1_SUPERSEDED_WP0_PATHS = {
+    "scripts/verify_gate3_cluster_b_wp0.py",
+    "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp0.py",
+    "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+}
+
+
+def _read_sha256_ledger(path: Path) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
         expected, rel = line.split("  ", 1)
+        entries[rel] = expected
+    return entries
+
+
+def test_post_merge_sha256_ledger():
+    historical_path = (
+        ROOT
+        / R
+        / "GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt"
+    )
+    successor_path = (
+        ROOT
+        / R
+        / "GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+    )
+
+    historical = _read_sha256_ledger(historical_path)
+    successor = _read_sha256_ledger(successor_path)
+
+    assert WP1_SUPERSEDED_WP0_PATHS <= historical.keys()
+    assert WP1_SUPERSEDED_WP0_PATHS <= successor.keys()
+
+    for rel, historical_expected in historical.items():
         path = ROOT / rel
         assert path.is_file(), rel
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, rel
+
+        observed = hashlib.sha256(path.read_bytes()).hexdigest()
+        accepted = (
+            successor[rel]
+            if rel in WP1_SUPERSEDED_WP0_PATHS
+            else historical_expected
+        )
+
+        assert observed == accepted, rel

@@ -1,0 +1,26 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_THEOREM_ID_COLLISION_AUDIT",
+  "audit_status": "PASS",
+  "authorized_ownership_path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json",
+  "canonicalization_status": "ACCEPTED_PENDING_WP1_MERGE",
+  "collisions": [],
+  "date": "2026-07-20",
+  "reserved_ids": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "scan_policy": {
+    "downstream_theorem_references_are_collisions": false,
+    "formal_definition_roots": [
+      "lean/",
+      "coq/"
+    ],
+    "ownership_record_rule": "A JSON object with theorem_id plus canonical_name and formal_signature is an ownership record.",
+    "textual_references_are_collisions": false
+  },
+  "version": "0.1"
+}

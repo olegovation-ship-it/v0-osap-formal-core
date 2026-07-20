@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_THEOREM_ID_COLLISION_AUDIT"
+    },
+    "audit_status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "collisions": {
+      "type": "array"
+    },
+    "reserved_ids": {
+      "const": [
+        "T157",
+        "T158",
+        "T159",
+        "T160",
+        "T161",
+        "T162"
+      ]
+    }
+  },
+  "required": [
+    "artifact_id",
+    "reserved_ids",
+    "collisions",
+    "audit_status"
+  ],
+  "title": "WP1 theorem ID collision audit",
+  "type": "object"
+}

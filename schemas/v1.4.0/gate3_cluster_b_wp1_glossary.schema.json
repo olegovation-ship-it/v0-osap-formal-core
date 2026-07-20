@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_CANONICAL_GLOSSARY"
+    },
+    "entries": {
+      "minItems": 13,
+      "type": "array"
+    },
+    "residual_type_vocabulary": {
+      "minItems": 7,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "artifact_id",
+    "entries",
+    "residual_type_vocabulary"
+  ],
+  "title": "WP1 canonical glossary",
+  "type": "object"
+}

@@ -26,6 +26,14 @@ PAIRS = [
 ]
 LEDGER = R / "GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt"
 
+WP1_LEDGER = R / "GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+WP1_SUPERSEDED_WP0_PATHS = {
+    "scripts/verify_gate3_cluster_b_wp0.py",
+    "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp0.py",
+    "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+}
+
 
 def load(rel: str) -> dict:
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
@@ -77,16 +85,62 @@ def validate_records() -> list[str]:
     return errors
 
 
+def read_sha256_ledger(path: Path) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        expected, rel = line.split("  ", 1)
+        entries[rel] = expected
+    return entries
+
+
 def verify_ledger() -> list[str]:
     errors: list[str] = []
-    if not LEDGER.is_file(): return ["missing post-merge SHA256 ledger"]
-    for line in LEDGER.read_text(encoding="utf-8").splitlines():
-        if not line.strip(): continue
-        expected, rel = line.split("  ", 1)
-        path = ROOT / rel
-        if not path.is_file(): errors.append(f"ledger file missing: {rel}"); continue
-        actual = hashlib.sha256(path.read_bytes()).hexdigest()
-        if actual != expected: errors.append(f"SHA256 mismatch: {rel}")
+
+    if not LEDGER.is_file():
+        return ["missing post-merge SHA256 ledger"]
+
+    if not WP1_LEDGER.is_file():
+        return ["missing WP1 successor SHA256 ledger"]
+
+    historical = read_sha256_ledger(LEDGER)
+    successor = read_sha256_ledger(WP1_LEDGER)
+
+    overlap = set(historical) & set(successor)
+
+    if overlap != WP1_SUPERSEDED_WP0_PATHS:
+        errors.append(
+            "unexpected WP0/WP1 ledger overlap: "
+            f"{sorted(overlap)}"
+        )
+
+    for rel, historical_expected in historical.items():
+        file_path = ROOT / rel
+
+        if not file_path.is_file():
+            errors.append(f"ledger file missing: {rel}")
+            continue
+
+        expected = (
+            successor.get(rel)
+            if rel in WP1_SUPERSEDED_WP0_PATHS
+            else historical_expected
+        )
+
+        if expected is None:
+            errors.append(
+                f"successor ledger missing superseded path: {rel}"
+            )
+            continue
+
+        actual = hashlib.sha256(
+            file_path.read_bytes()
+        ).hexdigest()
+
+        if actual != expected:
+            errors.append(f"SHA256 mismatch: {rel}")
+
     return errors
 
 

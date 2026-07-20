@@ -1,0 +1,97 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_CANONICAL_CONTRACTS",
+  "contracts": [
+    {
+      "contract_id": "CB-CONTRACT-STRONG-DLE",
+      "name": "StrongDLE",
+      "nonclaims": [
+        "No converse from current no-live status alone.",
+        "No untyped or provenance-free DLE certification."
+      ],
+      "owner_theorem_id": "T157",
+      "required_fields": [
+        "historical_live_witness",
+        "current_no_live_status",
+        "transition_provenance"
+      ],
+      "typed_signature": "StrongDLE(R,c,r,x,tr) iff WasLive(R,c,r,x) and NoLive(R,c,r,x) and DLETransitionProvenance(tr,c,r,x)."
+    },
+    {
+      "contract_id": "CB-CONTRACT-RESIDUAL-PERSISTENCE",
+      "name": "NonInterferingResidualPersistence",
+      "nonclaims": [
+        "No persistence under deletion, rewrite, retyping, or identity loss.",
+        "No unconditional persistence theorem."
+      ],
+      "owner_theorem_id": "T158",
+      "required_fields": [
+        "residual_identity",
+        "non_interference_certificate",
+        "deterministic_transition"
+      ],
+      "typed_signature": "LiveResidual(R0,q) and NonInterferingDLE(tr,q) and Apply(tr,R0)=R1 imply LiveResidual(R1,q)."
+    },
+    {
+      "contract_id": "CB-CONTRACT-RESIDUAL-TYPE-SEPARATION",
+      "name": "ResidualTypeSeparation",
+      "nonclaims": [
+        "No global impossibility of translation.",
+        "An explicit admissible translation may discharge the separation premise."
+      ],
+      "owner_theorem_id": "T159",
+      "required_fields": [
+        "source_residual_type",
+        "target_residual_type",
+        "translation_map_status"
+      ],
+      "typed_signature": "ResidualType(q1) != ResidualType(q2) and not AdmissibleTranslation(q1,q2) imply not Interchangeable(q1,q2)."
+    },
+    {
+      "contract_id": "CB-CONTRACT-MODEL-PAIR",
+      "name": "AdmissibleModelPairNonEliminability",
+      "nonclaims": [
+        "No result for inadmissible or label-only model pairs.",
+        "No completeness claim for all non-eliminability witnesses."
+      ],
+      "owner_theorem_id": "T160",
+      "required_fields": [
+        "shared_fragment",
+        "agreement_certificate",
+        "model_distinctness_basis",
+        "typed_residual_difference",
+        "non_circularity"
+      ],
+      "typed_signature": "AdmissibleModelPair(M1,M2,S) and AgreeOn(M1,M2,S) and LiveResidual(M1,q) != LiveResidual(M2,q) imply NonEliminableFrom(q,S)."
+    },
+    {
+      "contract_id": "CB-CONTRACT-MINIMAL-OBSTRUCTION",
+      "name": "MinimalSingleResidualObstruction",
+      "nonclaims": [
+        "Sufficiency only; no converse and no checker-completeness claim."
+      ],
+      "owner_theorem_id": "T161",
+      "required_fields": [
+        "declared_residual",
+        "live_status"
+      ],
+      "typed_signature": "DeclaredResidual(q) and LiveResidual(R,q) imply MinimalObstructionWitness(q,RawRelativeV0(R))."
+    },
+    {
+      "contract_id": "CB-CONTRACT-HISTORICAL-NONCONVERSION",
+      "name": "HistoricalTokenNonconversion",
+      "nonclaims": [
+        "Historical evidence remains evidential; it is not erased.",
+        "Fresh activation is a separate typed event, not an archive export."
+      ],
+      "owner_theorem_id": "T162",
+      "required_fields": [
+        "historical_token_identity",
+        "fresh_activation_witness_status"
+      ],
+      "typed_signature": "HistoricalToken(t) and not FreshActivation(t,t2) imply not CurrentLiveGuardToken(t2)."
+    }
+  ],
+  "date": "2026-07-20",
+  "status": "STATEMENT_AND_TYPE_CONTRACTS_LOCKED_PROOF_DEFERRED",
+  "version": "0.1"
+}

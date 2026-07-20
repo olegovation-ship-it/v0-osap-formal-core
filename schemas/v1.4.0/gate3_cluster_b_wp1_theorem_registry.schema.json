@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162"
+    },
+    "proof_claims_authorized": {
+      "const": false
+    },
+    "range": {
+      "const": "T157-T162"
+    },
+    "record_count": {
+      "const": 6
+    },
+    "records": {
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "range",
+    "record_count",
+    "records",
+    "proof_claims_authorized"
+  ],
+  "title": "WP1 theorem registry",
+  "type": "object"
+}

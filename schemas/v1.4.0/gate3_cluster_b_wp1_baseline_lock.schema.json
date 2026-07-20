@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_BASELINE_LOCK"
+    },
+    "target_branch": {
+      "const": "v1.4.0-development"
+    },
+    "wp1_authorization": {
+      "properties": {
+        "release_actions_authorized": {
+          "const": false
+        },
+        "reserved_theorem_ids": {
+          "const": [
+            "T157",
+            "T158",
+            "T159",
+            "T160",
+            "T161",
+            "T162"
+          ]
+        }
+      },
+      "required": [
+        "reserved_theorem_ids",
+        "release_actions_authorized"
+      ],
+      "type": "object"
+    },
+    "wp1_start": {
+      "properties": {
+        "exact_commit": {
+          "const": "f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15"
+        }
+      },
+      "required": [
+        "exact_commit"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "target_branch",
+    "wp1_start",
+    "wp1_authorization"
+  ],
+  "title": "WP1 baseline lock",
+  "type": "object"
+}

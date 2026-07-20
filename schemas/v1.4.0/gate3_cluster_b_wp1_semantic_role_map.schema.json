@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP"
+    },
+    "required_role_count": {
+      "const": 7
+    },
+    "roles": {
+      "maxItems": 7,
+      "minItems": 7,
+      "type": "array"
+    },
+    "status": {
+      "const": "SEVEN_OF_SEVEN_CANONICAL_OWNERS_ASSIGNED"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "required_role_count",
+    "roles",
+    "status"
+  ],
+  "title": "WP1 semantic role map",
+  "type": "object"
+}
