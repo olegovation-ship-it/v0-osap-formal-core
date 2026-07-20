@@ -129,13 +129,19 @@
       "minLength": 1
     },
     "branch_relation_at_capture": {
-      "const": "SYNCHRONIZED_TO_CURRENT_MAIN"
+      "enum": [
+        "SYNCHRONIZED_TO_CURRENT_MAIN",
+        "DEVELOPMENT_AHEAD_WITH_CLOSEOUT_PATCH",
+        "FAST_FORWARD_AVAILABLE"
+      ]
     },
     "observed_main_tip": {
-      "const": "46c02d96c047e70fe0d54feb60a0aadce2de95c7"
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
     },
     "observed_development_tip": {
-      "const": "46c02d96c047e70fe0d54feb60a0aadce2de95c7"
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
     },
     "status": {
       "enum": [

@@ -1,12 +1,12 @@
 # V0 OSAP v1.4.0 Gate 3 Cluster B WP0 — Post-Merge Archival Closeout and Development-Branch Synchronization
 
-**Patch version:** v0.1  
-**Date:** 2026-07-20  
-**Repository:** `olegovation-ship-it/v0-osap-formal-core`  
-**Merged work:** PR #20 — Gate 3 Cluster B WP0 baseline freeze and branch bootstrap  
-**Accepted head:** `df4f8524b26e13eda34f96ff8ff48124a7cf9db0`  
-**Merge commit:** `46c02d96c047e70fe0d54feb60a0aadce2de95c7`  
-**Decision:** `POST_MERGE_CLOSEOUT_READY_FOR_PR`  
+**Patch version:** v0.1
+**Date:** 2026-07-20
+**Repository:** `olegovation-ship-it/v0-osap-formal-core`
+**Merged work:** PR #20 — Gate 3 Cluster B WP0 baseline freeze and branch bootstrap
+**Accepted head:** `df4f8524b26e13eda34f96ff8ff48124a7cf9db0`
+**Merge commit:** `46c02d96c047e70fe0d54feb60a0aadce2de95c7`
+**Decision:** `POST_MERGE_CLOSEOUT_READY_FOR_PR`
 **Release authorization:** `NONE`
 
 ## 1. Purpose
