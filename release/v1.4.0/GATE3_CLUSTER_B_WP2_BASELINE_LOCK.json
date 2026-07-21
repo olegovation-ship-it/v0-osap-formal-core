@@ -1,5 +1,11 @@
 {
   "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_BASELINE_LOCK",
+  "authorized_modified_surfaces": [
+    ".github/workflows/gate3-cluster-b-wp0.yml",
+    ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp1.yml",
+    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml"
+  ],
   "authorized_new_surfaces": [
     ".github/workflows/gate3-cluster-b-wp2.yml",
     "checker/v0_osap_fc1/cluster_b_wp2.py",
@@ -26,6 +32,6 @@
   "release_actions_authorized": false,
   "repository": "olegovation-ship-it/v0-osap-formal-core",
   "target_branch": "v1.4.0-development",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "wp2_start": "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a"
 }

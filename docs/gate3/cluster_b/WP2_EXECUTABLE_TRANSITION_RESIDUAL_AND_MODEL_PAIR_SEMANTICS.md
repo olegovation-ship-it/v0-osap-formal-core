@@ -1,4 +1,4 @@
-# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Implementation Patch v0.1.2
+# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Implementation Patch v0.1.3
 
 ## Scope
 
@@ -20,7 +20,7 @@ This patch implements executable finite-record semantics and deterministic fixtu
 
 ## Preservation
 
-The overlay creates new files only. It does not modify any file present at the WP2 baseline. Closed WP0 records, canonical WP1 records, WP1 post-merge closeout evidence, historical SHA ledgers, existing verifier/test code, Lean/Coq modules, package metadata, and release/citation artifacts remain byte-preserved.
+The executable core remains confined to the bounded WP2 surface. Closed WP0 records, canonical WP1 records, WP1 post-merge closeout evidence, historical SHA ledgers, existing verifier/test code, Lean/Coq modules, package metadata, and release/citation artifacts remain byte-preserved. Hosted-CI compatibility modifies only four inherited workflow control files, each explicitly authorized and attested by WP2.
 
 ## Claim boundary
 
@@ -76,3 +76,23 @@ v0.1.2 restores the historical test file byte-for-byte from exact WP2 start
   WP2 successor-firewall regression test;
 - no pre-existing baseline file, WP0/WP1 release record, historical SHA ledger,
   theorem contract, tag, GitHub Release, Zenodo record, or DOI is modified.
+
+## Hosted-CI compatibility correction v0.1.3
+
+The dedicated WP2 hosted workflow passed, but exact-stage WP0/WP1 workflows
+were still evaluating their historical delta firewalls against the WP2
+successor tree. The generic Python job also used a shallow checkout without
+baseline `ffeaa3fd4fb2f85679f4695d5b28e333004ca24a`.
+
+This correction:
+
+- replays WP0 at `f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15`;
+- replays canonical WP1 at `eaf142089230ea5a5096ae834bf4e733d5f369aa`;
+- replays WP1 post-merge closeout at `ffeaa3fd4fb2f85679f4695d5b28e333004ca24a`;
+- skips the WP2 historical-byte test only when a shallow generic checkout does
+  not contain the required Git object;
+- retains full-history enforcement in the dedicated WP2 workflow;
+- modifies no canonical WP0/WP1 evidence, theorem contract, formal proof, tag,
+  GitHub Release, Zenodo publication, or DOI state.
+
+**Compatibility status:** `READY_FOR_LOCAL_VALIDATION_AND_HOSTED_CI_RERUN`.

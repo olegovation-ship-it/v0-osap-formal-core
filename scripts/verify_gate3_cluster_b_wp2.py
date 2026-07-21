@@ -42,6 +42,12 @@ ALLOWED_NEW_PREFIXES = (
     "release/v1.4.0/GATE3_CLUSTER_B_WP2_",
     "schemas/v1.4.0/gate3_cluster_b_wp2_",
 )
+ALLOWED_MODIFIED_FILES = {
+    ".github/workflows/gate3-cluster-b-wp0.yml",
+    ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp1.yml",
+    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+}
 PROTECTED_PREFIXES = (
     "release/v1.4.0/GATE3_CLUSTER_B_WP0_",
     "release/v1.4.0/GATE3_CLUSTER_B_WP1_",
@@ -149,6 +155,8 @@ def record_errors() -> list[str]:
         errors.append("WP1 merge baseline mismatch")
     if lock["frozen_v1_3_0_tag_target"] != TAG_TARGET:
         errors.append("frozen v1.3.0 target mismatch")
+    if set(lock["authorized_modified_surfaces"]) != ALLOWED_MODIFIED_FILES:
+        errors.append("authorized modified workflow surface mismatch")
     if lock["release_actions_authorized"]:
         errors.append("release actions authorized in baseline lock")
 
@@ -225,6 +233,8 @@ def git_errors(allow_main: bool) -> list[str]:
         "git", "-c", "core.quotePath=false", "diff", "--name-only", "--diff-filter=MDR", WP2_START, "--", check=False
     ).splitlines()
     for path in sorted(filter(None, changed_existing)):
+        if path in ALLOWED_MODIFIED_FILES:
+            continue
         if any(path.startswith(prefix) for prefix in PROTECTED_PREFIXES):
             errors.append(f"protected inherited surface modified: {path}")
         else:

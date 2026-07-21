@@ -1,4 +1,4 @@
-# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Build Specification v0.1.2
+# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Build Specification v0.1.3
 
 **Work package:** WP2 — Executable Transition, Residual, and Model-Pair Semantics
 **Repository:** `olegovation-ship-it/v0-osap-formal-core`
@@ -95,7 +95,7 @@ The fixture matrix must cover all nine evaluators, all seven roles, and T157–T
 
 ## 7. Repository boundary
 
-WP2 adds only new files under:
+The WP2 executable core adds new files under:
 
 - `.github/workflows/gate3-cluster-b-wp2.yml`;
 - `checker/v0_osap_fc1/cluster_b_wp2.py`;
@@ -107,7 +107,7 @@ WP2 adds only new files under:
 - `scripts/verify_gate3_cluster_b_wp2.py`;
 - `tests/test_gate3_cluster_b_wp2.py`.
 
-No pre-existing baseline file may be modified or deleted. This includes all WP0/WP1 canonical records, post-merge closeout records, historical SHA ledgers, inherited verifiers/tests, proof modules, package metadata, release notes, and citation files.
+All WP0/WP1 canonical records, post-merge closeout records, historical SHA ledgers, inherited verifiers/tests, proof modules, package metadata, release notes, and citation files remain immutable. Hosted-CI successor compatibility may modify only the four inherited workflow control files explicitly listed in the WP2 baseline lock; no other pre-existing path may be modified or deleted.
 
 ## 8. Deterministic build products
 
@@ -148,7 +148,7 @@ The inherited verifiers run in package-only mode because WP2 introduces a separa
 WP2 has 20 acceptance gates. The local package may be marked `PASS` only when:
 
 - the exact baseline and frozen tag target are recorded;
-- no baseline path is modified/deleted;
+- no canonical WP0/WP1 record, ledger, verifier, test, theorem contract, proof module, package metadata, or release/citation artifact is modified; only four inherited workflow controls receive bounded successor replay;
 - all nine evaluators are present;
 - all seven roles and T157–T162 have deterministic fixtures;
 - schemas and SHA ledger reproduce;
@@ -216,3 +216,27 @@ v0.1.2 restores the historical test file byte-for-byte from exact WP2 start
   WP2 successor-firewall regression test;
 - no pre-existing baseline file, WP0/WP1 release record, historical SHA ledger,
   theorem contract, tag, GitHub Release, Zenodo record, or DOI is modified.
+
+## Hosted-CI successor compatibility correction v0.1.3
+
+Draft PR #23 established that the dedicated WP2 workflow, Lean 4, Coq, schema
+validation, release readiness, and inherited v1.3.0 lifecycle checks pass.
+The remaining failures arose because exact-stage WP0/WP1 workflows evaluated
+their historical path firewalls against the later WP2 successor merge tree,
+while the generic Python workflow used a shallow checkout that omitted exact
+baseline `ffeaa3fd4fb2f85679f4695d5b28e333004ca24a`.
+
+The v0.1.3 correction is limited to the CI/test control plane:
+
+- four inherited GitHub Actions workflows replay their exact closed stage in
+  detached worktrees when a pull request contains the WP2 baseline lock;
+- the generic shallow Python checkout skips only the history-dependent
+  historical-byte assertion when the exact baseline object is unavailable;
+- the dedicated WP2 workflow retains `fetch-depth: 0` and therefore still
+  executes the historical-byte assertion and inherited baseline replay;
+- the WP2 verifier authorizes exactly the four workflow modifications and
+  continues to reject every other modified pre-existing path;
+- the WP2 SHA-256 ledger attests the four compatibility workflows;
+- no WP0/WP1 canonical record, historical ledger, verifier, test, theorem
+  contract, proof module, tag, GitHub Release, Zenodo record, or DOI is changed
+  or authorized.

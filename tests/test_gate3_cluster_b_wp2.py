@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "checker"))
 
@@ -147,16 +149,48 @@ def test_wp2_successor_repository_firewall_accepts_current_patch():
 
 
 def test_wp0_historical_test_file_is_byte_exact_at_wp2_start():
+    revision = (
+        "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a:"
+        "tests/test_gate3_cluster_b_wp0.py"
+    )
+    available = subprocess.run(
+        ["git", "cat-file", "-e", revision],
+        cwd=ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    ).returncode == 0
+    if not available:
+        pytest.skip(
+            "shallow checkout omits the exact WP2 baseline; the dedicated WP2 "
+            "workflow performs full-history historical-byte replay"
+        )
+
     expected = subprocess.run(
-        [
-            "git",
-            "show",
-            "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a:"
-            "tests/test_gate3_cluster_b_wp0.py",
-        ],
+        ["git", "show", revision],
         cwd=ROOT,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=True,
     ).stdout
     assert (ROOT / "tests/test_gate3_cluster_b_wp0.py").read_bytes() == expected
+
+
+def test_hosted_ci_compatibility_replays_frozen_wp0_wp1_baseline():
+    workflow = (
+        ROOT / ".github/workflows/gate3-cluster-b-wp2.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "fetch-depth: 0" in workflow
+    assert "git worktree add --detach" in workflow
+    assert "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a" in workflow
+
+    inherited_verifiers = (
+        "scripts/verify_gate3_cluster_b_wp0.py --package-only",
+        "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py --package-only",
+        "scripts/verify_gate3_cluster_b_wp1.py --package-only",
+        "scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py --package-only",
+    )
+
+    for verifier in inherited_verifiers:
+        assert verifier in workflow

@@ -16,7 +16,7 @@
     },
     {
       "gate_id": "WP2-G03",
-      "requirement": "All pre-existing baseline paths remain byte-exact; the legacy WP0 exact-delta firewall is replayed at the frozen WP2 baseline and the current successor delta is checked by the WP2 verifier.",
+      "requirement": "All canonical WP0/WP1 records, ledgers, tests, and theorem contracts remain byte-exact; only four inherited GitHub Actions workflow files receive bounded successor-replay compatibility modifications.",
       "status": "PASS"
     },
     {
@@ -108,5 +108,5 @@
   "hosted_ci_status": "NOT_RUN",
   "local_package_status": "PASS",
   "release_actions_authorized": false,
-  "version": "0.1.2"
+  "version": "0.1.3"
 }
