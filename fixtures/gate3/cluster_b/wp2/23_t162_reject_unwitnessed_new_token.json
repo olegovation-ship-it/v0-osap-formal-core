@@ -1,0 +1,28 @@
+{
+  "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+  "expected": {
+    "derived": {
+      "historical_nonconversion_preserved": false
+    },
+    "diagnostic_codes": [
+      "FRESH_ACTIVATION_WITNESS_REQUIRED"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "23_t162_reject_unwitnessed_new_token",
+  "input": {
+    "current_tokens": [
+      {
+        "activation_id": "missing",
+        "live_guard": true,
+        "source_historical_token_id": "hist-1",
+        "token_id": "live-new-1"
+      }
+    ],
+    "fresh_activations": [],
+    "historical_token": {
+      "historical": true,
+      "token_id": "hist-1"
+    }
+  }
+}

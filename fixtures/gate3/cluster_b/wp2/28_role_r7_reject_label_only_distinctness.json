@@ -1,0 +1,19 @@
+{
+  "case_type": "BRANCH_LOCAL_FIREWALL",
+  "expected": {
+    "derived": {
+      "firewall_respected": false
+    },
+    "diagnostic_codes": [
+      "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "28_role_r7_reject_label_only_distinctness",
+  "input": {
+    "claimed_distinct": true,
+    "distinctness_basis": "LABEL_ONLY",
+    "evidence_scope": "BRANCH_LOCAL",
+    "promotion_target": "RELATIVE_V0"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp2_fixture.schema.json",
+  "title": "V0 OSAP Gate 3 Cluster B WP2 fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fixture_id", "case_type", "input", "expected"],
+  "properties": {
+    "fixture_id": {"type": "string", "minLength": 1},
+    "case_type": {
+      "enum": [
+        "DLE_TRANSITION",
+        "STRONG_DLE",
+        "RESIDUAL_PERSISTENCE",
+        "RESIDUAL_TYPE_SEPARATION",
+        "MODEL_PAIR_NONELIMINABILITY",
+        "MINIMAL_RESIDUAL_OBSTRUCTION",
+        "HISTORICAL_TOKEN_NONCONVERSION",
+        "ROBUST_OBSTRUCTION",
+        "BRANCH_LOCAL_FIREWALL"
+      ]
+    },
+    "input": {"type": "object"},
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "diagnostic_codes", "derived"],
+      "properties": {
+        "status": {"enum": ["PASS", "DEFERRED", "REJECT"]},
+        "diagnostic_codes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "derived": {"type": "object"}
+      }
+    }
+  }
+}

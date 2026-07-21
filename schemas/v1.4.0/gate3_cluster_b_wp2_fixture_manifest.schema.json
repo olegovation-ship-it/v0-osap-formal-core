@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp2_fixture_manifest.schema.json",
+  "title": "V0 OSAP Gate 3 Cluster B WP2 fixture manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact_id", "version", "date", "fixture_count", "case_type_count", "role_coverage", "theorem_coverage", "fixtures", "status"],
+  "properties": {
+    "artifact_id": {"const": "V0_OSAP_GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST"},
+    "version": {"const": "0.1.2"},
+    "date": {"const": "2026-07-21"},
+    "fixture_count": {"type": "integer", "minimum": 20},
+    "case_type_count": {"const": 9},
+    "role_coverage": {
+      "type": "array",
+      "items": {"pattern": "^CB-R[1-7]$"},
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    },
+    "theorem_coverage": {
+      "type": "array",
+      "items": {"pattern": "^T[0-9]+$"},
+      "contains": {"const": "T157"},
+      "minItems": 6,
+      "uniqueItems": true
+    },
+    "fixtures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fixture_id", "path", "sha256", "case_type", "status", "diagnostic_codes", "role_ids", "theorem_ids"],
+        "properties": {
+          "fixture_id": {"type": "string"},
+          "path": {"type": "string"},
+          "sha256": {"pattern": "^[0-9a-f]{64}$"},
+          "case_type": {"type": "string"},
+          "status": {"enum": ["PASS", "DEFERRED", "REJECT"]},
+          "diagnostic_codes": {"type": "array", "items": {"type": "string"}},
+          "role_ids": {"type": "array", "items": {"pattern": "^CB-R[1-7]$"}},
+          "theorem_ids": {"type": "array", "items": {"pattern": "^T[0-9]+$"}}
+        }
+      }
+    },
+    "status": {"const": "DETERMINISTIC_FIXTURE_MATRIX_COMPLETE"}
+  }
+}

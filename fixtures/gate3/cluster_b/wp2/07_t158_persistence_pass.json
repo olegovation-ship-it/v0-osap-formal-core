@@ -1,0 +1,37 @@
+{
+  "case_type": "RESIDUAL_PERSISTENCE",
+  "expected": {
+    "derived": {
+      "residual_persists": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "07_t158_persistence_pass",
+  "input": {
+    "after_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "MEMORY"
+    },
+    "before_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "MEMORY"
+    },
+    "non_interference_certificate": {
+      "forbidden_effects": [
+        "DELETE",
+        "REWRITE",
+        "RETYPE",
+        "IDENTITY_CHANGE"
+      ],
+      "present": true,
+      "residual_id": "q-1"
+    },
+    "transition": {
+      "deterministic": true,
+      "residual_effect": "PRESERVE"
+    }
+  }
+}

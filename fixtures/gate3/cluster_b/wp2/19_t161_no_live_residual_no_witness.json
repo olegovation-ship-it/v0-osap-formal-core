@@ -1,0 +1,20 @@
+{
+  "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+  "expected": {
+    "derived": {
+      "minimal_obstruction_witness": false,
+      "raw_relative_v0_blocked": false
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "19_t161_no_live_residual_no_witness",
+  "input": {
+    "residual": {
+      "declared": true,
+      "live": false,
+      "residual_id": "q-raw",
+      "residual_type": "GENERIC_TRACE"
+    }
+  }
+}

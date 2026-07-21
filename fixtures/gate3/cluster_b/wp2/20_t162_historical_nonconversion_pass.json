@@ -1,0 +1,19 @@
+{
+  "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+  "expected": {
+    "derived": {
+      "historical_nonconversion_preserved": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "20_t162_historical_nonconversion_pass",
+  "input": {
+    "current_tokens": [],
+    "fresh_activations": [],
+    "historical_token": {
+      "historical": true,
+      "token_id": "hist-1"
+    }
+  }
+}

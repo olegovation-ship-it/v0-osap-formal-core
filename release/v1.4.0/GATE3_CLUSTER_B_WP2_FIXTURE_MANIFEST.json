@@ -1,0 +1,480 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST",
+  "case_type_count": 9,
+  "date": "2026-07-21",
+  "fixture_count": 28,
+  "fixtures": [
+    {
+      "case_type": "DLE_TRANSITION",
+      "diagnostic_codes": [],
+      "fixture_id": "01_dle_transition_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/01_dle_transition_pass.json",
+      "role_ids": [
+        "CB-R1"
+      ],
+      "sha256": "846050e11feedc73c1d602d0896f8bf738649342414b0e07e829b990fa578543",
+      "status": "PASS",
+      "theorem_ids": [
+        "T123",
+        "T132"
+      ]
+    },
+    {
+      "case_type": "DLE_TRANSITION",
+      "diagnostic_codes": [
+        "DLE_TARGET_NOT_EXHAUSTED"
+      ],
+      "fixture_id": "02_dle_transition_reject_target_not_exhausted",
+      "path": "fixtures/gate3/cluster_b/wp2/02_dle_transition_reject_target_not_exhausted.json",
+      "role_ids": [
+        "CB-R1"
+      ],
+      "sha256": "3e58bd85a4e62d2948f694c8b8c67c4d512e562f41a6dd2e64cb4ceca75ba3e0",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T123",
+        "T132"
+      ]
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "diagnostic_codes": [],
+      "fixture_id": "03_t157_strong_dle_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/03_t157_strong_dle_pass.json",
+      "role_ids": [
+        "CB-R1",
+        "CB-R2"
+      ],
+      "sha256": "bfbd799a2d804096b1ba39f78957d0e558c5326f5c2a63f15f15da073033a79e",
+      "status": "PASS",
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "diagnostic_codes": [
+        "STRONG_DLE_HISTORY_MISSING"
+      ],
+      "fixture_id": "04_t157_reject_missing_history",
+      "path": "fixtures/gate3/cluster_b/wp2/04_t157_reject_missing_history.json",
+      "role_ids": [
+        "CB-R1",
+        "CB-R2"
+      ],
+      "sha256": "7b44b1d951412056a2b9b2339b4e98105abd92b901f8eb6a583a9f83ab19c6a8",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "diagnostic_codes": [
+        "DLE_TARGET_NOT_EXHAUSTED"
+      ],
+      "fixture_id": "05_t157_reject_current_live_conflict",
+      "path": "fixtures/gate3/cluster_b/wp2/05_t157_reject_current_live_conflict.json",
+      "role_ids": [
+        "CB-R1",
+        "CB-R2"
+      ],
+      "sha256": "93968411a0e70d81836eedc58a304e106a5c68ad49d6a4162d082a7dcd5e4451",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "diagnostic_codes": [
+        "DLE_TRANSITION_PROVENANCE_MISSING",
+        "STRONG_DLE_HISTORY_MISSING"
+      ],
+      "fixture_id": "06_t157_reject_missing_provenance",
+      "path": "fixtures/gate3/cluster_b/wp2/06_t157_reject_missing_provenance.json",
+      "role_ids": [
+        "CB-R1",
+        "CB-R2"
+      ],
+      "sha256": "924fa339c9ba861aa07da08bc02ebf184bf7011defcfe2d031ae1422c9bf144a",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "diagnostic_codes": [],
+      "fixture_id": "07_t158_persistence_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/07_t158_persistence_pass.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "b21e2f1132222af9a6195afbf393198a95d31a3926a02b62fed69aac73ecf951",
+      "status": "PASS",
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "diagnostic_codes": [
+        "RESIDUAL_IDENTITY_CHANGED"
+      ],
+      "fixture_id": "08_t158_reject_identity_change",
+      "path": "fixtures/gate3/cluster_b/wp2/08_t158_reject_identity_change.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "b2846b5e403217ccd685b3a8bce082101f871a55166c194504d9668c6508241b",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "diagnostic_codes": [
+        "DLE_RESIDUAL_INTERFERENCE_DETECTED",
+        "RESIDUAL_IDENTITY_CHANGED"
+      ],
+      "fixture_id": "09_t158_reject_retype_interference",
+      "path": "fixtures/gate3/cluster_b/wp2/09_t158_reject_retype_interference.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "9f9d7001611cd3358a569d9f80f6ea0a63a10700a4a4927779695b3104c8c85d",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "diagnostic_codes": [
+        "RESIDUAL_PERSISTENCE_PREMISE_MISSING"
+      ],
+      "fixture_id": "10_t158_deferred_missing_certificate",
+      "path": "fixtures/gate3/cluster_b/wp2/10_t158_deferred_missing_certificate.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "a56e51319857a20c216b41f952869fbda082dd7ce0c81a38f561a0b75fa388df",
+      "status": "DEFERRED",
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "diagnostic_codes": [],
+      "fixture_id": "11_t159_type_separation_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/11_t159_type_separation_pass.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "3f02f215b970246fd4ecf3112a3f3dbf2a2bf952063bc434b73d0460062dbcc6",
+      "status": "PASS",
+      "theorem_ids": [
+        "T159"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "diagnostic_codes": [
+        "UNDECLARED_RESIDUAL_TRANSLATION"
+      ],
+      "fixture_id": "12_t159_reject_undeclared_interchangeability",
+      "path": "fixtures/gate3/cluster_b/wp2/12_t159_reject_undeclared_interchangeability.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "9674b110dff2cefad1f3bdc53136004c88839aff9a396f93d162ac114a67d6bf",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T159"
+      ]
+    },
+    {
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "diagnostic_codes": [],
+      "fixture_id": "13_t159_admissible_translation_discharges_separation",
+      "path": "fixtures/gate3/cluster_b/wp2/13_t159_admissible_translation_discharges_separation.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "5e029f5bfa08cfa874192fa0f9b61a969793ad63e64593e13d15622d0a664ef5",
+      "status": "PASS",
+      "theorem_ids": [
+        "T159"
+      ]
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "diagnostic_codes": [],
+      "fixture_id": "14_t160_model_pair_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/14_t160_model_pair_pass.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "60ebabdd8f955999eeb4a4e4c30881076b3ac733501bf6771150160b58cf4f06",
+      "status": "PASS",
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "diagnostic_codes": [
+        "MODEL_PAIR_DISTINCTNESS_UNSUPPORTED"
+      ],
+      "fixture_id": "15_t160_reject_label_only_distinctness",
+      "path": "fixtures/gate3/cluster_b/wp2/15_t160_reject_label_only_distinctness.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "11841511670544e372a64fc3b0d176aaae56bd7d439976adaa8a805149c62e3f",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "diagnostic_codes": [
+        "MODEL_PAIR_SHARED_FRAGMENT_MISMATCH"
+      ],
+      "fixture_id": "16_t160_reject_shared_fragment_mismatch",
+      "path": "fixtures/gate3/cluster_b/wp2/16_t160_reject_shared_fragment_mismatch.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "c455d994b8fb6eca2078f903b586c8477d3491ab543a2ab812d1eec726e52dd5",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "diagnostic_codes": [
+        "MODEL_PAIR_TYPED_RESIDUAL_DIFFERENCE_MISSING"
+      ],
+      "fixture_id": "17_t160_deferred_no_residual_difference",
+      "path": "fixtures/gate3/cluster_b/wp2/17_t160_deferred_no_residual_difference.json",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "sha256": "8383f8ffddab683750a9abf91090450cf7316b265b2cf07d1d68a063efe9d2f5",
+      "status": "DEFERRED",
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+      "diagnostic_codes": [],
+      "fixture_id": "18_t161_minimal_obstruction_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/18_t161_minimal_obstruction_pass.json",
+      "role_ids": [
+        "CB-R4"
+      ],
+      "sha256": "94c5e2a70a54abd14803de1d3532e77a072e683a5567a73e34f01783d9352f2f",
+      "status": "PASS",
+      "theorem_ids": [
+        "T161"
+      ]
+    },
+    {
+      "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+      "diagnostic_codes": [],
+      "fixture_id": "19_t161_no_live_residual_no_witness",
+      "path": "fixtures/gate3/cluster_b/wp2/19_t161_no_live_residual_no_witness.json",
+      "role_ids": [
+        "CB-R4"
+      ],
+      "sha256": "9a6eb76c048c4e7e25d5d7b1af5b93e54e9eda6248329933b91dc1688f6e3731",
+      "status": "PASS",
+      "theorem_ids": [
+        "T161"
+      ]
+    },
+    {
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "diagnostic_codes": [],
+      "fixture_id": "20_t162_historical_nonconversion_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/20_t162_historical_nonconversion_pass.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "b479cba0ec8a8d0439103bc9062cd4133b712c2e29f21478be6005a122e4fe1e",
+      "status": "PASS",
+      "theorem_ids": [
+        "T162"
+      ]
+    },
+    {
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "diagnostic_codes": [
+        "HISTORICAL_TOKEN_CURRENT_CONVERSION"
+      ],
+      "fixture_id": "21_t162_reject_archive_export",
+      "path": "fixtures/gate3/cluster_b/wp2/21_t162_reject_archive_export.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "6efa51afe5411d1d4a1d7092046c06e012850a48d8b50f65f976ebbc24ed58d3",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T162"
+      ]
+    },
+    {
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "diagnostic_codes": [],
+      "fixture_id": "22_t162_fresh_activation_new_token_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/22_t162_fresh_activation_new_token_pass.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "fac0b5711cc6a9fec272aa2b87ca3437a1391d4ad53a64f8c1fefb47450f3bd3",
+      "status": "PASS",
+      "theorem_ids": [
+        "T162"
+      ]
+    },
+    {
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "diagnostic_codes": [
+        "FRESH_ACTIVATION_WITNESS_REQUIRED"
+      ],
+      "fixture_id": "23_t162_reject_unwitnessed_new_token",
+      "path": "fixtures/gate3/cluster_b/wp2/23_t162_reject_unwitnessed_new_token.json",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "sha256": "beb9a696adf9126e43a8779e979500a22156035f90bafb7dec97b3679d4973bd",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T162"
+      ]
+    },
+    {
+      "case_type": "ROBUST_OBSTRUCTION",
+      "diagnostic_codes": [],
+      "fixture_id": "24_role_r6_robust_obstruction_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/24_role_r6_robust_obstruction_pass.json",
+      "role_ids": [
+        "CB-R6"
+      ],
+      "sha256": "4c3f0c922f742d3bad1387b2cd6b56d6724ccd26ed9472f7d11dd57f394d4f7a",
+      "status": "PASS",
+      "theorem_ids": [
+        "T124",
+        "T135"
+      ]
+    },
+    {
+      "case_type": "ROBUST_OBSTRUCTION",
+      "diagnostic_codes": [],
+      "fixture_id": "25_role_r6_eliminable_residual_no_robust_obstruction",
+      "path": "fixtures/gate3/cluster_b/wp2/25_role_r6_eliminable_residual_no_robust_obstruction.json",
+      "role_ids": [
+        "CB-R6"
+      ],
+      "sha256": "a1a94723f56f76dc73b2cc7312994873f320645d93534071b4f4d5b800c66162",
+      "status": "PASS",
+      "theorem_ids": [
+        "T124",
+        "T135"
+      ]
+    },
+    {
+      "case_type": "BRANCH_LOCAL_FIREWALL",
+      "diagnostic_codes": [],
+      "fixture_id": "26_role_r7_branch_firewall_pass",
+      "path": "fixtures/gate3/cluster_b/wp2/26_role_r7_branch_firewall_pass.json",
+      "role_ids": [
+        "CB-R7"
+      ],
+      "sha256": "23d07e4dd433b09bce0a23196d8947c8539cb5a28a0002641c2c078770ae0bd4",
+      "status": "PASS",
+      "theorem_ids": [
+        "T126",
+        "T136",
+        "T142"
+      ]
+    },
+    {
+      "case_type": "BRANCH_LOCAL_FIREWALL",
+      "diagnostic_codes": [
+        "RELATIVE_TO_ABSOLUTE_PROMOTION_FORBIDDEN"
+      ],
+      "fixture_id": "27_role_r7_reject_absolute_promotion",
+      "path": "fixtures/gate3/cluster_b/wp2/27_role_r7_reject_absolute_promotion.json",
+      "role_ids": [
+        "CB-R7"
+      ],
+      "sha256": "f932c13cdad46dece1ff2c6a9c3578d1272246f0a1326ef2a88ff1f6408ca23c",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T126",
+        "T136",
+        "T142"
+      ]
+    },
+    {
+      "case_type": "BRANCH_LOCAL_FIREWALL",
+      "diagnostic_codes": [
+        "BRANCH_LABELS_DO_NOT_PROVE_DISTINCTNESS"
+      ],
+      "fixture_id": "28_role_r7_reject_label_only_distinctness",
+      "path": "fixtures/gate3/cluster_b/wp2/28_role_r7_reject_label_only_distinctness.json",
+      "role_ids": [
+        "CB-R7"
+      ],
+      "sha256": "8ce789ad1966de76b855a4a8ddc65215533e6114bb039a9c8b6856aaf34f0f81",
+      "status": "REJECT",
+      "theorem_ids": [
+        "T126",
+        "T136",
+        "T142"
+      ]
+    }
+  ],
+  "role_coverage": [
+    "CB-R1",
+    "CB-R2",
+    "CB-R3",
+    "CB-R4",
+    "CB-R5",
+    "CB-R6",
+    "CB-R7"
+  ],
+  "status": "DETERMINISTIC_FIXTURE_MATRIX_COMPLETE",
+  "theorem_coverage": [
+    "T123",
+    "T124",
+    "T126",
+    "T132",
+    "T135",
+    "T136",
+    "T142",
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "version": "0.1.2"
+}

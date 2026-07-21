@@ -1,0 +1,25 @@
+{
+  "case_type": "RESIDUAL_TYPE_SEPARATION",
+  "expected": {
+    "derived": {
+      "not_interchangeable": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "11_t159_type_separation_pass",
+  "input": {
+    "claimed_interchangeable": false,
+    "left_residual": {
+      "residual_id": "q-memory",
+      "residual_type": "MEMORY"
+    },
+    "right_residual": {
+      "residual_id": "q-signal",
+      "residual_type": "SIGNAL"
+    },
+    "translation_map": {
+      "status": "ABSENT"
+    }
+  }
+}

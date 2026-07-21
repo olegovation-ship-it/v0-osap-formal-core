@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp2_semantics_profile.schema.json",
+  "title": "V0 OSAP Gate 3 Cluster B WP2 semantics profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact_id", "version", "date", "implementation_version", "case_types", "residual_type_vocabulary", "contract_bindings", "nonclaims", "status"],
+  "properties": {
+    "artifact_id": {"const": "V0_OSAP_GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE"},
+    "version": {"const": "0.1.2"},
+    "date": {"const": "2026-07-21"},
+    "implementation_version": {"const": "v0-osap-cluster-b-wp2/0.1.0.dev1"},
+    "case_types": {"type": "array", "minItems": 9, "maxItems": 9, "uniqueItems": true, "items": {"type": "string"}},
+    "residual_type_vocabulary": {"type": "array", "minItems": 7, "maxItems": 7, "uniqueItems": true, "items": {"type": "string"}},
+    "contract_bindings": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["contract_id", "theorem_ids", "evaluator", "runtime_status"],
+        "properties": {
+          "contract_id": {"type": "string"},
+          "theorem_ids": {"type": "array", "items": {"pattern": "^T[0-9]+$"}},
+          "evaluator": {"type": "string"},
+          "runtime_status": {"const": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED"}
+        }
+      }
+    },
+    "nonclaims": {"type": "array", "minItems": 6, "items": {"type": "string"}},
+    "status": {"const": "EXECUTABLE_BOUNDED_SEMANTICS_IMPLEMENTED"}
+  }
+}

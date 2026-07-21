@@ -1,0 +1,19 @@
+{
+  "case_type": "BRANCH_LOCAL_FIREWALL",
+  "expected": {
+    "derived": {
+      "firewall_respected": false
+    },
+    "diagnostic_codes": [
+      "RELATIVE_TO_ABSOLUTE_PROMOTION_FORBIDDEN"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "27_role_r7_reject_absolute_promotion",
+  "input": {
+    "claimed_distinct": true,
+    "distinctness_basis": "NON_ISOMORPHISM",
+    "evidence_scope": "RELATIVE",
+    "promotion_target": "ABSOLUTE_V0"
+  }
+}

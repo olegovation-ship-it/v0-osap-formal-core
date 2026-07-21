@@ -1,0 +1,26 @@
+{
+  "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+  "expected": {
+    "derived": {
+      "historical_nonconversion_preserved": false
+    },
+    "diagnostic_codes": [
+      "HISTORICAL_TOKEN_CURRENT_CONVERSION"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "21_t162_reject_archive_export",
+  "input": {
+    "current_tokens": [
+      {
+        "live_guard": true,
+        "token_id": "hist-1"
+      }
+    ],
+    "fresh_activations": [],
+    "historical_token": {
+      "historical": true,
+      "token_id": "hist-1"
+    }
+  }
+}

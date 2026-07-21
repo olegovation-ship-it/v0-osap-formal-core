@@ -1,0 +1,20 @@
+{
+  "case_type": "ROBUST_OBSTRUCTION",
+  "expected": {
+    "derived": {
+      "robust_relative_v0_blocked": false
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "25_role_r6_eliminable_residual_no_robust_obstruction",
+  "input": {
+    "residual": {
+      "declared": true,
+      "live": true,
+      "non_eliminable": false,
+      "residual_id": "q-robust",
+      "residual_type": "CAUSAL"
+    }
+  }
+}

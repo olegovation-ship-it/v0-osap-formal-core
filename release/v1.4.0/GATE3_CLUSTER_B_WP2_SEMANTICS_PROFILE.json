@@ -1,0 +1,87 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE",
+  "case_types": [
+    "BRANCH_LOCAL_FIREWALL",
+    "DLE_TRANSITION",
+    "HISTORICAL_TOKEN_NONCONVERSION",
+    "MINIMAL_RESIDUAL_OBSTRUCTION",
+    "MODEL_PAIR_NONELIMINABILITY",
+    "RESIDUAL_PERSISTENCE",
+    "RESIDUAL_TYPE_SEPARATION",
+    "ROBUST_OBSTRUCTION",
+    "STRONG_DLE"
+  ],
+  "contract_bindings": [
+    {
+      "contract_id": "CB-CONTRACT-STRONG-DLE",
+      "evaluator": "evaluate_strong_dle",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "contract_id": "CB-CONTRACT-RESIDUAL-PERSISTENCE",
+      "evaluator": "evaluate_residual_persistence",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "contract_id": "CB-CONTRACT-RESIDUAL-TYPE-SEPARATION",
+      "evaluator": "evaluate_residual_type_separation",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T159"
+      ]
+    },
+    {
+      "contract_id": "CB-CONTRACT-MODEL-PAIR",
+      "evaluator": "evaluate_model_pair_noneliminability",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "contract_id": "CB-CONTRACT-MINIMAL-OBSTRUCTION",
+      "evaluator": "evaluate_minimal_residual_obstruction",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T161"
+      ]
+    },
+    {
+      "contract_id": "CB-CONTRACT-HISTORICAL-NONCONVERSION",
+      "evaluator": "evaluate_historical_token_nonconversion",
+      "runtime_status": "IMPLEMENTED_IN_WP2_PROOF_DEFERRED",
+      "theorem_ids": [
+        "T162"
+      ]
+    }
+  ],
+  "date": "2026-07-21",
+  "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+  "nonclaims": [
+    "No Lean or Coq proof completion is claimed; formal proof remains WP4.",
+    "No Validator Core or IPEC rule binding is claimed; versioned bindings remain WP3.",
+    "No checker completeness or unrestricted semantic soundness is claimed.",
+    "No global cross-backend equivalence or proof-term identity is claimed.",
+    "No empirical, physical-disappearance, cosmological, or absolute-V0 claim is made.",
+    "No tag, GitHub Release, Zenodo publication, DOI action, or stable-release rebuild is authorized."
+  ],
+  "residual_type_vocabulary": [
+    "TARGET_PRESENCE",
+    "HISTORICAL",
+    "MEMORY",
+    "SIGNAL",
+    "CAUSAL",
+    "INFORMATION",
+    "GENERIC_TRACE"
+  ],
+  "status": "EXECUTABLE_BOUNDED_SEMANTICS_IMPLEMENTED",
+  "version": "0.1.2"
+}
