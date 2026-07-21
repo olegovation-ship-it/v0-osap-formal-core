@@ -1,0 +1,80 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-21",
+  "decision": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "gate_count": 14,
+  "gates": [
+    {
+      "description": "PR #22 is merged and closed",
+      "id": "PM01",
+      "status": "PASS"
+    },
+    {
+      "description": "accepted head and canonical merge commit are exact",
+      "id": "PM02",
+      "status": "PASS"
+    },
+    {
+      "description": "WP1 acceptance gates are 16/16 PASS",
+      "id": "PM03",
+      "status": "PASS"
+    },
+    {
+      "description": "hosted workflows are 19/19 successful",
+      "id": "PM04",
+      "status": "PASS"
+    },
+    {
+      "description": "WP1, WP0 post-merge, Python, Lean, Coq, schema and readiness workflows passed",
+      "id": "PM05",
+      "status": "PASS"
+    },
+    {
+      "description": "detached post-merge replay completed with 86 tests passed",
+      "id": "PM06",
+      "status": "PASS"
+    },
+    {
+      "description": "merge delta contains 29 paths and passes diff hygiene",
+      "id": "PM07",
+      "status": "PASS"
+    },
+    {
+      "description": "main and v1.4.0-development are synchronized to the WP1 merge baseline",
+      "id": "PM08",
+      "status": "PASS"
+    },
+    {
+      "description": "v1.3.0 stable tag target is unchanged",
+      "id": "PM09",
+      "status": "PASS"
+    },
+    {
+      "description": "closed WP0 release records are unchanged",
+      "id": "PM10",
+      "status": "PASS"
+    },
+    {
+      "description": "canonical WP1 records are immutable during closeout",
+      "id": "PM11",
+      "status": "PASS"
+    },
+    {
+      "description": "no tag, GitHub Release, Zenodo publication or DOI action is authorized",
+      "id": "PM12",
+      "status": "PASS"
+    },
+    {
+      "description": "no proof implementation or runtime semantics is introduced",
+      "id": "PM13",
+      "status": "PASS"
+    },
+    {
+      "description": "transition beyond WP1 requires a separate WP2 build specification",
+      "id": "PM14",
+      "status": "PASS"
+    }
+  ],
+  "release_authorized": false,
+  "version": "0.1"
+}

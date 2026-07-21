@@ -95,6 +95,7 @@ def _read_sha256_ledger(path: Path) -> dict[str, str]:
     return entries
 
 
+# WP1_POST_MERGE_FINAL_SUCCESSOR_LEDGER_V0_1_1
 def test_post_merge_sha256_ledger():
     historical_path = (
         ROOT
@@ -104,7 +105,7 @@ def test_post_merge_sha256_ledger():
     successor_path = (
         ROOT
         / R
-        / "GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+        / "GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt"
     )
 
     historical = _read_sha256_ledger(historical_path)

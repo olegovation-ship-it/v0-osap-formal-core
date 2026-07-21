@@ -1,0 +1,22 @@
+{
+  "ahead_by": 0,
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD",
+  "behind_by": 0,
+  "branch_deletion_authorized": false,
+  "canonical_wp1_merge_baseline": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "compare_status": "identical",
+  "date": "2026-07-21",
+  "development_branch": "v1.4.0-development",
+  "final_sync_required_after_closeout_merge": true,
+  "force_push_authorized": false,
+  "history_rewrite_authorized": false,
+  "main_branch": "main",
+  "observed_development_tip": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "observed_main_tip": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "pre_sync_development_tip": "8229685e4852f81d9bd2fc20ceec57bf1c7e91e5",
+  "relation": "SYNCHRONIZED_TO_CURRENT_MAIN",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "BASELINE_SYNCHRONIZATION_CONFIRMED",
+  "sync_mode": "FAST_FORWARD_ONLY",
+  "version": "0.1"
+}

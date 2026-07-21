@@ -94,7 +94,7 @@ def test_builder_outputs_are_current():
     module = load_module("wp1_builder", "scripts/build_gate3_cluster_b_wp1.py")
     overrides, ledger = module.expected_outputs()
     assert all(path.read_text(encoding="utf-8") == expected for path, expected in overrides.items())
-    assert (ROOT / "release/v1.4.0/GATE3_CLUSTER_B_WP1_SHA256SUMS.txt").read_text(encoding="utf-8") == ledger
+    assert module.ledger_compatibility_errors(ledger) == []
 
 
 def test_git_commit_object_expression_is_literal_and_validly_escaped():
@@ -151,7 +151,7 @@ def test_wp0_post_merge_sha256_supersession_is_exact():
     )
     successor = read_ledger(
         "release/v1.4.0/"
-        "GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+        "GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt"
     )
 
     superseded = {
@@ -168,5 +168,36 @@ def test_wp0_post_merge_sha256_supersession_is_exact():
             (ROOT / rel).read_bytes()
         ).hexdigest()
 
+        assert observed == successor[rel]
+        assert successor[rel] != historical[rel]
+
+
+def test_wp1_post_merge_sha256_supersession_is_exact():
+    def read_ledger(rel: str) -> dict[str, str]:
+        entries: dict[str, str] = {}
+        for line in (ROOT / rel).read_text(encoding="utf-8").splitlines():
+            if not line.strip() or line.lstrip().startswith("#"):
+                continue
+            expected, path = line.split("  ", 1)
+            entries[path] = expected
+        return entries
+    historical = read_ledger(
+        "release/v1.4.0/GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+    )
+    successor = read_ledger(
+        "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt"
+    )
+    superseded = {
+        "scripts/build_gate3_cluster_b_wp1.py",
+        "scripts/verify_gate3_cluster_b_wp0.py",
+        "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
+        "scripts/verify_gate3_cluster_b_wp1.py",
+        "tests/test_gate3_cluster_b_wp0.py",
+        "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+        "tests/test_gate3_cluster_b_wp1.py",
+    }
+    assert set(historical) & set(successor) == superseded
+    for rel in superseded:
+        observed = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
         assert observed == successor[rel]
         assert successor[rel] != historical[rel]

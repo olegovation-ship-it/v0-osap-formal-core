@@ -1,0 +1,33 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-21",
+  "schema_count": 5,
+  "schemas": [
+    {
+      "draft": "2020-12",
+      "record": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp1_post_merge_archival_closeout_record.schema.json"
+    },
+    {
+      "draft": "2020-12",
+      "record": "release/v1.4.0/GATE3_CLUSTER_B_WP1_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp1_development_branch_synchronization_record.schema.json"
+    },
+    {
+      "draft": "2020-12",
+      "record": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_HOSTED_CI_EVIDENCE.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp1_post_merge_hosted_ci_evidence.schema.json"
+    },
+    {
+      "draft": "2020-12",
+      "record": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp1_post_merge_frozen_upstream_preservation_record.schema.json"
+    },
+    {
+      "draft": "2020-12",
+      "record": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_CLOSEOUT_GATES.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp1_post_merge_closeout_gates.schema.json"
+    }
+  ],
+  "version": "0.1"
+}

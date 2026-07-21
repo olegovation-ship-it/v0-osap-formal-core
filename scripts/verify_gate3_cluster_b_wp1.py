@@ -17,6 +17,18 @@ RESERVED = {"T157", "T158", "T159", "T160", "T161", "T162"}
 REGISTRY_PATH = "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json"
 CLOSED_WP0_RECORD_PREFIX = "release/v1.4.0/GATE3_CLUSTER_B_WP0_"
 
+# WP1_POST_MERGE_CLOSEOUT_EXTENSION_V0_1_1
+WP1_POST_MERGE_LEDGER = "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt"
+WP1_POST_MERGE_SUPERSEDED_PATHS = {
+    "scripts/build_gate3_cluster_b_wp1.py",
+    "scripts/verify_gate3_cluster_b_wp0.py",
+    "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp1.py",
+    "tests/test_gate3_cluster_b_wp0.py",
+    "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp1.py",
+}
+
 ALLOWED_FILES = {
     ".github/workflows/gate3-cluster-b-wp1.yml",
     "scripts/build_gate3_cluster_b_wp1.py",
@@ -26,6 +38,14 @@ ALLOWED_FILES = {
     "scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py",
     "tests/test_gate3_cluster_b_wp0.py",
     "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py",
+
+    # WP1_POST_MERGE_CLOSEOUT_V0_1_1_WP1
+    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+    "scripts/build_gate3_cluster_b_wp1_post_merge_closeout.py",
+    "scripts/capture_gate3_cluster_b_wp1_post_merge_evidence.py",
+    "scripts/synchronize_v1_4_0_development_wp1.sh",
+    "scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp1_post_merge_closeout.py",
 }
 ALLOWED_DIRECTORIES = (
     "docs/gate3/cluster_b/",
@@ -174,19 +194,49 @@ def validate_records(repo: Path) -> list[str]:
     return errors
 
 
-def ledger_errors(repo: Path) -> list[str]:
-    ledger = repo / "release/v1.4.0/GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
-    if not ledger.is_file(): return ["missing WP1 SHA256 ledger"]
-    errors: list[str] = []
-    for line in ledger.read_text(encoding="utf-8").splitlines():
-        if not line.strip(): continue
+def _read_sha256_ledger(path: Path) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
         expected, rel = line.split("  ", 1)
-        path = repo / rel
-        if not path.is_file(): errors.append(f"ledger missing file {rel}"); continue
-        observed = hashlib.sha256(path.read_bytes()).hexdigest()
-        if observed != expected: errors.append(f"SHA256 mismatch: {rel}")
-    return errors
+        entries[rel] = expected
+    return entries
 
+
+def ledger_errors(repo: Path) -> list[str]:
+    historical_path = repo / "release/v1.4.0/GATE3_CLUSTER_B_WP1_SHA256SUMS.txt"
+    successor_path = repo / WP1_POST_MERGE_LEDGER
+    if not historical_path.is_file():
+        return ["missing WP1 SHA256 ledger"]
+    if not successor_path.is_file():
+        return ["missing WP1 post-merge successor ledger"]
+    historical = _read_sha256_ledger(historical_path)
+    successor = _read_sha256_ledger(successor_path)
+    overlap = set(historical) & set(successor)
+    errors: list[str] = []
+    if overlap != WP1_POST_MERGE_SUPERSEDED_PATHS:
+        errors.append(
+            "unexpected WP1/post-merge ledger overlap: "
+            f"{sorted(overlap)}"
+        )
+    for rel, historical_expected in historical.items():
+        path = repo / rel
+        if not path.is_file():
+            errors.append(f"ledger missing file {rel}")
+            continue
+        expected = (
+            successor.get(rel)
+            if rel in WP1_POST_MERGE_SUPERSEDED_PATHS
+            else historical_expected
+        )
+        if expected is None:
+            errors.append(f"successor ledger missing superseded path: {rel}")
+            continue
+        observed = hashlib.sha256(path.read_bytes()).hexdigest()
+        if observed != expected:
+            errors.append(f"SHA256 mismatch: {rel}")
+    return errors
 
 def canonical_path(value: str) -> str:
     path = value.strip().replace("\\", "/")

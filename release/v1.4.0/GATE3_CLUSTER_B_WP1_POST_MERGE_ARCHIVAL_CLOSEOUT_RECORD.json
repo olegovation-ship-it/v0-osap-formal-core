@@ -1,0 +1,56 @@
+{
+  "accepted_head_commit": "8229685e4852f81d9bd2fc20ceec57bf1c7e91e5",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD",
+  "branch_relation_at_capture": "SYNCHRONIZED_TO_CURRENT_MAIN",
+  "canonical_wp1_records_modified": false,
+  "closed_wp0_records_modified": false,
+  "cluster": "GATE3_CLUSTER_B",
+  "date": "2026-07-21",
+  "decision": "OPEN_WP1_POST_MERGE_CLOSEOUT_PR",
+  "detached_post_merge_replay": {
+    "failed": 0,
+    "pytest_passed": 86,
+    "rc": 0,
+    "status": "PASS"
+  },
+  "final_sync_required_after_closeout_merge": true,
+  "frozen_upstreams_modified": false,
+  "hosted_ci_checks": {
+    "fail": 0,
+    "pass": 19,
+    "pending": 0,
+    "skipped": 0,
+    "total": 19
+  },
+  "merge_commit": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "merge_delta": {
+    "changed_paths": 29,
+    "diff_check": "PASS"
+  },
+  "merged_at": "2026-07-20T22:37:15Z",
+  "merged_pr": 22,
+  "next_authorized_work_package": "WP2_PENDING_SEPARATE_BUILD_SPECIFICATION",
+  "observed_development_tip": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "observed_main_tip": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "post_merge_ci": "PASS_AUTHENTICATED",
+  "post_merge_ci_evidence": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_HOSTED_CI_EVIDENCE.json",
+  "pre_merge_main": "f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15",
+  "proof_or_runtime_semantics_added": false,
+  "release_actions": {
+    "doi": false,
+    "github_release": false,
+    "tag": false,
+    "zenodo": false
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "target_version": "v1.4.0",
+  "version": "0.1",
+  "work_package": "WP1",
+  "wp1_acceptance_gates": {
+    "fail": 0,
+    "pass": 16,
+    "pending": 0,
+    "total": 16
+  }
+}

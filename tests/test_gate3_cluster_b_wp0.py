@@ -146,3 +146,22 @@ def test_wp0_allowlist_covers_wp1_registry_controls():
         "tests/test_gate3_cluster_b_wp1.py",
     ]
     assert all(module.is_allowed_path(path) for path in expected)
+
+
+def test_wp0_allowlist_covers_wp1_post_merge_closeout_controls():
+    spec = importlib.util.spec_from_file_location(
+        "wp0_wp1_post_merge_allowlist",
+        ROOT / "scripts/verify_gate3_cluster_b_wp0.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    expected = [
+        ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+        "scripts/build_gate3_cluster_b_wp1_post_merge_closeout.py",
+        "scripts/capture_gate3_cluster_b_wp1_post_merge_evidence.py",
+        "scripts/synchronize_v1_4_0_development_wp1.sh",
+        "scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py",
+        "tests/test_gate3_cluster_b_wp1_post_merge_closeout.py",
+    ]
+    assert all(module.is_allowed_path(path) for path in expected)
