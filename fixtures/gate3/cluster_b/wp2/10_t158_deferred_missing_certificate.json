@@ -1,0 +1,32 @@
+{
+  "case_type": "RESIDUAL_PERSISTENCE",
+  "expected": {
+    "derived": {
+      "residual_persists": false
+    },
+    "diagnostic_codes": [
+      "RESIDUAL_PERSISTENCE_PREMISE_MISSING"
+    ],
+    "status": "DEFERRED"
+  },
+  "fixture_id": "10_t158_deferred_missing_certificate",
+  "input": {
+    "after_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "MEMORY"
+    },
+    "before_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "MEMORY"
+    },
+    "non_interference_certificate": {
+      "present": false
+    },
+    "transition": {
+      "deterministic": true,
+      "residual_effect": "PRESERVE"
+    }
+  }
+}

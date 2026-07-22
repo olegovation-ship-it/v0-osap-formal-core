@@ -1,0 +1,34 @@
+{
+  "case_type": "STRONG_DLE",
+  "expected": {
+    "derived": {
+      "strong_dle": false
+    },
+    "diagnostic_codes": [
+      "DLE_TRANSITION_PROVENANCE_MISSING",
+      "STRONG_DLE_HISTORY_MISSING"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "06_t157_reject_missing_provenance",
+  "input": {
+    "after_state": {
+      "current_live_token_ids": [],
+      "state_id": "S1",
+      "target_license_status": "EXHAUSTED"
+    },
+    "before_state": {
+      "current_live_token_ids": [
+        "tok-live-1"
+      ],
+      "state_id": "S0",
+      "target_license_live": true
+    },
+    "historical_live_witness": {
+      "target_id": "target-A",
+      "token_id": "tok-live-1",
+      "was_live": true
+    },
+    "transition_provenance": {}
+  }
+}

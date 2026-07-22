@@ -1,0 +1,17 @@
+{
+  "case_type": "BRANCH_LOCAL_FIREWALL",
+  "expected": {
+    "derived": {
+      "firewall_respected": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "26_role_r7_branch_firewall_pass",
+  "input": {
+    "claimed_distinct": true,
+    "distinctness_basis": "NON_ISOMORPHISM",
+    "evidence_scope": "BRANCH_LOCAL",
+    "promotion_target": "RELATIVE_V0"
+  }
+}

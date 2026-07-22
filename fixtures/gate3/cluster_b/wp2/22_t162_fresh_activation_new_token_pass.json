@@ -1,0 +1,36 @@
+{
+  "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+  "expected": {
+    "derived": {
+      "freshly_activated_current_token_ids": [
+        "live-new-1"
+      ],
+      "historical_nonconversion_preserved": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "22_t162_fresh_activation_new_token_pass",
+  "input": {
+    "current_tokens": [
+      {
+        "activation_id": "act-1",
+        "live_guard": true,
+        "source_historical_token_id": "hist-1",
+        "token_id": "live-new-1"
+      }
+    ],
+    "fresh_activations": [
+      {
+        "activation_id": "act-1",
+        "new_token_id": "live-new-1",
+        "source_historical_token_id": "hist-1",
+        "typed": true
+      }
+    ],
+    "historical_token": {
+      "historical": true,
+      "token_id": "hist-1"
+    }
+  }
+}

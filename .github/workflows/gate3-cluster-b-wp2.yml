@@ -1,0 +1,95 @@
+name: V0 OSAP Gate 3 Cluster B WP2
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp0.yml'
+      - '.github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp1.yml'
+      - '.github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp2.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp2.py'
+      - 'docs/gate3/cluster_b/WP2_*'
+      - 'fixtures/gate3/cluster_b/wp2/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_*'
+      - 'scripts/build_gate3_cluster_b_wp2.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'tests/conftest.py'
+      - 'tests/test_gate3_cluster_b_wp2.py'
+  push:
+    branches: [v1.4.0-development]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp0.yml'
+      - '.github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp1.yml'
+      - '.github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp2.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp2.py'
+      - 'docs/gate3/cluster_b/WP2_*'
+      - 'fixtures/gate3/cluster_b/wp2/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_*'
+      - 'scripts/build_gate3_cluster_b_wp2.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'tests/conftest.py'
+      - 'tests/test_gate3_cluster_b_wp2.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wp2-executable-semantics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch frozen tags
+        run: git fetch --force --tags origin
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install verification dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Verify deterministic WP2 build
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2.py --check
+      - name: Replay inherited WP0 and WP1 records at the exact frozen WP2 baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          replay_dir="$(mktemp -d)"
+          cleanup() {
+            git worktree remove --force "$replay_dir" >/dev/null 2>&1 || true
+            rm -rf "$replay_dir"
+          }
+          trap cleanup EXIT
+          git worktree add --detach "$replay_dir" ffeaa3fd4fb2f85679f4695d5b28e333004ca24a
+          (
+            cd "$replay_dir"
+            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp0.py --package-only
+            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py --package-only
+            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp1.py --package-only
+            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py --package-only
+          )
+      - name: Verify WP2 semantics, fixtures, schemas, ledger, and repository boundary
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2.py
+      - name: Full Python regression suite
+        run: PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider
+      - name: Proof-hole scan remains inherited and unchanged
+        run: python scripts/check_no_proof_holes.py
+      - name: Full-range whitespace check
+        run: git diff --check ffeaa3fd4fb2f85679f4695d5b28e333004ca24a...HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp2-${{ github.sha }}
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_BASELINE_LOCK.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_ACCEPTANCE_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_SCHEMA_BUNDLE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_SHA256SUMS.txt
+          if-no-files-found: error

@@ -29,6 +29,14 @@ ALLOWED_FILES = {
     "scripts/build_gate3_cluster_b_wp1.py",
     "scripts/verify_gate3_cluster_b_wp1.py",
     "tests/test_gate3_cluster_b_wp1.py",
+
+    # WP1_POST_MERGE_CLOSEOUT_V0_1_1_WP0
+    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+    "scripts/build_gate3_cluster_b_wp1_post_merge_closeout.py",
+    "scripts/capture_gate3_cluster_b_wp1_post_merge_evidence.py",
+    "scripts/synchronize_v1_4_0_development_wp1.sh",
+    "scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp1_post_merge_closeout.py",
 }
 
 ALLOWED_DIRECTORIES = (

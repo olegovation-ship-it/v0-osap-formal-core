@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp2_result.schema.json",
+  "title": "V0 OSAP Gate 3 Cluster B WP2 evaluation result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixture_id", "case_type", "status", "accepted", "theorem_ids", "role_ids",
+    "diagnostics", "diagnostic_codes", "derived", "implementation_version",
+    "proof_claimed", "ipec_binding_claimed", "release_action_authorized"
+  ],
+  "properties": {
+    "fixture_id": {"type": ["string", "null"]},
+    "case_type": {"type": "string"},
+    "status": {"enum": ["PASS", "DEFERRED", "REJECT"]},
+    "accepted": {"type": "boolean"},
+    "theorem_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "role_ids": {"type": "array", "items": {"pattern": "^CB-R[1-7]$"}, "uniqueItems": true},
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "status", "message", "refs"],
+        "properties": {
+          "code": {"type": "string", "minLength": 1},
+          "status": {"enum": ["DEFERRED", "REJECT"]},
+          "message": {"type": "string", "minLength": 1},
+          "refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "diagnostic_codes": {"type": "array", "items": {"type": "string"}},
+    "derived": {"type": "object"},
+    "implementation_version": {"const": "v0-osap-cluster-b-wp2/0.1.0.dev1"},
+    "proof_claimed": {"const": false},
+    "ipec_binding_claimed": {"const": false},
+    "release_action_authorized": {"const": false}
+  }
+}

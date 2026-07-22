@@ -1,0 +1,42 @@
+{
+  "case_type": "STRONG_DLE",
+  "expected": {
+    "derived": {
+      "strong_dle": false
+    },
+    "diagnostic_codes": [
+      "DLE_TARGET_NOT_EXHAUSTED"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "05_t157_reject_current_live_conflict",
+  "input": {
+    "after_state": {
+      "current_live_token_ids": [
+        "tok-still-live"
+      ],
+      "state_id": "S1",
+      "target_license_status": "EXHAUSTED"
+    },
+    "before_state": {
+      "current_live_token_ids": [
+        "tok-live-1"
+      ],
+      "state_id": "S0",
+      "target_license_live": true
+    },
+    "historical_live_witness": {
+      "target_id": "target-A",
+      "token_id": "tok-live-1",
+      "was_live": true
+    },
+    "transition_provenance": {
+      "deterministic": true,
+      "kind": "DLE",
+      "source_state_id": "S0",
+      "target_id": "target-A",
+      "target_state_id": "S1",
+      "transition_id": "tr-1"
+    }
+  }
+}

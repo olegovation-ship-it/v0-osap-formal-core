@@ -1,0 +1,112 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_ACCEPTANCE_GATES",
+  "date": "2026-07-21",
+  "decision": "READY_FOR_BOUNDED_REPOSITORY_INTEGRATION",
+  "gate_count": 20,
+  "gates": [
+    {
+      "gate_id": "WP2-G01",
+      "requirement": "Exact WP2 start commit is ffeaa3fd4fb2f85679f4695d5b28e333004ca24a.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G02",
+      "requirement": "Canonical WP1 merge baseline eaf142089230ea5a5096ae834bf4e733d5f369aa is preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G03",
+      "requirement": "All canonical WP0/WP1 records, ledgers, tests, and theorem contracts remain byte-exact; only five inherited GitHub Actions workflow files receive bounded successor-replay compatibility modifications, including the full-history Python checker checkout required for frozen-baseline replay.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G04",
+      "requirement": "Closed WP0 records and canonical/post-merge WP1 records remain immutable.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G05",
+      "requirement": "Frozen v1.3.0 tag target remains 13bf095688bcabd5b090f188e9bd28a16237edeb.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G06",
+      "requirement": "Nine deterministic finite-record evaluators are present.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G07",
+      "requirement": "All seven semantic roles CB-R1 through CB-R7 have executable fixture coverage.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G08",
+      "requirement": "All new theorem targets T157 through T162 have executable fixture coverage.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G09",
+      "requirement": "Residual type vocabulary exactly matches the WP1 seven-type vocabulary.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G10",
+      "requirement": "StrongDLE requires history, current no-live status, and typed DLE provenance.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G11",
+      "requirement": "Residual persistence is conditional on deterministic certified non-interference.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G12",
+      "requirement": "Residual type separation admits only explicit admissible translations.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G13",
+      "requirement": "Model-pair non-eliminability requires schema validity, shared-fragment agreement, non-label distinctness, and non-circular evidence.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G14",
+      "requirement": "Minimal single-residual obstruction is sufficient only; converse and completeness remain unclaimed.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G15",
+      "requirement": "Historical tokens cannot become current live tokens without a separate typed fresh activation.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G16",
+      "requirement": "Robust-obstruction and branch-local-firewall inherited roles receive runtime fixture coverage without new theorem ownership.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G17",
+      "requirement": "Fixture outcomes reproduce expected status, diagnostic codes, and derived values.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G18",
+      "requirement": "Fixture and result schemas validate under JSON Schema Draft 2020-12.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G19",
+      "requirement": "WP3 bindings and WP4 proofs remain explicitly deferred.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-G20",
+      "requirement": "No tag, GitHub Release, Zenodo publication, DOI action, or release rebuild is authorized.",
+      "status": "PASS"
+    }
+  ],
+  "hosted_ci_status": "NOT_RUN",
+  "local_package_status": "PASS",
+  "release_actions_authorized": false,
+  "version": "0.1.4"
+}

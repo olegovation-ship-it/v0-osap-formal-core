@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp2_acceptance_gates.schema.json",
+  "title": "V0 OSAP Gate 3 Cluster B WP2 acceptance gates",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact_id", "version", "date", "gate_count", "gates", "local_package_status", "hosted_ci_status", "release_actions_authorized", "decision"],
+  "properties": {
+    "artifact_id": {"const": "V0_OSAP_GATE3_CLUSTER_B_WP2_ACCEPTANCE_GATES"},
+    "version": {"const": "0.1.4"},
+    "date": {"const": "2026-07-21"},
+    "gate_count": {"const": 20},
+    "gates": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate_id", "requirement", "status"],
+        "properties": {
+          "gate_id": {"pattern": "^WP2-G[0-9]{2}$"},
+          "requirement": {"type": "string", "minLength": 1},
+          "status": {"const": "PASS"}
+        }
+      }
+    },
+    "local_package_status": {"const": "PASS"},
+    "hosted_ci_status": {"const": "NOT_RUN"},
+    "release_actions_authorized": {"const": false},
+    "decision": {"const": "READY_FOR_BOUNDED_REPOSITORY_INTEGRATION"}
+  }
+}

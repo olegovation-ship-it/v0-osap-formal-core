@@ -1,0 +1,62 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD",
+  "canonical_wp1_merge_baseline": "eaf142089230ea5a5096ae834bf4e733d5f369aa",
+  "canonical_wp1_records_modified": false,
+  "closed_wp0_records_modified": false,
+  "date": "2026-07-21",
+  "inherited_conditional_theorem_ids_unchanged": [
+    "T140",
+    "T150",
+    "T156"
+  ],
+  "preserved": [
+    {
+      "artifact": "V0 OSAP Formal Core v1.3.0",
+      "doi": "10.5281/zenodo.21346728",
+      "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+      "modified": false,
+      "tag": "v1.3.0"
+    },
+    {
+      "artifact": "V0 Integrated Proof-Evidence Contract v0.1",
+      "exact_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+      "modified": false
+    },
+    {
+      "artifact": "V0 Validator Core v0.12",
+      "doi": "10.5281/zenodo.21285577",
+      "exact_tag": "v0.12-compiler-passed-freeze",
+      "exact_tag_target": "3540f47198140ca0a3612f247cfe356fa7fba2cb",
+      "modified": false
+    },
+    {
+      "artifact": "Paper B submitted baseline",
+      "manuscript_id": "SCICO-D-26-00508",
+      "modified": false,
+      "submitted": "2026-07-19"
+    },
+    {
+      "artifact": "Submission register v121",
+      "modified": false,
+      "package_sha256": "9e75d4c27a6151195486641d3d1074aaab494e2b1a50f293d5a710be58903eaf"
+    }
+  ],
+  "proof_implementation_authorized": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "runtime_semantics_authorized": false,
+  "source_lock": "release/v1.4.0/GATE3_CLUSTER_B_WP1_BASELINE_LOCK.json",
+  "version": "0.1",
+  "wp1_conditional_theorem_ids_unchanged": [
+    "T158",
+    "T160"
+  ],
+  "wp1_theorem_ids_canonicalized_by_merge": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ]
+}

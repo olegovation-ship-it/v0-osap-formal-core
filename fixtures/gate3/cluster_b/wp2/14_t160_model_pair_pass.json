@@ -1,0 +1,55 @@
+{
+  "case_type": "MODEL_PAIR_NONELIMINABILITY",
+  "expected": {
+    "derived": {
+      "non_eliminable_from_shared_fragment": true
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "14_t160_model_pair_pass",
+  "input": {
+    "model_left": {
+      "model_id": "M1",
+      "residuals": [
+        {
+          "live": true,
+          "residual_id": "q-1",
+          "residual_type": "MEMORY"
+        }
+      ],
+      "schema_valid": true,
+      "shared_fragment": {
+        "license_state": "EXHAUSTED",
+        "target": "A"
+      }
+    },
+    "model_right": {
+      "model_id": "M2",
+      "residuals": [
+        {
+          "live": false,
+          "residual_id": "q-1",
+          "residual_type": "MEMORY"
+        }
+      ],
+      "schema_valid": true,
+      "shared_fragment": {
+        "license_state": "EXHAUSTED",
+        "target": "A"
+      }
+    },
+    "pair_certificate": {
+      "distinctness_basis": "NON_ISOMORPHISM",
+      "distinctness_evidence_ids": [
+        "ev-distinct-1"
+      ],
+      "non_circular": true,
+      "shared_symbols": [
+        "license_state",
+        "target"
+      ],
+      "target_residual_id": "q-1"
+    }
+  }
+}

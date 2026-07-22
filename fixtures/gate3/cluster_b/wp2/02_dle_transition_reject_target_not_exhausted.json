@@ -1,0 +1,37 @@
+{
+  "case_type": "DLE_TRANSITION",
+  "expected": {
+    "derived": {
+      "dle_transition_valid": false
+    },
+    "diagnostic_codes": [
+      "DLE_TARGET_NOT_EXHAUSTED"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "02_dle_transition_reject_target_not_exhausted",
+  "input": {
+    "after_state": {
+      "current_live_token_ids": [
+        "tok-live-1"
+      ],
+      "state_id": "S1",
+      "target_license_status": "LIVE"
+    },
+    "before_state": {
+      "current_live_token_ids": [
+        "tok-live-1"
+      ],
+      "state_id": "S0",
+      "target_license_live": true
+    },
+    "transition_provenance": {
+      "deterministic": true,
+      "kind": "DLE",
+      "source_state_id": "S0",
+      "target_id": "target-A",
+      "target_state_id": "S1",
+      "transition_id": "tr-1"
+    }
+  }
+}

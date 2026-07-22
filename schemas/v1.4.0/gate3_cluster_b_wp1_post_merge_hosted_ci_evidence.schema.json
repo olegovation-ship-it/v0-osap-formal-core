@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "check_summary": {
+      "additionalProperties": false,
+      "properties": {
+        "failure": {
+          "const": 0
+        },
+        "pending": {
+          "const": 0
+        },
+        "skipped": {
+          "const": 0
+        },
+        "success": {
+          "const": 19
+        },
+        "total": {
+          "const": 19
+        }
+      },
+      "required": [
+        "success",
+        "total",
+        "failure",
+        "pending",
+        "skipped"
+      ],
+      "type": "object"
+    },
+    "date": {
+      "type": "string"
+    },
+    "detached_post_merge_replay": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_context": {
+          "type": "string"
+        },
+        "builder_rc": {
+          "const": 0
+        },
+        "detached_worktree_clean_rc": {
+          "const": 0
+        },
+        "full_pytest": {
+          "type": "object"
+        },
+        "merge_commit": {
+          "const": "eaf142089230ea5a5096ae834bf4e733d5f369aa"
+        },
+        "merge_diff_rc": {
+          "const": 0
+        },
+        "result": {
+          "const": "PASS"
+        },
+        "wp0_post_merge_verifier_rc": {
+          "const": 0
+        },
+        "wp0_verifier_rc": {
+          "const": 0
+        },
+        "wp1_verifier_rc": {
+          "const": 0
+        }
+      },
+      "required": [
+        "result",
+        "full_pytest"
+      ],
+      "type": "object"
+    },
+    "evidence_state": {
+      "const": "AUTHENTIC_GITHUB_API_AND_DETACHED_REPLAY_EVIDENCE_RECORDED"
+    },
+    "mandatory_jobs": {
+      "items": {
+        "type": "object"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "mandatory_workflows": {
+      "minProperties": 7,
+      "type": "object"
+    },
+    "merge_commit": {
+      "const": "eaf142089230ea5a5096ae834bf4e733d5f369aa"
+    },
+    "merged_at": {
+      "const": "2026-07-20T22:37:15Z"
+    },
+    "observation_source": {
+      "const": "GITHUB_CONNECTOR_AND_CODESPACES_REPLAY"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "source_head_sha": {
+      "const": "8229685e4852f81d9bd2fc20ceec57bf1c7e91e5"
+    },
+    "source_pr": {
+      "const": 22
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "workflow_run_count": {
+      "const": 19
+    },
+    "workflow_runs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "conclusion": {
+            "const": "success"
+          },
+          "run_id": {
+            "type": "integer"
+          },
+          "run_number": {
+            "type": "integer"
+          },
+          "status": {
+            "const": "completed"
+          },
+          "url": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "workflow_name": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "workflow_name",
+          "run_number",
+          "status",
+          "conclusion",
+          "url"
+        ],
+        "type": "object"
+      },
+      "maxItems": 19,
+      "minItems": 19,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "source_pr",
+    "source_head_sha",
+    "merge_commit",
+    "merged_at",
+    "check_summary",
+    "workflow_run_count",
+    "workflow_runs",
+    "mandatory_workflows",
+    "mandatory_jobs",
+    "detached_post_merge_replay",
+    "evidence_state",
+    "observation_source",
+    "canonical_sha256"
+  ],
+  "title": "Gate 3 Cluster B WP1 Post-Merge Hosted CI Evidence",
+  "type": "object"
+}

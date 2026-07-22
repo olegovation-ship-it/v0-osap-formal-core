@@ -1,0 +1,29 @@
+{
+  "case_type": "RESIDUAL_TYPE_SEPARATION",
+  "expected": {
+    "derived": {
+      "admissible_translation": true,
+      "not_interchangeable": false
+    },
+    "diagnostic_codes": [],
+    "status": "PASS"
+  },
+  "fixture_id": "13_t159_admissible_translation_discharges_separation",
+  "input": {
+    "claimed_interchangeable": true,
+    "left_residual": {
+      "residual_id": "q-memory",
+      "residual_type": "MEMORY"
+    },
+    "right_residual": {
+      "residual_id": "q-information",
+      "residual_type": "INFORMATION"
+    },
+    "translation_map": {
+      "preservation_obligations_met": true,
+      "source_type": "MEMORY",
+      "status": "ADMISSIBLE",
+      "target_type": "INFORMATION"
+    }
+  }
+}

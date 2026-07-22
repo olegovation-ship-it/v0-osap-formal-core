@@ -1,0 +1,40 @@
+{
+  "case_type": "RESIDUAL_PERSISTENCE",
+  "expected": {
+    "derived": {
+      "residual_persists": false
+    },
+    "diagnostic_codes": [
+      "DLE_RESIDUAL_INTERFERENCE_DETECTED",
+      "RESIDUAL_IDENTITY_CHANGED"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "09_t158_reject_retype_interference",
+  "input": {
+    "after_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "SIGNAL"
+    },
+    "before_residual": {
+      "live": true,
+      "residual_id": "q-1",
+      "residual_type": "MEMORY"
+    },
+    "non_interference_certificate": {
+      "forbidden_effects": [
+        "DELETE",
+        "REWRITE",
+        "RETYPE",
+        "IDENTITY_CHANGE"
+      ],
+      "present": true,
+      "residual_id": "q-1"
+    },
+    "transition": {
+      "deterministic": true,
+      "residual_effect": "RETYPE"
+    }
+  }
+}

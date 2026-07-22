@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ahead_by": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD"
+    },
+    "behind_by": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "branch_deletion_authorized": {
+      "const": false
+    },
+    "canonical_wp1_merge_baseline": {
+      "const": "eaf142089230ea5a5096ae834bf4e733d5f369aa"
+    },
+    "compare_status": {
+      "enum": [
+        "identical",
+        "ahead",
+        "behind"
+      ]
+    },
+    "date": {
+      "type": "string"
+    },
+    "development_branch": {
+      "const": "v1.4.0-development"
+    },
+    "final_sync_required_after_closeout_merge": {
+      "type": "boolean"
+    },
+    "force_push_authorized": {
+      "const": false
+    },
+    "history_rewrite_authorized": {
+      "const": false
+    },
+    "main_branch": {
+      "const": "main"
+    },
+    "observed_development_tip": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "observed_main_tip": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "pre_sync_development_tip": {
+      "const": "8229685e4852f81d9bd2fc20ceec57bf1c7e91e5"
+    },
+    "relation": {
+      "enum": [
+        "SYNCHRONIZED_TO_CURRENT_MAIN",
+        "DEVELOPMENT_AHEAD_WITH_CLOSEOUT_PATCH",
+        "FAST_FORWARD_AVAILABLE"
+      ]
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "status": {
+      "enum": [
+        "BASELINE_SYNCHRONIZATION_CONFIRMED",
+        "FINAL_FAST_FORWARD_REQUIRED",
+        "FINAL_SYNCHRONIZATION_CONFIRMED"
+      ]
+    },
+    "sync_mode": {
+      "const": "FAST_FORWARD_ONLY"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "main_branch",
+    "development_branch",
+    "sync_mode",
+    "canonical_wp1_merge_baseline",
+    "pre_sync_development_tip",
+    "observed_main_tip",
+    "observed_development_tip",
+    "compare_status",
+    "ahead_by",
+    "behind_by",
+    "relation",
+    "status",
+    "history_rewrite_authorized",
+    "force_push_authorized",
+    "branch_deletion_authorized",
+    "final_sync_required_after_closeout_merge"
+  ],
+  "title": "Gate 3 Cluster B WP1 Development Branch Synchronization Record",
+  "type": "object"
+}

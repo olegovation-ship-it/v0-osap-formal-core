@@ -1,10 +1,9 @@
 name: V0 OSAP Gate 3 Cluster B WP0
 
+# WP0 is a closed predecessor surface. Automatic PR/push dispatch is disabled
+# after WP2 successor activation; exact historical replay remains available manually.
 on:
-  push:
-    branches: ["v1.4.0-development"]
-  pull_request:
-    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read

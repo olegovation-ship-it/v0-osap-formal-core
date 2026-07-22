@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_head_commit": {
+      "const": "8229685e4852f81d9bd2fc20ceec57bf1c7e91e5"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP1_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "branch_relation_at_capture": {
+      "enum": [
+        "SYNCHRONIZED_TO_CURRENT_MAIN",
+        "DEVELOPMENT_AHEAD_WITH_CLOSEOUT_PATCH",
+        "FAST_FORWARD_AVAILABLE"
+      ]
+    },
+    "canonical_wp1_records_modified": {
+      "const": false
+    },
+    "closed_wp0_records_modified": {
+      "const": false
+    },
+    "cluster": {
+      "const": "GATE3_CLUSTER_B"
+    },
+    "date": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "OPEN_WP1_POST_MERGE_CLOSEOUT_PR",
+        "CLOSE_WP1_POST_MERGE_ARCHIVE"
+      ]
+    },
+    "detached_post_merge_replay": {
+      "additionalProperties": false,
+      "properties": {
+        "failed": {
+          "const": 0
+        },
+        "pytest_passed": {
+          "const": 86
+        },
+        "rc": {
+          "const": 0
+        },
+        "status": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "status",
+        "pytest_passed",
+        "failed",
+        "rc"
+      ],
+      "type": "object"
+    },
+    "final_sync_required_after_closeout_merge": {
+      "type": "boolean"
+    },
+    "frozen_upstreams_modified": {
+      "const": false
+    },
+    "hosted_ci_checks": {
+      "additionalProperties": false,
+      "properties": {
+        "fail": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pass": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pending": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "skipped": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pass",
+        "total",
+        "pending",
+        "fail"
+      ],
+      "type": "object"
+    },
+    "merge_commit": {
+      "const": "eaf142089230ea5a5096ae834bf4e733d5f369aa"
+    },
+    "merge_delta": {
+      "additionalProperties": false,
+      "properties": {
+        "changed_paths": {
+          "const": 29
+        },
+        "diff_check": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "changed_paths",
+        "diff_check"
+      ],
+      "type": "object"
+    },
+    "merged_at": {
+      "const": "2026-07-20T22:37:15Z"
+    },
+    "merged_pr": {
+      "const": 22
+    },
+    "next_authorized_work_package": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observed_development_tip": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "observed_main_tip": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "post_merge_ci": {
+      "const": "PASS_AUTHENTICATED"
+    },
+    "post_merge_ci_evidence": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pre_merge_main": {
+      "const": "f79bc16da3a4aa53c1e0cbbbbb65f003fea42e15"
+    },
+    "proof_or_runtime_semantics_added": {
+      "const": false
+    },
+    "release_actions": {
+      "additionalProperties": false,
+      "properties": {
+        "doi": {
+          "const": false
+        },
+        "github_release": {
+          "const": false
+        },
+        "tag": {
+          "const": false
+        },
+        "zenodo": {
+          "const": false
+        }
+      },
+      "required": [
+        "tag",
+        "github_release",
+        "zenodo",
+        "doi"
+      ],
+      "type": "object"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "status": {
+      "enum": [
+        "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+        "POST_MERGE_CLOSEOUT_MERGED"
+      ]
+    },
+    "target_version": {
+      "const": "v1.4.0"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "work_package": {
+      "const": "WP1"
+    },
+    "wp1_acceptance_gates": {
+      "additionalProperties": false,
+      "properties": {
+        "fail": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pass": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pending": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "skipped": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pass",
+        "total",
+        "pending",
+        "fail"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "target_version",
+    "cluster",
+    "work_package",
+    "merged_pr",
+    "pre_merge_main",
+    "accepted_head_commit",
+    "merge_commit",
+    "merged_at",
+    "wp1_acceptance_gates",
+    "hosted_ci_checks",
+    "detached_post_merge_replay",
+    "merge_delta",
+    "post_merge_ci",
+    "post_merge_ci_evidence",
+    "branch_relation_at_capture",
+    "observed_main_tip",
+    "observed_development_tip",
+    "status",
+    "decision",
+    "next_authorized_work_package",
+    "closed_wp0_records_modified",
+    "canonical_wp1_records_modified",
+    "frozen_upstreams_modified",
+    "proof_or_runtime_semantics_added",
+    "release_actions",
+    "final_sync_required_after_closeout_merge"
+  ],
+  "title": "Gate 3 Cluster B WP1 Post-Merge Archival Closeout Record",
+  "type": "object"
+}

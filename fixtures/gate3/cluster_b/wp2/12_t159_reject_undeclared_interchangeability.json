@@ -1,0 +1,27 @@
+{
+  "case_type": "RESIDUAL_TYPE_SEPARATION",
+  "expected": {
+    "derived": {
+      "not_interchangeable": true
+    },
+    "diagnostic_codes": [
+      "UNDECLARED_RESIDUAL_TRANSLATION"
+    ],
+    "status": "REJECT"
+  },
+  "fixture_id": "12_t159_reject_undeclared_interchangeability",
+  "input": {
+    "claimed_interchangeable": true,
+    "left_residual": {
+      "residual_id": "q-memory",
+      "residual_type": "MEMORY"
+    },
+    "right_residual": {
+      "residual_id": "q-signal",
+      "residual_type": "SIGNAL"
+    },
+    "translation_map": {
+      "status": "ABSENT"
+    }
+  }
+}
