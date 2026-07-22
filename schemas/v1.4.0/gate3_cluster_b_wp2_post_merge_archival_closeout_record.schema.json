@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "accepted_head_commit": {
+      "const": "b0f5fc5b0d5103e1bb22b06ca51716d40e22a5d7"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP2_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "date": {
+      "const": "2026-07-22"
+    },
+    "merge_commit": {
+      "const": "b6370af53add3fdff1ddb48824dd76ebba3aaa32"
+    },
+    "merged_pr": {
+      "const": 23
+    },
+    "status": {
+      "const": "POST_MERGE_CLOSEOUT_READY_FOR_PR"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "accepted_head_commit",
+    "artifact_id",
+    "date",
+    "hosted_ci_checks",
+    "merge_commit",
+    "merged_pr",
+    "status",
+    "version",
+    "wp2_acceptance_gates"
+  ],
+  "type": "object"
+}

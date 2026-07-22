@@ -1,0 +1,79 @@
+name: V0 OSAP Gate 3 Cluster B WP2 Post-Merge Closeout
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP2_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_post_merge_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_development_branch_synchronization_record.schema.json'
+      - 'scripts/build_gate3_cluster_b_wp2.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'scripts/*gate3_cluster_b_wp2_post_merge*'
+      - 'scripts/synchronize_v1_4_0_development_wp2.sh'
+      - 'tests/test_gate3_cluster_b_wp2_post_merge_closeout.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP2_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_post_merge_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp2_development_branch_synchronization_record.schema.json'
+      - 'scripts/build_gate3_cluster_b_wp2.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'scripts/*gate3_cluster_b_wp2_post_merge*'
+      - 'scripts/synchronize_v1_4_0_development_wp2.sh'
+      - 'tests/test_gate3_cluster_b_wp2_post_merge_closeout.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  wp2-post-merge-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git fetch --force --tags origin
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - run: python release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py --check
+      - run: python scripts/build_gate3_cluster_b_wp2.py --check
+      - run: python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check
+      - run: python scripts/capture_gate3_cluster_b_wp2_post_merge_evidence.py --check
+      - run: |
+          if [[ "${ github.ref_name }" == "main" ]]; then
+            python scripts/verify_gate3_cluster_b_wp2.py --allow-main
+            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --allow-main
+          else
+            python scripts/verify_gate3_cluster_b_wp2.py
+            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py
+          fi
+      - run: python -m pytest -q -p no:cacheprovider
+      - run: python scripts/check_no_proof_holes.py
+      - run: bash -n scripts/synchronize_v1_4_0_development_wp2.sh
+      - run: git diff --check b6370af53add3fdff1ddb48824dd76ebba3aaa32...HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp2-post-merge-closeout-${{ github.sha }}
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_HOSTED_CI_EVIDENCE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_CLOSEOUT_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt
+          if-no-files-found: error

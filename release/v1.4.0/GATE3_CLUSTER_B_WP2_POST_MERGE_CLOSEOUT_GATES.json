@@ -1,0 +1,100 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-22",
+  "gate_count": 18,
+  "gates": [
+    {
+      "gate_id": "WP2-PM-G01",
+      "requirement": "PR #23 is merged into main by the recorded merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G02",
+      "requirement": "The accepted WP2 head is the merged pull-request head.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G03",
+      "requirement": "All 25 hosted checks reported success before merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G04",
+      "requirement": "WP2 acceptance gates remain 20/20 PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G05",
+      "requirement": "The 28-fixture deterministic semantic matrix remains preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G06",
+      "requirement": "Semantic roles CB-R1 through CB-R7 remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G07",
+      "requirement": "Theorem targets T157 through T162 remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G08",
+      "requirement": "Canonical WP2 release records remain byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G09",
+      "requirement": "Closed WP0/WP1 release records remain untouched.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G10",
+      "requirement": "The canonical WP2 SHA-256 ledger is not rewritten.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G11",
+      "requirement": "A bounded successor ledger attests only superseded WP2 control scripts and new closeout surfaces.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G12",
+      "requirement": "Detached post-merge Python replay reports 106 passed, 6 skipped, 0 failed.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G13",
+      "requirement": "main and v1.4.0-development were identical at merge-baseline capture.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G14",
+      "requirement": "Only fast-forward synchronization is authorized after closeout merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G15",
+      "requirement": "Force-push, history rewrite, and branch deletion are forbidden.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G16",
+      "requirement": "No proof implementation or new runtime semantics are added by this closeout.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G17",
+      "requirement": "No tag, GitHub Release, Zenodo publication, or DOI action is authorized.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP2-PM-G18",
+      "requirement": "WP3 remains a separate work package with separate authorization.",
+      "status": "PASS"
+    }
+  ],
+  "release_actions_authorized": false,
+  "status": "PASS",
+  "version": "0.1"
+}

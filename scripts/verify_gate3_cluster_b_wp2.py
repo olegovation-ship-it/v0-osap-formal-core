@@ -27,6 +27,14 @@ RELEASE = ROOT / "release/v1.4.0"
 FIXTURES = ROOT / "fixtures/gate3/cluster_b/wp2"
 SCHEMAS = ROOT / "schemas/v1.4.0"
 
+# WP2_POST_MERGE_SUCCESSOR_LEDGER_COMPATIBILITY_V0_1
+CANONICAL_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt"
+SUCCESSOR_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+POST_MERGE_SUPERSEDED_PATHS = {
+    "scripts/build_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp2.py",
+}
+
 ALLOWED_NEW_FILES = {
     ".github/workflows/gate3-cluster-b-wp2.yml",
     "checker/v0_osap_fc1/cluster_b_wp2.py",
@@ -36,6 +44,16 @@ ALLOWED_NEW_FILES = {
     "scripts/verify_gate3_cluster_b_wp2.py",
     "tests/conftest.py",
     "tests/test_gate3_cluster_b_wp2.py",
+
+    # WP2_POST_MERGE_SUCCESSOR_LEDGER_COMPATIBILITY_V0_1
+    ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+    "docs/gate3/cluster_b/WP2_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION.md",
+    "release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py",
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/capture_gate3_cluster_b_wp2_post_merge_evidence.py",
+    "scripts/synchronize_v1_4_0_development_wp2.sh",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp2_post_merge_closeout.py",
 }
 ALLOWED_NEW_PREFIXES = (
     "fixtures/gate3/cluster_b/wp2/",
@@ -189,26 +207,47 @@ def record_errors() -> list[str]:
     return errors
 
 
-def ledger_errors() -> list[str]:
-    path = RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt"
-    if not path.is_file():
-        return ["missing WP2 SHA256 ledger"]
-    errors: list[str] = []
-    seen: set[str] = set()
+def read_sha256_ledger(path: Path) -> dict[str, str]:
+    entries: dict[str, str] = {}
     for line in path.read_text(encoding="utf-8").splitlines():
-        if not line.strip():
+        if not line.strip() or line.lstrip().startswith("#"):
             continue
-        expected, rel = line.split("  ", 1)
-        if rel in seen:
-            errors.append(f"duplicate ledger path: {rel}")
-        seen.add(rel)
+        digest, rel = line.split("  ", 1)
+        entries[rel] = digest
+    return entries
+
+
+def ledger_errors() -> list[str]:
+    if not CANONICAL_LEDGER.is_file():
+        return ["missing WP2 SHA256 ledger"]
+    historical = read_sha256_ledger(CANONICAL_LEDGER)
+    successor = read_sha256_ledger(SUCCESSOR_LEDGER) if SUCCESSOR_LEDGER.is_file() else {}
+    errors: list[str] = []
+
+    overlap = set(historical) & set(successor)
+    if successor and overlap != POST_MERGE_SUPERSEDED_PATHS:
+        errors.append(f"unexpected WP2/post-merge ledger overlap: {sorted(overlap)}")
+
+    for rel, historical_expected in historical.items():
         target = ROOT / rel
         if not target.is_file():
             errors.append(f"ledger missing file: {rel}")
-        elif sha256(target) != expected:
+            continue
+        expected = successor.get(rel) if rel in POST_MERGE_SUPERSEDED_PATHS else historical_expected
+        if expected is None:
+            errors.append(f"successor ledger missing superseded path: {rel}")
+            continue
+        if sha256(target) != expected:
             errors.append(f"SHA256 mismatch: {rel}")
-    return errors
 
+    if successor:
+        for rel, expected in successor.items():
+            target = ROOT / rel
+            if not target.is_file():
+                errors.append(f"successor ledger missing file: {rel}")
+            elif sha256(target) != expected:
+                errors.append(f"successor SHA256 mismatch: {rel}")
+    return errors
 
 def is_allowed_new(path: str) -> bool:
     return path in ALLOWED_NEW_FILES or any(path.startswith(prefix) for prefix in ALLOWED_NEW_PREFIXES)
