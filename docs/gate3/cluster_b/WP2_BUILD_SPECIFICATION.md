@@ -1,4 +1,4 @@
-# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Build Specification v0.1.3
+# V0 OSAP v1.4.0 Gate 3 Cluster B WP2 Build Specification v0.1.4
 
 **Work package:** WP2 — Executable Transition, Residual, and Model-Pair Semantics
 **Repository:** `olegovation-ship-it/v0-osap-formal-core`
@@ -107,7 +107,7 @@ The WP2 executable core adds new files under:
 - `scripts/verify_gate3_cluster_b_wp2.py`;
 - `tests/test_gate3_cluster_b_wp2.py`.
 
-All WP0/WP1 canonical records, post-merge closeout records, historical SHA ledgers, inherited verifiers/tests, proof modules, package metadata, release notes, and citation files remain immutable. Hosted-CI successor compatibility may modify only the four inherited workflow control files explicitly listed in the WP2 baseline lock; no other pre-existing path may be modified or deleted.
+All WP0/WP1 canonical records, post-merge closeout records, historical SHA ledgers, inherited verifiers/tests, proof modules, package metadata, release notes, and citation files remain immutable. Hosted-CI successor compatibility may modify only the five inherited workflow control files explicitly listed in the WP2 baseline lock, including `.github/workflows/python-checker.yml`; no other pre-existing path may be modified or deleted.
 
 ## 8. Deterministic build products
 
@@ -148,7 +148,7 @@ The inherited verifiers run in package-only mode because WP2 introduces a separa
 WP2 has 20 acceptance gates. The local package may be marked `PASS` only when:
 
 - the exact baseline and frozen tag target are recorded;
-- no canonical WP0/WP1 record, ledger, verifier, test, theorem contract, proof module, package metadata, or release/citation artifact is modified; only four inherited workflow controls receive bounded successor replay;
+- no canonical WP0/WP1 record, ledger, verifier, test, theorem contract, proof module, package metadata, or release/citation artifact is modified; only five inherited workflow controls receive bounded successor replay;
 - all nine evaluators are present;
 - all seven roles and T157–T162 have deterministic fixtures;
 - schemas and SHA ledger reproduce;
@@ -240,3 +240,17 @@ The v0.1.3 correction is limited to the CI/test control plane:
 - no WP0/WP1 canonical record, historical ledger, verifier, test, theorem
   contract, proof module, tag, GitHub Release, Zenodo record, or DOI is changed
   or authorized.
+
+## Hosted-CI full-history checkout correction v0.1.4
+
+Hosted CI confirmed that the generic Python checker requires complete Git
+history to resolve and replay the exact frozen WP2 baseline commit.
+
+The v0.1.4 correction:
+
+- configures `.github/workflows/python-checker.yml` with `fetch-depth: 0`;
+- authorizes that workflow as the fifth bounded inherited CI-control surface;
+- includes the workflow in the WP2 SHA-256 successor ledger;
+- preserves every canonical WP0/WP1 release record and historical ledger;
+- authorizes no tag, GitHub Release, Zenodo publication, DOI action, proof
+  completion, or Validator/IPEC binding.

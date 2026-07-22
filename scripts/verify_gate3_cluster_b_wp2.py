@@ -47,6 +47,7 @@ ALLOWED_MODIFIED_FILES = {
     ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
     ".github/workflows/gate3-cluster-b-wp1.yml",
     ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+    ".github/workflows/python-checker.yml",
 }
 PROTECTED_PREFIXES = (
     "release/v1.4.0/GATE3_CLUSTER_B_WP0_",

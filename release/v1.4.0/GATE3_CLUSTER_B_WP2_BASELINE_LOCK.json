@@ -4,7 +4,8 @@
     ".github/workflows/gate3-cluster-b-wp0.yml",
     ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
     ".github/workflows/gate3-cluster-b-wp1.yml",
-    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml"
+    ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+    ".github/workflows/python-checker.yml"
   ],
   "authorized_new_surfaces": [
     ".github/workflows/gate3-cluster-b-wp2.yml",
@@ -32,6 +33,6 @@
   "release_actions_authorized": false,
   "repository": "olegovation-ship-it/v0-osap-formal-core",
   "target_branch": "v1.4.0-development",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "wp2_start": "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a"
 }

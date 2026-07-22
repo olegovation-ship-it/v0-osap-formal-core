@@ -7,7 +7,7 @@
   "required": ["artifact_id", "version", "date", "implementation_version", "case_types", "residual_type_vocabulary", "contract_bindings", "nonclaims", "status"],
   "properties": {
     "artifact_id": {"const": "V0_OSAP_GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE"},
-    "version": {"const": "0.1.3"},
+    "version": {"const": "0.1.4"},
     "date": {"const": "2026-07-21"},
     "implementation_version": {"const": "v0-osap-cluster-b-wp2/0.1.0.dev1"},
     "case_types": {"type": "array", "minItems": 9, "maxItems": 9, "uniqueItems": true, "items": {"type": "string"}},

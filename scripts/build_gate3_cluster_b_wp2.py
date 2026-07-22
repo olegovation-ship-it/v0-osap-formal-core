@@ -19,7 +19,7 @@ from v0_osap_fc1.cluster_b_wp2 import (  # noqa: E402
 )
 
 DATE = "2026-07-21"
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 WP2_START = "ffeaa3fd4fb2f85679f4695d5b28e333004ca24a"
 WP1_MERGE = "eaf142089230ea5a5096ae834bf4e733d5f369aa"
 TAG_TARGET = "13bf095688bcabd5b090f188e9bd28a16237edeb"
@@ -129,6 +129,7 @@ def baseline_lock() -> dict[str, Any]:
             ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
             ".github/workflows/gate3-cluster-b-wp1.yml",
             ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+            ".github/workflows/python-checker.yml",
         ],
         "release_actions_authorized": False,
     }
@@ -177,7 +178,7 @@ def gates(fixture_manifest: dict[str, Any], fixture_errors: list[str]) -> dict[s
     requirements = [
         "Exact WP2 start commit is ffeaa3fd4fb2f85679f4695d5b28e333004ca24a.",
         "Canonical WP1 merge baseline eaf142089230ea5a5096ae834bf4e733d5f369aa is preserved.",
-        "All canonical WP0/WP1 records, ledgers, tests, and theorem contracts remain byte-exact; only four inherited GitHub Actions workflow files receive bounded successor-replay compatibility modifications.",
+        "All canonical WP0/WP1 records, ledgers, tests, and theorem contracts remain byte-exact; only five inherited GitHub Actions workflow files receive bounded successor-replay compatibility modifications, including the full-history Python checker checkout required for frozen-baseline replay.",
         "Closed WP0 records and canonical/post-merge WP1 records remain immutable.",
         "Frozen v1.3.0 tag target remains 13bf095688bcabd5b090f188e9bd28a16237edeb.",
         "Nine deterministic finite-record evaluators are present.",
@@ -258,6 +259,7 @@ def wp2_paths_for_ledger() -> list[Path]:
         ROOT / ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
         ROOT / ".github/workflows/gate3-cluster-b-wp1.yml",
         ROOT / ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+        ROOT / ".github/workflows/python-checker.yml",
         ROOT / ".github/workflows/gate3-cluster-b-wp2.yml",
         ROOT / "checker/v0_osap_fc1/cluster_b_wp2.py",
         ROOT / "docs/gate3/cluster_b/WP2_BUILD_SPECIFICATION.md",
