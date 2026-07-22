@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import subprocess
 import sys
@@ -194,3 +195,27 @@ def test_hosted_ci_compatibility_replays_frozen_wp0_wp1_baseline():
 
     for verifier in inherited_verifiers:
         assert verifier in workflow
+
+# WP2_CURRENT_SUCCESSOR_LEGACY_LEDGER_TEST_DISPATCH_REPAIR_V0_1
+def test_current_successor_dispatches_only_closed_predecessor_currentness_nodes():
+    spec = importlib.util.spec_from_file_location(
+        "wp2_successor_conftest",
+        ROOT / "tests/conftest.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+
+    expected = {
+        "tests/test_gate3_cluster_b_wp0.py::test_wp0_full_git_firewall_accepts_current_patch",
+        "tests/test_gate3_cluster_b_wp0_post_merge_closeout.py::test_post_merge_sha256_ledger",
+        "tests/test_gate3_cluster_b_wp1.py::test_wp1_schemas_and_records_validate",
+        "tests/test_gate3_cluster_b_wp1.py::test_builder_outputs_are_current",
+        "tests/test_gate3_cluster_b_wp1_post_merge_closeout.py::test_wp1_post_merge_records_and_ledger_validate",
+        "tests/test_gate3_cluster_b_wp1_post_merge_closeout.py::test_builder_ledger_is_current",
+    }
+
+    assert module.LEGACY_PREDECESSOR_CURRENTNESS_NODEIDS == expected
+    assert module.WP2_LOCK == (
+        ROOT / "release/v1.4.0/GATE3_CLUSTER_B_WP2_BASELINE_LOCK.json"
+    )

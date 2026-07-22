@@ -254,3 +254,25 @@ The v0.1.4 correction:
 - preserves every canonical WP0/WP1 release record and historical ledger;
 - authorizes no tag, GitHub Release, Zenodo publication, DOI action, proof
   completion, or Validator/IPEC binding.
+
+## Current-successor legacy-ledger test dispatch repair v0.1
+
+<!-- WP2_CURRENT_SUCCESSOR_LEGACY_LEDGER_TEST_DISPATCH_REPAIR_V0_1 -->
+
+The predecessor worktree replay and the current WP2 successor suite serve
+different validation roles. Six closed-stage currentness assertions are now
+routed by the WP2-owned `tests/conftest.py` dispatcher:
+
+- one exact WP0 delta-firewall assertion;
+- one WP0 post-merge historical-ledger assertion;
+- two WP1 canonical builder/record currentness assertions;
+- two WP1 post-merge builder/record currentness assertions.
+
+The dispatcher is active only when the WP2 baseline lock exists. Therefore the
+tests remain active in their original frozen predecessor context, while the
+current successor checkout relies on the WP2 repository firewall and WP2
+successor SHA-256 ledger for current-tree integrity.
+
+No inherited test file, WP0/WP1 historical ledger, canonical record, theorem
+contract, proof module, release tag, GitHub Release, Zenodo record, or DOI is
+modified or authorized.
