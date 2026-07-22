@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_PRESERVATION_FIREWALL"
+    },
+    "authorized_modified_paths": {
+      "const": [
+        "scripts/verify_gate3_cluster_b_wp2.py",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+      ]
+    },
+    "baseline": {
+      "const": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313"
+    },
+    "canonical_ledgers_modification_authorized": {
+      "const": false
+    },
+    "canonical_records_modification_authorized": {
+      "const": false
+    },
+    "policy": {
+      "const": "ADDITIVE_WP3_WITH_EXACT_HASH_GUARDED_WP2_SUCCESSOR_FIREWALL_HANDOFF"
+    },
+    "rollback_on_any_failure": {
+      "const": true
+    },
+    "successor_ledger_update_authorized": {
+      "const": true
+    },
+    "tracked_modification_authorized": {
+      "const": true
+    }
+  },
+  "required": [
+    "artifact_id",
+    "baseline",
+    "policy",
+    "tracked_modification_authorized",
+    "rollback_on_any_failure",
+    "authorized_modified_paths",
+    "canonical_records_modification_authorized",
+    "canonical_ledgers_modification_authorized",
+    "successor_ledger_update_authorized"
+  ],
+  "title": "WP3 preservation firewall",
+  "type": "object"
+}

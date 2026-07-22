@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "case_type": {
+      "enum": [
+        "DLE_TRANSITION",
+        "STRONG_DLE",
+        "RESIDUAL_PERSISTENCE",
+        "RESIDUAL_TYPE_SEPARATION",
+        "MODEL_PAIR_NONELIMINABILITY",
+        "MINIMAL_RESIDUAL_OBSTRUCTION",
+        "HISTORICAL_TOKEN_NONCONVERSION",
+        "ROBUST_OBSTRUCTION",
+        "BRANCH_LOCAL_FIREWALL"
+      ]
+    },
+    "evidence_lineage": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "source_result",
+              "fixture",
+              "certificate",
+              "manifest",
+              "diagnostic"
+            ]
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "uri": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "kind",
+          "uri",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "expected": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_outcome_code": {
+          "enum": [
+            "BACKEND_PARITY_FAILURE",
+            "REJECTED_BRANCH_PROMOTION",
+            "REJECTED_NONELIM_OBSTRUCTION",
+            "REJECTED_LIVE_RESIDUAL",
+            "REJECTED_DLE_FAILURE",
+            "REJECTED_GUARD_FAILURE",
+            "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+            "CERTIFIED"
+          ]
+        },
+        "certification_claimed": {
+          "const": false
+        },
+        "typed_outcome_code": {
+          "enum": [
+            "BACKEND_PARITY_FAILURE",
+            "REJECTED_BRANCH_PROMOTION",
+            "REJECTED_NONELIM_OBSTRUCTION",
+            "REJECTED_LIVE_RESIDUAL",
+            "REJECTED_DLE_FAILURE",
+            "REJECTED_GUARD_FAILURE",
+            "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+            "CERTIFIED"
+          ]
+        }
+      },
+      "required": [
+        "typed_outcome_code",
+        "candidate_outcome_code",
+        "certification_claimed"
+      ],
+      "type": "object"
+    },
+    "fixture_id": {
+      "pattern": "^WP3-FX-[0-9]{3}$"
+    },
+    "source_result": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "case_type": {
+          "enum": [
+            "DLE_TRANSITION",
+            "STRONG_DLE",
+            "RESIDUAL_PERSISTENCE",
+            "RESIDUAL_TYPE_SEPARATION",
+            "MODEL_PAIR_NONELIMINABILITY",
+            "MINIMAL_RESIDUAL_OBSTRUCTION",
+            "HISTORICAL_TOKEN_NONCONVERSION",
+            "ROBUST_OBSTRUCTION",
+            "BRANCH_LOCAL_FIREWALL"
+          ]
+        },
+        "derived": {
+          "type": "object"
+        },
+        "diagnostic_codes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "message": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "refs": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "DEFERRED",
+                  "REJECT"
+                ]
+              }
+            },
+            "required": [
+              "code",
+              "status",
+              "message",
+              "refs"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "fixture_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "implementation_version": {
+          "const": "v0-osap-cluster-b-wp2/0.1.0.dev1"
+        },
+        "ipec_binding_claimed": {
+          "const": false
+        },
+        "proof_claimed": {
+          "const": false
+        },
+        "release_action_authorized": {
+          "const": false
+        },
+        "role_ids": {
+          "items": {
+            "pattern": "^CB-R[1-7]$"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "DEFERRED",
+            "REJECT"
+          ]
+        },
+        "theorem_ids": {
+          "items": {
+            "pattern": "^T[0-9]{3}$"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "fixture_id",
+        "case_type",
+        "status",
+        "accepted",
+        "theorem_ids",
+        "role_ids",
+        "diagnostics",
+        "diagnostic_codes",
+        "derived",
+        "implementation_version",
+        "proof_claimed",
+        "ipec_binding_claimed",
+        "release_action_authorized"
+      ],
+      "title": "WP3 locked WP2 source result",
+      "type": "object"
+    }
+  },
+  "required": [
+    "fixture_id",
+    "case_type",
+    "source_result",
+    "evidence_lineage",
+    "expected"
+  ],
+  "title": "WP3 typed binding fixture",
+  "type": "object"
+}

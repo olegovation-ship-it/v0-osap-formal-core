@@ -1,0 +1,50 @@
+{
+  "case_type": "MODEL_PAIR_NONELIMINABILITY",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-008",
+      "kind": "source_result",
+      "sha256": "0c4bec37017fee087c9d8042c71239e030d35d0d28f5509d5a9293419176c7ef",
+      "uri": "fixtures/gate3/cluster_b/wp3/08_model_pair_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_NONELIM_OBSTRUCTION",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-008",
+  "source_result": {
+    "accepted": false,
+    "case_type": "MODEL_PAIR_NONELIMINABILITY",
+    "derived": {
+      "non_eliminable_from_shared_fragment": false
+    },
+    "diagnostic_codes": [
+      "MODEL_PAIR_DISTINCTNESS_UNSUPPORTED"
+    ],
+    "diagnostics": [
+      {
+        "code": "MODEL_PAIR_DISTINCTNESS_UNSUPPORTED",
+        "message": "The model-pair distinctness basis is unsupported.",
+        "refs": [
+          "LABEL_ONLY"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-008",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R5"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T159",
+      "T160"
+    ]
+  }
+}

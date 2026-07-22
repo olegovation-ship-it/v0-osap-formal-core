@@ -1,0 +1,31 @@
+{
+  "all_other_baseline_paths_byte_preserved": true,
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_PRESERVATION_FIREWALL",
+  "authorized_modified_paths": [
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+  ],
+  "authorized_post_sha256": {
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt": "8e164d8903e14372aab3e836055497f1ebebce2a03151a1e0d9524ddcf1a25fd",
+    "scripts/verify_gate3_cluster_b_wp2.py": "ca203abbf59b60565fdc6c9333f4fb8a76de6a29ddfa8ebf19e6ee9eb65384aa"
+  },
+  "authorized_pre_sha256": {
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt": "f5abb673b3fd6eb8680bdd75e3dfcf7185219177cd8860c25cf9366d8c71b6d3",
+    "scripts/verify_gate3_cluster_b_wp2.py": "af37614f25936a79cc407a28a32f0d61cd6a451023a97613a485568762af256e"
+  },
+  "baseline": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "canonical_ledgers_modification_authorized": false,
+  "canonical_records_modification_authorized": false,
+  "date": "2026-07-22",
+  "frozen_work_packages": [
+    "WP0",
+    "WP1",
+    "WP2"
+  ],
+  "policy": "ADDITIVE_WP3_WITH_EXACT_HASH_GUARDED_WP2_SUCCESSOR_FIREWALL_HANDOFF",
+  "release_actions_authorized": false,
+  "rollback_on_any_failure": true,
+  "successor_ledger_update_authorized": true,
+  "tracked_modification_authorized": true,
+  "version": "0.1.3"
+}

@@ -1,0 +1,52 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-22",
+  "schema_count": 11,
+  "schemas": [
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_acceptance_gates.schema.json",
+      "sha256": "e97e95bf7d35f793a0857c57cdd885acb3f112e7f563032ccb3cb295ff3f223f"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_adapter_binding_manifest.schema.json",
+      "sha256": "9c1c0d1053fd46ce9f91ad20e354496b3cc69994336919024e7f7cf05e2ef730"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_baseline_lock.schema.json",
+      "sha256": "1064adc6f86c784b3352e2b125a9bee96a33e0f65710351cfe74229416a33d3f"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_binding_result.schema.json",
+      "sha256": "4f867be569fd5c6a46cd04cb08f2da24105546064da786a6e275cb8ee7d10c70"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_extension_rule_registry.schema.json",
+      "sha256": "0233585370a4d64cdaff24a1b465ed02526f30c869ee65558b73a91abb1b1e57"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_fixture.schema.json",
+      "sha256": "9ebdae72472aa3ea141063576a336bb05a35cf806e30bb77cefa2caf4de9d998"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_fixture_manifest.schema.json",
+      "sha256": "a8a00ff41e451db0400be8c3869bc85f6983717e330dfd34d0156d6fb650b609"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_ipec_compatibility_profile.schema.json",
+      "sha256": "508033b880dae43010bf43b0b24ab629c82e2812d53254558ae6ab4c1fd60d67"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_preservation_firewall.schema.json",
+      "sha256": "d8e4c3e3fe0091ad594a3a76c87ec59fa2a8990b3b7a31af0ae75a2587bc42b4"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_schema_bundle_manifest.schema.json",
+      "sha256": "6dc771f8a3e90d651b0fe12d665850ab51630133f54b907c8f98f26ebf4a24e1"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp3_source_result.schema.json",
+      "sha256": "06a950ae1dc9bf0d7ff502c4bd1146cc826434f1ca50704eedac3a7796981ab8"
+    }
+  ],
+  "version": "0.1.3"
+}

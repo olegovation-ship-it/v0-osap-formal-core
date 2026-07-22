@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "binding_id": {
+      "pattern": "^WP3-BIND-[0-9a-f]{24}$"
+    },
+    "binding_integrity_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "binding_version": {
+      "const": "v0-osap-cluster-b-wp3/0.1.0.dev1"
+    },
+    "candidate_outcome_code": {
+      "enum": [
+        "BACKEND_PARITY_FAILURE",
+        "REJECTED_BRANCH_PROMOTION",
+        "REJECTED_NONELIM_OBSTRUCTION",
+        "REJECTED_LIVE_RESIDUAL",
+        "REJECTED_DLE_FAILURE",
+        "REJECTED_GUARD_FAILURE",
+        "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+        "CERTIFIED"
+      ]
+    },
+    "case_type": {
+      "enum": [
+        "DLE_TRANSITION",
+        "STRONG_DLE",
+        "RESIDUAL_PERSISTENCE",
+        "RESIDUAL_TYPE_SEPARATION",
+        "MODEL_PAIR_NONELIMINABILITY",
+        "MINIMAL_RESIDUAL_OBSTRUCTION",
+        "HISTORICAL_TOKEN_NONCONVERSION",
+        "ROBUST_OBSTRUCTION",
+        "BRANCH_LOCAL_FIREWALL"
+      ]
+    },
+    "certification_claimed": {
+      "const": false
+    },
+    "derived": {
+      "type": "object"
+    },
+    "diagnostic_transport": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "DEFERRED",
+              "REJECT"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "status",
+          "message",
+          "refs"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "evidence_lineage": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "source_result",
+              "fixture",
+              "certificate",
+              "manifest",
+              "diagnostic"
+            ]
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "uri": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "kind",
+          "uri",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "frozen_ipec_v0_1_modified": {
+      "const": false
+    },
+    "ipec_contract_id": {
+      "const": "V0-IPEC-0.1"
+    },
+    "ipec_frozen_commit": {
+      "const": "5474a2c6a3e1c274d17f674889d427c1c91572f7"
+    },
+    "logical_verdict": {
+      "enum": [
+        "SATISFIED",
+        "VIOLATED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "outcome_binding_status": {
+      "enum": [
+        "BOUND_FROZEN_THEOREM_REJECTION",
+        "DEFERRED_TO_WP4_PROOF_ACTIVATION",
+        "INCONCLUSIVE_SOURCE_DEFERRED"
+      ]
+    },
+    "proof_claimed": {
+      "const": false
+    },
+    "release_action_authorized": {
+      "const": false
+    },
+    "resolution_basis": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "role_lineage": {
+      "items": {
+        "pattern": "^CB-R[1-7]$"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "rule_lineage": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate_violation_outcome": {
+            "enum": [
+              "REJECTED_BRANCH_PROMOTION",
+              "REJECTED_NONELIM_OBSTRUCTION",
+              "REJECTED_LIVE_RESIDUAL",
+              "REJECTED_DLE_FAILURE",
+              "REJECTED_GUARD_FAILURE"
+            ]
+          },
+          "rule_class": {
+            "enum": [
+              "FROZEN_IPEC_V0_1",
+              "GATE3_CLUSTER_B_EXTENSION"
+            ]
+          },
+          "rule_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "theorem_id": {
+            "pattern": "^T[0-9]{3}$"
+          }
+        },
+        "required": [
+          "theorem_id",
+          "rule_id",
+          "rule_class",
+          "candidate_violation_outcome"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "source_fixture_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_semantics_version": {
+      "const": "v0-osap-cluster-b-wp2/0.1.0.dev1"
+    },
+    "source_status": {
+      "enum": [
+        "PASS",
+        "DEFERRED",
+        "REJECT"
+      ]
+    },
+    "theorem_lineage": {
+      "items": {
+        "pattern": "^T[0-9]{3}$"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "typed_outcome_code": {
+      "enum": [
+        "BACKEND_PARITY_FAILURE",
+        "REJECTED_BRANCH_PROMOTION",
+        "REJECTED_NONELIM_OBSTRUCTION",
+        "REJECTED_LIVE_RESIDUAL",
+        "REJECTED_DLE_FAILURE",
+        "REJECTED_GUARD_FAILURE",
+        "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+        "CERTIFIED"
+      ]
+    }
+  },
+  "required": [
+    "binding_id",
+    "binding_version",
+    "ipec_contract_id",
+    "ipec_frozen_commit",
+    "source_semantics_version",
+    "source_fixture_id",
+    "case_type",
+    "source_status",
+    "typed_outcome_code",
+    "candidate_outcome_code",
+    "logical_verdict",
+    "certification_claimed",
+    "outcome_binding_status",
+    "resolution_basis",
+    "theorem_lineage",
+    "rule_lineage",
+    "role_lineage",
+    "evidence_lineage",
+    "diagnostic_transport",
+    "derived",
+    "proof_claimed",
+    "frozen_ipec_v0_1_modified",
+    "release_action_authorized",
+    "binding_integrity_sha256"
+  ],
+  "title": "WP3 typed outcome binding result",
+  "type": "object"
+}

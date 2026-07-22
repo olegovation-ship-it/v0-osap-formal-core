@@ -1,0 +1,38 @@
+{
+  "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-009",
+      "kind": "source_result",
+      "sha256": "33bfe5449d2711fe3d2403383878acf41b3219e5488a61a4b45cbb9bfdcf0b62",
+      "uri": "fixtures/gate3/cluster_b/wp3/09_minimal_obstruction_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-009",
+  "source_result": {
+    "accepted": true,
+    "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+    "derived": {
+      "minimal_obstruction_witness": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-009",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R4"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T161"
+    ]
+  }
+}

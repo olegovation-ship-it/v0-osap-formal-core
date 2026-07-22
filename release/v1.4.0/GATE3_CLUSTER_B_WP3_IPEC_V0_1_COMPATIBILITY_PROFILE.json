@@ -1,0 +1,78 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_IPEC_V0_1_COMPATIBILITY_PROFILE",
+  "certified_requires": [
+    "NONEMPTY_COHERENT_EVIDENCE_LINEAGE",
+    "LEAN4_BACKEND_EVIDENCE",
+    "COQ_BACKEND_EVIDENCE"
+  ],
+  "contract_id": "V0-IPEC-0.1",
+  "date": "2026-07-22",
+  "frozen_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+  "frozen_ipec_modified": false,
+  "frozen_rule_count": 36,
+  "frozen_theorem_coverage": "T121-T156",
+  "outcomes": [
+    {
+      "certification_claimed": false,
+      "code": "BACKEND_PARITY_FAILURE",
+      "logical_verdict": "VIOLATED",
+      "priority": 700
+    },
+    {
+      "certification_claimed": false,
+      "code": "REJECTED_BRANCH_PROMOTION",
+      "logical_verdict": "VIOLATED",
+      "priority": 650
+    },
+    {
+      "certification_claimed": false,
+      "code": "REJECTED_NONELIM_OBSTRUCTION",
+      "logical_verdict": "VIOLATED",
+      "priority": 600
+    },
+    {
+      "certification_claimed": false,
+      "code": "REJECTED_LIVE_RESIDUAL",
+      "logical_verdict": "VIOLATED",
+      "priority": 550
+    },
+    {
+      "certification_claimed": false,
+      "code": "REJECTED_DLE_FAILURE",
+      "logical_verdict": "VIOLATED",
+      "priority": 500
+    },
+    {
+      "certification_claimed": false,
+      "code": "REJECTED_GUARD_FAILURE",
+      "logical_verdict": "VIOLATED",
+      "priority": 450
+    },
+    {
+      "certification_claimed": false,
+      "code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "logical_verdict": "INCONCLUSIVE",
+      "priority": 300
+    },
+    {
+      "certification_claimed": true,
+      "code": "CERTIFIED",
+      "logical_verdict": "SATISFIED",
+      "priority": 0
+    }
+  ],
+  "precedence": [
+    "BACKEND_PARITY_FAILURE",
+    "REJECTED_BRANCH_PROMOTION",
+    "REJECTED_NONELIM_OBSTRUCTION",
+    "REJECTED_LIVE_RESIDUAL",
+    "REJECTED_DLE_FAILURE",
+    "REJECTED_GUARD_FAILURE",
+    "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+    "CERTIFIED"
+  ],
+  "typed_outcome_records_sha256": "4e05803bd53ecc7ed0c7926fddfb9ad517c8b14b3c795217df511a11cae60bfb",
+  "version": "0.1",
+  "wp3_certification_enabled": false,
+  "wp3_extension_proof_activation": "PENDING_WP4"
+}

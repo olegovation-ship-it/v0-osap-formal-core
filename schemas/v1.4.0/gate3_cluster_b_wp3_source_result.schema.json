@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted": {
+      "type": "boolean"
+    },
+    "case_type": {
+      "enum": [
+        "DLE_TRANSITION",
+        "STRONG_DLE",
+        "RESIDUAL_PERSISTENCE",
+        "RESIDUAL_TYPE_SEPARATION",
+        "MODEL_PAIR_NONELIMINABILITY",
+        "MINIMAL_RESIDUAL_OBSTRUCTION",
+        "HISTORICAL_TOKEN_NONCONVERSION",
+        "ROBUST_OBSTRUCTION",
+        "BRANCH_LOCAL_FIREWALL"
+      ]
+    },
+    "derived": {
+      "type": "object"
+    },
+    "diagnostic_codes": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "diagnostics": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "DEFERRED",
+              "REJECT"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "status",
+          "message",
+          "refs"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "fixture_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "implementation_version": {
+      "const": "v0-osap-cluster-b-wp2/0.1.0.dev1"
+    },
+    "ipec_binding_claimed": {
+      "const": false
+    },
+    "proof_claimed": {
+      "const": false
+    },
+    "release_action_authorized": {
+      "const": false
+    },
+    "role_ids": {
+      "items": {
+        "pattern": "^CB-R[1-7]$"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "DEFERRED",
+        "REJECT"
+      ]
+    },
+    "theorem_ids": {
+      "items": {
+        "pattern": "^T[0-9]{3}$"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "fixture_id",
+    "case_type",
+    "status",
+    "accepted",
+    "theorem_ids",
+    "role_ids",
+    "diagnostics",
+    "diagnostic_codes",
+    "derived",
+    "implementation_version",
+    "proof_claimed",
+    "ipec_binding_claimed",
+    "release_action_authorized"
+  ],
+  "title": "WP3 locked WP2 source result",
+  "type": "object"
+}

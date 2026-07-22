@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST"
+    },
+    "binding_count": {
+      "const": 9
+    },
+    "binding_version": {
+      "const": "v0-osap-cluster-b-wp3/0.1.0.dev1"
+    },
+    "bindings": {
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "source_semantics_version": {
+      "const": "v0-osap-cluster-b-wp2/0.1.0.dev1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "source_semantics_version",
+    "binding_version",
+    "binding_count",
+    "bindings"
+  ],
+  "title": "WP3 adapter manifest",
+  "type": "object"
+}

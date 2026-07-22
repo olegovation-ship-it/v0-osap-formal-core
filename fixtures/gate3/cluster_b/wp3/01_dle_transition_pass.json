@@ -1,0 +1,39 @@
+{
+  "case_type": "DLE_TRANSITION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-001",
+      "kind": "source_result",
+      "sha256": "4a88700b61418d824e9ac21a612008bc69e6868a15327514e46a445e1d32fe2d",
+      "uri": "fixtures/gate3/cluster_b/wp3/01_dle_transition_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-001",
+  "source_result": {
+    "accepted": true,
+    "case_type": "DLE_TRANSITION",
+    "derived": {
+      "dle_transition_valid": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-001",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R1"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T123",
+      "T132"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_FIXTURE_MANIFEST",
+  "date": "2026-07-22",
+  "fixture_count": 15,
+  "fixtures": [
+    {
+      "case_type": "DLE_TRANSITION",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-001",
+      "path": "fixtures/gate3/cluster_b/wp3/01_dle_transition_pass.json"
+    },
+    {
+      "case_type": "DLE_TRANSITION",
+      "expected_candidate_outcome": "REJECTED_DLE_FAILURE",
+      "expected_typed_outcome": "REJECTED_DLE_FAILURE",
+      "fixture_id": "WP3-FX-002",
+      "path": "fixtures/gate3/cluster_b/wp3/02_dle_transition_reject.json"
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-003",
+      "path": "fixtures/gate3/cluster_b/wp3/03_strong_dle_pass.json"
+    },
+    {
+      "case_type": "STRONG_DLE",
+      "expected_candidate_outcome": "REJECTED_DLE_FAILURE",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-004",
+      "path": "fixtures/gate3/cluster_b/wp3/04_strong_dle_reject.json"
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "expected_candidate_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-005",
+      "path": "fixtures/gate3/cluster_b/wp3/05_residual_persistence_deferred.json"
+    },
+    {
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-006",
+      "path": "fixtures/gate3/cluster_b/wp3/06_residual_type_separation_pass.json"
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-007",
+      "path": "fixtures/gate3/cluster_b/wp3/07_model_pair_pass.json"
+    },
+    {
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "expected_candidate_outcome": "REJECTED_NONELIM_OBSTRUCTION",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-008",
+      "path": "fixtures/gate3/cluster_b/wp3/08_model_pair_reject.json"
+    },
+    {
+      "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-009",
+      "path": "fixtures/gate3/cluster_b/wp3/09_minimal_obstruction_pass.json"
+    },
+    {
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "expected_candidate_outcome": "REJECTED_GUARD_FAILURE",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-010",
+      "path": "fixtures/gate3/cluster_b/wp3/10_historical_nonconversion_reject.json"
+    },
+    {
+      "case_type": "ROBUST_OBSTRUCTION",
+      "expected_candidate_outcome": "CERTIFIED",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-011",
+      "path": "fixtures/gate3/cluster_b/wp3/11_robust_obstruction_pass.json"
+    },
+    {
+      "case_type": "BRANCH_LOCAL_FIREWALL",
+      "expected_candidate_outcome": "REJECTED_BRANCH_PROMOTION",
+      "expected_typed_outcome": "REJECTED_BRANCH_PROMOTION",
+      "fixture_id": "WP3-FX-012",
+      "path": "fixtures/gate3/cluster_b/wp3/12_branch_firewall_reject.json"
+    },
+    {
+      "case_type": "ROBUST_OBSTRUCTION",
+      "expected_candidate_outcome": "REJECTED_NONELIM_OBSTRUCTION",
+      "expected_typed_outcome": "REJECTED_NONELIM_OBSTRUCTION",
+      "fixture_id": "WP3-FX-013",
+      "path": "fixtures/gate3/cluster_b/wp3/13_robust_obstruction_reject.json"
+    },
+    {
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "expected_candidate_outcome": "REJECTED_LIVE_RESIDUAL",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-014",
+      "path": "fixtures/gate3/cluster_b/wp3/14_residual_persistence_reject.json"
+    },
+    {
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "expected_candidate_outcome": "REJECTED_GUARD_FAILURE",
+      "expected_typed_outcome": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+      "fixture_id": "WP3-FX-015",
+      "path": "fixtures/gate3/cluster_b/wp3/15_residual_type_separation_reject.json"
+    }
+  ],
+  "version": "0.1"
+}

@@ -1,0 +1,30 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_BASELINE_LOCK",
+  "authorized_modification_mode": "EXACT_HASH_GUARDED_WP2_SUCCESSOR_FIREWALL_HANDOFF",
+  "authorized_modified_paths": [
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+  ],
+  "branch": "v1.4.0-development",
+  "canonical_wp0_wp1_wp2_ledgers_modified": false,
+  "canonical_wp0_wp1_wp2_records_modified": false,
+  "date": "2026-07-22",
+  "frozen_ipec_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+  "frozen_osap_v1_3_0_commit": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "frozen_validator_commit": "3540f47198140ca0a3612f247cfe356fa7fba2cb",
+  "new_file_only": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_head_before_apply": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "required_origin_development": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "required_origin_main": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "status": "LOCKED_BASELINE_SYNCHRONIZED",
+  "version": "0.1.3",
+  "wp2_accepted_head": "b0f5fc5b0d5103e1bb22b06ca51716d40e22a5d7",
+  "wp2_closeout_merge_commit": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "wp2_closeout_repair_commit": "9160b8199f42e75c1a554b45793852e8d9aafdb5",
+  "wp2_merge_commit": "b6370af53add3fdff1ddb48824dd76ebba3aaa32",
+  "wp2_post_merge_closeout_commit": "ea029430b96fd3b90acbf4cb4419564eff583210",
+  "wp2_successor_ledger_updated": true,
+  "wp2_successor_verifier_extended": true
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_SCHEMA_BUNDLE_MANIFEST"
+    },
+    "schema_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schemas": {
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "schema_count",
+    "schemas"
+  ],
+  "title": "WP3 schema bundle manifest",
+  "type": "object"
+}

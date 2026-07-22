@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_IPEC_V0_1_COMPATIBILITY_PROFILE"
+    },
+    "contract_id": {
+      "const": "V0-IPEC-0.1"
+    },
+    "frozen_commit": {
+      "const": "5474a2c6a3e1c274d17f674889d427c1c91572f7"
+    },
+    "outcomes": {
+      "maxItems": 8,
+      "minItems": 8,
+      "type": "array"
+    },
+    "precedence": {
+      "const": [
+        "BACKEND_PARITY_FAILURE",
+        "REJECTED_BRANCH_PROMOTION",
+        "REJECTED_NONELIM_OBSTRUCTION",
+        "REJECTED_LIVE_RESIDUAL",
+        "REJECTED_DLE_FAILURE",
+        "REJECTED_GUARD_FAILURE",
+        "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+        "CERTIFIED"
+      ]
+    },
+    "typed_outcome_records_sha256": {
+      "const": "4e05803bd53ecc7ed0c7926fddfb9ad517c8b14b3c795217df511a11cae60bfb"
+    },
+    "wp3_certification_enabled": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "contract_id",
+    "frozen_commit",
+    "typed_outcome_records_sha256",
+    "precedence",
+    "outcomes",
+    "wp3_certification_enabled"
+  ],
+  "title": "WP3 IPEC compatibility profile",
+  "type": "object"
+}

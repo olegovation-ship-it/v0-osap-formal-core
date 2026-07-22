@@ -1,0 +1,39 @@
+{
+  "case_type": "MODEL_PAIR_NONELIMINABILITY",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-007",
+      "kind": "source_result",
+      "sha256": "a34839557052fa00f2d1ef7736b24dd42227da00df80593be5d4e67203707eb0",
+      "uri": "fixtures/gate3/cluster_b/wp3/07_model_pair_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-007",
+  "source_result": {
+    "accepted": true,
+    "case_type": "MODEL_PAIR_NONELIMINABILITY",
+    "derived": {
+      "non_eliminable_from_shared_fragment": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-007",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R5"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T159",
+      "T160"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "case_type": "DLE_TRANSITION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-002",
+      "kind": "source_result",
+      "sha256": "d6763e839dc7a8ed7ea060c8bdcebb953fcb99b948f7ead80a7d422cfa66c3b1",
+      "uri": "fixtures/gate3/cluster_b/wp3/02_dle_transition_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_DLE_FAILURE",
+    "certification_claimed": false,
+    "typed_outcome_code": "REJECTED_DLE_FAILURE"
+  },
+  "fixture_id": "WP3-FX-002",
+  "source_result": {
+    "accepted": false,
+    "case_type": "DLE_TRANSITION",
+    "derived": {
+      "dle_transition_valid": false
+    },
+    "diagnostic_codes": [
+      "DLE_TARGET_NOT_EXHAUSTED"
+    ],
+    "diagnostics": [
+      {
+        "code": "DLE_TARGET_NOT_EXHAUSTED",
+        "message": "The target state must be exhausted and have no current live token.",
+        "refs": [
+          "state-after"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-002",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R1"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T123",
+      "T132"
+    ]
+  }
+}

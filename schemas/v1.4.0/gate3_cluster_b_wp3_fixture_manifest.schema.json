@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_FIXTURE_MANIFEST"
+    },
+    "fixture_count": {
+      "const": 15
+    },
+    "fixtures": {
+      "maxItems": 15,
+      "minItems": 15,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "fixture_count",
+    "fixtures"
+  ],
+  "title": "WP3 fixture manifest",
+  "type": "object"
+}
