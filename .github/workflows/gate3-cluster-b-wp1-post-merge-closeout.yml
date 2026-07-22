@@ -1,10 +1,8 @@
 name: V0 OSAP Gate 3 Cluster B WP1 Post-Merge Closeout
 
+# WP1 post-merge closeout is frozen. Automatic PR/push dispatch is disabled
+# during WP2 successor work; exact historical replay remains available manually.
 on:
-  pull_request:
-    branches: ["main"]
-  push:
-    branches: ["v1.4.0-development", "main"]
   workflow_dispatch:
 
 permissions:

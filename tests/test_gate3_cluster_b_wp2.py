@@ -219,3 +219,20 @@ def test_current_successor_dispatches_only_closed_predecessor_currentness_nodes(
     assert module.WP2_LOCK == (
         ROOT / "release/v1.4.0/GATE3_CLUSTER_B_WP2_BASELINE_LOCK.json"
     )
+
+
+# WP2_FROZEN_PREDECESSOR_WORKFLOW_DISPATCH_ISOLATION_REPAIR_V0_1
+def test_frozen_predecessor_workflows_are_manual_dispatch_only():
+    workflow_paths = (
+        ".github/workflows/gate3-cluster-b-wp0.yml",
+        ".github/workflows/gate3-cluster-b-wp0-post-merge-closeout.yml",
+        ".github/workflows/gate3-cluster-b-wp1.yml",
+        ".github/workflows/gate3-cluster-b-wp1-post-merge-closeout.yml",
+    )
+
+    for relative in workflow_paths:
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        event_surface = text.split("permissions:", 1)[0]
+        assert "\n  workflow_dispatch:\n" in event_surface
+        assert "\n  push:" not in event_surface
+        assert "\n  pull_request:" not in event_surface

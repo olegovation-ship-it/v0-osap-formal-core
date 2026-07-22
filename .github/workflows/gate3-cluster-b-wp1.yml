@@ -1,19 +1,8 @@
 name: V0 OSAP Gate 3 Cluster B WP1
 
+# WP1 is a closed predecessor surface. Automatic PR dispatch is disabled after
+# WP2 successor activation; exact historical replay remains available manually.
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/workflows/gate3-cluster-b-wp1.yml'
-      - 'docs/gate3/cluster_b/WP1_*'
-      - 'release/v1.4.0/GATE3_CLUSTER_B_WP1_*'
-      - 'release/v1.4.0/tools/patch_wp0_wp1_allowlist.py'
-      - 'schemas/v1.4.0/gate3_cluster_b_wp1_*'
-      - 'scripts/build_gate3_cluster_b_wp1.py'
-      - 'scripts/verify_gate3_cluster_b_wp1.py'
-      - 'scripts/verify_gate3_cluster_b_wp0.py'
-      - 'tests/test_gate3_cluster_b_wp1.py'
-      - 'tests/test_gate3_cluster_b_wp0.py'
   workflow_dispatch:
 
 permissions:
