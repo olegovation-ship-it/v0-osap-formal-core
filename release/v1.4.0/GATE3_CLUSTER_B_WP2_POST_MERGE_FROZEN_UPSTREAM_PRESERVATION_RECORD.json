@@ -1,0 +1,52 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP2_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD",
+  "canonical_wp2_merge_baseline": "b6370af53add3fdff1ddb48824dd76ebba3aaa32",
+  "canonical_wp2_records_modified": false,
+  "closed_wp0_wp1_records_modified": false,
+  "date": "2026-07-22",
+  "fixture_count_preserved": 28,
+  "preserved": [
+    {
+      "artifact": "V0 OSAP Formal Core v1.3.0",
+      "doi": "10.5281/zenodo.21346728",
+      "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+      "modified": false,
+      "tag": "v1.3.0"
+    },
+    {
+      "artifact": "V0 Integrated Proof-Evidence Contract v0.1",
+      "exact_commit": "5474a2c6a3e1c274d17f674889d427c1c91572f7",
+      "modified": false
+    },
+    {
+      "artifact": "V0 Validator Core v0.12",
+      "doi": "10.5281/zenodo.21285577",
+      "exact_tag": "v0.12-compiler-passed-freeze",
+      "exact_tag_target": "3540f47198140ca0a3612f247cfe356fa7fba2cb",
+      "modified": false
+    }
+  ],
+  "proof_implementation_authorized": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "runtime_semantics_modified_by_closeout": false,
+  "semantic_role_ids_preserved": [
+    "CB-R1",
+    "CB-R2",
+    "CB-R3",
+    "CB-R4",
+    "CB-R5",
+    "CB-R6",
+    "CB-R7"
+  ],
+  "source_lock": "release/v1.4.0/GATE3_CLUSTER_B_WP2_BASELINE_LOCK.json",
+  "theorem_ids_preserved": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "version": "0.1"
+}

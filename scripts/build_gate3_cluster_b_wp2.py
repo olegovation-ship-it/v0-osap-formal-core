@@ -27,6 +27,20 @@ RELEASE = ROOT / "release/v1.4.0"
 FIXTURES = ROOT / "fixtures/gate3/cluster_b/wp2"
 SCHEMAS = ROOT / "schemas/v1.4.0"
 
+# WP2_POST_MERGE_SUCCESSOR_LEDGER_COMPATIBILITY_V0_1
+CANONICAL_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt"
+SUCCESSOR_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+
+
+def is_post_merge_schema(path: Path) -> bool:
+    name = path.name
+    return "_post_merge_" in name or "_development_branch_synchronization_" in name
+
+
+def is_post_merge_record(path: Path) -> bool:
+    name = path.name
+    return "_POST_MERGE_" in name or "_DEVELOPMENT_BRANCH_SYNCHRONIZATION_" in name
+
 
 def canonical_json(value: Any) -> bytes:
     return (json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
@@ -223,7 +237,11 @@ def gates(fixture_manifest: dict[str, Any], fixture_errors: list[str]) -> dict[s
 
 
 def schema_bundle() -> dict[str, Any]:
-    schemas = sorted(path.relative_to(ROOT).as_posix() for path in SCHEMAS.glob("gate3_cluster_b_wp2_*.schema.json"))
+    schemas = sorted(
+        path.relative_to(ROOT).as_posix()
+        for path in SCHEMAS.glob("gate3_cluster_b_wp2_*.schema.json")
+        if not is_post_merge_schema(path)
+    )
     documents = [
         "release/v1.4.0/GATE3_CLUSTER_B_WP2_BASELINE_LOCK.json",
         "release/v1.4.0/GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE.json",
@@ -271,8 +289,14 @@ def wp2_paths_for_ledger() -> list[Path]:
     ]
     candidates.extend(path for path in prefixes if path.is_file())
     candidates.extend(sorted(FIXTURES.glob("*.json")))
-    candidates.extend(sorted(SCHEMAS.glob("gate3_cluster_b_wp2_*.schema.json")))
-    candidates.extend(sorted(RELEASE.glob("GATE3_CLUSTER_B_WP2_*.json")))
+    candidates.extend(sorted(
+        path for path in SCHEMAS.glob("gate3_cluster_b_wp2_*.schema.json")
+        if not is_post_merge_schema(path)
+    ))
+    candidates.extend(sorted(
+        path for path in RELEASE.glob("GATE3_CLUSTER_B_WP2_*.json")
+        if not is_post_merge_record(path)
+    ))
     excluded = {
         RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt",
     }
@@ -283,6 +307,51 @@ def ledger_bytes() -> bytes:
     lines = [f"{sha256(path)}  {path.relative_to(ROOT).as_posix()}" for path in wp2_paths_for_ledger()]
     return ("\n".join(lines) + "\n").encode("utf-8")
 
+
+
+def parse_ledger_bytes(value: bytes) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    for line in value.decode("utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        digest, rel = line.split("  ", 1)
+        entries[rel] = digest
+    return entries
+
+
+def canonical_ledger_compatibility_errors(expected: bytes) -> list[str]:
+    if not CANONICAL_LEDGER.is_file():
+        return ["missing canonical WP2 SHA256 ledger"]
+    historical_bytes = CANONICAL_LEDGER.read_bytes()
+    if historical_bytes == expected:
+        return []
+    if not SUCCESSOR_LEDGER.is_file():
+        return ["canonical WP2 ledger differs and successor ledger is missing"]
+
+    historical = parse_ledger_bytes(historical_bytes)
+    current = parse_ledger_bytes(expected)
+    successor = parse_ledger_bytes(SUCCESSOR_LEDGER.read_bytes())
+    errors: list[str] = []
+
+    for rel, historical_digest in historical.items():
+        current_digest = current.get(rel)
+        if current_digest is None:
+            errors.append(f"canonical WP2 path disappeared from builder surface: {rel}")
+            continue
+        if current_digest != historical_digest and successor.get(rel) != current_digest:
+            errors.append(f"successor ledger does not attest changed WP2 path: {rel}")
+
+    for rel, current_digest in current.items():
+        if rel not in historical and successor.get(rel) != current_digest:
+            errors.append(f"successor ledger does not attest new canonical WP2 path: {rel}")
+    return errors
+
+
+def check_or_write_canonical_ledger(expected: bytes, check: bool) -> list[str]:
+    if not check and not SUCCESSOR_LEDGER.is_file():
+        CANONICAL_LEDGER.write_bytes(expected)
+        return []
+    return canonical_ledger_compatibility_errors(expected)
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -307,7 +376,7 @@ def main() -> int:
         for path, payload in generated.items():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(payload)
-    write_or_check(RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt", ledger_bytes(), args.check, errors)
+    errors.extend(check_or_write_canonical_ledger(ledger_bytes(), args.check))
 
     errors.extend(fixture_errors)
     result = {

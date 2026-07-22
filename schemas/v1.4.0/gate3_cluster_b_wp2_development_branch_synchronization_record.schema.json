@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "ahead_by": {
+      "const": 0
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP2_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD"
+    },
+    "behind_by": {
+      "const": 0
+    },
+    "canonical_wp2_merge_baseline": {
+      "const": "b6370af53add3fdff1ddb48824dd76ebba3aaa32"
+    },
+    "compare_status": {
+      "const": "identical"
+    },
+    "date": {
+      "const": "2026-07-22"
+    },
+    "sync_mode": {
+      "const": "FAST_FORWARD_ONLY"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "ahead_by",
+    "artifact_id",
+    "behind_by",
+    "canonical_wp2_merge_baseline",
+    "compare_status",
+    "date",
+    "sync_mode",
+    "version"
+  ],
+  "type": "object"
+}
