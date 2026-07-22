@@ -55,7 +55,7 @@ jobs:
       - run: python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check
       - run: python scripts/capture_gate3_cluster_b_wp2_post_merge_evidence.py --check
       - run: |
-          if [[ "${ github.ref_name }" == "main" ]]; then
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
             python scripts/verify_gate3_cluster_b_wp2.py --allow-main
             python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --allow-main
           else
