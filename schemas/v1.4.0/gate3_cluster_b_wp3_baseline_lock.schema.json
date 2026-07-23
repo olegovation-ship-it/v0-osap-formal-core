@@ -11,6 +11,7 @@
     "authorized_modified_paths": {
       "const": [
         "scripts/verify_gate3_cluster_b_wp2.py",
+        "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
         "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
       ]
     },

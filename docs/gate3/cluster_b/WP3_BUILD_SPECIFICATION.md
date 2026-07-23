@@ -147,12 +147,13 @@ WP3 adds only:
 - `scripts/verify_gate3_cluster_b_wp3.py`;
 - `tests/test_gate3_cluster_b_wp3.py`.
 
-Two pre-existing successor-control paths receive exact-hash-guarded compatibility updates:
+Three pre-existing successor-control paths receive exact-hash-guarded compatibility updates:
 
 - `scripts/verify_gate3_cluster_b_wp2.py` receives a bounded WP3 path allowlist extension;
-- `release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt` records the resulting verifier hash.
+- `scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py` receives the exact 44-path WP3 successor delta;
+- `release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt` records both resulting verifier hashes.
 
-No other pre-existing path may be edited or deleted. Every WP0/WP1/WP2 canonical record and canonical ledger remains byte-preserved. All other baseline paths are replayed byte-exactly, and the applicator rolls back both authorized replacements and all newly created paths on any failure.
+No other pre-existing path may be edited or deleted. Every WP0/WP1/WP2 canonical record and canonical ledger remains byte-preserved. All other baseline paths are replayed byte-exactly, and the applicator rolls back all three authorized replacements and all newly created paths on any failure.
 
 ## 10. Validation and rollback
 
@@ -174,7 +175,7 @@ git diff --check
 
 An explicit payload whitespace scan covers all added and authorized replacement files. Exact delta inventory and all-baseline-byte preservation checks run before and after regression. Hosted CI uses full history and additionally runs `git diff --check 7b49aa76fef65bced7141a639e8ef6fe3b5ba313...HEAD`.
 
-For actual apply, every created path and both authorized replacement backups are recorded. Any failure restores the exact original bytes and modes, removes only paths created by this patch, and requires a final clean-tree assertion.
+For actual apply, every created path and all three authorized replacement backups are recorded. Any failure restores the exact original bytes and modes, removes only paths created by this patch, and requires a final clean-tree assertion.
 
 ## 11. Hosted CI and acceptance
 

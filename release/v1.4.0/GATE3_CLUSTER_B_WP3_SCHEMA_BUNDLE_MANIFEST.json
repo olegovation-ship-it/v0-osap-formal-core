@@ -13,7 +13,7 @@
     },
     {
       "path": "schemas/v1.4.0/gate3_cluster_b_wp3_baseline_lock.schema.json",
-      "sha256": "1064adc6f86c784b3352e2b125a9bee96a33e0f65710351cfe74229416a33d3f"
+      "sha256": "d4d4b9e95baa5420877de6388c49152aceff3ba17b262474bfadad8184f44010"
     },
     {
       "path": "schemas/v1.4.0/gate3_cluster_b_wp3_binding_result.schema.json",
@@ -37,7 +37,7 @@
     },
     {
       "path": "schemas/v1.4.0/gate3_cluster_b_wp3_preservation_firewall.schema.json",
-      "sha256": "d8e4c3e3fe0091ad594a3a76c87ec59fa2a8990b3b7a31af0ae75a2587bc42b4"
+      "sha256": "d1ed30214f483f242e12bcb5f8225ce0fbec29047f2bfd5a748540c41bfbaa2e"
     },
     {
       "path": "schemas/v1.4.0/gate3_cluster_b_wp3_schema_bundle_manifest.schema.json",

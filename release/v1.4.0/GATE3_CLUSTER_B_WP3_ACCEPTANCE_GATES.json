@@ -95,12 +95,12 @@
     },
     {
       "gate_id": "WP3-G19",
-      "requirement": "Only the two exact-hash-guarded WP2 successor compatibility paths may be modified; no baseline path may be deleted.",
+      "requirement": "Only the three exact-hash-guarded WP2 successor compatibility paths may be modified; no baseline path may be deleted.",
       "status": "PACKAGE_READY_CHECK_PENDING"
     },
     {
       "gate_id": "WP3-G20",
-      "requirement": "All WP0/WP1/WP2 canonical records and canonical ledgers remain byte-preserved; the WP2 successor verifier and successor ledger are updated coherently.",
+      "requirement": "All WP0/WP1/WP2 canonical records and canonical ledgers remain byte-preserved; both WP2 successor verifiers and the successor ledger are updated coherently.",
       "status": "PACKAGE_READY_CHECK_PENDING"
     },
     {

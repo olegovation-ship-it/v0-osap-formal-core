@@ -40,7 +40,7 @@ def test_exact_ipec_vocabulary():
 def test_bounded_wp2_successor_firewall_handoff_is_recorded():
     lock=load('release/v1.4.0/GATE3_CLUSTER_B_WP3_BASELINE_LOCK.json')
     firewall=load('release/v1.4.0/GATE3_CLUSTER_B_WP3_PRESERVATION_FIREWALL.json')
-    expected=['scripts/verify_gate3_cluster_b_wp2.py','release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt']
+    expected=['scripts/verify_gate3_cluster_b_wp2.py','scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py','release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt']
     assert lock['new_file_only'] is False
     assert lock['authorized_modified_paths']==expected
     assert firewall['tracked_modification_authorized'] is True

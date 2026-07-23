@@ -3,6 +3,7 @@
   "authorized_modification_mode": "EXACT_HASH_GUARDED_WP2_SUCCESSOR_FIREWALL_HANDOFF",
   "authorized_modified_paths": [
     "scripts/verify_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
     "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
   ],
   "branch": "v1.4.0-development",
@@ -25,6 +26,7 @@
   "wp2_closeout_repair_commit": "9160b8199f42e75c1a554b45793852e8d9aafdb5",
   "wp2_merge_commit": "b6370af53add3fdff1ddb48824dd76ebba3aaa32",
   "wp2_post_merge_closeout_commit": "ea029430b96fd3b90acbf4cb4419564eff583210",
+  "wp2_post_merge_verifier_extended": true,
   "wp2_successor_ledger_updated": true,
   "wp2_successor_verifier_extended": true
 }
