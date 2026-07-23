@@ -1,0 +1,63 @@
+{
+  "accepted_head_commit": "633c01e33271ffb17c045f69aa266a595ebc7e74",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD",
+  "branch_relation_at_capture": "MAIN_AHEAD_BY_ONE_MERGE_COMMIT",
+  "canonical_wp4_ledger_modified": false,
+  "canonical_wp4_records_modified": false,
+  "closed_wp0_wp1_wp2_wp3_canonical_records_modified": false,
+  "cluster": "GATE3_CLUSTER_B",
+  "controlled_modified_paths": [
+    "release/v1.4.0/tools/patch_wp4_allowlist.py",
+    "scripts/build_gate3_cluster_b_wp4.py",
+    "scripts/verify_gate3_cluster_b_wp4.py"
+  ],
+  "controlled_successor_controls_modified": true,
+  "date": "2026-07-23",
+  "decision": "OPEN_WP4_POST_MERGE_CLOSEOUT_PR",
+  "final_sync_required_after_closeout_merge": true,
+  "hosted_ci_checks": {
+    "fail": 0,
+    "pass": 25,
+    "pending": 0,
+    "skipped": 0,
+    "total": 25
+  },
+  "merge_commit": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "merge_delta": {
+    "additions": 2408,
+    "changed_paths": 44,
+    "deletions": 2,
+    "diff_check": "PASS"
+  },
+  "merged_pr": 27,
+  "next_authorized_work_package": "WP5_PENDING_SEPARATE_BUILD_SPECIFICATION",
+  "observed_development_tip": "633c01e33271ffb17c045f69aa266a595ebc7e74",
+  "observed_main_tip": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "pre_closeout_local_replay": {
+    "failed": 0,
+    "pytest_deselected": 3,
+    "pytest_passed": 128,
+    "pytest_skipped": 6,
+    "status": "PASS"
+  },
+  "pre_merge_main": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "proof_or_new_runtime_semantics_added": false,
+  "release_actions": {
+    "doi": false,
+    "github_release": false,
+    "tag": false,
+    "zenodo": false
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "target_version": "v1.4.0",
+  "version": "0.1",
+  "work_package": "WP4",
+  "wp4_acceptance_gates": {
+    "fail": 0,
+    "pass": 24,
+    "pending": 0,
+    "total": 24
+  },
+  "wp5_authorized": false
+}

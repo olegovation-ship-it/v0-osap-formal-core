@@ -1,0 +1,115 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-23",
+  "gate_count": 21,
+  "gates": [
+    {
+      "gate_id": "WP4-PM-G01",
+      "requirement": "PR #27 is merged into main by the recorded merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G02",
+      "requirement": "The accepted WP4 head is the merged pull-request head.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G03",
+      "requirement": "All 25 hosted checks reported success before merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G04",
+      "requirement": "WP4 acceptance gates remain 24/24 PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G05",
+      "requirement": "The 12-fixture proof-activation matrix remains preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G06",
+      "requirement": "Lean and Coq proof evidence for T157-T162 remains preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G07",
+      "requirement": "Theorem identities, symbols, dependencies, conditionality, and statement hashes T157-T162 remain unchanged.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G08",
+      "requirement": "Lean/Coq statement parity remains 100 percent.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G09",
+      "requirement": "WP4 activation and typed-outcome semantics are not modified by the closeout.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G10",
+      "requirement": "Canonical WP4 release records remain byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G11",
+      "requirement": "Closed WP0/WP1/WP2/WP3 canonical records and canonical ledgers remain untouched.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G12",
+      "requirement": "The canonical WP4 SHA-256 ledger is not rewritten.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G13",
+      "requirement": "A bounded WP4 successor ledger attests only controlled successor scripts and new closeout surfaces.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G14",
+      "requirement": "The WP4 builder, verifier, and exact changed-path firewall are successor-compatible without theorem or runtime mutation.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G15",
+      "requirement": "Pre-closeout Codespaces replay reports 128 passed, 6 skipped, 3 deselected, and 0 failed.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G16",
+      "requirement": "The captured relation is main ahead of v1.4.0-development by exactly one merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G17",
+      "requirement": "Only fast-forward synchronization is authorized after the closeout PR merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G18",
+      "requirement": "Force-push, history rewrite, and branch deletion remain forbidden.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G19",
+      "requirement": "No proof implementation or new runtime semantics are added by this closeout.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G20",
+      "requirement": "No tag, GitHub Release, Zenodo publication, or DOI action is authorized.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP4-PM-G21",
+      "requirement": "WP5 remains a separate work package requiring separate build specification and implementation authorization.",
+      "status": "PASS"
+    }
+  ],
+  "release_actions_authorized": false,
+  "status": "PASS",
+  "version": "0.1"
+}

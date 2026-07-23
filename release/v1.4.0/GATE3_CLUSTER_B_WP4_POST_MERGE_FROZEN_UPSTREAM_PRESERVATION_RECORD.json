@@ -1,0 +1,39 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD",
+  "canonical_wp4_ledger_modified": false,
+  "canonical_wp4_merge_baseline": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "canonical_wp4_records_modified": false,
+  "closed_wp0_wp1_wp2_wp3_canonical_records_modified": false,
+  "date": "2026-07-23",
+  "fixture_count_preserved": 12,
+  "proof_implementation_authorized": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "runtime_semantics_modified_by_closeout": false,
+  "source_lock": "release/v1.4.0/GATE3_CLUSTER_B_WP4_BASELINE_LOCK.json",
+  "stable_release_preserved": {
+    "doi": "10.5281/zenodo.21346728",
+    "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "modified": false,
+    "tag": "v1.3.0"
+  },
+  "statement_hashes_preserved": {
+    "T157": "4afc76d031b69016587e0ce65ce3e5d06a3ab9dc864828759ccd94c44889efd2",
+    "T158": "1188ecbe6b4e53ebd061be7350c49aa1d06feb4c9cd270f992ec95e0e170449f",
+    "T159": "19478447c22ed4202b7a6c765bf49f019846f209e310a7e18452795d0c46201d",
+    "T160": "7f78c6738c09425a3aaea7560ce5c21aca1bed9341155de64abb7540d0220f37",
+    "T161": "2fcb4a46f4f67bfc71b33f01f8f29d4c39f0b1491c4a620387c50da866c6663e",
+    "T162": "bd9fcaae0841f163733ce3444cfd23407e82de181ffb745b4e434cc00d9bcf4b"
+  },
+  "statement_parity_percent_preserved": 100,
+  "theorem_ids_preserved": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "version": "0.1",
+  "wp5_start_authorized": false
+}

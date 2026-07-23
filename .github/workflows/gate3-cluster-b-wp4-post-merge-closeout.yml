@@ -1,0 +1,107 @@
+name: V0 OSAP Gate 3 Cluster B WP4 Post-Merge Closeout
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp4-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION.md'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_CLOSEOUT_GATES.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_HOSTED_CI_EVIDENCE.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/patch_wp4_allowlist.py'
+      - 'release/v1.4.0/tools/patch_wp4_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_development_branch_synchronization_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_archival_closeout_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_closeout_gates.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_frozen_upstream_preservation_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_hosted_ci_evidence.schema.json'
+      - 'scripts/build_gate3_cluster_b_wp4.py'
+      - 'scripts/build_gate3_cluster_b_wp4_post_merge_closeout.py'
+      - 'scripts/capture_gate3_cluster_b_wp4_post_merge_evidence.py'
+      - 'scripts/synchronize_v1_4_0_development_wp4.sh'
+      - 'scripts/verify_gate3_cluster_b_wp4.py'
+      - 'scripts/verify_gate3_cluster_b_wp4_post_merge_closeout.py'
+      - 'tests/test_gate3_cluster_b_wp4_post_merge_closeout.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp4-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION.md'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_CLOSEOUT_GATES.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_HOSTED_CI_EVIDENCE.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/patch_wp4_allowlist.py'
+      - 'release/v1.4.0/tools/patch_wp4_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_development_branch_synchronization_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_archival_closeout_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_closeout_gates.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_frozen_upstream_preservation_record.schema.json'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_hosted_ci_evidence.schema.json'
+      - 'scripts/build_gate3_cluster_b_wp4.py'
+      - 'scripts/build_gate3_cluster_b_wp4_post_merge_closeout.py'
+      - 'scripts/capture_gate3_cluster_b_wp4_post_merge_evidence.py'
+      - 'scripts/synchronize_v1_4_0_development_wp4.sh'
+      - 'scripts/verify_gate3_cluster_b_wp4.py'
+      - 'scripts/verify_gate3_cluster_b_wp4_post_merge_closeout.py'
+      - 'tests/test_gate3_cluster_b_wp4_post_merge_closeout.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  wp4-post-merge-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git fetch --force --tags origin
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: WP4 successor-compatible exact allowlist
+        run: python release/v1.4.0/tools/patch_wp4_allowlist.py --check
+      - name: WP4 post-merge exact allowlist
+        run: python release/v1.4.0/tools/patch_wp4_post_merge_allowlist.py --check
+      - name: Canonical WP4 successor build
+        run: python scripts/build_gate3_cluster_b_wp4.py --check
+      - name: Canonical WP4 successor verifier
+        run: python scripts/verify_gate3_cluster_b_wp4.py
+      - name: Post-merge closeout build
+        run: python scripts/build_gate3_cluster_b_wp4_post_merge_closeout.py --check
+      - name: Hosted evidence integrity
+        run: python scripts/capture_gate3_cluster_b_wp4_post_merge_evidence.py --check
+      - name: Post-merge closeout verifier
+        run: python scripts/verify_gate3_cluster_b_wp4_post_merge_closeout.py --package-only
+      - name: Full Python regression
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Proof-hole scan
+        run: python scripts/check_no_proof_holes.py
+      - name: Synchronization script syntax
+        run: bash -n scripts/synchronize_v1_4_0_development_wp4.sh
+      - name: Whitespace and patch integrity
+        run: git diff --check cdae3ea4e50f6222182f2398c350476fbe820f92 --
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp4-post-merge-closeout-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_HOSTED_CI_EVIDENCE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_CLOSEOUT_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt

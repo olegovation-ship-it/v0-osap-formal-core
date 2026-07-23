@@ -1,0 +1,254 @@
+{
+  "$id": "https://example.org/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_archival_closeout_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_head_commit": {
+      "const": "633c01e33271ffb17c045f69aa266a595ebc7e74"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "branch_relation_at_capture": {
+      "const": "MAIN_AHEAD_BY_ONE_MERGE_COMMIT"
+    },
+    "canonical_wp4_ledger_modified": {
+      "const": false
+    },
+    "canonical_wp4_records_modified": {
+      "const": false
+    },
+    "closed_wp0_wp1_wp2_wp3_canonical_records_modified": {
+      "const": false
+    },
+    "cluster": {
+      "const": "GATE3_CLUSTER_B"
+    },
+    "controlled_modified_paths": {
+      "items": {
+        "enum": [
+          "release/v1.4.0/tools/patch_wp4_allowlist.py",
+          "scripts/build_gate3_cluster_b_wp4.py",
+          "scripts/verify_gate3_cluster_b_wp4.py"
+        ]
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "controlled_successor_controls_modified": {
+      "const": true
+    },
+    "date": {
+      "const": "2026-07-23"
+    },
+    "decision": {
+      "const": "OPEN_WP4_POST_MERGE_CLOSEOUT_PR"
+    },
+    "final_sync_required_after_closeout_merge": {
+      "const": true
+    },
+    "hosted_ci_checks": {
+      "additionalProperties": false,
+      "properties": {
+        "fail": {
+          "const": 0
+        },
+        "pass": {
+          "const": 25
+        },
+        "pending": {
+          "const": 0
+        },
+        "skipped": {
+          "const": 0
+        },
+        "total": {
+          "const": 25
+        }
+      },
+      "required": [
+        "fail",
+        "pass",
+        "pending",
+        "skipped",
+        "total"
+      ],
+      "type": "object"
+    },
+    "merge_commit": {
+      "const": "cdae3ea4e50f6222182f2398c350476fbe820f92"
+    },
+    "merge_delta": {
+      "additionalProperties": false,
+      "properties": {
+        "additions": {
+          "const": 2408
+        },
+        "changed_paths": {
+          "const": 44
+        },
+        "deletions": {
+          "const": 2
+        },
+        "diff_check": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "additions",
+        "changed_paths",
+        "deletions",
+        "diff_check"
+      ],
+      "type": "object"
+    },
+    "merged_pr": {
+      "const": 27
+    },
+    "next_authorized_work_package": {
+      "const": "WP5_PENDING_SEPARATE_BUILD_SPECIFICATION"
+    },
+    "observed_development_tip": {
+      "const": "633c01e33271ffb17c045f69aa266a595ebc7e74"
+    },
+    "observed_main_tip": {
+      "const": "cdae3ea4e50f6222182f2398c350476fbe820f92"
+    },
+    "pre_closeout_local_replay": {
+      "additionalProperties": false,
+      "properties": {
+        "failed": {
+          "const": 0
+        },
+        "pytest_deselected": {
+          "const": 3
+        },
+        "pytest_passed": {
+          "const": 128
+        },
+        "pytest_skipped": {
+          "const": 6
+        },
+        "status": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "failed",
+        "pytest_deselected",
+        "pytest_passed",
+        "pytest_skipped",
+        "status"
+      ],
+      "type": "object"
+    },
+    "pre_merge_main": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "proof_or_new_runtime_semantics_added": {
+      "const": false
+    },
+    "release_actions": {
+      "additionalProperties": false,
+      "properties": {
+        "doi": {
+          "const": false
+        },
+        "github_release": {
+          "const": false
+        },
+        "tag": {
+          "const": false
+        },
+        "zenodo": {
+          "const": false
+        }
+      },
+      "required": [
+        "doi",
+        "github_release",
+        "tag",
+        "zenodo"
+      ],
+      "type": "object"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "status": {
+      "const": "POST_MERGE_CLOSEOUT_READY_FOR_PR"
+    },
+    "target_version": {
+      "const": "v1.4.0"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "work_package": {
+      "const": "WP4"
+    },
+    "wp4_acceptance_gates": {
+      "additionalProperties": false,
+      "properties": {
+        "fail": {
+          "const": 0
+        },
+        "pass": {
+          "const": 24
+        },
+        "pending": {
+          "const": 0
+        },
+        "total": {
+          "const": 24
+        }
+      },
+      "required": [
+        "fail",
+        "pass",
+        "pending",
+        "total"
+      ],
+      "type": "object"
+    },
+    "wp5_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "accepted_head_commit",
+    "artifact_id",
+    "branch_relation_at_capture",
+    "canonical_wp4_ledger_modified",
+    "canonical_wp4_records_modified",
+    "closed_wp0_wp1_wp2_wp3_canonical_records_modified",
+    "cluster",
+    "controlled_modified_paths",
+    "controlled_successor_controls_modified",
+    "date",
+    "decision",
+    "final_sync_required_after_closeout_merge",
+    "hosted_ci_checks",
+    "merge_commit",
+    "merge_delta",
+    "merged_pr",
+    "next_authorized_work_package",
+    "observed_development_tip",
+    "observed_main_tip",
+    "pre_closeout_local_replay",
+    "pre_merge_main",
+    "proof_or_new_runtime_semantics_added",
+    "release_actions",
+    "repository",
+    "status",
+    "target_version",
+    "version",
+    "work_package",
+    "wp4_acceptance_gates",
+    "wp5_authorized"
+  ],
+  "title": "Gate 3 Cluster B WP4 post-merge archival closeout record",
+  "type": "object"
+}

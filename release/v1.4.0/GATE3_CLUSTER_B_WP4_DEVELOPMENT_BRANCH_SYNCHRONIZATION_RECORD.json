@@ -1,0 +1,23 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD",
+  "branch_deletion_authorized": false,
+  "canonical_wp4_merge_baseline": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "compare_status_at_capture": "MAIN_CONTAINS_DEVELOPMENT",
+  "date": "2026-07-23",
+  "development_ahead_by": 0,
+  "development_branch": "v1.4.0-development",
+  "expected_post_sync_relation": "IDENTICAL",
+  "final_sync_required_after_closeout_merge": true,
+  "force_push_authorized": false,
+  "history_rewrite_authorized": false,
+  "main_ahead_by": 1,
+  "main_branch": "main",
+  "observed_development_tip": "633c01e33271ffb17c045f69aa266a595ebc7e74",
+  "observed_main_tip": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "pre_sync_development_tip": "633c01e33271ffb17c045f69aa266a595ebc7e74",
+  "relation_at_capture": "MAIN_AHEAD_BY_ONE_MERGE_COMMIT",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "PRE_CLOSEOUT_SYNCHRONIZATION_BOUNDARY_RECORDED",
+  "sync_mode": "FAST_FORWARD_ONLY_AFTER_CLOSEOUT_MERGE",
+  "version": "0.1"
+}
