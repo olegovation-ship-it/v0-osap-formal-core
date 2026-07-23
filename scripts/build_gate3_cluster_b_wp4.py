@@ -30,7 +30,7 @@ def wp4_paths():
         "lean/V0OSAP/ClusterB.lean", "coq/theories/ClusterB.v",
         "lean/V0OSAP.lean", "lean/V0OSAP/Theorems.lean", "coq/_CoqProject", "coq/theories/Theorems.v",
         "scripts/build_gate3_cluster_b_wp4.py", "scripts/verify_gate3_cluster_b_wp4.py",
-        "tests/test_gate3_cluster_b_wp4.py", "release/v1.4.0/tools/patch_wp4_allowlist.py",
+        "pytest.ini", "tests/test_gate3_cluster_b_wp4.py", "release/v1.4.0/tools/patch_wp4_allowlist.py",
     ]
     paths.extend(exact)
     for prefix in ["docs/gate3/cluster_b/WP4_", "fixtures/gate3/cluster_b/wp4/", "release/v1.4.0/GATE3_CLUSTER_B_WP4_", "schemas/v1.4.0/gate3_cluster_b_wp4_"]:
