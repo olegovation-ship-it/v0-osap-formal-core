@@ -61,6 +61,15 @@ ALLOWED_NEW_FILES = {
     "scripts/build_gate3_cluster_b_wp3.py",
     "scripts/verify_gate3_cluster_b_wp3.py",
     "tests/test_gate3_cluster_b_wp3.py",
+
+    # WP3_POST_MERGE_SUCCESSOR_FIREWALL_HANDOFF_V0_1_1
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+    "release/v1.4.0/tools/patch_wp3_post_merge_allowlist.py",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/capture_gate3_cluster_b_wp3_post_merge_evidence.py",
+    "scripts/synchronize_v1_4_0_development_wp3.sh",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp3_post_merge_closeout.py",
 }
 ALLOWED_NEW_PREFIXES = (
     "fixtures/gate3/cluster_b/wp2/",

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_CLOSEOUT_GATES"
+    },
+    "gate_count": {
+      "const": 21
+    },
+    "gates": {
+      "maxItems": 21,
+      "minItems": 21,
+      "type": "array"
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "status": {
+      "const": "PASS"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "gate_count",
+    "gates",
+    "status",
+    "release_actions_authorized"
+  ],
+  "type": "object"
+}

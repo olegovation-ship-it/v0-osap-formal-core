@@ -1,0 +1,115 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-23",
+  "gate_count": 21,
+  "gates": [
+    {
+      "gate_id": "WP3-PM-G01",
+      "requirement": "PR #25 is merged into main by the recorded merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G02",
+      "requirement": "The accepted WP3 head is the merged pull-request head.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G03",
+      "requirement": "All 29 hosted checks reported success before merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G04",
+      "requirement": "WP3 acceptance gates remain 24/24 PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G05",
+      "requirement": "The 15-fixture typed-outcome binding matrix remains preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G06",
+      "requirement": "The exact V0-IPEC v0.1 typed-outcome vocabulary and precedence remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G07",
+      "requirement": "Theorem targets T157 through T162 remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G08",
+      "requirement": "Semantic roles CB-R1 through CB-R7 remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G09",
+      "requirement": "WP2 PASS remains non-CERTIFIED until separately authorized WP4 proof activation.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G10",
+      "requirement": "Canonical WP3 release records remain byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G11",
+      "requirement": "Closed WP0/WP1/WP2 canonical records and canonical ledgers remain untouched.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G12",
+      "requirement": "The canonical WP3 SHA-256 ledger is not rewritten.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G13",
+      "requirement": "A bounded WP3 successor ledger attests only superseded control scripts and new closeout surfaces.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G14",
+      "requirement": "The WP2 post-merge verifier and successor ledger are updated coherently for the WP3 closeout successor pathset.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G15",
+      "requirement": "Pre-closeout Codespaces replay reports 120 passed, 6 skipped, 0 failed.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G16",
+      "requirement": "main and v1.4.0-development were identical at merge-baseline capture.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G17",
+      "requirement": "Only fast-forward synchronization is authorized after closeout merge.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G18",
+      "requirement": "Force-push, history rewrite, and branch deletion are forbidden.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G19",
+      "requirement": "No proof implementation, certification activation, or new runtime semantics are added by this closeout.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G20",
+      "requirement": "No tag, GitHub Release, Zenodo publication, or DOI action is authorized.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP3-PM-G21",
+      "requirement": "WP4 remains a separate work package requiring separate build specification and implementation authorization.",
+      "status": "PASS"
+    }
+  ],
+  "release_actions_authorized": false,
+  "status": "PASS",
+  "version": "0.1"
+}

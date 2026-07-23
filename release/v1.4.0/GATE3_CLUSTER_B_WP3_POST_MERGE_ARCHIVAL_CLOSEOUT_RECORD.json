@@ -1,0 +1,62 @@
+{
+  "accepted_head_commit": "380b5a59dd9e68ad3c67e26c01ac01bdc9e11cfe",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD",
+  "branch_relation_at_capture": "SYNCHRONIZED_TO_CURRENT_MAIN",
+  "canonical_wp3_ledger_modified": false,
+  "canonical_wp3_records_modified": false,
+  "closed_wp0_wp1_wp2_canonical_records_modified": false,
+  "cluster": "GATE3_CLUSTER_B",
+  "controlled_modified_paths": [
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+  ],
+  "controlled_predecessor_successor_controls_modified": true,
+  "date": "2026-07-23",
+  "decision": "OPEN_WP3_POST_MERGE_CLOSEOUT_PR",
+  "final_sync_required_after_closeout_merge": true,
+  "hosted_ci_checks": {
+    "fail": 0,
+    "pass": 29,
+    "pending": 0,
+    "skipped": 0,
+    "total": 29
+  },
+  "merge_commit": "3a3100d88772f3613192db200918d392885a3961",
+  "merge_delta": {
+    "additions": 2954,
+    "changed_paths": 45,
+    "deletions": 4,
+    "diff_check": "PASS"
+  },
+  "merged_pr": 25,
+  "next_authorized_work_package": "WP4_PENDING_SEPARATE_BUILD_SPECIFICATION",
+  "observed_development_tip": "3a3100d88772f3613192db200918d392885a3961",
+  "observed_main_tip": "3a3100d88772f3613192db200918d392885a3961",
+  "pre_closeout_local_replay": {
+    "failed": 0,
+    "pytest_passed": 120,
+    "pytest_skipped": 6,
+    "status": "PASS"
+  },
+  "pre_merge_main": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+  "proof_or_new_runtime_semantics_added": false,
+  "release_actions": {
+    "doi": false,
+    "github_release": false,
+    "tag": false,
+    "zenodo": false
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "target_version": "v1.4.0",
+  "version": "0.1",
+  "work_package": "WP3",
+  "wp3_acceptance_gates": {
+    "fail": 0,
+    "pass": 24,
+    "pending": 0,
+    "total": 24
+  },
+  "wp4_proof_completion_authorized": false
+}

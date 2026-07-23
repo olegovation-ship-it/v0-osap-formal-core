@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "check_summary": {
+      "required": [
+        "success",
+        "failure",
+        "pending",
+        "total"
+      ],
+      "type": "object"
+    },
+    "merge_commit": {
+      "const": "3a3100d88772f3613192db200918d392885a3961"
+    },
+    "source_head_sha": {
+      "const": "380b5a59dd9e68ad3c67e26c01ac01bdc9e11cfe"
+    },
+    "source_pr": {
+      "const": 25
+    }
+  },
+  "required": [
+    "artifact_id",
+    "source_pr",
+    "source_head_sha",
+    "merge_commit",
+    "check_summary",
+    "canonical_sha256"
+  ],
+  "type": "object"
+}

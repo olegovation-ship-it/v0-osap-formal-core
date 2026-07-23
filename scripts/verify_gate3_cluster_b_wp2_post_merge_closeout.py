@@ -228,7 +228,30 @@ def git_checks(allow_main: bool) -> list[str]:
         'scripts/verify_gate3_cluster_b_wp3.py',
         'tests/test_gate3_cluster_b_wp3.py',
     }
-    successor_expected = expected | wp3_successor_paths
+    # WP3_POST_MERGE_SUCCESSOR_PATHSET_V0_1
+    wp3_post_merge_paths = {
+        '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml',
+        'docs/gate3/cluster_b/WP3_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION.md',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_CLOSEOUT_GATES.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_HOSTED_CI_EVIDENCE.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt',
+        'release/v1.4.0/tools/patch_wp3_post_merge_allowlist.py',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_development_branch_synchronization_record.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_post_merge_archival_closeout_record.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_post_merge_closeout_gates.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_post_merge_frozen_upstream_preservation_record.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_post_merge_hosted_ci_evidence.schema.json',
+        'scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py',
+        'scripts/capture_gate3_cluster_b_wp3_post_merge_evidence.py',
+        'scripts/synchronize_v1_4_0_development_wp3.sh',
+        'scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py',
+        'tests/test_gate3_cluster_b_wp3_post_merge_closeout.py',
+    }
+    successor_expected = expected | wp3_successor_paths | wp3_post_merge_paths
     if changed != expected and changed != successor_expected:
         comparison = successor_expected if changed & wp3_successor_paths else expected
         errors.append(
