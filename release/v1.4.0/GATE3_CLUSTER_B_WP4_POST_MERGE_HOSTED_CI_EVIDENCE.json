@@ -1,0 +1,40 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_HOSTED_CI_EVIDENCE",
+  "canonical_sha256": "2802057b1d0b5106692495a4a0dfac724f71987eaf715ee1b6cf251b36aaf42b",
+  "check_summary": {
+    "failure": 0,
+    "pending": 0,
+    "skipped": 0,
+    "success": 25,
+    "total": 25
+  },
+  "date": "2026-07-23",
+  "evidence_state": "PR_PAGE_25_OF_25_AND_CODESPACES_REPLAY_EVIDENCE_RECORDED",
+  "mandatory_workflows_observed": [
+    "V0 OSAP Gate 3 Cluster B WP4",
+    "Python checker",
+    "Lean 4",
+    "Coq",
+    "Schema validation",
+    "Release readiness",
+    "RC1 release closure replay"
+  ],
+  "merge_commit": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "observation_source": "USER_PROVIDED_GITHUB_PR_PAGE_SCREENSHOTS_AND_CODESPACES_TERMINAL",
+  "pre_closeout_codespaces_replay": {
+    "coq_build": "PASS",
+    "git_diff_check": "PASS",
+    "lean_build": "PASS",
+    "proof_hole_scan": "PASS",
+    "pytest_deselected": 3,
+    "pytest_failed": 0,
+    "pytest_passed": 128,
+    "pytest_skipped": 6,
+    "wp4_builder": "PASS",
+    "wp4_verifier": "PASS"
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_head_sha": "633c01e33271ffb17c045f69aa266a595ebc7e74",
+  "source_pr": 27,
+  "version": "0.1"
+}

@@ -1,0 +1,139 @@
+{
+  "$id": "https://example.org/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp4_post_merge_hosted_ci_evidence.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "check_summary": {
+      "additionalProperties": false,
+      "properties": {
+        "failure": {
+          "const": 0
+        },
+        "pending": {
+          "const": 0
+        },
+        "skipped": {
+          "const": 0
+        },
+        "success": {
+          "const": 25
+        },
+        "total": {
+          "const": 25
+        }
+      },
+      "required": [
+        "failure",
+        "pending",
+        "skipped",
+        "success",
+        "total"
+      ],
+      "type": "object"
+    },
+    "date": {
+      "const": "2026-07-23"
+    },
+    "evidence_state": {
+      "const": "PR_PAGE_25_OF_25_AND_CODESPACES_REPLAY_EVIDENCE_RECORDED"
+    },
+    "mandatory_workflows_observed": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 7,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "merge_commit": {
+      "const": "cdae3ea4e50f6222182f2398c350476fbe820f92"
+    },
+    "observation_source": {
+      "const": "USER_PROVIDED_GITHUB_PR_PAGE_SCREENSHOTS_AND_CODESPACES_TERMINAL"
+    },
+    "pre_closeout_codespaces_replay": {
+      "additionalProperties": false,
+      "properties": {
+        "coq_build": {
+          "const": "PASS"
+        },
+        "git_diff_check": {
+          "const": "PASS"
+        },
+        "lean_build": {
+          "const": "PASS"
+        },
+        "proof_hole_scan": {
+          "const": "PASS"
+        },
+        "pytest_deselected": {
+          "const": 3
+        },
+        "pytest_failed": {
+          "const": 0
+        },
+        "pytest_passed": {
+          "const": 128
+        },
+        "pytest_skipped": {
+          "const": 6
+        },
+        "wp4_builder": {
+          "const": "PASS"
+        },
+        "wp4_verifier": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "coq_build",
+        "git_diff_check",
+        "lean_build",
+        "proof_hole_scan",
+        "pytest_deselected",
+        "pytest_failed",
+        "pytest_passed",
+        "pytest_skipped",
+        "wp4_builder",
+        "wp4_verifier"
+      ],
+      "type": "object"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "source_head_sha": {
+      "const": "633c01e33271ffb17c045f69aa266a595ebc7e74"
+    },
+    "source_pr": {
+      "const": 27
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "canonical_sha256",
+    "check_summary",
+    "date",
+    "evidence_state",
+    "mandatory_workflows_observed",
+    "merge_commit",
+    "observation_source",
+    "pre_closeout_codespaces_replay",
+    "repository",
+    "source_head_sha",
+    "source_pr",
+    "version"
+  ],
+  "title": "Gate 3 Cluster B WP4 post-merge hosted CI evidence",
+  "type": "object"
+}

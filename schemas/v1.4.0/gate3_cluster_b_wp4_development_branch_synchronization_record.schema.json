@@ -1,0 +1,95 @@
+{
+  "$id": "https://example.org/v0-osap/schemas/v1.4.0/gate3_cluster_b_wp4_development_branch_synchronization_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD"
+    },
+    "branch_deletion_authorized": {
+      "const": false
+    },
+    "canonical_wp4_merge_baseline": {
+      "const": "cdae3ea4e50f6222182f2398c350476fbe820f92"
+    },
+    "compare_status_at_capture": {
+      "const": "MAIN_CONTAINS_DEVELOPMENT"
+    },
+    "date": {
+      "const": "2026-07-23"
+    },
+    "development_ahead_by": {
+      "const": 0
+    },
+    "development_branch": {
+      "const": "v1.4.0-development"
+    },
+    "expected_post_sync_relation": {
+      "const": "IDENTICAL"
+    },
+    "final_sync_required_after_closeout_merge": {
+      "const": true
+    },
+    "force_push_authorized": {
+      "const": false
+    },
+    "history_rewrite_authorized": {
+      "const": false
+    },
+    "main_ahead_by": {
+      "const": 1
+    },
+    "main_branch": {
+      "const": "main"
+    },
+    "observed_development_tip": {
+      "const": "633c01e33271ffb17c045f69aa266a595ebc7e74"
+    },
+    "observed_main_tip": {
+      "const": "cdae3ea4e50f6222182f2398c350476fbe820f92"
+    },
+    "pre_sync_development_tip": {
+      "const": "633c01e33271ffb17c045f69aa266a595ebc7e74"
+    },
+    "relation_at_capture": {
+      "const": "MAIN_AHEAD_BY_ONE_MERGE_COMMIT"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "status": {
+      "const": "PRE_CLOSEOUT_SYNCHRONIZATION_BOUNDARY_RECORDED"
+    },
+    "sync_mode": {
+      "const": "FAST_FORWARD_ONLY_AFTER_CLOSEOUT_MERGE"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "branch_deletion_authorized",
+    "canonical_wp4_merge_baseline",
+    "compare_status_at_capture",
+    "date",
+    "development_ahead_by",
+    "development_branch",
+    "expected_post_sync_relation",
+    "final_sync_required_after_closeout_merge",
+    "force_push_authorized",
+    "history_rewrite_authorized",
+    "main_ahead_by",
+    "main_branch",
+    "observed_development_tip",
+    "observed_main_tip",
+    "pre_sync_development_tip",
+    "relation_at_capture",
+    "repository",
+    "status",
+    "sync_mode",
+    "version"
+  ],
+  "title": "Gate 3 Cluster B WP4 development branch synchronization record",
+  "type": "object"
+}
