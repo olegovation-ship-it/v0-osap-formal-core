@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_DUAL_BACKEND_PROOF_MANIFEST"
+    },
+    "baseline": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "claim_boundary": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "date": {
+      "type": "string"
+    },
+    "theorem_count": {
+      "const": 6
+    },
+    "theorems": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "canonical_name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "claim_class": {
+            "type": "string"
+          },
+          "conditional": {
+            "type": "boolean"
+          },
+          "coq": {
+            "type": "object"
+          },
+          "coq_symbol": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "formal_signature": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "lean": {
+            "type": "object"
+          },
+          "lean_symbol": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "parity_status": {
+            "const": "PASS"
+          },
+          "proof_holes_permitted": {
+            "const": false
+          },
+          "requires": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "statement_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "theorem_id": {
+            "enum": [
+              "T157",
+              "T158",
+              "T159",
+              "T160",
+              "T161",
+              "T162"
+            ]
+          }
+        },
+        "required": [
+          "theorem_id",
+          "canonical_name",
+          "formal_signature",
+          "statement_sha256",
+          "requires",
+          "conditional",
+          "lean",
+          "coq",
+          "parity_status"
+        ],
+        "type": "object"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "baseline",
+    "theorem_count",
+    "theorems",
+    "version"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,21 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-inherited-reject",
+    "candidate_outcome_code": "REJECTED_DLE_FAILURE",
+    "certification_claimed": false,
+    "source_fixture_id": "inherited-reject",
+    "source_status": "REJECT",
+    "theorem_lineage": [
+      "T123",
+      "T132"
+    ],
+    "typed_outcome_code": "REJECTED_DLE_FAILURE"
+  },
+  "classification": "positive",
+  "expected": {
+    "activation_status": "WP4_FROZEN_THEOREM_OUTCOME_PRESERVED",
+    "typed_outcome_code": "REJECTED_DLE_FAILURE"
+  },
+  "fixture_id": "07_inherited_rejection_preserved",
+  "proof_manifest_delta": {}
+}

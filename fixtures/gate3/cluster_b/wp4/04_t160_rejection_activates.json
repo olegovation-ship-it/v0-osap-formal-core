@@ -1,0 +1,21 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-t160-reject",
+    "candidate_outcome_code": "REJECTED_NONELIM_OBSTRUCTION",
+    "certification_claimed": false,
+    "source_fixture_id": "t160-reject",
+    "source_status": "REJECT",
+    "theorem_lineage": [
+      "T159",
+      "T160"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "positive",
+  "expected": {
+    "certification_claimed": false,
+    "typed_outcome_code": "REJECTED_NONELIM_OBSTRUCTION"
+  },
+  "fixture_id": "04_t160_rejection_activates",
+  "proof_manifest_delta": {}
+}

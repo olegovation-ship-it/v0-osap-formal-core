@@ -1,0 +1,21 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-t157-pass",
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "source_fixture_id": "t157-pass",
+    "source_status": "PASS",
+    "theorem_lineage": [
+      "T157"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "positive",
+  "expected": {
+    "activation_status": "WP4_DUAL_BACKEND_CERTIFICATION_ACTIVATED",
+    "certification_claimed": true,
+    "typed_outcome_code": "CERTIFIED"
+  },
+  "fixture_id": "01_t157_pass_certifies",
+  "proof_manifest_delta": {}
+}

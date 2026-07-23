@@ -1,0 +1,130 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_ACCEPTANCE_GATES",
+  "baseline": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "date": "2026-07-23",
+  "gate_count": 24,
+  "gates": [
+    {
+      "gate_id": "WP4-G01",
+      "requirement": "Exact branch, HEAD, origin/main, and origin/v1.4.0-development baseline equality is enforced.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G02",
+      "requirement": "Stable v1.3.0 tag target is unchanged.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G03",
+      "requirement": "WP0/WP1/WP2/WP3 canonical records and historical SHA-256 ledgers are byte-preserved.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G04",
+      "requirement": "Theorem IDs, canonical names, symbols, signatures, dependencies, and locked hashes for T157-T162 are unchanged.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G05",
+      "requirement": "Lean 4 source contains T157-T162 with no proof holes.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G06",
+      "requirement": "Coq source contains T157-T162 with no proof holes.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G07",
+      "requirement": "T157 is completed in both backends.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G08",
+      "requirement": "T158 is completed in both backends while retaining explicit conditional premises.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G09",
+      "requirement": "T159 is completed in both backends.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G10",
+      "requirement": "T160 is completed in both backends while retaining explicit conditional premises.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G11",
+      "requirement": "T161 is completed in both backends without converse or completeness promotion.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G12",
+      "requirement": "T162 is completed in both backends without archive-to-current promotion.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G13",
+      "requirement": "Inherited dependencies T123/T124/T126/T131-T142 are imported, not redefined or renumbered.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G14",
+      "requirement": "All six normalized statement hashes reproduce the locked WP1 values.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G15",
+      "requirement": "Lean/Coq theorem correspondence is complete and 100 percent parity is recorded.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G16",
+      "requirement": "WP3 PASS remains non-certified when any required proof evidence is missing.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G17",
+      "requirement": "WP3 extension-theorem rejection remains deferred when proof evidence is missing.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G18",
+      "requirement": "WP3 candidate CERTIFIED activates only with exact dual-backend evidence and parity.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G19",
+      "requirement": "A backend or statement-parity failure maps to BACKEND_PARITY_FAILURE.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G20",
+      "requirement": "Positive and negative activation fixtures replay deterministically.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G21",
+      "requirement": "All WP4 JSON records validate under Draft 2020-12 schemas and the WP4 SHA-256 ledger reproduces.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G22",
+      "requirement": "Full Python regression, proof-hole scan, Lean build, Coq build, and git diff --check are required locally and in hosted CI.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G23",
+      "requirement": "Exact changed-path allowlist and rollback-on-any-FAIL are enforced.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP4-G24",
+      "requirement": "No commit, push, tag, GitHub Release, Zenodo, DOI, WP5 start, force-push, or history rewrite is authorized.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    }
+  ],
+  "release_authorization": "NONE",
+  "version": "0.1"
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "activation_id": {
+      "pattern": "^WP4-ACT-[0-9a-f]{24}$",
+      "type": "string"
+    },
+    "activation_integrity_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "activation_status": {
+      "type": "string"
+    },
+    "activation_version": {
+      "const": "v0-osap-cluster-b-wp4/0.1.0.dev1"
+    },
+    "baseline": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "candidate_outcome_code": {
+      "enum": [
+        "BACKEND_PARITY_FAILURE",
+        "REJECTED_BRANCH_PROMOTION",
+        "REJECTED_NONELIM_OBSTRUCTION",
+        "REJECTED_LIVE_RESIDUAL",
+        "REJECTED_DLE_FAILURE",
+        "REJECTED_GUARD_FAILURE",
+        "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+        "CERTIFIED"
+      ]
+    },
+    "certification_claimed": {
+      "type": "boolean"
+    },
+    "extension_theorem_lineage": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "frozen_ipec_v0_1_modified": {
+      "const": false
+    },
+    "frozen_wp3_binding_modified": {
+      "const": false
+    },
+    "missing_proof_evidence": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "proof_evidence_refs": {
+      "type": "array"
+    },
+    "release_action_authorized": {
+      "const": false
+    },
+    "resolution_basis": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "source_binding_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_fixture_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_status": {
+      "enum": [
+        "PASS",
+        "DEFERRED",
+        "REJECT"
+      ]
+    },
+    "theorem_lineage": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "typed_outcome_code": {
+      "type": "string"
+    },
+    "wp3_outcome_code": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "activation_id",
+    "activation_version",
+    "baseline",
+    "source_status",
+    "theorem_lineage",
+    "candidate_outcome_code",
+    "wp3_outcome_code",
+    "typed_outcome_code",
+    "certification_claimed",
+    "activation_status",
+    "resolution_basis",
+    "frozen_wp3_binding_modified",
+    "frozen_ipec_v0_1_modified",
+    "release_action_authorized",
+    "activation_integrity_sha256"
+  ],
+  "type": "object"
+}

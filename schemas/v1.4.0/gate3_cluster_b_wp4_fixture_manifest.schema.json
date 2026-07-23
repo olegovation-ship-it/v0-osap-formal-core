@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST"
+    },
+    "boundary_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "date": {
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "type": "string"
+    },
+    "fixture_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "fixtures": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "negative_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "positive_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "fixture_count",
+    "positive_count",
+    "negative_count",
+    "boundary_count",
+    "fixtures",
+    "version",
+    "date"
+  ],
+  "type": "object"
+}

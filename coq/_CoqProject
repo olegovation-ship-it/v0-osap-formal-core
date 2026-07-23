@@ -11,5 +11,6 @@ theories/Expansion.v
 theories/Phase3.v
 theories/Phase4.v
 theories/Phase5.v
+theories/ClusterB.v
 theories/Theorems.v
 theories/Phase6.v

@@ -1,0 +1,25 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-bad-hash",
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "source_fixture_id": "bad-hash",
+    "source_status": "PASS",
+    "theorem_lineage": [
+      "T159"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "negative",
+  "expected": {
+    "activation_status": "WP4_BACKEND_PARITY_FAILURE",
+    "certification_claimed": false,
+    "typed_outcome_code": "BACKEND_PARITY_FAILURE"
+  },
+  "fixture_id": "11_statement_hash_mismatch_is_parity_failure",
+  "proof_manifest_delta": {
+    "T159": {
+      "statement_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
