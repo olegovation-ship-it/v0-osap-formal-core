@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162"
+    },
+    "frozen_ipec_namespace_modified": {
+      "const": false
+    },
+    "namespace": {
+      "const": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T<NNN>"
+    },
+    "rule_count": {
+      "const": 6
+    },
+    "rules": {
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "namespace",
+    "rule_count",
+    "rules",
+    "frozen_ipec_namespace_modified"
+  ],
+  "title": "WP3 extension rule registry",
+  "type": "object"
+}

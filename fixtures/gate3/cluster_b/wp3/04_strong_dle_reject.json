@@ -1,0 +1,50 @@
+{
+  "case_type": "STRONG_DLE",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-004",
+      "kind": "source_result",
+      "sha256": "bbdb911cbde544e5a0be9e79ca41406756aa1f66e70dc055faeedab628dedb32",
+      "uri": "fixtures/gate3/cluster_b/wp3/04_strong_dle_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_DLE_FAILURE",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-004",
+  "source_result": {
+    "accepted": false,
+    "case_type": "STRONG_DLE",
+    "derived": {
+      "strong_dle": false
+    },
+    "diagnostic_codes": [
+      "DLE_TRANSITION_PROVENANCE_MISSING"
+    ],
+    "diagnostics": [
+      {
+        "code": "DLE_TRANSITION_PROVENANCE_MISSING",
+        "message": "Typed deterministic DLE transition provenance is required.",
+        "refs": [
+          "transition"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-004",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R1",
+      "CB-R2"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T157"
+    ]
+  }
+}

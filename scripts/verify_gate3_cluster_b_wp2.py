@@ -54,11 +54,24 @@ ALLOWED_NEW_FILES = {
     "scripts/synchronize_v1_4_0_development_wp2.sh",
     "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
     "tests/test_gate3_cluster_b_wp2_post_merge_closeout.py",
+
+    # WP3_SUCCESSOR_FIREWALL_HANDOFF_V0_1
+    ".github/workflows/gate3-cluster-b-wp3.yml",
+    "checker/v0_osap_fc1/cluster_b_wp3.py",
+    "scripts/build_gate3_cluster_b_wp3.py",
+    "scripts/verify_gate3_cluster_b_wp3.py",
+    "tests/test_gate3_cluster_b_wp3.py",
 }
 ALLOWED_NEW_PREFIXES = (
     "fixtures/gate3/cluster_b/wp2/",
     "release/v1.4.0/GATE3_CLUSTER_B_WP2_",
     "schemas/v1.4.0/gate3_cluster_b_wp2_",
+
+    # WP3_SUCCESSOR_FIREWALL_HANDOFF_V0_1
+    "docs/gate3/cluster_b/WP3_",
+    "fixtures/gate3/cluster_b/wp3/",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_",
+    "schemas/v1.4.0/gate3_cluster_b_wp3_",
 )
 ALLOWED_MODIFIED_FILES = {
     ".github/workflows/gate3-cluster-b-wp0.yml",

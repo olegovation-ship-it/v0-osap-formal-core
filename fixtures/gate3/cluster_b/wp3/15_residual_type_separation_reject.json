@@ -1,0 +1,50 @@
+{
+  "case_type": "RESIDUAL_TYPE_SEPARATION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-015",
+      "kind": "source_result",
+      "sha256": "250b5d0ca12c9124e87040d8527c8159adde75977e327b43297180dae65fed11",
+      "uri": "fixtures/gate3/cluster_b/wp3/15_residual_type_separation_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_GUARD_FAILURE",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-015",
+  "source_result": {
+    "accepted": false,
+    "case_type": "RESIDUAL_TYPE_SEPARATION",
+    "derived": {
+      "not_interchangeable": true
+    },
+    "diagnostic_codes": [
+      "UNDECLARED_RESIDUAL_TRANSLATION"
+    ],
+    "diagnostics": [
+      {
+        "code": "UNDECLARED_RESIDUAL_TRANSLATION",
+        "message": "Distinct residual classes require an admissible translation map.",
+        "refs": [
+          "r-left",
+          "r-right"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-015",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R5"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T159"
+    ]
+  }
+}

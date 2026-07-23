@@ -1,0 +1,81 @@
+name: V0 OSAP Gate 3 Cluster B WP3
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp3.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp3.py'
+      - 'docs/gate3/cluster_b/WP3_*'
+      - 'fixtures/gate3/cluster_b/wp3/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP3_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp3_*'
+      - 'scripts/build_gate3_cluster_b_wp3.py'
+      - 'scripts/verify_gate3_cluster_b_wp3.py'
+      - 'tests/test_gate3_cluster_b_wp3.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt'
+  push:
+    branches: [v1.4.0-development]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp3.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp3.py'
+      - 'docs/gate3/cluster_b/WP3_*'
+      - 'fixtures/gate3/cluster_b/wp3/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP3_*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp3_*'
+      - 'scripts/build_gate3_cluster_b_wp3.py'
+      - 'scripts/verify_gate3_cluster_b_wp3.py'
+      - 'tests/test_gate3_cluster_b_wp3.py'
+      - 'scripts/verify_gate3_cluster_b_wp2.py'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wp3-validator-ipec-extension-binding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Verify WP2 successor-firewall compatibility handoff
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 python release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py --check
+          PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2.py --check
+          PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check
+          PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2.py
+          PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --package-only
+      - name: Deterministic WP3 build check
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp3.py --check
+      - name: Verify exact IPEC compatibility, bindings, fixtures, and preservation
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp3.py
+      - name: Full Python regression
+        run: PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider
+      - name: Proof-hole scan
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/check_no_proof_holes.py
+      - name: Recheck preservation after regression
+        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp3.py
+      - name: Baseline-range whitespace check
+        run: git diff --check 7b49aa76fef65bced7141a639e8ef6fe3b5ba313...HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp3-${{ github.sha }}
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_BASELINE_LOCK.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_IPEC_V0_1_COMPATIBILITY_PROFILE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_FIXTURE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_PRESERVATION_FIREWALL.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_ACCEPTANCE_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_SCHEMA_BUNDLE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP3_SHA256SUMS.txt
+          if-no-files-found: error

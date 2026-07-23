@@ -182,8 +182,60 @@ def git_checks(allow_main: bool) -> list[str]:
     changed.update(run_git("-c","core.quotePath=false","ls-files","--others","--exclude-standard",check=False).splitlines())
     changed.discard("")
     expected = set(EXPECTED_CHANGED_PATHS)
-    if changed != expected:
-        errors.append(f"closeout path set mismatch: missing={sorted(expected-changed)}, extra={sorted(changed-expected)}")
+    wp3_successor_paths = {
+        '.github/workflows/gate3-cluster-b-wp3.yml',
+        'checker/v0_osap_fc1/cluster_b_wp3.py',
+        'docs/gate3/cluster_b/WP3_BUILD_SPECIFICATION.md',
+        'docs/gate3/cluster_b/WP3_VALIDATOR_IPEC_EXTENSION_AND_TYPED_OUTCOME_BINDING.md',
+        'fixtures/gate3/cluster_b/wp3/01_dle_transition_pass.json',
+        'fixtures/gate3/cluster_b/wp3/02_dle_transition_reject.json',
+        'fixtures/gate3/cluster_b/wp3/03_strong_dle_pass.json',
+        'fixtures/gate3/cluster_b/wp3/04_strong_dle_reject.json',
+        'fixtures/gate3/cluster_b/wp3/05_residual_persistence_deferred.json',
+        'fixtures/gate3/cluster_b/wp3/06_residual_type_separation_pass.json',
+        'fixtures/gate3/cluster_b/wp3/07_model_pair_pass.json',
+        'fixtures/gate3/cluster_b/wp3/08_model_pair_reject.json',
+        'fixtures/gate3/cluster_b/wp3/09_minimal_obstruction_pass.json',
+        'fixtures/gate3/cluster_b/wp3/10_historical_nonconversion_reject.json',
+        'fixtures/gate3/cluster_b/wp3/11_robust_obstruction_pass.json',
+        'fixtures/gate3/cluster_b/wp3/12_branch_firewall_reject.json',
+        'fixtures/gate3/cluster_b/wp3/13_robust_obstruction_reject.json',
+        'fixtures/gate3/cluster_b/wp3/14_residual_persistence_reject.json',
+        'fixtures/gate3/cluster_b/wp3/15_residual_type_separation_reject.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_ACCEPTANCE_GATES.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_BASELINE_LOCK.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_FIXTURE_MANIFEST.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_IPEC_V0_1_COMPATIBILITY_PROFILE.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_PRESERVATION_FIREWALL.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_SCHEMA_BUNDLE_MANIFEST.json',
+        'release/v1.4.0/GATE3_CLUSTER_B_WP3_SHA256SUMS.txt',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_acceptance_gates.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_adapter_binding_manifest.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_baseline_lock.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_binding_result.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_extension_rule_registry.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_fixture.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_fixture_manifest.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_ipec_compatibility_profile.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_preservation_firewall.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_schema_bundle_manifest.schema.json',
+        'schemas/v1.4.0/gate3_cluster_b_wp3_source_result.schema.json',
+        'scripts/build_gate3_cluster_b_wp3.py',
+        'scripts/verify_gate3_cluster_b_wp2.py',
+        'scripts/verify_gate3_cluster_b_wp3.py',
+        'tests/test_gate3_cluster_b_wp3.py',
+    }
+    successor_expected = expected | wp3_successor_paths
+    if changed != expected and changed != successor_expected:
+        comparison = successor_expected if changed & wp3_successor_paths else expected
+        errors.append(
+            "closeout path set mismatch: "
+            f"missing={sorted(comparison - changed)}, "
+            f"extra={sorted(changed - comparison)}"
+        )
     if any(x.startswith("release/v1.4.0/GATE3_CLUSTER_B_WP0_") or x.startswith("release/v1.4.0/GATE3_CLUSTER_B_WP1_") for x in changed):
         errors.append("closed WP0/WP1 release record changed")
     if changed & IMMUTABLE_WP2_RECORDS:

@@ -1,0 +1,52 @@
+{
+  "case_type": "BRANCH_LOCAL_FIREWALL",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-012",
+      "kind": "source_result",
+      "sha256": "0434f0b66d52fcc3ab8432ec6395ba2b6f3be44e10ccc322ca359f858ee937ae",
+      "uri": "fixtures/gate3/cluster_b/wp3/12_branch_firewall_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_BRANCH_PROMOTION",
+    "certification_claimed": false,
+    "typed_outcome_code": "REJECTED_BRANCH_PROMOTION"
+  },
+  "fixture_id": "WP3-FX-012",
+  "source_result": {
+    "accepted": false,
+    "case_type": "BRANCH_LOCAL_FIREWALL",
+    "derived": {
+      "firewall_respected": false
+    },
+    "diagnostic_codes": [
+      "RELATIVE_TO_ABSOLUTE_PROMOTION_FORBIDDEN"
+    ],
+    "diagnostics": [
+      {
+        "code": "RELATIVE_TO_ABSOLUTE_PROMOTION_FORBIDDEN",
+        "message": "Relative evidence cannot be promoted to absolute V0.",
+        "refs": [
+          "RELATIVE",
+          "ABSOLUTE_V0"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-012",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R7"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T126",
+      "T136",
+      "T142"
+    ]
+  }
+}

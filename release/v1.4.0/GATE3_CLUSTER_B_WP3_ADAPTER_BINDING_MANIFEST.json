@@ -1,0 +1,140 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST",
+  "binding_count": 9,
+  "binding_version": "v0-osap-cluster-b-wp3/0.1.0.dev1",
+  "bindings": [
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "DLE_TRANSITION",
+      "role_ids": [
+        "CB-R1"
+      ],
+      "rule_ids": [
+        "IPEC.RULE.DLE.001",
+        "IPEC.RULE.DLE.002"
+      ],
+      "theorem_ids": [
+        "T123",
+        "T132"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "STRONG_DLE",
+      "role_ids": [
+        "CB-R1",
+        "CB-R2"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T157"
+      ],
+      "theorem_ids": [
+        "T157"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "RESIDUAL_PERSISTENCE",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T158",
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T162"
+      ],
+      "theorem_ids": [
+        "T158",
+        "T162"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "RESIDUAL_TYPE_SEPARATION",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T159"
+      ],
+      "theorem_ids": [
+        "T159"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "MODEL_PAIR_NONELIMINABILITY",
+      "role_ids": [
+        "CB-R5"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T159",
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T160"
+      ],
+      "theorem_ids": [
+        "T159",
+        "T160"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "MINIMAL_RESIDUAL_OBSTRUCTION",
+      "role_ids": [
+        "CB-R4"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T161"
+      ],
+      "theorem_ids": [
+        "T161"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+      "role_ids": [
+        "CB-R3"
+      ],
+      "rule_ids": [
+        "IPEC.EXT.GATE3.CLUSTER_B.RULE.T162"
+      ],
+      "theorem_ids": [
+        "T162"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "ROBUST_OBSTRUCTION",
+      "role_ids": [
+        "CB-R6"
+      ],
+      "rule_ids": [
+        "IPEC.RULE.RESIDUAL.001",
+        "IPEC.RULE.RESIDUAL.003"
+      ],
+      "theorem_ids": [
+        "T124",
+        "T135"
+      ]
+    },
+    {
+      "binding_mode": "EXACT_WP2_RESULT_ENVELOPE",
+      "case_type": "BRANCH_LOCAL_FIREWALL",
+      "role_ids": [
+        "CB-R7"
+      ],
+      "rule_ids": [
+        "IPEC.RULE.FIREWALL.001",
+        "IPEC.RULE.FIREWALL.002",
+        "IPEC.RULE.BRANCH.001"
+      ],
+      "theorem_ids": [
+        "T126",
+        "T136",
+        "T142"
+      ]
+    }
+  ],
+  "date": "2026-07-22",
+  "source_semantics_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+  "version": "0.1"
+}

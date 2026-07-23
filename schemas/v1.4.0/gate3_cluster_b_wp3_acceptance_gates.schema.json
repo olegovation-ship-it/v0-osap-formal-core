@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_ACCEPTANCE_GATES"
+    },
+    "gate_count": {
+      "const": 24
+    },
+    "gates": {
+      "maxItems": 24,
+      "minItems": 24,
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "gate_count",
+    "gates"
+  ],
+  "title": "WP3 acceptance gates",
+  "type": "object"
+}

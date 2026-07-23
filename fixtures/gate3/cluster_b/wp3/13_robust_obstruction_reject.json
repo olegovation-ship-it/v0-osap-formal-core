@@ -1,0 +1,50 @@
+{
+  "case_type": "ROBUST_OBSTRUCTION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-013",
+      "kind": "source_result",
+      "sha256": "f14936e8a8947984bda61a3ccf83f567b69e6c43a3d2ced6d83bfdae2cdf9a29",
+      "uri": "fixtures/gate3/cluster_b/wp3/13_robust_obstruction_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_NONELIM_OBSTRUCTION",
+    "certification_claimed": false,
+    "typed_outcome_code": "REJECTED_NONELIM_OBSTRUCTION"
+  },
+  "fixture_id": "WP3-FX-013",
+  "source_result": {
+    "accepted": false,
+    "case_type": "ROBUST_OBSTRUCTION",
+    "derived": {
+      "robust_obstruction_witness": false
+    },
+    "diagnostic_codes": [
+      "RESIDUAL_TYPE_COLLAPSE"
+    ],
+    "diagnostics": [
+      {
+        "code": "RESIDUAL_TYPE_COLLAPSE",
+        "message": "Robust obstruction requires a canonically typed residual.",
+        "refs": [
+          "UNKNOWN"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-013",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R6"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T124",
+      "T135"
+    ]
+  }
+}

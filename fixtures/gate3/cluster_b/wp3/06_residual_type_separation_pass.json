@@ -1,0 +1,38 @@
+{
+  "case_type": "RESIDUAL_TYPE_SEPARATION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-006",
+      "kind": "source_result",
+      "sha256": "e4df6d006125c212178596b20673ca5c607d817abab4f638f8d7f5961f51b0ba",
+      "uri": "fixtures/gate3/cluster_b/wp3/06_residual_type_separation_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-006",
+  "source_result": {
+    "accepted": true,
+    "case_type": "RESIDUAL_TYPE_SEPARATION",
+    "derived": {
+      "not_interchangeable": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-006",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R5"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T159"
+    ]
+  }
+}

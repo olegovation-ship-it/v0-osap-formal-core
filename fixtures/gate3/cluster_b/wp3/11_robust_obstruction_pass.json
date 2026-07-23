@@ -1,0 +1,39 @@
+{
+  "case_type": "ROBUST_OBSTRUCTION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-011",
+      "kind": "source_result",
+      "sha256": "5dfdcdfde07e623544bf51dceb60c6cd2896660acf38c6f3a845ee9baa70d38c",
+      "uri": "fixtures/gate3/cluster_b/wp3/11_robust_obstruction_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-011",
+  "source_result": {
+    "accepted": true,
+    "case_type": "ROBUST_OBSTRUCTION",
+    "derived": {
+      "robust_obstruction_witness": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-011",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R6"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T124",
+      "T135"
+    ]
+  }
+}

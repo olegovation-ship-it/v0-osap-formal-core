@@ -1,0 +1,50 @@
+{
+  "case_type": "RESIDUAL_PERSISTENCE",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-005",
+      "kind": "source_result",
+      "sha256": "4a944424b753354ebcc91b6f3b53fadd10c978911802caff74d581b746cc84c6",
+      "uri": "fixtures/gate3/cluster_b/wp3/05_residual_persistence_deferred.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-005",
+  "source_result": {
+    "accepted": false,
+    "case_type": "RESIDUAL_PERSISTENCE",
+    "derived": {
+      "residual_persists": false
+    },
+    "diagnostic_codes": [
+      "RESIDUAL_PERSISTENCE_PREMISE_MISSING"
+    ],
+    "diagnostics": [
+      {
+        "code": "RESIDUAL_PERSISTENCE_PREMISE_MISSING",
+        "message": "The non-interference certificate or another conditional premise is absent.",
+        "refs": [
+          "residual-1"
+        ],
+        "status": "DEFERRED"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-005",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R3"
+    ],
+    "status": "DEFERRED",
+    "theorem_ids": [
+      "T158",
+      "T162"
+    ]
+  }
+}

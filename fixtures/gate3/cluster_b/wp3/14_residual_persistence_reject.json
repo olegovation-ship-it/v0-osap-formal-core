@@ -1,0 +1,51 @@
+{
+  "case_type": "RESIDUAL_PERSISTENCE",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-014",
+      "kind": "source_result",
+      "sha256": "557cf4796fb5d269ef70766a318db452ed44c7fa65e69f47260b00f5d05ecf83",
+      "uri": "fixtures/gate3/cluster_b/wp3/14_residual_persistence_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_LIVE_RESIDUAL",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-014",
+  "source_result": {
+    "accepted": false,
+    "case_type": "RESIDUAL_PERSISTENCE",
+    "derived": {
+      "residual_persists": false
+    },
+    "diagnostic_codes": [
+      "DLE_RESIDUAL_INTERFERENCE_DETECTED"
+    ],
+    "diagnostics": [
+      {
+        "code": "DLE_RESIDUAL_INTERFERENCE_DETECTED",
+        "message": "The DLE transition interferes with the residual register.",
+        "refs": [
+          "residual-1",
+          "DELETE"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-014",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R3"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T158",
+      "T162"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "case_type": "STRONG_DLE",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-003",
+      "kind": "source_result",
+      "sha256": "557a71c1d1fe816aac7db5956f20554ac1ed4cc57413f5ba291327191cd47264",
+      "uri": "fixtures/gate3/cluster_b/wp3/03_strong_dle_pass.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-003",
+  "source_result": {
+    "accepted": true,
+    "case_type": "STRONG_DLE",
+    "derived": {
+      "strong_dle": true
+    },
+    "diagnostic_codes": [],
+    "diagnostics": [],
+    "fixture_id": "WP2-LINEAGE-003",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R1",
+      "CB-R2"
+    ],
+    "status": "PASS",
+    "theorem_ids": [
+      "T157"
+    ]
+  }
+}

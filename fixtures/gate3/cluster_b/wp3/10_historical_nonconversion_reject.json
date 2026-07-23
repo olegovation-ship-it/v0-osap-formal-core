@@ -1,0 +1,49 @@
+{
+  "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+  "evidence_lineage": [
+    {
+      "evidence_id": "EVIDENCE-WP3-FX-010",
+      "kind": "source_result",
+      "sha256": "18151fd04d0879b9daa2da3542d2eb527e247e0e0f95b57d1ae07ee04264c086",
+      "uri": "fixtures/gate3/cluster_b/wp3/10_historical_nonconversion_reject.json#/source_result"
+    }
+  ],
+  "expected": {
+    "candidate_outcome_code": "REJECTED_GUARD_FAILURE",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "WP3-FX-010",
+  "source_result": {
+    "accepted": false,
+    "case_type": "HISTORICAL_TOKEN_NONCONVERSION",
+    "derived": {
+      "historical_nonconversion_preserved": false
+    },
+    "diagnostic_codes": [
+      "HISTORICAL_TOKEN_CURRENT_CONVERSION"
+    ],
+    "diagnostics": [
+      {
+        "code": "HISTORICAL_TOKEN_CURRENT_CONVERSION",
+        "message": "A historical token cannot be exported as a current live token.",
+        "refs": [
+          "token-h"
+        ],
+        "status": "REJECT"
+      }
+    ],
+    "fixture_id": "WP2-LINEAGE-010",
+    "implementation_version": "v0-osap-cluster-b-wp2/0.1.0.dev1",
+    "ipec_binding_claimed": false,
+    "proof_claimed": false,
+    "release_action_authorized": false,
+    "role_ids": [
+      "CB-R3"
+    ],
+    "status": "REJECT",
+    "theorem_ids": [
+      "T162"
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_ACCEPTANCE_GATES",
+  "date": "2026-07-22",
+  "gate_count": 24,
+  "gates": [
+    {
+      "gate_id": "WP3-G01",
+      "requirement": "Exact baseline and branch synchronization preconditions are recorded and executable.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G02",
+      "requirement": "Frozen V0-IPEC v0.1 outcome vocabulary and precedence are preserved exactly.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G03",
+      "requirement": "No replacement or invented IPEC typed-outcome code is introduced.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G04",
+      "requirement": "T157-T162 use a separate collision-free extension namespace.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G05",
+      "requirement": "All nine exact WP2 case profiles are bound.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G06",
+      "requirement": "Exact theorem and role lineage is enforced for every case.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G07",
+      "requirement": "Every nonprocedural result carries non-empty theorem and evidence lineage.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G08",
+      "requirement": "Source-result evidence SHA-256 is verified canonically.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G09",
+      "requirement": "Diagnostic order and content are transported without reinterpretation.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G10",
+      "requirement": "WP2 PASS cannot become CERTIFIED before WP4 proof-evidence activation.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G11",
+      "requirement": "Extension-theorem rejection cannot become theorem-backed rejection before WP4 activation.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G12",
+      "requirement": "Inherited theorem-backed DLE rejection maps to REJECTED_DLE_FAILURE.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G13",
+      "requirement": "Inherited theorem-backed branch rejection maps to REJECTED_BRANCH_PROMOTION.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G14",
+      "requirement": "Inherited robust obstruction rejection follows IPEC precedence.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G15",
+      "requirement": "Unsupported/deferred input maps to INCONCLUSIVE_UNSUPPORTED_FRAGMENT.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G16",
+      "requirement": "All 15 fixtures reproduce deterministically.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G17",
+      "requirement": "All schemas validate under JSON Schema Draft 2020-12.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G18",
+      "requirement": "The WP3 SHA-256 ledger reproduces exactly.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G19",
+      "requirement": "Only the three exact-hash-guarded WP2 successor compatibility paths may be modified; no baseline path may be deleted.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G20",
+      "requirement": "All WP0/WP1/WP2 canonical records and canonical ledgers remain byte-preserved; both WP2 successor verifiers and the successor ledger are updated coherently.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G21",
+      "requirement": "Full Python regression is included in local and hosted validation.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G22",
+      "requirement": "Proof-hole scan is included in local and hosted validation.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G23",
+      "requirement": "git diff --check and explicit new-file whitespace scan are included.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP3-G24",
+      "requirement": "No commit, push, tag, GitHub Release, Zenodo, or DOI action is authorized.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    }
+  ],
+  "version": "0.1.3"
+}

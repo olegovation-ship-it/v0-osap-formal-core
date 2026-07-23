@@ -1,0 +1,71 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162",
+  "date": "2026-07-22",
+  "frozen_ipec_namespace_modified": false,
+  "namespace": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T<NNN>",
+  "owner": "V0_OSAP_V1_4_0_GATE3_CLUSTER_B_WP3",
+  "rule_count": 6,
+  "rules": [
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_DLE_FAILURE",
+      "canonical_name": "strong_dle_characterization",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T157",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T157"
+    },
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_LIVE_RESIDUAL",
+      "canonical_name": "live_residual_persistence_under_noninterfering_dle",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T158",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T158"
+    },
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_GUARD_FAILURE",
+      "canonical_name": "residual_type_separation",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T159",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T159"
+    },
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_NONELIM_OBSTRUCTION",
+      "canonical_name": "model_pair_noneliminability_witness",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T160",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T160"
+    },
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_LIVE_RESIDUAL",
+      "canonical_name": "minimal_single_residual_obstruction",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T161",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T161"
+    },
+    {
+      "binding_class": "EXACT_VERSIONED_EXTENSION_BINDING",
+      "candidate_violation_outcome": "REJECTED_GUARD_FAILURE",
+      "canonical_name": "historical_live_token_nonconversion",
+      "claim_class": "CANONICAL_TARGET_STATEMENT_PROOF_DEFERRED",
+      "proof_activation": "PENDING_WP4",
+      "rule_id": "IPEC.EXT.GATE3.CLUSTER_B.RULE.T162",
+      "source_profile": "OSAP_GATE3_CLUSTER_B_WP2_RESULT",
+      "theorem_id": "T162"
+    }
+  ],
+  "version": "0.1"
+}
