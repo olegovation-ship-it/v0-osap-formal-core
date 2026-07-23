@@ -1,0 +1,27 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-missing-lean",
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "source_fixture_id": "missing-lean",
+    "source_status": "PASS",
+    "theorem_lineage": [
+      "T157"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "negative",
+  "expected": {
+    "activation_status": "WP4_PROOF_EVIDENCE_INCOMPLETE",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "09_missing_lean_evidence_stays_inconclusive",
+  "proof_manifest_delta": {
+    "T157": {
+      "lean": {
+        "status": "MISSING"
+      }
+    }
+  }
+}

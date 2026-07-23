@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST"
+    },
+    "baseline": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "coverage_percent": {
+      "const": 100
+    },
+    "normalization": {
+      "const": "SHA256_NORMALIZED_WHITESPACE_FORMAL_SIGNATURE"
+    },
+    "records": {
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "baseline",
+    "normalization",
+    "records",
+    "coverage_percent",
+    "status",
+    "version"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,104 @@
+name: V0 OSAP Gate 3 Cluster B WP4
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp4.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp4.py'
+      - 'docs/gate3/cluster_b/WP4_*'
+      - 'fixtures/gate3/cluster_b/wp4/**'
+      - 'lean/V0OSAP/ClusterB.lean'
+      - 'lean/V0OSAP.lean'
+      - 'lean/V0OSAP/Theorems.lean'
+      - 'coq/theories/ClusterB.v'
+      - 'coq/theories/Theorems.v'
+      - 'coq/_CoqProject'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_*'
+      - 'release/v1.4.0/tools/patch_wp4_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_*'
+      - 'scripts/build_gate3_cluster_b_wp4.py'
+      - 'scripts/verify_gate3_cluster_b_wp4.py'
+      - 'tests/test_gate3_cluster_b_wp4.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp4.yml'
+      - 'checker/v0_osap_fc1/cluster_b_wp4.py'
+      - 'docs/gate3/cluster_b/WP4_*'
+      - 'fixtures/gate3/cluster_b/wp4/**'
+      - 'lean/V0OSAP/ClusterB.lean'
+      - 'lean/V0OSAP.lean'
+      - 'lean/V0OSAP/Theorems.lean'
+      - 'coq/theories/ClusterB.v'
+      - 'coq/theories/Theorems.v'
+      - 'coq/_CoqProject'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP4_*'
+      - 'release/v1.4.0/tools/patch_wp4_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp4_*'
+      - 'scripts/build_gate3_cluster_b_wp4.py'
+      - 'scripts/verify_gate3_cluster_b_wp4.py'
+      - 'tests/test_gate3_cluster_b_wp4.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wp4-proof-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python verification dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Install Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install Coq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+      - name: Exact changed-path and preservation firewall
+        run: python release/v1.4.0/tools/patch_wp4_allowlist.py --check
+      - name: Deterministic manifests and SHA-256 ledger
+        run: python scripts/build_gate3_cluster_b_wp4.py --check
+      - name: WP4 theorem, parity, activation, and schema verifier
+        run: python scripts/verify_gate3_cluster_b_wp4.py
+      - name: Frozen WP3-closeout full Python regression
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d /tmp/v0-osap-wp4-regression-XXXXXX)"
+          trap 'git worktree remove --force "$tmp/repo" >/dev/null 2>&1 || true; rm -rf "$tmp"' EXIT
+          git worktree add --detach "$tmp/repo" c90041d3da5b680b574b910de50d8769d32fbfa9
+          cd "$tmp/repo"
+          python -m pytest -q -p no:cacheprovider
+
+      - name: Current WP4 successor Python regression
+        run: python -m pytest -q -p no:cacheprovider --deselect=tests/test_gate3_cluster_b_wp0.py::test_wp0_does_not_add_implementation_surfaces --deselect=tests/test_gate3_cluster_b_wp1.py::test_collision_audit_is_live_and_clean --deselect=tests/test_gate3_cluster_b_wp2.py::test_wp2_successor_repository_firewall_accepts_current_patch
+      - name: Proof-hole scan
+        run: python scripts/check_no_proof_holes.py
+      - name: Lean 4 build
+        working-directory: lean
+        run: lake build
+      - name: Coq build
+        working-directory: coq
+        run: make
+      - name: Whitespace and patch integrity
+        run: git diff --check c90041d3da5b680b574b910de50d8769d32fbfa9 --
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp4-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_DUAL_BACKEND_PROOF_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_PRESERVATION_FIREWALL.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_ACCEPTANCE_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP4_SHA256SUMS.txt

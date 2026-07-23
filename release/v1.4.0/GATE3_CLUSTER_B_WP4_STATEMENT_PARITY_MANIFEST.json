@@ -1,0 +1,92 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST",
+  "baseline": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "coverage_percent": 100,
+  "normalization": "SHA256_NORMALIZED_WHITESPACE_FORMAL_SIGNATURE",
+  "records": [
+    {
+      "conditional": false,
+      "coq_symbol": "T157_strong_dle_characterization",
+      "dependency_ids": [
+        "T123",
+        "T132"
+      ],
+      "formal_signature": "StrongDLE(R,c,r,x,tr) iff WasLive(R,c,r,x) and NoLive(R,c,r,x) and DLETransitionProvenance(tr,c,r,x).",
+      "lean_symbol": "V0OSAP.T157_strong_dle_characterization",
+      "parity_status": "PASS",
+      "statement_sha256": "4afc76d031b69016587e0ce65ce3e5d06a3ab9dc864828759ccd94c44889efd2",
+      "theorem_id": "T157"
+    },
+    {
+      "conditional": true,
+      "coq_symbol": "T158_live_residual_persistence_under_noninterfering_dle",
+      "dependency_ids": [
+        "T124",
+        "T132",
+        "T139",
+        "T162"
+      ],
+      "formal_signature": "LiveResidual(R0,q) and NonInterferingDLE(tr,q) and Apply(tr,R0)=R1 imply LiveResidual(R1,q).",
+      "lean_symbol": "V0OSAP.T158_live_residual_persistence_under_noninterfering_dle",
+      "parity_status": "PASS",
+      "statement_sha256": "1188ecbe6b4e53ebd061be7350c49aa1d06feb4c9cd270f992ec95e0e170449f",
+      "theorem_id": "T158"
+    },
+    {
+      "conditional": false,
+      "coq_symbol": "T159_residual_type_separation",
+      "dependency_ids": [
+        "T131",
+        "T139"
+      ],
+      "formal_signature": "ResidualType(q1) != ResidualType(q2) and not AdmissibleTranslation(q1,q2) imply not Interchangeable(q1,q2).",
+      "lean_symbol": "V0OSAP.T159_residual_type_separation",
+      "parity_status": "PASS",
+      "statement_sha256": "19478447c22ed4202b7a6c765bf49f019846f209e310a7e18452795d0c46201d",
+      "theorem_id": "T159"
+    },
+    {
+      "conditional": true,
+      "coq_symbol": "T160_model_pair_noneliminability_witness",
+      "dependency_ids": [
+        "T134",
+        "T135",
+        "T140",
+        "T142",
+        "T159"
+      ],
+      "formal_signature": "AdmissibleModelPair(M1,M2,S) and AgreeOn(M1,M2,S) and LiveResidual(M1,q) != LiveResidual(M2,q) imply NonEliminableFrom(q,S).",
+      "lean_symbol": "V0OSAP.T160_model_pair_noneliminability_witness",
+      "parity_status": "PASS",
+      "statement_sha256": "7f78c6738c09425a3aaea7560ce5c21aca1bed9341155de64abb7540d0220f37",
+      "theorem_id": "T160"
+    },
+    {
+      "conditional": false,
+      "coq_symbol": "T161_minimal_single_residual_obstruction",
+      "dependency_ids": [
+        "T134"
+      ],
+      "formal_signature": "DeclaredResidual(q) and LiveResidual(R,q) imply MinimalObstructionWitness(q,RawRelativeV0(R)).",
+      "lean_symbol": "V0OSAP.T161_minimal_single_residual_obstruction",
+      "parity_status": "PASS",
+      "statement_sha256": "2fcb4a46f4f67bfc71b33f01f8f29d4c39f0b1491c4a620387c50da866c6663e",
+      "theorem_id": "T161"
+    },
+    {
+      "conditional": false,
+      "coq_symbol": "T162_historical_live_token_nonconversion",
+      "dependency_ids": [
+        "T133",
+        "T139"
+      ],
+      "formal_signature": "HistoricalToken(t) and not FreshActivation(t,t2) imply not CurrentLiveGuardToken(t2).",
+      "lean_symbol": "V0OSAP.T162_historical_live_token_nonconversion",
+      "parity_status": "PASS",
+      "statement_sha256": "bd9fcaae0841f163733ce3444cfd23407e82de181ffb745b4e434cc00d9bcf4b",
+      "theorem_id": "T162"
+    }
+  ],
+  "status": "SOURCE_PARITY_LOCKED_COMPILATION_CHECK_REQUIRED",
+  "version": "0.1"
+}

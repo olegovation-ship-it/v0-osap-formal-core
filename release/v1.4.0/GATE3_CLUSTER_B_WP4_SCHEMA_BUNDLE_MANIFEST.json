@@ -1,0 +1,18 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-23",
+  "draft": "2020-12",
+  "schema_count": 9,
+  "schemas": [
+    "schemas/v1.4.0/gate3_cluster_b_wp4_acceptance_gates.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_activation_result.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_baseline_lock.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_fixture.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_fixture_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_parity_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_preservation_firewall.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_proof_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp4_schema_bundle_manifest.schema.json"
+  ],
+  "version": "0.1"
+}

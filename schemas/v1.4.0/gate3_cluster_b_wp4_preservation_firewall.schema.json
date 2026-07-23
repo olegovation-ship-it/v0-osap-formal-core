@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "all_other_baseline_paths_byte_preserved": {
+      "const": true
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_PRESERVATION_FIREWALL"
+    },
+    "authorized_modified_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authorized_post_sha256": {
+      "type": "object"
+    },
+    "authorized_pre_sha256": {
+      "type": "object"
+    },
+    "baseline": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "canonical_ledgers_modification_authorized": {
+      "const": false
+    },
+    "canonical_records_modification_authorized": {
+      "const": false
+    },
+    "date": {
+      "type": "string"
+    },
+    "frozen_work_packages": {
+      "const": [
+        "WP0",
+        "WP1",
+        "WP2",
+        "WP3"
+      ]
+    },
+    "policy": {
+      "type": "string"
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "rollback_on_any_failure": {
+      "const": true
+    },
+    "theorem_identity_modification_authorized": {
+      "const": false
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "baseline",
+    "frozen_work_packages",
+    "authorized_modified_paths",
+    "authorized_pre_sha256",
+    "authorized_post_sha256",
+    "all_other_baseline_paths_byte_preserved",
+    "rollback_on_any_failure",
+    "version"
+  ],
+  "type": "object"
+}

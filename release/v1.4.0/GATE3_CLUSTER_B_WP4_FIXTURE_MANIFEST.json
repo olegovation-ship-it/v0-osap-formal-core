@@ -1,0 +1,71 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST",
+  "boundary_count": 1,
+  "date": "2026-07-23",
+  "fixture_count": 12,
+  "fixtures": [
+    {
+      "classification": "positive",
+      "fixture_id": "01_t157_pass_certifies",
+      "path": "fixtures/gate3/cluster_b/wp4/01_t157_pass_certifies.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "02_t158_t162_pass_certifies",
+      "path": "fixtures/gate3/cluster_b/wp4/02_t158_t162_pass_certifies.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "03_t159_rejection_activates",
+      "path": "fixtures/gate3/cluster_b/wp4/03_t159_rejection_activates.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "04_t160_rejection_activates",
+      "path": "fixtures/gate3/cluster_b/wp4/04_t160_rejection_activates.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "05_t161_pass_certifies",
+      "path": "fixtures/gate3/cluster_b/wp4/05_t161_pass_certifies.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "06_t162_pass_certifies",
+      "path": "fixtures/gate3/cluster_b/wp4/06_t162_pass_certifies.json"
+    },
+    {
+      "classification": "positive",
+      "fixture_id": "07_inherited_rejection_preserved",
+      "path": "fixtures/gate3/cluster_b/wp4/07_inherited_rejection_preserved.json"
+    },
+    {
+      "classification": "boundary",
+      "fixture_id": "08_source_deferred_stays_inconclusive",
+      "path": "fixtures/gate3/cluster_b/wp4/08_source_deferred_stays_inconclusive.json"
+    },
+    {
+      "classification": "negative",
+      "fixture_id": "09_missing_lean_evidence_stays_inconclusive",
+      "path": "fixtures/gate3/cluster_b/wp4/09_missing_lean_evidence_stays_inconclusive.json"
+    },
+    {
+      "classification": "negative",
+      "fixture_id": "10_missing_coq_evidence_stays_inconclusive",
+      "path": "fixtures/gate3/cluster_b/wp4/10_missing_coq_evidence_stays_inconclusive.json"
+    },
+    {
+      "classification": "negative",
+      "fixture_id": "11_statement_hash_mismatch_is_parity_failure",
+      "path": "fixtures/gate3/cluster_b/wp4/11_statement_hash_mismatch_is_parity_failure.json"
+    },
+    {
+      "classification": "negative",
+      "fixture_id": "12_backend_parity_false_is_failure",
+      "path": "fixtures/gate3/cluster_b/wp4/12_backend_parity_false_is_failure.json"
+    }
+  ],
+  "negative_count": 4,
+  "positive_count": 7,
+  "version": "0.1"
+}

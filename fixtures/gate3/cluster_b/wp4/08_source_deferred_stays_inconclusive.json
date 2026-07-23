@@ -1,0 +1,22 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-deferred",
+    "candidate_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT",
+    "certification_claimed": false,
+    "source_fixture_id": "deferred",
+    "source_status": "DEFERRED",
+    "theorem_lineage": [
+      "T158",
+      "T162"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "boundary",
+  "expected": {
+    "activation_status": "WP4_SOURCE_REMAINS_DEFERRED",
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "08_source_deferred_stays_inconclusive",
+  "proof_manifest_delta": {}
+}

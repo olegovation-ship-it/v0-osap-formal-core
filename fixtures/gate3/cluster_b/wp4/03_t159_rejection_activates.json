@@ -1,0 +1,21 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-t159-reject",
+    "candidate_outcome_code": "REJECTED_GUARD_FAILURE",
+    "certification_claimed": false,
+    "source_fixture_id": "t159-reject",
+    "source_status": "REJECT",
+    "theorem_lineage": [
+      "T159"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "positive",
+  "expected": {
+    "activation_status": "WP4_EXTENSION_THEOREM_REJECTION_ACTIVATED",
+    "certification_claimed": false,
+    "typed_outcome_code": "REJECTED_GUARD_FAILURE"
+  },
+  "fixture_id": "03_t159_rejection_activates",
+  "proof_manifest_delta": {}
+}

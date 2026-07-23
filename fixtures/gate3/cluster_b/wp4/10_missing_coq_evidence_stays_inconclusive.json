@@ -1,0 +1,26 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-missing-coq",
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "source_fixture_id": "missing-coq",
+    "source_status": "PASS",
+    "theorem_lineage": [
+      "T157"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "negative",
+  "expected": {
+    "certification_claimed": false,
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "fixture_id": "10_missing_coq_evidence_stays_inconclusive",
+  "proof_manifest_delta": {
+    "T157": {
+      "coq": {
+        "status": "MISSING"
+      }
+    }
+  }
+}

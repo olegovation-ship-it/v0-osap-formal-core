@@ -1,0 +1,37 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP4_BASELINE_LOCK",
+  "authorized_modified_paths": [
+    "coq/_CoqProject",
+    "coq/theories/Theorems.v",
+    "lean/V0OSAP.lean",
+    "lean/V0OSAP/Theorems.lean"
+  ],
+  "automatic_commit_authorized": false,
+  "automatic_push_authorized": false,
+  "date": "2026-07-23",
+  "frozen_work_packages": [
+    "WP0",
+    "WP1",
+    "WP2",
+    "WP3"
+  ],
+  "new_file_only": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_branch": "v1.4.0-development",
+  "required_head": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "required_origin_development": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "required_origin_main": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "stable_tag": "v1.3.0",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "theorem_ids_locked": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "user_reported_sha_rejected": "c90041dc3a5b680b1574b910de50d8769d32fbfa9",
+  "version": "0.1"
+}

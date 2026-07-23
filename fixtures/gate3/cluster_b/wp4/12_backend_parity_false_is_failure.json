@@ -1,0 +1,24 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-bad-parity",
+    "candidate_outcome_code": "REJECTED_NONELIM_OBSTRUCTION",
+    "certification_claimed": false,
+    "source_fixture_id": "bad-parity",
+    "source_status": "REJECT",
+    "theorem_lineage": [
+      "T160"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "negative",
+  "expected": {
+    "certification_claimed": false,
+    "typed_outcome_code": "BACKEND_PARITY_FAILURE"
+  },
+  "fixture_id": "12_backend_parity_false_is_failure",
+  "proof_manifest_delta": {
+    "T160": {
+      "parity_status": "FAIL"
+    }
+  }
+}

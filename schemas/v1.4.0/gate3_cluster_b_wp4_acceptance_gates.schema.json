@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_ACCEPTANCE_GATES"
+    },
+    "baseline": {
+      "const": "c90041d3da5b680b574b910de50d8769d32fbfa9"
+    },
+    "date": {
+      "type": "string"
+    },
+    "gate_count": {
+      "const": 24
+    },
+    "gates": {
+      "maxItems": 24,
+      "minItems": 24,
+      "type": "array"
+    },
+    "release_authorization": {
+      "const": "NONE"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "baseline",
+    "gate_count",
+    "gates",
+    "release_authorization",
+    "version"
+  ],
+  "type": "object"
+}

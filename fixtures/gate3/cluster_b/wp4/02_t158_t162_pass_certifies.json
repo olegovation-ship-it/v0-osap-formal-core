@@ -1,0 +1,21 @@
+{
+  "binding": {
+    "binding_id": "WP3-BIND-t158-pass",
+    "candidate_outcome_code": "CERTIFIED",
+    "certification_claimed": false,
+    "source_fixture_id": "t158-pass",
+    "source_status": "PASS",
+    "theorem_lineage": [
+      "T158",
+      "T162"
+    ],
+    "typed_outcome_code": "INCONCLUSIVE_UNSUPPORTED_FRAGMENT"
+  },
+  "classification": "positive",
+  "expected": {
+    "certification_claimed": true,
+    "typed_outcome_code": "CERTIFIED"
+  },
+  "fixture_id": "02_t158_t162_pass_certifies",
+  "proof_manifest_delta": {}
+}

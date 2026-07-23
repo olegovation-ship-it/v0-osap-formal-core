@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP4_SCHEMA_BUNDLE_MANIFEST"
+    },
+    "date": {
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "type": "string"
+    },
+    "draft": {
+      "const": "2020-12"
+    },
+    "schema_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schemas": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "schema_count",
+    "draft",
+    "schemas",
+    "version",
+    "date"
+  ],
+  "type": "object"
+}
