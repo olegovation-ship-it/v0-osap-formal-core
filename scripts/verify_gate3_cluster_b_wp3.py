@@ -6,17 +6,18 @@ from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
 BASELINE='7b49aa76fef65bced7141a639e8ef6fe3b5ba313'
 EXACT={'.github/workflows/gate3-cluster-b-wp3.yml','checker/v0_osap_fc1/cluster_b_wp3.py','scripts/build_gate3_cluster_b_wp3.py','scripts/verify_gate3_cluster_b_wp3.py','tests/test_gate3_cluster_b_wp3.py'}
+POST_MERGE_EXACT={'.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml', 'tests/test_gate3_cluster_b_wp3_post_merge_closeout.py', 'release/v1.4.0/tools/patch_wp3_post_merge_allowlist.py', 'scripts/capture_gate3_cluster_b_wp3_post_merge_evidence.py', 'scripts/synchronize_v1_4_0_development_wp3.sh', 'scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py', 'scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py'}
 PREFIX=('docs/gate3/cluster_b/WP3_','fixtures/gate3/cluster_b/wp3/','release/v1.4.0/GATE3_CLUSTER_B_WP3_','schemas/v1.4.0/gate3_cluster_b_wp3_')
 AUTHORIZED_MODIFIED={
-    'scripts/verify_gate3_cluster_b_wp2.py':('af37614f25936a79cc407a28a32f0d61cd6a451023a97613a485568762af256e','ca203abbf59b60565fdc6c9333f4fb8a76de6a29ddfa8ebf19e6ee9eb65384aa'),
-    'scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py':('3cece18c106c36e7abe62fd83e66f6c4c98b22ff7666c1d062ad9cf3589c253d','d4753c458e3c74462bd9cf523619788cf75c4bfc8276fd2f37216080a31c1806'),
-    'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt':('f5abb673b3fd6eb8680bdd75e3dfcf7185219177cd8860c25cf9366d8c71b6d3','400d418fa006356794eea240aaf8a70af903b4af4e6f93dc6677d862e26c3447'),
+    'scripts/verify_gate3_cluster_b_wp2.py':('af37614f25936a79cc407a28a32f0d61cd6a451023a97613a485568762af256e','27a1361d217cdc306e4e405612f1861c626eab68cc1f00a634d8bf07437eba2a'),
+    'scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py':('3cece18c106c36e7abe62fd83e66f6c4c98b22ff7666c1d062ad9cf3589c253d','c642299a867ccb6767caa93354c4c0078654690280370aa5eab769b9b6057eb0'),
+    'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt':('f5abb673b3fd6eb8680bdd75e3dfcf7185219177cd8860c25cf9366d8c71b6d3','9b49be13548e8fb518c3c4b112801643e2d1cb2410b04a825be078f6f34550ed'),
 }
 FROZEN_PREFIX=('.github/workflows/gate3-cluster-b-wp0','.github/workflows/gate3-cluster-b-wp1','.github/workflows/gate3-cluster-b-wp2','checker/v0_osap_fc1/cluster_b_wp2.py','docs/gate3/cluster_b/WP0_','docs/gate3/cluster_b/WP1_','docs/gate3/cluster_b/WP2_','fixtures/gate3/cluster_b/wp2/','release/v1.4.0/GATE3_CLUSTER_B_WP0_','release/v1.4.0/GATE3_CLUSTER_B_WP1_','release/v1.4.0/GATE3_CLUSTER_B_WP2_','schemas/v1.4.0/gate3_cluster_b_wp0_','schemas/v1.4.0/gate3_cluster_b_wp1_','schemas/v1.4.0/gate3_cluster_b_wp2_','scripts/build_gate3_cluster_b_wp0','scripts/build_gate3_cluster_b_wp1','scripts/build_gate3_cluster_b_wp2','scripts/verify_gate3_cluster_b_wp0','scripts/verify_gate3_cluster_b_wp1','scripts/verify_gate3_cluster_b_wp2','tests/test_gate3_cluster_b_wp0','tests/test_gate3_cluster_b_wp1','tests/test_gate3_cluster_b_wp2','release/v1.4.0/tools/patch_wp2_','scripts/capture_gate3_cluster_b_wp2','scripts/synchronize_v1_4_0_development_wp2')
 def run(*a,check=True,text=True): return subprocess.run(a,cwd=ROOT,capture_output=True,text=text,check=check)
 def lines(*a): return [x for x in run('git',*a).stdout.splitlines() if x]
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
-def allowed(p): return p in AUTHORIZED_MODIFIED or p in EXACT or any(p.startswith(x) for x in PREFIX)
+def allowed(p): return p in AUTHORIZED_MODIFIED or p in EXACT or p in POST_MERGE_EXACT or any(p.startswith(x) for x in PREFIX)
 def verify_boundary():
     run('git','cat-file','-e',BASELINE+'^{commit}')
     head=run('git','rev-parse','HEAD').stdout.strip()
@@ -24,7 +25,7 @@ def verify_boundary():
     changed=set(lines('diff','--name-only',BASELINE,'--')); changed.update(lines('ls-files','--others','--exclude-standard'))
     bad=sorted(p for p in changed if not allowed(p))
     if bad: raise SystemExit('FAIL_PRESERVATION_FIREWALL disallowed paths: '+', '.join(bad))
-    expected=set(EXACT)|set(AUTHORIZED_MODIFIED)
+    expected=set(EXACT)|set(POST_MERGE_EXACT)|set(AUTHORIZED_MODIFIED)
     expected.update(p for p in changed if any(p.startswith(x) for x in PREFIX))
     if changed!=expected:
         raise SystemExit('FAIL_PRESERVATION_FIREWALL exact delta mismatch: missing='+str(sorted(expected-changed))+', extra='+str(sorted(changed-expected)))

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD"
+    },
+    "canonical_wp3_ledger_modified": {
+      "const": false
+    },
+    "canonical_wp3_merge_baseline": {
+      "const": "3a3100d88772f3613192db200918d392885a3961"
+    },
+    "canonical_wp3_records_modified": {
+      "const": false
+    },
+    "fixture_count_preserved": {
+      "const": 15
+    },
+    "proof_implementation_authorized": {
+      "const": false
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "runtime_semantics_modified_by_closeout": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "canonical_wp3_merge_baseline",
+    "canonical_wp3_records_modified",
+    "canonical_wp3_ledger_modified",
+    "fixture_count_preserved",
+    "theorem_ids_preserved",
+    "release_actions_authorized"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "accepted_head_commit": {
+      "const": "380b5a59dd9e68ad3c67e26c01ac01bdc9e11cfe"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "canonical_wp3_ledger_modified": {
+      "const": false
+    },
+    "canonical_wp3_records_modified": {
+      "const": false
+    },
+    "merge_commit": {
+      "const": "3a3100d88772f3613192db200918d392885a3961"
+    },
+    "merged_pr": {
+      "const": 25
+    },
+    "proof_or_new_runtime_semantics_added": {
+      "const": false
+    },
+    "release_actions": {
+      "type": "object"
+    },
+    "wp4_proof_completion_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "merged_pr",
+    "accepted_head_commit",
+    "merge_commit",
+    "hosted_ci_checks",
+    "wp3_acceptance_gates",
+    "release_actions",
+    "canonical_wp3_records_modified",
+    "canonical_wp3_ledger_modified"
+  ],
+  "type": "object"
+}

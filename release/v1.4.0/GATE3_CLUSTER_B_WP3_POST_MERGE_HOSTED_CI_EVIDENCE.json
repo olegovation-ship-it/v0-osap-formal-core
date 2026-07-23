@@ -1,0 +1,36 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP3_POST_MERGE_HOSTED_CI_EVIDENCE",
+  "canonical_sha256": "01dc63c49291dcd11b6dd4f387011e41f006f148f5f86016389e9fcf911ae557",
+  "check_summary": {
+    "failure": 0,
+    "pending": 0,
+    "skipped": 0,
+    "success": 29,
+    "total": 29
+  },
+  "date": "2026-07-23",
+  "evidence_state": "PR_PAGE_29_OF_29_AND_CODESPACES_REPLAY_EVIDENCE_RECORDED",
+  "mandatory_workflows_observed": [
+    "V0 OSAP Gate 3 Cluster B WP3",
+    "Python checker",
+    "Lean 4",
+    "Coq",
+    "Schema validation",
+    "Release readiness"
+  ],
+  "merge_commit": "3a3100d88772f3613192db200918d392885a3961",
+  "observation_source": "USER_PROVIDED_GITHUB_PR_PAGE_SCREENSHOTS_AND_CODESPACES_TERMINAL",
+  "pre_closeout_codespaces_replay": {
+    "git_diff_check": "PASS",
+    "proof_hole_scan": "PASS",
+    "pytest_failed": 0,
+    "pytest_passed": 120,
+    "pytest_skipped": 6,
+    "wp3_builder": "PASS",
+    "wp3_verifier": "PASS"
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_head_sha": "380b5a59dd9e68ad3c67e26c01ac01bdc9e11cfe",
+  "source_pr": 25,
+  "version": "0.1"
+}
