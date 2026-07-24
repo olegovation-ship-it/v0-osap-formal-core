@@ -1,0 +1,50 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_blocker_register.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "properties": {
+          "blocker_id": {
+            "type": "string"
+          },
+          "blocks_canonical_gate3_close": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "CLOSED"
+            ]
+          }
+        },
+        "required": [
+          "blocker_id",
+          "status",
+          "blocks_canonical_gate3_close"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "blocker_count",
+    "blockers"
+  ],
+  "title": "gate3_cluster_b_wp6_blocker_register",
+  "type": "object"
+}

@@ -1,0 +1,10 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_REPLAY_RECORD",
+  "byte_identical": true,
+  "canonical_bundle_path_count": 12,
+  "run_1_sha256": "e815f379d3e96e2282d2deaa727b301d03da3ffbcf8b0118f9f71e56cf18bff1",
+  "run_2_sha256": "e815f379d3e96e2282d2deaa727b301d03da3ffbcf8b0118f9f71e56cf18bff1",
+  "run_count": 2,
+  "serialization_profile": "V0_OSAP_CJ_1_SORTED_UTF8_COMPACT",
+  "version": "0.1"
+}

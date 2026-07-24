@@ -1,0 +1,203 @@
+{
+  "all_mandatory_local_gates_pass": true,
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_GATE_RESULT_MATRIX",
+  "authentic_hosted_ci_evidence": "PENDING",
+  "date": "2026-07-24",
+  "gate3_closed": false,
+  "result_count": 24,
+  "results": [
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G01",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G02",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G03",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G04",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G05",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G06",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G07",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G08",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G09",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G10",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G11",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G12",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G13",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G14",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G15",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G16",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G17",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G18",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G19",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G20",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G21",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G22",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G23",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "LOCAL_DETERMINISTIC_AUDIT",
+        "PREDECESSOR_REPLAY_OR_STATIC_EVIDENCE"
+      ],
+      "gate_id": "WP6-G24",
+      "status": "PASS"
+    }
+  ],
+  "version": "0.1"
+}

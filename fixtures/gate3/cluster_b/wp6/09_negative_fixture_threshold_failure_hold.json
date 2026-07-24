@@ -1,0 +1,13 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_AUDIT_FIXTURE",
+  "expected_blockers": [
+    "NEGATIVE_BOUNDARY_MODEL_THRESHOLD_FAILURE"
+  ],
+  "expected_disposition": "HOLD_WITH_EXPLICIT_BLOCKERS",
+  "fixture_id": "09",
+  "gate3_close_authorized": false,
+  "mutation": "NEGATIVE_FIXTURE_THRESHOLD_FAILURE",
+  "release_authorized": false,
+  "valid_input": true,
+  "version": "0.1"
+}

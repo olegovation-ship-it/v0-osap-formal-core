@@ -1,0 +1,40 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_replay_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "byte_identical": {
+      "const": true
+    },
+    "run_1_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "run_2_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "run_count": {
+      "const": 2
+    },
+    "serialization_profile": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "run_count",
+    "run_1_sha256",
+    "run_2_sha256",
+    "byte_identical"
+  ],
+  "title": "gate3_cluster_b_wp6_replay_record",
+  "type": "object"
+}

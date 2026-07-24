@@ -1,0 +1,52 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_ci_job_matrix.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "job_count": {
+      "const": 10
+    },
+    "jobs": {
+      "items": {
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "name",
+          "command"
+        ],
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array"
+    },
+    "read_only": {
+      "const": true
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "job_count",
+    "jobs",
+    "read_only"
+  ],
+  "title": "gate3_cluster_b_wp6_ci_job_matrix",
+  "type": "object"
+}

@@ -1,0 +1,41 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_preservation_firewall.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "additive_only": {
+      "const": true
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "baseline_commit": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "forbidden_operations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "forbidden_path_prefixes": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "baseline_commit",
+    "additive_only",
+    "forbidden_path_prefixes",
+    "forbidden_operations"
+  ],
+  "title": "gate3_cluster_b_wp6_preservation_firewall",
+  "type": "object"
+}

@@ -1,0 +1,41 @@
+{
+  "additive_only": true,
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_PRESERVATION_FIREWALL",
+  "baseline_commit": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "changed_path_count": 54,
+  "forbidden_operations": [
+    "commit",
+    "push",
+    "merge",
+    "force-push",
+    "history rewrite",
+    "branch deletion",
+    "tag creation or movement",
+    "GitHub Release",
+    "Zenodo deposit",
+    "DOI creation or mutation",
+    "publication",
+    "synchronization helper execution",
+    "canonical CLOSE_GATE3 decision"
+  ],
+  "forbidden_path_prefixes": [
+    "checker/",
+    "lean/",
+    "coq/",
+    "fixtures/gate3/cluster_b/wp0",
+    "fixtures/gate3/cluster_b/wp1",
+    "fixtures/gate3/cluster_b/wp2",
+    "fixtures/gate3/cluster_b/wp3",
+    "fixtures/gate3/cluster_b/wp4",
+    "fixtures/gate3/cluster_b/wp5",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP0_",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_"
+  ],
+  "new_numbered_theorems": 0,
+  "predecessor_mutations": 0,
+  "version": "0.1"
+}

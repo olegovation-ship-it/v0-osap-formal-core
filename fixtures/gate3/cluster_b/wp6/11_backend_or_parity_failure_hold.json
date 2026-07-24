@@ -1,0 +1,13 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_AUDIT_FIXTURE",
+  "expected_blockers": [
+    "DUAL_BACKEND_OR_PARITY_FAILURE"
+  ],
+  "expected_disposition": "HOLD_WITH_EXPLICIT_BLOCKERS",
+  "fixture_id": "11",
+  "gate3_close_authorized": false,
+  "mutation": "BACKEND_OR_PARITY_FAILURE",
+  "release_authorized": false,
+  "valid_input": true,
+  "version": "0.1"
+}
