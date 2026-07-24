@@ -1,0 +1,251 @@
+{
+  "$id": "https://v0-osap.example/schemas/v1.4.0/gate3_cluster_b_wp5_build_plan.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_commands": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 8,
+      "type": "array"
+    },
+    "acceptance_gate_count": {
+      "const": 24
+    },
+    "acceptance_gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 24,
+      "minItems": 24,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_BUILD_PLAN"
+    },
+    "build_spec_changed_path_allowlist": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "build_spec_changed_path_count": {
+      "const": 6
+    },
+    "ci_job_count": {
+      "const": 14
+    },
+    "ci_jobs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "name",
+          "command"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array"
+    },
+    "date": {
+      "type": "string"
+    },
+    "decision_state": {
+      "type": "string"
+    },
+    "evidence_fixture_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evidence_input_paths": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 18,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "fixture_scope": {
+      "type": "string"
+    },
+    "implementation_changed_path_allowlist": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 30,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "implementation_changed_path_count": {
+      "const": 37
+    },
+    "inherited_cluster_theorem_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "locked_extension_theorem_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "new_theorem_ids": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "prohibitions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release_authorization": {
+      "const": "NONE"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "required_branch": {
+      "const": "v1.4.0-development"
+    },
+    "required_head": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "required_origin_development": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "required_origin_main": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "schema_pairs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "document",
+          "schema"
+        ],
+        "type": "object"
+      },
+      "minItems": 9,
+      "type": "array"
+    },
+    "scope": {
+      "const": "CI_INTEGRATION_AND_DETERMINISTIC_EVIDENCE_MANIFESTS"
+    },
+    "scripts": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "semantic_role_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "stable_tag": {
+      "const": "v1.3.0"
+    },
+    "stable_tag_target": {
+      "const": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+    },
+    "tests": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "wp6_authorization": {
+      "const": "NONE"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "required_branch",
+    "required_head",
+    "required_origin_main",
+    "required_origin_development",
+    "stable_tag",
+    "stable_tag_target",
+    "scope",
+    "decision_state",
+    "new_theorem_ids",
+    "locked_extension_theorem_ids",
+    "inherited_cluster_theorem_ids",
+    "semantic_role_ids",
+    "fixture_scope",
+    "evidence_fixture_ids",
+    "ci_jobs",
+    "ci_job_count",
+    "acceptance_gate_count",
+    "acceptance_gate_ids",
+    "schema_pairs",
+    "scripts",
+    "tests",
+    "evidence_input_paths",
+    "implementation_changed_path_allowlist",
+    "implementation_changed_path_count",
+    "build_spec_changed_path_allowlist",
+    "build_spec_changed_path_count",
+    "acceptance_commands",
+    "prohibitions",
+    "release_authorization",
+    "wp6_authorization"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,8 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_EVIDENCE_FIXTURE",
+  "expected_diagnostic": "EVIDENCE_PATH_DUPLICATE",
+  "expected_status": "REJECT",
+  "fixture_id": "03_duplicate_evidence_path_rejected",
+  "mutation": "DUPLICATE_FIRST_PATH",
+  "version": "0.1"
+}

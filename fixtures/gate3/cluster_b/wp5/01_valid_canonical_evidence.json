@@ -1,0 +1,8 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_EVIDENCE_FIXTURE",
+  "expected_diagnostic": "NONE",
+  "expected_status": "PASS",
+  "fixture_id": "01_valid_canonical_evidence",
+  "mutation": "NONE",
+  "version": "0.1"
+}

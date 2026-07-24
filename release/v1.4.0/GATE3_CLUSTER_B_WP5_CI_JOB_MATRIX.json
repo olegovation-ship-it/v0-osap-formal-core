@@ -1,0 +1,108 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX",
+  "date": "2026-07-23",
+  "final_job_semantics": "AUDIT_INPUT_READINESS_ONLY_NO_CLOSE_GATE3_DECISION",
+  "job_count": 14,
+  "jobs": [
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job baseline",
+      "job_id": "baseline",
+      "mandatory": true,
+      "name": "Baseline and predecessor preservation",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job schemas",
+      "job_id": "schemas",
+      "mandatory": true,
+      "name": "Schemas and canonical manifests",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job id-audit",
+      "job_id": "id-audit",
+      "mandatory": true,
+      "name": "Theorem ID closure",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job role-coverage",
+      "job_id": "role-coverage",
+      "mandatory": true,
+      "name": "Seven-role coverage",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job dependency-dag",
+      "job_id": "dependency-dag",
+      "mandatory": true,
+      "name": "Dependency DAG",
+      "release_capability": false
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider",
+      "job_id": "python-semantics",
+      "mandatory": true,
+      "name": "Full Python semantics regression",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job positive-models",
+      "job_id": "positive-models",
+      "mandatory": true,
+      "name": "Positive model campaign",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job negative-boundary",
+      "job_id": "negative-boundary",
+      "mandatory": true,
+      "name": "Negative and boundary campaign",
+      "release_capability": false
+    },
+    {
+      "command": "cd lean && lake build",
+      "job_id": "lean",
+      "mandatory": true,
+      "name": "Lean 4 proof build",
+      "release_capability": false
+    },
+    {
+      "command": "cd coq && make",
+      "job_id": "coq",
+      "mandatory": true,
+      "name": "Coq proof build",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job statement-parity",
+      "job_id": "statement-parity",
+      "mandatory": true,
+      "name": "Lean/Coq statement parity",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job ipec-lineage",
+      "job_id": "ipec-lineage",
+      "mandatory": true,
+      "name": "Validator/IPEC theorem-evidence lineage",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job deterministic-replay",
+      "job_id": "deterministic-replay",
+      "mandatory": true,
+      "name": "Two-run byte-identical replay",
+      "release_capability": false
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job gate3-audit-inputs",
+      "job_id": "gate3-audit-inputs",
+      "mandatory": true,
+      "name": "WP6 audit-input readiness without decision",
+      "release_capability": false
+    }
+  ],
+  "permissions": "CONTENTS_READ_ONLY",
+  "version": "0.1"
+}

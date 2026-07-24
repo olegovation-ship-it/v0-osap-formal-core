@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST"
+    },
+    "baseline_commit": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "generation_state": {
+      "const": "GENERATED_AND_LOCKED"
+    },
+    "input_count": {
+      "const": 18
+    },
+    "inputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "source_commit": {
+            "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "source_commit"
+        ],
+        "type": "object"
+      },
+      "maxItems": 18,
+      "minItems": 18,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "baseline_commit",
+    "input_count",
+    "inputs",
+    "generation_state",
+    "canonical_sha256"
+  ],
+  "type": "object"
+}

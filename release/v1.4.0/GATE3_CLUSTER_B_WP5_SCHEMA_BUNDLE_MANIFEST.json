@@ -1,0 +1,63 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-23",
+  "generation_state": "GENERATED_AND_LOCKED",
+  "pair_count": 9,
+  "pairs": [
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BUILD_PLAN.json",
+      "document_sha256": "7fd5b9b00d3b7ad5c30949f8ce6545c87f771d80e649e938afabaa129e97c5a0",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_build_plan.schema.json",
+      "schema_sha256": "c16b44d7500595f0f6d2a5d941377fbd05f3b48d97107907f129bf9794f7a7e0"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BASELINE_LOCK.json",
+      "document_sha256": "ba237ed6dc2274066d751f3aec656611692cee1d14c7f9d6b65a7a45f2c24e63",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_baseline_lock.schema.json",
+      "schema_sha256": "8c7482cff661c359e5f1fa3217fbafa98123c5cc53d0931ae687832558544550"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX.json",
+      "document_sha256": "eb81910f29b6db4d16c56d0216b896b8adecee87c0a69d760a9fbf80df3f068a",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_ci_job_matrix.schema.json",
+      "schema_sha256": "a6cffa6313891d41488ee8cbbbf4be763c06e0343d018cc4fb37d5a2c87dcd90"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json",
+      "document_sha256": "d39c4b578427e4e36c3d38b7af20e04b9c7c2df844517458972b0a16e123ad93",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_evidence_input_manifest.schema.json",
+      "schema_sha256": "f2893d81851f5c212e5c9be0359046bd3763d552ef57dfd6db8011914c8dd05b"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST.json",
+      "document_sha256": "f5669594310e373354a5a7d7d84580ec39b0398153cb6f6333a37780329dcefb",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_fixture_manifest.schema.json",
+      "schema_sha256": "27517affef83ef9398d6ad623b0b991035992199fcfceef7dd04f12e5e1b473a"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_PRESERVATION_FIREWALL.json",
+      "document_sha256": "4b2664a05557543a179f564d8291372cbef1280f8261375e68ffc524316020b8",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_preservation_firewall.schema.json",
+      "schema_sha256": "f758cead22d572150558b60e260261e34b7f4159981f0812414b6e5431dc77a4"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_REPLAY_RECORD.json",
+      "document_sha256": "77bea059557058f44e3a8470b0c36a77ac0be7a4b9e693c1d6ad99216bfffdf4",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_replay_record.schema.json",
+      "schema_sha256": "f3988e2cba9f0cc8e2e658eaf8d62fc4f1b4e86b8d80b7ca067ba832cff5a0d5"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES.json",
+      "document_sha256": "eb578929b653c85d5d0d1a5cfdc35224d73e3ab9815c69409e598fd5ec8d2c8e",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_acceptance_gates.schema.json",
+      "schema_sha256": "72063a4df786a93957f7dd6f8a5fcfc3f223d92ead66d5a0b798dde9713b1efa"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST.json",
+      "document_sha256": "SELF_EXCLUDED",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_schema_bundle_manifest.schema.json",
+      "schema_sha256": "6c4985b443ea769e0c9d2effcfdcd0c5e610bd328a50dae2e8cac2d2ef06d796"
+    }
+  ],
+  "version": "0.1"
+}

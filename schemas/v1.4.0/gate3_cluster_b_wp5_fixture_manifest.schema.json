@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST"
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "fixture_count": {
+      "const": 6
+    },
+    "fixtures": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_status": {
+            "enum": [
+              "PASS",
+              "REJECT"
+            ]
+          },
+          "fixture_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fixture_id",
+          "path",
+          "sha256",
+          "expected_status"
+        ],
+        "type": "object"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "semantic_model_fixture_count_added": {
+      "const": 0
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "fixture_count",
+    "fixtures",
+    "semantic_model_fixture_count_added"
+  ],
+  "type": "object"
+}

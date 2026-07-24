@@ -1,0 +1,8 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_EVIDENCE_FIXTURE",
+  "expected_diagnostic": "PREDECESSOR_CHAIN_MISMATCH",
+  "expected_status": "REJECT",
+  "fixture_id": "05_predecessor_chain_break_rejected",
+  "mutation": "MUTATE_BASELINE_COMMIT",
+  "version": "0.1"
+}

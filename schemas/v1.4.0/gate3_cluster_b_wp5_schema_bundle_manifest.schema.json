@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST"
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "generation_state": {
+      "const": "GENERATED_AND_LOCKED"
+    },
+    "pair_count": {
+      "const": 9
+    },
+    "pairs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "document_sha256": {
+            "oneOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "const": "SELF_EXCLUDED"
+              }
+            ]
+          },
+          "schema": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "schema_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "document",
+          "document_sha256",
+          "schema",
+          "schema_sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "pair_count",
+    "pairs",
+    "generation_state"
+  ],
+  "type": "object"
+}
