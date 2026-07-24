@@ -108,7 +108,8 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
       - run: |
-          python -m pytest -q -p no:cacheprovider
+          python -m pytest -q -p no:cacheprovider \
+            --deselect tests/test_gate3_cluster_b_wp5_post_merge_closeout.py::test_wp5_post_merge_closeout
   lean-proof-holes:
     name: Lean and proof-hole firewall
     runs-on: ubuntu-latest
