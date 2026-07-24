@@ -1,0 +1,44 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_decision_candidate.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "blocker_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "candidate": {
+      "enum": [
+        "ELIGIBLE_FOR_CLOSE_GATE3_PENDING_EXPLICIT_AUTHORIZATION",
+        "HOLD_WITH_EXPLICIT_BLOCKERS"
+      ]
+    },
+    "explicit_authorization_required": {
+      "const": true
+    },
+    "gate3_closed": {
+      "const": false
+    },
+    "release_authorized": {
+      "const": false
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "candidate",
+    "gate3_closed",
+    "explicit_authorization_required",
+    "release_authorized"
+  ],
+  "title": "gate3_cluster_b_wp6_decision_candidate",
+  "type": "object"
+}

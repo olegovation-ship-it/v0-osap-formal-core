@@ -1,0 +1,46 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_baseline_lock.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "baseline_commit": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "branch": {
+      "const": "v1.4.0-development"
+    },
+    "main_development_divergence": {
+      "const": "0 0"
+    },
+    "origin_development": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "origin_main": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "stable_tag_target": {
+      "const": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+    },
+    "version": {
+      "type": "string"
+    },
+    "working_tree_before_build_spec": {
+      "const": "CLEAN"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "baseline_commit",
+    "branch",
+    "origin_main",
+    "origin_development",
+    "stable_tag_target",
+    "main_development_divergence"
+  ],
+  "title": "gate3_cluster_b_wp6_baseline_lock",
+  "type": "object"
+}

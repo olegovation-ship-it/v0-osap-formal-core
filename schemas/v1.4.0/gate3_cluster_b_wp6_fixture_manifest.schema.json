@@ -1,0 +1,53 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_fixture_manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "fixture_count": {
+      "const": 14
+    },
+    "fixtures": {
+      "items": {
+        "properties": {
+          "expected_disposition": {
+            "type": "string"
+          },
+          "fixture_id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fixture_id",
+          "path",
+          "sha256",
+          "expected_disposition"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "fixture_count",
+    "fixtures"
+  ],
+  "title": "gate3_cluster_b_wp6_fixture_manifest",
+  "type": "object"
+}

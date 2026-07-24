@@ -1,0 +1,46 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_audit_fixture.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_AUDIT_FIXTURE"
+    },
+    "expected_blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "expected_disposition": {
+      "enum": [
+        "ELIGIBLE_FOR_CLOSE_GATE3_PENDING_EXPLICIT_AUTHORIZATION",
+        "HOLD_WITH_EXPLICIT_BLOCKERS",
+        "REJECT_UNAUTHORIZED_INPUT"
+      ]
+    },
+    "fixture_id": {
+      "pattern": "^(0[1-9]|1[0-4])$",
+      "type": "string"
+    },
+    "mutation": {
+      "type": "string"
+    },
+    "valid_input": {
+      "type": "boolean"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "fixture_id",
+    "mutation",
+    "expected_disposition",
+    "valid_input"
+  ],
+  "title": "gate3_cluster_b_wp6_audit_fixture",
+  "type": "object"
+}

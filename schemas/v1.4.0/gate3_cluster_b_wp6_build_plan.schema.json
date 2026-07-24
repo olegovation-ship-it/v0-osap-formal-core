@@ -1,0 +1,356 @@
+{
+  "$id": "https://v0-osap.example/schemas/v1.4.0/gate3_cluster_b_wp6_build_plan.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_commands": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array"
+    },
+    "acceptance_gate_count": {
+      "const": 24
+    },
+    "acceptance_gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 24,
+      "minItems": 24,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_BUILD_PLAN"
+    },
+    "audit_fixture_count": {
+      "const": 14
+    },
+    "audit_fixture_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "audit_predicate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 13,
+      "minItems": 13,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "build_spec_changed_path_allowlist": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "build_spec_changed_path_count": {
+      "const": 6
+    },
+    "ci_job_count": {
+      "const": 10
+    },
+    "ci_jobs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "name",
+          "command"
+        ],
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array"
+    },
+    "date": {
+      "type": "string"
+    },
+    "decision_candidate_values": {
+      "items": {
+        "enum": [
+          "ELIGIBLE_FOR_CLOSE_GATE3_PENDING_EXPLICIT_AUTHORIZATION",
+          "HOLD_WITH_EXPLICIT_BLOCKERS"
+        ]
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "decision_state": {
+      "const": "WP6_BUILD_SPEC_APPROVED_IMPLEMENTATION_NOT_APPLIED_GATE3_NOT_CLOSED"
+    },
+    "evidence_input_paths": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 35,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "fixture_scope": {
+      "const": "AUDIT_CONTROL_ONLY_NO_NEW_SEMANTIC_MODEL"
+    },
+    "formal_target_scope": {
+      "const": "META_AUDIT_ONLY_NO_NEW_NUMBERED_THEOREM"
+    },
+    "gate3_close_authorization": {
+      "const": "NONE"
+    },
+    "implementation_changed_path_allowlist": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 54,
+      "minItems": 54,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "implementation_changed_path_count": {
+      "const": 54
+    },
+    "inherited_cluster_theorem_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "locked_extension_theorem_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "new_theorem_ids": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "predecessor_commit_chain": {
+      "additionalProperties": false,
+      "properties": {
+        "wp5_closeout_head": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "wp5_closeout_merge": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "wp5_implementation_head": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "wp5_implementation_merge": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "wp5_repair_head": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "wp5_repair_merge": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "wp5_implementation_head",
+        "wp5_implementation_merge",
+        "wp5_closeout_head",
+        "wp5_closeout_merge",
+        "wp5_repair_head",
+        "wp5_repair_merge"
+      ],
+      "type": "object"
+    },
+    "predecessor_packages": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+    },
+    "prohibitions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 18,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release_authorization": {
+      "const": "NONE"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "required_branch": {
+      "const": "v1.4.0-development"
+    },
+    "required_head": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "required_origin_development": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "required_origin_main": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "schema_pairs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "document",
+          "schema"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array"
+    },
+    "scope": {
+      "const": "GATE3_AUDIT_AND_RELEASE_CANDIDATE_DECISION"
+    },
+    "scripts": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "semantic_role_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "stable_tag": {
+      "const": "v1.3.0"
+    },
+    "stable_tag_target": {
+      "const": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+    },
+    "tests": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "wp5_hosted_check_count": {
+      "const": 55
+    },
+    "wp6_implementation_authorization": {
+      "const": "PENDING_BUILD_SPEC_REVIEW"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "required_branch",
+    "required_head",
+    "required_origin_main",
+    "required_origin_development",
+    "stable_tag",
+    "stable_tag_target",
+    "scope",
+    "decision_state",
+    "formal_target_scope",
+    "new_theorem_ids",
+    "locked_extension_theorem_ids",
+    "inherited_cluster_theorem_ids",
+    "semantic_role_ids",
+    "audit_predicate_ids",
+    "fixture_scope",
+    "audit_fixture_ids",
+    "audit_fixture_count",
+    "ci_jobs",
+    "ci_job_count",
+    "acceptance_gate_count",
+    "acceptance_gate_ids",
+    "decision_candidate_values",
+    "schema_pairs",
+    "scripts",
+    "tests",
+    "evidence_input_paths",
+    "predecessor_packages",
+    "predecessor_commit_chain",
+    "implementation_changed_path_allowlist",
+    "implementation_changed_path_count",
+    "build_spec_changed_path_allowlist",
+    "build_spec_changed_path_count",
+    "acceptance_commands",
+    "prohibitions",
+    "release_authorization",
+    "wp6_implementation_authorization",
+    "gate3_close_authorization",
+    "wp5_hosted_check_count"
+  ],
+  "type": "object"
+}

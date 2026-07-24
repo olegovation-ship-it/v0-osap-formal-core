@@ -1,0 +1,18 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_DECISION_CANDIDATE",
+  "blocker_ids": [
+    "AUTHENTIC_HOSTED_CI_EVIDENCE_PENDING"
+  ],
+  "candidate": "HOLD_WITH_EXPLICIT_BLOCKERS",
+  "candidate_basis": "ALL_LOCAL_MANDATORY_GATES_PASS_BUT_AUTHENTIC_HOSTED_CI_EVIDENCE_AND_SEPARATE_EXPLICIT_AUTHORIZATION_ARE_PENDING",
+  "date": "2026-07-24",
+  "doi_action_performed": false,
+  "eligible_candidate_after_blocker_resolution": "ELIGIBLE_FOR_CLOSE_GATE3_PENDING_EXPLICIT_AUTHORIZATION",
+  "explicit_authorization_required": true,
+  "gate3_closed": false,
+  "github_release_created": false,
+  "release_authorized": false,
+  "tag_created": false,
+  "version": "0.1",
+  "zenodo_deposit_created": false
+}

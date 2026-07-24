@@ -1,0 +1,59 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_gate_result_matrix.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "all_mandatory_local_gates_pass": {
+      "type": "boolean"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "result_count": {
+      "const": 24
+    },
+    "results": {
+      "items": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "gate_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "HOLD"
+            ]
+          }
+        },
+        "required": [
+          "gate_id",
+          "status",
+          "evidence"
+        ],
+        "type": "object"
+      },
+      "maxItems": 24,
+      "minItems": 24,
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "result_count",
+    "results",
+    "all_mandatory_local_gates_pass"
+  ],
+  "title": "gate3_cluster_b_wp6_gate_result_matrix",
+  "type": "object"
+}

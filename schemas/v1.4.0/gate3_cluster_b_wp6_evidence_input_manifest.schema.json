@@ -1,0 +1,48 @@
+{
+  "$id": "https://v0-osap.invalid/schemas/v1.4.0/gate3_cluster_b_wp6_evidence_input_manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "baseline_commit": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "entries": {
+      "items": {
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "entry_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "baseline_commit",
+    "entry_count",
+    "entries"
+  ],
+  "title": "gate3_cluster_b_wp6_evidence_input_manifest",
+  "type": "object"
+}

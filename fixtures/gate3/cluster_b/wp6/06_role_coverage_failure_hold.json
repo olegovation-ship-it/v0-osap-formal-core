@@ -1,0 +1,13 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_AUDIT_FIXTURE",
+  "expected_blockers": [
+    "SEMANTIC_ROLE_COVERAGE_FAILURE"
+  ],
+  "expected_disposition": "HOLD_WITH_EXPLICIT_BLOCKERS",
+  "fixture_id": "06",
+  "gate3_close_authorized": false,
+  "mutation": "ROLE_COVERAGE_FAILURE",
+  "release_authorized": false,
+  "valid_input": true,
+  "version": "0.1"
+}

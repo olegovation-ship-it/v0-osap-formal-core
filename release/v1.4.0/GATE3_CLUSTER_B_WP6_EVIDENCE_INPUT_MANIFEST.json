@@ -1,0 +1,165 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_EVIDENCE_INPUT_MANIFEST",
+  "baseline_commit": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "entries": [
+    {
+      "path": "docs/gate3/cluster_b/BASELINE_AUDIT_AND_BUILD_SPECIFICATION_v0.1.md",
+      "sha256": "6f32ff43e140d2b360410890ae9fed87690db6db54886f3da7d86eb5f85654e9"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "85f8c41c32afb7f93a6f44437f0c360c1ccd347a50994119fac5fbd503d10f50"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP0_SCHEMA_BUNDLE_MANIFEST.json",
+      "sha256": "76c9ebe6b67445ae8f3085b2bda723413c74b858737c8b0da7d9f8d50b4e958c"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG.json",
+      "sha256": "64adc2c1bb1b722115db9d3703af81ce6fd6a717c01f176ffaf7d05865cd5eb8"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "9162cc1e48ee7d44dba416ab7b42a14be45fc57878c6e5adaa5dcc5cc62705c5"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP.json",
+      "sha256": "d4c61d7d5123affe8e4447bd0dac86b9e3e410d60c95b6bf9add40aae52eee7e"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json",
+      "sha256": "eee4c257830d1d53244ee963d925e087de7ef12e1807cd90a685c894b36bf4da"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST.json",
+      "sha256": "b105b713643334293f75c12d978e735b3a582af14afba5cec148db049ec4b5b3"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "9b49be13548e8fb518c3c4b112801643e2d1cb2410b04a825be078f6f34550ed"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE.json",
+      "sha256": "77cb63e623c14776ae55c6f6e97e22a7a5a6668eaf3e0a20804bcec86b68b757"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST.json",
+      "sha256": "615f3bdfb757f662bbfd0d4349f9febb654dafdfd6a3eda591f466c5e73a7cfd"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162.json",
+      "sha256": "8402bfcd12729e09f1bf484051cda345b4f1fe5ef49cf46f1a1061df924853ff"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "f6af9e0941927e4753aa34584d241de12919bd57a4b940758cfef28302963ac2"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_DUAL_BACKEND_PROOF_MANIFEST.json",
+      "sha256": "24dd70633bbd5626bfaf71c01bda4496da3d305ae34e712e1b817f399a23736c"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST.json",
+      "sha256": "ac1eaa50d90cf341d0c79a3340878c3aeddfdbee0ff28f3ed46fb03d91b6d8be"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "sha256": "0d3302f8771c713772a93b70b4dfe6790db48e32becd5b5be2b17d673a7147aa"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "fd6537da8d929b8da887f9151a91359662cf40954dd7284037b96edeba116160"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST.json",
+      "sha256": "1c2b284f9007b768daadebd7c4546e69b043e386297acd2ed272f0e955163c0c"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES.json",
+      "sha256": "eb578929b653c85d5d0d1a5cfdc35224d73e3ab9815c69409e598fd5ec8d2c8e"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BASELINE_LOCK.json",
+      "sha256": "ba237ed6dc2274066d751f3aec656611692cee1d14c7f9d6b65a7a45f2c24e63"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX.json",
+      "sha256": "eb81910f29b6db4d16c56d0216b896b8adecee87c0a69d760a9fbf80df3f068a"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json",
+      "sha256": "529841fb4d1ed985364185c0319327dd8df504cc2019ce203e33668821818c65"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json",
+      "sha256": "d39c4b578427e4e36c3d38b7af20e04b9c7c2df844517458972b0a16e123ad93"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST.json",
+      "sha256": "f5669594310e373354a5a7d7d84580ec39b0398153cb6f6333a37780329dcefb"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json",
+      "sha256": "d8f4ae40ad1a0753ab159a1580f00afac922dada74506baef9289876dd21cb0c"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES.json",
+      "sha256": "6c3aaa0a1a73d84d2e50ef6f1213961f2ee5f95b51fdfea96e7d51c04beaccc6"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "sha256": "fa2abf16ef58879155b50428fd62ef4c31bb05a1f3beaace55afcff250e2efde"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE.json",
+      "sha256": "cbc7f7cf01e7b90e249099fbf7e56888c77f8f5733d608dd86e01b3646526d42"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json",
+      "sha256": "18ae09da06b13c84977c8905f7b0caece39d0167491a89f887e09d5bdb83e5e9"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "634acd83951a16b7fb88a779552ee111e5440766b59fd5f5c4c436b8f6f974cc"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_PRESERVATION_FIREWALL.json",
+      "sha256": "4b2664a05557543a179f564d8291372cbef1280f8261375e68ffc524316020b8"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_REPLAY_RECORD.json",
+      "sha256": "77bea059557058f44e3a8470b0c36a77ac0be7a4b9e693c1d6ad99216bfffdf4"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST.json",
+      "sha256": "ace8825ac6f1be5e5a5000ebaa6c08c56a170e2b214d2d4ec2de4a7496e71fed"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SHA256SUMS.txt",
+      "sha256": "f25927445f8717c704618875e61c29e33aa88fd1a878923af2fb6880dc488e7d"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_ACCEPTANCE_GATES.json",
+      "sha256": "7945ce3e06a28431a5a0e76dfe28210fede206790bbe36ede767204de4203a38"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE_MANIFEST.json",
+      "sha256": "dac5855ee1bbc7eeb052ccd6a6b131e14873168e304515cf871b524d2ae6a8dd"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD.json",
+      "sha256": "60bcd637bea3140faf93d2b678548428bf462cf610aaef85696c96c4ead7a292"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SCHEMA_BUNDLE_MANIFEST.json",
+      "sha256": "045bfb4f10fae47afa7f0cc123e25aa1d6f064e921b89dfacee3c1c86abfbe29"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SHA256SUMS.txt",
+      "sha256": "66ec9c669ff7fd6376cbffce3f96f65c41ea7a5b055c598fb28a9e14c8f98b34"
+    }
+  ],
+  "entry_count": 39,
+  "serialization_profile": "SORTED_UTF8_JSON",
+  "version": "0.1"
+}

@@ -1,0 +1,63 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_SCHEMA_BUNDLE_MANIFEST",
+  "schema_count": 14,
+  "schemas": [
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_acceptance_gates.schema.json",
+      "sha256": "5e3fd3d934fa9d4ae5bf154ceac8c964e5b22f222e24f5d97c311f017e6134b4"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_audit_fixture.schema.json",
+      "sha256": "406a1454ea42f521a8e2ace46b0a734b80b7051b3463ade53d697517da7c6d35"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_baseline_lock.schema.json",
+      "sha256": "8feb9b3589df4f527310d7b50b4d74dd7a9293449fd9db58cbf508fc767f32d1"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_blocker_register.schema.json",
+      "sha256": "648f7126826bf920b58c018681635aef5ea55254c9ffb7913bcc45fede8e23ec"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_build_plan.schema.json",
+      "sha256": "a0d66114ab7fde5777fb905685358bb0cc5582d22d255173e41ba924fc6c5d78"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_ci_job_matrix.schema.json",
+      "sha256": "ed5175f011f1aeb023c7915f4d2c8403d607143256afdd96ea26d3160c2f8ade"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_claim_perimeter.schema.json",
+      "sha256": "6f50573d9a950e8c895bf17f5e84deb8de5042214d625510ee23244a1c0e102b"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_decision_candidate.schema.json",
+      "sha256": "9d6e8a4b17e48b59f47f0b065a342583d3290aff58ad985dbe985d64cdc17f4e"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_evidence_input_manifest.schema.json",
+      "sha256": "86ba0d27eb09e52ab498783c306b8c2cc42eec41b86ba09f8a2c43a7bd747fa3"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_fixture_manifest.schema.json",
+      "sha256": "4f89dc555f2db452531f8aebb16e10fd8b312686b4661f4010d1b422c48613c9"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_gate_result_matrix.schema.json",
+      "sha256": "f259767c510cd7a4de3a2aa098ee94923c9bbbba9e79c3017078ec6ebc4efca4"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_preservation_firewall.schema.json",
+      "sha256": "1868999879e8db85b8c085be8f17cdd95caa904257506c36c01ad1a80fedf538"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_replay_record.schema.json",
+      "sha256": "f69d696990c342120af08f1b34d1de93b751015088f9b4e54ebfa5160b0b400e"
+    },
+    {
+      "path": "schemas/v1.4.0/gate3_cluster_b_wp6_schema_bundle_manifest.schema.json",
+      "sha256": "b2ba957d29fdb4e17a41319c597ab94cb305e32d081beb988133c745bf8fb801"
+    }
+  ],
+  "version": "0.1"
+}

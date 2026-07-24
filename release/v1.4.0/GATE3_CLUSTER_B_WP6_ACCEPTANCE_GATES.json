@@ -1,0 +1,131 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_ACCEPTANCE_GATES",
+  "date": "2026-07-24",
+  "decision_on_local_pass": "HOLD_WITH_EXPLICIT_BLOCKERS_PENDING_AUTHENTIC_HOSTED_CI_AND_EXPLICIT_AUTHORIZATION",
+  "gate3_closed": false,
+  "gate_count": 24,
+  "gates": [
+    {
+      "gate_id": "WP6-G01",
+      "requirement": "Exact branch, HEAD, and both remote refs equal the synchronized WP5 repair baseline.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G02",
+      "requirement": "Stable v1.3.0 tag target and historical DOI evidence are unchanged.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G03",
+      "requirement": "WP0-WP4 canonical records and historical ledgers are byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G04",
+      "requirement": "WP5 canonical records and canonical ledger are byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G05",
+      "requirement": "WP5 post-merge and repair successor chains reproduce exactly.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G06",
+      "requirement": "Inherited theorem owners and T157-T162 are identity-locked.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G07",
+      "requirement": "CB-R1 through CB-R7 remain complete.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G08",
+      "requirement": "The 16-node dependency graph is acyclic with no undeclared imports.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G09",
+      "requirement": "The WP2 positive-model count remains at least 12.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G10",
+      "requirement": "The WP2 negative/boundary count remains at least 12 and the combined threshold is preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G11",
+      "requirement": "Admissible model-pair evidence is present and internally coherent.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G12",
+      "requirement": "All nine WP3 case types retain exact typed bindings.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G13",
+      "requirement": "Every nonprocedural outcome retains theorem and IPEC lineage.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G14",
+      "requirement": "T157-T162 remain complete in Lean and Coq.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G15",
+      "requirement": "Statement parity remains 100 percent and statement hashes are locked.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G16",
+      "requirement": "Proof-hole scan returns PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G17",
+      "requirement": "Full Python regression returns PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G18",
+      "requirement": "Schemas and deterministic fixtures return PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G19",
+      "requirement": "Lean build returns PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G20",
+      "requirement": "Coq build returns PASS.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G21",
+      "requirement": "WP5 evidence manifest, ledgers, and two-run replay reproduce.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G22",
+      "requirement": "All 14 WP6 audit fixtures produce the required bounded outcomes.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G23",
+      "requirement": "Claim perimeter, exact allowlist, rollback, SHA-256 chain, and release firewall pass.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP6-G24",
+      "requirement": "The result is only a bounded decision candidate; automatic CLOSE_GATE3 is prohibited.",
+      "status": "PASS"
+    }
+  ],
+  "release_authorized": false,
+  "version": "0.1"
+}

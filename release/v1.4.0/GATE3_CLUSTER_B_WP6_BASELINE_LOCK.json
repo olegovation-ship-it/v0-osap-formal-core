@@ -1,0 +1,17 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_BASELINE_LOCK",
+  "baseline_commit": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "branch": "v1.4.0-development",
+  "date": "2026-07-24",
+  "gate3_closed": false,
+  "main_development_divergence": "0 0",
+  "origin_development": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "origin_main": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "release_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "stable_tag": "v1.3.0",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "version": "0.1",
+  "working_tree_before_build_spec": "CLEAN",
+  "wp5_repair_checks_passed": 55
+}

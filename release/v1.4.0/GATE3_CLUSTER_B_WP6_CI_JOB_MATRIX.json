@@ -1,0 +1,60 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_CI_JOB_MATRIX",
+  "date": "2026-07-24",
+  "job_count": 10,
+  "jobs": [
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job baseline-lock",
+      "job_id": "baseline-lock",
+      "name": "Exact baseline, branch, refs, tag, and clean-state lock"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job predecessor-chain",
+      "job_id": "predecessor-chain",
+      "name": "WP0-WP5 predecessor records and SHA-256 successor-chain preservation"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job theorem-role-dag",
+      "job_id": "theorem-role-dag",
+      "name": "Theorem identity, seven-role coverage, and dependency DAG"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job semantic-evidence",
+      "job_id": "semantic-evidence",
+      "name": "WP2 model thresholds and admissible model-pair evidence"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job typed-lineage",
+      "job_id": "typed-lineage",
+      "name": "WP3 typed outcomes and theorem/IPEC lineage"
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider",
+      "job_id": "schemas-fixtures-python",
+      "name": "WP6 schemas, audit fixtures, verifier, and Python regression"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job lean-proof-holes",
+      "job_id": "lean-proof-holes",
+      "name": "Lean build and proof-hole firewall"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job coq-parity",
+      "job_id": "coq-parity",
+      "name": "Coq build and statement-parity preservation"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job replay-claims",
+      "job_id": "replay-claims",
+      "name": "Deterministic replay and claim-perimeter lock"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp6.py --job decision-firewall",
+      "job_id": "decision-firewall",
+      "name": "Blocker register, decision candidate, exact allowlist, and release firewall"
+    }
+  ],
+  "publication_actions": false,
+  "read_only": true,
+  "version": "0.1"
+}

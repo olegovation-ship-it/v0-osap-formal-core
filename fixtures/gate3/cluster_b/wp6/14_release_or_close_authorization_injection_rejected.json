@@ -1,0 +1,13 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_AUDIT_FIXTURE",
+  "expected_blockers": [
+    "UNAUTHORIZED_RELEASE_OR_GATE3_CLOSE_INJECTION"
+  ],
+  "expected_disposition": "REJECT_UNAUTHORIZED_INPUT",
+  "fixture_id": "14",
+  "gate3_close_authorized": false,
+  "mutation": "RELEASE_OR_CLOSE_AUTHORIZATION_INJECTION",
+  "release_authorized": false,
+  "valid_input": false,
+  "version": "0.1"
+}

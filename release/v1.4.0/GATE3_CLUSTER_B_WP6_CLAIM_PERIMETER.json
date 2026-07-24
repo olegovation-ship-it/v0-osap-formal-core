@@ -1,0 +1,24 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_CLAIM_PERIMETER",
+  "authorized_claims": [
+    "Local meta-audit completeness for the frozen Gate 3 Cluster B evidence stack.",
+    "Preservation of theorem identity, semantic-role ownership, typed lineage, dual-backend proof completion, statement parity, and deterministic replay.",
+    "Eligibility may be proposed only as a non-operative candidate after all evidence conditions pass."
+  ],
+  "conditional_theorems_preserved": [
+    "T140",
+    "T150",
+    "T156",
+    "T158",
+    "T160"
+  ],
+  "new_numbered_theorems": [],
+  "prohibited_claims": [
+    "Canonical CLOSE_GATE3 without separate explicit authorization.",
+    "Proof-term identity or Lean/Coq kernel equivalence.",
+    "Unrestricted semantic equivalence, checker completeness, or global soundness.",
+    "Empirical, physical, disappearance, cosmological-vacuum, or absolute-V0 existence claims.",
+    "Git tag, GitHub Release, Zenodo deposit, DOI action, or publication authorization."
+  ],
+  "version": "0.1"
+}

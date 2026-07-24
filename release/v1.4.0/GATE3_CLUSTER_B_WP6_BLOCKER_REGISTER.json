@@ -1,0 +1,15 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_BLOCKER_REGISTER",
+  "blocker_count": 1,
+  "blockers": [
+    {
+      "blocker_id": "AUTHENTIC_HOSTED_CI_EVIDENCE_PENDING",
+      "blocks_canonical_gate3_close": true,
+      "class": "EXTERNAL_ACCEPTANCE_EVIDENCE",
+      "resolution": "Complete all dedicated hosted WP6 checks, record exact check evidence, and obtain separate explicit user authorization.",
+      "status": "OPEN"
+    }
+  ],
+  "date": "2026-07-24",
+  "version": "0.1"
+}
