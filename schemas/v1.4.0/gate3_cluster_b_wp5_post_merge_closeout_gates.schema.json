@@ -1,0 +1,33 @@
+{
+  "$id": "https://example.invalid/v0-osap/WP5 Post-Merge Closeout Gates.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES"
+    },
+    "gate_count": {
+      "const": 21
+    },
+    "gates": {
+      "maxItems": 21,
+      "minItems": 21,
+      "type": "array"
+    },
+    "release_authorization": {
+      "const": "NONE"
+    },
+    "wp6_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "gate_count",
+    "gates",
+    "release_authorization",
+    "wp6_authorized"
+  ],
+  "title": "WP5 Post-Merge Closeout Gates",
+  "type": "object"
+}
