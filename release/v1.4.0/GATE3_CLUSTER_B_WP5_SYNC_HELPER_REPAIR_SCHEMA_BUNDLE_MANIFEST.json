@@ -1,0 +1,57 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-24",
+  "document_schema_pair_count": 8,
+  "pairs": [
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD.json",
+      "document_sha256": "60bcd637bea3140faf93d2b678548428bf462cf610aaef85696c96c4ead7a292",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_record.schema.json",
+      "schema_sha256": "8cbba363970a43a56185a913eb9e0cb5252cb52796a486f7b443a97c1ee9f1b0"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE_MANIFEST.json",
+      "document_sha256": "dac5855ee1bbc7eeb052ccd6a6b131e14873168e304515cf871b524d2ae6a8dd",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture_manifest.schema.json",
+      "schema_sha256": "010dc31ea837e65519b9fcff73c30c9d66aca127d7469a315be41e1e0a5101cb"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_ACCEPTANCE_GATES.json",
+      "document_sha256": "7945ce3e06a28431a5a0e76dfe28210fede206790bbe36ede767204de4203a38",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_acceptance_gates.schema.json",
+      "schema_sha256": "701e03741bbf69a81243eaadc6b948030ef69183008806e7d92fc347e1ec5222"
+    },
+    {
+      "document": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/00_identical_0_0.json",
+      "document_sha256": "b91f311e1127f5b23a2006e64fb68d25978690ff7fe0d9deba905d3a35625227",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+      "schema_sha256": "bacc27e238dd5487309139766f766f96bb908f3d7b6975f088e848d1ad5e15ce"
+    },
+    {
+      "document": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/01_main_ahead_1_0.json",
+      "document_sha256": "2c4c798a45615721eeac97c6e0801556fbad4cb8a26554164469a93e3055e64d",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+      "schema_sha256": "bacc27e238dd5487309139766f766f96bb908f3d7b6975f088e848d1ad5e15ce"
+    },
+    {
+      "document": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/02_main_ahead_2_0.json",
+      "document_sha256": "e626af266638cd637732d4da682747b638bcfd56fc80b09c1b472fe48bf20c0c",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+      "schema_sha256": "bacc27e238dd5487309139766f766f96bb908f3d7b6975f088e848d1ad5e15ce"
+    },
+    {
+      "document": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/03_development_ahead_0_1_rejected.json",
+      "document_sha256": "1f920d3a72e9e48d007e3d0fcb82f9f811d3c94411a2a90aa0fa08440f94769d",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+      "schema_sha256": "bacc27e238dd5487309139766f766f96bb908f3d7b6975f088e848d1ad5e15ce"
+    },
+    {
+      "document": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/04_diverged_1_1_rejected.json",
+      "document_sha256": "b9ad7894e3831d208c6d647ab612958207b60113676c95eac5c4609e7de8ebf4",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+      "schema_sha256": "bacc27e238dd5487309139766f766f96bb908f3d7b6975f088e848d1ad5e15ce"
+    }
+  ],
+  "unique_schema_count": 4,
+  "version": "0.1"
+}

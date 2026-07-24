@@ -1,0 +1,66 @@
+name: V0 OSAP Gate 3 Cluster B WP5 Synchronization Helper Repair
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
+      - 'docs/gate3/cluster_b/WP5_DEVELOPMENT_SYNCHRONIZATION_HELPER_*'
+      - 'fixtures/gate3/cluster_b/wp5_sync_helper_repair/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_*'
+      - 'release/v1.4.0/tools/patch_wp5*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_*'
+      - 'scripts/*wp5*'
+      - 'tests/test_gate3_cluster_b_wp5_sync_helper_repair.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
+      - 'docs/gate3/cluster_b/WP5_DEVELOPMENT_SYNCHRONIZATION_HELPER_*'
+      - 'fixtures/gate3/cluster_b/wp5_sync_helper_repair/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_*'
+      - 'release/v1.4.0/tools/patch_wp5*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_*'
+      - 'scripts/*wp5*'
+      - 'tests/test_gate3_cluster_b_wp5_sync_helper_repair.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synchronization-helper-repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Install Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install Coq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+      - run: python release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py
+      - run: python scripts/build_gate3_cluster_b_wp5_sync_helper_repair.py --check
+      - run: python scripts/replay_gate3_cluster_b_wp5_sync_helper_repair.py
+      - run: python scripts/verify_gate3_cluster_b_wp5_sync_helper_repair.py
+      - run: python -m pytest -q -p no:cacheprovider
+      - run: python scripts/check_no_proof_holes.py
+      - working-directory: lean
+        run: lake build
+      - working-directory: coq
+        run: make
+      - run: git restore --source=HEAD -- coq/.Makefile.coq.d || true
+      - run: git diff --check e5724fc394b2fbb26d8926b5670b8fd41a62a71c --
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-wp5-sync-helper-repair-${{ github.sha }}
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_ACCEPTANCE_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SHA256SUMS.txt

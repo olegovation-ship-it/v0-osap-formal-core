@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "additive_paths": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 22,
+      "minItems": 22,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD"
+    },
+    "baseline_commit": {
+      "const": "e5724fc394b2fbb26d8926b5670b8fd41a62a71c"
+    },
+    "changed_path_count": {
+      "const": 27
+    },
+    "controlled_modified_paths": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "date": {
+      "const": "2026-07-24"
+    },
+    "defect": {
+      "type": "object"
+    },
+    "gate3_decision_authorized": {
+      "const": false
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "repair": {
+      "type": "object"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "wp6_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "baseline_commit",
+    "defect",
+    "repair",
+    "controlled_modified_paths",
+    "additive_paths",
+    "changed_path_count",
+    "release_actions_authorized",
+    "wp6_authorized",
+    "gate3_decision_authorized"
+  ],
+  "type": "object"
+}

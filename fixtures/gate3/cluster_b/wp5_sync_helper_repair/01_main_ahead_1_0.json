@@ -1,0 +1,11 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE",
+  "development_ahead": 0,
+  "expected_action": "FAST_FORWARD",
+  "expected_allowed": true,
+  "expected_decision": "FAST_FORWARD_ALLOWED",
+  "expected_diagnostic": "NONE",
+  "fixture_id": "01_main_ahead_1_0",
+  "main_ahead": 1,
+  "version": "0.1"
+}
