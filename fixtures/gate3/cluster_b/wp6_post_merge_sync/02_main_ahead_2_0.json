@@ -1,0 +1,11 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_SYNC_FIXTURE",
+  "development_ahead": 0,
+  "expected_action": "FAST_FORWARD",
+  "expected_allowed": true,
+  "expected_decision": "FAST_FORWARD_ALLOWED",
+  "expected_diagnostic": "NONE",
+  "fixture_id": "02_main_ahead_2_0",
+  "main_ahead": 2,
+  "version": "0.1"
+}

@@ -1,0 +1,22 @@
+{
+  "accepted_head_commit": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_EVIDENCE",
+  "canonical_merge_commit": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "canonical_sha256": "0088e7f52f82f41d80154dd671fa68f1a4a85d4da03ac93ec688e825a7b93d94",
+  "check_summary": {
+    "cancelled": 0,
+    "failure": 0,
+    "skipped": 0,
+    "success": 10,
+    "total": 10
+  },
+  "date": "2026-07-24",
+  "evidence_scope": "DEDICATED_WP6_HOSTED_JOBS_ONLY",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "run_conclusion": "success",
+  "run_id": 30109896184,
+  "run_status": "completed",
+  "source_pr": 32,
+  "version": "0.1",
+  "workflow_name": "V0 OSAP Gate 3 Cluster B WP6 Audit"
+}

@@ -1,0 +1,129 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-24",
+  "gate_count": 24,
+  "gates": [
+    {
+      "description": "repository identity locked",
+      "gate_id": "WP6-PM-G01",
+      "status": "PASS"
+    },
+    {
+      "description": "working branch locked",
+      "gate_id": "WP6-PM-G02",
+      "status": "PASS"
+    },
+    {
+      "description": "pre-application worktree clean",
+      "gate_id": "WP6-PM-G03",
+      "status": "PASS"
+    },
+    {
+      "description": "remote refs exact",
+      "gate_id": "WP6-PM-G04",
+      "status": "PASS"
+    },
+    {
+      "description": "pre-sync divergence equals 1 0",
+      "gate_id": "WP6-PM-G05",
+      "status": "PASS"
+    },
+    {
+      "description": "canonical merge commit exists",
+      "gate_id": "WP6-PM-G06",
+      "status": "PASS"
+    },
+    {
+      "description": "ordered two-parent topology exact",
+      "gate_id": "WP6-PM-G07",
+      "status": "PASS"
+    },
+    {
+      "description": "merge tree equals accepted head tree",
+      "gate_id": "WP6-PM-G08",
+      "status": "PASS"
+    },
+    {
+      "description": "PR 32 merged by merge commit",
+      "gate_id": "WP6-PM-G09",
+      "status": "PASS"
+    },
+    {
+      "description": "54-path additive boundary preserved",
+      "gate_id": "WP6-PM-G10",
+      "status": "PASS"
+    },
+    {
+      "description": "zero deletions preserved",
+      "gate_id": "WP6-PM-G11",
+      "status": "PASS"
+    },
+    {
+      "description": "final WP6 hosted run successful",
+      "gate_id": "WP6-PM-G12",
+      "status": "PASS"
+    },
+    {
+      "description": "dedicated WP6 hosted jobs 10 of 10 pass",
+      "gate_id": "WP6-PM-G13",
+      "status": "PASS"
+    },
+    {
+      "description": "post-merge local regression exact",
+      "gate_id": "WP6-PM-G14",
+      "status": "PASS"
+    },
+    {
+      "description": "proof-hole scan pass",
+      "gate_id": "WP6-PM-G15",
+      "status": "PASS"
+    },
+    {
+      "description": "predecessor preservation pass",
+      "gate_id": "WP6-PM-G16",
+      "status": "PASS"
+    },
+    {
+      "description": "deterministic build pass",
+      "gate_id": "WP6-PM-G17",
+      "status": "PASS"
+    },
+    {
+      "description": "two-run replay pass",
+      "gate_id": "WP6-PM-G18",
+      "status": "PASS"
+    },
+    {
+      "description": "schemas and fixtures pass",
+      "gate_id": "WP6-PM-G19",
+      "status": "PASS"
+    },
+    {
+      "description": "Lean build pass",
+      "gate_id": "WP6-PM-G20",
+      "status": "PASS"
+    },
+    {
+      "description": "Coq build pass",
+      "gate_id": "WP6-PM-G21",
+      "status": "PASS"
+    },
+    {
+      "description": "release and publication firewall intact",
+      "gate_id": "WP6-PM-G22",
+      "status": "PASS"
+    },
+    {
+      "description": "Gate 3 remains open",
+      "gate_id": "WP6-PM-G23",
+      "status": "PASS"
+    },
+    {
+      "description": "development synchronization constrained to explicit fast-forward-only action",
+      "gate_id": "WP6-PM-G24",
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASS",
+  "version": "0.1"
+}

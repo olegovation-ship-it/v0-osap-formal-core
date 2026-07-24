@@ -1,0 +1,32 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_SYNC_FIXTURE_MANIFEST",
+  "fixture_count": 5,
+  "fixtures": [
+    {
+      "fixture_id": "00_identical_0_0",
+      "path": "fixtures/gate3/cluster_b/wp6_post_merge_sync/00_identical_0_0.json",
+      "sha256": "6e0ce88e1e742d5b71dbb0bbaa8908f169bc0538378b7c4df8e4d641752d6d15"
+    },
+    {
+      "fixture_id": "01_main_ahead_1_0",
+      "path": "fixtures/gate3/cluster_b/wp6_post_merge_sync/01_main_ahead_1_0.json",
+      "sha256": "2fd7d763a1cb102a299781c2a3b051cbf0eb41047a18f397f5258970bfb21ca2"
+    },
+    {
+      "fixture_id": "02_main_ahead_2_0",
+      "path": "fixtures/gate3/cluster_b/wp6_post_merge_sync/02_main_ahead_2_0.json",
+      "sha256": "fe48c7aeb8616031ba40c27054cbb194042b3ffdaba7a49dc9e6a5b13d100ac8"
+    },
+    {
+      "fixture_id": "03_development_ahead_0_1_rejected",
+      "path": "fixtures/gate3/cluster_b/wp6_post_merge_sync/03_development_ahead_0_1_rejected.json",
+      "sha256": "5dab231f0eaebcd8cf43bd1d0faebadba7e0b838043a43baeb5f4e8ab54c08be"
+    },
+    {
+      "fixture_id": "04_diverged_1_1_rejected",
+      "path": "fixtures/gate3/cluster_b/wp6_post_merge_sync/04_diverged_1_1_rejected.json",
+      "sha256": "5d2b5181c962f8eaba1c01ab7347b9ec5c721b13f3d64467c93530865275699a"
+    }
+  ],
+  "version": "0.1"
+}

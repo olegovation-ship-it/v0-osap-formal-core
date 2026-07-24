@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD"
+    },
+    "branch_deletion_authorized": {
+      "const": false
+    },
+    "canonical_wp6_merge_baseline": {
+      "const": "f984b59cec832307bac7270c7d437a789bec99ce"
+    },
+    "date": {
+      "type": "string"
+    },
+    "development_ahead_by": {
+      "const": 0
+    },
+    "development_branch": {
+      "const": "v1.4.0-development"
+    },
+    "development_pre_sync_head": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "expected_final_divergence": {
+      "const": "0 0"
+    },
+    "force_push_authorized": {
+      "const": false
+    },
+    "history_rewrite_authorized": {
+      "const": false
+    },
+    "main_ahead_by": {
+      "const": 1
+    },
+    "origin_development_at_package_preparation": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "origin_main_at_package_preparation": {
+      "const": "f984b59cec832307bac7270c7d437a789bec99ce"
+    },
+    "push_requires_explicit_authorization": {
+      "const": true
+    },
+    "relation": {
+      "const": "FAST_FORWARD_ALLOWED"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "required_method": {
+      "const": "git merge --ff-only origin/main"
+    },
+    "synchronization_executed": {
+      "const": false
+    },
+    "synchronization_stage": {
+      "type": "string"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "development_branch",
+    "canonical_wp6_merge_baseline",
+    "development_pre_sync_head",
+    "origin_main_at_package_preparation",
+    "origin_development_at_package_preparation",
+    "main_ahead_by",
+    "development_ahead_by",
+    "relation",
+    "synchronization_stage",
+    "required_method",
+    "force_push_authorized",
+    "history_rewrite_authorized",
+    "branch_deletion_authorized",
+    "push_requires_explicit_authorization",
+    "expected_final_divergence",
+    "synchronization_executed"
+  ],
+  "type": "object"
+}

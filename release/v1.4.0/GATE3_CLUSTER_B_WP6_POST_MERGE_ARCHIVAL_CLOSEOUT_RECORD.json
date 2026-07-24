@@ -1,0 +1,64 @@
+{
+  "acceptance": {
+    "coq_build": "PASS",
+    "deterministic_build": "PASS",
+    "git_diff_check": "PASS",
+    "lean_build": "PASS",
+    "predecessor_preservation": "PASS",
+    "python_regression": "PASS",
+    "schemas_and_fixtures": "PASS",
+    "two_run_replay": "PASS",
+    "wp6_verifier": "PASS"
+  },
+  "accepted_head_commit": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD",
+  "authorization_firewall": {
+    "development_branch_deletion": false,
+    "doi_action": false,
+    "force_push": false,
+    "gate3_close": false,
+    "github_release": false,
+    "tag": false,
+    "zenodo_deposit": false
+  },
+  "canonical_merge_commit": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "canonical_merge_parents": [
+    "b3798367af960ff3b588778966c5e233d89e72ab",
+    "8a692859b2e02a8c9fccc008f76bb24218716f40"
+  ],
+  "closeout_commit_created": false,
+  "closeout_push_performed": false,
+  "date": "2026-07-24",
+  "gate3_closed": false,
+  "hosted_ci_repair_commit": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "hosted_wp6_audit": {
+    "conclusion": "success",
+    "dedicated_jobs_pass": 10,
+    "dedicated_jobs_total": 10,
+    "run_id": 30109896184,
+    "status": "completed"
+  },
+  "implementation_commit": "adf9b970b9b7ffba13dae47bfa9556d6094f3fe1",
+  "implementation_delta": {
+    "additions": 3282,
+    "boundary": "EXACT_ADDITIVE",
+    "changed_paths": 54,
+    "deletions": 0
+  },
+  "merge_method": "merge_commit",
+  "merged_pr": 32,
+  "post_merge_local_verification": {
+    "isolated_detached_worktree": true,
+    "proof_hole_scan": "PASS",
+    "pytest_deselected": 4,
+    "pytest_passed": 149,
+    "pytest_skipped": 6,
+    "return_code": 0,
+    "temporary_worktree_removed": true
+  },
+  "pre_merge_baseline_commit": "b3798367af960ff3b588778966c5e233d89e72ab",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "POST_MERGE_CLOSEOUT_PREPARED_PENDING_EXPLICIT_COMMIT_AND_PUSH_AUTHORIZATION",
+  "version": "0.1",
+  "working_branch": "v1.4.0-development"
+}
