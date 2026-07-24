@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE"
+    },
+    "development_ahead": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expected_action": {
+      "enum": [
+        "NOOP",
+        "FAST_FORWARD",
+        "NONE"
+      ]
+    },
+    "expected_allowed": {
+      "type": "boolean"
+    },
+    "expected_decision": {
+      "enum": [
+        "ALREADY_SYNCHRONIZED",
+        "FAST_FORWARD_ALLOWED",
+        "REJECT_DEVELOPMENT_AHEAD",
+        "REJECT_DIVERGED"
+      ]
+    },
+    "expected_diagnostic": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "fixture_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "main_ahead": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "fixture_id",
+    "main_ahead",
+    "development_ahead",
+    "expected_decision",
+    "expected_action",
+    "expected_allowed",
+    "expected_diagnostic"
+  ],
+  "type": "object"
+}

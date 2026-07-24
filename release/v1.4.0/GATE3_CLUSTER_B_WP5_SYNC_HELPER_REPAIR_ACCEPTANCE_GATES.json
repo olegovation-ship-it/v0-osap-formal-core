@@ -1,0 +1,101 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_ACCEPTANCE_GATES",
+  "date": "2026-07-24",
+  "gate3_decision_authorized": false,
+  "gate_count": 18,
+  "gates": [
+    {
+      "gate_id": "WP5-SR-G01",
+      "requirement": "The synchronized repair baseline is exactly the WP5 closeout merge commit and both long-lived branches are identical.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G02",
+      "requirement": "The original frozen WP5 canonical and post-merge SHA-256 ledgers remain byte-identical.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G03",
+      "requirement": "The exact changed-path boundary is five controlled replacements and twenty-two additive repair paths.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G04",
+      "requirement": "No checker, Lean, Coq, theorem, semantic fixture, or frozen WP0-WP4 path is modified.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G05",
+      "requirement": "The helper accepts relation 0 0 as an already-synchronized no-op.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G06",
+      "requirement": "The helper accepts relation 1 0 when development is an ancestor of main.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G07",
+      "requirement": "The helper accepts relation 2 0 when development is an ancestor of main.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G08",
+      "requirement": "The classifier accepts every nonnegative N 0 relation with N greater than zero.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G09",
+      "requirement": "The helper rejects relation 0 1.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G10",
+      "requirement": "The helper rejects relation 1 1.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G11",
+      "requirement": "Every fast-forward path retains git merge-base ancestry verification.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G12",
+      "requirement": "The only merge mode is git merge --ff-only.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G13",
+      "requirement": "The only remote update is a normal push without a force option.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G14",
+      "requirement": "Five replay fixtures reproduce expected decisions and diagnostics.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G15",
+      "requirement": "The repair successor ledger reproduces every controlled and additive repair file.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G16",
+      "requirement": "The existing WP5 and post-merge builders and verifiers remain replay-compatible.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G17",
+      "requirement": "Python regression, proof-hole scan, Lean, Coq, and git diff --check are mandatory.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-SR-G18",
+      "requirement": "The package applicator performs no commit, push, merge, release, publication, WP6 start, or Gate 3 decision.",
+      "status": "PASS"
+    }
+  ],
+  "release_authorization": "NONE",
+  "version": "0.1",
+  "wp6_authorized": false
+}

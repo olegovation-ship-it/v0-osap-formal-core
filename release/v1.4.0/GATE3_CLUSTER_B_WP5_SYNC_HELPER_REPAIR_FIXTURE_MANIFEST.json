@@ -1,0 +1,38 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE_MANIFEST",
+  "date": "2026-07-24",
+  "fixture_count": 5,
+  "fixtures": [
+    {
+      "expected_allowed": true,
+      "fixture_id": "00_identical_0_0",
+      "path": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/00_identical_0_0.json",
+      "sha256": "b91f311e1127f5b23a2006e64fb68d25978690ff7fe0d9deba905d3a35625227"
+    },
+    {
+      "expected_allowed": true,
+      "fixture_id": "01_main_ahead_1_0",
+      "path": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/01_main_ahead_1_0.json",
+      "sha256": "2c4c798a45615721eeac97c6e0801556fbad4cb8a26554164469a93e3055e64d"
+    },
+    {
+      "expected_allowed": true,
+      "fixture_id": "02_main_ahead_2_0",
+      "path": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/02_main_ahead_2_0.json",
+      "sha256": "e626af266638cd637732d4da682747b638bcfd56fc80b09c1b472fe48bf20c0c"
+    },
+    {
+      "expected_allowed": false,
+      "fixture_id": "03_development_ahead_0_1_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/03_development_ahead_0_1_rejected.json",
+      "sha256": "1f920d3a72e9e48d007e3d0fcb82f9f811d3c94411a2a90aa0fa08440f94769d"
+    },
+    {
+      "expected_allowed": false,
+      "fixture_id": "04_diverged_1_1_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5_sync_helper_repair/04_diverged_1_1_rejected.json",
+      "sha256": "b9ad7894e3831d208c6d647ab612958207b60113676c95eac5c4609e7de8ebf4"
+    }
+  ],
+  "version": "0.1"
+}

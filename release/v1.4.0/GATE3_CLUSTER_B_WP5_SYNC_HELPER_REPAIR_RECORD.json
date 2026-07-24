@@ -1,0 +1,66 @@
+{
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+    "docs/gate3/cluster_b/WP5_DEVELOPMENT_SYNCHRONIZATION_HELPER_GENERALIZATION_AND_REPLAY_REPAIR.md",
+    "fixtures/gate3/cluster_b/wp5_sync_helper_repair/00_identical_0_0.json",
+    "fixtures/gate3/cluster_b/wp5_sync_helper_repair/01_main_ahead_1_0.json",
+    "fixtures/gate3/cluster_b/wp5_sync_helper_repair/02_main_ahead_2_0.json",
+    "fixtures/gate3/cluster_b/wp5_sync_helper_repair/03_development_ahead_0_1_rejected.json",
+    "fixtures/gate3/cluster_b/wp5_sync_helper_repair/04_diverged_1_1_rejected.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_FIXTURE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_ACCEPTANCE_GATES.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SCHEMA_BUNDLE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_record.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_fixture_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_sync_helper_repair_acceptance_gates.schema.json",
+    "scripts/classify_v1_4_0_development_sync_relation_wp5.py",
+    "scripts/replay_gate3_cluster_b_wp5_sync_helper_repair.py",
+    "scripts/build_gate3_cluster_b_wp5_sync_helper_repair.py",
+    "scripts/verify_gate3_cluster_b_wp5_sync_helper_repair.py",
+    "tests/test_gate3_cluster_b_wp5_sync_helper_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_RECORD",
+  "baseline_commit": "e5724fc394b2fbb26d8926b5670b8fd41a62a71c",
+  "changed_path_count": 27,
+  "controlled_modified_paths": [
+    "release/v1.4.0/tools/patch_wp5_allowlist.py",
+    "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py",
+    "scripts/build_gate3_cluster_b_wp5.py",
+    "scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py",
+    "scripts/synchronize_v1_4_0_development_wp5.sh"
+  ],
+  "date": "2026-07-24",
+  "defect": {
+    "observed_return_code": 1,
+    "original_helper_sha256": "6941160612adf4749c52608a9d9beb2e171effb8e678f37e5ee3ee3be81a7287",
+    "rejected_safe_relation": [
+      2,
+      0
+    ],
+    "repository_damage": false,
+    "root_cause": "CARDINALITY_SPECIFIC_RELATION_GUARD_ACCEPTED_ONLY_1_0_OR_0_0"
+  },
+  "gate3_decision_authorized": false,
+  "release_actions_authorized": false,
+  "repair": {
+    "ancestry_check_required": true,
+    "branch_deletion_authorized": false,
+    "force_push_authorized": false,
+    "generalized_helper_sha256": "ce9364996cf559667d234f180039f94e03fbae20ad03b1969eb8183e9f93f97c",
+    "generalized_relation_rule": "ALLOW_0_0_NOOP_OR_ANY_N_0_WITH_N_GREATER_THAN_ZERO_AND_ANCESTRY_PASS",
+    "history_rewrite_authorized": false,
+    "merge_mode": "FF_ONLY",
+    "unsafe_relations_rejected": [
+      "0 1",
+      "1 1",
+      "M N WHERE DEVELOPMENT_AHEAD_IS_NONZERO"
+    ]
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "version": "0.1",
+  "wp6_authorized": false
+}
