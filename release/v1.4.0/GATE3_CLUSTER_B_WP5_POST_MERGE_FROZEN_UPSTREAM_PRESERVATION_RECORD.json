@@ -1,0 +1,32 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD",
+  "canonical_wp5_ledger_modified": false,
+  "canonical_wp5_merge_baseline": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b",
+  "canonical_wp5_records_modified": false,
+  "closed_wp0_wp1_wp2_wp3_wp4_canonical_records_modified": false,
+  "date": "2026-07-24",
+  "deterministic_replay_preserved": true,
+  "evidence_control_fixture_count_preserved": 6,
+  "new_theorem_ids_added": [],
+  "proof_or_runtime_semantics_modified_by_closeout": false,
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_lock": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BASELINE_LOCK.json",
+  "stable_release_preserved": {
+    "doi": "10.5281/zenodo.21346728",
+    "exact_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+    "modified": false,
+    "tag": "v1.3.0"
+  },
+  "statement_parity_percent_preserved": 100,
+  "theorem_ids_preserved": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "version": "0.1",
+  "wp6_start_authorized": false
+}

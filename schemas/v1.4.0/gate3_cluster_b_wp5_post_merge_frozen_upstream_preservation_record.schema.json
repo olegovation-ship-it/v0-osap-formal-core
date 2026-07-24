@@ -1,0 +1,31 @@
+{
+  "$id": "https://example.invalid/v0-osap/WP5 Frozen Upstream Preservation Record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD"
+    },
+    "canonical_wp5_merge_baseline": {
+      "const": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b"
+    },
+    "canonical_wp5_records_modified": {
+      "const": false
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "wp6_start_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "canonical_wp5_merge_baseline",
+    "canonical_wp5_records_modified",
+    "release_actions_authorized",
+    "wp6_start_authorized"
+  ],
+  "title": "WP5 Frozen Upstream Preservation Record",
+  "type": "object"
+}

@@ -1,0 +1,39 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_SCHEMA_BUNDLE_MANIFEST",
+  "date": "2026-07-24",
+  "document_count": 5,
+  "pairs": [
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json",
+      "document_sha256": "d8f4ae40ad1a0753ab159a1580f00afac922dada74506baef9289876dd21cb0c",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_archival_closeout_record.schema.json",
+      "schema_sha256": "f38b01ff554bacbc1b8f03ba09e401b708f16564581324de31efeddb477f7c26"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json",
+      "document_sha256": "529841fb4d1ed985364185c0319327dd8df504cc2019ce203e33668821818c65",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_development_branch_synchronization_record.schema.json",
+      "schema_sha256": "f0f4dae6837ccfaa02faef418a42e7b67492dfe9385cd43fa9d3979c6db821c8"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE.json",
+      "document_sha256": "cbc7f7cf01e7b90e249099fbf7e56888c77f8f5733d608dd86e01b3646526d42",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_hosted_ci_evidence.schema.json",
+      "schema_sha256": "536b2ee589d2624c7dfaeea28b3663b8f8896f8a3f1b400a6370d91a71be7b7f"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "document_sha256": "fa2abf16ef58879155b50428fd62ef4c31bb05a1f3beaace55afcff250e2efde",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_frozen_upstream_preservation_record.schema.json",
+      "schema_sha256": "2fd6c361a1b8b913c9198dc71f71020771cfbd553ae2a4254db12db6e406837c"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES.json",
+      "document_sha256": "6c3aaa0a1a73d84d2e50ef6f1213961f2ee5f95b51fdfea96e7d51c04beaccc6",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_closeout_gates.schema.json",
+      "schema_sha256": "80e0733e7d973cfdf5f33fe5857e1a637d123bebc6353ac30cc52b4e1c601c2a"
+    }
+  ],
+  "schema_count": 5,
+  "version": "0.1"
+}

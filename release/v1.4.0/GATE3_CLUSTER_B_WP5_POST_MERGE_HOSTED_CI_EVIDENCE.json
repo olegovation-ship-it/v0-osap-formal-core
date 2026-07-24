@@ -1,0 +1,54 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE",
+  "canonical_sha256": "5834d9bf33fa4680a529e9a5fc80a92ebd592c2bd73a9dce29552622175e5a4f",
+  "check_summary": {
+    "failure": 0,
+    "pending": 0,
+    "skipped": 0,
+    "success": 30,
+    "total": 30
+  },
+  "date": "2026-07-24",
+  "dedicated_wp5_job_count": 14,
+  "evidence_state": "SEVENTEEN_WORKFLOWS_AND_THIRTY_CHECK_JOBS_RECORDED",
+  "mandatory_workflows_observed": [
+    "V0 OSAP Gate 3 Cluster B WP5",
+    "Python checker",
+    "Lean 4",
+    "Coq",
+    "Schema validation",
+    "Release readiness",
+    "RC1 gate audit",
+    "RC1 release closure replay",
+    "RC1 release evidence closure",
+    "RC1 tag authorization",
+    "v1.3.0 final release authorization",
+    "v1.3.0 final release evidence closure",
+    "v1.3.0 Zenodo publication evidence closure",
+    "v1.3.0 post-merge archival closeout",
+    "v1.3.0 post-merge legacy lifecycle compatibility",
+    "v1.3.0 post-merge publication lifecycle replay compatibility",
+    "v1.3.0 post-Zenodo historical lifecycle replay"
+  ],
+  "merge_commit": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b",
+  "observation_source": "GITHUB_ACTIONS_API_AND_USER_PROVIDED_CODESPACES_TERMINAL",
+  "pre_closeout_codespaces_replay": {
+    "coq_build": "PASS",
+    "git_diff_check": "PASS",
+    "lean_build": "PASS",
+    "proof_hole_scan": "PASS",
+    "python_regression": "PASS",
+    "wp5_builder": "PASS",
+    "wp5_verifier": "PASS"
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_head_sha": "1c16ffb529b7e9a43c16739de26ad185c2f4b74c",
+  "source_pr": 29,
+  "version": "0.1",
+  "workflow_summary": {
+    "failure": 0,
+    "pending": 0,
+    "success": 17,
+    "total": 17
+  }
+}

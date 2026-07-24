@@ -1,0 +1,40 @@
+{
+  "$id": "https://example.invalid/v0-osap/WP5 Hosted CI Evidence.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "check_summary": {
+      "type": "object"
+    },
+    "merge_commit": {
+      "const": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b"
+    },
+    "source_head_sha": {
+      "const": "1c16ffb529b7e9a43c16739de26ad185c2f4b74c"
+    },
+    "source_pr": {
+      "const": 29
+    },
+    "workflow_summary": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "canonical_sha256",
+    "check_summary",
+    "workflow_summary",
+    "source_pr",
+    "source_head_sha",
+    "merge_commit"
+  ],
+  "title": "WP5 Hosted CI Evidence",
+  "type": "object"
+}

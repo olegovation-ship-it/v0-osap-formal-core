@@ -1,0 +1,115 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES",
+  "date": "2026-07-24",
+  "gate_count": 21,
+  "gates": [
+    {
+      "gate_id": "WP5-PM-G01",
+      "requirement": "Exact PR #29 accepted head, pre-merge main, merge commit, parent order, and merge-tree identity are verified.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G02",
+      "requirement": "The observed pre-closeout relation is origin/main ahead of origin/v1.4.0-development by exactly one merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G03",
+      "requirement": "The working tree is clean before application and the stable v1.3.0 tag target is unchanged.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G04",
+      "requirement": "All canonical WP0-WP5 records and historical SHA-256 ledgers remain byte-preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G05",
+      "requirement": "Only three declared WP5 successor-control files are modified; all other closeout paths are additive.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G06",
+      "requirement": "The canonical WP5 SHA-256 ledger remains byte-identical to the ledger in the WP5 merge commit.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G07",
+      "requirement": "The successor SHA-256 ledger attests all controlled replacements and additive closeout surfaces.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G08",
+      "requirement": "All five closeout records validate under Draft 2020-12 schemas.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G09",
+      "requirement": "The closeout schema-bundle manifest reproduces all record and schema digests.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G10",
+      "requirement": "Hosted CI evidence records 17 successful workflows and 30 successful check jobs.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G11",
+      "requirement": "The 14 mandatory dedicated WP5 jobs remain recorded as successful.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G12",
+      "requirement": "WP5 acceptance remains 24/24 PASS and READY_FOR_WP6_AUDIT without a Gate 3 decision.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G13",
+      "requirement": "The 16-theorem Cluster B scope and T157-T162 identities remain unchanged.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G14",
+      "requirement": "Seven-role ownership, dependency DAG, WP2 semantics, WP3 lineage, and WP4 proof parity remain preserved.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G15",
+      "requirement": "No new theorem, fixture semantics, proof body, runtime outcome, or release capability is introduced.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G16",
+      "requirement": "Full Python regression and the dedicated closeout test pass.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G17",
+      "requirement": "Proof-hole scan, Lean build, and Coq build pass in disposable-worktree validation.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G18",
+      "requirement": "git diff --check passes and generated Coq dependency surfaces are restored before allowlist checks.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G19",
+      "requirement": "The synchronization helper is fast-forward-only and refuses force-push, history rewrite, or branch deletion.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G20",
+      "requirement": "No commit, push, merge, tag, GitHub Release, Zenodo deposit, DOI action, WP6 start, or Gate 3 decision is automated.",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "WP5-PM-G21",
+      "requirement": "The final decision is OPEN_WP5_POST_MERGE_CLOSEOUT_PR; final development synchronization occurs only after that PR merges.",
+      "status": "PASS"
+    }
+  ],
+  "release_authorization": "NONE",
+  "version": "0.1",
+  "wp6_authorized": false
+}

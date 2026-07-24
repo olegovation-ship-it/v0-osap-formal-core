@@ -1,0 +1,72 @@
+{
+  "accepted_head_commit": "1c16ffb529b7e9a43c16739de26ad185c2f4b74c",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD",
+  "branch_relation_at_capture": "MAIN_AHEAD_BY_ONE_MERGE_COMMIT",
+  "canonical_wp5_ledger_modified": false,
+  "canonical_wp5_records_modified": false,
+  "closed_wp0_wp1_wp2_wp3_wp4_canonical_records_modified": false,
+  "cluster": "GATE3_CLUSTER_B",
+  "controlled_modified_paths": [
+    "release/v1.4.0/tools/patch_wp5_allowlist.py",
+    "scripts/build_gate3_cluster_b_wp5.py",
+    "scripts/verify_gate3_cluster_b_wp5.py"
+  ],
+  "controlled_successor_controls_modified": true,
+  "date": "2026-07-24",
+  "decision": "OPEN_WP5_POST_MERGE_CLOSEOUT_PR",
+  "final_sync_required_after_closeout_merge": true,
+  "hosted_ci_checks": {
+    "fail": 0,
+    "pass": 30,
+    "pending": 0,
+    "skipped": 0,
+    "total": 30
+  },
+  "hosted_workflows": {
+    "fail": 0,
+    "pass": 17,
+    "pending": 0,
+    "total": 17
+  },
+  "merge_commit": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b",
+  "merge_delta": {
+    "additions": 2626,
+    "changed_paths": 37,
+    "deletions": 0,
+    "diff_check": "PASS"
+  },
+  "merged_pr": 29,
+  "next_authorized_work_package": "WP6_PENDING_SEPARATE_BUILD_SPECIFICATION",
+  "observed_development_tip": "1c16ffb529b7e9a43c16739de26ad185c2f4b74c",
+  "observed_main_tip": "adda93cae34d6579e8b715d4107ff7f62a6f9c6b",
+  "pre_closeout_local_replay": {
+    "coq_build": "PASS",
+    "git_diff_check": "PASS",
+    "lean_build": "PASS",
+    "proof_hole_scan": "PASS",
+    "python_regression": "PASS",
+    "status": "PASS",
+    "wp5_builder": "PASS",
+    "wp5_verifier": "PASS"
+  },
+  "pre_merge_main": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "release_actions": {
+    "doi": false,
+    "github_release": false,
+    "tag": false,
+    "zenodo": false
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "runtime_or_proof_semantics_added": false,
+  "status": "POST_MERGE_CLOSEOUT_READY_FOR_PR",
+  "target_version": "v1.4.0",
+  "version": "0.1",
+  "work_package": "WP5",
+  "wp5_acceptance_gates": {
+    "fail": 0,
+    "pass": 24,
+    "pending": 0,
+    "total": 24
+  },
+  "wp6_authorized": false
+}

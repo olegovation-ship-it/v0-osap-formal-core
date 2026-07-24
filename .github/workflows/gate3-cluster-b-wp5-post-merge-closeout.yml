@@ -1,0 +1,88 @@
+name: V0 OSAP Gate 3 Cluster B WP5 Post-Merge Closeout
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP5_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/tools/patch_wp5_allowlist.py'
+      - 'release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_*post_merge*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_development_branch_synchronization_record.schema.json'
+      - 'scripts/*gate3_cluster_b_wp5*'
+      - 'tests/test_gate3_cluster_b_wp5_post_merge_closeout.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP5_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/tools/patch_wp5_allowlist.py'
+      - 'release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_*post_merge*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_development_branch_synchronization_record.schema.json'
+      - 'scripts/*gate3_cluster_b_wp5*'
+      - 'tests/test_gate3_cluster_b_wp5_post_merge_closeout.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wp5-post-merge-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Install Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install Coq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+      - name: Exact closeout changed-path allowlist
+        run: python release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py
+      - name: Canonical and successor WP5 ledger verification
+        run: python scripts/build_gate3_cluster_b_wp5.py --check
+      - name: Post-merge closeout build
+        run: python scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py --check
+      - name: Post-merge closeout verifier
+        run: python scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py --allow-main
+      - name: Dedicated closeout test
+        run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp5_post_merge_closeout.py
+      - name: Full Python regression
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Proof-hole scan
+        run: python scripts/check_no_proof_holes.py
+      - name: Lean 4 build
+        working-directory: lean
+        run: lake build
+      - name: Coq build
+        working-directory: coq
+        run: make
+      - name: Restore generated tracked Coq dependency surface
+        run: git restore --source=HEAD -- coq/.Makefile.coq.d || true
+      - name: Whitespace and patch integrity
+        run: git diff --check adda93cae34d6579e8b715d4107ff7f62a6f9c6b --
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp5-post-merge-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_SHA256SUMS.txt
