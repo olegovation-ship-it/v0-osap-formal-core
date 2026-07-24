@@ -1,0 +1,299 @@
+{
+  "acceptance_commands": [
+    "python release/v1.4.0/tools/patch_wp5_allowlist.py --check",
+    "python scripts/build_gate3_cluster_b_wp5.py --check",
+    "python scripts/verify_gate3_cluster_b_wp5.py --job full",
+    "python -m pytest -q -p no:cacheprovider",
+    "python scripts/check_no_proof_holes.py",
+    "cd lean && lake build",
+    "cd coq && make",
+    "git diff --check 7b497f197652874164e00fe9c0ef7f67e760c979 --"
+  ],
+  "acceptance_gate_count": 24,
+  "acceptance_gate_ids": [
+    "WP5-G01",
+    "WP5-G02",
+    "WP5-G03",
+    "WP5-G04",
+    "WP5-G05",
+    "WP5-G06",
+    "WP5-G07",
+    "WP5-G08",
+    "WP5-G09",
+    "WP5-G10",
+    "WP5-G11",
+    "WP5-G12",
+    "WP5-G13",
+    "WP5-G14",
+    "WP5-G15",
+    "WP5-G16",
+    "WP5-G17",
+    "WP5-G18",
+    "WP5-G19",
+    "WP5-G20",
+    "WP5-G21",
+    "WP5-G22",
+    "WP5-G23",
+    "WP5-G24"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_BUILD_PLAN",
+  "build_spec_changed_path_allowlist": [
+    "docs/gate3/cluster_b/WP5_BUILD_SPECIFICATION.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_BUILD_PLAN.json",
+    "release/v1.4.0/tools/patch_wp5_build_spec_allowlist.py",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_build_plan.schema.json",
+    "scripts/verify_gate3_cluster_b_wp5_build_spec.py",
+    "tests/test_gate3_cluster_b_wp5_build_spec.py"
+  ],
+  "build_spec_changed_path_count": 6,
+  "ci_job_count": 14,
+  "ci_jobs": [
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job baseline",
+      "job_id": "baseline",
+      "name": "Baseline and predecessor preservation"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job schemas",
+      "job_id": "schemas",
+      "name": "Schemas and canonical manifests"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job id-audit",
+      "job_id": "id-audit",
+      "name": "Theorem ID closure"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job role-coverage",
+      "job_id": "role-coverage",
+      "name": "Seven-role coverage"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job dependency-dag",
+      "job_id": "dependency-dag",
+      "name": "Dependency DAG"
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider",
+      "job_id": "python-semantics",
+      "name": "Full Python semantics regression"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job positive-models",
+      "job_id": "positive-models",
+      "name": "Positive model campaign"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job negative-boundary",
+      "job_id": "negative-boundary",
+      "name": "Negative and boundary campaign"
+    },
+    {
+      "command": "cd lean && lake build",
+      "job_id": "lean",
+      "name": "Lean 4 proof build"
+    },
+    {
+      "command": "cd coq && make",
+      "job_id": "coq",
+      "name": "Coq proof build"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job statement-parity",
+      "job_id": "statement-parity",
+      "name": "Lean/Coq statement parity"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job ipec-lineage",
+      "job_id": "ipec-lineage",
+      "name": "Validator/IPEC theorem-evidence lineage"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job deterministic-replay",
+      "job_id": "deterministic-replay",
+      "name": "Two-run byte-identical replay"
+    },
+    {
+      "command": "python scripts/verify_gate3_cluster_b_wp5.py --job gate3-audit-inputs",
+      "job_id": "gate3-audit-inputs",
+      "name": "WP6 audit-input readiness without decision"
+    }
+  ],
+  "date": "2026-07-23",
+  "decision_state": "BUILD_SPEC_APPROVED_IMPLEMENTATION_NOT_APPLIED",
+  "evidence_fixture_ids": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06"
+  ],
+  "evidence_input_paths": [
+    "docs/gate3/cluster_b/BASELINE_AUDIT_AND_BUILD_SPECIFICATION_v0.1.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP0_SCHEMA_BUNDLE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_DUAL_BACKEND_PROOF_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt"
+  ],
+  "fixture_scope": "EVIDENCE_CONTROL_ONLY_NO_NEW_SEMANTIC_MODEL",
+  "implementation_changed_path_allowlist": [
+    ".github/workflows/gate3-cluster-b-wp5.yml",
+    "docs/gate3/cluster_b/WP5_BUILD_SPECIFICATION.md",
+    "docs/gate3/cluster_b/WP5_CI_INTEGRATION_AND_DETERMINISTIC_EVIDENCE_MANIFESTS.md",
+    "fixtures/gate3/cluster_b/wp5/01_valid_canonical_evidence.json",
+    "fixtures/gate3/cluster_b/wp5/02_unordered_evidence_paths_rejected.json",
+    "fixtures/gate3/cluster_b/wp5/03_duplicate_evidence_path_rejected.json",
+    "fixtures/gate3/cluster_b/wp5/04_sha256_mismatch_rejected.json",
+    "fixtures/gate3/cluster_b/wp5/05_predecessor_chain_break_rejected.json",
+    "fixtures/gate3/cluster_b/wp5/06_release_action_rejected.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_BASELINE_LOCK.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_BUILD_PLAN.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_PRESERVATION_FIREWALL.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_REPLAY_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP5_SHA256SUMS.txt",
+    "release/v1.4.0/tools/patch_wp5_allowlist.py",
+    "release/v1.4.0/tools/patch_wp5_build_spec_allowlist.py",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_acceptance_gates.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_baseline_lock.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_build_plan.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_ci_job_matrix.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_evidence_fixture.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_evidence_input_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_fixture_manifest.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_preservation_firewall.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_replay_record.schema.json",
+    "schemas/v1.4.0/gate3_cluster_b_wp5_schema_bundle_manifest.schema.json",
+    "scripts/build_gate3_cluster_b_wp5.py",
+    "scripts/replay_gate3_cluster_b_wp5.py",
+    "scripts/verify_gate3_cluster_b_wp5.py",
+    "scripts/verify_gate3_cluster_b_wp5_build_spec.py",
+    "tests/test_gate3_cluster_b_wp5.py",
+    "tests/test_gate3_cluster_b_wp5_build_spec.py"
+  ],
+  "implementation_changed_path_count": 37,
+  "inherited_cluster_theorem_ids": [
+    "T123",
+    "T124",
+    "T126",
+    "T132",
+    "T134",
+    "T135",
+    "T136",
+    "T139",
+    "T140",
+    "T142"
+  ],
+  "locked_extension_theorem_ids": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "new_theorem_ids": [],
+  "prohibitions": [
+    "automatic_commit",
+    "automatic_push",
+    "automatic_merge",
+    "force_push",
+    "history_rewrite",
+    "branch_deletion",
+    "git_tag",
+    "github_release",
+    "zenodo_deposit",
+    "doi_creation_or_mutation",
+    "wp0_wp1_wp2_wp3_wp4_canonical_mutation",
+    "new_theorem_id",
+    "lean_or_coq_statement_mutation",
+    "checker_runtime_semantics_mutation",
+    "wp6_decision_or_start"
+  ],
+  "release_authorization": "NONE",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_branch": "v1.4.0-development",
+  "required_head": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "required_origin_development": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "required_origin_main": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "schema_pairs": [
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BUILD_PLAN.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_build_plan.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_BASELINE_LOCK.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_baseline_lock.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_ci_job_matrix.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_evidence_input_manifest.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_fixture_manifest.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_PRESERVATION_FIREWALL.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_preservation_firewall.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_REPLAY_RECORD.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_replay_record.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_acceptance_gates.schema.json"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST.json",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp5_schema_bundle_manifest.schema.json"
+    }
+  ],
+  "scope": "CI_INTEGRATION_AND_DETERMINISTIC_EVIDENCE_MANIFESTS",
+  "scripts": [
+    "scripts/build_gate3_cluster_b_wp5.py",
+    "scripts/replay_gate3_cluster_b_wp5.py",
+    "scripts/verify_gate3_cluster_b_wp5.py",
+    "scripts/verify_gate3_cluster_b_wp5_build_spec.py"
+  ],
+  "semantic_role_ids": [
+    "CB-R1",
+    "CB-R2",
+    "CB-R3",
+    "CB-R4",
+    "CB-R5",
+    "CB-R6",
+    "CB-R7"
+  ],
+  "stable_tag": "v1.3.0",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "tests": [
+    "tests/test_gate3_cluster_b_wp5.py",
+    "tests/test_gate3_cluster_b_wp5_build_spec.py"
+  ],
+  "version": "0.1",
+  "wp6_authorization": "NONE"
+}

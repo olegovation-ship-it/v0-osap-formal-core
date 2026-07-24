@@ -1,0 +1,101 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST",
+  "baseline_commit": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "canonical_sha256": "f60d1628d85ddc085e8e8585c7a1e3bb6f8177e5cc77f36b14d6e19e562e27be",
+  "date": "2026-07-23",
+  "generation_state": "GENERATED_AND_LOCKED",
+  "input_count": 18,
+  "inputs": [
+    {
+      "path": "docs/gate3/cluster_b/BASELINE_AUDIT_AND_BUILD_SPECIFICATION_v0.1.md",
+      "sha256": "6f32ff43e140d2b360410890ae9fed87690db6db54886f3da7d86eb5f85654e9",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP0_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "85f8c41c32afb7f93a6f44437f0c360c1ccd347a50994119fac5fbd503d10f50",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP0_SCHEMA_BUNDLE_MANIFEST.json",
+      "sha256": "76c9ebe6b67445ae8f3085b2bda723413c74b858737c8b0da7d9f8d50b4e958c",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_DEPENDENCY_DAG.json",
+      "sha256": "64adc2c1bb1b722115db9d3703af81ce6fd6a717c01f176ffaf7d05865cd5eb8",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "9162cc1e48ee7d44dba416ab7b42a14be45fc57878c6e5adaa5dcc5cc62705c5",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_SEMANTIC_ROLE_MAP.json",
+      "sha256": "d4c61d7d5123affe8e4447bd0dac86b9e3e410d60c95b6bf9add40aae52eee7e",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP1_THEOREM_REGISTRY_T157_T162.json",
+      "sha256": "eee4c257830d1d53244ee963d925e087de7ef12e1807cd90a685c894b36bf4da",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_FIXTURE_MANIFEST.json",
+      "sha256": "b105b713643334293f75c12d978e735b3a582af14afba5cec148db049ec4b5b3",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "9b49be13548e8fb518c3c4b112801643e2d1cb2410b04a825be078f6f34550ed",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP2_SEMANTICS_PROFILE.json",
+      "sha256": "77cb63e623c14776ae55c6f6e97e22a7a5a6668eaf3e0a20804bcec86b68b757",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_ADAPTER_BINDING_MANIFEST.json",
+      "sha256": "615f3bdfb757f662bbfd0d4349f9febb654dafdfd6a3eda591f466c5e73a7cfd",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_EXTENSION_RULE_REGISTRY_T157_T162.json",
+      "sha256": "8402bfcd12729e09f1bf484051cda345b4f1fe5ef49cf46f1a1061df924853ff",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "f6af9e0941927e4753aa34584d241de12919bd57a4b940758cfef28302963ac2",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_DUAL_BACKEND_PROOF_MANIFEST.json",
+      "sha256": "24dd70633bbd5626bfaf71c01bda4496da3d305ae34e712e1b817f399a23736c",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_FIXTURE_MANIFEST.json",
+      "sha256": "ac1eaa50d90cf341d0c79a3340878c3aeddfdbee0ff28f3ed46fb03d91b6d8be",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "sha256": "0d3302f8771c713772a93b70b4dfe6790db48e32becd5b5be2b17d673a7147aa",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_POST_MERGE_SHA256SUMS.txt",
+      "sha256": "fd6537da8d929b8da887f9151a91359662cf40954dd7284037b96edeba116160",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    {
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP4_STATEMENT_PARITY_MANIFEST.json",
+      "sha256": "1c2b284f9007b768daadebd7c4546e69b043e386297acd2ed272f0e955163c0c",
+      "source_commit": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    }
+  ],
+  "version": "0.1"
+}

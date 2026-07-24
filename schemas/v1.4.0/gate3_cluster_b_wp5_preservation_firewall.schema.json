@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed_new_prefixes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 8,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_PRESERVATION_FIREWALL"
+    },
+    "baseline_commit": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "canonical_ledger_suffixes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "canonical_predecessor_mutation_authorized": {
+      "const": false
+    },
+    "checker_runtime_semantics_mutation_authorized": {
+      "const": false
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "frozen_exact_paths": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 5,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "frozen_prefixes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "lean_or_coq_mutation_authorized": {
+      "const": false
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "wp6_decision_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "baseline_commit",
+    "frozen_prefixes",
+    "frozen_exact_paths",
+    "canonical_ledger_suffixes",
+    "allowed_new_prefixes",
+    "canonical_predecessor_mutation_authorized",
+    "lean_or_coq_mutation_authorized",
+    "checker_runtime_semantics_mutation_authorized",
+    "release_actions_authorized",
+    "wp6_decision_authorized"
+  ],
+  "type": "object"
+}

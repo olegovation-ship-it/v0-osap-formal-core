@@ -1,0 +1,45 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_FIXTURE_MANIFEST",
+  "date": "2026-07-23",
+  "fixture_count": 6,
+  "fixtures": [
+    {
+      "expected_status": "PASS",
+      "fixture_id": "01_valid_canonical_evidence",
+      "path": "fixtures/gate3/cluster_b/wp5/01_valid_canonical_evidence.json",
+      "sha256": "d8ea5909a582b01bb5604edfd0b8a47986c2ddd211c81560e39fe391562228b8"
+    },
+    {
+      "expected_status": "REJECT",
+      "fixture_id": "02_unordered_evidence_paths_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5/02_unordered_evidence_paths_rejected.json",
+      "sha256": "57ccd1cb45b96905130a1935bb91726c69b9006d6b2bb3da24e8c074187996e6"
+    },
+    {
+      "expected_status": "REJECT",
+      "fixture_id": "03_duplicate_evidence_path_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5/03_duplicate_evidence_path_rejected.json",
+      "sha256": "80b5720d430829db6efa9538339684a59698a87d18b967a4156b00e270dd6cea"
+    },
+    {
+      "expected_status": "REJECT",
+      "fixture_id": "04_sha256_mismatch_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5/04_sha256_mismatch_rejected.json",
+      "sha256": "c6ab9a9d011a08d546a26d845590f35f45cd0b8fd12d53c2a1da262d641a4ae4"
+    },
+    {
+      "expected_status": "REJECT",
+      "fixture_id": "05_predecessor_chain_break_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5/05_predecessor_chain_break_rejected.json",
+      "sha256": "fc91703961e82eb8efe144f6793f2c4f81844c582a28ff53c51122240f632674"
+    },
+    {
+      "expected_status": "REJECT",
+      "fixture_id": "06_release_action_rejected",
+      "path": "fixtures/gate3/cluster_b/wp5/06_release_action_rejected.json",
+      "sha256": "3df5f666bc94c89377d55dfc849e56d3d00879ad891d4fac9e7b7bddaa584e25"
+    }
+  ],
+  "semantic_model_fixture_count_added": 0,
+  "version": "0.1"
+}

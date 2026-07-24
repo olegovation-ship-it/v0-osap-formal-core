@@ -1,0 +1,253 @@
+name: V0 OSAP Gate 3 Cluster B WP5
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5.yml'
+      - 'docs/gate3/cluster_b/WP5_*'
+      - 'fixtures/gate3/cluster_b/wp5/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_*'
+      - 'release/v1.4.0/tools/patch_wp5*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_*'
+      - 'scripts/*gate3_cluster_b_wp5*'
+      - 'tests/test_gate3_cluster_b_wp5*'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp5.yml'
+      - 'docs/gate3/cluster_b/WP5_*'
+      - 'fixtures/gate3/cluster_b/wp5/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP5_*'
+      - 'release/v1.4.0/tools/patch_wp5*'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp5_*'
+      - 'scripts/*gate3_cluster_b_wp5*'
+      - 'tests/test_gate3_cluster_b_wp5*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  baseline:
+    name: Baseline and predecessor preservation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Baseline and predecessor preservation
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job baseline
+  schemas:
+    name: Schemas and canonical manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Schemas and canonical manifests
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job schemas
+  id-audit:
+    name: Theorem ID closure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Theorem ID closure
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job id-audit
+  role-coverage:
+    name: Seven-role coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Seven-role coverage
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job role-coverage
+  dependency-dag:
+    name: Dependency DAG
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Dependency DAG
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job dependency-dag
+  python-semantics:
+    name: Full Python semantics regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Full Python semantics regression
+        run: python -m pytest -q -p no:cacheprovider
+  positive-models:
+    name: Positive model campaign
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Positive model campaign
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job positive-models
+  negative-boundary:
+    name: Negative and boundary campaign
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Negative and boundary campaign
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job negative-boundary
+  lean:
+    name: Lean 4 proof build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Install Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Lean 4 build
+        working-directory: lean
+        run: lake build
+  coq:
+    name: Coq proof build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Install Coq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+      - name: Coq build
+        working-directory: coq
+        run: make
+  statement-parity:
+    name: Lean/Coq statement parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Lean/Coq statement parity
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job statement-parity
+  ipec-lineage:
+    name: Validator/IPEC theorem-evidence lineage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Validator/IPEC theorem-evidence lineage
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job ipec-lineage
+  deterministic-replay:
+    name: Two-run byte-identical replay
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: Two-run byte-identical replay
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job deterministic-replay
+  gate3-audit-inputs:
+    name: WP6 audit-input readiness without decision
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python validation dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema
+      - name: WP6 audit-input readiness without decision
+        run: python scripts/verify_gate3_cluster_b_wp5.py --job gate3-audit-inputs
+      - name: Whitespace and patch integrity
+        run: git diff --check 7b497f197652874164e00fe9c0ef7f67e760c979 --
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0-osap-gate3-cluster-b-wp5-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_REPLAY_RECORD.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES.json
+            release/v1.4.0/GATE3_CLUSTER_B_WP5_SHA256SUMS.txt

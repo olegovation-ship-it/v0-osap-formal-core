@@ -1,0 +1,35 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_BASELINE_LOCK",
+  "automatic_commit_authorized": false,
+  "automatic_merge_authorized": false,
+  "automatic_push_authorized": false,
+  "date": "2026-07-23",
+  "frozen_work_packages": [
+    "WP0",
+    "WP1",
+    "WP2",
+    "WP3",
+    "WP4"
+  ],
+  "locked_extension_theorem_ids": [
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162"
+  ],
+  "new_theorem_ids": [],
+  "release_actions_authorized": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_branch": "v1.4.0-development",
+  "required_head": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "required_origin_development": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "required_origin_main": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "stable_tag": "v1.3.0",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "version": "0.1",
+  "wp4_implementation_merge_commit": "cdae3ea4e50f6222182f2398c350476fbe820f92",
+  "wp4_post_merge_closeout_merge_commit": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "wp6_decision_authorized": false
+}

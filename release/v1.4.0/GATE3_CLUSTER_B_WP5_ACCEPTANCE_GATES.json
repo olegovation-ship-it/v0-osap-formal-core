@@ -1,0 +1,132 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP5_ACCEPTANCE_GATES",
+  "baseline": "7b497f197652874164e00fe9c0ef7f67e760c979",
+  "close_gate3_authorized": false,
+  "date": "2026-07-23",
+  "decision_on_pass": "READY_FOR_WP6_AUDIT",
+  "gate_count": 24,
+  "gates": [
+    {
+      "gate_id": "WP5-G01",
+      "requirement": "Exact branch, HEAD, origin/main, and origin/v1.4.0-development equality at the WP4 closeout merge baseline is enforced.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G02",
+      "requirement": "Stable v1.3.0 tag target is unchanged.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G03",
+      "requirement": "WP0-WP4 canonical records, frozen-upstream records, and historical SHA-256 ledgers are byte-preserved.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G04",
+      "requirement": "No new theorem identifier is introduced; T157-T162 and the ten inherited Cluster B owners remain identity-locked.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G05",
+      "requirement": "The seven canonical semantic roles CB-R1 through CB-R7 remain complete.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G06",
+      "requirement": "The 16-node Cluster B dependency graph remains acyclic with no undeclared internal import.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G07",
+      "requirement": "The WP2 executable-semantics fixture manifest remains at least 12 positive models.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G08",
+      "requirement": "The WP2 executable-semantics fixture manifest remains at least 12 negative or boundary models.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G09",
+      "requirement": "WP3 exposes exact typed outcome bindings for all nine case types.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G10",
+      "requirement": "Every nonprocedural WP3 binding retains theorem and IPEC rule lineage.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G11",
+      "requirement": "WP4 retains dual-backend completion for T157-T162.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G12",
+      "requirement": "WP4 statement parity remains 100 percent with locked statement hashes.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G13",
+      "requirement": "The proof-hole scan is mandatory and returns PASS.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G14",
+      "requirement": "The full Python regression suite is mandatory and returns PASS.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G15",
+      "requirement": "The repository schema bundle and deterministic fixtures are mandatory and return PASS.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G16",
+      "requirement": "Lean 4 build is mandatory and returns PASS.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G17",
+      "requirement": "Coq build is mandatory and returns PASS.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G18",
+      "requirement": "The 14-job WP5 CI matrix is complete, read-only, and release-free.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G19",
+      "requirement": "The canonical WP5 evidence-input manifest contains sorted unique paths and SHA-256 bindings to the baseline commit.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G20",
+      "requirement": "Evidence-control fixtures reject path disorder, duplication, digest mutation, predecessor-chain mutation, and release authorization.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G21",
+      "requirement": "Two independent canonical serialization runs are byte-identical.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G22",
+      "requirement": "The WP5 SHA-256 ledger and schema-bundle manifest reproduce exactly.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G23",
+      "requirement": "The exact WP5 changed-path allowlist and rollback-on-any-FAIL are enforced, and git diff --check passes.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    },
+    {
+      "gate_id": "WP5-G24",
+      "requirement": "No automatic commit, push, merge, tag, GitHub Release, Zenodo deposit, DOI action, branch deletion, force-push, history rewrite, or WP6 decision is authorized.",
+      "status": "PACKAGE_READY_CHECK_PENDING"
+    }
+  ],
+  "release_authorization": "NONE",
+  "version": "0.1"
+}

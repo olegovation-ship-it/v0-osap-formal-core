@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_BASELINE_LOCK"
+    },
+    "automatic_commit_authorized": {
+      "const": false
+    },
+    "automatic_merge_authorized": {
+      "const": false
+    },
+    "automatic_push_authorized": {
+      "const": false
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "frozen_work_packages": {
+      "const": [
+        "WP0",
+        "WP1",
+        "WP2",
+        "WP3",
+        "WP4"
+      ],
+      "type": "array"
+    },
+    "locked_extension_theorem_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "new_theorem_ids": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "required_branch": {
+      "const": "v1.4.0-development"
+    },
+    "required_head": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "required_origin_development": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "required_origin_main": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "stable_tag": {
+      "const": "v1.3.0"
+    },
+    "stable_tag_target": {
+      "const": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "wp4_implementation_merge_commit": {
+      "type": "string"
+    },
+    "wp4_post_merge_closeout_merge_commit": {
+      "const": "7b497f197652874164e00fe9c0ef7f67e760c979"
+    },
+    "wp6_decision_authorized": {
+      "const": false
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "required_branch",
+    "required_head",
+    "required_origin_main",
+    "required_origin_development",
+    "stable_tag",
+    "stable_tag_target",
+    "wp4_implementation_merge_commit",
+    "wp4_post_merge_closeout_merge_commit",
+    "frozen_work_packages",
+    "locked_extension_theorem_ids",
+    "new_theorem_ids",
+    "automatic_commit_authorized",
+    "automatic_push_authorized",
+    "automatic_merge_authorized",
+    "release_actions_authorized",
+    "wp6_decision_authorized"
+  ],
+  "type": "object"
+}

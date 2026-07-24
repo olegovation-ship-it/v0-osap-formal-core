@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP5_CI_JOB_MATRIX"
+    },
+    "date": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "final_job_semantics": {
+      "const": "AUDIT_INPUT_READINESS_ONLY_NO_CLOSE_GATE3_DECISION"
+    },
+    "job_count": {
+      "const": 14
+    },
+    "jobs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "job_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mandatory": {
+            "const": true
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "release_capability": {
+            "const": false
+          }
+        },
+        "required": [
+          "job_id",
+          "name",
+          "command",
+          "mandatory",
+          "release_capability"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array"
+    },
+    "permissions": {
+      "const": "CONTENTS_READ_ONLY"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "job_count",
+    "jobs",
+    "final_job_semantics",
+    "permissions"
+  ],
+  "type": "object"
+}
