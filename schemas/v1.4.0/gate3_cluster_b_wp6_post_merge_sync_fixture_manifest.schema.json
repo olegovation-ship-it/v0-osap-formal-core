@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_SYNC_FIXTURE_MANIFEST"
+    },
+    "fixture_count": {
+      "const": 5
+    },
+    "fixtures": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "fixture_id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fixture_id",
+          "path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "fixture_count",
+    "fixtures"
+  ],
+  "type": "object"
+}

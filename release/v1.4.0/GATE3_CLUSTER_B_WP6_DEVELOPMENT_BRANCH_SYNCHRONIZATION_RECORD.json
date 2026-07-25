@@ -1,0 +1,22 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD",
+  "branch_deletion_authorized": false,
+  "canonical_wp6_merge_baseline": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "date": "2026-07-24",
+  "development_ahead_by": 0,
+  "development_branch": "v1.4.0-development",
+  "development_pre_sync_head": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "expected_final_divergence": "0 0",
+  "force_push_authorized": false,
+  "history_rewrite_authorized": false,
+  "main_ahead_by": 1,
+  "origin_development_at_package_preparation": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "origin_main_at_package_preparation": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "push_requires_explicit_authorization": true,
+  "relation": "FAST_FORWARD_ALLOWED",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "required_method": "git merge --ff-only origin/main",
+  "synchronization_executed": false,
+  "synchronization_stage": "ONLY_AFTER_CLOSEOUT_PATCH_CONTENT_AND_LOCAL_VALIDATION_AND_SEPARATE_EXPLICIT_AUTHORIZATION",
+  "version": "0.1"
+}

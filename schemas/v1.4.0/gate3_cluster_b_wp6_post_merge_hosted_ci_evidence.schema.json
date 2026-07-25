@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_head_commit": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_EVIDENCE"
+    },
+    "canonical_merge_commit": {
+      "const": "f984b59cec832307bac7270c7d437a789bec99ce"
+    },
+    "canonical_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "check_summary": {
+      "type": "object"
+    },
+    "date": {
+      "type": "string"
+    },
+    "evidence_scope": {
+      "type": "string"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "run_conclusion": {
+      "const": "success"
+    },
+    "run_id": {
+      "const": 30109896184
+    },
+    "run_status": {
+      "const": "completed"
+    },
+    "source_pr": {
+      "const": 32
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "workflow_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "source_pr",
+    "canonical_merge_commit",
+    "accepted_head_commit",
+    "workflow_name",
+    "run_id",
+    "run_status",
+    "run_conclusion",
+    "check_summary",
+    "evidence_scope",
+    "canonical_sha256"
+  ],
+  "type": "object"
+}

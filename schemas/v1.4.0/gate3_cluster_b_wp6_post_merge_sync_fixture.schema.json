@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_SYNC_FIXTURE"
+    },
+    "development_ahead": {
+      "type": "integer"
+    },
+    "expected_action": {
+      "type": "string"
+    },
+    "expected_allowed": {
+      "type": "boolean"
+    },
+    "expected_decision": {
+      "type": "string"
+    },
+    "expected_diagnostic": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "main_ahead": {
+      "type": "integer"
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "fixture_id",
+    "main_ahead",
+    "development_ahead",
+    "expected_decision",
+    "expected_action",
+    "expected_allowed",
+    "expected_diagnostic"
+  ],
+  "type": "object"
+}

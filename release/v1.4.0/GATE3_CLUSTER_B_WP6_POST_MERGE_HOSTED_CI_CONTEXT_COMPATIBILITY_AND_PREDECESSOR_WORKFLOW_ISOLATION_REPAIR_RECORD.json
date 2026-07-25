@@ -1,0 +1,115 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR",
+  "authorization_firewall": {
+    "development_branch_deletion": false,
+    "doi_action": false,
+    "force_push": false,
+    "gate3_close": false,
+    "github_release": false,
+    "history_rewrite": false,
+    "merge": false,
+    "synchronization": false,
+    "tag": false,
+    "zenodo_deposit": false
+  },
+  "branch": "v1.4.0-development",
+  "canonical_wp6_merge_commit": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "date": "2026-07-24",
+  "expected_uncommitted_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp6.yml",
+    ".github/workflows/python-checker.yml",
+    ".github/workflows/rc1-gate-audit.yml",
+    ".github/workflows/rc1-release-closure.yml",
+    ".github/workflows/rc1-release-evidence-closure.yml",
+    ".github/workflows/rc1-tag-authorization.yml",
+    ".github/workflows/release-readiness.yml",
+    ".github/workflows/v1-3-0-final-release-authorization.yml",
+    ".github/workflows/v1-3-0-final-release-evidence-closure.yml",
+    ".github/workflows/v1-3-0-post-merge-archival-closeout.yml",
+    ".github/workflows/v1-3-0-post-merge-legacy-lifecycle-compatibility.yml",
+    ".github/workflows/v1-3-0-post-merge-publication-lifecycle-replay-compatibility.yml",
+    ".github/workflows/v1-3-0-post-zenodo-historical-replay.yml",
+    ".github/workflows/v1-3-0-zenodo-publication-evidence-closure.yml",
+    "docs/gate3/cluster_b/WP6_POST_MERGE_HOSTED_CI_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/tools/patch_wp6_post_merge_allowlist.py",
+    "release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
+    "tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py"
+  ],
+  "isolated_workflows": [
+    {
+      "name": "V0 OSAP Gate 3 Cluster B WP6 Audit",
+      "path": ".github/workflows/gate3-cluster-b-wp6.yml"
+    },
+    {
+      "name": "Python checker",
+      "path": ".github/workflows/python-checker.yml"
+    },
+    {
+      "name": "RC1 gate audit",
+      "path": ".github/workflows/rc1-gate-audit.yml"
+    },
+    {
+      "name": "RC1 release closure replay",
+      "path": ".github/workflows/rc1-release-closure.yml"
+    },
+    {
+      "name": "RC1 release evidence closure",
+      "path": ".github/workflows/rc1-release-evidence-closure.yml"
+    },
+    {
+      "name": "RC1 tag authorization",
+      "path": ".github/workflows/rc1-tag-authorization.yml"
+    },
+    {
+      "name": "Release readiness",
+      "path": ".github/workflows/release-readiness.yml"
+    },
+    {
+      "name": "v1.3.0 final release authorization",
+      "path": ".github/workflows/v1-3-0-final-release-authorization.yml"
+    },
+    {
+      "name": "v1.3.0 final release evidence closure",
+      "path": ".github/workflows/v1-3-0-final-release-evidence-closure.yml"
+    },
+    {
+      "name": "v1.3.0 post-merge archival closeout",
+      "path": ".github/workflows/v1-3-0-post-merge-archival-closeout.yml"
+    },
+    {
+      "name": "v1.3.0 post-merge legacy lifecycle compatibility",
+      "path": ".github/workflows/v1-3-0-post-merge-legacy-lifecycle-compatibility.yml"
+    },
+    {
+      "name": "v1.3.0 post-merge publication lifecycle replay compatibility",
+      "path": ".github/workflows/v1-3-0-post-merge-publication-lifecycle-replay-compatibility.yml"
+    },
+    {
+      "name": "v1.3.0 post-Zenodo historical lifecycle replay",
+      "path": ".github/workflows/v1-3-0-post-zenodo-historical-replay.yml"
+    },
+    {
+      "name": "v1.3.0 Zenodo publication evidence closure",
+      "path": ".github/workflows/v1-3-0-zenodo-publication-evidence-closure.yml"
+    }
+  ],
+  "pre_repair_head": "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9",
+  "pull_request": 33,
+  "recovery_from_v0_1_1_argument_injection_defect": true,
+  "recovery_from_v0_1_partial_application": true,
+  "repair_scope": {
+    "accepted_predecessor_blob_and_ledger_preserved": true,
+    "committed_closeout_allowlist": true,
+    "generic_python_checker_isolated_for_pr_33_only": true,
+    "precommit_closeout_allowlist_preserved": true,
+    "predecessor_workflows_isolated_for_pr_33_only": true,
+    "synthetic_merge_ref_supported": true
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "APPLIED_UNCOMMITTED",
+  "version": "0.1.2"
+}

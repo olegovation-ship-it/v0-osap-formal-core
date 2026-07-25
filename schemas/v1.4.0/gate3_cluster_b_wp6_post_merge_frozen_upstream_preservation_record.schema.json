@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed_delta": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD"
+    },
+    "canonical_wp0_wp5_records_modified": {
+      "const": false
+    },
+    "canonical_wp6_ledger_modified": {
+      "const": false
+    },
+    "canonical_wp6_merge_commit": {
+      "const": "f984b59cec832307bac7270c7d437a789bec99ce"
+    },
+    "canonical_wp6_records_modified": {
+      "const": false
+    },
+    "date": {
+      "type": "string"
+    },
+    "frozen_wp6_implementation_head": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "gate3_close_authorized": {
+      "const": false
+    },
+    "release_actions_authorized": {
+      "const": false
+    },
+    "runtime_or_proof_semantics_added": {
+      "const": false
+    },
+    "stable_tag": {
+      "const": "v1.3.0"
+    },
+    "stable_tag_target": {
+      "const": "13bf095688bcabd5b090f188e9bd28a16237edeb"
+    },
+    "theorem_ids_added": {
+      "const": false
+    },
+    "version": {
+      "const": "0.1"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "frozen_wp6_implementation_head",
+    "canonical_wp6_merge_commit",
+    "stable_tag",
+    "stable_tag_target",
+    "canonical_wp0_wp5_records_modified",
+    "canonical_wp6_records_modified",
+    "canonical_wp6_ledger_modified",
+    "runtime_or_proof_semantics_added",
+    "theorem_ids_added",
+    "release_actions_authorized",
+    "gate3_close_authorized",
+    "allowed_delta"
+  ],
+  "type": "object"
+}

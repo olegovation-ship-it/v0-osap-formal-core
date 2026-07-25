@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance": {
+      "type": "object"
+    },
+    "accepted_head_commit": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "artifact_id": {
+      "const": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD"
+    },
+    "authorization_firewall": {
+      "type": "object"
+    },
+    "canonical_merge_commit": {
+      "const": "f984b59cec832307bac7270c7d437a789bec99ce"
+    },
+    "canonical_merge_parents": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+        },
+        {
+          "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+        }
+      ],
+      "type": "array"
+    },
+    "closeout_commit_created": {
+      "const": false
+    },
+    "closeout_push_performed": {
+      "const": false
+    },
+    "date": {
+      "type": "string"
+    },
+    "gate3_closed": {
+      "const": false
+    },
+    "hosted_ci_repair_commit": {
+      "const": "8a692859b2e02a8c9fccc008f76bb24218716f40"
+    },
+    "hosted_wp6_audit": {
+      "type": "object"
+    },
+    "implementation_commit": {
+      "const": "adf9b970b9b7ffba13dae47bfa9556d6094f3fe1"
+    },
+    "implementation_delta": {
+      "type": "object"
+    },
+    "merge_method": {
+      "const": "merge_commit"
+    },
+    "merged_pr": {
+      "const": 32
+    },
+    "post_merge_local_verification": {
+      "type": "object"
+    },
+    "pre_merge_baseline_commit": {
+      "const": "b3798367af960ff3b588778966c5e233d89e72ab"
+    },
+    "repository": {
+      "const": "olegovation-ship-it/v0-osap-formal-core"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "working_branch": {
+      "const": "v1.4.0-development"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "version",
+    "date",
+    "repository",
+    "working_branch",
+    "merged_pr",
+    "merge_method",
+    "pre_merge_baseline_commit",
+    "implementation_commit",
+    "accepted_head_commit",
+    "hosted_ci_repair_commit",
+    "canonical_merge_commit",
+    "canonical_merge_parents",
+    "implementation_delta",
+    "hosted_wp6_audit",
+    "post_merge_local_verification",
+    "acceptance",
+    "gate3_closed",
+    "closeout_commit_created",
+    "closeout_push_performed",
+    "authorization_firewall",
+    "status"
+  ],
+  "type": "object"
+}

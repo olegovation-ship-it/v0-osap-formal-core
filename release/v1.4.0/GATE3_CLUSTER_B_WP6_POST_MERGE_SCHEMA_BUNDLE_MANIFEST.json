@@ -1,0 +1,44 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_SCHEMA_BUNDLE_MANIFEST",
+  "document_count": 6,
+  "pairs": [
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json",
+      "document_sha256": "977cba6034483f90f15caf7d5c2021f914b89839bed2d926717cf4593506a305",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_archival_closeout_record.schema.json",
+      "schema_sha256": "f5c6b55d2d877ec8a0cd46e232550f616e1dc81ba3287b82664ca2b3a8a24028"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json",
+      "document_sha256": "7b222158ed4122764fa8d6229f5b79052444c1c43d7d28f78a7e9a1980f1c73e",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_development_branch_synchronization_record.schema.json",
+      "schema_sha256": "fd72aa5e229484b95a4fe2d649187438a31c7bb0e2f096a368d3d4cb6ffd947f"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_EVIDENCE.json",
+      "document_sha256": "125b00d452b5e7f08ae97a467edd5ae92d51a2223a60bbb0c1c0087844dc14aa",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_hosted_ci_evidence.schema.json",
+      "schema_sha256": "f2a1b203240f6792d2d75b86367cc04df4848d891345e7a9684747808b3afbe4"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json",
+      "document_sha256": "6aa75e9210527e53e157a57e4b6ab0dfa15bbe69d95b26127d040eb27ef54a9e",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_frozen_upstream_preservation_record.schema.json",
+      "schema_sha256": "be73296f0b19f53859e631652ac9d4e5192ac63c7e4e702eb9228736468ce57a"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_CLOSEOUT_GATES.json",
+      "document_sha256": "e7d20e0aa3aa727674dcce9250c2a597e201dd5575433fed4c026fbd1243c6f9",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_closeout_gates.schema.json",
+      "schema_sha256": "0dde6f55d6cc0525188acea73289a99cc21924d3263968d4f6d325ab4ce18f7c"
+    },
+    {
+      "document": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SYNC_FIXTURE_MANIFEST.json",
+      "document_sha256": "5e8f8095ebb2472a423012aedd7ce1e4da2d0fe7bb2996b9719730e081e2b7b2",
+      "schema": "schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_sync_fixture_manifest.schema.json",
+      "schema_sha256": "2262d3f053abd8513581205ed554b222ee0df5b955415c325a26f321661e57b2"
+    }
+  ],
+  "schema_count": 6,
+  "version": "0.1"
+}

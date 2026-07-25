@@ -1,0 +1,17 @@
+{
+  "allowed_delta": "WP6_POST_MERGE_CLOSEOUT_PREFIXED_RECORDS_SCHEMAS_TOOLS_TESTS_WORKFLOW_AND_SYNC_HELPER_ONLY",
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD",
+  "canonical_wp0_wp5_records_modified": false,
+  "canonical_wp6_ledger_modified": false,
+  "canonical_wp6_merge_commit": "f984b59cec832307bac7270c7d437a789bec99ce",
+  "canonical_wp6_records_modified": false,
+  "date": "2026-07-24",
+  "frozen_wp6_implementation_head": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "gate3_close_authorized": false,
+  "release_actions_authorized": false,
+  "runtime_or_proof_semantics_added": false,
+  "stable_tag": "v1.3.0",
+  "stable_tag_target": "13bf095688bcabd5b090f188e9bd28a16237edeb",
+  "theorem_ids_added": false,
+  "version": "0.1"
+}
