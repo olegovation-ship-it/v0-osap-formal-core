@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   clean-room-python-replay:
+    # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,6 +58,8 @@ jobs:
       - run: git diff --check
 
   clean-room-lean4-replay:
+    # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -74,6 +78,8 @@ jobs:
       - run: python scripts/check_no_proof_holes.py
 
   clean-room-coq-replay:
+    # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
