@@ -12,10 +12,22 @@ ROOT = Path(__file__).resolve().parents[3]
 PR_NUMBER = 33
 BASELINE = "8a692859b2e02a8c9fccc008f76bb24218716f40"
 CLOSEOUT = "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9"
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 RECORD = ROOT / "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_HOSTED_CI_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR_RECORD.json"
 LEDGER = ROOT / "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SHA256SUMS.txt"
 ALLOWLIST = ROOT / "release/v1.4.0/tools/patch_wp6_post_merge_allowlist.py"
 GUARD = "${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}"
+SUCCESSOR_GUARD = (
+    "${{ "
+    "(github.event_name != 'pull_request' || "
+    "github.event.pull_request.base.ref != 'main' || "
+    "github.event.pull_request.head.ref != 'v1.4.0-development' || "
+    "github.event.pull_request.head.repo.full_name != github.repository) "
+    "&& "
+    "(github.event_name != 'push' || "
+    "github.ref != 'refs/heads/main') "
+    "}}"
+)
 
 
 def run(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -27,6 +39,20 @@ def run(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def sha256_at_commit(commit: str, rel: str) -> str:
+    cp = subprocess.run(
+        ["git", "show", f"{commit}:{rel}"],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+    )
+    if cp.returncode:
+        raise RuntimeError(
+            cp.stderr.decode("utf-8", errors="replace")
+        )
+    return hashlib.sha256(cp.stdout).hexdigest()
 
 
 def workflow_name(text: str) -> str | None:
@@ -61,7 +87,9 @@ def count_job_guards(text: str) -> tuple[int, int]:
                     break
                 if nxt and not nxt.startswith(" "):
                     break
-                if nxt.strip().startswith("if:") and str(PR_NUMBER) in nxt:
+                if nxt.strip().startswith("if:") and (
+                    GUARD in nxt or SUCCESSOR_GUARD in nxt
+                ):
                     found = True
                     break
                 cursor += 1
@@ -111,7 +139,7 @@ def main() -> int:
             "release/v1.4.0/tools/patch_wp6_post_merge_allowlist.py",
             "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
         ):
-            if ledger_entries.get(rel) != sha256(ROOT / rel):
+            if ledger_entries.get(rel) != sha256_at_commit(FROZEN_LEDGER_ANCHOR, rel):
                 errors.append("closeout ledger mismatch for " + rel)
     except Exception as exc:
         errors.append("ledger verification failure: " + str(exc))

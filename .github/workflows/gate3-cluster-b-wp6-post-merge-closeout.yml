@@ -10,6 +10,23 @@ on:
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
       - 'release/v1.4.0/tools/patch_wp6_post_merge_allowlist.py'
       - 'release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py'
+      - 'release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py'
+      - 'schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_*'
+      - 'scripts/*wp6_post_merge*'
+      - 'scripts/classify_v1_4_0_development_sync_relation_wp6.py'
+      - 'scripts/synchronize_v1_4_0_development_wp6.sh'
+      - 'tests/test_gate3_cluster_b_wp6_post_merge*.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'
+      - 'docs/gate3/cluster_b/WP6_POST_MERGE_*'
+      - 'fixtures/gate3/cluster_b/wp6_post_merge_sync/**'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_*'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json'
+      - 'release/v1.4.0/tools/patch_wp6_post_merge_allowlist.py'
+      - 'release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py'
+      - 'release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py'
       - 'schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_*'
       - 'scripts/*wp6_post_merge*'
       - 'scripts/classify_v1_4_0_development_sync_relation_wp6.py'
@@ -49,7 +66,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
-      - run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp6_post_merge_closeout.py tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py
+      - run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp6_post_merge_closeout.py tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py tests/test_gate3_cluster_b_wp6_post_merge_push_context_repair.py
   hosted-ci-context-repair:
     runs-on: ubuntu-latest
     steps:
@@ -58,6 +75,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py --ci
+      - run: python release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py --mode committed
   proof-hole-firewall:
     runs-on: ubuntu-latest
     steps:

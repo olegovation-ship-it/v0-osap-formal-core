@@ -47,26 +47,168 @@ def canonical_sha(o):
         json.dumps(cp,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
     ).hexdigest()
 
+SUCCESSOR_REPAIR_BASE = (
+    "ba32d8e855a79461fdcda14740acab86aafcb17a"
+)
+SUCCESSOR_REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+SUCCESSOR_REPAIR_MANIFEST = (
+    ROOT
+    / f"release/v1.4.0/{SUCCESSOR_REPAIR_STEM}_MANIFEST.json"
+)
+
+
 def approved_isolation_paths(errors):
-    path=ROOT/REPAIR_RECORD
-    if not path.is_file():
-        return set()
+    approved = set()
+
+    path = ROOT / REPAIR_RECORD
+
+    if path.is_file():
+        try:
+            record = json.loads(
+                path.read_text(encoding="utf-8")
+            )
+
+            if record.get("pull_request") != 33:
+                errors.append(
+                    "repair record pull-request mismatch"
+                )
+            elif record.get("pre_repair_head") != (
+                "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9"
+            ):
+                errors.append(
+                    "repair record closeout-head mismatch"
+                )
+            elif any(
+                record.get(
+                    "authorization_firewall", {}
+                ).values()
+            ):
+                errors.append(
+                    "repair record authorization firewall failure"
+                )
+            else:
+                approved.update(
+                    item["path"]
+                    for item in record.get(
+                        "isolated_workflows", []
+                    )
+                )
+
+        except Exception as exc:
+            errors.append(
+                "repair record failure: " + str(exc)
+            )
+
+    if not SUCCESSOR_REPAIR_MANIFEST.is_file():
+        errors.append("successor repair manifest missing")
+        return approved
+
     try:
-        record=json.loads(path.read_text(encoding='utf-8'))
-        if record.get('pull_request') != 33:
-            errors.append('repair record pull-request mismatch')
-            return set()
-        if record.get('pre_repair_head') != '79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9':
-            errors.append('repair record closeout-head mismatch')
-            return set()
-        firewall=record.get('authorization_firewall',{})
-        if any(firewall.values()):
-            errors.append('repair record authorization firewall failure')
-            return set()
-        return {item['path'] for item in record.get('isolated_workflows',[])}
+        manifest = json.loads(
+            SUCCESSOR_REPAIR_MANIFEST.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if manifest.get("baseline_commit") != SUCCESSOR_REPAIR_BASE:
+            errors.append(
+                "successor repair baseline mismatch"
+            )
+            return approved
+
+        ledger_rel = manifest["ledger_path"]
+        ledger_path = ROOT / ledger_rel
+
+        if not ledger_path.is_file():
+            errors.append("successor repair ledger missing")
+            return approved
+
+        entries = {}
+
+        for line in ledger_path.read_text(
+            encoding="utf-8"
+        ).splitlines():
+            if not line.strip():
+                continue
+
+            expected, relative = line.split("  ", 1)
+            entries[relative] = expected
+
+        full_surface = set(
+            manifest["controlled_modified_paths"]
+            + manifest["additive_paths"]
+        )
+        ledger_inputs = full_surface - {ledger_rel}
+
+        if set(entries) != ledger_inputs:
+            errors.append(
+                "successor repair path inventory mismatch"
+            )
+            return approved
+
+        status = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain=v1",
+                "--untracked-files=all",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if status.returncode:
+            errors.append(
+                "successor repair Git status failure"
+            )
+            return approved
+
+        actual_surface = {
+            line[3:]
+            for line in status.stdout.splitlines()
+            if line
+        }
+
+        if actual_surface != full_surface:
+            errors.append(
+                "successor repair working-tree surface mismatch"
+            )
+            return approved
+
+        for relative, expected in entries.items():
+            target = ROOT / relative
+
+            if not target.is_file():
+                errors.append(
+                    "successor repair path missing " + relative
+                )
+                return approved
+
+            actual = hashlib.sha256(
+                target.read_bytes()
+            ).hexdigest()
+
+            if actual != expected:
+                errors.append(
+                    "successor repair SHA256 mismatch " + relative
+                )
+                return approved
+
+        approved.update(entries)
+
     except Exception as exc:
-        errors.append('repair record failure: '+str(exc))
-        return set()
+        errors.append(
+            "successor repair attestation failure: "
+            + str(exc)
+        )
+
+    return approved
+
 
 def check_wp6_frozen(errors):
     ledger_rel='release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt'

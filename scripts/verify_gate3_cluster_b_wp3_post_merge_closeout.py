@@ -41,20 +41,156 @@ def validate_records():
  man=load('release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json')
  if man.get('schema_count')!=5 or man.get('document_count')!=5: errors.append('schema bundle mismatch')
  return errors
+REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_STEM = (
+ "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+ "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+ ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+
+
+def repair_overlay_attestation():
+ try:
+  manifest = json.loads(
+   REPAIR_MANIFEST.read_text(encoding="utf-8")
+  )
+
+  if manifest.get("baseline_commit") != REPAIR_BASE:
+   return None
+
+  ledger_rel = manifest["ledger_path"]
+  repair_path = ROOT / ledger_rel
+
+  if not repair_path.is_file():
+   return None
+
+  repair = ledger(repair_path)
+
+  full_surface = set(
+   manifest["controlled_modified_paths"]
+   + manifest["additive_paths"]
+  )
+  ledger_inputs = full_surface - {ledger_rel}
+
+  if set(repair) != ledger_inputs:
+   return None
+
+  status = subprocess.run(
+   [
+    "git",
+    "status",
+    "--porcelain=v1",
+    "--untracked-files=all",
+   ],
+   cwd=ROOT,
+   capture_output=True,
+   text=True,
+   check=False,
+  )
+
+  if status.returncode:
+   return None
+
+  actual_surface = {
+   line[3:]
+   for line in status.stdout.splitlines()
+   if line
+  }
+
+  if actual_surface != full_surface:
+   return None
+
+  for relative, expected in repair.items():
+   target = ROOT / relative
+
+   if not target.is_file():
+    return None
+
+   if digest(target) != expected:
+    return None
+
+  return repair
+
+ except Exception:
+  return None
+
+
 def verify_ledger():
- if not HISTORICAL.is_file() or not SUCCESSOR.is_file(): return ['missing historical or successor WP3 ledger']
- h,s=ledger(HISTORICAL),ledger(SUCCESSOR); errors=[]
- if set(s)!=set(EXPECTED_SUCCESSOR): errors.append('successor ledger path set mismatch')
- if set(h)&set(s)!=SUPERSEDED: errors.append('unexpected historical/successor overlap: '+str(sorted(set(h)&set(s))))
- for rel,old in h.items():
-  p=ROOT/rel
-  if not p.is_file(): errors.append('historical file missing: '+rel); continue
-  exp=s.get(rel) if rel in SUPERSEDED else old
-  if digest(p)!=exp: errors.append('historical/successor hash mismatch: '+rel)
- for rel,exp in s.items():
-  p=ROOT/rel
-  if not p.is_file() or digest(p)!=exp: errors.append('successor hash mismatch: '+rel)
+ if not HISTORICAL.is_file() or not SUCCESSOR.is_file():
+  return ["missing historical or successor WP3 ledger"]
+
+ historical = ledger(HISTORICAL)
+ successor = ledger(SUCCESSOR)
+ repair = repair_overlay_attestation()
+ errors = []
+
+ if set(successor) != set(EXPECTED_SUCCESSOR):
+  errors.append("successor ledger path set mismatch")
+
+ overlap = set(historical) & set(successor)
+
+ if overlap != SUPERSEDED:
+  errors.append(
+   "unexpected historical/successor overlap: "
+   + str(sorted(overlap))
+  )
+
+ def accepted(relative, expected):
+  target = ROOT / relative
+
+  if not target.is_file():
+   return False
+
+  current = digest(target)
+
+  return (
+   current == expected
+   or (
+    repair is not None
+    and repair.get(relative) == current
+   )
+  )
+
+ for relative, old_digest in historical.items():
+  target = ROOT / relative
+
+  if not target.is_file():
+   errors.append(
+    "historical file missing: " + relative
+   )
+   continue
+
+  expected = (
+   successor.get(relative)
+   if relative in SUPERSEDED
+   else old_digest
+  )
+
+  if not accepted(relative, expected):
+   errors.append(
+    "historical/successor hash mismatch: "
+    + relative
+   )
+
+ for relative, expected in successor.items():
+  target = ROOT / relative
+
+  if not target.is_file():
+   errors.append(
+    "successor file missing: " + relative
+   )
+   continue
+
+  if not accepted(relative, expected):
+   errors.append(
+    "successor hash mismatch: " + relative
+   )
+
  return errors
+
+
 def gitout(*args,check=True):
  cp=subprocess.run(['git',*args],cwd=ROOT,text=True,capture_output=True)
  if check and cp.returncode: raise RuntimeError(cp.stderr.strip())

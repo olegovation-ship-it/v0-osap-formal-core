@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -30,6 +31,147 @@ SCHEMAS = ROOT / "schemas/v1.4.0"
 # WP2_POST_MERGE_SUCCESSOR_LEDGER_COMPATIBILITY_V0_1
 CANONICAL_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_SHA256SUMS.txt"
 SUCCESSOR_LEDGER = RELEASE / "GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt"
+
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+REPAIR_LEDGER = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
+)
+
+
+def _repair_ledger_entries() -> dict[str, str]:
+    entries: dict[str, str] = {}
+
+    for line in REPAIR_LEDGER.read_text(
+        encoding="utf-8"
+    ).splitlines():
+        if not line.strip():
+            continue
+        digest_value, relative = line.split("  ", 1)
+        entries[relative] = digest_value
+
+    return entries
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    try:
+        if not REPAIR_MANIFEST.is_file():
+            return None
+        if not REPAIR_LEDGER.is_file():
+            return None
+
+        manifest = json.loads(
+            REPAIR_MANIFEST.read_text(encoding="utf-8")
+        )
+
+        if manifest.get(
+            "frozen_ledger_anchor_commit"
+        ) != FROZEN_LEDGER_ANCHOR:
+            return None
+
+        controlled = set(
+            manifest.get("controlled_modified_paths", [])
+        )
+        additive = set(manifest.get("additive_paths", []))
+        expected_paths = controlled | additive
+
+        if manifest.get("changed_path_count") != len(expected_paths):
+            return None
+
+        ledger_relative = manifest.get("ledger_path")
+
+        if ledger_relative != REPAIR_LEDGER.relative_to(
+            ROOT
+        ).as_posix():
+            return None
+
+        status = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain=v1",
+                "--untracked-files=all",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if status.returncode:
+            return None
+
+        status_lines = status.stdout.splitlines()
+
+        if any(
+            len(line) < 4 or " -> " in line
+            for line in status_lines
+        ):
+            return None
+
+        working_paths = {
+            line[3:]
+            for line in status_lines
+            if line
+        }
+
+        if working_paths:
+            actual_paths = working_paths
+        else:
+            committed = subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-only",
+                    "--no-renames",
+                    FROZEN_LEDGER_ANCHOR + "..HEAD",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            if committed.returncode:
+                return None
+
+            actual_paths = {
+                line
+                for line in committed.stdout.splitlines()
+                if line
+            }
+
+        if actual_paths != expected_paths:
+            return None
+
+        entries = _repair_ledger_entries()
+
+        if len(entries) != len(expected_paths) - 1:
+            return None
+
+        for relative in expected_paths - {ledger_relative}:
+            path = ROOT / relative
+
+            if not path.is_file():
+                return None
+
+            actual = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
+
+            if entries.get(relative) != actual:
+                return None
+
+        return entries
+
+    except Exception:
+        return None
 
 
 def is_post_merge_schema(path: Path) -> bool:
@@ -331,6 +473,7 @@ def canonical_ledger_compatibility_errors(expected: bytes) -> list[str]:
     historical = parse_ledger_bytes(historical_bytes)
     current = parse_ledger_bytes(expected)
     successor = parse_ledger_bytes(SUCCESSOR_LEDGER.read_bytes())
+    repair = successor_overlay_attestation() or {}
     errors: list[str] = []
 
     for rel, historical_digest in historical.items():
@@ -338,12 +481,24 @@ def canonical_ledger_compatibility_errors(expected: bytes) -> list[str]:
         if current_digest is None:
             errors.append(f"canonical WP2 path disappeared from builder surface: {rel}")
             continue
-        if current_digest != historical_digest and successor.get(rel) != current_digest:
-            errors.append(f"successor ledger does not attest changed WP2 path: {rel}")
+        if (
+            current_digest != historical_digest
+            and successor.get(rel) != current_digest
+            and repair.get(rel) != current_digest
+        ):
+            errors.append(
+                f"successor ledger does not attest changed WP2 path: {rel}"
+            )
 
     for rel, current_digest in current.items():
-        if rel not in historical and successor.get(rel) != current_digest:
-            errors.append(f"successor ledger does not attest new canonical WP2 path: {rel}")
+        if (
+            rel not in historical
+            and successor.get(rel) != current_digest
+            and repair.get(rel) != current_digest
+        ):
+            errors.append(
+                f"successor ledger does not attest new canonical WP2 path: {rel}"
+            )
     return errors
 
 

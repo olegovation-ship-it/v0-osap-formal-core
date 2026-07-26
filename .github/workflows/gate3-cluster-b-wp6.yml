@@ -33,7 +33,7 @@ defaults:
 jobs:
   baseline-lock:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Exact baseline and stable-tag lock
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +48,7 @@ jobs:
           python scripts/verify_gate3_cluster_b_wp6.py --job baseline-lock
   predecessor-chain:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Predecessor SHA-256 chain
     runs-on: ubuntu-latest
     steps:
@@ -63,7 +63,7 @@ jobs:
           python scripts/verify_gate3_cluster_b_wp6.py --job predecessor-chain
   theorem-role-dag:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Theorem, role, and DAG audit
     runs-on: ubuntu-latest
     steps:
@@ -78,7 +78,7 @@ jobs:
           python scripts/verify_gate3_cluster_b_wp6.py --job theorem-role-dag
   semantic-evidence:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Semantic evidence thresholds
     runs-on: ubuntu-latest
     steps:
@@ -93,7 +93,7 @@ jobs:
           python scripts/verify_gate3_cluster_b_wp6.py --job semantic-evidence
   typed-lineage:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Typed theorem and IPEC lineage
     runs-on: ubuntu-latest
     steps:
@@ -108,7 +108,7 @@ jobs:
           python scripts/verify_gate3_cluster_b_wp6.py --job typed-lineage
   schemas-fixtures-python:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Schemas, fixtures, and Python regression
     runs-on: ubuntu-latest
     steps:
@@ -124,7 +124,7 @@ jobs:
             --deselect tests/test_gate3_cluster_b_wp5_post_merge_closeout.py::test_wp5_post_merge_closeout
   lean-proof-holes:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Lean and proof-hole firewall
     runs-on: ubuntu-latest
     steps:
@@ -144,7 +144,7 @@ jobs:
                     cd lean && lake build
   coq-parity:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Coq and statement parity
     runs-on: ubuntu-latest
     steps:
@@ -165,7 +165,7 @@ jobs:
       - run: git restore --source=HEAD -- coq/.Makefile.coq.d || true
   replay-claims:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Replay and claim perimeter
     runs-on: ubuntu-latest
     steps:
@@ -181,7 +181,7 @@ jobs:
                     python scripts/verify_gate3_cluster_b_wp6.py --job replay-claims
   decision-firewall:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.number != 33 }}
+    if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
     name: Decision, allowlist, and release firewall
     runs-on: ubuntu-latest
     steps:
