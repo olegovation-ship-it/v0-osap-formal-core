@@ -59,6 +59,21 @@ SUCCESSOR_REPAIR_MANIFEST = (
     / f"release/v1.4.0/{SUCCESSOR_REPAIR_STEM}_MANIFEST.json"
 )
 
+REGRESSION_REPAIR_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_post_commit_regression_closure_repair.py"
+)
+
+
+def _regression_repair_namespace():
+    source = REGRESSION_REPAIR_VERIFIER.read_bytes()
+    namespace = {
+        "__name__": "wp6_post_commit_regression_helper",
+        "__file__": str(REGRESSION_REPAIR_VERIFIER),
+    }
+    exec(compile(source, str(REGRESSION_REPAIR_VERIFIER), "exec"), namespace)
+    return namespace
+
 
 def approved_isolation_paths(errors):
     approved = set()
@@ -102,109 +117,14 @@ def approved_isolation_paths(errors):
                 "repair record failure: " + str(exc)
             )
 
-    if not SUCCESSOR_REPAIR_MANIFEST.is_file():
-        errors.append("successor repair manifest missing")
-        return approved
-
     try:
-        manifest = json.loads(
-            SUCCESSOR_REPAIR_MANIFEST.read_text(
-                encoding="utf-8"
-            )
-        )
-
-        if manifest.get("baseline_commit") != SUCCESSOR_REPAIR_BASE:
-            errors.append(
-                "successor repair baseline mismatch"
-            )
-            return approved
-
-        ledger_rel = manifest["ledger_path"]
-        ledger_path = ROOT / ledger_rel
-
-        if not ledger_path.is_file():
-            errors.append("successor repair ledger missing")
-            return approved
-
-        entries = {}
-
-        for line in ledger_path.read_text(
-            encoding="utf-8"
-        ).splitlines():
-            if not line.strip():
-                continue
-
-            expected, relative = line.split("  ", 1)
-            entries[relative] = expected
-
-        full_surface = set(
-            manifest["controlled_modified_paths"]
-            + manifest["additive_paths"]
-        )
-        ledger_inputs = full_surface - {ledger_rel}
-
-        if set(entries) != ledger_inputs:
-            errors.append(
-                "successor repair path inventory mismatch"
-            )
-            return approved
-
-        status = subprocess.run(
-            [
-                "git",
-                "status",
-                "--porcelain=v1",
-                "--untracked-files=all",
-            ],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-
-        if status.returncode:
-            errors.append(
-                "successor repair Git status failure"
-            )
-            return approved
-
-        actual_surface = {
-            line[3:]
-            for line in status.stdout.splitlines()
-            if line
-        }
-
-        if actual_surface != full_surface:
-            errors.append(
-                "successor repair working-tree surface mismatch"
-            )
-            return approved
-
-        for relative, expected in entries.items():
-            target = ROOT / relative
-
-            if not target.is_file():
-                errors.append(
-                    "successor repair path missing " + relative
-                )
-                return approved
-
-            actual = hashlib.sha256(
-                target.read_bytes()
-            ).hexdigest()
-
-            if actual != expected:
-                errors.append(
-                    "successor repair SHA256 mismatch " + relative
-                )
-                return approved
-
+        entries = _regression_repair_namespace()[
+            "attested_successor_hashes"
+        ]()
         approved.update(entries)
-
     except Exception as exc:
         errors.append(
-            "successor repair attestation failure: "
-            + str(exc)
+            "successor repair attestation failure: " + str(exc)
         )
 
     return approved

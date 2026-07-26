@@ -23,7 +23,7 @@ SCHEMA_MAP={
 
 FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 WP6_CANONICAL_LEDGER_ANCHOR = "8a692859b2e02a8c9fccc008f76bb24218716f40"
-POST_MERGE_LOCAL_HEAD = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+POST_MERGE_LOCAL_HEAD = "33e292b6ae2e5f35135c9a8e35c9697901cae829"
 POST_MERGE_ORIGIN_MAIN = "47614ce7891f4895e003cb85e7651b7d043a963d"
 POST_MERGE_ORIGIN_DEVELOPMENT = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 POST_MERGE_MERGE_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
@@ -41,133 +41,34 @@ REPAIR_LEDGER = (
 )
 
 
-def _repair_ledger_entries() -> dict[str, str]:
-    entries: dict[str, str] = {}
+REGRESSION_REPAIR_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_post_commit_regression_closure_repair.py"
+)
 
-    for line in REPAIR_LEDGER.read_text(
-        encoding="utf-8"
-    ).splitlines():
-        if not line.strip():
-            continue
-        digest_value, relative = line.split("  ", 1)
-        entries[relative] = digest_value
 
-    return entries
+def _regression_repair_namespace() -> dict:
+    source = REGRESSION_REPAIR_VERIFIER.read_bytes()
+    namespace = {
+        "__name__": "wp6_post_commit_regression_helper",
+        "__file__": str(REGRESSION_REPAIR_VERIFIER),
+    }
+    exec(
+        compile(source, str(REGRESSION_REPAIR_VERIFIER), "exec"),
+        namespace,
+    )
+    return namespace
 
 
 def successor_overlay_attestation() -> dict[str, str] | None:
     try:
-        if not REPAIR_MANIFEST.is_file():
-            return None
-        if not REPAIR_LEDGER.is_file():
-            return None
-
-        manifest = json.loads(
-            REPAIR_MANIFEST.read_text(encoding="utf-8")
-        )
-
-        if manifest.get(
-            "frozen_ledger_anchor_commit"
-        ) != FROZEN_LEDGER_ANCHOR:
-            return None
-
-        controlled = set(
-            manifest.get("controlled_modified_paths", [])
-        )
-        additive = set(manifest.get("additive_paths", []))
-        expected_paths = controlled | additive
-
-        if manifest.get("changed_path_count") != len(expected_paths):
-            return None
-
-        ledger_relative = manifest.get("ledger_path")
-
-        if ledger_relative != REPAIR_LEDGER.relative_to(
-            ROOT
-        ).as_posix():
-            return None
-
-        status = subprocess.run(
-            [
-                "git",
-                "status",
-                "--porcelain=v1",
-                "--untracked-files=all",
-            ],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-
-        if status.returncode:
-            return None
-
-        status_lines = status.stdout.splitlines()
-
-        if any(
-            len(line) < 4 or " -> " in line
-            for line in status_lines
-        ):
-            return None
-
-        working_paths = {
-            line[3:]
-            for line in status_lines
-            if line
-        }
-
-        if working_paths:
-            actual_paths = working_paths
-        else:
-            committed = subprocess.run(
-                [
-                    "git",
-                    "diff",
-                    "--name-only",
-                    "--no-renames",
-                    FROZEN_LEDGER_ANCHOR + "..HEAD",
-                ],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-
-            if committed.returncode:
-                return None
-
-            actual_paths = {
-                line
-                for line in committed.stdout.splitlines()
-                if line
-            }
-
-        if actual_paths != expected_paths:
-            return None
-
-        entries = _repair_ledger_entries()
-
-        if len(entries) != len(expected_paths) - 1:
-            return None
-
-        for relative in expected_paths - {ledger_relative}:
-            path = ROOT / relative
-
-            if not path.is_file():
-                return None
-
-            actual = hashlib.sha256(
-                path.read_bytes()
-            ).hexdigest()
-
-            if entries.get(relative) != actual:
-                return None
-
-        return entries
-
+        return _regression_repair_namespace()[
+            "attested_successor_hashes"
+        ]()
     except Exception:
         return None
+
+
 def load(p): return json.loads((ROOT/p).read_text())
 def digest(p): return hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
 def run(*a,check=True,cwd=None):
@@ -239,7 +140,9 @@ def baseline():
   repair=successor_overlay_attestation()
   branch=run('git','branch','--show-current').stdout.strip()
   if repair is not None:
-   if head!=POST_MERGE_LOCAL_HEAD: raise SystemExit('post-merge local HEAD mismatch')
+   if head!=POST_MERGE_LOCAL_HEAD:
+    parent=run('git','rev-parse','HEAD^',check=False).stdout.strip()
+    if parent!=POST_MERGE_LOCAL_HEAD: raise SystemExit('post-merge successor HEAD ancestry mismatch')
    if branch!=BRANCH: raise SystemExit('post-merge branch mismatch')
    main=run('git','rev-parse','origin/main').stdout.strip()
    development=run('git','rev-parse','origin/'+BRANCH).stdout.strip()

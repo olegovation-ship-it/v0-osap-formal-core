@@ -29,63 +29,24 @@ def parse_ledger(value):
  return entries
 
 
+def _regression_repair_namespace():
+ verifier = (
+  ROOT / "release/v1.4.0/tools/"
+  "verify_wp6_post_commit_regression_closure_repair.py"
+ )
+ namespace = {
+  "__name__": "wp6_post_commit_regression_helper",
+  "__file__": str(verifier),
+ }
+ exec(compile(verifier.read_bytes(), str(verifier), "exec"), namespace)
+ return namespace
+
+
 def repair_overlay_attestation():
  try:
-  manifest = json.loads(
-   REPAIR_MANIFEST.read_text(encoding="utf-8")
-  )
-
-  if manifest.get("baseline_commit") != REPAIR_BASE:
-   return None
-
-  ledger_rel = manifest["ledger_path"]
-  repair = parse_ledger(
-   (ROOT / ledger_rel).read_text(encoding="utf-8")
-  )
-
-  full_surface = set(
-   manifest["controlled_modified_paths"]
-   + manifest["additive_paths"]
-  )
-  ledger_inputs = full_surface - {ledger_rel}
-
-  if set(repair) != ledger_inputs:
-   return None
-
-  status = subprocess.run(
-   [
-    "git",
-    "status",
-    "--porcelain=v1",
-    "--untracked-files=all",
-   ],
-   cwd=ROOT,
-   capture_output=True,
-   text=True,
-   check=False,
-  )
-
-  if status.returncode:
-   return None
-
-  actual_surface = {
-   line[3:]
-   for line in status.stdout.splitlines()
-   if line
-  }
-
-  if actual_surface != full_surface:
-   return None
-
-  for relative, expected in repair.items():
-   target = ROOT / relative
-
-   if not target.is_file():
-    return None
-
-   if digest(target) != expected:
-    return None
-
+  repair = _regression_repair_namespace()[
+   "attested_successor_hashes"
+  ]()
   frozen_rel = LEDGER.relative_to(ROOT).as_posix()
   frozen = subprocess.run(
    ["git", "show", f"{REPAIR_BASE}:{frozen_rel}"],
@@ -94,12 +55,9 @@ def repair_overlay_attestation():
    text=True,
    check=False,
   )
-
   if frozen.returncode:
    return None
-
   return repair, parse_ledger(frozen.stdout)
-
  except Exception:
   return None
 
