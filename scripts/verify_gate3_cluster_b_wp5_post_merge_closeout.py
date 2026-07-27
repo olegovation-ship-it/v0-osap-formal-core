@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess, tempfile
+import argparse, hashlib, importlib.util, json, os, subprocess, tempfile
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
@@ -35,7 +35,30 @@ def _repair_ledger_entries() -> dict[str, str]:
     return entries
 
 
-def successor_overlay_attestation() -> dict[str, str] | None:
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay() -> dict[str, str] | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_wp5_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+
+def previous_repair_overlay_attestation() -> dict[str, str] | None:
     try:
         if not REPAIR_MANIFEST.is_file():
             return None
@@ -148,6 +171,13 @@ def successor_overlay_attestation() -> dict[str, str] | None:
 
     except Exception:
         return None
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    return previous_repair_overlay_attestation()
 
 def replay_wp5_historical_consumers() -> None:
     commands = [

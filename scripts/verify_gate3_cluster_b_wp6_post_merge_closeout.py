@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, subprocess, sys
+import argparse, hashlib, importlib.util, json, subprocess, sys
 from pathlib import Path
 from jsonschema import Draft202012Validator
 
@@ -59,6 +59,29 @@ SUCCESSOR_REPAIR_MANIFEST = (
     / f"release/v1.4.0/{SUCCESSOR_REPAIR_STEM}_MANIFEST.json"
 )
 
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
 REGRESSION_REPAIR_VERIFIER = (
     ROOT / "release/v1.4.0/tools/"
     "verify_wp6_post_commit_regression_closure_repair.py"
@@ -74,6 +97,15 @@ def _regression_repair_namespace():
     exec(compile(source, str(REGRESSION_REPAIR_VERIFIER), "exec"), namespace)
     return namespace
 
+
+
+def successor_overlay_attestation():
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    return _regression_repair_namespace()[
+        "attested_successor_hashes"
+    ]()
 
 def approved_isolation_paths(errors):
     approved = set()
@@ -118,9 +150,7 @@ def approved_isolation_paths(errors):
             )
 
     try:
-        entries = _regression_repair_namespace()[
-            "attested_successor_hashes"
-        ]()
+        entries = successor_overlay_attestation()
         approved.update(entries)
     except Exception as exc:
         errors.append(

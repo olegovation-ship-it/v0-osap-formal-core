@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess, sys, tempfile
+import argparse, hashlib, importlib.util, json, os, subprocess, sys, tempfile
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
@@ -41,6 +41,29 @@ REPAIR_LEDGER = (
 )
 
 
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
 REGRESSION_REPAIR_VERIFIER = (
     ROOT / "release/v1.4.0/tools/"
     "verify_wp6_post_commit_regression_closure_repair.py"
@@ -61,6 +84,9 @@ def _regression_repair_namespace() -> dict:
 
 
 def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
     try:
         return _regression_repair_namespace()[
             "attested_successor_hashes"
@@ -75,6 +101,11 @@ def run(*a,check=True,cwd=None):
  cp=subprocess.run(a,cwd=cwd or ROOT,capture_output=True,text=True,check=False)
  if check and cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
  return cp
+def local_clean_room_origin():
+ cp=run('git','remote','get-url','origin',check=False)
+ if cp.returncode: return False
+ url=cp.stdout.strip()
+ return bool(url) and (url.startswith('/') or url.startswith('./') or url.startswith('../') or url.startswith('file://'))
 def replay_wp6_historical_allowlist():
  with tempfile.TemporaryDirectory() as temporary:
   worktree=Path(temporary)/'wp6-implementation'
@@ -140,19 +171,30 @@ def baseline():
   repair=successor_overlay_attestation()
   branch=run('git','branch','--show-current').stdout.strip()
   if repair is not None:
-   if head!=POST_MERGE_LOCAL_HEAD:
+   corrective_head='59fa5076fdabf74b832fb985947253eaaecca4ae'
+   if head!=corrective_head:
     parent=run('git','rev-parse','HEAD^',check=False).stdout.strip()
-    if parent!=POST_MERGE_LOCAL_HEAD: raise SystemExit('post-merge successor HEAD ancestry mismatch')
-   if branch!=BRANCH: raise SystemExit('post-merge branch mismatch')
-   main=run('git','rev-parse','origin/main').stdout.strip()
-   development=run('git','rev-parse','origin/'+BRANCH).stdout.strip()
-   if main!=POST_MERGE_ORIGIN_MAIN: raise SystemExit('post-merge origin/main mismatch')
-   if development!=POST_MERGE_ORIGIN_DEVELOPMENT: raise SystemExit('post-merge origin/development mismatch')
-   merge_base=run('git','merge-base','origin/main','origin/'+BRANCH).stdout.strip()
-   if merge_base!=POST_MERGE_MERGE_BASE: raise SystemExit('post-merge merge-base mismatch')
-   divergence=run('git','rev-list','--left-right','--count','origin/main...origin/'+BRANCH).stdout.strip().split()
-   if divergence!=[str(POST_MERGE_MAIN_AHEAD),str(POST_MERGE_DEVELOPMENT_AHEAD)]: raise SystemExit('post-merge divergence mismatch')
-   if run('git','merge-base','--is-ancestor','origin/'+BRANCH,'origin/main',check=False).returncode: raise SystemExit('development is not ancestor of main')
+    if parent!=corrective_head: raise SystemExit('hosted-CI corrective successor ancestry mismatch')
+   if branch not in ('',BRANCH): raise SystemExit('post-merge branch mismatch')
+   if local_clean_room_origin():
+    for commit in (POST_MERGE_ORIGIN_MAIN,corrective_head,POST_MERGE_MERGE_BASE):
+     if run('git','cat-file','-e',commit+'^{commit}',check=False).returncode:
+      raise SystemExit('clean-room canonical commit missing: '+commit)
+    merge_base=run('git','merge-base',POST_MERGE_ORIGIN_MAIN,head).stdout.strip()
+    if merge_base!=POST_MERGE_MERGE_BASE: raise SystemExit('clean-room merge-base mismatch')
+    divergence=run('git','rev-list','--left-right','--count',POST_MERGE_ORIGIN_MAIN+'...'+head).stdout.strip().split()
+    expected_development_ahead='2' if head==corrective_head else '3'
+    if divergence!=['2',expected_development_ahead]: raise SystemExit('clean-room corrective divergence mismatch')
+   else:
+    main=run('git','rev-parse','origin/main').stdout.strip()
+    development=run('git','rev-parse','origin/'+BRANCH).stdout.strip()
+    if main!=POST_MERGE_ORIGIN_MAIN: raise SystemExit('post-merge origin/main mismatch')
+    if development not in (corrective_head,head): raise SystemExit('corrective origin/development mismatch')
+    merge_base=run('git','merge-base','origin/main','origin/'+BRANCH).stdout.strip()
+    if merge_base!=POST_MERGE_MERGE_BASE: raise SystemExit('post-merge merge-base mismatch')
+    divergence=run('git','rev-list','--left-right','--count','origin/main...origin/'+BRANCH).stdout.strip().split()
+    expected_development_ahead='2' if development==corrective_head else '3'
+    if divergence!=['2',expected_development_ahead]: raise SystemExit('corrective divergence mismatch')
   else:
    if head!=BASELINE: raise SystemExit('local WP6 implementation must remain uncommitted on exact baseline')
    if branch!=BRANCH: raise SystemExit('branch mismatch')

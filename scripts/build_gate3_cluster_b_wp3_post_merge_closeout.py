@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, subprocess
+import argparse, hashlib, importlib.util, json, subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 LEDGER=ROOT/'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt'
@@ -8,6 +8,29 @@ INPUTS=['.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml', 'docs/g
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def canonical(p):
  obj=json.loads(p.read_text(encoding='utf-8')); return p.read_text(encoding='utf-8')==json.dumps(obj,indent=2,sort_keys=True,ensure_ascii=False)+'\n'
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
 REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 REPAIR_STEM = (
  "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
@@ -44,9 +67,11 @@ def _regression_repair_namespace():
 
 def repair_overlay_attestation():
  try:
-  repair = _regression_repair_namespace()[
-   "attested_successor_hashes"
-  ]()
+  repair = hosted_ci_corrective_overlay()
+  if repair is None:
+   repair = _regression_repair_namespace()[
+    "attested_successor_hashes"
+   ]()
   frozen_rel = LEDGER.relative_to(ROOT).as_posix()
   frozen = subprocess.run(
    ["git", "show", f"{REPAIR_BASE}:{frozen_rel}"],

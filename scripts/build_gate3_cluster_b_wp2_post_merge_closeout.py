@@ -15,6 +15,29 @@ LEDGER_INPUTS = ['.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
 VERIFY = ROOT / "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py"
 
 
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
 REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 REPAIR_STEM = (
     "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
@@ -52,9 +75,11 @@ def _regression_repair_namespace() -> dict:
 def repair_overlay_attestation(
 ) -> tuple[dict[str, str], dict[str, str]] | None:
     try:
-        repair = _regression_repair_namespace()[
-            "attested_successor_hashes"
-        ]()
+        repair = hosted_ci_corrective_overlay()
+        if repair is None:
+            repair = _regression_repair_namespace()[
+                "attested_successor_hashes"
+            ]()
         ledger_rel = LEDGER.relative_to(ROOT).as_posix()
         frozen = subprocess.run(
             ["git", "show", f"{REPAIR_BASE}:{ledger_rel}"],

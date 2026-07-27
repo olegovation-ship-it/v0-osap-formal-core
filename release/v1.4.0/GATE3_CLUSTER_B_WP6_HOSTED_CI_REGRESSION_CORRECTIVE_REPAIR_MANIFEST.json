@@ -1,0 +1,130 @@
+{
+  "additive_path_count": 6,
+  "additive_paths": [
+    "docs/gate3/cluster_b/WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py",
+    "tests/test_gate3_cluster_b_wp6_hosted_ci_regression_corrective_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_MANIFEST",
+  "branch": "v1.4.0-development",
+  "canonical_wp6_head": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+  "changed_path_count": 20,
+  "controlled_input_sha256": {
+    "release/v1.4.0/tools/patch_wp6_allowlist.py": "22c59fa0bef01bd73c3a76f4fd14876aee7d54d98621ecd4b3ac3f73c67d878b",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py": "523d5f5ff432f89f4afe6713b2bc8c857449f3c2a2e5dbe5287019278343d5e9",
+    "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py": "014c9d6a567d25b2ac24ea15659f16c626cf4b22740c1cf97818ac026fe0b69b",
+    "scripts/build_gate3_cluster_b_wp2.py": "7d4399173f9a44b13db8e91fe74016ba20105656ac9739356cd8b967475d0dca",
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py": "f7f11105a45f848bc2abea30eadeb54a67f0842a9d2f555be5c094fa9c8c1f01",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py": "7e845d64fd2b258207874a5a8b7f9016324270d4af645fe693caa3a246f907fd",
+    "scripts/build_gate3_cluster_b_wp6.py": "0750110a8c3c029b619070ec11e0f378293beac4d05da6d975fcd71314fdb467",
+    "scripts/verify_gate3_cluster_b_wp2.py": "af2825416190671bf664407e696cccd91436eb0cd75da8e9c87458b2e909d106",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py": "b570aeedd5481081ccdc5da22ffbba3740eef76b076ea390694b832cd495968a",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py": "f2e54e311b8cbc7448f90b4a297ae1bea8afa702f7ed6f603efbef386e2ee41d",
+    "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py": "fef49df9b1688e57855932626b7f37ede510723b028bbee85a6c3f18f6568a2d",
+    "scripts/verify_gate3_cluster_b_wp6.py": "2c89e438abfa0ec79643d6ae1ce8357492fc5333b31fe400326bb8c999d9172f",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py": "8f5e69b297653af44b6148f740d20a02f69a4ba068f6d9dbdf9ada73b4ee2b55",
+    "scripts/verify_v1_3_0_post_merge_legacy_lifecycle_compatibility.py": "8d954a01dc8e08ead4950b029057d7bfb445d6a4087ece8af838f0761a2bd9cb"
+  },
+  "controlled_modified_path_count": 14,
+  "controlled_modified_paths": [
+    "release/v1.4.0/tools/patch_wp6_allowlist.py",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py",
+    "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py",
+    "scripts/build_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
+    "scripts/verify_v1_3_0_post_merge_legacy_lifecycle_compatibility.py"
+  ],
+  "controlled_output_sha256": {
+    "release/v1.4.0/tools/patch_wp6_allowlist.py": "e6d9e40c16d5935bd197b27798464383aa556da329decacea69298a507ba69e4",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py": "08afbe6be695ba27cf41994d147b7481b8ab5224f280733f10ed6e71c416ec0e",
+    "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py": "2b6610f610d992f31e72deeecc3b1ae8e3a42c43ffe495a00a2c0a64d6e5a3ad",
+    "scripts/build_gate3_cluster_b_wp2.py": "53c9bb538bc47110ec6ef8d60b76b88c07f924680bf35ec816907b3a646a111b",
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py": "a8bc44d4553565748b4ecb0d27cd47560f632f8eef5bcbbc3c97e1c0dbca27ea",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py": "6fe6c78f07e3d496f416b75fe9d24abd143c43d8d769288e2a03dcfefb9f1de5",
+    "scripts/build_gate3_cluster_b_wp6.py": "d7eef3aef130b0096e5adb09a713668c58532e0a3a751bf46ebc4d44020333e9",
+    "scripts/verify_gate3_cluster_b_wp2.py": "34db6a37e88807610def4ec81e1f964a9937d4ee5a782b79051110f56537efb9",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py": "e6b542d83b37dbeca00c8e3b755976d817b504ecf879cdd3f8bbb6296ca3e936",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py": "06ddd9de4f2dec905ed2f6472f024c6d882090452ae2e15074b420f7ddde6717",
+    "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py": "9456a6ae3e23d78b2a4b28c1b2e7f8319bc762c9617a4720cbfdc7ca8cda7174",
+    "scripts/verify_gate3_cluster_b_wp6.py": "e9d3795c2904e2681aba2e3de832ff4182137f7015e3899aadc8976b6c551e12",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py": "373108a4f9e9eee06bfbaf90347d03b9459267f0ab7514446480ebf9f23002dc",
+    "scripts/verify_v1_3_0_post_merge_legacy_lifecycle_compatibility.py": "b8ddff22069eb8806927d5fc40eab029ed875a43e4302afaf3f3a1ed8058e3f1"
+  },
+  "frozen_paths": [
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_SHA256SUMS.txt"
+  ],
+  "ledger_entry_count": 19,
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "observed_hosted_ci": {
+    "failed_jobs": 3,
+    "head_sha": "59fa5076fdabf74b832fb985947253eaaecca4ae",
+    "pending_jobs": 0,
+    "run_number": 12,
+    "successful_jobs": 7,
+    "total_jobs": 10,
+    "workflow": "V0 OSAP Gate 3 Cluster B WP6 Audit"
+  },
+  "observed_v0_1_clean_room": {
+    "deselected": 3,
+    "duration_seconds": 50.1,
+    "failed": 9,
+    "failure_classes": [
+      "WP2_CANONICAL_BUILD_CURRENTNESS",
+      "WP2_CANONICAL_PACKAGE_VERIFIER",
+      "WP2_POST_MERGE_SUCCESSOR_LEDGER",
+      "WP2_POST_MERGE_DETERMINISTIC_BUILD",
+      "WP3_POST_MERGE_SUCCESSOR_LEDGER",
+      "WP3_POST_MERGE_DETERMINISTIC_BUILD",
+      "WP6_CANONICAL_LEDGER_RECOGNITION",
+      "WP6_POST_MERGE_PACKAGE_VERIFIER",
+      "WP5_SURFACED_WP6_FULL_VERIFIER_DUPLICATE"
+    ],
+    "passed": 154,
+    "skipped": 6
+  },
+  "observed_v0_2_clean_room": {
+    "deselected": 3,
+    "duration_seconds": 56.04,
+    "failed": 2,
+    "failure_classes": [
+      "WP5_POST_MERGE_EFFECTIVE_DIGEST_SUCCESSOR_NONRECOGNITION",
+      "WP6_FULL_VERIFIER_LOCAL_CLEAN_ROOM_ORIGIN_MAIN_BOUNDARY_MISMATCH"
+    ],
+    "passed": 159,
+    "skipped": 6
+  },
+  "pre_repair_head": "59fa5076fdabf74b832fb985947253eaaecca4ae",
+  "pre_repair_parent": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+  "previous_repair_parent": "ba32d8e855a79461fdcda14740acab86aafcb17a",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "residual_consumer_delta": {
+    "already_controlled_path_refined": "scripts/verify_gate3_cluster_b_wp6.py",
+    "frozen_evidence_paths_added": 0,
+    "new_controlled_path": "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py"
+  },
+  "supersedes_package_version": "0.2",
+  "topology_policy": {
+    "committed": "ONE_ORDINARY_CHILD_WITH_EXACT_PARENT_AND_EXACT_20_PATH_DIFF",
+    "prepared_uncommitted": "EXACT_PRE_REPAIR_HEAD_14_UNSTAGED_MODIFIED_6_UNTRACKED_ADDITIVE"
+  },
+  "version": "0.3"
+}

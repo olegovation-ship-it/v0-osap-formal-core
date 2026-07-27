@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess
+import argparse, hashlib, importlib.util, json, os, subprocess
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
@@ -41,6 +41,29 @@ def validate_records():
  man=load('release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json')
  if man.get('schema_count')!=5 or man.get('document_count')!=5: errors.append('schema bundle mismatch')
  return errors
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
 REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
 REPAIR_STEM = (
  "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
@@ -65,6 +88,9 @@ def _regression_repair_namespace():
 
 
 def repair_overlay_attestation():
+ layered = hosted_ci_corrective_overlay()
+ if layered is not None:
+  return layered
  try:
   return _regression_repair_namespace()[
    "attested_successor_hashes"

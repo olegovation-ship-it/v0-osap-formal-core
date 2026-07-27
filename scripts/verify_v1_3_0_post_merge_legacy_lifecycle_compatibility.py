@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import subprocess
 import sys
@@ -25,6 +26,27 @@ REPAIR_MANIFEST = (
 REPAIR_LEDGER = (
     ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
 )
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay() -> dict[str, str] | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_legacy",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
 
 
 def _repair_ledger_entries() -> dict[str, str]:
@@ -42,6 +64,9 @@ def _repair_ledger_entries() -> dict[str, str]:
 
 
 def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
     try:
         if not REPAIR_MANIFEST.is_file():
             return None

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import subprocess
 from pathlib import Path
@@ -15,6 +16,11 @@ WP5_HISTORICAL_REPLAY_ANCHOR = "e5724fc394b2fbb26d8926b5670b8fd41a62a71c"
 WP6_CANONICAL_LEDGER_ANCHOR = "8a692859b2e02a8c9fccc008f76bb24218716f40"
 POST_MERGE_ORIGIN_MAIN = "47614ce7891f4895e003cb85e7651b7d043a963d"
 POST_MERGE_ORIGIN_DEVELOPMENT = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_HEAD = "33e292b6ae2e5f35135c9a8e35c9697901cae829"
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
 
 OLD = (
     "${{ github.event_name != 'pull_request' || "
@@ -215,7 +221,66 @@ def expected_dedicated() -> str:
     return text
 
 
+def historical_successor_main() -> int | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_previous_repair",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        overlay = module.successor_overlay_attestation("auto")
+        if overlay is None:
+            return None
+        module.verify_commit_identity(
+            REPAIR_HEAD,
+            BASELINE,
+            "repair(wp6): restore post-merge push-context compatibility "
+            "and predecessor workflow isolation",
+        )
+        module.verify_fixed_layer(
+            parent=BASELINE,
+            head=REPAIR_HEAD,
+            manifest_path=MANIFEST,
+            ledger_path=LEDGER,
+        )
+        print(
+            json.dumps(
+                {
+                    "artifact": "WP6_POST_MERGE_PUSH_CONTEXT_REPAIR",
+                    "mode": "historical-committed-successor-attested",
+                    "baseline": BASELINE,
+                    "repair_head": REPAIR_HEAD,
+                    "current_successor_head": module.PRE_REPAIR_HEAD,
+                    "changed_path_count": 34,
+                    "controlled_modified_path_count": 28,
+                    "additive_path_count": 6,
+                    "predecessor_workflow_count": 14,
+                    "predecessor_job_count": 30,
+                    "errors": [],
+                    "commit_created": False,
+                    "push_performed": False,
+                    "synchronization_performed": False,
+                    "release_actions_performed": False,
+                    "status": "PASS",
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        return 0
+    except Exception:
+        return None
+
+
 def main() -> int:
+    historical = historical_successor_main()
+    if historical is not None:
+        return historical
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--mode",

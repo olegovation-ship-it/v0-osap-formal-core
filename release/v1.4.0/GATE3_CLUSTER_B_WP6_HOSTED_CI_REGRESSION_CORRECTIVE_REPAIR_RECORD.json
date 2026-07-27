@@ -1,0 +1,95 @@
+{
+  "additive_paths": [
+    "docs/gate3/cluster_b/WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py",
+    "tests/test_gate3_cluster_b_wp6_hosted_ci_regression_corrective_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR",
+  "authorization_firewall": {
+    "amend": false,
+    "branch_deletion": false,
+    "commit": false,
+    "doi": false,
+    "extraction": false,
+    "force_push": false,
+    "gate3_close": false,
+    "github_release": false,
+    "history_rewrite": false,
+    "merge": false,
+    "pr_creation": false,
+    "push": false,
+    "rebase": false,
+    "staging": false,
+    "synchronization": false,
+    "tag": false,
+    "v1_4_0_release_decision": false,
+    "workflow_rerun": false,
+    "zenodo": false
+  },
+  "branch": "v1.4.0-development",
+  "controlled_modified_paths": [
+    "release/v1.4.0/tools/patch_wp6_allowlist.py",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py",
+    "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py",
+    "scripts/build_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
+    "scripts/verify_v1_3_0_post_merge_legacy_lifecycle_compatibility.py"
+  ],
+  "date": "2026-07-27",
+  "observed_v0_1_clean_room": {
+    "deselected": 3,
+    "duration_seconds": 50.1,
+    "failed": 9,
+    "failure_classes": [
+      "WP2_CANONICAL_BUILD_CURRENTNESS",
+      "WP2_CANONICAL_PACKAGE_VERIFIER",
+      "WP2_POST_MERGE_SUCCESSOR_LEDGER",
+      "WP2_POST_MERGE_DETERMINISTIC_BUILD",
+      "WP3_POST_MERGE_SUCCESSOR_LEDGER",
+      "WP3_POST_MERGE_DETERMINISTIC_BUILD",
+      "WP6_CANONICAL_LEDGER_RECOGNITION",
+      "WP6_POST_MERGE_PACKAGE_VERIFIER",
+      "WP5_SURFACED_WP6_FULL_VERIFIER_DUPLICATE"
+    ],
+    "passed": 154,
+    "skipped": 6
+  },
+  "observed_v0_2_clean_room": {
+    "deselected": 3,
+    "duration_seconds": 56.04,
+    "failed": 2,
+    "failure_classes": [
+      "WP5_POST_MERGE_EFFECTIVE_DIGEST_SUCCESSOR_NONRECOGNITION",
+      "WP6_FULL_VERIFIER_LOCAL_CLEAN_ROOM_ORIGIN_MAIN_BOUNDARY_MISMATCH"
+    ],
+    "passed": 159,
+    "skipped": 6
+  },
+  "pre_repair_head": "59fa5076fdabf74b832fb985947253eaaecca4ae",
+  "pre_repair_parent": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+  "repair_policy": {
+    "current_bytes": "ACCEPT_ONLY_EXACT_V0_3_LAYERED_SHA256_ATTESTATION",
+    "frozen_ledgers_rewritten": false,
+    "frozen_replay": "SELECT_HISTORICAL_DIGEST_FOR_ATTESTED_CURRENT_CONSUMER",
+    "historical_records_rewritten": false,
+    "local_clean_room_boundary": "IMMUTABLE_COMMIT_MERGE_BASE_AND_DIVERGENCE_FOR_LOCAL_PATH_ORIGIN_ONLY",
+    "normal_remote_boundary": "EXACT_ORIGIN_MAIN_AND_DEVELOPMENT_REFS_RETAINED",
+    "proof_sources_modified": false,
+    "release_publication_evidence_modified": false
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "status": "PREPARED_OUTSIDE_REPOSITORY",
+  "supersedes_package_version": "0.2",
+  "version": "0.3"
+}
