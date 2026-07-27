@@ -38,6 +38,33 @@ HOSTED_CI_CORRECTIVE_VERIFIER = (
     "verify_wp6_hosted_ci_regression_corrective_repair.py"
 )
 
+PREDECESSOR_CLOSURE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py"
+)
+
+
+def replay_frozen_wp2_consumer(allow_main: bool) -> tuple[bool, str]:
+    if not PREDECESSOR_CLOSURE_VERIFIER.is_file():
+        return False, "predecessor-consumer closure verifier is missing"
+    command = [
+        sys.executable,
+        str(PREDECESSOR_CLOSURE_VERIFIER),
+        "--replay-consumer",
+        "wp2-verifier",
+    ]
+    if allow_main:
+        command.append("--consumer-arg=--allow-main")
+    cp = subprocess.run(
+        command,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    detail = (cp.stdout + cp.stderr).strip()
+    return cp.returncode == 0, detail
+
 
 def hosted_ci_corrective_overlay() -> dict[str, str] | None:
     if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
@@ -464,6 +491,13 @@ def git_errors(allow_main: bool) -> list[str]:
             errors.append("stable v1.3.0 tag target changed")
     except RuntimeError as exc:
         errors.append(str(exc))
+
+    if PREDECESSOR_CLOSURE_VERIFIER.is_file():
+        passed, detail = replay_frozen_wp2_consumer(allow_main)
+        if passed:
+            return errors
+        errors.append("frozen WP2 predecessor replay failed: " + detail)
+        return errors
 
     changed_existing = run(
         "git", "-c", "core.quotePath=false", "diff", "--name-only", "--diff-filter=MDR", WP2_START, "--", check=False

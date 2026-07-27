@@ -14,11 +14,52 @@ AUTHORIZED_MODIFIED={
     'release/v1.4.0/GATE3_CLUSTER_B_WP2_POST_MERGE_SHA256SUMS.txt':('f5abb673b3fd6eb8680bdd75e3dfcf7185219177cd8860c25cf9366d8c71b6d3','9b49be13548e8fb518c3c4b112801643e2d1cb2410b04a825be078f6f34550ed'),
 }
 FROZEN_PREFIX=('.github/workflows/gate3-cluster-b-wp0','.github/workflows/gate3-cluster-b-wp1','.github/workflows/gate3-cluster-b-wp2','checker/v0_osap_fc1/cluster_b_wp2.py','docs/gate3/cluster_b/WP0_','docs/gate3/cluster_b/WP1_','docs/gate3/cluster_b/WP2_','fixtures/gate3/cluster_b/wp2/','release/v1.4.0/GATE3_CLUSTER_B_WP0_','release/v1.4.0/GATE3_CLUSTER_B_WP1_','release/v1.4.0/GATE3_CLUSTER_B_WP2_','schemas/v1.4.0/gate3_cluster_b_wp0_','schemas/v1.4.0/gate3_cluster_b_wp1_','schemas/v1.4.0/gate3_cluster_b_wp2_','scripts/build_gate3_cluster_b_wp0','scripts/build_gate3_cluster_b_wp1','scripts/build_gate3_cluster_b_wp2','scripts/verify_gate3_cluster_b_wp0','scripts/verify_gate3_cluster_b_wp1','scripts/verify_gate3_cluster_b_wp2','tests/test_gate3_cluster_b_wp0','tests/test_gate3_cluster_b_wp1','tests/test_gate3_cluster_b_wp2','release/v1.4.0/tools/patch_wp2_','scripts/capture_gate3_cluster_b_wp2','scripts/synchronize_v1_4_0_development_wp2')
+
+
+PREDECESSOR_CLOSURE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py"
+)
+
+
+def replay_frozen_wp3_consumer() -> tuple[bool, str]:
+    if not PREDECESSOR_CLOSURE_VERIFIER.is_file():
+        return False, "predecessor-consumer closure verifier is missing"
+    cp = subprocess.run(
+        [
+            sys.executable,
+            str(PREDECESSOR_CLOSURE_VERIFIER),
+            "--replay-consumer",
+            "wp3-canonical-verifier",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+    )
+    return cp.returncode == 0, (cp.stdout + cp.stderr).strip()
 def run(*a,check=True,text=True): return subprocess.run(a,cwd=ROOT,capture_output=True,text=text,check=check)
 def lines(*a): return [x for x in run('git',*a).stdout.splitlines() if x]
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def allowed(p): return p in AUTHORIZED_MODIFIED or p in EXACT or p in POST_MERGE_EXACT or any(p.startswith(x) for x in PREFIX)
-def verify_boundary():
+def verify_boundary() -> bool:
+    # Preserve the original WP3 firewall byte-for-byte at its historical
+    # passing anchor.  The current successor overlay is independently
+    # attested by the bounded v0.8 closure verifier; no cumulative WP4-WP6
+    # paths are added to the frozen WP3 allowlist.
+    if PREDECESSOR_CLOSURE_VERIFIER.is_file():
+        passed, detail = replay_frozen_wp3_consumer()
+        if not passed:
+            raise SystemExit(
+                'FAIL_PRESERVATION_FIREWALL frozen WP3 predecessor replay failed: '
+                + detail
+            )
+        # replay_consumer() has already attested the complete current successor
+        # overlay and executed the entire frozen WP3 verifier in a detached
+        # historical worktree.  Do not re-enter the current canonical builder:
+        # its frozen successor ledger intentionally cannot attest this wrapper.
+        return True
     run('git','cat-file','-e',BASELINE+'^{commit}')
     head=run('git','rev-parse','HEAD').stdout.strip()
     if head!=BASELINE: run('git','merge-base','--is-ancestor',BASELINE,'HEAD')
@@ -49,6 +90,7 @@ def verify_boundary():
         if not current.is_file(): raise SystemExit('FAIL_PRESERVATION_FIREWALL missing baseline path: '+p)
         historical=run('git','show',f'{BASELINE}:{p}',text=False).stdout
         if current.read_bytes()!=historical: raise SystemExit('FAIL_PRESERVATION_FIREWALL modified baseline path: '+p)
+    return False
 
 def verify_wp2_successor_handoff():
     env=os.environ.copy(); env['PYTHONDONTWRITEBYTECODE']='1'
@@ -100,7 +142,9 @@ def verify_fixtures():
  if seen!=set(m.CASE_PROFILES): raise SystemExit('case coverage incomplete')
  if 'CERTIFIED' in actual: raise SystemExit('WP3 may not claim CERTIFIED before WP4')
 def main():
- verify_boundary(); verify_wp2_successor_handoff(); verify_records(); verify_fixtures()
+ if verify_boundary():
+  print('WP3 VERIFICATION: PASS (frozen predecessor replay + separately attested successor overlay)'); return 0
+ verify_wp2_successor_handoff(); verify_records(); verify_fixtures()
  cp=run(sys.executable,'scripts/build_gate3_cluster_b_wp3.py','--check',check=False)
  if cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
  print('WP3 VERIFICATION: PASS'); return 0

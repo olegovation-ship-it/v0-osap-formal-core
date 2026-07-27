@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import subprocess
 from pathlib import Path
@@ -33,6 +34,28 @@ CURRENT_LEDGER = f"release/v1.4.0/{CURRENT_STEM}_SHA256SUMS.txt"
 CURRENT_DOC = "docs/gate3/cluster_b/WP6_HOSTED_CI_REGRESSION_CORRECTIVE_REPAIR.md"
 CURRENT_VERIFIER = "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py"
 CURRENT_TEST = "tests/test_gate3_cluster_b_wp6_hosted_ci_regression_corrective_repair.py"
+
+NEXT_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py"
+)
+
+
+def next_layer_attestation(mode: str) -> dict[str, str] | None:
+    if not NEXT_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_predecessor_consumer_closure_successor",
+            NEXT_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation(mode)
+    except Exception:
+        return None
 
 CONTROLLED = [
     'release/v1.4.0/tools/patch_wp6_allowlist.py',
@@ -314,6 +337,9 @@ def verify_frozen_paths_unchanged() -> None:
 
 
 def successor_overlay_attestation(mode: str = "auto") -> dict[str, str] | None:
+    successor = next_layer_attestation(mode)
+    if successor is not None:
+        return successor
     try:
         if mode == "auto":
             mode = detect_mode()
