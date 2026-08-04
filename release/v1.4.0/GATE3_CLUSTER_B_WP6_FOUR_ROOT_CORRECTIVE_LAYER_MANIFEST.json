@@ -1,0 +1,481 @@
+{
+  "additive_path_count": 5,
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+    "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER",
+  "branch": "v1.4.0-development",
+  "byte_contract": {
+    "additive_path_predecessor_absence_required": true,
+    "encoding": "UTF-8",
+    "file_mode": "100644",
+    "line_endings": "LF",
+    "modified_path_derivation": "EXACT_ORDERED_UNIQUE_REPLACEMENT_FROM_PINNED_PREDECESSOR_BLOB",
+    "trailing_newline_required": true
+  },
+  "historical_artifact_policy": {
+    "canonical_ledgers_rewritten": false,
+    "frozen_builders_rewritten": false,
+    "frozen_verifiers_rewritten": false,
+    "historical_records_rewritten": false,
+    "release_or_publication_actions_authorized": false
+  },
+  "historical_overlay": {
+    "application_environment": "DISPOSABLE_REPLAY_ONLY",
+    "base": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+    "expected_path_count": 30,
+    "pathset_sha256": "be83d9ad87a96584db78e7250f832400b0950a64bc11612e8cf1428465e25b33",
+    "source": "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9"
+  },
+  "ledger_attested_path_count": 4,
+  "ledger_attested_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+    "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+    "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+  ],
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "modified_path_count": 3,
+  "modified_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+    ".github/workflows/gate3-cluster-b-wp6.yml"
+  ],
+  "path_roles": [
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+      "role": "frozen successor-attestation context adapter with explicit replay-matrix job",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+      "role": "historical overlay and nested dependency adapter",
+      "roots": [
+        "ROOT_2",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6.yml",
+      "role": "accepted-anchor full replay adapter",
+      "roots": [
+        "ROOT_1",
+        "ROOT_3"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+      "role": "push and pull-request hosted-CI proof",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+      "role": "normative exact-byte and replay contract implementation",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+      "role": "self-excluding deterministic SHA-256 ledger",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+      "role": "exact transforms, detached-worktree overlay replay, full replay, CLI, and immutability verifier",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py",
+      "role": "positive, negative, and detached-worktree replay-harness regression",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    }
+  ],
+  "predecessor": {
+    "commit": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+    "parent": "e1b3928c0759e2ed61624dabf4cbc505982c379f",
+    "title": "repair(wp6): integrate successor-consumer corrective layer"
+  },
+  "replacement_count": 8,
+  "replay_anchors": {
+    "successor_attestation_head": "e1b3928c0759e2ed61624dabf4cbc505982c379f",
+    "wp6_accepted": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+    "wp6_baseline": "b3798367af960ff3b588778966c5e233d89e72ab",
+    "wp6_post_merge_closeout": "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9",
+    "wp6_post_merge_repair": "33e292b6ae2e5f35135c9a8e35c9697901cae829"
+  },
+  "replay_groups": {
+    "successor-attestation": {
+      "anchor": "e1b3928c0759e2ed61624dabf4cbc505982c379f",
+      "jobs": {
+        "replay-matrix": {
+          "cli_invocation": [
+            "--mode",
+            "committed",
+            "--replay-workflow",
+            "successor-attestation",
+            "--job",
+            "replay-matrix"
+          ],
+          "commands": [
+            [
+              "python",
+              "release/v1.4.0/tools/verify_wp6_successor_attestation_layer.py",
+              "--mode",
+              "committed",
+              "--verify-replay-matrix"
+            ]
+          ]
+        }
+      }
+    },
+    "wp6-audit": {
+      "jobs": {
+        "baseline-lock": {
+          "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+          "commands": [
+            [
+              "python",
+              "scripts/verify_gate3_cluster_b_wp6.py",
+              "--job",
+              "baseline-lock"
+            ]
+          ]
+        },
+        "decision-firewall": {
+          "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+          "commands": [
+            [
+              "python",
+              "release/v1.4.0/tools/patch_wp6_allowlist.py"
+            ],
+            [
+              "python",
+              "scripts/verify_gate3_cluster_b_wp6.py",
+              "--job",
+              "decision-firewall"
+            ],
+            [
+              "git",
+              "diff",
+              "--check",
+              "b3798367af960ff3b588778966c5e233d89e72ab",
+              "--"
+            ]
+          ]
+        },
+        "replay-claims": {
+          "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+          "commands": [
+            [
+              "python",
+              "scripts/replay_gate3_cluster_b_wp6.py",
+              "--check"
+            ],
+            [
+              "python",
+              "scripts/verify_gate3_cluster_b_wp6.py",
+              "--job",
+              "replay-claims"
+            ]
+          ]
+        },
+        "schemas-fixtures-python": {
+          "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+          "commands": [
+            [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "--deselect",
+              "tests/test_gate3_cluster_b_wp5_post_merge_closeout.py::test_wp5_post_merge_closeout"
+            ]
+          ]
+        }
+      }
+    },
+    "wp6-post-merge": {
+      "jobs": {
+        "closeout-verifier": {
+          "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+          "commands": [
+            [
+              "python",
+              "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
+              "--package-only"
+            ]
+          ],
+          "overlay_required": true
+        },
+        "dedicated-tests": {
+          "phases": [
+            {
+              "anchor": "8a692859b2e02a8c9fccc008f76bb24218716f40",
+              "commands": [
+                [
+                  "python",
+                  "-m",
+                  "pytest",
+                  "-q",
+                  "-p",
+                  "no:cacheprovider",
+                  "tests/test_gate3_cluster_b_wp6_post_merge_closeout.py"
+                ]
+              ],
+              "overlay_required": true
+            },
+            {
+              "anchor": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+              "commands": [
+                [
+                  "python",
+                  "-m",
+                  "pytest",
+                  "-q",
+                  "-p",
+                  "no:cacheprovider",
+                  "tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py",
+                  "tests/test_gate3_cluster_b_wp6_post_merge_push_context_repair.py"
+                ]
+              ],
+              "overlay_required": false
+            }
+          ]
+        },
+        "hosted-ci-context-repair": {
+          "anchor": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+          "commands": [
+            [
+              "python",
+              "release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py",
+              "--ci"
+            ],
+            [
+              "python",
+              "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py",
+              "--mode",
+              "committed"
+            ]
+          ],
+          "runtime_dependencies": [
+            "pytest",
+            "jsonschema"
+          ]
+        }
+      }
+    }
+  },
+  "root_coverage": {
+    "ROOT_1": {
+      "paths": [
+        ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+        ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+        ".github/workflows/gate3-cluster-b-wp6.yml",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+        "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+        "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+      ],
+      "status": "COMPLETE"
+    },
+    "ROOT_2": {
+      "paths": [
+        ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+        ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+        "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+        "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+      ],
+      "status": "COMPLETE"
+    },
+    "ROOT_3": {
+      "paths": [
+        ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+        ".github/workflows/gate3-cluster-b-wp6.yml",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+        "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+        "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+      ],
+      "status": "COMPLETE"
+    },
+    "ROOT_4": {
+      "paths": [
+        ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+        ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json",
+        "release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt",
+        "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+        "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+      ],
+      "status": "COMPLETE"
+    }
+  },
+  "total_path_count": 8,
+  "transformations": [
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "4b953e258361f730b96953779ba639177ddc1cf5",
+      "replacement_count": 3,
+      "replacements": [
+        {
+          "new": "          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job closeout-verifier\n",
+          "new_sha256": "b66448ef7f6420ef7ededd558c81dd997ed0e56b8acec919f5e753789c0efcf6",
+          "old": "          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job closeout-verifier\n",
+          "old_sha256": "d95f0bc80c8d22f2880c98b99ad396641e92f26f2a7fd696f807d6fa87a539a2",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1,
+          "role": "route frozen closeout verification through historical untracked overlay reconstruction",
+          "roots": [
+            "ROOT_2"
+          ]
+        },
+        {
+          "new": "          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job dedicated-tests\n",
+          "new_sha256": "fde11a672a03204709a818e8f06a04c5499e8bd2545c75d4bfb8f4bca24d9829",
+          "old": "          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job dedicated-tests\n",
+          "old_sha256": "d574414ae734bc486e51dd1fbd0674debf89982de0396b284b442a8c1b9f8583",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1,
+          "role": "split frozen closeout regression from successor repair regressions",
+          "roots": [
+            "ROOT_2"
+          ]
+        },
+        {
+          "new": "  hosted-ci-context-repair:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with: {fetch-depth: 0}\n      - uses: actions/setup-python@v5\n        with: {python-version: '3.12'}\n      - name: Install exact nested replay dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Replay frozen WP6 hosted-CI context repair through four-root corrective layer\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job hosted-ci-context-repair\n",
+          "new_sha256": "2d15c4db163fa0f1ca78272739a8975ce0f62ded117cac3a5511555f3b2e82d0",
+          "old": "  hosted-ci-context-repair:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with: {fetch-depth: 0}\n      - uses: actions/setup-python@v5\n        with: {python-version: '3.12'}\n      - name: Replay frozen WP6 hosted-CI context repair\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job hosted-ci-context-repair\n",
+          "old_sha256": "8852eb52192c09f0689ce6430baaf09d09dada335c594235f2b9e35a63003ed6",
+          "ordinal": 3,
+          "predecessor_anchor_count": 1,
+          "role": "route hosted-context replay and install pytest plus jsonschema",
+          "roots": [
+            "ROOT_2",
+            "ROOT_4"
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+      "predecessor_blob_sha1": "952e01b88485c09b5529f1079cff3e2ae724dede",
+      "replacement_count": 1,
+      "replacements": [
+        {
+          "new": "      - name: Verify predecessor boundary, four-root derivation, and replay matrix\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow successor-attestation\n          --job replay-matrix\n",
+          "new_sha256": "522935ebbdece0c3593f88eb583b70553ac4f6688133724d9a2b98f1984d88e5",
+          "old": "      - name: Verify predecessor boundary, four-root derivation, and replay matrix\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_attestation_layer.py\n          --mode committed\n          --verify-replay-matrix\n",
+          "old_sha256": "16d1580e8d7ef6e7750b6be282e1520adff3faf308500f26214400a4e5573e43",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1,
+          "role": "isolate frozen successor-attestation replay from cumulative current-head surface and invoke explicit replay-matrix job",
+          "roots": [
+            "ROOT_1"
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6.yml",
+      "predecessor_blob_sha1": "029b1c233868b6edc2529a9cded8da81188ecfdf",
+      "replacement_count": 4,
+      "replacements": [
+        {
+          "new": "      - name: Replay frozen WP6 baseline lock through four-root corrective layer\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-audit\n          --job baseline-lock\n",
+          "new_sha256": "beddfd7997cba54f8a4999df6574564c70bc3329a01500b71bb22eb4e38adf8f",
+          "old": "      - run: |\n          python scripts/verify_gate3_cluster_b_wp6.py --job baseline-lock\n",
+          "old_sha256": "9e8fc7f53b9251e5eda0a7b69060facdc27f653deb4aa6a71b0c352327743a33",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1,
+          "role": "replay baseline lock at exact accepted WP6 anchor",
+          "roots": [
+            "ROOT_1",
+            "ROOT_3"
+          ]
+        },
+        {
+          "new": "      - name: Replay frozen WP6 Python regression through four-root corrective layer\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-audit\n          --job schemas-fixtures-python\n",
+          "new_sha256": "d57599cb3e2e8682e03b6bf58dc2cb69c8438e710278ee95d46c4b7cf93273b1",
+          "old": "      - run: |\n          python -m pytest -q -p no:cacheprovider \\\n            --deselect tests/test_gate3_cluster_b_wp5_post_merge_closeout.py::test_wp5_post_merge_closeout\n",
+          "old_sha256": "620b24c9c6451fa26d43c13d0e3b3667f71a3ff345730a63f66a857ba32d3915",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1,
+          "role": "replay frozen regression at accepted WP6 anchor",
+          "roots": [
+            "ROOT_3"
+          ]
+        },
+        {
+          "new": "      - name: Replay frozen WP6 claim perimeter through four-root corrective layer\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-audit\n          --job replay-claims\n",
+          "new_sha256": "44f0aaa245deeb8e334ad9f2cbb8b1c9a699121bc71013c9c9e18c0e1a2e3143",
+          "old": "      - run: |\n          python scripts/replay_gate3_cluster_b_wp6.py --check\n                    python scripts/verify_gate3_cluster_b_wp6.py --job replay-claims\n",
+          "old_sha256": "0e360c6dd711547b91657af018adb8fefa3987e5bd89731fc768fbbe7a186ec0",
+          "ordinal": 3,
+          "predecessor_anchor_count": 1,
+          "role": "replay deterministic claims at accepted WP6 anchor without omitting predecessor commands",
+          "roots": [
+            "ROOT_3"
+          ]
+        },
+        {
+          "new": "      - name: Replay frozen WP6 decision firewall through four-root corrective layer\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-audit\n          --job decision-firewall\n",
+          "new_sha256": "4ca47dc33da321beec27f334676de15852f930ed63d86dd2d19c8d66f2b83c28",
+          "old": "      - run: |\n          python release/v1.4.0/tools/patch_wp6_allowlist.py\n                    python scripts/verify_gate3_cluster_b_wp6.py --job decision-firewall\n                    git diff --check b3798367af960ff3b588778966c5e233d89e72ab --\n",
+          "old_sha256": "65f67ffc142787dcc4519c91346d2341aa46757b5240c9bda6c93e5336456d60",
+          "ordinal": 4,
+          "predecessor_anchor_count": 1,
+          "role": "replay frozen decision and allowlist firewall without omitting predecessor commands",
+          "roots": [
+            "ROOT_1",
+            "ROOT_3"
+          ]
+        }
+      ]
+    }
+  ],
+  "unresolved_dependency_count": 0,
+  "version": "1.1"
+}

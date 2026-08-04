@@ -44,8 +44,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
-      - run: |
-          python scripts/verify_gate3_cluster_b_wp6.py --job baseline-lock
+      - name: Replay frozen WP6 baseline lock through four-root corrective layer
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py
+          --mode committed
+          --replay-workflow wp6-audit
+          --job baseline-lock
   predecessor-chain:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
     if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
@@ -119,9 +123,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
-      - run: |
-          python -m pytest -q -p no:cacheprovider \
-            --deselect tests/test_gate3_cluster_b_wp5_post_merge_closeout.py::test_wp5_post_merge_closeout
+      - name: Replay frozen WP6 Python regression through four-root corrective layer
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py
+          --mode committed
+          --replay-workflow wp6-audit
+          --job schemas-fixtures-python
   lean-proof-holes:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
     if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
@@ -176,9 +183,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
-      - run: |
-          python scripts/replay_gate3_cluster_b_wp6.py --check
-                    python scripts/verify_gate3_cluster_b_wp6.py --job replay-claims
+      - name: Replay frozen WP6 claim perimeter through four-root corrective layer
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py
+          --mode committed
+          --replay-workflow wp6-audit
+          --job replay-claims
   decision-firewall:
     # PR #33 is validated by the dedicated WP6 post-merge closeout workflow.
     if: ${{ (github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.head.ref != 'v1.4.0-development' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'push' || github.ref != 'refs/heads/main') }}
@@ -192,7 +202,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pytest jsonschema
-      - run: |
-          python release/v1.4.0/tools/patch_wp6_allowlist.py
-                    python scripts/verify_gate3_cluster_b_wp6.py --job decision-firewall
-                    git diff --check b3798367af960ff3b588778966c5e233d89e72ab --
+      - name: Replay frozen WP6 decision firewall through four-root corrective layer
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py
+          --mode committed
+          --replay-workflow wp6-audit
+          --job decision-firewall
