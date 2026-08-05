@@ -44,10 +44,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Baseline and predecessor preservation
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job baseline
@@ -62,10 +62,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Schemas and canonical manifests
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job schemas
@@ -80,10 +80,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Theorem ID closure
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job id-audit
@@ -98,10 +98,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Seven-role coverage
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job role-coverage
@@ -116,10 +116,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Dependency DAG
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job dependency-dag
@@ -134,10 +134,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Full Python semantics regression
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job python-semantics
@@ -152,10 +152,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Positive model campaign
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job positive-models
@@ -170,10 +170,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Negative and boundary campaign
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job negative-boundary
@@ -226,10 +226,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Lean/Coq statement parity
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job statement-parity
@@ -244,10 +244,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Validator/IPEC theorem-evidence lineage
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job ipec-lineage
@@ -262,10 +262,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Two-run byte-identical replay
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job deterministic-replay
@@ -280,10 +280,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: WP6 audit-input readiness without decision
         run: >-
-          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
           --mode committed
           --replay-workflow wp5
           --job gate3-audit-inputs

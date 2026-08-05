@@ -1,0 +1,937 @@
+{
+  "additive_path_count": 5,
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-pull-request-hosted-ci-acceptance-corrective-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+    "tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER",
+  "behavioral_contract": {
+    "additive_predecessor_absence_required": true,
+    "ambiguous_resolution_fail_closed": true,
+    "bounded_ancestry_traversal_required": true,
+    "event_pull_request_head_sha_required_when_available": true,
+    "exact_one_parent_layer_commit_required": true,
+    "exact_predecessor_parent_match_required": true,
+    "failure_policy": "FAIL_CLOSED",
+    "frozen_tests_in_current_descendant_checkout_forbidden": true,
+    "full_repository_unrelated_committed_files_allowed": true,
+    "live_pull_request_context_binding_required": true,
+    "missing_historical_anchor_fail_closed": true,
+    "package_archive_exact_inventory_required": true,
+    "repository_application_exact_status_surface_required": true,
+    "repository_immutability_required": true,
+    "self_excluding_ledger_required": true,
+    "staged_paths_forbidden": true,
+    "synthetic_merge_head_not_unique_authority": true,
+    "unbound_paths_forbidden": true,
+    "unrelated_changed_or_untracked_paths_forbidden": true
+  },
+  "branch": "v1.4.0-development",
+  "historical_artifact_policy": {
+    "blanket_allowlist_expansion_authorized": false,
+    "circular_self_trust_authorized": false,
+    "frozen_artifact_rewrite_authorized": false,
+    "historical_ledger_expansion_authorized": false
+  },
+  "ledger_entry_count": 16,
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "modified_path_count": 12,
+  "modified_paths": [
+    ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp2.yml",
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp3.yml",
+    ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+    ".github/workflows/gate3-cluster-b-wp5.yml",
+    ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+    ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+    ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+    ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+    ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml"
+  ],
+  "path_roles": [
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp2.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp3.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp5.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+      "role": "supply pyyaml and route frozen four-root verifier/tests through exact historical head",
+      "roots": [
+        "ROOT_3"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+      "role": "replace current-descendant frozen test execution with exact-head detached replay",
+      "roots": [
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": ".github/workflows/gate3-cluster-b-wp6-pull-request-hosted-ci-acceptance-corrective-layer.yml",
+      "role": "dedicated push/pull_request proof",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_MANIFEST.json",
+      "role": "canonical exact-byte and causal contract",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_SHA256SUMS.txt",
+      "role": "self-excluding identity closure",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+      "role": "head resolution, exact-byte, replay, immutability verifier",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+      "role": "positive and fail-closed regression",
+      "roots": [
+        "ROOT_1",
+        "ROOT_2",
+        "ROOT_3",
+        "ROOT_4"
+      ]
+    }
+  ],
+  "post_application_audit_resolution": {
+    "audit_report_version": "1.1",
+    "corrected_findings": [
+      {
+        "defect_class": "FULL_REPOSITORY_VALIDATE_PACKAGE_INVENTORY_SCOPE_MISBINDING",
+        "defect_id": "POSTAPP_DEFECT_1",
+        "resolution": "SPLIT_PACKAGE_ARCHIVE_FULL_REPOSITORY_CONTENT_AND_REPOSITORY_APPLICATION_SURFACE_CONTEXTS",
+        "status": "RESOLVED"
+      }
+    ],
+    "predecessor_package_version": "1.1",
+    "status": "PASS",
+    "successor_package_version": "1.2"
+  },
+  "pre_application_audit_resolution": {
+    "audit_report_version": "1.0",
+    "corrected_findings": [
+      {
+        "defect_class": "EXACT_ONE_PARENT_LAYER_COMMIT_ENFORCEMENT_GAP",
+        "defect_id": "PREAPP_DEFECT_1",
+        "resolution": "REQUIRE_EXACTLY_ONE_PARENT_EQUAL_TO_EXACT_PREDECESSOR",
+        "status": "RESOLVED"
+      },
+      {
+        "defect_class": "LIVE_PULL_REQUEST_CONTEXT_BINDING_GAP",
+        "defect_id": "PREAPP_DEFECT_2",
+        "resolution": "REQUIRE_EXACT_LIVE_EVENT_BINDING_FOR_NUMBER_TITLE_BASE_REF_BASE_SHA_HEAD_REF_AND_HEAD_SHA",
+        "status": "RESOLVED"
+      }
+    ],
+    "predecessor_package_version": "1.0",
+    "status": "PASS",
+    "successor_package_version": "1.1"
+  },
+  "predecessor": {
+    "commit": "e53713ed030fc1537726d8381079fecce6c57ac2",
+    "parent": "466f820a313366c5f0bd4b23afaea44fe6fdc3b3",
+    "tree": "cdab3e97da3e7ab09ef985c3b283c86cef26d375"
+  },
+  "pull_request": {
+    "base_branch": "main",
+    "base_sha": "47614ce7891f4895e003cb85e7651b7d043a963d",
+    "head_branch": "v1.4.0-development",
+    "number": 34,
+    "title": "WP6 successor-attestation layer"
+  },
+  "pull_request_context_matrix": {
+    "bounded_ancestry": "max depth 64",
+    "event_base_ref": "must equal manifest pull_request.base_branch",
+    "event_base_sha": "must equal manifest pull_request.base_sha",
+    "event_head_ref": "must equal manifest pull_request.head_branch",
+    "event_head_sha": "must equal resolved exact one-parent layer head",
+    "event_number": "must equal manifest pull_request.number",
+    "event_title": "must equal manifest pull_request.title",
+    "exact_branch_head": "accepted candidate",
+    "manifest_historical_anchors": "exact detached replay",
+    "merge_parents": "inspected; layer candidate must have exactly one parent",
+    "multi_match": "fail closed",
+    "synthetic_merge_head": "never unique authority",
+    "zero_match": "fail closed"
+  },
+  "replay_matrix": {
+    "wp2": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp2"
+        ]
+      ]
+    },
+    "wp2-post-merge": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp2-post-merge"
+        ]
+      ]
+    },
+    "wp3": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp3"
+        ]
+      ]
+    },
+    "wp3-post-merge": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp3-post-merge"
+        ]
+      ]
+    },
+    "wp5": {
+      "allowed_jobs": [
+        "baseline",
+        "schemas",
+        "id-audit",
+        "role-coverage",
+        "dependency-dag",
+        "python-semantics",
+        "positive-models",
+        "negative-boundary",
+        "statement-parity",
+        "ipec-lineage",
+        "deterministic-replay",
+        "gate3-audit-inputs"
+      ],
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands_template": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp5",
+          "--job",
+          "{job}"
+        ]
+      ]
+    },
+    "wp5-post-merge": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp5-post-merge"
+        ]
+      ]
+    },
+    "wp5-sync-helper": {
+      "anchor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--replay-workflow",
+          "wp5-sync-helper"
+        ]
+      ]
+    },
+    "wp6-four-root": {
+      "anchor": "7aac3b8a992253666209cb9a2371eb00c0d749cd",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py",
+          "--mode",
+          "committed",
+          "--verify-four-root-matrix"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py"
+        ]
+      ]
+    },
+    "wp6-hosted-fixture": {
+      "anchor": "e53713ed030fc1537726d8381079fecce6c57ac2",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+          "--mode",
+          "committed",
+          "--verify-hosted-ci-predecessor-blob-fixture-closure"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py"
+        ]
+      ]
+    },
+    "wp6-root-d": {
+      "anchor": "e53713ed030fc1537726d8381079fecce6c57ac2",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+          "--mode",
+          "committed",
+          "--verify-hosted-ci-predecessor-blob-fixture-closure"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py"
+        ]
+      ]
+    },
+    "wp6-successor-attestation": {
+      "anchor": "e1b3928c0759e2ed61624dabf4cbc505982c379f",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_successor_attestation_layer.py",
+          "--mode",
+          "committed",
+          "--verify-replay-matrix"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp6_successor_attestation_layer.py"
+        ]
+      ]
+    },
+    "wp6-successor-consumer": {
+      "anchor": "e53713ed030fc1537726d8381079fecce6c57ac2",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+          "--mode",
+          "committed",
+          "--verify-hosted-ci-predecessor-blob-fixture-closure"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py"
+        ]
+      ]
+    }
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "root_causes": {
+    "ROOT_1": "HISTORICAL_LAYER_HEAD_RESOLUTION_ANCESTRY_SCOPE_DEFECT",
+    "ROOT_2": "PULL_REQUEST_MERGE_REF_HEAD_BINDING_DEFECT",
+    "ROOT_3": "RUNTIME_DEPENDENCY_OMISSION",
+    "ROOT_4": "FROZEN_HISTORICAL_TEST_CURRENT_CHECKOUT_CONTEXT_MISBINDING"
+  },
+  "runtime_dependencies": [
+    "pytest",
+    "jsonschema",
+    "pyyaml"
+  ],
+  "total_path_count": 17,
+  "transformations": [
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "f44e0613106dc563307580ad9603b7ee0a32d621",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQMiBQb3N0LU1lcmdlIENsb3Nlb3V0CgpvbjoKICBwdWxsX3JlcXVlc3Q6CiAgICBicmFuY2hlczogW21haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMi1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AyX1BPU1RfTUVSR0VfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQMl9QT1NUX01FUkdFXyonCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfREVWRUxPUE1FTlRfQlJBTkNIX1NZTkNIUk9OSVpBVElPTl9SRUNPUkQuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3AyX3Bvc3RfbWVyZ2VfYWxsb3dsaXN0LnB5JwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3AyX3Bvc3RfbWVyZ2VfKicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwMl9kZXZlbG9wbWVudF9icmFuY2hfc3luY2hyb25pemF0aW9uX3JlY29yZC5zY2hlbWEuanNvbicKICAgICAgLSAnc2NyaXB0cy9idWlsZF9nYXRlM19jbHVzdGVyX2Jfd3AyLnB5JwogICAgICAtICdzY3JpcHRzL3ZlcmlmeV9nYXRlM19jbHVzdGVyX2Jfd3AyLnB5JwogICAgICAtICdzY3JpcHRzLypnYXRlM19jbHVzdGVyX2Jfd3AyX3Bvc3RfbWVyZ2UqJwogICAgICAtICdzY3JpcHRzL3N5bmNocm9uaXplX3YxXzRfMF9kZXZlbG9wbWVudF93cDIuc2gnCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwMl9wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogIHB1c2g6CiAgICBicmFuY2hlczogW3YxLjQuMC1kZXZlbG9wbWVudCwgbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AyLXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICdkb2NzL2dhdGUzL2NsdXN0ZXJfYi9XUDJfUE9TVF9NRVJHRV8qJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX1BPU1RfTUVSR0VfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQMl9ERVZFTE9QTUVOVF9CUkFOQ0hfU1lOQ0hST05JWkFUSU9OX1JFQ09SRC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy9wYXRjaF93cDJfcG9zdF9tZXJnZV9hbGxvd2xpc3QucHknCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDJfcG9zdF9tZXJnZV8qJwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3AyX2RldmVsb3BtZW50X2JyYW5jaF9zeW5jaHJvbml6YXRpb25fcmVjb3JkLnNjaGVtYS5qc29uJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvKmdhdGUzX2NsdXN0ZXJfYl93cDJfcG9zdF9tZXJnZSonCiAgICAgIC0gJ3NjcmlwdHMvc3luY2hyb25pemVfdjFfNF8wX2RldmVsb3BtZW50X3dwMi5zaCcKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3AyX3Bvc3RfbWVyZ2VfY2xvc2VvdXQucHknCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAogIGFjdGlvbnM6IHJlYWQKICBwdWxsLXJlcXVlc3RzOiByZWFkCgpqb2JzOgogIHdwMi1wb3N0LW1lcmdlLWNsb3Nlb3V0OgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHJ1bjogZ2l0IGZldGNoIC0tZm9yY2UgLS10YWdzIG9yaWdpbgogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAiMy4xMiIKICAgICAgLSBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBWZXJpZnkgc3VjY2Vzc29yLWNvbnN1bWVyIGludGVncmF0aW9uIGFuZCByZXBsYXkgZnJvemVuIFdQMiBwb3N0LW1lcmdlIHdvcmtmbG93CiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwMi1wb3N0LW1lcmdlCiAgICAgIC0gcnVuOiBweXRob24gc2NyaXB0cy9jaGVja19ub19wcm9vZl9ob2xlcy5weQogICAgICAtIHVzZXM6IGFjdGlvbnMvdXBsb2FkLWFydGlmYWN0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIG5hbWU6IHYwLW9zYXAtZ2F0ZTMtY2x1c3Rlci1iLXdwMi1wb3N0LW1lcmdlLWNsb3Nlb3V0LSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICBwYXRoOiB8CiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9BUkNISVZBTF9DTE9TRU9VVF9SRUNPUkQuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX0RFVkVMT1BNRU5UX0JSQU5DSF9TWU5DSFJPTklaQVRJT05fUkVDT1JELmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQMl9QT1NUX01FUkdFX0hPU1RFRF9DSV9FVklERU5DRS5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9GUk9aRU5fVVBTVFJFQU1fUFJFU0VSVkFUSU9OX1JFQ09SRC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9DTE9TRU9VVF9HQVRFUy5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9TSEEyNTZTVU1TLnR4dAogICAgICAgICAgaWYtbm8tZmlsZXMtZm91bmQ6IGVycm9yCg==",
+      "predecessor_sha256": "280e8799d6c7670a8c1077aa2d0999b095f08173583f03cc607a2d8436e2530f",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "a26d5c01398fe6b93a3349757eafacf083d310a7f12e4588bc1498d9939e193e",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp2.yml",
+      "predecessor_blob_sha1": "a20787d89ca80d05b6d839c87f141c6eee94dc42",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQMgoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDAueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AwLXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AxLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMS1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMi55bWwnCiAgICAgIC0gJ2NoZWNrZXIvdjBfb3NhcF9mYzEvY2x1c3Rlcl9iX3dwMi5weScKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AyXyonCiAgICAgIC0gJ2ZpeHR1cmVzL2dhdGUzL2NsdXN0ZXJfYi93cDIvKionCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfKicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwMl8qJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3Rlc3RzL2NvbmZ0ZXN0LnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgcHVzaDoKICAgIGJyYW5jaGVzOiBbdjEuNC4wLWRldmVsb3BtZW50XQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDAueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AwLXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AxLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMS1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMi55bWwnCiAgICAgIC0gJ2NoZWNrZXIvdjBfb3NhcF9mYzEvY2x1c3Rlcl9iX3dwMi5weScKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AyXyonCiAgICAgIC0gJ2ZpeHR1cmVzL2dhdGUzL2NsdXN0ZXJfYi93cDIvKionCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfKicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwMl8qJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3Rlc3RzL2NvbmZ0ZXN0LnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKam9iczoKICB3cDItZXhlY3V0YWJsZS1zZW1hbnRpY3M6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gbmFtZTogRmV0Y2ggZnJvemVuIHRhZ3MKICAgICAgICBydW46IGdpdCBmZXRjaCAtLWZvcmNlIC0tdGFncyBvcmlnaW4KICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCB2ZXJpZmljYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogVmVyaWZ5IHN1Y2Nlc3Nvci1jb25zdW1lciBpbnRlZ3JhdGlvbiBhbmQgcmVwbGF5IGZyb3plbiBXUDIgd29ya2Zsb3cKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3AyCiAgICAgIC0gbmFtZTogUHJvb2YtaG9sZSBzY2FuIHJlbWFpbnMgaW5oZXJpdGVkIGFuZCB1bmNoYW5nZWQKICAgICAgICBydW46IHB5dGhvbiBzY3JpcHRzL2NoZWNrX25vX3Byb29mX2hvbGVzLnB5CiAgICAgIC0gbmFtZTogRnVsbC1yYW5nZSB3aGl0ZXNwYWNlIGNoZWNrCiAgICAgICAgcnVuOiBnaXQgZGlmZiAtLWNoZWNrIGZmZWFhM2ZkNGZiMmY4NTY3OWY0Njk1ZDViMjhlMzMzMDA0Y2EyNGEuLi5IRUFECiAgICAgIC0gdXNlczogYWN0aW9ucy91cGxvYWQtYXJ0aWZhY3RAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgbmFtZTogdjAtb3NhcC1nYXRlMy1jbHVzdGVyLWItd3AyLSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICBwYXRoOiB8CiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfQkFTRUxJTkVfTE9DSy5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfU0VNQU5USUNTX1BST0ZJTEUuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX0ZJWFRVUkVfTUFOSUZFU1QuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX0FDQ0VQVEFOQ0VfR0FURVMuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX1NDSEVNQV9CVU5ETEVfTUFOSUZFU1QuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AyX1NIQTI1NlNVTVMudHh0CiAgICAgICAgICBpZi1uby1maWxlcy1mb3VuZDogZXJyb3IK",
+      "predecessor_sha256": "b9b1742dab4e1bd60fa7f3d553656635a6343d9dca4c410bd2f6865d66631d09",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "c141b39ac7ca295e7eb6992bde95362a577e92ff8ebdb0da850ad87b817732ec",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "ad3e4ad69885b542340c531df5225e8321a4e221",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQMyBQb3N0LU1lcmdlIENsb3Nlb3V0CgpvbjoKICBwdWxsX3JlcXVlc3Q6CiAgICBicmFuY2hlczogW21haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMy1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AzX1BPU1RfTUVSR0VfQVJDSElWQUxfQ0xPU0VPVVRfQU5EX0RFVkVMT1BNRU5UX0JSQU5DSF9TWU5DSFJPTklaQVRJT04ubWQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19ERVZFTE9QTUVOVF9CUkFOQ0hfU1lOQ0hST05JWkFUSU9OX1JFQ09SRC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfQVJDSElWQUxfQ0xPU0VPVVRfUkVDT1JELmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfUE9TVF9NRVJHRV9DTE9TRU9VVF9HQVRFUy5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfRlJPWkVOX1VQU1RSRUFNX1BSRVNFUlZBVElPTl9SRUNPUkQuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX0hPU1RFRF9DSV9FVklERU5DRS5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfU0NIRU1BX0JVTkRMRV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3BhdGNoX3dwM19wb3N0X21lcmdlX2FsbG93bGlzdC5weScKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfY29uc3VtZXJfY2xvc3VyZV9yZXBhaXIucHknCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfZGV2ZWxvcG1lbnRfYnJhbmNoX3N5bmNocm9uaXphdGlvbl9yZWNvcmQuc2NoZW1hLmpzb24nCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9hcmNoaXZhbF9jbG9zZW91dF9yZWNvcmQuc2NoZW1hLmpzb24nCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9jbG9zZW91dF9nYXRlcy5zY2hlbWEuanNvbicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Zyb3plbl91cHN0cmVhbV9wcmVzZXJ2YXRpb25fcmVjb3JkLnNjaGVtYS5qc29uJwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3AzX3Bvc3RfbWVyZ2VfaG9zdGVkX2NpX2V2aWRlbmNlLnNjaGVtYS5qc29uJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ3NjcmlwdHMvYnVpbGRfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogICAgICAtICdzY3JpcHRzL2NhcHR1cmVfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2V2aWRlbmNlLnB5JwogICAgICAtICdzY3JpcHRzL3N5bmNocm9uaXplX3YxXzRfMF9kZXZlbG9wbWVudF93cDMuc2gnCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDJfcG9zdF9tZXJnZV9jbG9zZW91dC5weScKICAgICAgLSAnc2NyaXB0cy92ZXJpZnlfZ2F0ZTNfY2x1c3Rlcl9iX3dwMy5weScKICAgICAgLSAnc2NyaXB0cy92ZXJpZnlfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9jbG9zZW91dC5weScKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnQsIG1haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMy1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AzX1BPU1RfTUVSR0VfQVJDSElWQUxfQ0xPU0VPVVRfQU5EX0RFVkVMT1BNRU5UX0JSQU5DSF9TWU5DSFJPTklaQVRJT04ubWQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19ERVZFTE9QTUVOVF9CUkFOQ0hfU1lOQ0hST05JWkFUSU9OX1JFQ09SRC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfQVJDSElWQUxfQ0xPU0VPVVRfUkVDT1JELmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfUE9TVF9NRVJHRV9DTE9TRU9VVF9HQVRFUy5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfRlJPWkVOX1VQU1RSRUFNX1BSRVNFUlZBVElPTl9SRUNPUkQuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX0hPU1RFRF9DSV9FVklERU5DRS5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfU0NIRU1BX0JVTkRMRV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3BhdGNoX3dwM19wb3N0X21lcmdlX2FsbG93bGlzdC5weScKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfY29uc3VtZXJfY2xvc3VyZV9yZXBhaXIucHknCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfZGV2ZWxvcG1lbnRfYnJhbmNoX3N5bmNocm9uaXphdGlvbl9yZWNvcmQuc2NoZW1hLmpzb24nCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9hcmNoaXZhbF9jbG9zZW91dF9yZWNvcmQuc2NoZW1hLmpzb24nCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9jbG9zZW91dF9nYXRlcy5zY2hlbWEuanNvbicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Zyb3plbl91cHN0cmVhbV9wcmVzZXJ2YXRpb25fcmVjb3JkLnNjaGVtYS5qc29uJwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3AzX3Bvc3RfbWVyZ2VfaG9zdGVkX2NpX2V2aWRlbmNlLnNjaGVtYS5qc29uJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ3NjcmlwdHMvYnVpbGRfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogICAgICAtICdzY3JpcHRzL2NhcHR1cmVfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2V2aWRlbmNlLnB5JwogICAgICAtICdzY3JpcHRzL3N5bmNocm9uaXplX3YxXzRfMF9kZXZlbG9wbWVudF93cDMuc2gnCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDJfcG9zdF9tZXJnZV9jbG9zZW91dC5weScKICAgICAgLSAnc2NyaXB0cy92ZXJpZnlfZ2F0ZTNfY2x1c3Rlcl9iX3dwMy5weScKICAgICAgLSAnc2NyaXB0cy92ZXJpZnlfZ2F0ZTNfY2x1c3Rlcl9iX3dwM19wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDNfcG9zdF9tZXJnZV9jbG9zZW91dC5weScKICB3b3JrZmxvd19kaXNwYXRjaDoKCnBlcm1pc3Npb25zOgogIGNvbnRlbnRzOiByZWFkCiAgYWN0aW9uczogcmVhZAogIHB1bGwtcmVxdWVzdHM6IHJlYWQKCmpvYnM6CiAgd3AzLXBvc3QtbWVyZ2UtY2xvc2VvdXQ6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gcnVuOiBnaXQgZmV0Y2ggLS1mb3JjZSAtLXRhZ3Mgb3JpZ2luCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICIzLjEyIgogICAgICAtIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IFZlcmlmeSBzdWNjZXNzb3ItY29uc3VtZXIgaW50ZWdyYXRpb24gYW5kIHJlcGxheSBmcm96ZW4gV1AzIHBvc3QtbWVyZ2Ugd29ya2Zsb3cKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3AzLXBvc3QtbWVyZ2UKICAgICAgLSBydW46IHB5dGhvbiBzY3JpcHRzL2NoZWNrX25vX3Byb29mX2hvbGVzLnB5CiAgICAgIC0gdXNlczogYWN0aW9ucy91cGxvYWQtYXJ0aWZhY3RAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgbmFtZTogdjAtb3NhcC1nYXRlMy1jbHVzdGVyLWItd3AzLXBvc3QtbWVyZ2UtY2xvc2VvdXQtJHt7IGdpdGh1Yi5zaGEgfX0KICAgICAgICAgIHBhdGg6IHwKICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX0FSQ0hJVkFMX0NMT1NFT1VUX1JFQ09SRC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfREVWRUxPUE1FTlRfQlJBTkNIX1NZTkNIUk9OSVpBVElPTl9SRUNPUkQuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BPU1RfTUVSR0VfSE9TVEVEX0NJX0VWSURFTkNFLmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX0ZST1pFTl9VUFNUUkVBTV9QUkVTRVJWQVRJT05fUkVDT1JELmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX0NMT1NFT1VUX0dBVEVTLmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19QT1NUX01FUkdFX1NIQTI1NlNVTVMudHh0CiAgICAgICAgICBpZi1uby1maWxlcy1mb3VuZDogZXJyb3IK",
+      "predecessor_sha256": "e7d7bf2cccb93bfe77b0b4132370fd579570aaa034732e56c5bc39464af7d2b6",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "7804a92aedaa60d1a5ca4acaa36bde8a40f49325c176ab86e8f21f6277394b44",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp3.yml",
+      "predecessor_blob_sha1": "6a96433b17c341bdd5129b6e110cfd6a733b344d",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQMwoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDMueW1sJwogICAgICAtICdjaGVja2VyL3YwX29zYXBfZmMxL2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ2RvY3MvZ2F0ZTMvY2x1c3Rlcl9iL1dQM18qJwogICAgICAtICdmaXh0dXJlcy9nYXRlMy9jbHVzdGVyX2Ivd3AzLyoqJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzXyonCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDNfKicKICAgICAgLSAnc2NyaXB0cy9idWlsZF9nYXRlM19jbHVzdGVyX2Jfd3AzLnB5JwogICAgICAtICdzY3JpcHRzL3ZlcmlmeV9nYXRlM19jbHVzdGVyX2Jfd3AzLnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDIucHknCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDJfUE9TVF9NRVJHRV9TSEEyNTZTVU1TLnR4dCcKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnRdCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMy55bWwnCiAgICAgIC0gJ2NoZWNrZXIvdjBfb3NhcF9mYzEvY2x1c3Rlcl9iX3dwMy5weScKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1AzXyonCiAgICAgIC0gJ2ZpeHR1cmVzL2dhdGUzL2NsdXN0ZXJfYi93cDMvKionCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfKicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwM18qJwogICAgICAtICdzY3JpcHRzL2J1aWxkX2dhdGUzX2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ3NjcmlwdHMvdmVyaWZ5X2dhdGUzX2NsdXN0ZXJfYl93cDMucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwMy5weScKICAgICAgLSAnc2NyaXB0cy92ZXJpZnlfZ2F0ZTNfY2x1c3Rlcl9iX3dwMi5weScKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQMl9QT1NUX01FUkdFX1NIQTI1NlNVTVMudHh0JwogIHdvcmtmbG93X2Rpc3BhdGNoOgoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKCmpvYnM6CiAgd3AzLXZhbGlkYXRvci1pcGVjLWV4dGVuc2lvbi1iaW5kaW5nOgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIHZhbGlkYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogVmVyaWZ5IHN1Y2Nlc3Nvci1jb25zdW1lciBpbnRlZ3JhdGlvbiBhbmQgcmVwbGF5IGZyb3plbiBXUDMgd29ya2Zsb3cKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3AzCiAgICAgIC0gbmFtZTogUHJvb2YtaG9sZSBzY2FuCiAgICAgICAgcnVuOiBQWVRIT05ET05UV1JJVEVCWVRFQ09ERT0xIHB5dGhvbiBzY3JpcHRzL2NoZWNrX25vX3Byb29mX2hvbGVzLnB5CiAgICAgIC0gdXNlczogYWN0aW9ucy91cGxvYWQtYXJ0aWZhY3RAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgbmFtZTogdjAtb3NhcC1nYXRlMy1jbHVzdGVyLWItd3AzLSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICBwYXRoOiB8CiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfQkFTRUxJTkVfTE9DSy5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfSVBFQ19WMF8xX0NPTVBBVElCSUxJVFlfUFJPRklMRS5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfRVhURU5TSU9OX1JVTEVfUkVHSVNUUllfVDE1N19UMTYyLmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQM19BREFQVEVSX0JJTkRJTkdfTUFOSUZFU1QuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX0ZJWFRVUkVfTUFOSUZFU1QuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1AzX1BSRVNFUlZBVElPTl9GSVJFV0FMTC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfQUNDRVBUQU5DRV9HQVRFUy5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfU0NIRU1BX0JVTkRMRV9NQU5JRkVTVC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDNfU0hBMjU2U1VNUy50eHQKICAgICAgICAgIGlmLW5vLWZpbGVzLWZvdW5kOiBlcnJvcgo=",
+      "predecessor_sha256": "5618f3f8c69ad89733fddd143dd0375a18d9255d30bbffcc98481aab0f05b131",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "19805bbaabd3d0f4644c82c5ac2546cba2e1dd053cf0aace4baad54173c99819",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "30011ff2849302beda1f0c5c59bc44f04f42cc1e",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNSBQb3N0LU1lcmdlIENsb3Nlb3V0CgpvbjoKICBwdWxsX3JlcXVlc3Q6CiAgICBicmFuY2hlczogW21haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNS1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1A1X1BPU1RfTUVSR0VfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9QT1NUX01FUkdFXyonCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDVfREVWRUxPUE1FTlRfQlJBTkNIX1NZTkNIUk9OSVpBVElPTl9SRUNPUkQuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3A1X2FsbG93bGlzdC5weScKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3A1X3Bvc3RfbWVyZ2VfYWxsb3dsaXN0LnB5JwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3A1Xypwb3N0X21lcmdlKicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwNV9kZXZlbG9wbWVudF9icmFuY2hfc3luY2hyb25pemF0aW9uX3JlY29yZC5zY2hlbWEuanNvbicKICAgICAgLSAnc2NyaXB0cy8qZ2F0ZTNfY2x1c3Rlcl9iX3dwNSonCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNV9wb3N0X21lcmdlX2Nsb3Nlb3V0LnB5JwogIHB1c2g6CiAgICBicmFuY2hlczogW3YxLjQuMC1kZXZlbG9wbWVudCwgbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A1LXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICdkb2NzL2dhdGUzL2NsdXN0ZXJfYi9XUDVfUE9TVF9NRVJHRV8qJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X1BPU1RfTUVSR0VfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9ERVZFTE9QTUVOVF9CUkFOQ0hfU1lOQ0hST05JWkFUSU9OX1JFQ09SRC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy9wYXRjaF93cDVfYWxsb3dsaXN0LnB5JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy9wYXRjaF93cDVfcG9zdF9tZXJnZV9hbGxvd2xpc3QucHknCiAgICAgIC0gJ3NjaGVtYXMvdjEuNC4wL2dhdGUzX2NsdXN0ZXJfYl93cDVfKnBvc3RfbWVyZ2UqJwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3A1X2RldmVsb3BtZW50X2JyYW5jaF9zeW5jaHJvbml6YXRpb25fcmVjb3JkLnNjaGVtYS5qc29uJwogICAgICAtICdzY3JpcHRzLypnYXRlM19jbHVzdGVyX2Jfd3A1KicKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A1X3Bvc3RfbWVyZ2VfY2xvc2VvdXQucHknCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKam9iczoKICB3cDUtcG9zdC1tZXJnZS1jbG9zZW91dDoKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBJbnN0YWxsIExlYW4gNAogICAgICAgIHJ1bjogfAogICAgICAgICAgY3VybCAtc1NmIGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9sZWFucHJvdmVyL2VsYW4vbWFzdGVyL2VsYW4taW5pdC5zaCB8IHNoIC1zIC0tIC15CiAgICAgICAgICBlY2hvICIkSE9NRS8uZWxhbi9iaW4iID4+ICIkR0lUSFVCX1BBVEgiCiAgICAgIC0gbmFtZTogSW5zdGFsbCBDb3EKICAgICAgICBydW46IHwKICAgICAgICAgIHN1ZG8gYXB0LWdldCB1cGRhdGUKICAgICAgICAgIHN1ZG8gYXB0LWdldCBpbnN0YWxsIC15IGNvcQogICAgICAtIG5hbWU6IFZlcmlmeSBzdWNjZXNzb3ItY29uc3VtZXIgaW50ZWdyYXRpb24gYW5kIHJlcGxheSBmcm96ZW4gV1A1IHBvc3QtbWVyZ2Ugd29ya2Zsb3cKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3A1LXBvc3QtbWVyZ2UKICAgICAgLSBuYW1lOiBQcm9vZi1ob2xlIHNjYW4KICAgICAgICBydW46IHB5dGhvbiBzY3JpcHRzL2NoZWNrX25vX3Byb29mX2hvbGVzLnB5CiAgICAgIC0gbmFtZTogTGVhbiA0IGJ1aWxkCiAgICAgICAgd29ya2luZy1kaXJlY3Rvcnk6IGxlYW4KICAgICAgICBydW46IGxha2UgYnVpbGQKICAgICAgLSBuYW1lOiBDb3EgYnVpbGQKICAgICAgICB3b3JraW5nLWRpcmVjdG9yeTogY29xCiAgICAgICAgcnVuOiBtYWtlCiAgICAgIC0gbmFtZTogUmVzdG9yZSBnZW5lcmF0ZWQgdHJhY2tlZCBDb3EgZGVwZW5kZW5jeSBzdXJmYWNlCiAgICAgICAgcnVuOiBnaXQgcmVzdG9yZSAtLXNvdXJjZT1IRUFEIC0tIGNvcS8uTWFrZWZpbGUuY29xLmQgfHwgdHJ1ZQogICAgICAtIHVzZXM6IGFjdGlvbnMvdXBsb2FkLWFydGlmYWN0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIG5hbWU6IHYwLW9zYXAtZ2F0ZTMtY2x1c3Rlci1iLXdwNS1wb3N0LW1lcmdlLSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICBpZi1uby1maWxlcy1mb3VuZDogZXJyb3IKICAgICAgICAgIHBhdGg6IHwKICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9QT1NUX01FUkdFX0FSQ0hJVkFMX0NMT1NFT1VUX1JFQ09SRC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDVfUE9TVF9NRVJHRV9IT1NURURfQ0lfRVZJREVOQ0UuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X1BPU1RfTUVSR0VfRlJPWkVOX1VQU1RSRUFNX1BSRVNFUlZBVElPTl9SRUNPUkQuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X1BPU1RfTUVSR0VfQ0xPU0VPVVRfR0FURVMuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X1BPU1RfTUVSR0VfU0hBMjU2U1VNUy50eHQK",
+      "predecessor_sha256": "ec023b3f8595de16c0f449ad2d2f514648feb9ea423502245db18b529e9a6e22",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "f0674db5bedd8dda60162970666e8dc673c231fcc8dbefb25abcbfbd6b658ece",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+      "predecessor_blob_sha1": "0e2d6eb68ef72d37d3c05da1b5d95fb517a06b5a",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNSBTeW5jaHJvbml6YXRpb24gSGVscGVyIFJlcGFpcgpvbjoKICBwdWxsX3JlcXVlc3Q6CiAgICBicmFuY2hlczogW21haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNS1zeW5jLWhlbHBlci1yZXBhaXIueW1sJwogICAgICAtICdkb2NzL2dhdGUzL2NsdXN0ZXJfYi9XUDVfREVWRUxPUE1FTlRfU1lOQ0hST05JWkFUSU9OX0hFTFBFUl8qJwogICAgICAtICdmaXh0dXJlcy9nYXRlMy9jbHVzdGVyX2Ivd3A1X3N5bmNfaGVscGVyX3JlcGFpci8qKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9TWU5DX0hFTFBFUl9SRVBBSVJfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3A1KicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwNV9zeW5jX2hlbHBlcl9yZXBhaXJfKicKICAgICAgLSAnc2NyaXB0cy8qd3A1KicKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A1X3N5bmNfaGVscGVyX3JlcGFpci5weScKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnQsIG1haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNS1zeW5jLWhlbHBlci1yZXBhaXIueW1sJwogICAgICAtICdkb2NzL2dhdGUzL2NsdXN0ZXJfYi9XUDVfREVWRUxPUE1FTlRfU1lOQ0hST05JWkFUSU9OX0hFTFBFUl8qJwogICAgICAtICdmaXh0dXJlcy9nYXRlMy9jbHVzdGVyX2Ivd3A1X3N5bmNfaGVscGVyX3JlcGFpci8qKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9TWU5DX0hFTFBFUl9SRVBBSVJfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3A1KicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwNV9zeW5jX2hlbHBlcl9yZXBhaXJfKicKICAgICAgLSAnc2NyaXB0cy8qd3A1KicKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A1X3N5bmNfaGVscGVyX3JlcGFpci5weScKICB3b3JrZmxvd19kaXNwYXRjaDoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKam9iczoKICBzeW5jaHJvbml6YXRpb24taGVscGVyLXJlcGFpcjoKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogSW5zdGFsbCBMZWFuIDQKICAgICAgICBydW46IHwKICAgICAgICAgIGN1cmwgLXNTZiBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vbGVhbnByb3Zlci9lbGFuL21hc3Rlci9lbGFuLWluaXQuc2ggfCBzaCAtcyAtLSAteQogICAgICAgICAgZWNobyAiJEhPTUUvLmVsYW4vYmluIiA+PiAiJEdJVEhVQl9QQVRIIgogICAgICAtIG5hbWU6IEluc3RhbGwgQ29xCiAgICAgICAgcnVuOiB8CiAgICAgICAgICBzdWRvIGFwdC1nZXQgdXBkYXRlCiAgICAgICAgICBzdWRvIGFwdC1nZXQgaW5zdGFsbCAteSBjb3EKICAgICAgLSBuYW1lOiBWZXJpZnkgc3VjY2Vzc29yLWNvbnN1bWVyIGludGVncmF0aW9uIGFuZCByZXBsYXkgZnJvemVuIFdQNSBzeW5jaHJvbml6YXRpb24taGVscGVyIHdvcmtmbG93CiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwNS1zeW5jLWhlbHBlcgogICAgICAtIHJ1bjogcHl0aG9uIHNjcmlwdHMvY2hlY2tfbm9fcHJvb2ZfaG9sZXMucHkKICAgICAgLSB3b3JraW5nLWRpcmVjdG9yeTogbGVhbgogICAgICAgIHJ1bjogbGFrZSBidWlsZAogICAgICAtIHdvcmtpbmctZGlyZWN0b3J5OiBjb3EKICAgICAgICBydW46IG1ha2UKICAgICAgLSBydW46IGdpdCByZXN0b3JlIC0tc291cmNlPUhFQUQgLS0gY29xLy5NYWtlZmlsZS5jb3EuZCB8fCB0cnVlCiAgICAgIC0gdXNlczogYWN0aW9ucy91cGxvYWQtYXJ0aWZhY3RAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgbmFtZTogdjAtb3NhcC13cDUtc3luYy1oZWxwZXItcmVwYWlyLSR7eyBnaXRodWIuc2hhIH19CiAgICAgICAgICBwYXRoOiB8CiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDVfU1lOQ19IRUxQRVJfUkVQQUlSX1JFQ09SRC5qc29uCiAgICAgICAgICAgIHJlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDVfU1lOQ19IRUxQRVJfUkVQQUlSX0ZJWFRVUkVfTUFOSUZFU1QuanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X1NZTkNfSEVMUEVSX1JFUEFJUl9BQ0NFUFRBTkNFX0dBVEVTLmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9TWU5DX0hFTFBFUl9SRVBBSVJfU0hBMjU2U1VNUy50eHQK",
+      "predecessor_sha256": "c815e650c4e5c9e152e7e0dba7b432f560f11ee7c349afa4c7c93c3e05f651db",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "44e7e1a8c8f243cc65e90a36125687f8126fc911aeb1e6d3d2f4985b6483dff8",
+          "old": "python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "8390c2de03dc86437d0a06ab8b642a15eaecc3e07011d5d50720cb60604cbd7a",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py",
+          "new_sha256": "4d2ad7782ab72abe4a9544a711d7bf288732d9949196ff2cc34a560e8f8c56df",
+          "old": "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+          "old_sha256": "f41ff095e4232dbfedc8723b64a7edcf6dcd957473f920ac646c2fa6c6c8da45",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "7703228e02b240f7d582cdba9dd2eb308596c4cbd165e850dd342dd3a8e800f5",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5.yml",
+      "predecessor_blob_sha1": "ae5b0a8029e2f92a5040da26d45e11e1fff057a4",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNQoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDUueW1sJwogICAgICAtICdkb2NzL2dhdGUzL2NsdXN0ZXJfYi9XUDVfKicKICAgICAgLSAnZml4dHVyZXMvZ2F0ZTMvY2x1c3Rlcl9iL3dwNS8qKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV8qJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy9wYXRjaF93cDUqJwogICAgICAtICdzY2hlbWFzL3YxLjQuMC9nYXRlM19jbHVzdGVyX2Jfd3A1XyonCiAgICAgIC0gJ3NjcmlwdHMvKmdhdGUzX2NsdXN0ZXJfYl93cDUqJwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDUqJwogIHB1c2g6CiAgICBicmFuY2hlczogW3YxLjQuMC1kZXZlbG9wbWVudCwgbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A1LnltbCcKICAgICAgLSAnZG9jcy9nYXRlMy9jbHVzdGVyX2IvV1A1XyonCiAgICAgIC0gJ2ZpeHR1cmVzL2dhdGUzL2NsdXN0ZXJfYi93cDUvKionCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDVfKicKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvcGF0Y2hfd3A1KicKICAgICAgLSAnc2NoZW1hcy92MS40LjAvZ2F0ZTNfY2x1c3Rlcl9iX3dwNV8qJwogICAgICAtICdzY3JpcHRzLypnYXRlM19jbHVzdGVyX2Jfd3A1KicKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A1KicKICB3b3JrZmxvd19kaXNwYXRjaDoKCnBlcm1pc3Npb25zOgogIGNvbnRlbnRzOiByZWFkCgpkZWZhdWx0czoKICBydW46CiAgICBzaGVsbDogYmFzaAoKam9iczoKICBiYXNlbGluZToKICAgIG5hbWU6IEJhc2VsaW5lIGFuZCBwcmVkZWNlc3NvciBwcmVzZXJ2YXRpb24KICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBCYXNlbGluZSBhbmQgcHJlZGVjZXNzb3IgcHJlc2VydmF0aW9uCiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwNQogICAgICAgICAgLS1qb2IgYmFzZWxpbmUKICBzY2hlbWFzOgogICAgbmFtZTogU2NoZW1hcyBhbmQgY2Fub25pY2FsIG1hbmlmZXN0cwogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IFNjaGVtYXMgYW5kIGNhbm9uaWNhbCBtYW5pZmVzdHMKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3A1CiAgICAgICAgICAtLWpvYiBzY2hlbWFzCiAgaWQtYXVkaXQ6CiAgICBuYW1lOiBUaGVvcmVtIElEIGNsb3N1cmUKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBUaGVvcmVtIElEIGNsb3N1cmUKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3A1CiAgICAgICAgICAtLWpvYiBpZC1hdWRpdAogIHJvbGUtY292ZXJhZ2U6CiAgICBuYW1lOiBTZXZlbi1yb2xlIGNvdmVyYWdlCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICczLjEyJwogICAgICAtIG5hbWU6IEluc3RhbGwgUHl0aG9uIHZhbGlkYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogU2V2ZW4tcm9sZSBjb3ZlcmFnZQogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXJlcGxheS13b3JrZmxvdyB3cDUKICAgICAgICAgIC0tam9iIHJvbGUtY292ZXJhZ2UKICBkZXBlbmRlbmN5LWRhZzoKICAgIG5hbWU6IERlcGVuZGVuY3kgREFHCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICczLjEyJwogICAgICAtIG5hbWU6IEluc3RhbGwgUHl0aG9uIHZhbGlkYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogRGVwZW5kZW5jeSBEQUcKICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3A1CiAgICAgICAgICAtLWpvYiBkZXBlbmRlbmN5LWRhZwogIHB5dGhvbi1zZW1hbnRpY3M6CiAgICBuYW1lOiBGdWxsIFB5dGhvbiBzZW1hbnRpY3MgcmVncmVzc2lvbgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IEZ1bGwgUHl0aG9uIHNlbWFudGljcyByZWdyZXNzaW9uCiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwNQogICAgICAgICAgLS1qb2IgcHl0aG9uLXNlbWFudGljcwogIHBvc2l0aXZlLW1vZGVsczoKICAgIG5hbWU6IFBvc2l0aXZlIG1vZGVsIGNhbXBhaWduCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICczLjEyJwogICAgICAtIG5hbWU6IEluc3RhbGwgUHl0aG9uIHZhbGlkYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogUG9zaXRpdmUgbW9kZWwgY2FtcGFpZ24KICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gcmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS1yZXBsYXktd29ya2Zsb3cgd3A1CiAgICAgICAgICAtLWpvYiBwb3NpdGl2ZS1tb2RlbHMKICBuZWdhdGl2ZS1ib3VuZGFyeToKICAgIG5hbWU6IE5lZ2F0aXZlIGFuZCBib3VuZGFyeSBjYW1wYWlnbgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IE5lZ2F0aXZlIGFuZCBib3VuZGFyeSBjYW1wYWlnbgogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXJlcGxheS13b3JrZmxvdyB3cDUKICAgICAgICAgIC0tam9iIG5lZ2F0aXZlLWJvdW5kYXJ5CiAgbGVhbjoKICAgIG5hbWU6IExlYW4gNCBwcm9vZiBidWlsZAogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IEluc3RhbGwgTGVhbiA0CiAgICAgICAgcnVuOiB8CiAgICAgICAgICBjdXJsIC1zU2YgaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2xlYW5wcm92ZXIvZWxhbi9tYXN0ZXIvZWxhbi1pbml0LnNoIHwgc2ggLXMgLS0gLXkKICAgICAgICAgIGVjaG8gIiRIT01FLy5lbGFuL2JpbiIgPj4gIiRHSVRIVUJfUEFUSCIKICAgICAgLSBuYW1lOiBMZWFuIDQgYnVpbGQKICAgICAgICB3b3JraW5nLWRpcmVjdG9yeTogbGVhbgogICAgICAgIHJ1bjogbGFrZSBidWlsZAogIGNvcToKICAgIG5hbWU6IENvcSBwcm9vZiBidWlsZAogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IEluc3RhbGwgQ29xCiAgICAgICAgcnVuOiB8CiAgICAgICAgICBzdWRvIGFwdC1nZXQgdXBkYXRlCiAgICAgICAgICBzdWRvIGFwdC1nZXQgaW5zdGFsbCAteSBjb3EKICAgICAgLSBuYW1lOiBDb3EgYnVpbGQKICAgICAgICB3b3JraW5nLWRpcmVjdG9yeTogY29xCiAgICAgICAgcnVuOiBtYWtlCiAgc3RhdGVtZW50LXBhcml0eToKICAgIG5hbWU6IExlYW4vQ29xIHN0YXRlbWVudCBwYXJpdHkKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBMZWFuL0NvcSBzdGF0ZW1lbnQgcGFyaXR5CiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwNQogICAgICAgICAgLS1qb2Igc3RhdGVtZW50LXBhcml0eQogIGlwZWMtbGluZWFnZToKICAgIG5hbWU6IFZhbGlkYXRvci9JUEVDIHRoZW9yZW0tZXZpZGVuY2UgbGluZWFnZQogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAnMy4xMicKICAgICAgLSBuYW1lOiBJbnN0YWxsIFB5dGhvbiB2YWxpZGF0aW9uIGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IFZhbGlkYXRvci9JUEVDIHRoZW9yZW0tZXZpZGVuY2UgbGluZWFnZQogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXJlcGxheS13b3JrZmxvdyB3cDUKICAgICAgICAgIC0tam9iIGlwZWMtbGluZWFnZQogIGRldGVybWluaXN0aWMtcmVwbGF5OgogICAgbmFtZTogVHdvLXJ1biBieXRlLWlkZW50aWNhbCByZXBsYXkKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogJzMuMTInCiAgICAgIC0gbmFtZTogSW5zdGFsbCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBUd28tcnVuIGJ5dGUtaWRlbnRpY2FsIHJlcGxheQogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXJlcGxheS13b3JrZmxvdyB3cDUKICAgICAgICAgIC0tam9iIGRldGVybWluaXN0aWMtcmVwbGF5CiAgZ2F0ZTMtYXVkaXQtaW5wdXRzOgogICAgbmFtZTogV1A2IGF1ZGl0LWlucHV0IHJlYWRpbmVzcyB3aXRob3V0IGRlY2lzaW9uCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICczLjEyJwogICAgICAtIG5hbWU6IEluc3RhbGwgUHl0aG9uIHZhbGlkYXRpb24gZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiBweXRob24gLW0gcGlwIGluc3RhbGwgLS1kaXNhYmxlLXBpcC12ZXJzaW9uLWNoZWNrIHB5dGVzdCBqc29uc2NoZW1hCiAgICAgIC0gbmFtZTogV1A2IGF1ZGl0LWlucHV0IHJlYWRpbmVzcyB3aXRob3V0IGRlY2lzaW9uCiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tcmVwbGF5LXdvcmtmbG93IHdwNQogICAgICAgICAgLS1qb2IgZ2F0ZTMtYXVkaXQtaW5wdXRzCiAgICAgIC0gbmFtZTogV2hpdGVzcGFjZSBhbmQgcGF0Y2ggaW50ZWdyaXR5CiAgICAgICAgcnVuOiBnaXQgZGlmZiAtLWNoZWNrIDdiNDk3ZjE5NzY1Mjg3NDE2NGUwMGZlOWMwZWY3ZjY3ZTc2MGM5NzkgLS0KICAgICAgLSB1c2VzOiBhY3Rpb25zL3VwbG9hZC1hcnRpZmFjdEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBuYW1lOiB2MC1vc2FwLWdhdGUzLWNsdXN0ZXItYi13cDUtJHt7IGdpdGh1Yi5zaGEgfX0KICAgICAgICAgIGlmLW5vLWZpbGVzLWZvdW5kOiBlcnJvcgogICAgICAgICAgcGF0aDogfAogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X0NJX0pPQl9NQVRSSVguanNvbgogICAgICAgICAgICByZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A1X0VWSURFTkNFX0lOUFVUX01BTklGRVNULmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9SRVBMQVlfUkVDT1JELmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9BQ0NFUFRBTkNFX0dBVEVTLmpzb24KICAgICAgICAgICAgcmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNV9TSEEyNTZTVU1TLnR4dAo=",
+      "predecessor_sha256": "713cd0bd530dbc5e71240e3c5db4c046146d448f12c1579eac22060729ac94cd",
+      "replacement_count": 12,
+      "replacements": [
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Baseline and predecessor preservation\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job baseline\n",
+          "new_sha256": "a41204c8b1dfbd4b24eaf87bdeeef20e1f9cd17147a515d2ec087db238f67127",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Baseline and predecessor preservation\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job baseline\n",
+          "old_sha256": "e871be213f763221b519d516de0cda3f60811b08f6efdd732ae3670063f945f2",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Schemas and canonical manifests\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job schemas\n",
+          "new_sha256": "b98c546ead59690f13745dd7619153720ce85959255f6a113579ee9b67a3ce3c",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Schemas and canonical manifests\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job schemas\n",
+          "old_sha256": "5594f24f56cc36ee75c77e71f91cee9bd5cb45d918e38f5e547498a2ef6eee16",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Theorem ID closure\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job id-audit\n",
+          "new_sha256": "8516ea131184d4ce1003e77fc69be8714e9fad239d541bcf1cf3c05b2358cdce",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Theorem ID closure\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job id-audit\n",
+          "old_sha256": "84f654d1f8623fd2df0abd3f8b36ad23fc0a73959e20d7854cf993ed155e5297",
+          "ordinal": 3,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Seven-role coverage\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job role-coverage\n",
+          "new_sha256": "01f04b224a015b378511c5ee30c59cf0e6bed431882e6eb57db5247848e32417",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Seven-role coverage\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job role-coverage\n",
+          "old_sha256": "a85d7fe0a2f82edd8dfe6af30f879bd0adc5b27c02df1c2dfb39552dce811a6a",
+          "ordinal": 4,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Dependency DAG\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job dependency-dag\n",
+          "new_sha256": "a1103ca49a9fb75a3dde2cc6783c45c8e5cf281265f900ab3668547ab27e3b8c",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Dependency DAG\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job dependency-dag\n",
+          "old_sha256": "a17d79c9f542aac55e0b6fe3c3087efda17209ecc36464972bcfe2074d12c1ba",
+          "ordinal": 5,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Full Python semantics regression\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job python-semantics\n",
+          "new_sha256": "9abe5c32da5b9a00caa85237cfea517d96290787365ddc70e29a55f8fa0800a2",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Full Python semantics regression\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job python-semantics\n",
+          "old_sha256": "19624b29398a8032a379fd230c1d50707f42a57500fb1de62f2a115fb134a82f",
+          "ordinal": 6,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Positive model campaign\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job positive-models\n",
+          "new_sha256": "05c64aa2191f378d160ec7b384847a1f90a862b2b3d83cc586d3686fd295bfd6",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Positive model campaign\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job positive-models\n",
+          "old_sha256": "9892484429e897b1da8e523b671255fe74456d5a26ae8d2df54667bdb6317eaa",
+          "ordinal": 7,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Negative and boundary campaign\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job negative-boundary\n",
+          "new_sha256": "5d684bbd334c38f2984a65e89b2b28e0eefa2a40832bcc84bce5a0db1c2ffc81",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Negative and boundary campaign\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job negative-boundary\n",
+          "old_sha256": "df513e643e00d3ca4ac3a94ea201a2c2d0edbf6a5ac33627460f6beb12016b44",
+          "ordinal": 8,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Lean/Coq statement parity\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job statement-parity\n",
+          "new_sha256": "a5f218a78b13e53a3793f12145a7a163e05dd1743262b69644ee0224a6596af0",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Lean/Coq statement parity\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job statement-parity\n",
+          "old_sha256": "da945b46fab7fb400acd604a9e572e37ce53565a4e7ed8d89dc54dbd0f20ae11",
+          "ordinal": 9,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Validator/IPEC theorem-evidence lineage\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job ipec-lineage\n",
+          "new_sha256": "1d39d65f38845cd0852ad910daf1b173399113d2b9a69e1b07bc80c760235dbd",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Validator/IPEC theorem-evidence lineage\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job ipec-lineage\n",
+          "old_sha256": "eaacfe7e2731c49a17c85144a4bc5defeda6acb56f254d5fab18502af562f5a3",
+          "ordinal": 10,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: Two-run byte-identical replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job deterministic-replay\n",
+          "new_sha256": "4d2956fd35633ef6093ae68cb15ab4d195b4ff5b60ac9885167c969b723ae7e5",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: Two-run byte-identical replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job deterministic-replay\n",
+          "old_sha256": "e36ab88e972859f33c5372f180f38db01f6e731d84fbd01566292981da53844e",
+          "ordinal": 11,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml\n      - name: WP6 audit-input readiness without decision\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job gate3-audit-inputs\n",
+          "new_sha256": "7ba6a41c0860820d09a6d2187ca33a7ab0f3ff0130c30bb9cf85d44fd115fe31",
+          "old": "      - name: Install Python validation dependencies\n        run: python -m pip install --disable-pip-version-check pytest jsonschema\n      - name: WP6 audit-input readiness without decision\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job gate3-audit-inputs\n",
+          "old_sha256": "6677109d4a047e26f8b4c4d0b6e06265cde920de4997c6b67733bdff80a092c1",
+          "ordinal": 12,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "20de6254c85c929cbbd1bc38e1bfe368975b78072526132628dcd4eadd35177f",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_1"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml",
+      "predecessor_blob_sha1": "e14ba29ada66154ea62ee6df01e04b10606a48eb",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNiBGb3VyLVJvb3QgQ29ycmVjdGl2ZSBMYXllcgoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtcG9zdC1tZXJnZS1jbG9zZW91dC55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtc3VjY2Vzc29yLWF0dGVzdGF0aW9uLWxheWVyLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtZm91ci1yb290LWNvcnJlY3RpdmUtbGF5ZXIueW1sJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X0ZPVVJfUk9PVF9DT1JSRUNUSVZFX0xBWUVSX01BTklGRVNULmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfRk9VUl9ST09UX0NPUlJFQ1RJVkVfTEFZRVJfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfZm91cl9yb290X2NvcnJlY3RpdmVfbGF5ZXIucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9mb3VyX3Jvb3RfY29ycmVjdGl2ZV9sYXllci5weScKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnQsIG1haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1zdWNjZXNzb3ItYXR0ZXN0YXRpb24tbGF5ZXIueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1mb3VyLXJvb3QtY29ycmVjdGl2ZS1sYXllci55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfRk9VUl9ST09UX0NPUlJFQ1RJVkVfTEFZRVJfTUFOSUZFU1QuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9GT1VSX1JPT1RfQ09SUkVDVElWRV9MQVlFUl9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9mb3VyX3Jvb3RfY29ycmVjdGl2ZV9sYXllci5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X2ZvdXJfcm9vdF9jb3JyZWN0aXZlX2xheWVyLnB5JwogIHdvcmtmbG93X2Rpc3BhdGNoOgoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKCmpvYnM6CiAgZm91ci1yb290LWNvcnJlY3RpdmUtbGF5ZXI6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBlbnY6CiAgICAgIEdJVF9PUFRJT05BTF9MT0NLUzogIjAiCiAgICAgIFBZVEhPTkRPTlRXUklURUJZVEVDT0RFOiAiMSIKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogIjMuMTIiCiAgICAgIC0gbmFtZTogSW5zdGFsbCBleGFjdCB2YWxpZGF0aW9uIGFuZCBuZXN0ZWQgcmVwbGF5IGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYQogICAgICAtIG5hbWU6IFZlcmlmeSBleGFjdCBlaWdodC1wYXRoIHN1cmZhY2UgYW5kIGZvdXItcm9vdCByZXBsYXkgbWF0cml4CiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfZm91cl9yb290X2NvcnJlY3RpdmVfbGF5ZXIucHkKICAgICAgICAgIC0tbW9kZSBjb21taXR0ZWQKICAgICAgICAgIC0tdmVyaWZ5LWZvdXItcm9vdC1tYXRyaXgKICAgICAgLSBuYW1lOiBEZWRpY2F0ZWQgZm91ci1yb290IGNvcnJlY3RpdmUtbGF5ZXIgcmVncmVzc2lvbgogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiAtbSBweXRlc3QgLXEgLXAgbm86Y2FjaGVwcm92aWRlcgogICAgICAgICAgdGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X2ZvdXJfcm9vdF9jb3JyZWN0aXZlX2xheWVyLnB5Cg==",
+      "predecessor_sha256": "6550757a8117f0113bea6a555d5b9cee1edf80225a161c9e7b1ef599984ef52e",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "5e3086c6f40f5c77a80f8da28b3368fc732ae8141d5231c1b050babb29287759",
+          "old": "run: python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "d3faed6c79d0a76ee1aae29329212f8eb0e38d0d88cbd0988bf7b197bb7ec19f",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Verify pull-request hosted-CI acceptance and exact-head four-root replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-four-root\n      - name: Dedicated pull-request hosted-CI acceptance regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n",
+          "new_sha256": "4efb223a25e0d02e6796b1687a23e058748fa4043fcddc4bcb931804c77d437b",
+          "old": "      - name: Verify exact eight-path surface and four-root replay matrix\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --verify-four-root-matrix\n      - name: Dedicated four-root corrective-layer regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py\n",
+          "old_sha256": "63825fa4bfe044404291ae3e71cacaa9bb4dd9eab39e1e30d8860d4ccb99f266",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "8c7821fdc30d079eb8b8b4dc439d920aaa02d439a379e80c79550b922eadcd4a",
+      "role": "supply pyyaml and route frozen four-root verifier/tests through exact historical head",
+      "roots": [
+        "ROOT_3"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+      "predecessor_blob_sha1": "bbe2914b32141c2a44e2b62f35ce314c6d3db30b",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNiBIb3N0ZWQtQ0kgUHJlZGVjZXNzb3ItQmxvYiBGaXh0dXJlIENsb3N1cmUKCm9uOgogIHB1bGxfcmVxdWVzdDoKICAgIGJyYW5jaGVzOiBbbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXJvb3QtZC1zdWNjZXNzb3ItYXR0ZXN0ZWQtb3ZlcnJpZGUueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXN1Y2Nlc3Nvci1jb25zdW1lci1pbnRlZ3JhdGlvbi1jb3JyZWN0aXZlLWxheWVyLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1ob3N0ZWQtY2ktcHJlZGVjZXNzb3ItYmxvYi1maXh0dXJlLWNsb3N1cmUueW1sJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X0hPU1RFRF9DSV9QUkVERUNFU1NPUl9CTE9CX0ZJWFRVUkVfQ0xPU1VSRV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X0hPU1RFRF9DSV9QUkVERUNFU1NPUl9CTE9CX0ZJWFRVUkVfQ0xPU1VSRV9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfYmxvYl9maXh0dXJlX2Nsb3N1cmUucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfYmxvYl9maXh0dXJlX2Nsb3N1cmUucHknCiAgcHVzaDoKICAgIGJyYW5jaGVzOiBbdjEuNC4wLWRldmVsb3BtZW50LCBtYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtcm9vdC1kLXN1Y2Nlc3Nvci1hdHRlc3RlZC1vdmVycmlkZS55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtc3VjY2Vzc29yLWNvbnN1bWVyLWludGVncmF0aW9uLWNvcnJlY3RpdmUtbGF5ZXIueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LWhvc3RlZC1jaS1wcmVkZWNlc3Nvci1ibG9iLWZpeHR1cmUtY2xvc3VyZS55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfSE9TVEVEX0NJX1BSRURFQ0VTU09SX0JMT0JfRklYVFVSRV9DTE9TVVJFX01BTklGRVNULmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfSE9TVEVEX0NJX1BSRURFQ0VTU09SX0JMT0JfRklYVFVSRV9DTE9TVVJFX1NIQTI1NlNVTVMudHh0JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weScKICB3b3JrZmxvd19kaXNwYXRjaDoKCnBlcm1pc3Npb25zOgogIGNvbnRlbnRzOiByZWFkCgpqb2JzOgogIGhvc3RlZC1jaS1wcmVkZWNlc3Nvci1ibG9iLWZpeHR1cmUtY2xvc3VyZToKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIGVudjoKICAgICAgR0lUX09QVElPTkFMX0xPQ0tTOiAiMCIKICAgICAgUFlUSE9ORE9OVFdSSVRFQllURUNPREU6ICIxIgogICAgc3RlcHM6CiAgICAgIC0gdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBmZXRjaC1kZXB0aDogMAogICAgICAtIHVzZXM6IGFjdGlvbnMvc2V0dXAtcHl0aG9uQHY1CiAgICAgICAgd2l0aDoKICAgICAgICAgIHB5dGhvbi12ZXJzaW9uOiAiMy4xMiIKICAgICAgLSBuYW1lOiBJbnN0YWxsIGV4YWN0IHZhbGlkYXRpb24gYW5kIGRldGFjaGVkIHJlcGxheSBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEgcHl5YW1sCiAgICAgIC0gbmFtZTogVmVyaWZ5IGV4YWN0IHNldmVuLXBhdGggZml4dHVyZS1jbG9zdXJlIGxheWVyIGFuZCBmcm96ZW4gUm9vdCBEIHJlcGxheQogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS12ZXJpZnktaG9zdGVkLWNpLXByZWRlY2Vzc29yLWJsb2ItZml4dHVyZS1jbG9zdXJlCiAgICAgIC0gbmFtZTogRGVkaWNhdGVkIGhvc3RlZC1DSSBwcmVkZWNlc3Nvci1ibG9iIGZpeHR1cmUtY2xvc3VyZSByZWdyZXNzaW9uCiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIC1tIHB5dGVzdCAtcSAtcCBubzpjYWNoZXByb3ZpZGVyCiAgICAgICAgICB0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5CiAgICAgIC0gbmFtZTogV2hpdGVzcGFjZSBhbmQgZXhhY3Qgc2V2ZW4tcGF0aCBmaXh0dXJlLWNsb3N1cmUgaW50ZWdyaXR5CiAgICAgICAgcnVuOiBnaXQgZGlmZiAtLWNoZWNrIDQ2NmY4MjBhMzEzMzY2YzVmMGJkNGIyM2FmYWVhNDRmZTZmZGMzYjMuLi5IRUFECg==",
+      "predecessor_sha256": "7bf6e0577d0f3fb82e5326dc09d1b8e6f7c0e1fb2a2c04a7dd98a1f4378c075e",
+      "replacement_count": 1,
+      "replacements": [
+        {
+          "new": "      - name: Verify pull-request hosted-CI acceptance corrective layer and frozen replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-hosted-fixture\n      - name: Dedicated pull-request hosted-CI acceptance regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n",
+          "new_sha256": "aa9b128205f6f144a653d8de4136e4c4d1fba1a8c19f5eb9bcb860ed39ed99b4",
+          "old": "      - name: Verify exact seven-path fixture-closure layer and frozen Root D replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n          --mode committed\n          --verify-hosted-ci-predecessor-blob-fixture-closure\n      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n",
+          "old_sha256": "146099ca602f2951d8b1d44cb53243caf56f08eb14b6c35e461c222d9c4dde92",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "fcbbbc734a1a060e59c675bccd29228cafedf0d9a308caf11c2115471f50ea7e",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+      "predecessor_blob_sha1": "4db79f3ece94081f73a22675cd0ae9d723a55cac",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNiBSb290IEQgU3VjY2Vzc29yLUF0dGVzdGVkIE92ZXJyaWRlCgpvbjoKICBwdWxsX3JlcXVlc3Q6CiAgICBicmFuY2hlczogW21haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1zdWNjZXNzb3ItY29uc3VtZXItaW50ZWdyYXRpb24tY29ycmVjdGl2ZS1sYXllci55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtcm9vdC1kLXN1Y2Nlc3Nvci1hdHRlc3RlZC1vdmVycmlkZS55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfUk9PVF9EX1NVQ0NFU1NPUl9BVFRFU1RFRF9PVkVSUklERV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1JPT1RfRF9TVUNDRVNTT1JfQVRURVNURURfT1ZFUlJJREVfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfcm9vdF9kX3N1Y2Nlc3Nvcl9hdHRlc3RlZF9vdmVycmlkZS5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X3Jvb3RfZF9zdWNjZXNzb3JfYXR0ZXN0ZWRfb3ZlcnJpZGUucHknCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtaG9zdGVkLWNpLXByZWRlY2Vzc29yLWJsb2ItZml4dHVyZS1jbG9zdXJlLnltbCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9IT1NURURfQ0lfUFJFREVDRVNTT1JfQkxPQl9GSVhUVVJFX0NMT1NVUkVfTUFOSUZFU1QuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9IT1NURURfQ0lfUFJFREVDRVNTT1JfQkxPQl9GSVhUVVJFX0NMT1NVUkVfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5JwogIHB1c2g6CiAgICBicmFuY2hlczogW3YxLjQuMC1kZXZlbG9wbWVudCwgbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXN1Y2Nlc3Nvci1jb25zdW1lci1pbnRlZ3JhdGlvbi1jb3JyZWN0aXZlLWxheWVyLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1yb290LWQtc3VjY2Vzc29yLWF0dGVzdGVkLW92ZXJyaWRlLnltbCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9ST09UX0RfU1VDQ0VTU09SX0FUVEVTVEVEX09WRVJSSURFX01BTklGRVNULmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfUk9PVF9EX1NVQ0NFU1NPUl9BVFRFU1RFRF9PVkVSUklERV9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9yb290X2Rfc3VjY2Vzc29yX2F0dGVzdGVkX292ZXJyaWRlLnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfcm9vdF9kX3N1Y2Nlc3Nvcl9hdHRlc3RlZF9vdmVycmlkZS5weScKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1ob3N0ZWQtY2ktcHJlZGVjZXNzb3ItYmxvYi1maXh0dXJlLWNsb3N1cmUueW1sJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X0hPU1RFRF9DSV9QUkVERUNFU1NPUl9CTE9CX0ZJWFRVUkVfQ0xPU1VSRV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X0hPU1RFRF9DSV9QUkVERUNFU1NPUl9CTE9CX0ZJWFRVUkVfQ0xPU1VSRV9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfYmxvYl9maXh0dXJlX2Nsb3N1cmUucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfYmxvYl9maXh0dXJlX2Nsb3N1cmUucHknCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKam9iczoKICByb290LWQtc3VjY2Vzc29yLWF0dGVzdGVkLW92ZXJyaWRlOgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgZW52OgogICAgICBHSVRfT1BUSU9OQUxfTE9DS1M6ICIwIgogICAgICBQWVRIT05ET05UV1JJVEVCWVRFQ09ERTogIjEiCiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGZldGNoLWRlcHRoOiAwCiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjUKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICIzLjEyIgogICAgICAtIG5hbWU6IEluc3RhbGwgZXhhY3QgdmFsaWRhdGlvbiBhbmQgZGV0YWNoZWQgcmVwbGF5IGRlcGVuZGVuY2llcwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC0tZGlzYWJsZS1waXAtdmVyc2lvbi1jaGVjayBweXRlc3QganNvbnNjaGVtYSBweXlhbWwKICAgICAgLSBuYW1lOiBWZXJpZnkgdGhyb3VnaCBob3N0ZWQtQ0kgcHJlZGVjZXNzb3ItYmxvYiBmaXh0dXJlLWNsb3N1cmUgc3VjY2Vzc29yIGNvbnRyYWN0CiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIHJlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXZlcmlmeS1ob3N0ZWQtY2ktcHJlZGVjZXNzb3ItYmxvYi1maXh0dXJlLWNsb3N1cmUKICAgICAgLSBuYW1lOiBEZWRpY2F0ZWQgaG9zdGVkLUNJIHByZWRlY2Vzc29yLWJsb2IgZml4dHVyZS1jbG9zdXJlIHJlZ3Jlc3Npb24KICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gLW0gcHl0ZXN0IC1xIC1wIG5vOmNhY2hlcHJvdmlkZXIKICAgICAgICAgIHRlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9ob3N0ZWRfY2lfcHJlZGVjZXNzb3JfYmxvYl9maXh0dXJlX2Nsb3N1cmUucHkKICAgICAgLSBuYW1lOiBXaGl0ZXNwYWNlIGFuZCBleGFjdCBzZXZlbi1wYXRoIGZpeHR1cmUtY2xvc3VyZSBpbnRlZ3JpdHkKICAgICAgICBydW46IGdpdCBkaWZmIC0tY2hlY2sgNDY2ZjgyMGEzMTMzNjZjNWYwYmQ0YjIzYWZhZWE0NGZlNmZkYzNiMy4uLkhFQUQK",
+      "predecessor_sha256": "17a9f15783544ed78e2c2d27e950b0eb6dd89dffc655bf9a681cffec046a4f10",
+      "replacement_count": 1,
+      "replacements": [
+        {
+          "new": "      - name: Verify pull-request hosted-CI acceptance corrective layer and frozen replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-root-d\n      - name: Dedicated pull-request hosted-CI acceptance regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n",
+          "new_sha256": "bcec9d87acfbacbeda7e6c50c606273c5e5e36f8286abd7727c507fef15985fa",
+          "old": "      - name: Verify through hosted-CI predecessor-blob fixture-closure successor contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n          --mode committed\n          --verify-hosted-ci-predecessor-blob-fixture-closure\n      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n",
+          "old_sha256": "ab3c4ee4676f575363f41b04b788e6795cbc3e572a203bc5a2443db0e7512726",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "42ef6d8b910661097ffc82a74f2d866c61166a3f3d8fd19bb811190d84e3f248",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+      "predecessor_blob_sha1": "7d1b7340a3b66b1fb6b6ba9aeb724c0da41ae68e",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNiBTdWNjZXNzb3ItQXR0ZXN0YXRpb24gTGF5ZXIKCm9uOgogIHB1bGxfcmVxdWVzdDoKICAgIGJyYW5jaGVzOiBbbWFpbl0KICAgIHBhdGhzOgogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXN1Y2Nlc3Nvci1hdHRlc3RhdGlvbi1sYXllci55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfU1VDQ0VTU09SX0FUVEVTVEFUSU9OX0xBWUVSX01BTklGRVNULmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfU1VDQ0VTU09SX0FUVEVTVEFUSU9OX0xBWUVSX1NIQTI1NlNVTVMudHh0JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9hdHRlc3RhdGlvbl9sYXllci5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X3N1Y2Nlc3Nvcl9hdHRlc3RhdGlvbl9sYXllci5weScKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnQsIG1haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1zdWNjZXNzb3ItYXR0ZXN0YXRpb24tbGF5ZXIueW1sJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1NVQ0NFU1NPUl9BVFRFU1RBVElPTl9MQVlFUl9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1NVQ0NFU1NPUl9BVFRFU1RBVElPTl9MQVlFUl9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfYXR0ZXN0YXRpb25fbGF5ZXIucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9zdWNjZXNzb3JfYXR0ZXN0YXRpb25fbGF5ZXIucHknCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKam9iczoKICBzdWNjZXNzb3ItYXR0ZXN0YXRpb24tbGF5ZXI6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBlbnY6CiAgICAgIEdJVF9PUFRJT05BTF9MT0NLUzogIjAiCiAgICAgIFBZVEhPTkRPTlRXUklURUJZVEVDT0RFOiAiMSIKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogIjMuMTIiCiAgICAgIC0gbmFtZTogSW5zdGFsbCBleGFjdCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEKICAgICAgLSBuYW1lOiBWZXJpZnkgcHJlZGVjZXNzb3IgYm91bmRhcnksIGZvdXItcm9vdCBkZXJpdmF0aW9uLCBhbmQgcmVwbGF5IG1hdHJpeAogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X2ZvdXJfcm9vdF9jb3JyZWN0aXZlX2xheWVyLnB5CiAgICAgICAgICAtLW1vZGUgY29tbWl0dGVkCiAgICAgICAgICAtLXJlcGxheS13b3JrZmxvdyBzdWNjZXNzb3ItYXR0ZXN0YXRpb24KICAgICAgICAgIC0tam9iIHJlcGxheS1tYXRyaXgKICAgICAgLSBuYW1lOiBEZWRpY2F0ZWQgc3VjY2Vzc29yLWxheWVyIHJlZ3Jlc3Npb24KICAgICAgICBydW46ID4tCiAgICAgICAgICBweXRob24gLW0gcHl0ZXN0IC1xIC1wIG5vOmNhY2hlcHJvdmlkZXIKICAgICAgICAgIHRlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9zdWNjZXNzb3JfYXR0ZXN0YXRpb25fbGF5ZXIucHkKICAgICAgLSBuYW1lOiBXaGl0ZXNwYWNlIGFuZCBib3VuZGVkIGFkZGl0aXZlLXN1cmZhY2UgaW50ZWdyaXR5CiAgICAgICAgcnVuOiBnaXQgZGlmZiAtLWNoZWNrIGJlMTkzYmQzZTNiZjQ2YjgyMzViMjQ3MmYwNGE0YWFiNDEyMDM0OTMuLi5IRUFECg==",
+      "predecessor_sha256": "6c0a4ba417d2aade9705f0d3a00d377da3287088364da548e629800dc6c889c4",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml",
+          "new_sha256": "5e3086c6f40f5c77a80f8da28b3368fc732ae8141d5231c1b050babb29287759",
+          "old": "run: python -m pip install --disable-pip-version-check pytest jsonschema",
+          "old_sha256": "d3faed6c79d0a76ee1aae29329212f8eb0e38d0d88cbd0988bf7b197bb7ec19f",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Verify pull-request hosted-CI acceptance and exact-head successor-attestation replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-successor-attestation\n      - name: Dedicated pull-request hosted-CI acceptance regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n",
+          "new_sha256": "f0c7289efe73cd95ea33bfe71d6b8c1fea1a89d196bb314f356882394e71e9c2",
+          "old": "      - name: Verify predecessor boundary, four-root derivation, and replay matrix\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py\n          --mode committed\n          --replay-workflow successor-attestation\n          --job replay-matrix\n      - name: Dedicated successor-layer regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_successor_attestation_layer.py\n",
+          "old_sha256": "6fc5a105aa3c36be201d582f3cc7af1c995b6f45cd11f501a3dfeddde999ce7b",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "2c318c48553de7a84c846a6212e3b85b860f36bfd85c24589c2e4bfcb58781e6",
+      "role": "replace current-descendant frozen test execution with exact-head detached replay",
+      "roots": [
+        "ROOT_4"
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+      "predecessor_blob_sha1": "85f1d976f731bb162243938c6bc0f6e1853c9271",
+      "predecessor_bytes_base64": "bmFtZTogVjAgT1NBUCBHYXRlIDMgQ2x1c3RlciBCIFdQNiBTdWNjZXNzb3ItQ29uc3VtZXIgSW50ZWdyYXRpb24gQ29ycmVjdGl2ZSBMYXllcgoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDItcG9zdC1tZXJnZS1jbG9zZW91dC55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDIueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AzLXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3AzLnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNS1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNS1zeW5jLWhlbHBlci1yZXBhaXIueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A1LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwNi1zdWNjZXNzb3ItY29uc3VtZXItaW50ZWdyYXRpb24tY29ycmVjdGl2ZS1sYXllci55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfU1VDQ0VTU09SX0NPTlNVTUVSX0lOVEVHUkFUSU9OX0NPUlJFQ1RJVkVfTEFZRVJfTUFOSUZFU1QuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9TVUNDRVNTT1JfQ09OU1VNRVJfSU5URUdSQVRJT05fQ09SUkVDVElWRV9MQVlFUl9TSEEyNTZTVU1TLnR4dCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvdG9vbHMvdmVyaWZ5X3dwNl9zdWNjZXNzb3JfY29uc3VtZXJfaW50ZWdyYXRpb25fY29ycmVjdGl2ZV9sYXllci5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5JwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXJvb3QtZC1zdWNjZXNzb3ItYXR0ZXN0ZWQtb3ZlcnJpZGUueW1sJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1JPT1RfRF9TVUNDRVNTT1JfQVRURVNURURfT1ZFUlJJREVfTUFOSUZFU1QuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9ST09UX0RfU1VDQ0VTU09SX0FUVEVTVEVEX09WRVJSSURFX1NIQTI1NlNVTVMudHh0JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3Jvb3RfZF9zdWNjZXNzb3JfYXR0ZXN0ZWRfb3ZlcnJpZGUucHknCiAgICAgIC0gJ3Rlc3RzL3Rlc3RfZ2F0ZTNfY2x1c3Rlcl9iX3dwNl9yb290X2Rfc3VjY2Vzc29yX2F0dGVzdGVkX292ZXJyaWRlLnB5JwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LWhvc3RlZC1jaS1wcmVkZWNlc3Nvci1ibG9iLWZpeHR1cmUtY2xvc3VyZS55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfSE9TVEVEX0NJX1BSRURFQ0VTU09SX0JMT0JfRklYVFVSRV9DTE9TVVJFX01BTklGRVNULmpzb24nCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfSE9TVEVEX0NJX1BSRURFQ0VTU09SX0JMT0JfRklYVFVSRV9DTE9TVVJFX1NIQTI1NlNVTVMudHh0JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weScKICBwdXNoOgogICAgYnJhbmNoZXM6IFt2MS40LjAtZGV2ZWxvcG1lbnQsIG1haW5dCiAgICBwYXRoczoKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMi1wb3N0LW1lcmdlLWNsb3Nlb3V0LnltbCcKICAgICAgLSAnLmdpdGh1Yi93b3JrZmxvd3MvZ2F0ZTMtY2x1c3Rlci1iLXdwMi55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDMtcG9zdC1tZXJnZS1jbG9zZW91dC55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDMueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A1LXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A1LXN5bmMtaGVscGVyLXJlcGFpci55bWwnCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDUueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXBvc3QtbWVyZ2UtY2xvc2VvdXQueW1sJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9nYXRlMy1jbHVzdGVyLWItd3A2LXN1Y2Nlc3Nvci1jb25zdW1lci1pbnRlZ3JhdGlvbi1jb3JyZWN0aXZlLWxheWVyLnltbCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9TVUNDRVNTT1JfQ09OU1VNRVJfSU5URUdSQVRJT05fQ09SUkVDVElWRV9MQVlFUl9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1NVQ0NFU1NPUl9DT05TVU1FUl9JTlRFR1JBVElPTl9DT1JSRUNUSVZFX0xBWUVSX1NIQTI1NlNVTVMudHh0JwogICAgICAtICdyZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X3N1Y2Nlc3Nvcl9jb25zdW1lcl9pbnRlZ3JhdGlvbl9jb3JyZWN0aXZlX2xheWVyLnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfc3VjY2Vzc29yX2NvbnN1bWVyX2ludGVncmF0aW9uX2NvcnJlY3RpdmVfbGF5ZXIucHknCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtcm9vdC1kLXN1Y2Nlc3Nvci1hdHRlc3RlZC1vdmVycmlkZS55bWwnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL0dBVEUzX0NMVVNURVJfQl9XUDZfUk9PVF9EX1NVQ0NFU1NPUl9BVFRFU1RFRF9PVkVSUklERV9NQU5JRkVTVC5qc29uJwogICAgICAtICdyZWxlYXNlL3YxLjQuMC9HQVRFM19DTFVTVEVSX0JfV1A2X1JPT1RfRF9TVUNDRVNTT1JfQVRURVNURURfT1ZFUlJJREVfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfcm9vdF9kX3N1Y2Nlc3Nvcl9hdHRlc3RlZF9vdmVycmlkZS5weScKICAgICAgLSAndGVzdHMvdGVzdF9nYXRlM19jbHVzdGVyX2Jfd3A2X3Jvb3RfZF9zdWNjZXNzb3JfYXR0ZXN0ZWRfb3ZlcnJpZGUucHknCiAgICAgIC0gJy5naXRodWIvd29ya2Zsb3dzL2dhdGUzLWNsdXN0ZXItYi13cDYtaG9zdGVkLWNpLXByZWRlY2Vzc29yLWJsb2ItZml4dHVyZS1jbG9zdXJlLnltbCcKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9IT1NURURfQ0lfUFJFREVDRVNTT1JfQkxPQl9GSVhUVVJFX0NMT1NVUkVfTUFOSUZFU1QuanNvbicKICAgICAgLSAncmVsZWFzZS92MS40LjAvR0FURTNfQ0xVU1RFUl9CX1dQNl9IT1NURURfQ0lfUFJFREVDRVNTT1JfQkxPQl9GSVhUVVJFX0NMT1NVUkVfU0hBMjU2U1VNUy50eHQnCiAgICAgIC0gJ3JlbGVhc2UvdjEuNC4wL3Rvb2xzL3ZlcmlmeV93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5JwogICAgICAtICd0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5JwogIHdvcmtmbG93X2Rpc3BhdGNoOgoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKCmpvYnM6CiAgc3VjY2Vzc29yLWNvbnN1bWVyLWludGVncmF0aW9uLWNvcnJlY3RpdmUtbGF5ZXI6CiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBlbnY6CiAgICAgIEdJVF9PUFRJT05BTF9MT0NLUzogIjAiCiAgICAgIFBZVEhPTkRPTlRXUklURUJZVEVDT0RFOiAiMSIKICAgIHN0ZXBzOgogICAgICAtIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZmV0Y2gtZGVwdGg6IDAKICAgICAgLSB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogIjMuMTIiCiAgICAgIC0gbmFtZTogSW5zdGFsbCBleGFjdCBQeXRob24gdmFsaWRhdGlvbiBkZXBlbmRlbmNpZXMKICAgICAgICBydW46IHB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtLWRpc2FibGUtcGlwLXZlcnNpb24tY2hlY2sgcHl0ZXN0IGpzb25zY2hlbWEgcHl5YW1sCiAgICAgIC0gbmFtZTogVmVyaWZ5IHRocm91Z2ggaG9zdGVkLUNJIHByZWRlY2Vzc29yLWJsb2IgZml4dHVyZS1jbG9zdXJlIHN1Y2Nlc3NvciBjb250cmFjdAogICAgICAgIHJ1bjogPi0KICAgICAgICAgIHB5dGhvbiByZWxlYXNlL3YxLjQuMC90b29scy92ZXJpZnlfd3A2X2hvc3RlZF9jaV9wcmVkZWNlc3Nvcl9ibG9iX2ZpeHR1cmVfY2xvc3VyZS5weQogICAgICAgICAgLS1tb2RlIGNvbW1pdHRlZAogICAgICAgICAgLS12ZXJpZnktaG9zdGVkLWNpLXByZWRlY2Vzc29yLWJsb2ItZml4dHVyZS1jbG9zdXJlCiAgICAgIC0gbmFtZTogRGVkaWNhdGVkIGhvc3RlZC1DSSBwcmVkZWNlc3Nvci1ibG9iIGZpeHR1cmUtY2xvc3VyZSByZWdyZXNzaW9uCiAgICAgICAgcnVuOiA+LQogICAgICAgICAgcHl0aG9uIC1tIHB5dGVzdCAtcSAtcCBubzpjYWNoZXByb3ZpZGVyCiAgICAgICAgICB0ZXN0cy90ZXN0X2dhdGUzX2NsdXN0ZXJfYl93cDZfaG9zdGVkX2NpX3ByZWRlY2Vzc29yX2Jsb2JfZml4dHVyZV9jbG9zdXJlLnB5CiAgICAgIC0gbmFtZTogV2hpdGVzcGFjZSBhbmQgZXhhY3Qgc2V2ZW4tcGF0aCBmaXh0dXJlLWNsb3N1cmUgaW50ZWdyaXR5CiAgICAgICAgcnVuOiBnaXQgZGlmZiAtLWNoZWNrIDQ2NmY4MjBhMzEzMzY2YzVmMGJkNGIyM2FmYWVhNDRmZTZmZGMzYjMuLi5IRUFECg==",
+      "predecessor_sha256": "4eaccf86081edfdb3e41d68c5646ee5f7c87d790146b2822bcf209b2229f52ca",
+      "replacement_count": 1,
+      "replacements": [
+        {
+          "new": "      - name: Verify pull-request hosted-CI acceptance corrective layer and frozen replay\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-successor-consumer\n      - name: Dedicated pull-request hosted-CI acceptance regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py\n",
+          "new_sha256": "922539802322893fc99044e94172d3a83e7bf93b3b1f56b7e9a197a5c7f00e97",
+          "old": "      - name: Verify through hosted-CI predecessor-blob fixture-closure successor contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n          --mode committed\n          --verify-hosted-ci-predecessor-blob-fixture-closure\n      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n",
+          "old_sha256": "ab3c4ee4676f575363f41b04b788e6795cbc3e572a203bc5a2443db0e7512726",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        }
+      ],
+      "resulting_sha256": "f5b61a0b59334bbc7317eba64cb8d3a2f72baff86f2c0b2e91c85ae2f38d27b5",
+      "role": "route failed workflow through exact-head successor corrective replay",
+      "roots": [
+        "ROOT_2"
+      ]
+    }
+  ],
+  "unresolved_dependency_count": 0,
+  "validation_contexts": {
+    "FULL_REPOSITORY_CONTENT_CONTEXT": {
+      "authorized_path_content_validation_required": true,
+      "exact_authorized_path_count": 17,
+      "unrelated_legitimate_committed_files_allowed": true,
+      "unrelated_repository_files_treated_as_package_entries": false
+    },
+    "PACKAGE_ARCHIVE_CONTEXT": {
+      "exact_authorized_path_count": 17,
+      "exact_root_file_inventory_required": true,
+      "unrelated_eighteenth_package_entry_allowed": false
+    },
+    "REPOSITORY_APPLICATION_SURFACE_CONTEXT": {
+      "exact_additive_untracked_path_count": 5,
+      "exact_modified_unstaged_path_count": 12,
+      "staged_paths_allowed": false,
+      "unrelated_changed_or_untracked_paths_allowed": false
+    }
+  },
+  "version": "1.2"
+}
