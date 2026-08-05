@@ -1,22 +1,10 @@
-name: V0 OSAP Gate 3 Cluster B WP6 Successor-Consumer Integration Corrective Layer
+name: V0 OSAP Gate 3 Cluster B WP6 Root D Successor-Attested Override
 
 on:
   pull_request:
     branches: [main]
     paths:
-      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp2.yml'
-      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp3.yml'
-      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
-      - '.github/workflows/gate3-cluster-b-wp5.yml'
-      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'
       - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'
-      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'
-      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'
-      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'
-      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'
       - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'
@@ -25,19 +13,7 @@ on:
   push:
     branches: [v1.4.0-development, main]
     paths:
-      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp2.yml'
-      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp3.yml'
-      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
-      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
-      - '.github/workflows/gate3-cluster-b-wp5.yml'
-      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'
       - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'
-      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'
-      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'
-      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'
-      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'
       - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'
@@ -49,7 +25,7 @@ permissions:
   contents: read
 
 jobs:
-  successor-consumer-integration-corrective-layer:
+  root-d-successor-attested-override:
     runs-on: ubuntu-latest
     env:
       GIT_OPTIONAL_LOCKS: "0"
@@ -61,9 +37,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install exact Python validation dependencies
+      - name: Install exact validation and detached replay dependencies
         run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
-      - name: Verify frozen historical layer through the Root D successor-attested override contract
+      - name: Verify exact six-path Root D surface and successor-attested override contract
         run: >-
           python release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py
           --mode committed
