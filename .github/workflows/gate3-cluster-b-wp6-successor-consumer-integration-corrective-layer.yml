@@ -22,6 +22,11 @@ on:
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'
       - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'
       - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'
+      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'
+      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'
   push:
     branches: [v1.4.0-development, main]
     paths:
@@ -43,6 +48,11 @@ on:
       - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'
       - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'
       - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'
+      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'
+      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'
   workflow_dispatch:
 
 permissions:
@@ -63,14 +73,14 @@ jobs:
           python-version: "3.12"
       - name: Install exact Python validation dependencies
         run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
-      - name: Verify frozen historical layer through the Root D successor-attested override contract
+      - name: Verify through hosted-CI predecessor-blob fixture-closure successor contract
         run: >-
-          python release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py
+          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py
           --mode committed
-          --verify-root-d-contract
-      - name: Dedicated Root D successor-attested override regression
+          --verify-hosted-ci-predecessor-blob-fixture-closure
+      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression
         run: >-
           python -m pytest -q -p no:cacheprovider
-          tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py
-      - name: Whitespace and exact Root D corrective-surface integrity
-        run: git diff --check 7aac3b8a992253666209cb9a2371eb00c0d749cd...HEAD
+          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py
+      - name: Whitespace and exact seven-path fixture-closure integrity
+        run: git diff --check 466f820a313366c5f0bd4b23afaea44fe6fdc3b3...HEAD
