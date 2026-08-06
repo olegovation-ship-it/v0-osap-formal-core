@@ -64,12 +64,13 @@ def repository_with_applied_surface(tmp_path: Path) -> Path:
     repo = init_repo(tmp_path / "application-repository")
     manifest = MODULE.load_manifest(ROOT)
     (repo / "README.md").write_text("legitimate repository file\n")
-    for transformation in manifest["transformations"]:
-        target = repo / transformation["path"]
+    for relative in MODULE.EXPECTED_MODIFIED + MODULE.EXPECTED_ADDITIVE:
+        target = repo / relative
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(MODULE.base64.b64decode(transformation["predecessor_bytes_base64"]))
-    commit_all(repo, "synthetic predecessor")
-    copy_authorized_surface(repo)
+        target.write_bytes(MODULE.predecessor_package_bytes(manifest, ROOT, relative))
+    commit_all(repo, "synthetic exact package v1.2 predecessor")
+    for relative in MODULE.SUCCESSOR_CHANGED_PATHS:
+        shutil.copy2(ROOT / relative, repo / relative)
     return repo
 
 
@@ -102,6 +103,7 @@ def mini_manifest(predecessor: str) -> dict:
             "base_sha": MODULE.BASE_SHA,
             "head_branch": "development",
         },
+        "successor_delta": {"modified_paths": ["x"], "additive_paths": ["y"]},
     }
 
 
@@ -145,12 +147,12 @@ def test_compatibility_package_only_dispatch_uses_full_repository_context(tmp_pa
     assert MODULE.validate_package(repo)["validation_context"] == MODULE.FULL_REPOSITORY_CONTENT_CONTEXT
 
 
-def test_exact_twelve_modified_plus_five_additive_application_surface_passes(tmp_path: Path) -> None:
+def test_exact_four_modified_zero_additive_successor_application_surface_passes(tmp_path: Path) -> None:
     repo = repository_with_applied_surface(tmp_path)
     result = MODULE.validate_repository_application_surface(repo)
     assert result["validation_context"] == MODULE.REPOSITORY_APPLICATION_SURFACE_CONTEXT
-    assert result["unstaged_modified_path_count"] == 12
-    assert result["untracked_additive_path_count"] == 5
+    assert result["unstaged_modified_path_count"] == 4
+    assert result["untracked_additive_path_count"] == 0
 
 
 def test_manifest_and_exact_path_counts() -> None:
@@ -179,9 +181,9 @@ def test_zero_unresolved_dependencies() -> None:
     assert MODULE.load_manifest(ROOT)["unresolved_dependency_count"] == 0
 
 
-def test_pre_and_post_application_audit_findings_are_resolved_in_v12() -> None:
+def test_prior_audit_findings_are_preserved_and_fixture_resolution_is_v13() -> None:
     manifest = MODULE.load_manifest(ROOT)
-    assert manifest["version"] == "1.2"
+    assert manifest["version"] == "1.3"
     pre_resolution = manifest["pre_application_audit_resolution"]
     assert pre_resolution["predecessor_package_version"] == "1.0"
     assert pre_resolution["successor_package_version"] == "1.1"
@@ -197,6 +199,13 @@ def test_pre_and_post_application_audit_findings_are_resolved_in_v12() -> None:
     assert [row["defect_id"] for row in post_resolution["corrected_findings"]] == [
         "POSTAPP_DEFECT_1"
     ]
+
+
+    resolution = manifest["fixture_environment_propagation_resolution"]
+    assert resolution["status"] == "RESOLVED"
+    assert resolution["predecessor_package_version"] == "1.2"
+    assert resolution["successor_package_version"] == "1.3"
+    assert resolution["changed_internal_paths"] == MODULE.SUCCESSOR_CHANGED_PATHS
 
 
 def test_self_excluding_ledger_has_sixteen_entries() -> None:
@@ -229,6 +238,185 @@ def test_dedicated_workflow_covers_all_seventeen_paths_twice() -> None:
     for path in MODULE.EXPECTED_MODIFIED + MODULE.EXPECTED_ADDITIVE:
         assert text.count("      - '" + path + "'\n") == 2
     assert "--verify-all-replays" in text
+
+
+def synthetic_fixture_contract(payloads: dict[str, bytes]) -> dict:
+    return {
+        "contract_id": "SYNTHETIC_FIXTURE",
+        "source_commit": "a" * 40,
+        "historical_replay_anchor": "b" * 40,
+        "environment_variable": MODULE.FIXTURE_ENVIRONMENT_VARIABLE,
+        "scope": "TEST_CHILD_PROCESSES_ONLY",
+        "materialization": "SYNTHETIC_PROVIDER",
+        "path_count": len(payloads),
+        "files": [
+            {"path": path, "git_blob_sha1": MODULE.git_blob_sha1(data)}
+            for path, data in payloads.items()
+        ],
+        "historical_additive_paths_forbidden": MODULE.FOUR_ROOT_ADDITIVE_PATHS,
+        "exact_inventory_required": True,
+        "regular_files_only": True,
+        "symlinks_forbidden": True,
+        "extra_paths_forbidden": True,
+        "cleanup_required": True,
+        "source_repository_immutability_required": True,
+        "unrelated_replay_environment_isolation_required": True,
+    }
+
+
+def synthetic_fixture_payloads() -> dict[str, bytes]:
+    return {path: ("fixture:" + path + "\n").encode() for path in MODULE.FIXTURE_PATHS}
+
+
+def test_successor_delta_is_exact_four_changed_thirteen_unchanged() -> None:
+    manifest = MODULE.load_manifest(ROOT)
+    assert manifest["successor_delta"] == MODULE.expected_successor_delta()
+    identities = manifest["predecessor_package"]["file_identities"]
+    changed = sorted(
+        path for path in MODULE.EXPECTED_MODIFIED + MODULE.EXPECTED_ADDITIVE
+        if MODULE.sha256_bytes((ROOT / path).read_bytes()) != identities[path]["sha256"]
+    )
+    assert changed == sorted(MODULE.SUCCESSOR_CHANGED_PATHS)
+
+
+def test_manifest_fixture_contract_is_exact_and_scoped() -> None:
+    manifest = MODULE.load_manifest(ROOT)
+    assert manifest["fixture_contract"] == MODULE.expected_fixture_contract()
+    assert manifest["replay_matrix"]["wp6-four-root"]["fixture_contract"] == MODULE.FIXTURE_CONTRACT_ID
+    assert all(
+        "fixture_contract" not in spec
+        for name, spec in manifest["replay_matrix"].items()
+        if name != "wp6-four-root"
+    )
+
+
+def test_fixture_materialization_positive(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    identities = MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    assert sorted(identities) == sorted(payloads)
+    assert MODULE.validate_materialized_fixture(fixture, contract) == identities
+
+
+def test_fixture_missing_path_is_rejected(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    (fixture / MODULE.FIXTURE_PATHS[0]).unlink()
+    with pytest.raises(RuntimeError, match="FIXTURE_EXACT_PATH_SET_FAILURE"):
+        MODULE.validate_materialized_fixture(fixture, contract)
+
+
+def test_fixture_wrong_identity_is_rejected(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    (fixture / MODULE.FIXTURE_PATHS[0]).write_bytes(b"wrong\n")
+    with pytest.raises(RuntimeError, match="FIXTURE_BLOB_IDENTITY_FAILURE"):
+        MODULE.validate_materialized_fixture(fixture, contract)
+
+
+def test_fixture_extra_path_is_rejected(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    (fixture / "EXTRA.txt").write_text("extra\n")
+    with pytest.raises(RuntimeError, match="FIXTURE_EXACT_PATH_SET_FAILURE"):
+        MODULE.validate_materialized_fixture(fixture, contract)
+
+
+def test_fixture_historical_additive_path_is_rejected(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    additive = fixture / MODULE.FOUR_ROOT_ADDITIVE_PATHS[0]
+    additive.parent.mkdir(parents=True, exist_ok=True)
+    additive.write_text("forbidden\n")
+    with pytest.raises(RuntimeError, match="FIXTURE_HISTORICAL_ADDITIVE_PATH_PRESENCE"):
+        MODULE.validate_materialized_fixture(fixture, contract)
+
+
+def test_fixture_cleanup_removes_temporary_tree(tmp_path: Path) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    manifest = {"fixture_contract": contract}
+    parent = None
+    with MODULE.predecessor_blob_fixture(tmp_path, manifest, payloads.__getitem__) as (fixture, identities):
+        parent = fixture.parent
+        assert fixture.is_dir()
+        assert len(identities) == 3
+    assert parent is not None and not parent.exists()
+
+
+def test_replay_binds_fixture_environment_only_for_four_root(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    payloads = synthetic_fixture_payloads()
+    contract = synthetic_fixture_contract(payloads)
+    fixture = tmp_path / "fixture"
+    MODULE.materialize_predecessor_fixture(fixture, contract, payloads.__getitem__)
+    captured: list[dict[str, str]] = []
+    manifest = {
+        "fixture_contract": contract,
+        "replay_matrix": {
+            "wp6-four-root": {
+                "anchor": "a" * 40,
+                "commands": [["python", "child.py"]],
+                "fixture_contract": MODULE.FIXTURE_CONTRACT_ID,
+            }
+        },
+    }
+    class Detached:
+        def __enter__(self): return tmp_path
+        def __exit__(self, *args): return False
+    class Fixture:
+        def __enter__(self): return fixture, {path: {} for path in payloads}
+        def __exit__(self, *args): return False
+    monkeypatch.setattr(MODULE, "verify_committed", lambda *args, **kwargs: {"status": "PASS"})
+    monkeypatch.setattr(MODULE, "load_manifest", lambda repo: manifest)
+    monkeypatch.setattr(MODULE, "repository_snapshot", lambda repo: {"stable": "yes"})
+    monkeypatch.setattr(MODULE, "detached_worktree", lambda *args: Detached())
+    monkeypatch.setattr(MODULE, "predecessor_blob_fixture", lambda *args, **kwargs: Fixture())
+    monkeypatch.setattr(MODULE, "validate_exact_historical_context", lambda *args: None)
+    monkeypatch.setattr(MODULE, "git_text", lambda *args, **kwargs: "")
+    monkeypatch.setattr(
+        MODULE, "require",
+        lambda *args, cwd=None, env=None, text=True: captured.append(dict(env or {}))
+        or subprocess.CompletedProcess(args, 0, "", ""),
+    )
+    result = MODULE.replay("wp6-four-root", repo=tmp_path)
+    assert result["fixture_environment_bound"] == "YES"
+    assert captured and captured[0][MODULE.FIXTURE_ENVIRONMENT_VARIABLE] == str(fixture)
+
+
+def test_unrelated_replay_environment_isolation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    captured: list[dict[str, str]] = []
+    manifest = {"replay_matrix": {"x": {"anchor": "a" * 40, "commands": [["python", "child.py"]]}}}
+    class Detached:
+        def __enter__(self): return tmp_path
+        def __exit__(self, *args): return False
+    monkeypatch.setenv(MODULE.FIXTURE_ENVIRONMENT_VARIABLE, "/contaminating/value")
+    monkeypatch.setattr(MODULE, "verify_committed", lambda *args, **kwargs: {"status": "PASS"})
+    monkeypatch.setattr(MODULE, "load_manifest", lambda repo: manifest)
+    monkeypatch.setattr(MODULE, "repository_snapshot", lambda repo: {"stable": "yes"})
+    monkeypatch.setattr(MODULE, "detached_worktree", lambda *args: Detached())
+    monkeypatch.setattr(MODULE, "validate_exact_historical_context", lambda *args: None)
+    monkeypatch.setattr(MODULE, "git_text", lambda *args, **kwargs: "")
+    monkeypatch.setattr(
+        MODULE, "require",
+        lambda *args, cwd=None, env=None, text=True: captured.append(dict(env or {}))
+        or subprocess.CompletedProcess(args, 0, "", ""),
+    )
+    result = MODULE.replay("x", repo=tmp_path)
+    assert result["fixture_environment_bound"] == "NO"
+    assert captured and MODULE.FIXTURE_ENVIRONMENT_VARIABLE not in captured[0]
 
 
 def test_event_head_absent() -> None:
@@ -498,7 +686,7 @@ def test_unrelated_eighteenth_untracked_worktree_path_is_rejected(tmp_path: Path
 
 def test_staged_path_is_rejected(tmp_path: Path) -> None:
     repo = repository_with_applied_surface(tmp_path)
-    git(repo, "add", MODULE.EXPECTED_MODIFIED[0])
+    git(repo, "add", MODULE.SUCCESSOR_CHANGED_PATHS[0])
     with pytest.raises(RuntimeError, match="STAGED_PATH_PRESENT"):
         MODULE.validate_repository_application_surface(repo)
 
