@@ -19,14 +19,14 @@ from typing import Any, Callable, Iterator
 ROOT = Path(__file__).resolve().parents[3]
 REPOSITORY = "olegovation-ship-it/v0-osap-formal-core"
 BRANCH = "v1.4.0-development"
-PREDECESSOR = "c5dab48352b8d2297e7551dcadf65b31aa86520e"
-PREDECESSOR_PARENT = "e53713ed030fc1537726d8381079fecce6c57ac2"
-PREDECESSOR_TREE = "dabf1d45de31dbab972bc8d5e35abf6b71a2a01c"
+PREDECESSOR = "fdd2b0b8fefe6fd20979f44df7da560feb541bb1"
+PREDECESSOR_PARENT = "c5dab48352b8d2297e7551dcadf65b31aa86520e"
+PREDECESSOR_TREE = "231ac9823d4430035eb5678616a4fb6297d5ed8f"
 TRANSFORMATION_SOURCE = "e53713ed030fc1537726d8381079fecce6c57ac2"
 TRANSFORMATION_SOURCE_PARENT = "466f820a313366c5f0bd4b23afaea44fe6fdc3b3"
 TRANSFORMATION_SOURCE_TREE = "cdab3e97da3e7ab09ef985c3b283c86cef26d375"
-PREDECESSOR_PACKAGE_VERSION = "1.2"
-PREDECESSOR_PACKAGE_SHA256 = "9c458f13c5a4119dcec05c5d98777de1d1b2896718fb83d30eff92ea5e125845"
+PREDECESSOR_PACKAGE_VERSION = "1.3"
+PREDECESSOR_PACKAGE_SHA256 = "310f9c20200b392534a9652865217e39df18eb134b93ed20e1c0d7980c138ac2"
 BASE_SHA = "47614ce7891f4895e003cb85e7651b7d043a963d"
 ARTIFACT_ID = "V0_OSAP_GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER"
 MANIFEST = "release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_MANIFEST.json"
@@ -165,8 +165,8 @@ def expected_fixture_contract() -> dict[str, Any]:
 
 def expected_successor_delta() -> dict[str, Any]:
     return {
-        "predecessor_package_version": "1.2",
-        "successor_package_version": "1.3",
+        "predecessor_package_version": "1.3",
+        "successor_package_version": "1.4",
         "pathset_changed": False,
         "total_path_count": 17,
         "changed_internal_path_count": 4,
@@ -201,14 +201,45 @@ def expected_fixture_resolution() -> dict[str, Any]:
     }
 
 
+def expected_pull_request_test_fixture_resolution() -> dict[str, Any]:
+    return {
+        "actual_exception": "PULL_REQUEST_CONTEXT_MISMATCH:head_ref",
+        "changed_internal_paths": SUCCESSOR_CHANGED_PATHS,
+        "common_pytest_result": "1_FAILED_79_PASSED",
+        "defect_class": "SYNTHETIC_PULL_REQUEST_ABSENT_EVENT_TEST_LIVE_GITHUB_EVENT_PATH_CONTAMINATION",
+        "defect_location": "DEDICATED_TEST_FIXTURE",
+        "environment_variable": "GITHUB_EVENT_PATH",
+        "expected_exception": "PULL_REQUEST_CONTEXT_MISSING_OR_INVALID",
+        "failed_job_ids": [92579333049, 92579332994, 92579333852, 92579333520, 92579333861, 92579334064],
+        "failed_run_ids": [31090270656, 31090270617, 31090270819, 31090270771, 31090270832, 31090270906],
+        "failed_run_count": 6,
+        "failed_step_names": [
+            "Dedicated pull-request hosted-CI acceptance regression",
+            "Dedicated positive and fail-closed regression",
+        ],
+        "failing_test_node": (
+            "tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py"
+            "::test_pull_request_event_requires_valid_head"
+        ),
+        "frozen_historical_artifact_change_count": 0,
+        "predecessor_package_version": "1.3",
+        "resolution": "DELETE_GITHUB_EVENT_PATH_FROM_SYNTHETIC_ABSENT_EVENT_TEST_ENVIRONMENT",
+        "root_cause": "SYNTHETIC_ABSENT_EVENT_CASE_INHERITED_LIVE_PULL_REQUEST_EVENT_PAYLOAD",
+        "status": "RESOLVED",
+        "successor_package_version": "1.4",
+        "verifier_behavioral_contract_change_count": 0,
+        "workflow_path_change_count": 0,
+    }
+
+
 def validate_predecessor_package_contract(manifest: dict[str, Any]) -> None:
     package = manifest.get("predecessor_package")
     if not isinstance(package, dict):
         raise RuntimeError("MANIFEST_PREDECESSOR_PACKAGE_FAILURE")
     expected_scalars = {
-        "filename": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Pull_Request_Hosted_CI_Acceptance_Corrective_Layer_Patch_v1.2.zip",
+        "filename": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Pull_Request_Hosted_CI_Acceptance_Corrective_Layer_Patch_v1.3.zip",
         "version": PREDECESSOR_PACKAGE_VERSION,
-        "byte_count": 49901,
+        "byte_count": 118489,
         "sha256": PREDECESSOR_PACKAGE_SHA256,
         "total_path_count": 17,
     }
@@ -344,7 +375,7 @@ def visible_package_files(root: Path) -> list[str]:
 
 
 def validate_manifest_contract(manifest: dict[str, Any]) -> None:
-    if manifest.get("artifact_id") != ARTIFACT_ID or manifest.get("version") != "1.3":
+    if manifest.get("artifact_id") != ARTIFACT_ID or manifest.get("version") != "1.4":
         raise RuntimeError("MANIFEST_ARTIFACT_OR_VERSION_FAILURE")
     if manifest.get("repository") != REPOSITORY or manifest.get("branch") != BRANCH:
         raise RuntimeError("MANIFEST_REPOSITORY_BINDING_FAILURE")
@@ -477,6 +508,11 @@ def validate_manifest_contract(manifest: dict[str, Any]) -> None:
         raise RuntimeError("MANIFEST_FIXTURE_CONTRACT_FAILURE")
     if manifest.get("fixture_environment_propagation_resolution") != expected_fixture_resolution():
         raise RuntimeError("MANIFEST_FIXTURE_RESOLUTION_FAILURE")
+    if (
+        manifest.get("pull_request_test_fixture_environment_isolation_resolution")
+        != expected_pull_request_test_fixture_resolution()
+    ):
+        raise RuntimeError("MANIFEST_PULL_REQUEST_TEST_FIXTURE_RESOLUTION_FAILURE")
     transformations = manifest.get("transformations")
     if not isinstance(transformations, list) or [row.get("path") for row in transformations] != EXPECTED_MODIFIED:
         raise RuntimeError("MANIFEST_TRANSFORMATION_INVENTORY_FAILURE")

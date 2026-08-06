@@ -68,7 +68,7 @@ def repository_with_applied_surface(tmp_path: Path) -> Path:
         target = repo / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(MODULE.predecessor_package_bytes(manifest, ROOT, relative))
-    commit_all(repo, "synthetic exact package v1.2 predecessor")
+    commit_all(repo, "synthetic exact package v1.3 predecessor")
     for relative in MODULE.SUCCESSOR_CHANGED_PATHS:
         shutil.copy2(ROOT / relative, repo / relative)
     return repo
@@ -181,9 +181,9 @@ def test_zero_unresolved_dependencies() -> None:
     assert MODULE.load_manifest(ROOT)["unresolved_dependency_count"] == 0
 
 
-def test_prior_audit_findings_are_preserved_and_fixture_resolution_is_v13() -> None:
+def test_prior_audit_findings_and_successor_resolutions_are_preserved_in_v14() -> None:
     manifest = MODULE.load_manifest(ROOT)
-    assert manifest["version"] == "1.3"
+    assert manifest["version"] == "1.4"
     pre_resolution = manifest["pre_application_audit_resolution"]
     assert pre_resolution["predecessor_package_version"] == "1.0"
     assert pre_resolution["successor_package_version"] == "1.1"
@@ -206,6 +206,10 @@ def test_prior_audit_findings_are_preserved_and_fixture_resolution_is_v13() -> N
     assert resolution["predecessor_package_version"] == "1.2"
     assert resolution["successor_package_version"] == "1.3"
     assert resolution["changed_internal_paths"] == MODULE.SUCCESSOR_CHANGED_PATHS
+    test_resolution = manifest["pull_request_test_fixture_environment_isolation_resolution"]
+    assert test_resolution == MODULE.expected_pull_request_test_fixture_resolution()
+    assert test_resolution["predecessor_package_version"] == "1.3"
+    assert test_resolution["successor_package_version"] == "1.4"
 
 
 def test_self_excluding_ledger_has_sixteen_entries() -> None:
@@ -432,7 +436,10 @@ def test_event_head_valid(tmp_path: Path) -> None:
     assert MODULE.event_head(str(event_file(tmp_path, head))) == head
 
 
-def test_pull_request_event_requires_valid_head(tmp_path: Path) -> None:
+def test_pull_request_event_requires_valid_head(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("GITHUB_EVENT_PATH", raising=False)
     repo, predecessor, _, _ = make_layer_graph(tmp_path)
     with pytest.raises(RuntimeError, match="PULL_REQUEST_CONTEXT_MISSING_OR_INVALID"):
         MODULE.resolve_layer_head(repo, mini_manifest(predecessor), event_name="pull_request")
