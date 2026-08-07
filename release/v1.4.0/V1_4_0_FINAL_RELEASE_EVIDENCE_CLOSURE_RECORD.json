@@ -1,0 +1,71 @@
+{
+  "artifact_id": "V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD",
+  "authority": {
+    "final_verdict": "PASS",
+    "formal_gate3_cluster_b_wp6_closed": true,
+    "github_release_id": 366706025,
+    "pull_request_34_merged": true,
+    "tag": "v1.4.0"
+  },
+  "baseline": {
+    "commit": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "parents": [
+      "47614ce7891f4895e003cb85e7651b7d043a963d",
+      "aeeaeefa5d40bbb26ffe7c9ae02abc75b3636a5d"
+    ],
+    "release_v1_4_0_subtree": "45aaeec48443924fa153ac343ab904bac814792f",
+    "tree": "8ec377cadaeddfd6bef67dd01d981b83d09c327b"
+  },
+  "date": "2026-08-07",
+  "historical_preservation": {
+    "all_preexisting_release_v1_4_0_paths_byte_preserved": true,
+    "baseline_subtree_sha1": "45aaeec48443924fa153ac343ab904bac814792f",
+    "historical_v1_3_sections_preserved": true,
+    "historical_wp6_records_classification": "HISTORICAL_PRE_PR34_NON_TERMINAL_EVIDENCE",
+    "retroactive_rewrite_performed": false
+  },
+  "publication_boundary": {
+    "CITATION_CFF_CHANGE_NOW": "NO",
+    "DOI_MUTATION_PERFORMED": "NO",
+    "README_DOI_TARGET_CHANGE_NOW": "NO",
+    "V1_4_0_DOI_FINALIZED": "NO",
+    "ZENODO_V1_4_0_CREATED": "NO",
+    "existing_v1_3_doi": "10.5281/zenodo.21346728"
+  },
+  "remote_mutation_boundary": {
+    "github_release_mutated": false,
+    "tag_mutated": false,
+    "workflow_rerun_or_dispatch": false,
+    "zenodo_or_doi_mutated": false
+  },
+  "state": "FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED",
+  "surface": {
+    "additive": [
+      "artifacts/v1_4_0_github_final_release_evidence.json",
+      "release/v1.4.0/V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md",
+      "scripts/build_v1_4_0_final_release_evidence_closure_manifest.py",
+      "scripts/verify_v1_4_0_final_release_evidence_closure.py",
+      "tests/test_v1_4_0_final_release_evidence_closure.py",
+      ".github/workflows/v1-4-0-final-release-evidence-closure.yml"
+    ],
+    "additive_count": 10,
+    "modified": [
+      "README.md",
+      "CHANGELOG.md",
+      "docs/status_and_nonclaims.md"
+    ],
+    "modified_count": 3,
+    "removals": [],
+    "total_count": 13
+  },
+  "version": "1.0",
+  "version_boundary": {
+    "checker_project": "0.7.0.dev1",
+    "checker_promotion": false,
+    "repository_release": "v1.4.0"
+  }
+}

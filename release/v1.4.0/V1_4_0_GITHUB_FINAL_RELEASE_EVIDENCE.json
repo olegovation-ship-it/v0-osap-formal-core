@@ -1,0 +1,150 @@
+{
+  "artifact_id": "V0_OSAP_V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE",
+  "component_version_boundary": {
+    "baseline_pyproject_blob_sha1": "8e2b30975f15d4147aabb7a50fe8bab3b9ea65a8",
+    "component_promotion_performed": false,
+    "embedded_checker_project_name": "v0-osap-fc1",
+    "embedded_checker_project_version": "0.7.0.dev1",
+    "repository_release_version": "v1.4.0",
+    "version_namespaces_separate": true
+  },
+  "construction_boundary": {
+    "release_mutation_performed": false,
+    "remote_mutation_performed": false,
+    "repository_mutation_performed": false,
+    "tag_mutation_performed": false,
+    "workflow_dispatch_or_rerun_performed": false,
+    "zenodo_or_doi_mutation_performed": false
+  },
+  "date": "2026-08-07",
+  "formal_gate3_cluster_b_wp6": {
+    "closure_decision": "GO",
+    "closure_readiness": "PASS",
+    "final_verdict": "PASS",
+    "formally_closed": true,
+    "hold_reason": "NONE"
+  },
+  "github_release": {
+    "asset_count": 4,
+    "assets": [
+      {
+        "byte_count": 144299,
+        "name": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Closure_Documentation_Bundle_v1.0_2026-08-07.zip",
+        "sha256": "6516127bd14148d5ef710615958920bbdba70047cdde8c753f7d76778bb000ca"
+      },
+      {
+        "byte_count": 150,
+        "name": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Closure_Documentation_Bundle_v1.0_2026-08-07.zip.sha256.txt",
+        "sha256": "23743dd2ff555caec972bc5869fa36f34ecc1c47514995c49faf3403e63d0ce4"
+      },
+      {
+        "byte_count": 1469,
+        "name": "V0_OSAP_v1.4.0_Exact_Annotated_Tag_Metadata_Freeze_v1.0_2026-08-07.txt",
+        "sha256": "9bec8de69bb36b1bd1a2d57098d82163e23c981bd1883dc4000e4e0a8e1ec3f0"
+      },
+      {
+        "byte_count": 137,
+        "name": "V0_OSAP_v1.4.0_Exact_Annotated_Tag_Metadata_Freeze_v1.0_2026-08-07.txt.sha256.txt",
+        "sha256": "1396a34ae556f9b20376cdd7ecb98c040beae70bbc33e6e9ae322fe8ff499dc2"
+      }
+    ],
+    "body_sha256": "530711e7baa7408f51f53844c969020520a0c0bd5c100bfe29275867735623ba",
+    "draft": false,
+    "id": 366706025,
+    "immutable_during_this_closure": true,
+    "latest": true,
+    "name": "V0 OSAP v1.4.0 — Stable Release",
+    "prerelease": false,
+    "published_at": "2026-08-07T11:32:01Z",
+    "tag": "v1.4.0"
+  },
+  "historical_preservation": {
+    "baseline_release_v1_4_0_tree_sha1": "45aaeec48443924fa153ac343ab904bac814792f",
+    "historical_examples": [
+      {
+        "baseline_semantics": {
+          "gate3_closed": false,
+          "release_authorized": false
+        },
+        "blob_sha1": "93038c35c8914fdf9f0410bf90e8ee20a7005a6a",
+        "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_ACCEPTANCE_GATES.json"
+      },
+      {
+        "baseline_semantics": {
+          "authentic_hosted_ci_evidence": "PENDING",
+          "gate3_closed": false
+        },
+        "blob_sha1": "2541c3105763923897a8ec455773ea65f09fcfdc",
+        "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_GATE_RESULT_MATRIX.json"
+      }
+    ],
+    "historical_wp6_classification": "HISTORICAL_PRE_PR34_NON_TERMINAL_EVIDENCE",
+    "historical_wp6_records_must_not_be_rewritten_or_deleted": true,
+    "policy": "ALL_PREEXISTING_BASELINE_PATHS_UNDER_RELEASE_V1_4_0_MUST_REMAIN_BYTE_IDENTICAL",
+    "terminal_authority": "OUT_OF_REPOSITORY_2026_08_07_FORMAL_CLOSURE_TIED_TO_PR34_AND_CANONICAL_MERGE",
+    "v1_3_status_sections_preserved": true
+  },
+  "post_merge_hosted_ci": {
+    "check_runs_completed": 65,
+    "check_runs_pending": 0,
+    "check_runs_total": 65,
+    "verification": "PASS",
+    "workflow_runs_cancelled": 0,
+    "workflow_runs_completed": 29,
+    "workflow_runs_failure": 0,
+    "workflow_runs_pending": 0,
+    "workflow_runs_skipped": 14,
+    "workflow_runs_success": 15,
+    "workflow_runs_total": 29
+  },
+  "provenance": {
+    "gate3_closure_bundle_sha256": "6516127bd14148d5ef710615958920bbdba70047cdde8c753f7d76778bb000ca",
+    "github_release_freeze_bundle_sha256": "3191abd6898d9b7c6a372ab258fc7a4649cce3e5789fff5fb6337482b8f4598d",
+    "post_release_post_sync_handoff_sha256": "6d9b2891cec8bb09377bb9cd7ed1924007db35a0547fe673ac4773a891ef6c5a",
+    "post_release_post_sync_state_sha256": "72ef0a8d5a4989e9dc5def712e2a6e8531f8e40f41d1ad998290532d6ffee94f",
+    "strategic_governance_amendment_pdf_sha256": "8f06096747653cc8e256b14f16f3b10b1b6aa5fcfa6dea4515792c2c14a81a82"
+  },
+  "publication_boundary": {
+    "baseline_citation_cff_blob_sha1": "0adb7aaa73a052b8621c3f0d393f6f128cf4bada",
+    "citation_cff_change_now": false,
+    "doi_dependent_metadata_finalization": "DEFERRED_UNTIL_SEPARATELY_AUTHORIZED_ZENODO_PUBLICATION",
+    "doi_mutation_performed": false,
+    "existing_v1_3_doi": "10.5281/zenodo.21346728",
+    "readme_doi_target_change_now": false,
+    "v1_4_0_doi_finalized": false,
+    "zenodo_v1_4_0_created": false
+  },
+  "pull_request": {
+    "draft": false,
+    "merge_commit_sha": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "merged": true,
+    "number": 34,
+    "state": "closed",
+    "title": "WP6 successor-attestation layer"
+  },
+  "repository": {
+    "ahead_by": 0,
+    "behind_by": 0,
+    "branches_synchronized": true,
+    "canonical_branch": "main",
+    "canonical_merge_sha": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "compare_status": "identical",
+    "development_branch": "v1.4.0-development",
+    "development_head_at_evidence_freeze": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "full_name": "olegovation-ship-it/v0-osap-formal-core",
+    "main_head_at_evidence_freeze": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "parent_1": "47614ce7891f4895e003cb85e7651b7d043a963d",
+    "parent_2": "aeeaeefa5d40bbb26ffe7c9ae02abc75b3636a5d",
+    "tree_sha1": "8ec377cadaeddfd6bef67dd01d981b83d09c327b"
+  },
+  "stable_tag": {
+    "immutable": true,
+    "message_sha256": "9dbffe6f0bf3182f9e19fe278d8b3834ed3bb607d75282bae814db39b8fee5a5",
+    "name": "v1.4.0",
+    "object_sha1": "21d9a42ceb9985dbcd6330582a8cb80e81d883c5",
+    "peeled_target": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "type": "ANNOTATED"
+  },
+  "state": "FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED",
+  "version": "1.0"
+}
