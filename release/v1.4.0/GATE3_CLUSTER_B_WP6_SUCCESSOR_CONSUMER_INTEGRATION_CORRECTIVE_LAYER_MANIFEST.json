@@ -1,0 +1,460 @@
+{
+  "additive_path_count": 5,
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py",
+    "tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER",
+  "branch": "v1.4.0-development",
+  "byte_contract": {
+    "encoding": "UTF-8",
+    "file_mode": "100644",
+    "line_ending": "LF",
+    "modified_path_derivation": "EXACT_UNIQUE_REPLACEMENT_FROM_PREDECESSOR_BLOB",
+    "trailing_newline_required": true
+  },
+  "draft_pr": {
+    "base_branch": "main",
+    "base_sha": "47614ce7891f4895e003cb85e7651b7d043a963d",
+    "number": 34,
+    "projected_added_path_count": 34,
+    "projected_changed_path_count": 74,
+    "projected_modified_path_count": 40,
+    "state": "OPEN_DRAFT"
+  },
+  "historical_artifact_policy": {
+    "canonical_ledgers_rewritten": false,
+    "historical_records_rewritten": false,
+    "predecessor_v02_replayed_at_exact_anchor": true,
+    "release_or_publication_actions_authorized": false
+  },
+  "ledger_entry_count": 4,
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "modified_path_count": 8,
+  "modified_paths": [
+    ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp2.yml",
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp3.yml",
+    ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml",
+    ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+    ".github/workflows/gate3-cluster-b-wp5.yml",
+    ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml"
+  ],
+  "predecessor": {
+    "commit": "e1b3928c0759e2ed61624dabf4cbc505982c379f",
+    "parent": "be193bd3e3bf46b8235b2472f04a4aab41203493",
+    "title": "repair(wp6): add successor attestation layer"
+  },
+  "replay_groups": {
+    "wp2": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "commands": [
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp2.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp2.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp2.py"
+        ]
+      ]
+    },
+    "wp2-post-merge": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp2.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/capture_gate3_cluster_b_wp2_post_merge_evidence.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp2.py"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp2_post_merge_closeout.py"
+        ]
+      ]
+    },
+    "wp3": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp2.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp2.py"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+          "--package-only"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp3.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp3.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp3.py"
+        ]
+      ]
+    },
+    "wp3-post-merge": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/patch_wp3_post_merge_allowlist.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp3_post_merge_closeout.py"
+        ]
+      ]
+    },
+    "wp5": {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "default_jobs": [
+        "baseline",
+        "schemas",
+        "id-audit",
+        "role-coverage",
+        "dependency-dag",
+        "positive-models",
+        "negative-boundary",
+        "statement-parity",
+        "ipec-lineage",
+        "deterministic-replay",
+        "gate3-audit-inputs",
+        "python-semantics"
+      ],
+      "job_passthrough": true
+    },
+    "wp5-post-merge": {
+      "anchor": "dba0425c0f98950534bf5c6d407246da58eacd2f",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp5.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py",
+          "--package-only"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp5_post_merge_closeout.py"
+        ]
+      ]
+    },
+    "wp5-sync-helper": {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "commands": [
+        [
+          "python",
+          "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py"
+        ],
+        [
+          "python",
+          "scripts/build_gate3_cluster_b_wp5_sync_helper_repair.py",
+          "--check"
+        ],
+        [
+          "python",
+          "scripts/replay_gate3_cluster_b_wp5_sync_helper_repair.py"
+        ],
+        [
+          "python",
+          "scripts/verify_gate3_cluster_b_wp5_sync_helper_repair.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_gate3_cluster_b_wp5_sync_helper_repair.py"
+        ]
+      ]
+    },
+    "wp6-post-merge": {
+      "jobs": {
+        "closeout-verifier": {
+          "anchor": "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9",
+          "commands": [
+            [
+              "python",
+              "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py",
+              "--package-only"
+            ]
+          ]
+        },
+        "dedicated-tests": {
+          "anchor": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+          "commands": [
+            [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "tests/test_gate3_cluster_b_wp6_post_merge_closeout.py",
+              "tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py",
+              "tests/test_gate3_cluster_b_wp6_post_merge_push_context_repair.py"
+            ]
+          ]
+        },
+        "hosted-ci-context-repair": {
+          "anchor": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+          "commands": [
+            [
+              "python",
+              "release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py",
+              "--ci"
+            ],
+            [
+              "python",
+              "release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py",
+              "--mode",
+              "committed"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "surface_path_count": 13,
+  "transformations": [
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp2.yml",
+      "predecessor_blob_sha1": "8dd6deb91c9242bc73745ab92027ed555ab2efe9",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP2 workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp2\n",
+          "old": "      - name: Verify deterministic WP2 build\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2.py --check\n      - name: Replay inherited WP0 and WP1 records at the exact frozen WP2 baseline\n        shell: bash\n        run: |\n          set -euo pipefail\n          replay_dir=\"$(mktemp -d)\"\n          cleanup() {\n            git worktree remove --force \"$replay_dir\" >/dev/null 2>&1 || true\n            rm -rf \"$replay_dir\"\n          }\n          trap cleanup EXIT\n          git worktree add --detach \"$replay_dir\" ffeaa3fd4fb2f85679f4695d5b28e333004ca24a\n          (\n            cd \"$replay_dir\"\n            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp0.py --package-only\n            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp0_post_merge_closeout.py --package-only\n            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp1.py --package-only\n            PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp1_post_merge_closeout.py --package-only\n          )\n      - name: Verify WP2 semantics, fixtures, schemas, ledger, and repository boundary\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2.py\n      - name: Full Python regression suite\n        run: PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "00fa4dfd76a7454614cc81bdc8ff98330e3e6dcd",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP2 post-merge workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp2-post-merge\n      - run: python scripts/check_no_proof_holes.py\n",
+          "old": "      - run: python release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py --check\n      - run: python scripts/build_gate3_cluster_b_wp2.py --check\n      - run: python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check\n      - run: python scripts/capture_gate3_cluster_b_wp2_post_merge_evidence.py --check\n      - run: |\n          if [[ \"${GITHUB_REF_NAME}\" == \"main\" ]]; then\n            python scripts/verify_gate3_cluster_b_wp2.py --allow-main\n            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --allow-main\n          else\n            python scripts/verify_gate3_cluster_b_wp2.py\n            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py\n          fi\n      - run: python -m pytest -q -p no:cacheprovider\n      - run: python scripts/check_no_proof_holes.py\n      - run: bash -n scripts/synchronize_v1_4_0_development_wp2.sh\n      - run: git diff --check b6370af53add3fdff1ddb48824dd76ebba3aaa32...HEAD\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp3.yml",
+      "predecessor_blob_sha1": "581e98027a3f7c78646641cb01296cdafb7797f2",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP3 workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp3\n      - name: Proof-hole scan\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/check_no_proof_holes.py\n",
+          "old": "      - name: Verify WP2 successor-firewall compatibility handoff\n        run: |\n          PYTHONDONTWRITEBYTECODE=1 python release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py --check\n          PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2.py --check\n          PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check\n          PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2.py\n          PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --package-only\n      - name: Deterministic WP3 build check\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/build_gate3_cluster_b_wp3.py --check\n      - name: Verify exact IPEC compatibility, bindings, fixtures, and preservation\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp3.py\n      - name: Full Python regression\n        run: PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider\n      - name: Proof-hole scan\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/check_no_proof_holes.py\n      - name: Recheck preservation after regression\n        run: PYTHONDONTWRITEBYTECODE=1 python scripts/verify_gate3_cluster_b_wp3.py\n      - name: Baseline-range whitespace check\n        run: git diff --check 7b49aa76fef65bced7141a639e8ef6fe3b5ba313...HEAD\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "eb268ab4eee7d5fc6cb702243445d4a792000604",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP3 post-merge workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp3-post-merge\n      - run: python scripts/check_no_proof_holes.py\n",
+          "old": "      - run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py\n          --replay-consumer wp3-post-merge-allowlist\n          --consumer-arg=--check\n      - run: python release/v1.4.0/tools/patch_wp2_post_merge_allowlist.py --check\n      - run: python scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py --check\n      - run: python scripts/verify_gate3_cluster_b_wp2.py\n      - run: python scripts/build_gate3_cluster_b_wp3.py --check\n      - run: python scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py --check\n      - run: python scripts/capture_gate3_cluster_b_wp3_post_merge_evidence.py --check\n      - run: |\n          if [[ \"${{ github.ref_name }}\" == \"main\" ]]; then\n            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py --allow-main\n            python scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py --allow-main\n          else\n            python scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py\n            python scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py\n          fi\n          python scripts/verify_gate3_cluster_b_wp3.py\n      - run: python -m pytest -q -p no:cacheprovider\n      - run: python scripts/check_no_proof_holes.py\n      - run: bash -n scripts/synchronize_v1_4_0_development_wp3.sh\n      - run: git diff --check 3a3100d88772f3613192db200918d392885a3961...HEAD\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5.yml",
+      "predecessor_blob_sha1": "92ecbedad9e42a9c8df1d0e3dff3aa3cc4d683d1",
+      "replacements": [
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job baseline\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job baseline\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job schemas\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job schemas\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job id-audit\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job id-audit\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job role-coverage\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job role-coverage\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job dependency-dag\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job dependency-dag\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job positive-models\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job positive-models\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job negative-boundary\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job negative-boundary\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job statement-parity\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job statement-parity\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job ipec-lineage\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job ipec-lineage\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job deterministic-replay\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job deterministic-replay\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job gate3-audit-inputs\n",
+          "old": "        run: python scripts/verify_gate3_cluster_b_wp5.py --job gate3-audit-inputs\n"
+        },
+        {
+          "new": "        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5\n          --job python-semantics\n",
+          "old": "        run: python -m pytest -q -p no:cacheprovider\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "0af4a1a5786faf89efe5cef6ba985590864710da",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP5 post-merge workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5-post-merge\n      - name: Proof-hole scan\n        run: python scripts/check_no_proof_holes.py\n      - name: Lean 4 build\n        working-directory: lean\n        run: lake build\n      - name: Coq build\n        working-directory: coq\n        run: make\n      - name: Restore generated tracked Coq dependency surface\n        run: git restore --source=HEAD -- coq/.Makefile.coq.d || true\n",
+          "old": "      - name: Exact closeout changed-path allowlist\n        run: python release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py\n      - name: Canonical and successor WP5 ledger verification\n        run: python scripts/build_gate3_cluster_b_wp5.py --check\n      - name: Post-merge closeout build\n        run: python scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py --check\n      - name: Post-merge closeout verifier\n        run: python scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py --allow-main\n      - name: Dedicated closeout test\n        run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp5_post_merge_closeout.py\n      - name: Full Python regression\n        run: python -m pytest -q -p no:cacheprovider\n      - name: Proof-hole scan\n        run: python scripts/check_no_proof_holes.py\n      - name: Lean 4 build\n        working-directory: lean\n        run: lake build\n      - name: Coq build\n        working-directory: coq\n        run: make\n      - name: Restore generated tracked Coq dependency surface\n        run: git restore --source=HEAD -- coq/.Makefile.coq.d || true\n      - name: Whitespace and patch integrity\n        run: git diff --check adda93cae34d6579e8b715d4107ff7f62a6f9c6b --\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml",
+      "predecessor_blob_sha1": "317ca48c768d15817499c1b2d4a0c4293d3c6d06",
+      "replacements": [
+        {
+          "new": "      - name: Verify successor-consumer integration and replay frozen WP5 synchronization-helper workflow\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp5-sync-helper\n      - run: python scripts/check_no_proof_holes.py\n      - working-directory: lean\n        run: lake build\n      - working-directory: coq\n        run: make\n      - run: git restore --source=HEAD -- coq/.Makefile.coq.d || true\n",
+          "old": "      - run: python release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py\n      - run: python scripts/build_gate3_cluster_b_wp5_sync_helper_repair.py --check\n      - run: python scripts/replay_gate3_cluster_b_wp5_sync_helper_repair.py\n      - run: python scripts/verify_gate3_cluster_b_wp5_sync_helper_repair.py\n      - run: python -m pytest -q -p no:cacheprovider\n      - run: python scripts/check_no_proof_holes.py\n      - working-directory: lean\n        run: lake build\n      - working-directory: coq\n        run: make\n      - run: git restore --source=HEAD -- coq/.Makefile.coq.d || true\n      - run: git diff --check e5724fc394b2fbb26d8926b5670b8fd41a62a71c --\n"
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+      "predecessor_blob_sha1": "92925c2bb4f6d96eb4d1216c29f99a50a8a2c24d",
+      "replacements": [
+        {
+          "new": "      - name: Replay frozen WP6 post-merge closeout verifier\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job closeout-verifier\n",
+          "old": "      - run: python scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py --package-only\n"
+        },
+        {
+          "new": "      - name: Replay frozen WP6 post-merge dedicated tests\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job dedicated-tests\n",
+          "old": "      - run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp6_post_merge_closeout.py tests/test_gate3_cluster_b_wp6_post_merge_ci_context_repair.py tests/test_gate3_cluster_b_wp6_post_merge_push_context_repair.py\n"
+        },
+        {
+          "new": "      - name: Replay frozen WP6 hosted-CI context repair\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py\n          --mode committed\n          --replay-workflow wp6-post-merge\n          --job hosted-ci-context-repair\n",
+          "old": "      - run: python release/v1.4.0/tools/verify_wp6_post_merge_ci_context_repair.py --ci\n      - run: python release/v1.4.0/tools/verify_wp6_post_merge_push_context_repair.py --mode committed\n"
+        }
+      ]
+    }
+  ],
+  "unresolved_dependency_count": 0,
+  "version": "0.1"
+}

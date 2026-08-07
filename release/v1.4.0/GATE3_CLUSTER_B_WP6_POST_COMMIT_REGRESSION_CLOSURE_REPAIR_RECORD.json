@@ -1,0 +1,66 @@
+{
+  "additive_paths": [
+    "docs/gate3/cluster_b/WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py",
+    "tests/test_gate3_cluster_b_wp6_post_commit_regression_closure_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR",
+  "authorization_firewall": {
+    "amend": false,
+    "branch_deletion": false,
+    "checkout_file_mutation": false,
+    "commit": false,
+    "doi_action": false,
+    "force_push": false,
+    "gate3_close": false,
+    "github_actions_rerun": false,
+    "github_release": false,
+    "history_rewrite": false,
+    "merge": false,
+    "pr33_mutation": false,
+    "push": false,
+    "rebase": false,
+    "remote_ref_mutation": false,
+    "reset": false,
+    "restore": false,
+    "staging": false,
+    "stash": false,
+    "synchronization": false,
+    "tag": false,
+    "zenodo_deposit": false
+  },
+  "branch": "v1.4.0-development",
+  "controlled_modified_paths": [
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py"
+  ],
+  "date": "2026-07-26",
+  "failure_classes_closed": [
+    "WP6_SUCCESSOR_HEAD_EXACT_PREDECESSOR_EQUALITY",
+    "WP6_POST_MERGE_SUCCESSOR_REPAIR_SURFACE_NONRECOGNITION",
+    "WP2_FROZEN_LEDGER_CURRENT_TREE_CONFLATION",
+    "WP2_IMMUTABLE_LEDGER_CURRENT_GENERATION_CONFLATION",
+    "WP3_FROZEN_LEDGER_CURRENT_TREE_CONFLATION",
+    "WP3_IMMUTABLE_LEDGER_CURRENT_GENERATION_CONFLATION"
+  ],
+  "pre_repair_head": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+  "pre_repair_parent": "ba32d8e855a79461fdcda14740acab86aafcb17a",
+  "repair_policy": {
+    "current_successor_bytes": "EXACT_REGRESSION_REPAIR_LEDGER_ONLY",
+    "historical_ledgers_or_records_rewritten": false,
+    "previous_repair_snapshot": "VERIFY_EXACT_COMMIT_DIFF_AND_BLOBS_AT_PRE_REPAIR_HEAD",
+    "successor_head_binding": "ANCESTRY_EXACT_PARENT_AND_BOUNDED_PATH_SURFACE"
+  },
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_snapshot_name": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Post_Commit_Regression_Closure_Source_Snapshot_v0.1.zip",
+  "source_snapshot_sha256": "5e25000e2029dcc57339aa37c76edcb180d99ef14422c482bee35d77ee1a573c",
+  "status": "PREPARED_UNCOMMITTED",
+  "version": "0.1"
+}

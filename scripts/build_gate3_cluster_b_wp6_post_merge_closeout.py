@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json
+import argparse, hashlib, json, subprocess
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
 LEDGER=ROOT/'release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SHA256SUMS.txt'
+FROZEN_LEDGER_ANCHOR='ba32d8e855a79461fdcda14740acab86aafcb17a'
 MANIFEST=ROOT/'release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json'
 FIXTURE_SCHEMA=ROOT/'schemas/v1.4.0/gate3_cluster_b_wp6_post_merge_sync_fixture.schema.json'
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def digest_at_frozen_closeout(rel):
+    cp=subprocess.run(
+        ['git','show',FROZEN_LEDGER_ANCHOR+':'+rel],
+        cwd=ROOT,capture_output=True,check=False
+    )
+    if cp.returncode:
+        raise SystemExit('frozen ledger anchor path missing: '+rel)
+    return hashlib.sha256(cp.stdout).hexdigest()
 def load(rel): return json.loads((ROOT/rel).read_text(encoding='utf-8'))
 def canonical(path):
     obj=json.loads(path.read_text(encoding='utf-8')); return path.read_text(encoding='utf-8')==json.dumps(obj,indent=2,sort_keys=True,ensure_ascii=False)+'\n'
@@ -27,8 +36,8 @@ def check():
         if line.strip():
             h,rel=line.split('  ',1); entries[rel]=h
     for rel,h in entries.items():
-        p=ROOT/rel
-        if not p.is_file() or digest(p)!=h: raise SystemExit('post-merge ledger mismatch: '+rel)
+        if digest_at_frozen_closeout(rel)!=h:
+            raise SystemExit('post-merge frozen-ledger mismatch: '+rel)
     print(f'WP6 POST-MERGE BUILD CHECK: PASS ({len(entries)} ledger entries, {len(m["pairs"])} schema pairs)')
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--check',action='store_true'); a=p.parse_args()

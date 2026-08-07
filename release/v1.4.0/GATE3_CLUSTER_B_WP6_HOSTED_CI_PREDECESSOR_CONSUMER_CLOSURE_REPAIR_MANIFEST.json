@@ -1,0 +1,106 @@
+{
+  "additive_path_count": 6,
+  "additive_paths": [
+    "docs/gate3/cluster_b/WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+    "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_consumer_closure_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_MANIFEST",
+  "blanket_successor_allowlist_expansion": false,
+  "branch": "v1.4.0-development",
+  "changed_path_count": 13,
+  "controlled_input_git_blob_sha1": {
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml": "080e3efaa75a2b17240f5057130397c0ae93795c",
+    "release/v1.4.0/tools/patch_wp5_allowlist.py": "b38b9dacf928a93c9da91f2261684b48dbe2451b",
+    "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py": "37ce7389cbc98e566105f98c7952fbdc8a49ba0f",
+    "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py": "eea356a18b1a93b44fd3ce8a6129b6bb33493d69",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py": "624ceaf2ea1035c873e49f6da27290270a652dbb",
+    "scripts/verify_gate3_cluster_b_wp2.py": "9629412c468397f19c164a2aeb31a7bac744e365",
+    "scripts/verify_gate3_cluster_b_wp3.py": "a657d1b2c706a90ce9f7278dc42661811dbe6729"
+  },
+  "controlled_modified_path_count": 7,
+  "controlled_modified_paths": [
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+    "release/v1.4.0/tools/patch_wp5_allowlist.py",
+    "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py",
+    "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py",
+    "scripts/verify_gate3_cluster_b_wp2.py",
+    "scripts/verify_gate3_cluster_b_wp3.py"
+  ],
+  "controlled_output_sha256": {
+    ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml": "17f6147174172a59337f46910a261e34bf9a813b837d093d9debd5d26e55cce4",
+    "release/v1.4.0/tools/patch_wp5_allowlist.py": "46d959b00927335da273c5e9921919379f51b319db4ec6d7a09a497dec780da9",
+    "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py": "b7c6e943e308445e9449cec147268caf32d9f7d9f97c8d51a1fe19e69229b27f",
+    "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py": "6ce16457ac3adbce271e7a6168aba525d580650bc3f6096fe916cbd28cc37c80",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_regression_corrective_repair.py": "3dfaff7607df7166cd789de1f330e61bab7816992a0c992a880f53f2d2011f6d",
+    "scripts/verify_gate3_cluster_b_wp2.py": "444334f5ad1c59ea37a5b1741a8010e1635c66a9949c43bfc73abea57865fcc7",
+    "scripts/verify_gate3_cluster_b_wp3.py": "143f368bcf690bc50e17f08a68eca70d42e589a3ea213a659ff7b561cdfe59da"
+  },
+  "frozen_ledgers_rewritten": false,
+  "historical_consumers": {
+    "wp2-verifier": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "path": "scripts/verify_gate3_cluster_b_wp2.py"
+    },
+    "wp3-canonical-verifier": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "path": "scripts/verify_gate3_cluster_b_wp3.py"
+    },
+    "wp3-post-merge-allowlist": {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "path": "release/v1.4.0/tools/patch_wp3_post_merge_allowlist.py"
+    },
+    "wp5-canonical-allowlist": {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "path": "release/v1.4.0/tools/patch_wp5_allowlist.py"
+    },
+    "wp5-post-merge-allowlist": {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "path": "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py"
+    },
+    "wp5-sync-helper-allowlist": {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "path": "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py"
+    }
+  },
+  "historical_records_rewritten": false,
+  "history_rewritten": false,
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "minimal_new_controlled_path": "scripts/verify_gate3_cluster_b_wp3.py",
+  "pre_repair_head": "3bbe861153cca8123fc9d528921ebc9dc2bb41e5",
+  "pre_repair_parent": "59fa5076fdabf74b832fb985947253eaaecca4ae",
+  "pre_repair_title": "repair(wp6): close hosted CI regression compatibility gaps",
+  "proof_sources_rewritten": false,
+  "release_actions_performed": false,
+  "release_publication_evidence_rewritten": false,
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "schemas_or_fixtures_rewritten": false,
+  "unrelated_tracked_changes_allowed": false,
+  "unrelated_untracked_artifacts_allowed": true,
+  "v0_7_post_application_residual": {
+    "failed_workflow": "V0 OSAP Gate 3 Cluster B WP3",
+    "failure_class": "WP3_CANONICAL_PRESERVATION_FIREWALL_STALE_BOUNDARY",
+    "repair": "RETURN_AFTER_SUCCESSFUL_FULL_FROZEN_REPLAY_AND_SEPARATELY_ATTESTED_SUCCESSOR_OVERLAY",
+    "root_cause": "CURRENT_WP3_WRAPPER_REENTERED_CANONICAL_BUILDER_AFTER_COMPLETE_DETACHED_FROZEN_REPLAY",
+    "run_id": 30247954930,
+    "stderr": "successor ledger does not attest changed WP3 path: scripts/verify_gate3_cluster_b_wp3.py"
+  },
+  "v0_8_post_application_residual": {
+    "failure_stage": "WORKING_TREE_REPOSITORY_SURFACE_ATTESTATION",
+    "package_only_internal_attestation": "PASS",
+    "package_surface_missing_paths": [],
+    "package_surface_wrong_status_paths": [],
+    "repair": "FILTER_EXACT_PACKAGE_SURFACE_AND_ALLOW_ONLY_UNRELATED_QUESTION_MARK_UNTRACKED_ENTRIES_OUTSIDE_IT",
+    "repository_identity_changed": false,
+    "root_cause": "FULL_PORCELAIN_STATUS_WAS_COMPARED_TO_EXACT_13_PATH_PACKAGE_SURFACE_AND_UNRELATED_UNTRACKED_ARTIFACTS_WERE_CLASSIFIED_AS_EXTRA"
+  },
+  "version": "0.9",
+  "working_tree_surface_policy": "EXACT_13_PACKAGE_STATUSES_PLUS_UNRELATED_UNTRACKED_ARTIFACTS",
+  "wp3_canonical_frozen_anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+  "wp3_current_wrapper_post_replay_policy": "TERMINATE_SUCCESS_WITHOUT_REENTERING_FROZEN_CANONICAL_BUILDER"
+}

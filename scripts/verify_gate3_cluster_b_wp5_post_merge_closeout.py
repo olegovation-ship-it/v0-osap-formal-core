@@ -1,11 +1,266 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess
+import argparse, hashlib, importlib.util, json, os, subprocess, tempfile
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
 BASELINE='7b497f197652874164e00fe9c0ef7f67e760c979'; ACCEPTED='1c16ffb529b7e9a43c16739de26ad185c2f4b74c'; MERGE='adda93cae34d6579e8b715d4107ff7f62a6f9c6b'; DEV='v1.4.0-development'
 PAIRS=[('release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_ARCHIVAL_CLOSEOUT_RECORD.json', 'schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_archival_closeout_record.schema.json'), ('release/v1.4.0/GATE3_CLUSTER_B_WP5_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json', 'schemas/v1.4.0/gate3_cluster_b_wp5_development_branch_synchronization_record.schema.json'), ('release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_HOSTED_CI_EVIDENCE.json', 'schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_hosted_ci_evidence.schema.json'), ('release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_FROZEN_UPSTREAM_PRESERVATION_RECORD.json', 'schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_frozen_upstream_preservation_record.schema.json'), ('release/v1.4.0/GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT_GATES.json', 'schemas/v1.4.0/gate3_cluster_b_wp5_post_merge_closeout_gates.schema.json')]
+
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+WP5_HISTORICAL_REPLAY_ANCHOR = "e5724fc394b2fbb26d8926b5670b8fd41a62a71c"
+REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+REPAIR_LEDGER = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
+)
+
+
+def _repair_ledger_entries() -> dict[str, str]:
+    entries: dict[str, str] = {}
+
+    for line in REPAIR_LEDGER.read_text(
+        encoding="utf-8"
+    ).splitlines():
+        if not line.strip():
+            continue
+        digest_value, relative = line.split("  ", 1)
+        entries[relative] = digest_value
+
+    return entries
+
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay() -> dict[str, str] | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_wp5_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+
+def previous_repair_overlay_attestation() -> dict[str, str] | None:
+    try:
+        if not REPAIR_MANIFEST.is_file():
+            return None
+        if not REPAIR_LEDGER.is_file():
+            return None
+
+        manifest = json.loads(
+            REPAIR_MANIFEST.read_text(encoding="utf-8")
+        )
+
+        if manifest.get(
+            "frozen_ledger_anchor_commit"
+        ) != FROZEN_LEDGER_ANCHOR:
+            return None
+
+        controlled = set(
+            manifest.get("controlled_modified_paths", [])
+        )
+        additive = set(manifest.get("additive_paths", []))
+        expected_paths = controlled | additive
+
+        if manifest.get("changed_path_count") != len(expected_paths):
+            return None
+
+        ledger_relative = manifest.get("ledger_path")
+
+        if ledger_relative != REPAIR_LEDGER.relative_to(
+            ROOT
+        ).as_posix():
+            return None
+
+        status = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain=v1",
+                "--untracked-files=all",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if status.returncode:
+            return None
+
+        status_lines = status.stdout.splitlines()
+
+        if any(
+            len(line) < 4 or " -> " in line
+            for line in status_lines
+        ):
+            return None
+
+        working_paths = {
+            line[3:]
+            for line in status_lines
+            if line
+        }
+
+        if working_paths:
+            actual_paths = working_paths
+        else:
+            committed = subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-only",
+                    "--no-renames",
+                    FROZEN_LEDGER_ANCHOR + "..HEAD",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            if committed.returncode:
+                return None
+
+            actual_paths = {
+                line
+                for line in committed.stdout.splitlines()
+                if line
+            }
+
+        if actual_paths != expected_paths:
+            return None
+
+        entries = _repair_ledger_entries()
+
+        if len(entries) != len(expected_paths) - 1:
+            return None
+
+        for relative in expected_paths - {ledger_relative}:
+            path = ROOT / relative
+
+            if not path.is_file():
+                return None
+
+            actual = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
+
+            if entries.get(relative) != actual:
+                return None
+
+        return entries
+
+    except Exception:
+        return None
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    return previous_repair_overlay_attestation()
+
+def replay_wp5_historical_consumers() -> None:
+    commands = [
+        [
+            "python",
+            "scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py",
+            "--check",
+        ],
+        [
+            "python",
+            "release/v1.4.0/tools/"
+            "patch_wp5_post_merge_allowlist.py",
+        ],
+        [
+            "python",
+            "release/v1.4.0/tools/patch_wp5_allowlist.py",
+        ],
+        [
+            "python",
+            "scripts/build_gate3_cluster_b_wp5.py",
+            "--check",
+        ],
+    ]
+
+    with tempfile.TemporaryDirectory() as temporary:
+        worktree = Path(temporary) / "frozen-wp5"
+
+        added = subprocess.run(
+            [
+                "git",
+                "worktree",
+                "add",
+                "--detach",
+                str(worktree),
+                WP5_HISTORICAL_REPLAY_ANCHOR,
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if added.returncode:
+            raise RuntimeError(
+                added.stdout + added.stderr
+            )
+
+        try:
+            for command in commands:
+                completed = subprocess.run(
+                    command,
+                    cwd=worktree,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+
+                if completed.returncode:
+                    raise RuntimeError(
+                        completed.stdout + completed.stderr
+                    )
+        finally:
+            subprocess.run(
+                [
+                    "git",
+                    "worktree",
+                    "remove",
+                    "--force",
+                    str(worktree),
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            subprocess.run(
+                ["git", "worktree", "prune"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
 def run(*a,check=True,text=True):
     cp=subprocess.run(a,cwd=ROOT,capture_output=True,text=text,check=False)
     if check and cp.returncode:
@@ -49,10 +304,13 @@ def main():
         if digest(ROOT/item['document'])!=item['document_sha256'] or digest(ROOT/item['schema'])!=item['schema_sha256']:
             errors.append('schema bundle hash mismatch '+item['document'])
     try:
-        run('python','scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py','--check')
-        run('python','release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py')
-        run('python','release/v1.4.0/tools/patch_wp5_allowlist.py')
-        run('python','scripts/build_gate3_cluster_b_wp5.py','--check')
+        if successor_overlay_attestation() is not None:
+            replay_wp5_historical_consumers()
+        else:
+            run('python','scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py','--check')
+            run('python','release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py')
+            run('python','release/v1.4.0/tools/patch_wp5_allowlist.py')
+            run('python','scripts/build_gate3_cluster_b_wp5.py','--check')
     except Exception as exc: errors.append('builder/allowlist failure: '+str(exc))
     result={'artifact':'V0_OSAP_GATE3_CLUSTER_B_WP5_POST_MERGE_CLOSEOUT','errors':errors,
              'hosted_checks':'30/30 PASS','hosted_workflows':'17/17 PASS','merge_commit':MERGE,

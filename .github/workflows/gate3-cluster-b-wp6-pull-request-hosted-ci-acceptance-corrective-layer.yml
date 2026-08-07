@@ -1,0 +1,74 @@
+name: V0 OSAP Gate 3 Cluster B WP6 Pull-Request Hosted-CI Acceptance Corrective Layer
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp2.yml'
+      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp3.yml'
+      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
+      - '.github/workflows/gate3-cluster-b-wp5.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-pull-request-hosted-ci-acceptance-corrective-layer.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py'
+      - 'tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp2.yml'
+      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp3.yml'
+      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'
+      - '.github/workflows/gate3-cluster-b-wp5.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-pull-request-hosted-ci-acceptance-corrective-layer.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_PULL_REQUEST_HOSTED_CI_ACCEPTANCE_CORRECTIVE_LAYER_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py'
+      - 'tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pull-request-hosted-ci-acceptance-corrective-layer:
+    runs-on: ubuntu-latest
+    env:
+      GIT_OPTIONAL_LOCKS: "0"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install exact validation and detached replay dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
+      - name: Verify exact seventeen-path corrective layer
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --verify-all-replays
+      - name: Dedicated positive and fail-closed regression
+        run: >-
+          python -m pytest -q -p no:cacheprovider
+          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+      - name: Exact seventeen-path whitespace integrity
+        run: git diff --check e53713ed030fc1537726d8381079fecce6c57ac2...HEAD

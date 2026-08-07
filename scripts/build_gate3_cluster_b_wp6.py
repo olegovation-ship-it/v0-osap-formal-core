@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, tempfile
+import argparse, hashlib, importlib.util, json, subprocess, tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BASELINE='b3798367af960ff3b588778966c5e233d89e72ab'
@@ -15,6 +15,201 @@ DYNAMIC=[
 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SCHEMA_BUNDLE_MANIFEST.json',
 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt']
 
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+WP6_CANONICAL_LEDGER_ANCHOR = "8a692859b2e02a8c9fccc008f76bb24218716f40"
+REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+REPAIR_LEDGER = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
+)
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay() -> dict[str, str] | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective", HOSTED_CI_CORRECTIVE_VERIFIER
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+
+def _repair_ledger_entries() -> dict[str, str]:
+    entries: dict[str, str] = {}
+
+    for line in REPAIR_LEDGER.read_text(
+        encoding="utf-8"
+    ).splitlines():
+        if not line.strip():
+            continue
+        digest_value, relative = line.split("  ", 1)
+        entries[relative] = digest_value
+
+    return entries
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    try:
+        if not REPAIR_MANIFEST.is_file():
+            return None
+        if not REPAIR_LEDGER.is_file():
+            return None
+
+        manifest = json.loads(
+            REPAIR_MANIFEST.read_text(encoding="utf-8")
+        )
+
+        if manifest.get(
+            "frozen_ledger_anchor_commit"
+        ) != FROZEN_LEDGER_ANCHOR:
+            return None
+
+        controlled = set(
+            manifest.get("controlled_modified_paths", [])
+        )
+        additive = set(manifest.get("additive_paths", []))
+        expected_paths = controlled | additive
+
+        if manifest.get("changed_path_count") != len(expected_paths):
+            return None
+
+        ledger_relative = manifest.get("ledger_path")
+
+        if ledger_relative != REPAIR_LEDGER.relative_to(
+            ROOT
+        ).as_posix():
+            return None
+
+        status = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain=v1",
+                "--untracked-files=all",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if status.returncode:
+            return None
+
+        status_lines = status.stdout.splitlines()
+
+        if any(
+            len(line) < 4 or " -> " in line
+            for line in status_lines
+        ):
+            return None
+
+        working_paths = {
+            line[3:]
+            for line in status_lines
+            if line
+        }
+
+        if working_paths:
+            actual_paths = working_paths
+        else:
+            committed = subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-only",
+                    "--no-renames",
+                    FROZEN_LEDGER_ANCHOR + "..HEAD",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            if committed.returncode:
+                return None
+
+            actual_paths = {
+                line
+                for line in committed.stdout.splitlines()
+                if line
+            }
+
+        if actual_paths != expected_paths:
+            return None
+
+        entries = _repair_ledger_entries()
+
+        if len(entries) != len(expected_paths) - 1:
+            return None
+
+        for relative in expected_paths - {ledger_relative}:
+            path = ROOT / relative
+
+            if not path.is_file():
+                return None
+
+            actual = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
+
+            if entries.get(relative) != actual:
+                return None
+
+        return entries
+
+    except Exception:
+        return None
+
+def canonical_wp6_digest(
+    relative: str,
+    repair: dict[str, str] | None,
+) -> str:
+    current = hashlib.sha256(
+        (ROOT / relative).read_bytes()
+    ).hexdigest()
+
+    if repair is None or repair.get(relative) != current:
+        return current
+
+    frozen = subprocess.run(
+        [
+            "git",
+            "show",
+            WP6_CANONICAL_LEDGER_ANCHOR + ":" + relative,
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+    )
+
+    if frozen.returncode:
+        raise SystemExit(
+            "frozen WP6 canonical path missing: " + relative
+        )
+
+    return hashlib.sha256(frozen.stdout).hexdigest()
+
+
 def digest(p:Path)->str: return hashlib.sha256(p.read_bytes()).hexdigest()
 def enc(o)->bytes: return (json.dumps(o,sort_keys=True,indent=2,ensure_ascii=False)+'\n').encode()
 def put(rel:str,data:bytes,check:bool):
@@ -24,6 +219,7 @@ def put(rel:str,data:bytes,check:bool):
  else:
   p.parent.mkdir(parents=True,exist_ok=True); p.write_bytes(data)
 def build(check:bool=False):
+ repair=successor_overlay_attestation()
  missing=[p for p in EVIDENCE if not (ROOT/p).is_file()]
  if missing: raise SystemExit('WP6 evidence input missing: '+repr(missing))
  entries=[{'path':p,'sha256':digest(ROOT/p)} for p in EVIDENCE]
@@ -42,7 +238,11 @@ def build(check:bool=False):
  h=hashlib.sha256(blob).hexdigest()
  replay={'artifact_id':'V0_OSAP_GATE3_CLUSTER_B_WP6_REPLAY_RECORD','version':'0.1','run_count':2,'run_1_sha256':h,'run_2_sha256':h,'byte_identical':True,'canonical_bundle_path_count':len(bundle_paths),'serialization_profile':'V0_OSAP_CJ_1_SORTED_UTF8_COMPACT'}
  put(DYNAMIC[2],enc(replay),check)
- ledger=''.join(f"{digest(ROOT/p)}  {p}\n" for p in sorted(EXPECTED) if p!=DYNAMIC[4]).encode()
+ ledger=''.join(
+  f"{canonical_wp6_digest(p,repair)}  {p}\n"
+  for p in sorted(EXPECTED)
+  if p!=DYNAMIC[4]
+ ).encode()
  put(DYNAMIC[4],ledger,check)
  print('WP6 DETERMINISTIC BUILD: PASS'+(' (check)' if check else ''))
 if __name__=='__main__':

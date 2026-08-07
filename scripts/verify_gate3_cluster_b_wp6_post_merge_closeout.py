@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, subprocess, sys
+import argparse, hashlib, importlib.util, json, subprocess, sys
 from pathlib import Path
 from jsonschema import Draft202012Validator
 
@@ -47,26 +47,118 @@ def canonical_sha(o):
         json.dumps(cp,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
     ).hexdigest()
 
-def approved_isolation_paths(errors):
-    path=ROOT/REPAIR_RECORD
-    if not path.is_file():
-        return set()
+SUCCESSOR_REPAIR_BASE = (
+    "ba32d8e855a79461fdcda14740acab86aafcb17a"
+)
+SUCCESSOR_REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+SUCCESSOR_REPAIR_MANIFEST = (
+    ROOT
+    / f"release/v1.4.0/{SUCCESSOR_REPAIR_STEM}_MANIFEST.json"
+)
+
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
     try:
-        record=json.loads(path.read_text(encoding='utf-8'))
-        if record.get('pull_request') != 33:
-            errors.append('repair record pull-request mismatch')
-            return set()
-        if record.get('pre_repair_head') != '79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9':
-            errors.append('repair record closeout-head mismatch')
-            return set()
-        firewall=record.get('authorization_firewall',{})
-        if any(firewall.values()):
-            errors.append('repair record authorization firewall failure')
-            return set()
-        return {item['path'] for item in record.get('isolated_workflows',[])}
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+REGRESSION_REPAIR_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_post_commit_regression_closure_repair.py"
+)
+
+
+def _regression_repair_namespace():
+    source = REGRESSION_REPAIR_VERIFIER.read_bytes()
+    namespace = {
+        "__name__": "wp6_post_commit_regression_helper",
+        "__file__": str(REGRESSION_REPAIR_VERIFIER),
+    }
+    exec(compile(source, str(REGRESSION_REPAIR_VERIFIER), "exec"), namespace)
+    return namespace
+
+
+
+def successor_overlay_attestation():
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    return _regression_repair_namespace()[
+        "attested_successor_hashes"
+    ]()
+
+def approved_isolation_paths(errors):
+    approved = set()
+
+    path = ROOT / REPAIR_RECORD
+
+    if path.is_file():
+        try:
+            record = json.loads(
+                path.read_text(encoding="utf-8")
+            )
+
+            if record.get("pull_request") != 33:
+                errors.append(
+                    "repair record pull-request mismatch"
+                )
+            elif record.get("pre_repair_head") != (
+                "79c531885f90fb9c0dbd9dd4a223d8fc9a5f74c9"
+            ):
+                errors.append(
+                    "repair record closeout-head mismatch"
+                )
+            elif any(
+                record.get(
+                    "authorization_firewall", {}
+                ).values()
+            ):
+                errors.append(
+                    "repair record authorization firewall failure"
+                )
+            else:
+                approved.update(
+                    item["path"]
+                    for item in record.get(
+                        "isolated_workflows", []
+                    )
+                )
+
+        except Exception as exc:
+            errors.append(
+                "repair record failure: " + str(exc)
+            )
+
+    try:
+        entries = successor_overlay_attestation()
+        approved.update(entries)
     except Exception as exc:
-        errors.append('repair record failure: '+str(exc))
-        return set()
+        errors.append(
+            "successor repair attestation failure: " + str(exc)
+        )
+
+    return approved
+
 
 def check_wp6_frozen(errors):
     ledger_rel='release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt'

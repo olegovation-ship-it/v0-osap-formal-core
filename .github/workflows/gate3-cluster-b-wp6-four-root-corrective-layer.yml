@@ -1,0 +1,54 @@
+name: V0 OSAP Gate 3 Cluster B WP6 Four-Root Corrective Layer
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py'
+      - 'tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py'
+  push:
+    branches: [v1.4.0-development, main]
+    paths:
+      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml'
+      - '.github/workflows/gate3-cluster-b-wp6.yml'
+      - '.github/workflows/gate3-cluster-b-wp6-four-root-corrective-layer.yml'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_MANIFEST.json'
+      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_FOUR_ROOT_CORRECTIVE_LAYER_SHA256SUMS.txt'
+      - 'release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py'
+      - 'tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  four-root-corrective-layer:
+    runs-on: ubuntu-latest
+    env:
+      GIT_OPTIONAL_LOCKS: "0"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install exact validation and nested replay dependencies
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
+      - name: Verify pull-request hosted-CI acceptance and exact-head four-root replay
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp6-four-root
+      - name: Dedicated pull-request hosted-CI acceptance regression
+        run: >-
+          python -m pytest -q -p no:cacheprovider
+          tests/test_gate3_cluster_b_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py

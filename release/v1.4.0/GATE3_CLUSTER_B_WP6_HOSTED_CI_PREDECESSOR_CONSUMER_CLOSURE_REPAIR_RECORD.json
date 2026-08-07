@@ -1,0 +1,223 @@
+{
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_RECORD",
+  "branch": "v1.4.0-development",
+  "current_head_workflows": {
+    "dedicated_wp6_audit": "PASS",
+    "failed": 7,
+    "pending": 0,
+    "successful": 1,
+    "total": 8
+  },
+  "failed_runs": [
+    {
+      "failure_class": "WP5_POST_MERGE_CUMULATIVE_ALLOWLIST",
+      "run_id": 30247954889,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5 Post-Merge Closeout"
+    },
+    {
+      "failure_class": "WP5_SYNC_HELPER_CUMULATIVE_ALLOWLIST",
+      "run_id": 30247954915,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5 Synchronization Helper Repair"
+    },
+    {
+      "failure_class": "WP3_CANONICAL_PRESERVATION_FIREWALL_STALE_BOUNDARY",
+      "run_id": 30247954930,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP3"
+    },
+    {
+      "failure_class": "WP2_PUSH_CONTEXT_STALE_BOUNDARY",
+      "run_id": 30247954944,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP2 Post-Merge Closeout"
+    },
+    {
+      "failure_class": "WP3_POST_MERGE_FIXED_DIGEST_CONSUMER",
+      "run_id": 30247954960,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP3 Post-Merge Closeout"
+    },
+    {
+      "failure_class": "WP5_SHARED_CANONICAL_CUMULATIVE_ALLOWLIST",
+      "run_id": 30247954972,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5"
+    },
+    {
+      "failure_class": "WP2_CANONICAL_STALE_REPOSITORY_BOUNDARY",
+      "run_id": 30247954989,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP2"
+    }
+  ],
+  "failed_workflow_matrix": [
+    {
+      "command": [
+        "python",
+        "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+        "--replay-consumer",
+        "wp5-post-merge-allowlist",
+        "--consumer-arg=--check"
+      ],
+      "failure_class": "WP5_POST_MERGE_CUMULATIVE_ALLOWLIST",
+      "ordinal": 1,
+      "run_id": 30247954889,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5 Post-Merge Closeout",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml"
+    },
+    {
+      "command": [
+        "python",
+        "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+        "--replay-consumer",
+        "wp5-sync-helper-allowlist",
+        "--consumer-arg=--check"
+      ],
+      "failure_class": "WP5_SYNC_HELPER_CUMULATIVE_ALLOWLIST",
+      "ordinal": 2,
+      "run_id": 30247954915,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5 Synchronization Helper Repair",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp3.py"
+      ],
+      "failure_class": "WP3_CANONICAL_PRESERVATION_FIREWALL_STALE_BOUNDARY",
+      "ordinal": 3,
+      "run_id": 30247954930,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP3",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp3.yml"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp2.py"
+      ],
+      "failure_class": "WP2_PUSH_CONTEXT_STALE_BOUNDARY",
+      "ordinal": 4,
+      "run_id": 30247954944,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP2 Post-Merge Closeout",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml"
+    },
+    {
+      "command": [
+        "python",
+        "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+        "--replay-consumer",
+        "wp3-post-merge-allowlist",
+        "--consumer-arg=--check"
+      ],
+      "failure_class": "WP3_POST_MERGE_FIXED_DIGEST_CONSUMER",
+      "ordinal": 5,
+      "run_id": 30247954960,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP3 Post-Merge Closeout",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml"
+    },
+    {
+      "command": [
+        "python",
+        "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+        "--replay-consumer",
+        "wp5-canonical-allowlist",
+        "--consumer-arg=--check"
+      ],
+      "failure_class": "WP5_SHARED_CANONICAL_CUMULATIVE_ALLOWLIST",
+      "ordinal": 6,
+      "run_id": 30247954972,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP5",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp5.yml"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp2.py"
+      ],
+      "failure_class": "WP2_CANONICAL_STALE_REPOSITORY_BOUNDARY",
+      "ordinal": 7,
+      "run_id": 30247954989,
+      "workflow": "V0 OSAP Gate 3 Cluster B WP2",
+      "workflow_file": ".github/workflows/gate3-cluster-b-wp2.yml"
+    }
+  ],
+  "frozen_ledgers_rewritten": false,
+  "historical_records_rewritten": false,
+  "historical_replay_anchors": {
+    "wp2_and_wp3_post_merge_consumers": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+    "wp5_consumers": "14e761e7a34889eebc3c4ef7df17fc56c9267af9"
+  },
+  "history_rewritten": false,
+  "pre_repair_head": "3bbe861153cca8123fc9d528921ebc9dc2bb41e5",
+  "pre_repair_parent": "59fa5076fdabf74b832fb985947253eaaecca4ae",
+  "prepared_surface": {
+    "additive_repair_paths": 6,
+    "controlled_modified_paths": 7,
+    "total_paths": 13
+  },
+  "proof_sources_rewritten": false,
+  "release_actions_performed": false,
+  "repair_model": "EXACT_FROZEN_PREDECESSOR_REPLAY_PLUS_SEPARATELY_ATTESTED_SUCCESSOR_OVERLAY",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "schemas_or_fixtures_rewritten": false,
+  "v0_7_post_application_residual": {
+    "blanket_allowlist_expansion_performed": false,
+    "completed_before_failure": [
+      "WP5_POST_MERGE_ALLOWLIST_REPLAY",
+      "WP5_SYNC_HELPER_ALLOWLIST_REPLAY",
+      "SUCCESSOR_OVERLAY_ATTESTATION",
+      "DETACHED_FROZEN_WP3_CANONICAL_REPLAY"
+    ],
+    "corrective_action": "Treat successful delegated replay as completion of the canonical gate and return PASS without re-entering the current canonical builder.",
+    "failed_workflow": "V0 OSAP Gate 3 Cluster B WP3",
+    "failure_class": "WP3_CANONICAL_PRESERVATION_FIREWALL_STALE_BOUNDARY",
+    "frozen_ledgers_rewritten": false,
+    "matrix_ordinal": 3,
+    "root_cause": "The current WP3 wrapper successfully delegated to the closure verifier, which attested the current overlay and executed the complete frozen WP3 verifier in a detached historical worktree. The wrapper then continued into the current canonical builder, whose intentionally frozen successor ledger cannot attest the wrapper path.",
+    "run_id": 30247954930,
+    "stderr": "successor ledger does not attest changed WP3 path: scripts/verify_gate3_cluster_b_wp3.py"
+  },
+  "v0_8_post_application_residual": {
+    "corrective_action": "Validate the exact status of all 13 package paths, allow only unrelated untracked entries outside that surface, and continue to reject every unrelated tracked, staged, unmerged, renamed, mode, or structural change.",
+    "failure_stage": "WORKING_TREE_REPOSITORY_SURFACE_ATTESTATION",
+    "index_unchanged": true,
+    "observed_extra_class": "UNRELATED_UNTRACKED_PACKAGE_AUDIT_AND_DIAGNOSTIC_ARTIFACTS",
+    "package_only_internal_attestation": "PASS",
+    "package_paths_missing": [],
+    "package_paths_wrong_status": [],
+    "refs_unchanged": true,
+    "root_cause": "The verifier compared the complete git status, including unrelated untracked artifacts intentionally preserved in the repository root, with the exact 13-path prepared package status map.",
+    "source_status_unchanged": true,
+    "staging_commit_push_or_workflow_rerun_performed": false,
+    "verification_stage": "WORKING_TREE_SUCCESSOR_OVERLAY_ATTESTATION",
+    "worktree_registry_unchanged": true
+  },
+  "version": "0.9",
+  "working_tree_surface_policy": {
+    "exact_package_statuses_required": true,
+    "unmerged_rename_mode_or_structural_changes_allowed": false,
+    "unrelated_tracked_or_staged_changes_allowed": false,
+    "unrelated_untracked_artifacts_allowed": true
+  },
+  "wp3_canonical_failure": {
+    "blanket_allowlist_expansion_performed": false,
+    "error_prefix": "FAIL_PRESERVATION_FIREWALL disallowed paths",
+    "frozen_baseline": "7b49aa76fef65bced7141a639e8ef6fe3b5ba313",
+    "frozen_firewall_replayed_byte_for_byte": true,
+    "historical_passing_anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+    "minimal_stale_consumer_surface": [
+      "scripts/verify_gate3_cluster_b_wp3.py"
+    ],
+    "successor_overlay_attested_separately": true
+  },
+  "wp5_allowlist_diagnostic": {
+    "actual_changed_paths": 171,
+    "expected_paths": 45,
+    "extra_paths": 126,
+    "extra_top_level_groups": {
+      ".github": 15,
+      "docs": 7,
+      "fixtures": 19,
+      "release": 39,
+      "schemas": 21,
+      "scripts": 18,
+      "tests": 7
+    },
+    "missing_paths": 0
+  }
+}

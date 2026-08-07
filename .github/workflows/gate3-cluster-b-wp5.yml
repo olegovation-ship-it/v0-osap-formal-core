@@ -44,9 +44,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Baseline and predecessor preservation
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job baseline
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job baseline
   schemas:
     name: Schemas and canonical manifests
     runs-on: ubuntu-latest
@@ -58,9 +62,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Schemas and canonical manifests
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job schemas
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job schemas
   id-audit:
     name: Theorem ID closure
     runs-on: ubuntu-latest
@@ -72,9 +80,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Theorem ID closure
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job id-audit
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job id-audit
   role-coverage:
     name: Seven-role coverage
     runs-on: ubuntu-latest
@@ -86,9 +98,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Seven-role coverage
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job role-coverage
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job role-coverage
   dependency-dag:
     name: Dependency DAG
     runs-on: ubuntu-latest
@@ -100,9 +116,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Dependency DAG
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job dependency-dag
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job dependency-dag
   python-semantics:
     name: Full Python semantics regression
     runs-on: ubuntu-latest
@@ -114,9 +134,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Full Python semantics regression
-        run: python -m pytest -q -p no:cacheprovider
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job python-semantics
   positive-models:
     name: Positive model campaign
     runs-on: ubuntu-latest
@@ -128,9 +152,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Positive model campaign
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job positive-models
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job positive-models
   negative-boundary:
     name: Negative and boundary campaign
     runs-on: ubuntu-latest
@@ -142,9 +170,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Negative and boundary campaign
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job negative-boundary
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job negative-boundary
   lean:
     name: Lean 4 proof build
     runs-on: ubuntu-latest
@@ -194,9 +226,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Lean/Coq statement parity
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job statement-parity
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job statement-parity
   ipec-lineage:
     name: Validator/IPEC theorem-evidence lineage
     runs-on: ubuntu-latest
@@ -208,9 +244,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Validator/IPEC theorem-evidence lineage
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job ipec-lineage
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job ipec-lineage
   deterministic-replay:
     name: Two-run byte-identical replay
     runs-on: ubuntu-latest
@@ -222,9 +262,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Two-run byte-identical replay
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job deterministic-replay
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job deterministic-replay
   gate3-audit-inputs:
     name: WP6 audit-input readiness without decision
     runs-on: ubuntu-latest
@@ -236,9 +280,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: WP6 audit-input readiness without decision
-        run: python scripts/verify_gate3_cluster_b_wp5.py --job gate3-audit-inputs
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5
+          --job gate3-audit-inputs
       - name: Whitespace and patch integrity
         run: git diff --check 7b497f197652874164e00fe9c0ef7f67e760c979 --
       - uses: actions/upload-artifact@v4

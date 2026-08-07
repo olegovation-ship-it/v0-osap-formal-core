@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json
+import argparse, hashlib, importlib.util, json, subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 LEDGER=ROOT/'release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt'
@@ -8,12 +8,129 @@ INPUTS=['.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml', 'docs/g
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def canonical(p):
  obj=json.loads(p.read_text(encoding='utf-8')); return p.read_text(encoding='utf-8')==json.dumps(obj,indent=2,sort_keys=True,ensure_ascii=False)+'\n'
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_STEM = (
+ "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+ "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+ ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+
+
+def parse_ledger(value):
+ entries = {}
+
+ for line in value.splitlines():
+  if line.strip():
+   expected, relative = line.split("  ", 1)
+   entries[relative] = expected
+
+ return entries
+
+
+def _regression_repair_namespace():
+ verifier = (
+  ROOT / "release/v1.4.0/tools/"
+  "verify_wp6_post_commit_regression_closure_repair.py"
+ )
+ namespace = {
+  "__name__": "wp6_post_commit_regression_helper",
+  "__file__": str(verifier),
+ }
+ exec(compile(verifier.read_bytes(), str(verifier), "exec"), namespace)
+ return namespace
+
+
+def repair_overlay_attestation():
+ try:
+  repair = hosted_ci_corrective_overlay()
+  if repair is None:
+   repair = _regression_repair_namespace()[
+    "attested_successor_hashes"
+   ]()
+  frozen_rel = LEDGER.relative_to(ROOT).as_posix()
+  frozen = subprocess.run(
+   ["git", "show", f"{REPAIR_BASE}:{frozen_rel}"],
+   cwd=ROOT,
+   capture_output=True,
+   text=True,
+   check=False,
+  )
+  if frozen.returncode:
+   return None
+  return repair, parse_ledger(frozen.stdout)
+ except Exception:
+  return None
+
+
 def expected():
- missing=[rel for rel in INPUTS if not (ROOT/rel).is_file()]
- if missing: raise SystemExit('missing closeout inputs: '+', '.join(missing))
- bad=[rel for rel in INPUTS if rel.endswith('.json') and not canonical(ROOT/rel)]
- if bad: raise SystemExit('non-canonical JSON: '+', '.join(bad))
- return ''.join(f'{digest(ROOT/rel)}  {rel}\n' for rel in sorted(INPUTS))
+ missing = [
+  rel for rel in INPUTS
+  if not (ROOT / rel).is_file()
+ ]
+
+ if missing:
+  raise SystemExit(
+   "missing closeout inputs: " + ", ".join(missing)
+  )
+
+ bad = [
+  rel for rel in INPUTS
+  if rel.endswith(".json")
+  and not canonical(ROOT / rel)
+ ]
+
+ if bad:
+  raise SystemExit(
+   "non-canonical JSON: " + ", ".join(bad)
+  )
+
+ attestation = repair_overlay_attestation()
+ rows = []
+
+ for rel in sorted(INPUTS):
+  current = digest(ROOT / rel)
+  selected = current
+
+  if attestation is not None:
+   repair, frozen = attestation
+
+   if repair.get(rel) == current:
+    if rel not in frozen:
+     raise SystemExit(
+      "repair-attested WP3 path absent from "
+      f"frozen successor ledger: {rel}"
+     )
+
+    selected = frozen[rel]
+
+  rows.append(f"{selected}  {rel}\n")
+
+ return "".join(rows)
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument('--check',action='store_true'); a=ap.parse_args(); e=expected()
  if a.check:

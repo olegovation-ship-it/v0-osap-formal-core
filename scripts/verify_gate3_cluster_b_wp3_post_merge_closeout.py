@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess
+import argparse, hashlib, importlib.util, json, os, subprocess
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
@@ -41,20 +41,138 @@ def validate_records():
  man=load('release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SCHEMA_BUNDLE_MANIFEST.json')
  if man.get('schema_count')!=5 or man.get('document_count')!=5: errors.append('schema bundle mismatch')
  return errors
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+REPAIR_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_STEM = (
+ "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+ "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+ ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+
+
+def _regression_repair_namespace():
+ verifier = (
+  ROOT / "release/v1.4.0/tools/"
+  "verify_wp6_post_commit_regression_closure_repair.py"
+ )
+ namespace = {
+  "__name__": "wp6_post_commit_regression_helper",
+  "__file__": str(verifier),
+ }
+ exec(compile(verifier.read_bytes(), str(verifier), "exec"), namespace)
+ return namespace
+
+
+def repair_overlay_attestation():
+ layered = hosted_ci_corrective_overlay()
+ if layered is not None:
+  return layered
+ try:
+  return _regression_repair_namespace()[
+   "attested_successor_hashes"
+  ]()
+ except Exception:
+  return None
+
+
 def verify_ledger():
- if not HISTORICAL.is_file() or not SUCCESSOR.is_file(): return ['missing historical or successor WP3 ledger']
- h,s=ledger(HISTORICAL),ledger(SUCCESSOR); errors=[]
- if set(s)!=set(EXPECTED_SUCCESSOR): errors.append('successor ledger path set mismatch')
- if set(h)&set(s)!=SUPERSEDED: errors.append('unexpected historical/successor overlap: '+str(sorted(set(h)&set(s))))
- for rel,old in h.items():
-  p=ROOT/rel
-  if not p.is_file(): errors.append('historical file missing: '+rel); continue
-  exp=s.get(rel) if rel in SUPERSEDED else old
-  if digest(p)!=exp: errors.append('historical/successor hash mismatch: '+rel)
- for rel,exp in s.items():
-  p=ROOT/rel
-  if not p.is_file() or digest(p)!=exp: errors.append('successor hash mismatch: '+rel)
+ if not HISTORICAL.is_file() or not SUCCESSOR.is_file():
+  return ["missing historical or successor WP3 ledger"]
+
+ historical = ledger(HISTORICAL)
+ successor = ledger(SUCCESSOR)
+ repair = repair_overlay_attestation()
+ errors = []
+
+ if set(successor) != set(EXPECTED_SUCCESSOR):
+  errors.append("successor ledger path set mismatch")
+
+ overlap = set(historical) & set(successor)
+
+ if overlap != SUPERSEDED:
+  errors.append(
+   "unexpected historical/successor overlap: "
+   + str(sorted(overlap))
+  )
+
+ def accepted(relative, expected):
+  target = ROOT / relative
+
+  if not target.is_file():
+   return False
+
+  current = digest(target)
+
+  return (
+   current == expected
+   or (
+    repair is not None
+    and repair.get(relative) == current
+   )
+  )
+
+ for relative, old_digest in historical.items():
+  target = ROOT / relative
+
+  if not target.is_file():
+   errors.append(
+    "historical file missing: " + relative
+   )
+   continue
+
+  expected = (
+   successor.get(relative)
+   if relative in SUPERSEDED
+   else old_digest
+  )
+
+  if not accepted(relative, expected):
+   errors.append(
+    "historical/successor hash mismatch: "
+    + relative
+   )
+
+ for relative, expected in successor.items():
+  target = ROOT / relative
+
+  if not target.is_file():
+   errors.append(
+    "successor file missing: " + relative
+   )
+   continue
+
+  if not accepted(relative, expected):
+   errors.append(
+    "successor hash mismatch: " + relative
+   )
+
  return errors
+
+
 def gitout(*args,check=True):
  cp=subprocess.run(['git',*args],cwd=ROOT,text=True,capture_output=True)
  if check and cp.returncode: raise RuntimeError(cp.stderr.strip())

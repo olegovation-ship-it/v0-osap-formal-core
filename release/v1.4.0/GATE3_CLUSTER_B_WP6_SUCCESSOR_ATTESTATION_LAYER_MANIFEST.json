@@ -1,0 +1,164 @@
+{
+  "additive_path_count": 5,
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_ATTESTATION_LAYER_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_ATTESTATION_LAYER_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_successor_attestation_layer.py",
+    "tests/test_gate3_cluster_b_wp6_successor_attestation_layer.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_SUCCESSOR_ATTESTATION_LAYER",
+  "branch": "v1.4.0-development",
+  "corrective_reconstruction": {
+    "executable_four_root_digest_derivation": true,
+    "explicit_runtime_dependency_closure": {
+      "pip_command": "python -m pip install --disable-pip-version-check pytest jsonschema",
+      "python_packages": [
+        "jsonschema",
+        "pytest"
+      ],
+      "status": "CLOSED"
+    },
+    "supersedes_design_version": "0.1",
+    "version": "0.2"
+  },
+  "dependency_graph": {
+    "first_stable_non_frozen_boundary": "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_ATTESTATION_LAYER_SHA256SUMS.txt",
+    "higher_order_ledger_required": false,
+    "shared_physical_transitive_path_count": 0,
+    "status": "CLOSED"
+  },
+  "four_roots": [
+    {
+      "derivation": "SHA256_OF_CURRENT_PREDECESSOR_BOUNDARY_FILE",
+      "expected_sha256": "4f586cbd6624ca12beeeb2724843d8ba0723d1edb5297c23dd5159adae1394c8",
+      "kind": "CURRENT_FILE",
+      "path": ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml"
+    },
+    {
+      "derivation": "SHA256_OF_CURRENT_PREDECESSOR_BOUNDARY_FILE",
+      "expected_sha256": "c434b920de60134ef492e89067da14812d4da21c9ca21d10a41dfe551d0a32eb",
+      "kind": "CURRENT_FILE",
+      "path": "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py"
+    },
+    {
+      "current_ledger_sha256": "f6af9e0941927e4753aa34584d241de12919bd57a4b940758cfef28302963ac2",
+      "derivation": "PARSE_CURRENT_LEDGER_REPLACE_EXACT_STALE_ENTRIES_WITH_CURRENT_FILE_SHA256_RESERIALIZE_PRESERVING_ORDER",
+      "expected_reconstructed_sha256": "161c2064d81774f9adcc947f9af5ed82273bec9ebd1922c5d997104686d59fc3",
+      "kind": "RECONSTRUCTED_LEDGER",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+      "replacement_paths": [
+        ".github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml",
+        "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+        "scripts/verify_gate3_cluster_b_wp2.py",
+        "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+        "scripts/verify_gate3_cluster_b_wp3.py",
+        "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py"
+      ]
+    },
+    {
+      "current_ledger_sha256": "66ec9c669ff7fd6376cbffce3f96f65c41ea7a5b055c598fb28a9e14c8f98b34",
+      "derivation": "PARSE_CURRENT_LEDGER_REPLACE_EXACT_STALE_ENTRIES_WITH_CURRENT_FILE_SHA256_RESERIALIZE_PRESERVING_ORDER",
+      "expected_reconstructed_sha256": "2cafecf875967dc1586bf5a353d671e770d2bba81bd0c775bd06197dd34bef0c",
+      "kind": "RECONSTRUCTED_LEDGER",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SHA256SUMS.txt",
+      "replacement_paths": [
+        "release/v1.4.0/tools/patch_wp5_allowlist.py",
+        "release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py",
+        "release/v1.4.0/tools/patch_wp5_sync_helper_repair_allowlist.py"
+      ]
+    }
+  ],
+  "frozen_boundary": {
+    "predecessor_v09_artifact_change_count": 0,
+    "provisional_paths": [
+      ".github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml",
+      "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_consumer_closure_repair.py",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP3_POST_MERGE_SHA256SUMS.txt",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP5_SYNC_HELPER_REPAIR_SHA256SUMS.txt",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP5_EVIDENCE_INPUT_MANIFEST.json",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP5_SCHEMA_BUNDLE_MANIFEST.json",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP5_SHA256SUMS.txt",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP6_EVIDENCE_INPUT_MANIFEST.json",
+      "release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt"
+    ],
+    "provisional_paths_modified": false,
+    "status": "UNCHANGED"
+  },
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_ATTESTATION_LAYER_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "modified_path_count": 0,
+  "predecessor_attestation_boundary": {
+    "commit": "be193bd3e3bf46b8235b2472f04a4aab41203493",
+    "parent": "3bbe861153cca8123fc9d528921ebc9dc2bb41e5",
+    "title": "repair(wp6): close hosted CI predecessor-consumer closure"
+  },
+  "predecessor_v09_binding": {
+    "committed_ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_CONSUMER_CLOSURE_REPAIR_SHA256SUMS.txt",
+    "committed_ledger_sha256": "a311b72420ceae985f3365caa554a58095a558947a20afe2e147c63074f7a1d0",
+    "package_sha256": "4402e2ac17eae377ca7d4dc1bc4b4d3789d5040020f43e0821153bb5fa045483",
+    "package_sha256_binding_type": "EXTERNAL_IDENTITY_CONFIRMED_BY_FRESH_TERMINAL_EVIDENCE",
+    "surface_runtime_verification": "SELF_EXCLUDING_LEDGER_PLUS_PREDECESSOR_COMMIT_BYTES"
+  },
+  "replay_groups": [
+    {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py"
+      ],
+      "correlation_group": "WP2_POST_MERGE_STALE_SUCCESSOR_BOUNDARY",
+      "name": "wp2-post-merge"
+    },
+    {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp3.py"
+      ],
+      "correlation_group": "WP3_CANONICAL_STALE_SUCCESSOR_LEDGER",
+      "name": "wp3"
+    },
+    {
+      "anchor": "c90041d3da5b680b574b910de50d8769d32fbfa9",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py"
+      ],
+      "correlation_group": "WP3_POST_MERGE_STALE_SUCCESSOR_LEDGER",
+      "name": "wp3-post-merge"
+    },
+    {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp5.py"
+      ],
+      "correlation_group": "WP5_CANONICAL_STALE_SUCCESSOR_LEDGER",
+      "name": "wp5"
+    },
+    {
+      "anchor": "dba0425c0f98950534bf5c6d407246da58eacd2f",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py",
+        "--package-only"
+      ],
+      "correlation_group": "WP5_POST_MERGE_STALE_SUCCESSOR_LEDGER",
+      "name": "wp5-post-merge"
+    },
+    {
+      "anchor": "14e761e7a34889eebc3c4ef7df17fc56c9267af9",
+      "command": [
+        "python",
+        "scripts/verify_gate3_cluster_b_wp5_sync_helper_repair.py"
+      ],
+      "correlation_group": "WP5_SYNC_HELPER_STALE_SUCCESSOR_LEDGER",
+      "name": "wp5-sync-helper"
+    }
+  ],
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "successor_layer_total_path_count": 5,
+  "unresolved_dependency_count": 0,
+  "version": "0.2"
+}

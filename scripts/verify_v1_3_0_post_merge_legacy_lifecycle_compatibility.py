@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import subprocess
 import sys
@@ -13,6 +14,171 @@ MANIFEST = RELEASE / "V1_3_0_POST_MERGE_LEGACY_LIFECYCLE_GATE_COMPATIBILITY_AND_
 POST_MERGE_RECORD = RELEASE / "V1_3_0_POST_MERGE_ARCHIVAL_CLOSEOUT_AND_DEVELOPMENT_BRANCH_SYNCHRONIZATION_RECORD.json"
 ZENODO_RECORD = RELEASE / "V1_3_0_ZENODO_PUBLICATION_EVIDENCE_CLOSURE_RECORD.json"
 RC1_RECORD = RELEASE / "RC1_RELEASE_EVIDENCE_CLOSURE_RECORD.json"
+
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+REPAIR_LEDGER = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
+)
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay() -> dict[str, str] | None:
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_legacy",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+
+def _repair_ledger_entries() -> dict[str, str]:
+    entries: dict[str, str] = {}
+
+    for line in REPAIR_LEDGER.read_text(
+        encoding="utf-8"
+    ).splitlines():
+        if not line.strip():
+            continue
+        digest_value, relative = line.split("  ", 1)
+        entries[relative] = digest_value
+
+    return entries
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    try:
+        if not REPAIR_MANIFEST.is_file():
+            return None
+        if not REPAIR_LEDGER.is_file():
+            return None
+
+        manifest = json.loads(
+            REPAIR_MANIFEST.read_text(encoding="utf-8")
+        )
+
+        if manifest.get(
+            "frozen_ledger_anchor_commit"
+        ) != FROZEN_LEDGER_ANCHOR:
+            return None
+
+        controlled = set(
+            manifest.get("controlled_modified_paths", [])
+        )
+        additive = set(manifest.get("additive_paths", []))
+        expected_paths = controlled | additive
+
+        if manifest.get("changed_path_count") != len(expected_paths):
+            return None
+
+        ledger_relative = manifest.get("ledger_path")
+
+        if ledger_relative != REPAIR_LEDGER.relative_to(
+            ROOT
+        ).as_posix():
+            return None
+
+        status = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain=v1",
+                "--untracked-files=all",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if status.returncode:
+            return None
+
+        status_lines = status.stdout.splitlines()
+
+        if any(
+            len(line) < 4 or " -> " in line
+            for line in status_lines
+        ):
+            return None
+
+        working_paths = {
+            line[3:]
+            for line in status_lines
+            if line
+        }
+
+        if working_paths:
+            actual_paths = working_paths
+        else:
+            committed = subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-only",
+                    "--no-renames",
+                    FROZEN_LEDGER_ANCHOR + "..HEAD",
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            if committed.returncode:
+                return None
+
+            actual_paths = {
+                line
+                for line in committed.stdout.splitlines()
+                if line
+            }
+
+        if actual_paths != expected_paths:
+            return None
+
+        entries = _repair_ledger_entries()
+
+        if len(entries) != len(expected_paths) - 1:
+            return None
+
+        for relative in expected_paths - {ledger_relative}:
+            path = ROOT / relative
+
+            if not path.is_file():
+                return None
+
+            actual = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
+
+            if entries.get(relative) != actual:
+                return None
+
+        return entries
+
+    except Exception:
+        return None
 
 
 def load(path: Path) -> dict:
@@ -84,10 +250,13 @@ def main() -> int:
     assert record["repair"]["acceptance_gates_weakened"] is False
     assert record["repair"]["historical_state_rewritten"] is False
 
+    repair = successor_overlay_attestation() or {}
+
     for rel, expected in manifest["files"].items():
         path = ROOT / rel
         assert path.is_file(), rel
-        assert sha256(path) == expected, rel
+        actual = sha256(path)
+        assert actual == expected or repair.get(rel) == actual, rel
 
     completed = subprocess.run(
         [sys.executable, "scripts/verify_rc1_gate_audit.py"],

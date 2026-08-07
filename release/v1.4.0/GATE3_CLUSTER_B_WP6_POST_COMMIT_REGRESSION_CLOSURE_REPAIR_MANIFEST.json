@@ -1,0 +1,56 @@
+{
+  "additive_path_count": 6,
+  "additive_paths": [
+    "docs/gate3/cluster_b/WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR.md",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_RECORD.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_post_commit_regression_closure_repair.py",
+    "tests/test_gate3_cluster_b_wp6_post_commit_regression_closure_repair.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_MANIFEST",
+  "branch": "v1.4.0-development",
+  "changed_path_count": 12,
+  "controlled_input_sha256": {
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py": "186bfb5596ccbb4364532854e35ed03f9dc89ccd9426207f420c229ad1bdd8c6",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py": "2709af7bd21dd2c158e4f3dba6305af1413586f57fc8b6deb26bcf00ce9254ba",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py": "06db4e96326718b0a0463f98c9c25b607f8eb181624618eec9efca5431ccf7e5",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py": "7689114cb3aa8d8a077ce6fc6ab6c2987419703d7412459b20cb4784a543553f",
+    "scripts/verify_gate3_cluster_b_wp6.py": "c83ace9ea7c95dbc74e072044b506e968cdc5629dd068cd70cb0357f905fa82d",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py": "2368807c62ebb09866d22473406b0b8398ba6c67bd78d64d24430cf413f3e8dc"
+  },
+  "controlled_modified_path_count": 6,
+  "controlled_modified_paths": [
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py",
+    "scripts/verify_gate3_cluster_b_wp6.py",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py"
+  ],
+  "controlled_output_sha256": {
+    "scripts/build_gate3_cluster_b_wp2_post_merge_closeout.py": "f7f11105a45f848bc2abea30eadeb54a67f0842a9d2f555be5c094fa9c8c1f01",
+    "scripts/build_gate3_cluster_b_wp3_post_merge_closeout.py": "7e845d64fd2b258207874a5a8b7f9016324270d4af645fe693caa3a246f907fd",
+    "scripts/verify_gate3_cluster_b_wp2_post_merge_closeout.py": "b570aeedd5481081ccdc5da22ffbba3740eef76b076ea390694b832cd495968a",
+    "scripts/verify_gate3_cluster_b_wp3_post_merge_closeout.py": "f2e54e311b8cbc7448f90b4a297ae1bea8afa702f7ed6f603efbef386e2ee41d",
+    "scripts/verify_gate3_cluster_b_wp6.py": "2c89e438abfa0ec79643d6ae1ce8357492fc5333b31fe400326bb8c999d9172f",
+    "scripts/verify_gate3_cluster_b_wp6_post_merge_closeout.py": "8f5e69b297653af44b6148f740d20a02f69a4ba068f6d9dbdf9ada73b4ee2b55"
+  },
+  "ledger_entry_count": 11,
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_COMMIT_REGRESSION_CLOSURE_REPAIR_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "origin_development_before_repair": "ba32d8e855a79461fdcda14740acab86aafcb17a",
+  "origin_main_before_repair": "47614ce7891f4895e003cb85e7651b7d043a963d",
+  "pre_repair_head": "33e292b6ae2e5f35135c9a8e35c9697901cae829",
+  "pre_repair_parent": "ba32d8e855a79461fdcda14740acab86aafcb17a",
+  "previous_repair_ledger": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR_SHA256SUMS.txt",
+  "previous_repair_manifest": "release/v1.4.0/GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR_MANIFEST.json",
+  "repository": "olegovation-ship-it/v0-osap-formal-core",
+  "source_snapshot_name": "V0_OSAP_v1.4.0_Gate3_Cluster_B_WP6_Post_Commit_Regression_Closure_Source_Snapshot_v0.1.zip",
+  "source_snapshot_sha256": "5e25000e2029dcc57339aa37c76edcb180d99ef14422c482bee35d77ee1a573c",
+  "topology_policy": {
+    "committed": "ONE_ORDINARY_CHILD_WITH_EXACT_PARENT_AND_EXACT_12_PATH_DIFF",
+    "prepared_uncommitted": "EXACT_PREDECESSOR_HEAD_6_UNSTAGED_MODIFIED_6_UNTRACKED_ADDITIVE"
+  },
+  "version": "0.1"
+}

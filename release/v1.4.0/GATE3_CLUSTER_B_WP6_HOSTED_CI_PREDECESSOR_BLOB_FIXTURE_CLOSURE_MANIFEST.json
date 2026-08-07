@@ -1,0 +1,189 @@
+{
+  "additive_path_count": 5,
+  "additive_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+    "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py"
+  ],
+  "artifact_id": "V0_OSAP_GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE",
+  "behavioral_contract": {
+    "clauses": {
+      "additive_predecessor_absence_required": true,
+      "circular_self_trust_forbidden": true,
+      "fixture_additive_paths_forbidden": true,
+      "fixture_cleanup_required": true,
+      "fixture_environment_scope_is_successor_four_root_replay_only": true,
+      "fixture_exact_three_path_materialization_required": true,
+      "fixture_source_commit_is_exact": true,
+      "frozen_root_d_artifact_rewrite_forbidden": true,
+      "frozen_root_d_replay_required": true,
+      "historical_four_root_artifact_rewrite_forbidden": true,
+      "repository_and_git_control_residue_forbidden": true,
+      "two_failed_workflows_must_route_through_successor_closure": true
+    },
+    "failure_policy": "FAIL_CLOSED"
+  },
+  "branch": "v1.4.0-development",
+  "byte_contract": {
+    "encoding": "UTF-8",
+    "file_mode": "100644",
+    "line_endings": "LF",
+    "modified_path_derivation": "EXACT_ORDERED_UNIQUE_REPLACEMENT_FROM_PINNED_PREDECESSOR_BLOBS",
+    "trailing_newline_required": true
+  },
+  "fixture_contract": {
+    "additive_paths_present": false,
+    "environment_variable": "V0_OSAP_PREDECESSOR_BLOB_DIR",
+    "fixture_path_count": 3,
+    "fixture_paths": [
+      ".github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml",
+      ".github/workflows/gate3-cluster-b-wp6-successor-attestation-layer.yml",
+      ".github/workflows/gate3-cluster-b-wp6.yml"
+    ],
+    "fixture_scope": "SUCCESSOR_FOUR_ROOT_REPLAY_ONLY",
+    "materialization": "EXACT_GIT_BLOBS_FROM_SOURCE_COMMIT",
+    "source_commit": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+    "temporary_directory_cleanup_required": true
+  },
+  "frozen_root_d_layer": {
+    "exact_head": "466f820a313366c5f0bd4b23afaea44fe6fdc3b3",
+    "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt",
+    "manifest_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json",
+    "predecessor": "7aac3b8a992253666209cb9a2371eb00c0d749cd",
+    "replay_location": "DETACHED_EXACT_ROOT_D_HEAD",
+    "rewrite_authorized": false,
+    "test_path": "tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py",
+    "verifier_path": "release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py"
+  },
+  "ledger_attested_path_count": 6,
+  "ledger_attested_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+    ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+    ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+    "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json",
+    "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+    "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py"
+  ],
+  "ledger_path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt",
+  "ledger_self_excluded": true,
+  "modified_path_count": 2,
+  "modified_paths": [
+    ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+    ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml"
+  ],
+  "path_roles": [
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+      "role": "route Root D hosted CI through successor fixture-closure verification"
+    },
+    {
+      "classification": "MODIFIED",
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+      "role": "route successor-consumer hosted CI through successor fixture-closure verification"
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": ".github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml",
+      "role": "dedicated hosted-CI proof for the exact seven-path successor layer"
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json",
+      "role": "normative root-cause, fixture, replay, and exact-byte contract"
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt",
+      "role": "self-excluding deterministic SHA-256 identity closure"
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+      "role": "successor attestation, exact fixture materialization, and frozen Root D replay verifier"
+    },
+    {
+      "classification": "ADDITIVE",
+      "path": "tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py",
+      "role": "positive and fail-closed fixture-closure regression evidence"
+    }
+  ],
+  "predecessor": {
+    "commit": "466f820a313366c5f0bd4b23afaea44fe6fdc3b3",
+    "parent": "7aac3b8a992253666209cb9a2371eb00c0d749cd",
+    "title": "repair(wp6): integrate root-d successor-attested override"
+  },
+  "root_cause": {
+    "code": "ROOT_D_DETACHED_FOUR_ROOT_REPLAY_PREDECESSOR_BLOB_FIXTURE_OMISSION",
+    "distinct_direct_failure_root_count": 1,
+    "failed_run_ids": [
+      31006686859,
+      31006686713
+    ],
+    "missing_environment_binding": "V0_OSAP_PREDECESSOR_BLOB_DIR",
+    "observed_nested_test_result": "7_FAILED_12_PASSED"
+  },
+  "successor_four_root_layer": {
+    "additive_path_count": 5,
+    "exact_head": "7aac3b8a992253666209cb9a2371eb00c0d749cd",
+    "modified_path_count": 3,
+    "predecessor": "96a6164fd4fe6b8a85992df746672e4261fed8d3",
+    "test_path": "tests/test_gate3_cluster_b_wp6_four_root_corrective_layer.py",
+    "total_path_count": 8,
+    "verifier_path": "release/v1.4.0/tools/verify_wp6_four_root_corrective_layer.py"
+  },
+  "total_path_count": 7,
+  "transformations": [
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml",
+      "predecessor_blob_sha1": "7a91c2ea8fbe70e4eab665896b7d124543e56265",
+      "predecessor_sha256": "ceb3007e8311241cc6395d3fc65b10f3e63d6efda824e2ea960820ce43c1d018",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "on:\n  pull_request:\n    branches: [main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n  push:\n    branches: [v1.4.0-development, main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n  workflow_dispatch:\n",
+          "new_sha256": "d0e47f24ffba32d01987604e11b82f0d5efe194a8f9e12f9d1a1fed605a65347",
+          "old": "on:\n  pull_request:\n    branches: [main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n  push:\n    branches: [v1.4.0-development, main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n  workflow_dispatch:\n",
+          "old_sha256": "14cc8500c5b975744978df3ee3055d34e0ecf2ce5343975f8710e7396a302aa9",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Verify through hosted-CI predecessor-blob fixture-closure successor contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n          --mode committed\n          --verify-hosted-ci-predecessor-blob-fixture-closure\n      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n      - name: Whitespace and exact seven-path fixture-closure integrity\n        run: git diff --check 466f820a313366c5f0bd4b23afaea44fe6fdc3b3...HEAD\n",
+          "new_sha256": "649c97942d7a74b84dfceafe8ed2b772c9974b8aec572ad77d0a5a5ed66c07f9",
+          "old": "      - name: Verify exact six-path Root D surface and successor-attested override contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py\n          --mode committed\n          --verify-root-d-contract\n      - name: Dedicated Root D successor-attested override regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py\n      - name: Whitespace and exact Root D corrective-surface integrity\n        run: git diff --check 7aac3b8a992253666209cb9a2371eb00c0d749cd...HEAD\n",
+          "old_sha256": "d7ad0cd0dc0cf8d1e162668d61b2f6b82aaa83f0c8dd27fce8500a3e5770562f",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml",
+      "predecessor_blob_sha1": "c478531cabb1ba7fea846700622a6fe00a4e4258",
+      "predecessor_sha256": "45b27ad09fb0311770c62566f2ad334b0d810c676fd938b53cf7dd03872d228d",
+      "replacement_count": 2,
+      "replacements": [
+        {
+          "new": "on:\n  pull_request:\n    branches: [main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp2.yml'\n      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp3.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'\n      - '.github/workflows/gate3-cluster-b-wp5.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'\n      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n  push:\n    branches: [v1.4.0-development, main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp2.yml'\n      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp3.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'\n      - '.github/workflows/gate3-cluster-b-wp5.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'\n      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n      - '.github/workflows/gate3-cluster-b-wp6-hosted-ci-predecessor-blob-fixture-closure.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_HOSTED_CI_PREDECESSOR_BLOB_FIXTURE_CLOSURE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n      - 'tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py'\n  workflow_dispatch:\n",
+          "new_sha256": "0eb11b8ad61684ad63fd6509fd81e5c16d774bfe7e57448f1ac336dafec19d74",
+          "old": "on:\n  pull_request:\n    branches: [main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp2.yml'\n      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp3.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'\n      - '.github/workflows/gate3-cluster-b-wp5.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'\n      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n  push:\n    branches: [v1.4.0-development, main]\n    paths:\n      - '.github/workflows/gate3-cluster-b-wp2-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp2.yml'\n      - '.github/workflows/gate3-cluster-b-wp3-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp3.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp5-sync-helper-repair.yml'\n      - '.github/workflows/gate3-cluster-b-wp5.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-post-merge-closeout.yml'\n      - '.github/workflows/gate3-cluster-b-wp6-successor-consumer-integration-corrective-layer.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SUCCESSOR_CONSUMER_INTEGRATION_CORRECTIVE_LAYER_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_successor_consumer_integration_corrective_layer.py'\n      - 'tests/test_gate3_cluster_b_wp6_successor_consumer_integration_corrective_layer.py'\n      - '.github/workflows/gate3-cluster-b-wp6-root-d-successor-attested-override.yml'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_MANIFEST.json'\n      - 'release/v1.4.0/GATE3_CLUSTER_B_WP6_ROOT_D_SUCCESSOR_ATTESTED_OVERRIDE_SHA256SUMS.txt'\n      - 'release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py'\n      - 'tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py'\n  workflow_dispatch:\n",
+          "old_sha256": "f699098213c1b3c10bde76900dd8cfdc1e87e5c82f5914456f03ad4a196a6e23",
+          "ordinal": 1,
+          "predecessor_anchor_count": 1
+        },
+        {
+          "new": "      - name: Verify through hosted-CI predecessor-blob fixture-closure successor contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n          --mode committed\n          --verify-hosted-ci-predecessor-blob-fixture-closure\n      - name: Dedicated hosted-CI predecessor-blob fixture-closure regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_hosted_ci_predecessor_blob_fixture_closure.py\n      - name: Whitespace and exact seven-path fixture-closure integrity\n        run: git diff --check 466f820a313366c5f0bd4b23afaea44fe6fdc3b3...HEAD\n",
+          "new_sha256": "649c97942d7a74b84dfceafe8ed2b772c9974b8aec572ad77d0a5a5ed66c07f9",
+          "old": "      - name: Verify frozen historical layer through the Root D successor-attested override contract\n        run: >-\n          python release/v1.4.0/tools/verify_wp6_root_d_successor_attested_override.py\n          --mode committed\n          --verify-root-d-contract\n      - name: Dedicated Root D successor-attested override regression\n        run: >-\n          python -m pytest -q -p no:cacheprovider\n          tests/test_gate3_cluster_b_wp6_root_d_successor_attested_override.py\n      - name: Whitespace and exact Root D corrective-surface integrity\n        run: git diff --check 7aac3b8a992253666209cb9a2371eb00c0d749cd...HEAD\n",
+          "old_sha256": "7c241285fbb286f423aba9f8895037e46b7ee34ea05f0923325134bd9d968ebe",
+          "ordinal": 2,
+          "predecessor_anchor_count": 1
+        }
+      ]
+    }
+  ],
+  "version": "1.0"
+}

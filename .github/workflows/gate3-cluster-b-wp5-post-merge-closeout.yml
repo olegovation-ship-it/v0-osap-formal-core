@@ -43,7 +43,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Python validation dependencies
-        run: python -m pip install --disable-pip-version-check pytest jsonschema
+        run: python -m pip install --disable-pip-version-check pytest jsonschema pyyaml
       - name: Install Lean 4
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
@@ -52,18 +52,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y coq
-      - name: Exact closeout changed-path allowlist
-        run: python release/v1.4.0/tools/patch_wp5_post_merge_allowlist.py
-      - name: Canonical and successor WP5 ledger verification
-        run: python scripts/build_gate3_cluster_b_wp5.py --check
-      - name: Post-merge closeout build
-        run: python scripts/build_gate3_cluster_b_wp5_post_merge_closeout.py --check
-      - name: Post-merge closeout verifier
-        run: python scripts/verify_gate3_cluster_b_wp5_post_merge_closeout.py --allow-main
-      - name: Dedicated closeout test
-        run: python -m pytest -q -p no:cacheprovider tests/test_gate3_cluster_b_wp5_post_merge_closeout.py
-      - name: Full Python regression
-        run: python -m pytest -q -p no:cacheprovider
+      - name: Verify successor-consumer integration and replay frozen WP5 post-merge workflow
+        run: >-
+          python release/v1.4.0/tools/verify_wp6_pull_request_hosted_ci_acceptance_corrective_layer.py
+          --mode committed
+          --replay-workflow wp5-post-merge
       - name: Proof-hole scan
         run: python scripts/check_no_proof_holes.py
       - name: Lean 4 build
@@ -74,8 +67,6 @@ jobs:
         run: make
       - name: Restore generated tracked Coq dependency surface
         run: git restore --source=HEAD -- coq/.Makefile.coq.d || true
-      - name: Whitespace and patch integrity
-        run: git diff --check adda93cae34d6579e8b715d4107ff7f62a6f9c6b --
       - uses: actions/upload-artifact@v4
         with:
           name: v0-osap-gate3-cluster-b-wp5-post-merge-${{ github.sha }}

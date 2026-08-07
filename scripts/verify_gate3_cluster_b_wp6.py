@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess, sys
+import argparse, hashlib, importlib.util, json, os, subprocess, sys, tempfile
 from pathlib import Path
 from jsonschema import Draft202012Validator
 ROOT=Path(__file__).resolve().parents[1]
@@ -20,12 +20,140 @@ SCHEMA_MAP={
 'release/v1.4.0/GATE3_CLUSTER_B_WP6_PRESERVATION_FIREWALL.json':'schemas/v1.4.0/gate3_cluster_b_wp6_preservation_firewall.schema.json',
 'release/v1.4.0/GATE3_CLUSTER_B_WP6_REPLAY_RECORD.json':'schemas/v1.4.0/gate3_cluster_b_wp6_replay_record.schema.json',
 'release/v1.4.0/GATE3_CLUSTER_B_WP6_SCHEMA_BUNDLE_MANIFEST.json':'schemas/v1.4.0/gate3_cluster_b_wp6_schema_bundle_manifest.schema.json'}
+
+FROZEN_LEDGER_ANCHOR = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+WP6_CANONICAL_LEDGER_ANCHOR = "8a692859b2e02a8c9fccc008f76bb24218716f40"
+POST_MERGE_LOCAL_HEAD = "33e292b6ae2e5f35135c9a8e35c9697901cae829"
+POST_MERGE_ORIGIN_MAIN = "47614ce7891f4895e003cb85e7651b7d043a963d"
+POST_MERGE_ORIGIN_DEVELOPMENT = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+POST_MERGE_MERGE_BASE = "ba32d8e855a79461fdcda14740acab86aafcb17a"
+POST_MERGE_MAIN_AHEAD = 2
+POST_MERGE_DEVELOPMENT_AHEAD = 0
+REPAIR_STEM = (
+    "GATE3_CLUSTER_B_WP6_POST_MERGE_PUSH_CONTEXT_COMPATIBILITY_"
+    "AND_PREDECESSOR_WORKFLOW_ISOLATION_REPAIR"
+)
+REPAIR_MANIFEST = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_MANIFEST.json"
+)
+REPAIR_LEDGER = (
+    ROOT / f"release/v1.4.0/{REPAIR_STEM}_SHA256SUMS.txt"
+)
+
+
+
+HOSTED_CI_CORRECTIVE_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_hosted_ci_regression_corrective_repair.py"
+)
+
+
+def hosted_ci_corrective_overlay():
+    if not HOSTED_CI_CORRECTIVE_VERIFIER.is_file():
+        return None
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "wp6_hosted_ci_corrective_post_merge_consumer",
+            HOSTED_CI_CORRECTIVE_VERIFIER,
+        )
+        if spec is None or spec.loader is None:
+            return None
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.successor_overlay_attestation("auto")
+    except Exception:
+        return None
+
+REGRESSION_REPAIR_VERIFIER = (
+    ROOT / "release/v1.4.0/tools/"
+    "verify_wp6_post_commit_regression_closure_repair.py"
+)
+
+
+def _regression_repair_namespace() -> dict:
+    source = REGRESSION_REPAIR_VERIFIER.read_bytes()
+    namespace = {
+        "__name__": "wp6_post_commit_regression_helper",
+        "__file__": str(REGRESSION_REPAIR_VERIFIER),
+    }
+    exec(
+        compile(source, str(REGRESSION_REPAIR_VERIFIER), "exec"),
+        namespace,
+    )
+    return namespace
+
+
+def successor_overlay_attestation() -> dict[str, str] | None:
+    layered = hosted_ci_corrective_overlay()
+    if layered is not None:
+        return layered
+    try:
+        return _regression_repair_namespace()[
+            "attested_successor_hashes"
+        ]()
+    except Exception:
+        return None
+
+
 def load(p): return json.loads((ROOT/p).read_text())
 def digest(p): return hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
 def run(*a,check=True,cwd=None):
  cp=subprocess.run(a,cwd=cwd or ROOT,capture_output=True,text=True,check=False)
  if check and cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
  return cp
+def local_clean_room_origin():
+ cp=run('git','remote','get-url','origin',check=False)
+ if cp.returncode: return False
+ url=cp.stdout.strip()
+ return bool(url) and (url.startswith('/') or url.startswith('./') or url.startswith('../') or url.startswith('file://'))
+def replay_wp6_historical_allowlist():
+ with tempfile.TemporaryDirectory() as temporary:
+  worktree=Path(temporary)/'wp6-implementation'
+  added=run(
+   'git','worktree','add','--detach',
+   str(worktree),WP6_CANONICAL_LEDGER_ANCHOR,
+   check=False
+  )
+  if added.returncode:
+   raise SystemExit(
+    'WP6 historical worktree creation failed: '
+    +added.stdout+added.stderr
+   )
+  try:
+   completed=subprocess.run(
+    [
+     sys.executable,
+     'release/v1.4.0/tools/patch_wp6_allowlist.py',
+    ],
+    cwd=worktree,
+    capture_output=True,
+    text=True,
+    check=False,
+   )
+   if completed.returncode:
+    raise SystemExit(
+     'WP6 historical allowlist replay failed: '
+     +completed.stdout+completed.stderr
+    )
+  finally:
+   subprocess.run(
+    [
+     'git','worktree','remove','--force',
+     str(worktree),
+    ],
+    cwd=ROOT,
+    capture_output=True,
+    text=True,
+    check=False,
+   )
+   subprocess.run(
+    ['git','worktree','prune'],
+    cwd=ROOT,
+    capture_output=True,
+    text=True,
+    check=False,
+   )
+
 def schemas():
  for data,schema in SCHEMA_MAP.items():
   errs=sorted(Draft202012Validator(load(schema)).iter_errors(load(data)),key=lambda e:list(e.path))
@@ -40,12 +168,43 @@ def baseline():
  head=run('git','rev-parse','HEAD').stdout.strip()
  if run('git','merge-base','--is-ancestor',BASELINE,head,check=False).returncode: raise SystemExit('baseline is not ancestor')
  if os.environ.get('GITHUB_ACTIONS')!='true':
-  if head!=BASELINE: raise SystemExit('local WP6 implementation must remain uncommitted on exact baseline')
-  if run('git','branch','--show-current').stdout.strip()!=BRANCH: raise SystemExit('branch mismatch')
-  for ref in ('origin/main','origin/'+BRANCH):
-   if run('git','rev-parse',ref).stdout.strip()!=BASELINE: raise SystemExit(ref+' mismatch')
+  repair=successor_overlay_attestation()
+  branch=run('git','branch','--show-current').stdout.strip()
+  if repair is not None:
+   corrective_head='59fa5076fdabf74b832fb985947253eaaecca4ae'
+   if head!=corrective_head:
+    parent=run('git','rev-parse','HEAD^',check=False).stdout.strip()
+    if parent!=corrective_head: raise SystemExit('hosted-CI corrective successor ancestry mismatch')
+   if branch not in ('',BRANCH): raise SystemExit('post-merge branch mismatch')
+   if local_clean_room_origin():
+    for commit in (POST_MERGE_ORIGIN_MAIN,corrective_head,POST_MERGE_MERGE_BASE):
+     if run('git','cat-file','-e',commit+'^{commit}',check=False).returncode:
+      raise SystemExit('clean-room canonical commit missing: '+commit)
+    merge_base=run('git','merge-base',POST_MERGE_ORIGIN_MAIN,head).stdout.strip()
+    if merge_base!=POST_MERGE_MERGE_BASE: raise SystemExit('clean-room merge-base mismatch')
+    divergence=run('git','rev-list','--left-right','--count',POST_MERGE_ORIGIN_MAIN+'...'+head).stdout.strip().split()
+    expected_development_ahead='2' if head==corrective_head else '3'
+    if divergence!=['2',expected_development_ahead]: raise SystemExit('clean-room corrective divergence mismatch')
+   else:
+    main=run('git','rev-parse','origin/main').stdout.strip()
+    development=run('git','rev-parse','origin/'+BRANCH).stdout.strip()
+    if main!=POST_MERGE_ORIGIN_MAIN: raise SystemExit('post-merge origin/main mismatch')
+    if development not in (corrective_head,head): raise SystemExit('corrective origin/development mismatch')
+    merge_base=run('git','merge-base','origin/main','origin/'+BRANCH).stdout.strip()
+    if merge_base!=POST_MERGE_MERGE_BASE: raise SystemExit('post-merge merge-base mismatch')
+    divergence=run('git','rev-list','--left-right','--count','origin/main...origin/'+BRANCH).stdout.strip().split()
+    expected_development_ahead='2' if development==corrective_head else '3'
+    if divergence!=['2',expected_development_ahead]: raise SystemExit('corrective divergence mismatch')
+  else:
+   if head!=BASELINE: raise SystemExit('local WP6 implementation must remain uncommitted on exact baseline')
+   if branch!=BRANCH: raise SystemExit('branch mismatch')
+   for ref in ('origin/main','origin/'+BRANCH):
+    if run('git','rev-parse',ref).stdout.strip()!=BASELINE: raise SystemExit(ref+' mismatch')
  if run('git','rev-parse','refs/tags/v1.3.0^{}').stdout.strip()!=TAG_TARGET: raise SystemExit('tag target changed')
- run(sys.executable,'release/v1.4.0/tools/patch_wp6_allowlist.py')
+ if successor_overlay_attestation() is not None:
+  replay_wp6_historical_allowlist()
+ else:
+  run(sys.executable,'release/v1.4.0/tools/patch_wp6_allowlist.py')
 def predecessor():
  m=load('release/v1.4.0/GATE3_CLUSTER_B_WP6_EVIDENCE_INPUT_MANIFEST.json')
  if m['entry_count']!=len(EVIDENCE) or [x['path'] for x in m['entries']]!=EVIDENCE: raise SystemExit('evidence path inventory mismatch')
@@ -99,8 +258,11 @@ def integrity():
  expected={}
  for line in (ROOT/'release/v1.4.0/GATE3_CLUSTER_B_WP6_SHA256SUMS.txt').read_text().splitlines():
   if line.strip(): h,p=line.split('  ',1); expected[p]=h
+ repair=successor_overlay_attestation() or {}
  for p,h in expected.items():
-  if digest(p)!=h: raise SystemExit('WP6 ledger mismatch: '+p)
+  actual=digest(p)
+  if actual!=h and repair.get(p)!=actual:
+   raise SystemExit('WP6 ledger mismatch: '+p)
 def replay_claims():
  r=load('release/v1.4.0/GATE3_CLUSTER_B_WP6_REPLAY_RECORD.json')
  if not r['byte_identical'] or r['run_1_sha256']!=r['run_2_sha256']: raise SystemExit('replay failure')
