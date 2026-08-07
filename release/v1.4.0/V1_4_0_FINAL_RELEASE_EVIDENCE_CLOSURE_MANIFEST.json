@@ -1,0 +1,170 @@
+{
+  "artifact_id": "V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST",
+  "baseline": {
+    "citation_cff_blob_sha1": "0adb7aaa73a052b8621c3f0d393f6f128cf4bada",
+    "commit": "75b84e5800686372fb6a19add12c8896f59274ee",
+    "modified_path_identities": {
+      "CHANGELOG.md": {
+        "byte_count": 9839,
+        "git_blob_sha1": "1be8f7cba66d507e69cb73a42e304e75d7e3eea0",
+        "sha256": "dfa17a0ed02d0552295a1b4e3382e92cc8e70a18b158c2861525e8a70b60256c"
+      },
+      "README.md": {
+        "byte_count": 10923,
+        "git_blob_sha1": "77e00ab3a6de603769e8bd8603cf8b0bd3e8ee57",
+        "sha256": "ac33412cb23ca1a44b1822ba343678076883582457e16e3597d8db6925b8447d"
+      },
+      "docs/status_and_nonclaims.md": {
+        "byte_count": 8901,
+        "git_blob_sha1": "a8cf9f4806ce8155bf9735d4d58d01c207edbbe0",
+        "sha256": "49cc49f733ac7d53787d3df2a7c606cc18e0872c48290c51583e526010092a1d"
+      }
+    },
+    "parents": [
+      "47614ce7891f4895e003cb85e7651b7d043a963d",
+      "aeeaeefa5d40bbb26ffe7c9ae02abc75b3636a5d"
+    ],
+    "pyproject_blob_sha1": "8e2b30975f15d4147aabb7a50fe8bab3b9ea65a8",
+    "release_v1_4_0_subtree": "45aaeec48443924fa153ac343ab904bac814792f",
+    "tree": "8ec377cadaeddfd6bef67dd01d981b83d09c327b"
+  },
+  "component_version_boundary": {
+    "checker_project": "0.7.0.dev1",
+    "repository_release": "v1.4.0",
+    "separate_namespaces": true
+  },
+  "date": "2026-08-07",
+  "files_excluding_self": [
+    {
+      "byte_count": 12902,
+      "classification": "MODIFIED",
+      "git_blob_sha1": "05ded02387753b413c85e2f0b0a24fe5a9f0364e",
+      "path": "README.md",
+      "sha256": "aa16cfb60fdf88da913b1e79e0374895a3f1a29de805dc3c03b425de1bde62ad"
+    },
+    {
+      "byte_count": 11386,
+      "classification": "MODIFIED",
+      "git_blob_sha1": "3ac1f8327faed4edc9474cc8a7512aa4ffbedc15",
+      "path": "CHANGELOG.md",
+      "sha256": "322389a5c5ea6c28e8897dca10c9380d6adb199b6b53d675eabeedeea01fb3e9"
+    },
+    {
+      "byte_count": 10725,
+      "classification": "MODIFIED",
+      "git_blob_sha1": "d20af36e1c95f4c42dd3ed483871a2bafb5d2a3c",
+      "path": "docs/status_and_nonclaims.md",
+      "sha256": "2154a27b30dfd83020f0a4b5cc525bfad24996a2fe8aa51ac8f451bedfffd923"
+    },
+    {
+      "byte_count": 6136,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "33c5037630b62bb8f2ffec0bc9303b40fe35b501",
+      "path": "artifacts/v1_4_0_github_final_release_evidence.json",
+      "sha256": "3c0915c12ff15d52822322a4bb2a3e413aab66dc73103962c2fbe9072fb7317e"
+    },
+    {
+      "byte_count": 6136,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "33c5037630b62bb8f2ffec0bc9303b40fe35b501",
+      "path": "release/v1.4.0/V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE.json",
+      "sha256": "3c0915c12ff15d52822322a4bb2a3e413aab66dc73103962c2fbe9072fb7317e"
+    },
+    {
+      "byte_count": 2659,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "a5d3b821f31678c61c09848705e026d7a5ab6619",
+      "path": "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json",
+      "sha256": "04f8a270ae478db733669ffec3cec89c0cda917dc4750dda3fecfec028f2daeb"
+    },
+    {
+      "byte_count": 4002,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "8e3658bd16c008cda0b7137fc3363760c86c39fd",
+      "path": "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md",
+      "sha256": "17fb0531e08cfc66592600b84f91ec4652110296cad0d3195f8ac81b6c6523ec"
+    },
+    {
+      "byte_count": 1865,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "e91bd7eea94a1ed6a3f0531316f13c720ea4056c",
+      "path": "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md",
+      "sha256": "08df1f634ce688fc89967263461a2970c08b599caa8eae20d949e9c730aa846d"
+    },
+    {
+      "byte_count": 5660,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "833f64bd7d9ec9d1ded7ad700043729e86d00fec",
+      "path": "scripts/build_v1_4_0_final_release_evidence_closure_manifest.py",
+      "sha256": "07c686e9387db4c35c9df2f79c9df38aaf68ce4d50f45f794f83eb52567a7ee4"
+    },
+    {
+      "byte_count": 10609,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "2f6a25ba4c9d640b0a17a39d0e94e0aa750fb113",
+      "path": "scripts/verify_v1_4_0_final_release_evidence_closure.py",
+      "sha256": "b6e00129c1b2a3bbfcc93282bc852557dcb899bb332d0fd88048b890864e7bc8"
+    },
+    {
+      "byte_count": 5574,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "3fe7480f48baca7c97e1c278b40d7861a61f0a57",
+      "path": "tests/test_v1_4_0_final_release_evidence_closure.py",
+      "sha256": "3bb08ae218c5712df6c2b62e54c100178e0c520b943107b499a6f5075f84ca5f"
+    },
+    {
+      "byte_count": 2461,
+      "classification": "ADDITIVE",
+      "git_blob_sha1": "165adea97cc80a425bb9679e80e1d0535dc020f5",
+      "path": ".github/workflows/v1-4-0-final-release-evidence-closure.yml",
+      "sha256": "8cd76121c602b57dc44a080a0afcef5542450f295e807ee3165b53f20db84efe"
+    }
+  ],
+  "historical_preservation": {
+    "baseline_release_v1_4_0_tree_sha1": "45aaeec48443924fa153ac343ab904bac814792f",
+    "historical_wp6_classification": "HISTORICAL_PRE_PR34_NON_TERMINAL_EVIDENCE",
+    "require_all_preexisting_paths_byte_identical": true
+  },
+  "manifest_self_exclusion": {
+    "path": "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json",
+    "reason": "Avoid circular self-hash; outer package manifest hashes all 13 payload files including this manifest."
+  },
+  "publication_boundary": {
+    "doi_mutation_performed": false,
+    "v1_4_0_doi_finalized": false,
+    "zenodo_v1_4_0_created": false
+  },
+  "release_freeze": {
+    "release_asset_count": 4,
+    "release_body_sha256": "530711e7baa7408f51f53844c969020520a0c0bd5c100bfe29275867735623ba",
+    "release_id": 366706025,
+    "tag_message_sha256": "9dbffe6f0bf3182f9e19fe278d8b3834ed3bb607d75282bae814db39b8fee5a5",
+    "tag_object_sha1": "21d9a42ceb9985dbcd6330582a8cb80e81d883c5",
+    "tag_peeled_target": "75b84e5800686372fb6a19add12c8896f59274ee"
+  },
+  "state": "FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED",
+  "surface": {
+    "additive": [
+      "artifacts/v1_4_0_github_final_release_evidence.json",
+      "release/v1.4.0/V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md",
+      "release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md",
+      "scripts/build_v1_4_0_final_release_evidence_closure_manifest.py",
+      "scripts/verify_v1_4_0_final_release_evidence_closure.py",
+      "tests/test_v1_4_0_final_release_evidence_closure.py",
+      ".github/workflows/v1-4-0-final-release-evidence-closure.yml"
+    ],
+    "additive_count": 10,
+    "modified": [
+      "README.md",
+      "CHANGELOG.md",
+      "docs/status_and_nonclaims.md"
+    ],
+    "modified_count": 3,
+    "removals": [],
+    "total_count": 13
+  },
+  "version": "1.0"
+}

@@ -1,5 +1,21 @@
 # Status and non-claims
 
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_STATUS_BEGIN -->
+## v1.4.0 final GitHub Release evidence closure
+
+- Status: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
+- Canonical merge: `75b84e5800686372fb6a19add12c8896f59274ee`; tree `8ec377cadaeddfd6bef67dd01d981b83d09c327b`; parents `47614ce7891f4895e003cb85e7651b7d043a963d` and `aeeaeefa5d40bbb26ffe7c9ae02abc75b3636a5d`.
+- PR #34 is closed and merged; Gate 3 Cluster B WP6 is formally closed with final verdict `PASS`.
+- Hosted-CI preservation: 29 workflow runs completed (15 success, 14 skipped, 0 failure/cancelled/pending); 65 check runs completed; 0 pending.
+- Annotated tag `v1.4.0` remains immutable at `75b84e5800686372fb6a19add12c8896f59274ee`.
+- GitHub Release `366706025` remains immutable during this closure; release body SHA-256 is `530711e7baa7408f51f53844c969020520a0c0bd5c100bfe29275867735623ba`.
+- Repository release `v1.4.0` does not promote or rename the embedded checker/project version `0.7.0.dev1`.
+- `ZENODO_V1_4_0_CREATED=NO`; `V1_4_0_DOI_FINALIZED=NO`; `DOI_MUTATION_PERFORMED=NO`.
+- The existing v1.3.0 DOI `10.5281/zenodo.21346728` remains unchanged; v1.4.0 DOI metadata is deferred to a separately authorized publication stage.
+- Historical v1.3.0 status sections and all pre-existing `release/v1.4.0/` evidence are preserved; historical WP6 records retain their original non-terminal semantics and are not retroactively rewritten.
+- No proof-term identity, unrestricted semantic equivalence, checker completeness, unconditional global checker soundness, global conservativity, empirical, physical, cosmological, disappearance-mechanism, quantum-gravity, or multiverse validation claim is made by this evidence closure.
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_STATUS_END -->
+
 <!-- V0_OSAP_RC1_STATUS_BEGIN -->
 ## v1.3.0 post-merge archival closeout and development-branch synchronization
 

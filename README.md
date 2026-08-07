@@ -9,6 +9,24 @@
 
 Executable and proof-assistant-facing formal core for the **V0 Ontological and Structural-Activation Program (V0 OSAP)**.
 
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_BEGIN -->
+## v1.4.0 final GitHub Release evidence status
+
+> **V0 OSAP v1.4.0 — FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED**
+
+Gate 3 Cluster B WP6 is formally closed with `PASS / GO`. PR #34 (`WP6 successor-attestation layer`) is merged into `main` as `75b84e5800686372fb6a19add12c8896f59274ee`, tree `8ec377cadaeddfd6bef67dd01d981b83d09c327b`. Post-merge hosted CI is terminal: 29/29 workflow runs completed (15 success, 14 skipped, 0 failed/cancelled/pending) and 65/65 check runs completed with 0 pending.
+
+The immutable annotated tag `v1.4.0` has object `21d9a42ceb9985dbcd6330582a8cb80e81d883c5` and peels to `75b84e5800686372fb6a19add12c8896f59274ee`. GitHub Release `366706025`, **V0 OSAP v1.4.0 — Stable Release**, was published at `2026-08-07T11:32:01Z` with 4 frozen assets and release-body SHA-256 `530711e7baa7408f51f53844c969020520a0c0bd5c100bfe29275867735623ba`.
+
+Repository release version `v1.4.0` and embedded checker/project version `0.7.0.dev1` remain separate version namespaces; no checker promotion is performed by this evidence closure.
+
+Zenodo v1.4.0 publication has **not** been performed and no v1.4.0 DOI has been created or finalized. The existing README DOI target remains the archived v1.3.0 DOI `10.5281/zenodo.21346728`; DOI-dependent metadata finalization is deferred to a separately authorized Zenodo publication stage.
+
+All pre-existing `release/v1.4.0/` evidence, including historical pre-PR #34 WP6 records whose own historical state says `gate3_closed=false`, `release_authorized=false`, or equivalent non-terminal conditions, remains immutable historical evidence and is not rewritten by this closure.
+
+See `release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md` and `release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md`.
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_END -->
+
 ## v1.3.0 release status
 
 <!-- V0_OSAP_RC1_GATE_AUDIT_BEGIN -->

@@ -1,0 +1,60 @@
+name: v1.4.0 final release evidence closure
+
+on:
+  push:
+    paths:
+      - README.md
+      - CHANGELOG.md
+      - docs/status_and_nonclaims.md
+      - artifacts/v1_4_0_github_final_release_evidence.json
+      - release/v1.4.0/V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md
+      - scripts/build_v1_4_0_final_release_evidence_closure_manifest.py
+      - scripts/verify_v1_4_0_final_release_evidence_closure.py
+      - tests/test_v1_4_0_final_release_evidence_closure.py
+      - .github/workflows/v1-4-0-final-release-evidence-closure.yml
+  pull_request:
+    paths:
+      - README.md
+      - CHANGELOG.md
+      - docs/status_and_nonclaims.md
+      - artifacts/v1_4_0_github_final_release_evidence.json
+      - release/v1.4.0/V1_4_0_GITHUB_FINAL_RELEASE_EVIDENCE.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_RECORD.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_MANIFEST.json
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_AND_HISTORICAL_PRESERVATION_REPORT.md
+      - release/v1.4.0/V1_4_0_FINAL_RELEASE_EVIDENCE_CLOSURE_ACCEPTANCE_GATES.md
+      - scripts/build_v1_4_0_final_release_evidence_closure_manifest.py
+      - scripts/verify_v1_4_0_final_release_evidence_closure.py
+      - tests/test_v1_4_0_final_release_evidence_closure.py
+      - .github/workflows/v1-4-0-final-release-evidence-closure.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-final-release-evidence-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact history read-only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check deterministic closure manifest
+        run: python scripts/build_v1_4_0_final_release_evidence_closure_manifest.py --check
+
+      - name: Verify final release evidence closure
+        run: python scripts/verify_v1_4_0_final_release_evidence_closure.py
+
+      - name: Run closure unit tests
+        run: python -m unittest tests.test_v1_4_0_final_release_evidence_closure

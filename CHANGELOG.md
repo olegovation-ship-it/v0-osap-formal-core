@@ -1,5 +1,19 @@
 # Changelog
 
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_CHANGELOG_BEGIN -->
+## [v1.4.0] - 2026-08-07 — final GitHub Release evidence closure and historical preservation
+
+- Recorded formal Gate 3 Cluster B WP6 closure as `PASS / GO / FORMALLY_CLOSED`.
+- Recorded PR #34 merge commit `75b84e5800686372fb6a19add12c8896f59274ee`, tree `8ec377cadaeddfd6bef67dd01d981b83d09c327b`, and synchronized `main` / `v1.4.0-development` heads.
+- Recorded terminal post-merge hosted CI: 29/29 workflow runs completed (15 success, 14 skipped, 0 failure/cancelled/pending) and 65/65 check runs completed.
+- Recorded immutable annotated tag `v1.4.0` object `21d9a42ceb9985dbcd6330582a8cb80e81d883c5`, peeled target `75b84e5800686372fb6a19add12c8896f59274ee`, and tag-message SHA-256 `9dbffe6f0bf3182f9e19fe278d8b3834ed3bb607d75282bae814db39b8fee5a5`.
+- Recorded GitHub Release `366706025`, published `2026-08-07T11:32:01Z`, 4 assets, and release-body SHA-256 `530711e7baa7408f51f53844c969020520a0c0bd5c100bfe29275867735623ba`.
+- Preserved checker/project version `0.7.0.dev1` as a separate component namespace; no component promotion was performed.
+- Preserved all pre-existing `release/v1.4.0/` evidence byte-for-byte, including historical pre-PR #34 WP6 non-terminal records.
+- Preserved the existing v1.3.0 DOI `10.5281/zenodo.21346728`; no v1.4.0 Zenodo record or DOI was created or finalized.
+- State: `FINAL_RELEASE_EVIDENCE_CLOSED / STABLE_TAG_CREATED / FINAL_GITHUB_RELEASE_CREATED / ZENODO_NOT_PUBLISHED`.
+<!-- V0_OSAP_V1_4_0_FINAL_RELEASE_EVIDENCE_CHANGELOG_END -->
+
 <!-- V0_OSAP_RC1_CHANGELOG_BEGIN -->
 ## [v1.3.0] - 2026-07-15 — post-merge archival closeout and development-branch synchronization
 
