@@ -1,0 +1,301 @@
+name: H1.9C-R1d2c1 YAML-Syntax-Corrected Frozen-Upstream Mapping Closure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: h1-9c-r1d2c1-yaml-syntax-corrected-source-semantic-closure
+  cancel-in-progress: false
+
+jobs:
+  frozen-upstream-source-semantic-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      R1C_ARTIFACT_ID: '9715841230'
+      R1C_ARTIFACT_SHA256: '7f6c72b577469d7fcc65a92583a153da991e27e9f77950d3ceff49016b6acaa4'
+      R1D2A_ARTIFACT_ID: '9718599568'
+      R1D2A_ARTIFACT_SHA256: '5076d65b87101279aed5f53161293772b5ef6398d22024959eaf1ad6d9b9604d'
+      R1D2A_CODE_SHA: '20cd669bb74d54cfffabb0603ef60d8d79a7ad75'
+      R1D2A_WORKFLOW_SHA256: '8db622c15ef6d6d8baa486cf1bedf7744907b1a08403329db4cd0ad3978fa7ea'
+      EXPECT_CYBER: 'a09345cd4d195991d23a4a45c25969f2e562c72d7b556391f1eaed799a955da8'
+      EXPECT_BENDS_RAR: '07d8ec04cb527887328ed63487e024609fa8395cc659a1fc43e29b54115adab1'
+      EXPECT_CAVIGLIA_RAR: 'dcac91f20ea9001c927a6f6096a23be2b2a65108774b7b66abc6ed7ac9e3ee48'
+      EXPECT_SHAFTS_RAR: '20cd6baca8c18876774e701ec3d37a6dd373b7e1d72e251687eb59da382a55d8'
+      EXPECT_BENDS_DWG: '965063af493b10e42a9639ae3742abdf936f6cf951b39f83353bb0c859a7205c'
+      EXPECT_CAVIGLIA_DWG: '6ce2f8795307889a13d8c5a4fbaeb181c18055e623a1a9b748f9d2150f6a0abd'
+      EXPECT_SHAFTS_DWG: '48f4d0b05bd364cd9d987399a3e4189ea5a29ccbac6eb1986c35f10035ee6ad6'
+      EXPECT_SOURCE_CONTRACT: '78b0b5b32928561c5efa2de3aa20babcaf4c9ec6428b7d2475633fe61c0f0362'
+      EXPECT_SOURCE_PAGE_SHA: '334fc6f2fe24e0a925a4005168dfbdea6d121d23cb73d76d0f4f7ba892e6bd88'
+
+    steps:
+      - name: Prepare frozen-upstream workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p upstream/r1c upstream/r1d2a work/cad work/dxf work/code report/glyphs report/diagnostics toolmeta
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unzip jq git build-essential autoconf automake libtool pkg-config libpcre2-dev libxml2-dev swig python3-dev gettext texinfo
+          python3 -m pip install --disable-pip-version-check --no-cache-dir 'ezdxf==1.4.4' 'Pillow==11.3.0'
+          python3 - <<'PY' > toolmeta/python_tools.txt
+          import sys, ezdxf, PIL
+          print('python', sys.version)
+          print('ezdxf', ezdxf.__version__)
+          print('Pillow', PIL.__version__)
+          PY
+
+      - name: Download and verify exact frozen upstream artifacts
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          api="https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts"
+          for spec in "${R1C_ARTIFACT_ID}:r1c" "${R1D2A_ARTIFACT_ID}:r1d2a"; do
+            id="${spec%%:*}"; tag="${spec##*:}"
+            curl --fail --location --silent --show-error \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H 'Accept: application/vnd.github+json' \
+              -H 'X-GitHub-Api-Version: 2022-11-28' \
+              "${api}/${id}/zip" -o "upstream/${tag}.zip"
+          done
+          echo "${R1C_ARTIFACT_SHA256}  upstream/r1c.zip" | sha256sum -c -
+          echo "${R1D2A_ARTIFACT_SHA256}  upstream/r1d2a.zip" | sha256sum -c -
+          unzip -q upstream/r1c.zip -d upstream/r1c
+          unzip -q upstream/r1d2a.zip -d upstream/r1d2a
+
+          check() {
+            local f="$1" expected="$2" actual
+            actual="$(sha256sum "$f" | awk '{print $1}')"
+            printf '%s\t%s\t%s\n' "$f" "$actual" "$expected" >> report/frozen_identity.tsv
+            test "$actual" = "$expected"
+          }
+          check upstream/r1c/raw/Cyberdrawings.rar "$EXPECT_CYBER"
+          check upstream/r1c/raw/bends3d.rar "$EXPECT_BENDS_RAR"
+          check upstream/r1c/raw/cavigliatunnel.rar "$EXPECT_CAVIGLIA_RAR"
+          check upstream/r1c/raw/cheopsshafts.rar "$EXPECT_SHAFTS_RAR"
+          check upstream/r1c/unpacked/bends3d/bends3d.dwg "$EXPECT_BENDS_DWG"
+          check upstream/r1c/unpacked/cavigliatunnel/cavigliatunnel.dwg "$EXPECT_CAVIGLIA_DWG"
+          check upstream/r1c/unpacked/cheopsshafts/cheopsshafts.dwg "$EXPECT_SHAFTS_DWG"
+          check upstream/r1d2a/report/source_semantic_contract.json "$EXPECT_SOURCE_CONTRACT"
+          check upstream/r1d2a/report/source_page_sha256.txt "$EXPECT_SOURCE_PAGE_SHA"
+
+          cp upstream/r1c/unpacked/bends3d/bends3d.dwg work/cad/bends3d.dwg
+          cp upstream/r1c/unpacked/cavigliatunnel/cavigliatunnel.dwg work/cad/cavigliatunnel.dwg
+          cp upstream/r1c/unpacked/cheopsshafts/cheopsshafts.dwg work/cad/cheopsshafts.dwg
+          cp upstream/r1d2a/report/source_semantic_contract.json report/source_semantic_contract.json
+          cp upstream/r1d2a/report/source_page_sha256.txt report/source_page_sha256.txt
+
+          python3 - <<'PY'
+          import json
+          d=json.load(open('report/source_semantic_contract.json',encoding='utf-8'))
+          assert d.get('target_used') is False
+          assert all(all(v is True for v in g.values()) for g in d['source_checks'].values())
+          assert len(d['frozen_segment_semantics']) == 12
+          print('FROZEN_SOURCE_SEMANTIC_GATE=PASS')
+          PY
+
+          cat > report/frozen_upstream_artifacts.json <<JSON
+          {"r1c":{"artifact_id":${R1C_ARTIFACT_ID},"sha256":"${R1C_ARTIFACT_SHA256}"},"r1d2a":{"artifact_id":${R1D2A_ARTIFACT_ID},"sha256":"${R1D2A_ARTIFACT_SHA256}"},"romberg_acquisition":false,"isida_acquisition":false,"target_access":false}
+          JSON
+          rm -rf upstream/r1c upstream/r1d2a upstream/*.zip
+
+      - name: Build pinned LibreDWG and convert frozen DWG to DXF
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch 0.13.4 https://github.com/LibreDWG/libredwg.git work/libredwg
+          cd work/libredwg
+          ./autogen.sh >/dev/null
+          ./configure --disable-bindings --disable-docs --disable-write --prefix="$PWD/install" >/dev/null
+          make -j2 >/dev/null
+          make install >/dev/null
+          BIN="$PWD/install/bin"
+          "$BIN/dwg2dxf" --version | tee ../../toolmeta/libredwg.txt
+          cd ../..
+          for stem in bends3d cavigliatunnel cheopsshafts; do
+            work/libredwg/install/bin/dwg2dxf -y -o "work/dxf/${stem}.dxf" "work/cad/${stem}.dwg" \
+              >"report/diagnostics/${stem}.dwg2dxf.stdout.txt" \
+              2>"report/diagnostics/${stem}.dwg2dxf.stderr.txt"
+            test -s "work/dxf/${stem}.dxf"
+          done
+
+      - name: Reuse frozen R1d2a mapping code only
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${R1D2A_CODE_SHA}/.github/workflows/h1_9c_r1d2a_source_semantic_closure_transport_fix.yml"
+          curl --fail --location --silent --show-error "$raw" -o work/code/r1d2a.yml
+          echo "${R1D2A_WORKFLOW_SHA256}  work/code/r1d2a.yml" | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('work/code/r1d2a.yml').read_text(encoding='utf-8')
+          marker='      - name: Produce block-glyph, topology, restoration, measure and Caviglia mapping evidence\n'
+          i=s.index(marker)
+          j=s.index("          python3 - <<'PY'\n", i)+len("          python3 - <<'PY'\n")
+          k=s.index("\n          PY\n", j)
+          code='\n'.join(line[10:] if line.startswith('          ') else line for line in s[j:k].splitlines())+'\n'
+          Path('work/code/mapping.py').write_text(code,encoding='utf-8')
+          PY
+
+          # R1d2c bounded corrective:
+          # The frozen R1d2a kernel assumed upper/lower separation was encoded in Z.
+          # In cheopsshafts.dxf one Z partition is empty, so median([]) fails.
+          # Replace ONLY that partition kernel with deterministic anonymous 2-D CAD-layout
+          # clustering. No semantic KS/KN/QS/QN labels are assigned here.
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('work/code/mapping.py')
+          s=p.read_text(encoding='utf-8')
+          old='''# Four target-independent shaft families by spatial cloud, using only CAD internal coordinates.
+          # Split first by vertical level (upper/lower) using largest gap in entity-center Z,
+          # then each level into two side clouds by largest gap in center Y.
+          sc=[(str(getattr(e.dxf,"handle","") or ""),entity_center(e),e) for e in shaft_entities]
+          sc=[x for x in sc if x[0] and x[1] is not None]
+          
+          zs=sorted(c[1][2] for c in sc)
+          zgaps=[(zs[i+1]-zs[i],i) for i in range(len(zs)-1)]
+          zcut=(zs[max(zgaps)[1]]+zs[max(zgaps)[1]+1])/2 if zgaps else statistics.median(zs)
+          
+          families={}
+          for level, pred in [("LOWER",lambda c:c[1][2]<=zcut),("UPPER",lambda c:c[1][2]>zcut)]:
+              arr=[c for c in sc if pred(c)]
+              ys=sorted(c[1][1] for c in arr)
+              ygaps=[(ys[i+1]-ys[i],i) for i in range(len(ys)-1)]
+              ycut=(ys[max(ygaps)[1]]+ys[max(ygaps)[1]+1])/2 if ygaps else statistics.median(ys)
+              for side,spred in [("SIDE_A",lambda c:c[1][1]<=ycut),("SIDE_B",lambda c:c[1][1]>ycut)]:
+                  xs=[c for c in arr if spred(c)]
+                  fid=f"{level}_{side}"
+                  families[fid]={
+                    "handle_count":len(xs),
+                    "handle_set_sha256":sha(sorted(x[0] for x in xs)),
+                    "_centers":[x[1] for x in xs],
+                    "_handles":[x[0] for x in xs],
+                    "_entities":[x[2] for x in xs],
+                  }
+          '''
+          new='''# Four anonymous target-independent CAD-layout families.
+          # R1d2c corrective: do NOT assume Z encodes chamber level.  Cluster only the
+          # transient internal X/Y entity centers into four deterministic layout clouds.
+          # Cluster IDs are anonymous and are NOT mapped to KS/KN/QS/QN by the runner.
+          sc=[(str(getattr(e.dxf,"handle","") or ""),entity_center(e),e) for e in shaft_entities]
+          sc=[x for x in sc if x[0] and x[1] is not None]
+          if len(sc) < 4:
+              raise SystemExit("R1d2c partition gate: fewer than four shaft entities")
+          
+          def xy(c):
+              return (float(c[1][0]), float(c[1][1]))
+          
+          def d2(a,b):
+              return (a[0]-b[0])**2 + (a[1]-b[1])**2
+          
+          # Deterministic farthest-point initialization, independent of target information.
+          ordered=sorted(sc, key=lambda c:(xy(c)[0],xy(c)[1],c[0]))
+          seeds=[xy(ordered[0])]
+          for _ in range(3):
+              cand=max(
+                  ordered,
+                  key=lambda c:(min(d2(xy(c),q) for q in seeds), xy(c)[0], xy(c)[1], c[0])
+              )
+              seeds.append(xy(cand))
+          
+          centroids=list(seeds)
+          assign=None
+          for _iter in range(40):
+              new_assign=[]
+              for c in sc:
+                  pt=xy(c)
+                  k=min(range(4), key=lambda j:(d2(pt,centroids[j]),j))
+                  new_assign.append(k)
+          
+              groups=[[] for _ in range(4)]
+              for c,k in zip(sc,new_assign):
+                  groups[k].append(c)
+          
+              # Fail closed rather than inventing a semantic family if layout clustering collapses.
+              if any(len(g)==0 for g in groups):
+                  raise SystemExit("R1d2c partition gate: empty anonymous 2-D layout cluster")
+          
+              new_centroids=[]
+              for g in groups:
+                  new_centroids.append((
+                      sum(xy(c)[0] for c in g)/len(g),
+                      sum(xy(c)[1] for c in g)/len(g),
+                  ))
+              if assign == new_assign:
+                  centroids=new_centroids
+                  break
+              assign=new_assign
+              centroids=new_centroids
+          
+          # Canonicalize anonymous cluster IDs by centroid X then Y; emit no centroid coordinates.
+          order=sorted(range(4), key=lambda j:(centroids[j][0],centroids[j][1],j))
+          rank={oldj:i+1 for i,oldj in enumerate(order)}
+          families={}
+          for oldj in range(4):
+              xs=[c for c,k in zip(sc,assign) if k==oldj]
+              fid=f"CAD_LAYOUT_C{rank[oldj]}"
+              families[fid]={
+                "handle_count":len(xs),
+                "handle_set_sha256":sha(sorted(x[0] for x in xs)),
+                "_centers":[x[1] for x in xs],
+                "_handles":[x[0] for x in xs],
+                "_entities":[x[2] for x in xs],
+              }
+          '''
+          if s.count(old) != 1:
+              raise SystemExit(f"R1d2c patch gate: expected one frozen partition block, found {s.count(old)}")
+          s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          print("R1D2C_PARTITION_PATCH=PASS")
+          PY
+
+          python3 work/code/mapping.py
+          test -s report/H1_9C_R1d2_source_semantic_mapping_evidence.json
+          mv report/H1_9C_R1d2_source_semantic_mapping_evidence.json report/H1_9C_R1d2c1_source_semantic_mapping_evidence.json
+          python3 - <<'PY'
+          import json
+          p='report/H1_9C_R1d2c1_source_semantic_mapping_evidence.json'
+          d=json.load(open(p,encoding='utf-8'))
+          d['artifact_id']='V0-H1.9C-R1d2c1-YAML-SYNTAX-CORRECTED-FROZEN-UPSTREAM-SOURCE-SEMANTIC-MAPPING-EVIDENCE-v1.0'
+          d['upstream_mode']='FROZEN_R1c_CAD_PLUS_FROZEN_R1d2a_SOURCE_SEMANTICS'; d['partition_mode']='ANONYMOUS_DETERMINISTIC_2D_CAD_LAYOUT_4_CLUSTER'
+          d['mapping_verdict']='DEFER_TO_POSTRUN_READ_ONLY_SOURCE_SEMANTIC_AUDIT'
+          assert d['firewall']['shaft_vector_extraction']==0
+          assert d['firewall']['shaft_angle_derivation']==0
+          assert d['firewall']['target_access'] is False
+          assert d['firewall']['target_recomputation']==0
+          d['r1d2b_run1_diagnosis']={
+            'run_id':33266975826,
+            'job_id':99138644534,
+            'upstream_artifact_gate':'PASS',
+            'libredwg_conversion':'PASS',
+            'failure':'statistics.StatisticsError: no median for empty data',
+            'cause':'invalid Z-based family partition assumption',
+            'scientific_verdict_reached':False
+          }
+          json.dump(d,open(p,'w',encoding='utf-8'),indent=2,sort_keys=True)
+          PY
+          rm -rf work/cad work/dxf work/libredwg work/code
+
+      - name: Freeze coordinate-redacted output hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          find report toolmeta -type f ! -name 'R1d2c1_output_SHA256.txt' -print0 | sort -z | xargs -0 sha256sum > report/R1d2c1_output_SHA256.txt || true
+          jq '.mapping_verdict,.firewall,.meta_stop' report/H1_9C_R1d2c1_source_semantic_mapping_evidence.json || true
+
+      - name: Upload R1d2c1 syntax-corrected source-semantic closure artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d2c1_yaml_syntax_corrected_source_semantic_closure
+          path: |
+            report/
+            toolmeta/
+          if-no-files-found: warn
+          retention-days: 30
