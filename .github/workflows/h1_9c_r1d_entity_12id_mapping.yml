@@ -1,0 +1,415 @@
+name: H1.9C-R1d Exact Entity-Level 12-ID Mapping Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9c-r1d-entity-12id-mapping
+  cancel-in-progress: false
+
+jobs:
+  map-entities:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      ROMBERG_BASE: https://www.rombergintegrali.org/gizapiramitleri/g1/upuautproject/cyberdrawings
+      CYBER_URL: https://www.rombergintegrali.org/gizapiramitleri/g1/g1_piramitinin_saftlari_geometrisi/cyberdrawings.rar
+
+      EXPECT_CYBER: a09345cd4d195991d23a4a45c25969f2e562c72d7b556391f1eaed799a955da8
+      EXPECT_BENDS_RAR: 07d8ec04cb527887328ed63487e024609fa8395cc659a1fc43e29b54115adab1
+      EXPECT_CAVIGLIA_RAR: dcac91f20ea9001c927a6f6096a23be2b2a65108774b7b66abc6ed7ac9e3ee48
+      EXPECT_NICHES_RAR: 8348c4e9b66383eba2765d810571849144651a47fa60bc4c8c01fa61520debfb
+      EXPECT_SHAFTS_RAR: 20cd6baca8c18876774e701ec3d37a6dd373b7e1d72e251687eb59da382a55d8
+
+      EXPECT_BENDS_DWF: dfb56a82cc488edf3191947918384badb2970a47df21816d99c076b79f9e3fe5
+      EXPECT_CAVIGLIA_DWF: cd158e5d50de3f5315eb4d738a1a60c43002011a63422fae5293bc4ed155c23e
+      EXPECT_NICHES_DWF: 603454d56d44fcc0608b4f3c1c06f8a42034323443a5f2f98aebdcdda2c73e3c
+      EXPECT_SHAFTS_DWF: 31cc26c7860d3b16e3d5b35b6b06dd746fa6428bdbdf5a2c2f9a7a7a8f634f09
+
+      EXPECT_BENDS_DWG: 965063af493b10e42a9639ae3742abdf936f6cf951b39f83353bb0c859a7205c
+      EXPECT_CAVIGLIA_DWG: 6ce2f8795307889a13d8c5a4fbaeb181c18055e623a1a9b748f9d2150f6a0abd
+      EXPECT_NICHES_DWG: 19a1e69eba82c3b38dc45620353f31f383808ade4d7368108e92ceb01b6e9109
+      EXPECT_SHAFTS_DWG: 48f4d0b05bd364cd9d987399a3e4189ea5a29ccbac6eb1986c35f10035ee6ad6
+
+    steps:
+      - name: Prepare mapping-only workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p raw unpacked work/cad work/dxf report toolmeta
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            p7zip-full file jq git build-essential autoconf automake libtool \
+            pkg-config libpcre2-dev libxml2-dev swig python3-dev gettext texinfo
+          python3 -m pip install --disable-pip-version-check --no-cache-dir 'ezdxf==1.4.4'
+          python3 - <<'PY' > toolmeta/python_ezdxf.txt
+          import sys, ezdxf
+          print("python", sys.version)
+          print("ezdxf", ezdxf.__version__)
+          PY
+
+      - name: Materialize and hash-gate frozen R1c CAD bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 5 "$CYBER_URL" -o raw/Cyberdrawings.rar
+          for f in cheopsshafts cavigliatunnel cheopsniches bends3d; do
+            curl --fail --location --retry 8 --retry-delay 5 "$ROMBERG_BASE/${f}.rar" -o "raw/${f}.rar"
+          done
+
+          check() {
+            local f="$1" expected="$2" actual
+            actual="$(sha256sum "$f" | awk '{print $1}')"
+            printf '%s\t%s\t%s\n' "$f" "$actual" "$expected" >> report/raw_identity.tsv
+            test "$actual" = "$expected"
+          }
+
+          check raw/Cyberdrawings.rar "$EXPECT_CYBER"
+          check raw/bends3d.rar "$EXPECT_BENDS_RAR"
+          check raw/cavigliatunnel.rar "$EXPECT_CAVIGLIA_RAR"
+          check raw/cheopsniches.rar "$EXPECT_NICHES_RAR"
+          check raw/cheopsshafts.rar "$EXPECT_SHAFTS_RAR"
+
+          for f in raw/*.rar; do
+            d="unpacked/$(basename "$f" .rar)"
+            mkdir -p "$d"
+            7z x -y -o"$d" "$f" >/dev/null
+          done
+
+          cp unpacked/Cyberdrawings/bends3d.dwf work/cad/bends3d.dwf
+          cp unpacked/Cyberdrawings/cavigliatunnel.dwf work/cad/cavigliatunnel.dwf
+          cp unpacked/Cyberdrawings/cheopsniches.dwf work/cad/cheopsniches.dwf
+          cp unpacked/Cyberdrawings/cheopsshafts.dwf work/cad/cheopsshafts.dwf
+          cp unpacked/bends3d/bends3d.dwg work/cad/bends3d.dwg
+          cp unpacked/cavigliatunnel/cavigliatunnel.dwg work/cad/cavigliatunnel.dwg
+          cp unpacked/cheopsniches/cheopsniches.dwg work/cad/cheopsniches.dwg
+          cp unpacked/cheopsshafts/cheopsshafts.dwg work/cad/cheopsshafts.dwg
+
+          check work/cad/bends3d.dwf "$EXPECT_BENDS_DWF"
+          check work/cad/cavigliatunnel.dwf "$EXPECT_CAVIGLIA_DWF"
+          check work/cad/cheopsniches.dwf "$EXPECT_NICHES_DWF"
+          check work/cad/cheopsshafts.dwf "$EXPECT_SHAFTS_DWF"
+          check work/cad/bends3d.dwg "$EXPECT_BENDS_DWG"
+          check work/cad/cavigliatunnel.dwg "$EXPECT_CAVIGLIA_DWG"
+          check work/cad/cheopsniches.dwg "$EXPECT_NICHES_DWG"
+          check work/cad/cheopsshafts.dwg "$EXPECT_SHAFTS_DWG"
+
+      - name: Build pinned LibreDWG and convert DWG to DXF
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch 0.13.4 https://github.com/LibreDWG/libredwg.git work/libredwg
+          cd work/libredwg
+          ./autogen.sh >/dev/null
+          ./configure --disable-bindings --disable-docs --disable-write --prefix="$PWD/install" >/dev/null
+          make -j2 >/dev/null
+          make install >/dev/null
+          BIN="$PWD/install/bin"
+          "$BIN/dwg2dxf" --version | tee ../../toolmeta/libredwg.txt
+          cd ../..
+          for stem in bends3d cavigliatunnel cheopsniches cheopsshafts; do
+            work/libredwg/install/bin/dwg2dxf -y -o "work/dxf/${stem}.dxf" "work/cad/${stem}.dwg" \
+              >"report/${stem}.dwg2dxf.stdout.txt" 2>"report/${stem}.dwg2dxf.stderr.txt"
+            test -s "work/dxf/${stem}.dxf"
+          done
+
+      - name: Build coordinate-redacted entity/topology inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from __future__ import annotations
+          import hashlib, json, math, re
+          from collections import Counter, defaultdict, deque
+          from pathlib import Path
+          from datetime import datetime, timezone
+          import ezdxf
+
+          ROOT = Path("work/dxf")
+          OUT = Path("report")
+          STEMS = ["cheopsshafts","bends3d","cavigliatunnel","cheopsniches"]
+
+          FROZEN = {
+            "GP-SH-KS-H": "King Chamber south shaft - initial horizontal segment",
+            "GP-SH-KS-B2": "King Chamber south shaft - Block 2 inclined segment",
+            "GP-SH-KS-B34": "King Chamber south shaft - Blocks 3-4 inclined segment",
+            "GP-SH-KS-MAIN-A": "King Chamber south shaft - main 45 deg segment before longitudinal bend",
+            "GP-SH-KS-MAIN-B": "King Chamber south shaft - post-bend main segment",
+            "GP-SH-KN-H": "King Chamber north shaft - initial horizontal segment",
+            "GP-SH-KN-MAIN-A": "King Chamber north shaft - main segment before Block 20 bend",
+            "GP-SH-KN-MAIN-B": "King Chamber north shaft - post-Block-20 bend original segment",
+            "GP-SH-QS-H": "Queen Chamber south shaft - initial horizontal segment",
+            "GP-SH-QS-R": "Queen Chamber south shaft - measured rising segment",
+            "GP-SH-QN-H": "Queen Chamber north shaft - initial horizontal segment",
+            "GP-SH-QN-POSTBEND": "Queen Chamber north shaft - continuation after westward bend",
+          }
+
+          RELEVANT_LAYERS = {
+            "cheopsshafts": {"SHAFTS","BLOCK-NUMBERS","MEASURE","PRESENT-STATE","DEFPOINTS","PYRAMID","BLOCK-SHAPES"},
+            "bends3d": {"SHAFTS-UPPER","SHAFTS-LOWER","KINGS-CHAMBER","QUEENS-CHAMBER","SERVICE-SHAFT",
+                        "BLOCKINGSTONES","PYRAMID","DEFPOINTS","DRAW","CORRIDORS","ANTECHAMBERS"},
+            "cavigliatunnel": {"SHAFT-A","SHAFT-M","AXIS-A","AXIS-M","MEASURES","ANGLES","DEFPOINTS","DRAWING"},
+            "cheopsniches": {"SHAFT","MEASURE","DEFPOINTS","HYPOTHESIS"},
+          }
+
+          # No coordinate payload is written. Coordinates are used transiently only for
+          # connectivity/nearest-label association and are immediately reduced to hashes
+          # and discrete graph relations.
+          def qpt(p, tol=1e-6):
+              return (round(float(p[0])/tol), round(float(p[1])/tol), round(float(p[2] if len(p)>2 else 0.0)/tol))
+
+          def sha_obj(o):
+              b=json.dumps(o,sort_keys=True,separators=(",",":"),ensure_ascii=True).encode()
+              return hashlib.sha256(b).hexdigest()
+
+          def entity_points(e):
+              t=e.dxftype()
+              try:
+                  if t=="LINE":
+                      return [tuple(e.dxf.start), tuple(e.dxf.end)]
+                  if t in ("LWPOLYLINE","POLYLINE"):
+                      if t=="LWPOLYLINE":
+                          return [(float(x),float(y),float(e.dxf.elevation if hasattr(e.dxf,"elevation") else 0.0))
+                                  for x,y,*_ in e.get_points("xy")]
+                      pts=[]
+                      for v in e.vertices:
+                          p=v.dxf.location
+                          pts.append((float(p.x),float(p.y),float(p.z)))
+                      return pts
+                  if t=="SPLINE":
+                      return [tuple(p) for p in e.control_points]
+                  if t=="ARC":
+                      # endpoints only; no angle emitted
+                      return [tuple(e.start_point), tuple(e.end_point)]
+              except Exception:
+                  return []
+              return []
+
+          def text_value(e):
+              try:
+                  if e.dxftype()=="TEXT": return e.dxf.text
+                  if e.dxftype()=="MTEXT": return e.plain_text()
+                  if e.dxftype()=="ATTRIB": return e.dxf.text
+                  if e.dxftype()=="ATTDEF": return e.dxf.text
+              except Exception:
+                  return None
+              return None
+
+          def anchor_point(e):
+              t=e.dxftype()
+              try:
+                  if t in ("TEXT","ATTRIB","ATTDEF"): return tuple(e.dxf.insert)
+                  if t=="MTEXT": return tuple(e.dxf.insert)
+                  if t=="INSERT": return tuple(e.dxf.insert)
+              except Exception:
+                  return None
+              pts=entity_points(e)
+              if pts:
+                  # transient centroid only
+                  n=len(pts)
+                  return tuple(sum(float(p[i]) for p in pts)/n for i in range(3))
+              return None
+
+          allout={
+            "artifact_id":"V0-H1.9C-R1d-EXACT-ENTITY-12ID-MAPPING-EXTERNAL-RUN-v1.0",
+            "generated_utc":datetime.now(timezone.utc).isoformat(),
+            "frozen_12_definitions":FROZEN,
+            "files":{},
+            "mapping_decision":"DEFER_TO_POSTRUN_READ_ONLY_AUDIT",
+            "firewall":{
+              "target_access":False,
+              "target_recomputation":0,
+              "shaft_vector_extraction":0,
+              "shaft_angle_derivation":0,
+              "azimuth_or_inclination_computed":False,
+              "coordinate_payload_published":False,
+              "target_metric_fields":"ABSENT",
+            },
+            "meta_stop":True,
+          }
+
+          for stem in STEMS:
+              doc=ezdxf.readfile(ROOT/f"{stem}.dxf")
+              msp=doc.modelspace()
+              layers=RELEVANT_LAYERS[stem]
+
+              geom=[]
+              labels=[]
+              inserts=[]
+              entity_records=[]
+
+              for e in msp:
+                  layer=str(getattr(e.dxf,"layer",""))
+                  if layer not in layers and e.dxftype() not in ("TEXT","MTEXT","ATTRIB","ATTDEF","INSERT"):
+                      continue
+                  h=str(getattr(e.dxf,"handle","") or "")
+                  t=e.dxftype()
+                  txt=text_value(e)
+                  rec={"handle":h,"type":t,"layer":layer}
+                  if t=="INSERT":
+                      try: rec["insert_block_name"]=str(e.dxf.name)
+                      except Exception: pass
+                  if txt is not None:
+                      s=" ".join(str(txt).split())
+                      if len(s)<=240: rec["text"]=s
+                  pts=entity_points(e)
+                  if pts:
+                      canonical=[qpt(p) for p in pts]
+                      rec["geometry_fingerprint_sha256"]=sha_obj(canonical)
+                      rec["point_count"]=len(canonical)
+                      geom.append((e,rec,pts))
+                  ap=anchor_point(e)
+                  if txt is not None and ap is not None:
+                      labels.append((rec,ap))
+                  if t=="INSERT" and ap is not None:
+                      inserts.append((rec,ap))
+                  entity_records.append(rec)
+
+              # connectivity graph over geometry entity handles, per layer.
+              point_to_handles=defaultdict(set)
+              handle_to_points={}
+              handle_to_layer={}
+              for e,rec,pts in geom:
+                  h=rec["handle"]
+                  if not h: continue
+                  q=[qpt(p) for p in pts]
+                  if not q: continue
+                  # endpoints only for graph connection; internal vertices retained in geometry hash.
+                  ends=(q[0],q[-1])
+                  handle_to_points[h]=ends
+                  handle_to_layer[h]=rec["layer"]
+                  for p in ends: point_to_handles[(rec["layer"],p)].add(h)
+
+              adj=defaultdict(set)
+              for _,hs in point_to_handles.items():
+                  hs=list(hs)
+                  for i,a in enumerate(hs):
+                      for b in hs[i+1:]:
+                          adj[a].add(b); adj[b].add(a)
+
+              components=[]
+              handle_to_component={}
+              seen=set()
+              for h in sorted(handle_to_points):
+                  if h in seen: continue
+                  layer=handle_to_layer[h]
+                  q=deque([h]); seen.add(h); members=[]
+                  while q:
+                      u=q.popleft(); members.append(u)
+                      for v in adj[u]:
+                          if v not in seen and handle_to_layer.get(v)==layer:
+                              seen.add(v); q.append(v)
+                  cid=f"{stem}:{layer}:C{len(components)+1:04d}"
+                  for u in members: handle_to_component[u]=cid
+                  deg=Counter(len(adj[u]) for u in members)
+                  components.append({
+                    "component_id":cid,
+                    "layer":layer,
+                    "entity_count":len(members),
+                    "member_handle_set_sha256":sha_obj(sorted(members)),
+                    "endpoint_degree_histogram":dict(sorted(deg.items())),
+                  })
+
+              # Associate text/insert anchors with nearest geometry component transiently.
+              geom_anchor=[]
+              for e,rec,pts in geom:
+                  if not rec["handle"]: continue
+                  ap=anchor_point(e)
+                  if ap is not None:
+                      geom_anchor.append((rec["handle"], ap))
+
+              def nearest_component(ap):
+                  best=None
+                  for h,gp in geom_anchor:
+                      d=sum((float(ap[i])-float(gp[i]))**2 for i in range(3))
+                      if best is None or d<best[0]:
+                          best=(d,h)
+                  if best is None: return None
+                  return handle_to_component.get(best[1])
+
+              label_assoc=[]
+              for rec,ap in labels:
+                  label_assoc.append({
+                    "handle":rec["handle"],
+                    "type":rec["type"],
+                    "layer":rec["layer"],
+                    "text":rec.get("text",""),
+                    "nearest_component":nearest_component(ap),
+                  })
+
+              insert_assoc=[]
+              for rec,ap in inserts:
+                  insert_assoc.append({
+                    "handle":rec["handle"],
+                    "layer":rec["layer"],
+                    "insert_block_name":rec.get("insert_block_name"),
+                    "nearest_component":nearest_component(ap),
+                  })
+
+              # Enrich components with associated labels/inserts; still no coordinates/distances.
+              labels_by=defaultdict(list)
+              for x in label_assoc:
+                  if x["nearest_component"]: labels_by[x["nearest_component"]].append(x["text"])
+              inserts_by=defaultdict(list)
+              for x in insert_assoc:
+                  if x["nearest_component"]: inserts_by[x["nearest_component"]].append(x.get("insert_block_name"))
+
+              for c in components:
+                  c["associated_text_labels"]=sorted(set(x for x in labels_by[c["component_id"]] if x))[:500]
+                  c["associated_insert_blocks"]=sorted(set(x for x in inserts_by[c["component_id"]] if x))[:200]
+
+              allout["files"][stem]={
+                "relevant_layers":sorted(layers),
+                "entity_records":entity_records,
+                "components":components,
+                "label_associations":label_assoc,
+                "insert_associations":insert_assoc,
+                "coordinate_payload_emitted":False,
+              }
+
+          # Predeclared source-only mapping requirements. No automatic target-aware selection.
+          allout["mapping_requirements"]={
+            "GP-SH-KS-H":{"anchors":["King Chamber south shaft","initial horizontal","boundary before Block 2"]},
+            "GP-SH-KS-B2":{"anchors":["King Chamber south shaft","Block 2"]},
+            "GP-SH-KS-B34":{"anchors":["King Chamber south shaft","Blocks 3","4"]},
+            "GP-SH-KS-MAIN-A":{"anchors":["King Chamber south shaft","main segment","before longitudinal bend"]},
+            "GP-SH-KS-MAIN-B":{"anchors":["King Chamber south shaft","post-bend main","exclude restored outlet"]},
+            "GP-SH-KN-H":{"anchors":["King Chamber north shaft","initial horizontal","boundary before Block 2"]},
+            "GP-SH-KN-MAIN-A":{"anchors":["King Chamber north shaft","main segment","before Block 20 bend"]},
+            "GP-SH-KN-MAIN-B":{"anchors":["King Chamber north shaft","post-Block-20 bend","original segment only"]},
+            "GP-SH-QS-H":{"anchors":["Queen Chamber south shaft","initial horizontal"]},
+            "GP-SH-QS-R":{"anchors":["Queen Chamber south shaft","measured rising segment"]},
+            "GP-SH-QN-H":{"anchors":["Queen Chamber north shaft","initial horizontal"]},
+            "GP-SH-QN-POSTBEND":{"anchors":["Queen Chamber north shaft","continuation after westward bend"]},
+          }
+
+          (OUT/"H1_9C_R1d_entity_12id_inventory.json").write_text(
+              json.dumps(allout,indent=2,sort_keys=True),encoding="utf-8"
+          )
+          PY
+
+          # Full converted DXF files contain coordinates and are NOT uploaded.
+          rm -rf work/dxf work/cad raw unpacked work/libredwg
+
+      - name: Freeze mapping-only artifact hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          find report toolmeta -type f ! -name 'R1d_map_output_SHA256.txt' -print0 \
+            | sort -z | xargs -0 sha256sum > report/R1d_map_output_SHA256.txt || true
+          jq '.firewall,.mapping_decision,.meta_stop' report/H1_9C_R1d_entity_12id_inventory.json || true
+
+      - name: Upload coordinate-redacted entity mapping artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d_entity_12id_mapping
+          path: |
+            report/
+            toolmeta/
+          if-no-files-found: warn
+          retention-days: 30
