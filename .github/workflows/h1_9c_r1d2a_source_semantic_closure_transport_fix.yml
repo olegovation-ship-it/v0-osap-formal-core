@@ -1,0 +1,522 @@
+name: H1.9C-R1d2 Source-Semantic Entity Mapping Closure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9c-r1d2-source-semantic-closure
+  cancel-in-progress: false
+
+jobs:
+  source-semantic-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+
+    env:
+      ROMBERG_BASE: https://www.rombergintegrali.org/gizapiramitleri/g1/upuautproject/cyberdrawings
+      CYBER_URL: https://www.rombergintegrali.org/gizapiramitleri/g1/g1_piramitinin_saftlari_geometrisi/cyberdrawings.rar
+
+      KS_URL: https://isida-project.org/upuaut-project/thefindings/theuppersouthshaft/uppersouth.html
+      KN_URL: https://isida-project.org/upuaut-project/thefindings/theuppernorthshaft/uppernorth.html
+      QS_URL: https://isida-project.org/upuaut-project/thefindings/thelowersouthshaft/lowersouth.html
+      QN_URL: https://isida-project.org/upuaut-project/thefindings/thelowernorthshaft/lowernorth.html
+      CAD_INDEX_URL: https://isida-project.org/upuaut-project/cyberdrawings/cyberdrawing.html
+
+      EXPECT_CYBER: a09345cd4d195991d23a4a45c25969f2e562c72d7b556391f1eaed799a955da8
+      EXPECT_BENDS_RAR: 07d8ec04cb527887328ed63487e024609fa8395cc659a1fc43e29b54115adab1
+      EXPECT_CAVIGLIA_RAR: dcac91f20ea9001c927a6f6096a23be2b2a65108774b7b66abc6ed7ac9e3ee48
+      EXPECT_SHAFTS_RAR: 20cd6baca8c18876774e701ec3d37a6dd373b7e1d72e251687eb59da382a55d8
+
+      EXPECT_BENDS_DWG: 965063af493b10e42a9639ae3742abdf936f6cf951b39f83353bb0c859a7205c
+      EXPECT_CAVIGLIA_DWG: 6ce2f8795307889a13d8c5a4fbaeb181c18055e623a1a9b748f9d2150f6a0abd
+      EXPECT_SHAFTS_DWG: 48f4d0b05bd364cd9d987399a3e4189ea5a29ccbac6eb1986c35f10035ee6ad6
+
+    steps:
+      - name: Prepare source-semantic workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p raw unpacked source work/cad work/dxf report/glyphs report/diagnostics toolmeta
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            p7zip-full file jq git build-essential autoconf automake libtool \
+            pkg-config libpcre2-dev libxml2-dev swig python3-dev gettext texinfo
+          python3 -m pip install --disable-pip-version-check --no-cache-dir \
+            'ezdxf==1.4.4' 'Pillow==11.3.0' 'beautifulsoup4==4.13.4'
+          python3 - <<'PY' > toolmeta/python_tools.txt
+          import sys, ezdxf, PIL, bs4
+          print("python", sys.version)
+          print("ezdxf", ezdxf.__version__)
+          print("Pillow", PIL.__version__)
+          print("beautifulsoup4", bs4.__version__)
+          PY
+
+      - name: Freeze authoritative source semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 3 "$KS_URL" -o source/KS.html
+          curl --fail --location --retry 5 --retry-delay 3 "$KN_URL" -o source/KN.html
+          curl --fail --location --retry 5 --retry-delay 3 "$QS_URL" -o source/QS.html
+          curl --fail --location --retry 5 --retry-delay 3 "$QN_URL" -o source/QN.html
+          curl --fail --location --retry 5 --retry-delay 3 "$CAD_INDEX_URL" -o source/CAD_INDEX.html
+
+          sha256sum source/*.html > report/source_page_sha256.txt
+
+          python3 - <<'PY'
+          from bs4 import BeautifulSoup
+          from pathlib import Path
+          import json, re, hashlib
+
+          def text(path):
+              s=BeautifulSoup(Path(path).read_bytes(), "html.parser")
+              return " ".join(s.get_text(" ", strip=True).split())
+
+          pages={k:text(f"source/{k}.html") for k in ["KS","KN","QS","QN","CAD_INDEX"]}
+
+          checks={
+            "KS":{
+              "initial_horizontal_1_72": "1.72" in pages["KS"],
+              "block2_39_20": ("Block No. 2" in pages["KS"] and "39.20" in pages["KS"]),
+              "blocks3_4_50_54": ("Block No. 3" in pages["KS"] and "50.54" in pages["KS"] and "Block No. 4" in pages["KS"]),
+              "bend_end_block17": ("end of Block No. 17" in pages["KS"] and "east" in pages["KS"].lower()),
+              "last_original_block25": ("last remaining original block" in pages["KS"] and "No. 25" in pages["KS"]),
+              "restored_1_70_after25": ("1.70" in pages["KS"] and "restored" in pages["KS"].lower()),
+            },
+            "KN":{
+              "initial_horizontal_2_63": "2.63" in pages["KN"],
+              "block2_west": ("Block No. 2" in pages["KN"] and "West" in pages["KN"]),
+              "caviglia_blocks2_to5": ("Block No. 2" in pages["KN"] and "Block No. 5" in pages["KN"] and "CAVIGLIA" in pages["KN"].upper()),
+              "block6_main": "Block No. 6" in pages["KN"],
+              "bend_end_block20": ("end of Block No. 20" in pages["KN"]),
+              "mankiller_after25": ("end of Block No. 25" in pages["KN"] and "Mankiller" in pages["KN"]),
+            },
+            "QS":{
+              "initial_horizontal_1_96": "1.96" in pages["QS"],
+              "rising_24_measurements_28m": ("24 measurements" in pages["QS"] and "28 meters" in pages["QS"]),
+              "blocks2_3_settlement": ("Block No. 2" in pages["QS"] and "No. 3" in pages["QS"]),
+            },
+            "QN":{
+              "initial_horizontal_1_93": "1.93" in pages["QN"],
+              "block4_change": "Block No. 4" in pages["QN"],
+              "bend_end_block9": ("end of Block No. 9" in pages["QN"] and "West" in pages["QN"]),
+              "continuation_after_bend": ("continuing shaft" in pages["QN"]),
+            },
+            "CAD_INDEX":{
+              "cheops_shafts": "CHEOPS SHAFTS" in pages["CAD_INDEX"],
+              "caviglia_tunnel": "CAVIGLIA TUNNEL" in pages["CAD_INDEX"],
+              "bends_3d": ("BENDS 3D" in pages["CAD_INDEX"]),
+            }
+          }
+          if not all(all(v.values()) for v in checks.values()):
+              raise SystemExit("Source-semantic phrase gate failed")
+
+          contract={
+            "source_checks":checks,
+            "frozen_segment_semantics":{
+              "GP-SH-KS-H":"King south: chamber-wall origin through Block 1, stopping at start of Block 2.",
+              "GP-SH-KS-B2":"King south: Block 2 shaft segment only.",
+              "GP-SH-KS-B34":"King south: Blocks 3 and 4 as one frozen segment family.",
+              "GP-SH-KS-MAIN-A":"King south: main post-Block-4/pre-bend run, ending at the bend at end Block 17.",
+              "GP-SH-KS-MAIN-B":"King south: post-Block-17-bend original run through last original Block 25; later 1.70 m restoration excluded.",
+              "GP-SH-KN-H":"King north: chamber-wall origin through Block 1, stopping at start of Block 2.",
+              "GP-SH-KN-MAIN-A":"King north: ordinary run from Block 6 through the bend boundary at end Block 20.",
+              "GP-SH-KN-MAIN-B":"King north: post-Block-20 original run, ending before the later/damaged Mankiller region beginning after Block 25.",
+              "GP-SH-QS-H":"Queen south: initial 1.96 m horizontal section through first wall block.",
+              "GP-SH-QS-R":"Queen south: source-defined rising measurement run represented by 24 measurements over 28 m immediately after the initial horizontal section.",
+              "GP-SH-QN-H":"Queen north: initial 1.93 m horizontal section through first wall block.",
+              "GP-SH-QN-POSTBEND":"Queen north: physical continuation after the westward bend at end Block 9."
+            },
+            "target_used":False,
+          }
+          Path("report/source_semantic_contract.json").write_text(json.dumps(contract,indent=2,sort_keys=True),encoding="utf-8")
+          PY
+
+          # Source HTML is provenance input only and is not uploaded.
+          rm -f source/*.html
+
+      - name: Materialize and re-verify frozen CAD bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 5 "$CYBER_URL" -o raw/Cyberdrawings.rar
+          for f in cheopsshafts cavigliatunnel bends3d; do
+            curl --fail --location --retry 8 --retry-delay 5 "$ROMBERG_BASE/${f}.rar" -o "raw/${f}.rar"
+          done
+
+          check() {
+            local f="$1" expected="$2" actual
+            actual="$(sha256sum "$f" | awk '{print $1}')"
+            printf '%s\t%s\t%s\n' "$f" "$actual" "$expected" >> report/raw_identity.tsv
+            test "$actual" = "$expected"
+          }
+
+          check raw/Cyberdrawings.rar "$EXPECT_CYBER"
+          check raw/bends3d.rar "$EXPECT_BENDS_RAR"
+          check raw/cavigliatunnel.rar "$EXPECT_CAVIGLIA_RAR"
+          check raw/cheopsshafts.rar "$EXPECT_SHAFTS_RAR"
+
+          for f in raw/*.rar; do
+            d="unpacked/$(basename "$f" .rar)"
+            mkdir -p "$d"
+            7z x -y -o"$d" "$f" >/dev/null
+          done
+
+          cp unpacked/bends3d/bends3d.dwg work/cad/bends3d.dwg
+          cp unpacked/cavigliatunnel/cavigliatunnel.dwg work/cad/cavigliatunnel.dwg
+          cp unpacked/cheopsshafts/cheopsshafts.dwg work/cad/cheopsshafts.dwg
+
+          check work/cad/bends3d.dwg "$EXPECT_BENDS_DWG"
+          check work/cad/cavigliatunnel.dwg "$EXPECT_CAVIGLIA_DWG"
+          check work/cad/cheopsshafts.dwg "$EXPECT_SHAFTS_DWG"
+
+      - name: Build pinned LibreDWG and convert to DXF
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch 0.13.4 https://github.com/LibreDWG/libredwg.git work/libredwg
+          cd work/libredwg
+          ./autogen.sh >/dev/null
+          ./configure --disable-bindings --disable-docs --disable-write --prefix="$PWD/install" >/dev/null
+          make -j2 >/dev/null
+          make install >/dev/null
+          BIN="$PWD/install/bin"
+          "$BIN/dwg2dxf" --version | tee ../../toolmeta/libredwg.txt
+          cd ../..
+          for stem in bends3d cavigliatunnel cheopsshafts; do
+            work/libredwg/install/bin/dwg2dxf -y -o "work/dxf/${stem}.dxf" "work/cad/${stem}.dwg" \
+              >"report/diagnostics/${stem}.dwg2dxf.stdout.txt" \
+              2>"report/diagnostics/${stem}.dwg2dxf.stderr.txt"
+            test -s "work/dxf/${stem}.dxf"
+          done
+
+      - name: Produce block-glyph, topology, restoration, measure and Caviglia mapping evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from __future__ import annotations
+          from pathlib import Path
+          from collections import defaultdict, Counter, deque
+          import hashlib, json, math, statistics
+          import ezdxf
+          from ezdxf import bbox
+          from PIL import Image, ImageDraw, ImageFont
+
+          REPORT=Path("report")
+          GLYPH=REPORT/"glyphs"
+
+          def sha(o):
+              return hashlib.sha256(json.dumps(o,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+
+          def vec3(p):
+              return (float(p[0]),float(p[1]),float(p[2] if len(p)>2 else 0.0))
+
+          def points(e):
+              t=e.dxftype()
+              try:
+                  if t=="LINE": return [vec3(e.dxf.start),vec3(e.dxf.end)]
+                  if t=="LWPOLYLINE":
+                      z=float(getattr(e.dxf,"elevation",0.0) or 0.0)
+                      return [(float(x),float(y),z) for x,y,*_ in e.get_points("xy")]
+                  if t=="POLYLINE":
+                      return [vec3(v.dxf.location) for v in e.vertices]
+                  if t=="SPLINE": return [vec3(p) for p in e.control_points]
+                  if t=="ARC": return [vec3(e.start_point),vec3(e.end_point)]
+              except Exception:
+                  pass
+              return []
+
+          def center_of_points(ps):
+              n=max(1,len(ps))
+              return tuple(sum(p[i] for p in ps)/n for i in range(3))
+
+          def dist2(a,b):
+              return sum((a[i]-b[i])**2 for i in range(3))
+
+          def entity_center(e):
+              ps=points(e)
+              if ps: return center_of_points(ps)
+              try:
+                  ex=bbox.extents([e])
+                  if ex.has_data:
+                      a=vec3(ex.extmin); b=vec3(ex.extmax)
+                      return tuple((a[i]+b[i])/2 for i in range(3))
+              except Exception: pass
+              return None
+
+          # ---------- CHEOPS SHAFTS ----------
+          doc=ezdxf.readfile("work/dxf/cheopsshafts.dxf")
+          msp=doc.modelspace()
+
+          shaft_entities=[e for e in msp if str(getattr(e.dxf,"layer",""))=="SHAFTS" and points(e)]
+          block_entities=[e for e in msp if str(getattr(e.dxf,"layer",""))=="BLOCK-NUMBERS" and points(e)]
+          measure_entities=[e for e in msp if str(getattr(e.dxf,"layer",""))=="MEASURE"]
+          present_entities=[e for e in msp if str(getattr(e.dxf,"layer",""))=="PRESENT-STATE"]
+
+          # Four target-independent shaft families by spatial cloud, using only CAD internal coordinates.
+          # Split first by vertical level (upper/lower) using largest gap in entity-center Z,
+          # then each level into two side clouds by largest gap in center Y.
+          sc=[(str(getattr(e.dxf,"handle","") or ""),entity_center(e),e) for e in shaft_entities]
+          sc=[x for x in sc if x[0] and x[1] is not None]
+
+          zs=sorted(c[1][2] for c in sc)
+          zgaps=[(zs[i+1]-zs[i],i) for i in range(len(zs)-1)]
+          zcut=(zs[max(zgaps)[1]]+zs[max(zgaps)[1]+1])/2 if zgaps else statistics.median(zs)
+
+          families={}
+          for level, pred in [("LOWER",lambda c:c[1][2]<=zcut),("UPPER",lambda c:c[1][2]>zcut)]:
+              arr=[c for c in sc if pred(c)]
+              ys=sorted(c[1][1] for c in arr)
+              ygaps=[(ys[i+1]-ys[i],i) for i in range(len(ys)-1)]
+              ycut=(ys[max(ygaps)[1]]+ys[max(ygaps)[1]+1])/2 if ygaps else statistics.median(ys)
+              for side,spred in [("SIDE_A",lambda c:c[1][1]<=ycut),("SIDE_B",lambda c:c[1][1]>ycut)]:
+                  xs=[c for c in arr if spred(c)]
+                  fid=f"{level}_{side}"
+                  families[fid]={
+                    "handle_count":len(xs),
+                    "handle_set_sha256":sha(sorted(x[0] for x in xs)),
+                    "_centers":[x[1] for x in xs],
+                    "_handles":[x[0] for x in xs],
+                    "_entities":[x[2] for x in xs],
+                  }
+
+          # Group vectorized BLOCK-NUMBERS into local label groups.
+          boxes=[]
+          for idx,e in enumerate(block_entities):
+              ps=points(e)
+              if not ps: continue
+              xs=[p[0] for p in ps]; ys=[p[1] for p in ps]; zs0=[p[2] for p in ps]
+              boxes.append({
+                "idx":idx,"e":e,"handle":str(getattr(e.dxf,"handle","") or ""),
+                "xmin":min(xs),"xmax":max(xs),"ymin":min(ys),"ymax":max(ys),
+                "z":statistics.mean(zs0),"ps":ps
+              })
+
+          widths=[max(1e-12,b["xmax"]-b["xmin"]) for b in boxes]
+          heights=[max(1e-12,b["ymax"]-b["ymin"]) for b in boxes]
+          medw=statistics.median(widths); medh=statistics.median(heights)
+
+          parent=list(range(len(boxes)))
+          def find(a):
+              while parent[a]!=a:
+                  parent[a]=parent[parent[a]]; a=parent[a]
+              return a
+          def union(a,b):
+              ra,rb=find(a),find(b)
+              if ra!=rb: parent[rb]=ra
+
+          def gap1(a0,a1,b0,b1):
+              if a1<b0:return b0-a1
+              if b1<a0:return a0-b1
+              return 0.0
+
+          # First-stage groups: strokes belonging to the same digit or multi-digit number.
+          for i in range(len(boxes)):
+              a=boxes[i]
+              for j in range(i+1,len(boxes)):
+                  b=boxes[j]
+                  if abs(a["z"]-b["z"]) > max(medh,medw)*4: continue
+                  gx=gap1(a["xmin"],a["xmax"],b["xmin"],b["xmax"])
+                  gy=gap1(a["ymin"],a["ymax"],b["ymin"],b["ymax"])
+                  # Same baseline/label neighborhood; intentionally generous, post-run audited visually.
+                  yover=max(0,min(a["ymax"],b["ymax"])-max(a["ymin"],b["ymin"]))
+                  amin=max(1e-12,min(a["ymax"]-a["ymin"],b["ymax"]-b["ymin"]))
+                  if gx <= 1.4*medw and gy <= 0.55*medh and (yover/amin>=0.15 or gy<=0.15*medh):
+                      union(i,j)
+
+          groups=defaultdict(list)
+          for i,b in enumerate(boxes): groups[find(i)].append(b)
+
+          glyph_records=[]
+          for gi, members in enumerate(sorted(groups.values(),key=lambda g:(statistics.mean(x["z"] for x in g),statistics.mean((x["ymin"]+x["ymax"])/2 for x in g)))):
+              xmin=min(x["xmin"] for x in members); xmax=max(x["xmax"] for x in members)
+              ymin=min(x["ymin"] for x in members); ymax=max(x["ymax"] for x in members)
+              z=statistics.mean(x["z"] for x in members)
+              cen=((xmin+xmax)/2,(ymin+ymax)/2,z)
+
+              # nearest family (discrete only in output)
+              fd=[]
+              for fid,F in families.items():
+                  if F["_centers"]:
+                      d=min(dist2(cen,c) for c in F["_centers"])
+                      fd.append((d,fid))
+              fid=min(fd)[1] if fd else "UNASSIGNED"
+
+              rec={
+                "glyph_group_id":f"G{gi+1:04d}",
+                "family":fid,
+                "stroke_entity_count":len(members),
+                "stroke_handle_set_sha256":sha(sorted(x["handle"] for x in members)),
+                "shape_fingerprint_sha256":sha([
+                    [
+                      round((p[0]-xmin)/max(xmax-xmin,1e-12),5),
+                      round((p[1]-ymin)/max(ymax-ymin,1e-12),5)
+                    ]
+                    for x in members for p in x["ps"]
+                ]),
+                "_members":members,
+                "_center":cen,
+                "_bbox":(xmin,xmax,ymin,ymax),
+              }
+              glyph_records.append(rec)
+
+          # Family-relative ordinal by vertical progression only; no coordinates emitted.
+          for fid in families:
+              gs=[g for g in glyph_records if g["family"]==fid]
+              gs.sort(key=lambda g:g["_center"][2])
+              for rank,g in enumerate(gs,1):
+                  g["ordinal_in_family"]=rank
+
+          # Render normalized glyph-only contact sheets. No shaft geometry/coordinates.
+          def render_group(g, size=96):
+              img=Image.new("RGB",(size,size),"white"); dr=ImageDraw.Draw(img)
+              xmin,xmax,ymin,ymax=g["_bbox"]; w=max(xmax-xmin,1e-12); h=max(ymax-ymin,1e-12)
+              scale=0.72*size/max(w,h); ox=size/2-scale*(xmin+xmax)/2; oy=size/2+scale*(ymin+ymax)/2
+              for m in g["_members"]:
+                  ps=m["ps"]
+                  xy=[(ox+scale*p[0],oy-scale*p[1]) for p in ps]
+                  if len(xy)>=2: dr.line(xy,fill="black",width=2)
+              return img
+
+          contact_index={}
+          for fid in sorted(families):
+              gs=sorted([g for g in glyph_records if g["family"]==fid],key=lambda x:x.get("ordinal_in_family",999999))
+              if not gs: continue
+              cols=8; cellw=120; cellh=126
+              rows=(len(gs)+cols-1)//cols
+              sheet=Image.new("RGB",(cols*cellw,rows*cellh),"white")
+              dr=ImageDraw.Draw(sheet)
+              ids=[]
+              for i,g in enumerate(gs):
+                  im=render_group(g,86)
+                  x=(i%cols)*cellw+17; y=(i//cols)*cellh+3
+                  sheet.paste(im,(x,y))
+                  label=f'{g["glyph_group_id"]} r{g["ordinal_in_family"]}'
+                  dr.text(((i%cols)*cellw+3,(i//cols)*cellh+94),label,fill="black")
+                  ids.append(g["glyph_group_id"])
+              fn=f"block_number_glyphs_{fid}.png"
+              sheet.save(GLYPH/fn)
+              contact_index[fid]={"file":fn,"glyph_group_ids":ids}
+
+          # Associate PRESENT-STATE and MEASURE entities to nearest family only (no distance output).
+          def assoc_layer(ents):
+              out=[]
+              for e in ents:
+                  c=entity_center(e)
+                  if c is None: continue
+                  fd=[]
+                  for fid,F in families.items():
+                      if F["_centers"]:
+                          fd.append((min(dist2(c,p) for p in F["_centers"]),fid))
+                  if not fd: continue
+                  out.append({
+                    "handle":str(getattr(e.dxf,"handle","") or ""),
+                    "type":e.dxftype(),
+                    "family":min(fd)[1],
+                  })
+              return out
+
+          present_assoc=assoc_layer(present_entities)
+          measure_assoc=assoc_layer(measure_entities)
+
+          # ---------- BENDS3D chamber/shaft discrete classification ----------
+          bdoc=ezdxf.readfile("work/dxf/bends3d.dxf"); bmsp=bdoc.modelspace()
+          bends={}
+          for layer in ["SHAFTS-UPPER","SHAFTS-LOWER","KINGS-CHAMBER","QUEENS-CHAMBER","SERVICE-SHAFT"]:
+              es=[e for e in bmsp if str(getattr(e.dxf,"layer",""))==layer and entity_center(e) is not None]
+              bends[layer]={
+                "entity_count":len(es),
+                "handle_set_sha256":sha(sorted(str(getattr(e.dxf,"handle","") or "") for e in es)),
+              }
+
+          # ---------- CAVIGLIA A/M semantic evidence ----------
+          cdoc=ezdxf.readfile("work/dxf/cavigliatunnel.dxf"); cmsp=cdoc.modelspace()
+          caviglia={}
+          for layer in ["SHAFT-A","SHAFT-M","AXIS-A","AXIS-M","MEASURES","ANGLES"]:
+              es=[e for e in cmsp if str(getattr(e.dxf,"layer",""))==layer]
+              text=[]
+              for e in es:
+                  if e.dxftype()=="TEXT":
+                      text.append(str(getattr(e.dxf,"text","")))
+                  elif e.dxftype()=="MTEXT":
+                      try:text.append(e.plain_text())
+                      except Exception:pass
+              caviglia[layer]={
+                "entity_count":len(es),
+                "handle_set_sha256":sha(sorted(str(getattr(e.dxf,"handle","") or "") for e in es)),
+                "text_labels":sorted(set(" ".join(t.split()) for t in text if t.strip()))[:100],
+              }
+
+          # Strip private geometry.
+          public_families={}
+          for fid,F in families.items():
+              public_families[fid]={
+                "shaft_entity_count":F["handle_count"],
+                "shaft_handle_set_sha256":F["handle_set_sha256"],
+              }
+
+          public_glyphs=[]
+          for g in glyph_records:
+              public_glyphs.append({k:v for k,v in g.items() if not k.startswith("_")})
+
+          evidence={
+            "artifact_id":"V0-H1.9C-R1d2-SOURCE-SEMANTIC-MAPPING-EVIDENCE-v1.0",
+            "cheopsshafts":{
+              "four_family_partition":public_families,
+              "block_number_glyph_groups":public_glyphs,
+              "glyph_contact_sheets":contact_index,
+              "present_state_associations":present_assoc,
+              "measure_associations":measure_assoc,
+            },
+            "bends3d":bends,
+            "caviglia":caviglia,
+            "postrun_tasks":[
+              "Visually decode normalized block-number glyph sheets; map groups to source numbers 2,3,4,9,17,20,25.",
+              "Use only family-relative ordinal and source page sequence to identify upper/lower branch identities; no target or angular information.",
+              "Test PRESENT-STATE association against King-south post-Block-25 restoration exclusion.",
+              "Test MEASURE association against Queen-south source-defined 24-measurement rising run.",
+              "Determine whether Caviglia A/M semantics are recoverable from labels/layer structure; do not infer if absent."
+            ],
+            "mapping_verdict":"DEFER_TO_POSTRUN_READ_ONLY_SOURCE_SEMANTIC_AUDIT",
+            "firewall":{
+              "shaft_vector_extraction":0,
+              "shaft_angle_derivation":0,
+              "raw_shaft_coordinates_emitted":False,
+              "target_access":False,
+              "target_recomputation":0,
+              "auc_pi_synthetic_rotation_p_rot_significance":"NOT_EXECUTED",
+            },
+            "meta_stop":True,
+          }
+          (REPORT/"H1_9C_R1d2_source_semantic_mapping_evidence.json").write_text(
+              json.dumps(evidence,indent=2,sort_keys=True),encoding="utf-8"
+          )
+
+          # Remove all geometry-bearing CAD/DXF/raw inputs.
+          PY
+
+          rm -rf raw unpacked work/cad work/dxf work/libredwg
+
+      - name: Freeze coordinate-redacted output hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          find report toolmeta -type f ! -name 'R1d2_output_SHA256.txt' -print0 \
+            | sort -z | xargs -0 sha256sum > report/R1d2_output_SHA256.txt || true
+          jq '.mapping_verdict,.firewall,.meta_stop' report/H1_9C_R1d2_source_semantic_mapping_evidence.json || true
+
+      - name: Upload source-semantic closure artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d2_source_semantic_closure
+          path: |
+            report/
+            toolmeta/
+          if-no-files-found: warn
+          retention-days: 30
