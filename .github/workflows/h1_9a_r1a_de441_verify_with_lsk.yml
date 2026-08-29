@@ -1,0 +1,353 @@
+name: H1.9A-R1a DE441 execution corrective with LSK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/h1_9a_r1a_de441_verify_with_lsk.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9a-r1a-de441-lsk
+  cancel-in-progress: false
+
+jobs:
+  verify-de441-r1a:
+    name: Reverify DE441 and complete LSK/time/state smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    env:
+      SPK_BASE: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets
+      LSK_BASE: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk
+      P1: de441_part-1.bsp
+      P2: de441_part-2.bsp
+      LSK: naif0012.tls
+      EXPECTED_MD5_P1: 7e5fcf9ecb5d08e1ab70c049baa60cd3
+      EXPECTED_MD5_P2: ad8dfa4e505ef0e3a5d587a5b4705632
+
+    steps:
+      - name: Environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          uname -a
+          df -h
+          python3 --version
+          mkdir -p work output
+
+      - name: Reverify official DE441 checksum metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 5 \
+            "$SPK_BASE/aa_checksums.txt" -o work/aa_checksums_spk.txt
+          grep -E "^${EXPECTED_MD5_P1}[[:space:]]+${P1}$" work/aa_checksums_spk.txt
+          grep -E "^${EXPECTED_MD5_P2}[[:space:]]+${P2}$" work/aa_checksums_spk.txt
+
+      - name: Download frozen DE441 kernels and official LSK
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 10 \
+            "$SPK_BASE/$P1" -o "work/$P1"
+          curl --fail --location --retry 8 --retry-delay 10 \
+            "$SPK_BASE/$P2" -o "work/$P2"
+          curl --fail --location --retry 5 --retry-delay 5 \
+            "$LSK_BASE/$LSK" -o "work/$LSK"
+          ls -lh "work/$P1" "work/$P2" "work/$LSK"
+
+      - name: Frozen DE441 MD5 and SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          P1_MD5="$(md5sum "work/$P1" | awk '{print $1}')"
+          P2_MD5="$(md5sum "work/$P2" | awk '{print $1}')"
+          P1_SHA="$(sha256sum "work/$P1" | awk '{print $1}')"
+          P2_SHA="$(sha256sum "work/$P2" | awk '{print $1}')"
+          LSK_SHA="$(sha256sum "work/$LSK" | awk '{print $1}')"
+
+          echo "P1 MD5    $P1_MD5"
+          echo "P1 SHA256 $P1_SHA"
+          echo "P2 MD5    $P2_MD5"
+          echo "P2 SHA256 $P2_SHA"
+          echo "LSK SHA256 $LSK_SHA"
+
+          test "$P1_MD5" = "$EXPECTED_MD5_P1"
+          test "$P2_MD5" = "$EXPECTED_MD5_P2"
+
+      - name: Install SpiceyPy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --no-cache-dir spiceypy
+          python3 - <<'PY'
+          import spiceypy as spice
+          import spiceypy
+          print("SpiceyPy:", spiceypy.__version__)
+          print("CSPICE:", spice.tkvrsn("TOOLKIT"))
+          PY
+
+      - name: Complete SPICE load, coverage, time, and neutral-state verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import math
+          import os
+          import platform
+          import sys
+          import traceback
+          from datetime import datetime, timezone
+
+          import spiceypy as spice
+          import spiceypy
+
+          os.makedirs("output", exist_ok=True)
+
+          p1 = os.path.join("work", os.environ["P1"])
+          p2 = os.path.join("work", os.environ["P2"])
+          lsk = os.path.join("work", os.environ["LSK"])
+
+          expected = {
+              os.environ["P1"]: os.environ["EXPECTED_MD5_P1"],
+              os.environ["P2"]: os.environ["EXPECTED_MD5_P2"],
+          }
+
+          def digests(path):
+              md5 = hashlib.md5()
+              sha = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for block in iter(lambda: f.read(8 * 1024 * 1024), b""):
+                      md5.update(block)
+                      sha.update(block)
+              return md5.hexdigest(), sha.hexdigest()
+
+          result = {
+              "contract_id": "V0-H1.9A-R1a-DE441-LSK-TIME-STATE-CORRECTIVE-v1.0",
+              "generated_utc": datetime.now(timezone.utc).isoformat(),
+              "github": {
+                  "repository": os.environ.get("GITHUB_REPOSITORY"),
+                  "run_id": os.environ.get("GITHUB_RUN_ID"),
+                  "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+                  "sha": os.environ.get("GITHUB_SHA"),
+                  "workflow_ref": os.environ.get("GITHUB_WORKFLOW_REF"),
+                  "runner_os": os.environ.get("RUNNER_OS"),
+                  "runner_arch": os.environ.get("RUNNER_ARCH"),
+              },
+              "environment": {
+                  "python": sys.version,
+                  "platform": platform.platform(),
+                  "spiceypy_version": spiceypy.__version__,
+                  "cspice_toolkit_version": spice.tkvrsn("TOOLKIT"),
+              },
+              "source": {
+                  "spk_base": os.environ["SPK_BASE"],
+                  "lsk_base": os.environ["LSK_BASE"],
+                  "lsk_file": os.environ["LSK"],
+                  "official_de441_checksum_metadata_reverified": True,
+              },
+              "files": {},
+              "spice": {},
+              "firewall": {
+                  "target_vector_computed": False,
+                  "ancient_target_coordinates_computed": False,
+                  "monument_target_angles_computed": 0,
+                  "T_AUC_computed": False,
+                  "synthetic_rotations_executed": 0,
+                  "p_ROT_given_C_computed": False,
+              },
+              "terminal_verdict": "INCOMPLETE",
+              "error": None,
+          }
+
+          try:
+              for path in (p1, p2):
+                  name = os.path.basename(path)
+                  md5, sha = digests(path)
+                  result["files"][name] = {
+                      "size_bytes": os.path.getsize(path),
+                      "md5": md5,
+                      "expected_md5": expected[name],
+                      "md5_match": md5 == expected[name],
+                      "sha256": sha,
+                  }
+
+              _, lsk_sha = digests(lsk)
+              result["files"][os.path.basename(lsk)] = {
+                  "size_bytes": os.path.getsize(lsk),
+                  "sha256": lsk_sha,
+                  "role": "official NAIF leap-seconds kernel used only to populate DELTET time-conversion variables",
+              }
+
+              if not all(result["files"][n]["md5_match"] for n in expected):
+                  raise RuntimeError("Frozen DE441 MD5 byte-integrity gate failed")
+
+              spice.kclear()
+              spice.furnsh(lsk)
+              spice.furnsh(p1)
+              spice.furnsh(p2)
+
+              loaded_spk_count = int(spice.ktotal("SPK"))
+              loaded_text_count = int(spice.ktotal("TEXT"))
+              if loaded_spk_count < 2:
+                  raise RuntimeError(f"Expected >=2 SPKs loaded, got {loaded_spk_count}")
+              if loaded_text_count < 1:
+                  raise RuntimeError("Expected LSK text kernel to be loaded")
+
+              object_ids = {}
+              for path in (p1, p2):
+                  object_ids[os.path.basename(path)] = [int(x) for x in spice.spkobj(path)]
+
+              guard_start = -5000.0 * 365.25 * 86400.0
+              guard_stop = -4000.0 * 365.25 * 86400.0
+              required_objects = [3, 10, 301, 399]
+              coverage = {}
+              coverage_pass = True
+
+              for obj in required_objects:
+                  intervals = []
+                  for path in (p1, p2):
+                      if obj not in set(object_ids[os.path.basename(path)]):
+                          continue
+                      cell = spice.spkcov(path, obj)
+                      for i in range(spice.wncard(cell)):
+                          a, b = spice.wnfetd(cell, i)
+                          intervals.append([float(a), float(b), os.path.basename(path)])
+
+                  intervals.sort(key=lambda x: x[0])
+                  covers = any(a <= guard_start and b >= guard_stop for a, b, _ in intervals)
+                  coverage[str(obj)] = {
+                      "intervals_et_seconds": intervals,
+                      "covers_old_kingdom_guard": bool(covers),
+                  }
+                  coverage_pass = coverage_pass and covers
+
+              if not coverage_pass:
+                  raise RuntimeError("Local DE441 Old-Kingdom coverage guard failed")
+
+              # With the LSK loaded, UNITIM has DELTET variables available.
+              jed = float(spice.unitim(0.0, "ET", "JED"))
+              time_pass = abs(jed - 2451545.0) < 1e-12
+              if not time_pass:
+                  raise RuntimeError(f"ET/TDB time smoke failed: JED={jed}")
+
+              # Neutral present-epoch query; this is not an ancient CMB or monument query.
+              state, lt = spice.spkezr(
+                  "EARTH BARYCENTER",
+                  0.0,
+                  "J2000",
+                  "NONE",
+                  "SOLAR SYSTEM BARYCENTER",
+              )
+              state = [float(x) for x in state]
+              lt = float(lt)
+              pos_norm = math.sqrt(sum(x*x for x in state[:3]))
+              state_pass = (
+                  all(math.isfinite(x) for x in state)
+                  and math.isfinite(lt)
+                  and pos_norm > 0
+              )
+              if not state_pass:
+                  raise RuntimeError("Neutral DE441 state smoke-test failed")
+
+              result["spice"] = {
+                  "loaded_spk_count": loaded_spk_count,
+                  "loaded_text_kernel_count": loaded_text_count,
+                  "object_ids": object_ids,
+                  "coverage_guard": {
+                      "guard_start_et_seconds": guard_start,
+                      "guard_stop_et_seconds": guard_stop,
+                      "required_objects": required_objects,
+                      "pass": coverage_pass,
+                  },
+                  "coverage": coverage,
+                  "time_smoke_test": {
+                      "test": "unitim(ET=0,'ET','JED') after official NAIF LSK load",
+                      "jed": jed,
+                      "expected_jed": 2451545.0,
+                      "pass": time_pass,
+                  },
+                  "neutral_state_smoke_test": {
+                      "epoch_et_seconds": 0.0,
+                      "target": "EARTH BARYCENTER",
+                      "observer": "SOLAR SYSTEM BARYCENTER",
+                      "frame": "J2000",
+                      "aberration": "NONE",
+                      "state": state,
+                      "light_time_seconds": lt,
+                      "state_norm_position_km": pos_norm,
+                      "pass": state_pass,
+                  },
+              }
+
+              result["terminal_verdict"] = "PASS"
+
+          except Exception as e:
+              result["error"] = {
+                  "type": type(e).__name__,
+                  "message": str(e),
+                  "traceback": traceback.format_exc(),
+              }
+              result["terminal_verdict"] = "FAIL"
+
+          finally:
+              try:
+                  spice.kclear()
+              except Exception:
+                  pass
+
+          with open("output/H1_9A_R1a_DE441_verification.json", "w", encoding="utf-8") as f:
+              json.dump(result, f, indent=2, sort_keys=True)
+
+          summary = [
+              "V0 H1.9A-R1a DE441 EXECUTION CORRECTIVE",
+              "=" * 54,
+              f"DE441 P1 MD5 MATCH: {result['files'].get(os.environ['P1'], {}).get('md5_match')}",
+              f"DE441 P2 MD5 MATCH: {result['files'].get(os.environ['P2'], {}).get('md5_match')}",
+              f"LSK: {os.environ['LSK']}",
+              f"CSPICE: {result['environment']['cspice_toolkit_version']}",
+              f"SpiceyPy: {result['environment']['spiceypy_version']}",
+              f"OLD-KINGDOM COVERAGE: {result.get('spice', {}).get('coverage_guard', {}).get('pass')}",
+              f"ET/TDB TIME SMOKE: {result.get('spice', {}).get('time_smoke_test', {}).get('pass')}",
+              f"NEUTRAL DE441 STATE SMOKE: {result.get('spice', {}).get('neutral_state_smoke_test', {}).get('pass')}",
+              f"TERMINAL VERDICT: {result['terminal_verdict']}",
+              "FIREWALL: ZERO target comparison / ZERO AUC / ZERO synthetic rotations",
+          ]
+
+          with open("output/H1_9A_R1a_DE441_verification.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(summary) + "\n")
+
+          print("\n".join(summary))
+
+          if result["terminal_verdict"] != "PASS":
+              raise SystemExit(1)
+          PY
+
+      - name: Hash outputs
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if compgen -G 'output/*' > /dev/null; then
+            sha256sum output/* | tee output/H1_9A_R1a_output_SHA256.txt
+          fi
+
+      - name: Upload small verification artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9A_R1a_DE441_verification
+          path: |
+            output/H1_9A_R1a_DE441_verification.json
+            output/H1_9A_R1a_DE441_verification.txt
+            output/H1_9A_R1a_output_SHA256.txt
+            work/aa_checksums_spk.txt
+            work/naif0012.tls
+          if-no-files-found: warn
+          retention-days: 30
