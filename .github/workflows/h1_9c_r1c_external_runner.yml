@@ -1,0 +1,186 @@
+name: H1.9C-R1c External Runner Raw Byte Materialization
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9c-r1c-byte-materialization
+  cancel-in-progress: false
+
+jobs:
+  materialize-and-identify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ROMBERG_BASE: https://www.rombergintegrali.org/gizapiramitleri/g1/upuautproject/cyberdrawings
+      CYBER_URL: https://www.rombergintegrali.org/gizapiramitleri/g1/g1_piramitinin_saftlari_geometrisi/cyberdrawings.rar
+      ORIGINAL_CHEOPS_DWF: https://web.archive.org/web/20090703074512id_/http://www.cheops.org/startpage/cyberdrawings/cheopsshafts.dwf
+      SOURCE_PAGE: https://www.rombergintegrali.org/makaleler/blog/masonry-blog-with-ajax-loading/tarih/g1-piramitinin-saftlarinin-geometrisi.html
+      ARCHIVE_POINTER: https://www.allmystery.de/themen/pr64918
+    steps:
+      - name: Prepare byte-only workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p raw unpacked provenance report
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq p7zip-full file xxd
+
+      - name: Freeze provenance pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 3 "$SOURCE_PAGE" -o provenance/romberg_source.html
+          curl --fail --location --retry 5 --retry-delay 3 "$ARCHIVE_POINTER" -o provenance/allmystery_pointer.html
+          sha256sum provenance/* | tee report/provenance_sha256.txt
+
+      - name: Materialize raw RAR and original DWF bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 5 "$CYBER_URL" -o raw/Cyberdrawings.rar
+          for f in cheopsshafts cavigliatunnel cheopsniches bends3d; do
+            curl --fail --location --retry 8 --retry-delay 5 "$ROMBERG_BASE/${f}.rar" -o "raw/${f}.rar"
+          done
+          curl --fail --location --retry 8 --retry-delay 5 "$ORIGINAL_CHEOPS_DWF" -o raw/cheopsshafts_original_20090703.dwf
+
+      - name: Raw-byte SHA-256, size, MIME, and magic-format audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum raw/* | tee report/raw_sha256.txt
+          stat --printf='%n\t%s\n' raw/* | tee report/raw_sizes.tsv
+          file --mime-type --brief raw/* | nl -ba | tee report/raw_mime.txt
+          file raw/* | tee report/raw_file_magic.txt
+          for f in raw/*; do
+            printf '%s\t' "$f"
+            xxd -p -l 32 "$f" | tr -d '\n'
+            printf '\n'
+          done | tee report/raw_first32_hex.tsv
+
+          # Fail closed on obvious HTML/error payloads.
+          for f in raw/*.rar; do
+            sig="$(xxd -p -l 7 "$f" | tr 'A-F' 'a-f')"
+            case "$sig" in
+              526172211a0700|526172211a0701*) : ;;
+              *) echo "RAR magic failure: $f sig=$sig" >&2; exit 20 ;;
+            esac
+          done
+
+      - name: Archive-member listing only — no CAD geometry parsing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in raw/*.rar; do
+            b="$(basename "$f")"
+            7z l -slt "$f" > "report/${b}.members.txt"
+          done
+          grep -RniE 'cheopsshafts\.dwg|cavigliatunnel\.dwg|cheopsniches\.dwg|bend3d\.dwg' report/*.members.txt \
+            | tee report/expected_member_hits.txt || true
+
+      - name: Extract archive members as opaque bytes and hash them
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Byte extraction from archive containers is permitted; no CAD parser is invoked.
+          for f in raw/*.rar; do
+            d="unpacked/$(basename "$f" .rar)"
+            mkdir -p "$d"
+            7z x -y -o"$d" "$f" >/dev/null
+          done
+          find unpacked -type f -print0 | sort -z | xargs -0 sha256sum | tee report/member_sha256.txt
+          find unpacked -type f -printf '%p\t%s\n' | sort | tee report/member_sizes.tsv
+          find unpacked -type f -print0 | sort -z | xargs -0 file | tee report/member_file_magic.txt
+          for f in $(find unpacked -type f -iname '*.dwg' | sort); do
+            printf '%s\t' "$f"
+            head -c 6 "$f" | tr -cd '[:print:]'
+            printf '\t'
+            xxd -p -l 32 "$f" | tr -d '\n'
+            printf '\n'
+          done | tee report/dwg_magic_headers.tsv
+
+      - name: Provenance and original-vs-converted content-identity gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, glob, re
+          from datetime import datetime, timezone
+
+          def sha256(path):
+              h=hashlib.sha256()
+              with open(path,'rb') as f:
+                  for b in iter(lambda:f.read(1024*1024), b''):
+                      h.update(b)
+              return h.hexdigest()
+
+          expected = {'cheopsshafts.dwg','cavigliatunnel.dwg','cheopsniches.dwg','bend3d.dwg'}
+          members=[]
+          for p in glob.glob('unpacked/**/*', recursive=True):
+              if os.path.isfile(p):
+                  members.append({'path':p,'basename':os.path.basename(p),'size':os.path.getsize(p),'sha256':sha256(p)})
+          found={m['basename'].lower() for m in members}
+          expected_present={x: (x.lower() in found) for x in sorted(expected)}
+
+          romberg=open('provenance/romberg_source.html','rb').read().decode('utf-8','ignore').lower()
+          provenance_text_checks={
+              'mentions_cyberdrawings_rar': 'cyberdrawings.rar' in romberg,
+              'mentions_cheopsshafts_dwg': 'cheopsshafts.dwg' in romberg,
+              'mentions_cavigliatunnel_dwg': 'cavigliatunnel.dwg' in romberg,
+              'mentions_cheopsniches_dwg': 'cheopsniches.dwg' in romberg,
+              'mentions_bend3d_dwg': 'bend3d.dwg' in romberg,
+              'mentions_dwf_to_dwg_conversion': ('dwf' in romberg and 'dwg' in romberg),
+          }
+
+          original='raw/cheopsshafts_original_20090703.dwf'
+          original_present=os.path.isfile(original) and os.path.getsize(original)>0
+
+          # R1c deliberately does NOT parse CAD entities/coordinates. Therefore exact
+          # semantic equivalence of original DWF and converted DWG cannot be proved here.
+          traceability_pass = all(expected_present.values()) and all(provenance_text_checks.values()) and original_present
+          exact_content_identity = 'INCOMPLETE_BY_DESIGN_ZERO_CAD_GEOMETRY_EXTRACTION'
+
+          out={
+              'artifact_id':'V0-H1.9C-R1c-EXTERNAL-RUNNER-BYTE-IDENTITY-v1.0',
+              'generated_utc':datetime.now(timezone.utc).isoformat(),
+              'raw_files':[{'path':p,'size':os.path.getsize(p),'sha256':sha256(p)} for p in sorted(glob.glob('raw/*'))],
+              'archive_members':members,
+              'expected_dwg_members_present':expected_present,
+              'provenance_text_checks':provenance_text_checks,
+              'original_dwf_materialized':original_present,
+              'traceability_gate':'PASS' if traceability_pass else 'INCOMPLETE',
+              'original_vs_converted_exact_content_identity': exact_content_identity,
+              'cad_geometry_extraction':0,
+              'target_recomputation':0,
+              'target_access':False,
+              'auc_pi_synthetic_rotation_significance': 'NOT_EXECUTED',
+              'terminal_routing': 'TRACEABILITY_PASS_EXACT_CONTENT_IDENTITY_INCOMPLETE' if traceability_pass else 'BYTE_OR_PROVENANCE_INCOMPLETE',
+              'meta_stop':True,
+          }
+          with open('report/H1_9C_R1c_identity_gate.json','w',encoding='utf-8') as f:
+              json.dump(out,f,indent=2,sort_keys=True)
+          PY
+
+      - name: Freeze report hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          find report provenance -type f -print0 | sort -z | xargs -0 sha256sum > report/R1c_output_SHA256.txt || true
+          cat report/H1_9C_R1c_identity_gate.json || true
+
+      - name: Upload raw bytes and audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1c_raw_byte_materialization
+          path: |
+            raw/
+            unpacked/
+            provenance/
+            report/
+          if-no-files-found: warn
+          retention-days: 30
