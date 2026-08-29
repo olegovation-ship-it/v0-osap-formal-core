@@ -1,0 +1,320 @@
+name: H1.9A-R1 DE441 local execution verification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/h1_9a_r1_de441_verify.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9a-r1-de441
+  cancel-in-progress: false
+
+jobs:
+  verify-de441:
+    name: Verify frozen DE441 bytes and SPICE execution
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    env:
+      NAIF_BASE: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets
+      P1: de441_part-1.bsp
+      P2: de441_part-2.bsp
+      EXPECTED_MD5_P1: 7e5fcf9ecb5d08e1ab70c049baa60cd3
+      EXPECTED_MD5_P2: ad8dfa4e505ef0e3a5d587a5b4705632
+
+    steps:
+      - name: Environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          uname -a
+          df -h
+          python3 --version
+          mkdir -p work output
+
+      - name: Re-verify official NAIF checksum metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 5 \
+            "$NAIF_BASE/aa_checksums.txt" -o work/aa_checksums.txt
+          grep -E "^${EXPECTED_MD5_P1}[[:space:]]+${P1}$" work/aa_checksums.txt
+          grep -E "^${EXPECTED_MD5_P2}[[:space:]]+${P2}$" work/aa_checksums.txt
+
+      - name: Download frozen DE441 kernels from NASA JPL NAIF
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 10 \
+            "$NAIF_BASE/$P1" -o "work/$P1"
+          curl --fail --location --retry 8 --retry-delay 10 \
+            "$NAIF_BASE/$P2" -o "work/$P2"
+          ls -lh "work/$P1" "work/$P2"
+          df -h
+
+      - name: Frozen MD5 byte-integrity gate and SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          ACTUAL_MD5_P1="$(md5sum "work/$P1" | awk '{print $1}')"
+          ACTUAL_MD5_P2="$(md5sum "work/$P2" | awk '{print $1}')"
+          ACTUAL_SHA256_P1="$(sha256sum "work/$P1" | awk '{print $1}')"
+          ACTUAL_SHA256_P2="$(sha256sum "work/$P2" | awk '{print $1}')"
+
+          echo "P1 MD5    $ACTUAL_MD5_P1"
+          echo "P1 SHA256 $ACTUAL_SHA256_P1"
+          echo "P2 MD5    $ACTUAL_MD5_P2"
+          echo "P2 SHA256 $ACTUAL_SHA256_P2"
+
+          test "$ACTUAL_MD5_P1" = "$EXPECTED_MD5_P1"
+          test "$ACTUAL_MD5_P2" = "$EXPECTED_MD5_P2"
+
+      - name: Install SpiceyPy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --no-cache-dir spiceypy
+          python3 - <<'PY'
+          import spiceypy as spice
+          import spiceypy
+          print("SpiceyPy:", spiceypy.__version__)
+          print("CSPICE:", spice.tkvrsn("TOOLKIT"))
+          PY
+
+      - name: SPICE load, local coverage, TDB time and neutral-state smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import math
+          import os
+          import platform
+          import sys
+          from datetime import datetime, timezone
+
+          import spiceypy as spice
+          import spiceypy
+
+          p1 = os.path.join("work", os.environ["P1"])
+          p2 = os.path.join("work", os.environ["P2"])
+          expected = {
+              os.environ["P1"]: os.environ["EXPECTED_MD5_P1"],
+              os.environ["P2"]: os.environ["EXPECTED_MD5_P2"],
+          }
+
+          def file_info(path):
+              name = os.path.basename(path)
+              md5 = hashlib.md5()
+              sha = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for block in iter(lambda: f.read(8 * 1024 * 1024), b""):
+                      md5.update(block)
+                      sha.update(block)
+              return {
+                  "size_bytes": os.path.getsize(path),
+                  "md5": md5.hexdigest(),
+                  "expected_md5": expected[name],
+                  "md5_match": md5.hexdigest() == expected[name],
+                  "sha256": sha.hexdigest(),
+              }
+
+          files = {os.path.basename(p): file_info(p) for p in (p1, p2)}
+          if not all(v["md5_match"] for v in files.values()):
+              raise SystemExit("Frozen MD5 byte-integrity gate failed")
+
+          spice.kclear()
+          spice.furnsh(p1)
+          spice.furnsh(p2)
+
+          loaded_spk_count = int(spice.ktotal("SPK"))
+          if loaded_spk_count < 2:
+              raise SystemExit(f"Expected >=2 loaded SPKs, got {loaded_spk_count}")
+
+          object_ids = {}
+          for path in (p1, p2):
+              object_ids[os.path.basename(path)] = [int(x) for x in spice.spkobj(path)]
+
+          # Target-independent Old-Kingdom guard: approximately 3000--2000 BCE.
+          # ET in SPICE is TDB seconds past J2000.
+          guard_start = -5000.0 * 365.25 * 86400.0
+          guard_stop = -4000.0 * 365.25 * 86400.0
+          required_objects = [3, 10, 301, 399]
+          coverage = {}
+          coverage_pass = True
+
+          for obj in required_objects:
+              intervals = []
+              for path in (p1, p2):
+                  if obj not in set(object_ids[os.path.basename(path)]):
+                      continue
+                  cell = spice.spkcov(path, obj)
+                  for i in range(spice.wncard(cell)):
+                      a, b = spice.wnfetd(cell, i)
+                      intervals.append([float(a), float(b), os.path.basename(path)])
+
+              intervals.sort(key=lambda x: x[0])
+              covers = any(a <= guard_start and b >= guard_stop for a, b, _ in intervals)
+
+              coverage[str(obj)] = {
+                  "intervals_et_seconds": intervals,
+                  "covers_old_kingdom_guard": covers,
+              }
+              coverage_pass = coverage_pass and covers
+
+          if not coverage_pass:
+              raise SystemExit("Local SPK coverage guard failed")
+
+          # Neutral TDB/ET time smoke-test.
+          jed = float(spice.unitim(0.0, "ET", "JED"))
+          time_pass = abs(jed - 2451545.0) < 1e-12
+          if not time_pass:
+              raise SystemExit(f"ET/TDB time smoke failed: JED={jed}")
+
+          # Neutral present-epoch state query; NOT an ancient CMB or monument query.
+          state, lt = spice.spkezr(
+              "EARTH BARYCENTER",
+              0.0,
+              "J2000",
+              "NONE",
+              "SOLAR SYSTEM BARYCENTER",
+          )
+          state = [float(x) for x in state]
+          lt = float(lt)
+          pos_norm = math.sqrt(sum(x*x for x in state[:3]))
+          state_pass = (
+              all(math.isfinite(x) for x in state)
+              and math.isfinite(lt)
+              and pos_norm > 0
+          )
+
+          if not state_pass:
+              raise SystemExit("Neutral state smoke-test failed")
+
+          result = {
+              "contract_id": "V0-H1.9A-R1-DE441-LOCAL-BYTE-EXECUTION-CLOSURE-v1.0",
+              "generated_utc": datetime.now(timezone.utc).isoformat(),
+              "github": {
+                  "repository": os.environ.get("GITHUB_REPOSITORY"),
+                  "run_id": os.environ.get("GITHUB_RUN_ID"),
+                  "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+                  "workflow_ref": os.environ.get("GITHUB_WORKFLOW_REF"),
+                  "sha": os.environ.get("GITHUB_SHA"),
+                  "runner_os": os.environ.get("RUNNER_OS"),
+                  "runner_arch": os.environ.get("RUNNER_ARCH"),
+              },
+              "environment": {
+                  "python": sys.version,
+                  "platform": platform.platform(),
+                  "spiceypy_version": spiceypy.__version__,
+                  "cspice_toolkit_version": spice.tkvrsn("TOOLKIT"),
+              },
+              "source": {
+                  "canonical_naif_base": os.environ["NAIF_BASE"],
+                  "official_checksum_metadata_reverified": True,
+              },
+              "files": files,
+              "byte_identity_gate": "PASS",
+              "spice": {
+                  "kernels_loaded": True,
+                  "loaded_spk_count": loaded_spk_count,
+                  "object_ids": object_ids,
+                  "coverage_guard": {
+                      "guard_start_et_seconds": guard_start,
+                      "guard_stop_et_seconds": guard_stop,
+                      "required_objects": required_objects,
+                      "pass": coverage_pass,
+                  },
+                  "coverage": coverage,
+                  "time_smoke_test": {
+                      "test": "unitim(ET=0,'ET','JED') == 2451545.0",
+                      "jed": jed,
+                      "pass": time_pass,
+                  },
+                  "neutral_state_smoke_test": {
+                      "epoch_et_seconds": 0.0,
+                      "target": "EARTH BARYCENTER",
+                      "observer": "SOLAR SYSTEM BARYCENTER",
+                      "frame": "J2000",
+                      "aberration": "NONE",
+                      "state": state,
+                      "light_time_seconds": lt,
+                      "state_norm_position_km": pos_norm,
+                      "pass": state_pass,
+                  },
+              },
+              "firewall": {
+                  "target_vector_computed": False,
+                  "ancient_target_coordinates_computed": False,
+                  "monument_target_angles_computed": 0,
+                  "T_AUC_computed": False,
+                  "synthetic_rotations_executed": 0,
+                  "p_ROT_given_C_computed": False,
+              },
+              "terminal_verdict": "PASS",
+          }
+
+          os.makedirs("output", exist_ok=True)
+          with open(
+              "output/H1_9A_R1_DE441_local_verification.json",
+              "w",
+              encoding="utf-8",
+          ) as f:
+              json.dump(result, f, indent=2, sort_keys=True)
+
+          lines = [
+              "V0 H1.9A-R1 DE441 LOCAL EXECUTION VERIFICATION",
+              "=" * 56,
+              "BYTE IDENTITY GATE: PASS",
+              f"{os.environ['P1']} MD5: {files[os.environ['P1']]['md5']}",
+              f"{os.environ['P1']} SHA256: {files[os.environ['P1']]['sha256']}",
+              f"{os.environ['P2']} MD5: {files[os.environ['P2']]['md5']}",
+              f"{os.environ['P2']} SHA256: {files[os.environ['P2']]['sha256']}",
+              f"CSPICE: {spice.tkvrsn('TOOLKIT')}",
+              f"SpiceyPy: {spiceypy.__version__}",
+              f"SPK COUNT: {loaded_spk_count}",
+              f"OLD-KINGDOM COVERAGE GUARD: {coverage_pass}",
+              f"ET/TDB TIME SMOKE: {time_pass}",
+              f"NEUTRAL STATE SMOKE: {state_pass}",
+              "TERMINAL VERDICT: PASS",
+              "FIREWALL: ZERO target comparison / ZERO AUC / ZERO synthetic rotations",
+          ]
+
+          with open(
+              "output/H1_9A_R1_DE441_local_verification.txt",
+              "w",
+              encoding="utf-8",
+          ) as f:
+              f.write("\n".join(lines) + "\n")
+
+          print("\n".join(lines))
+          spice.kclear()
+          PY
+
+      - name: Hash verification outputs
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if compgen -G 'output/*' > /dev/null; then
+            sha256sum output/* | tee output/H1_9A_R1_output_SHA256.txt
+          fi
+
+      - name: Upload small verification artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9A_R1_DE441_verification
+          path: |
+            output/H1_9A_R1_DE441_local_verification.json
+            output/H1_9A_R1_DE441_local_verification.txt
+            output/H1_9A_R1_output_SHA256.txt
+            work/aa_checksums.txt
+          if-no-files-found: warn
+          retention-days: 30
