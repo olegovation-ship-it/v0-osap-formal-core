@@ -1,0 +1,303 @@
+name: H1.9C-R1d CAD Semantic Identity Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: h1-9c-r1d-cad-semantic-identity
+  cancel-in-progress: false
+
+jobs:
+  semantic-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ROMBERG_BASE: https://www.rombergintegrali.org/gizapiramitleri/g1/upuautproject/cyberdrawings
+      CYBER_URL: https://www.rombergintegrali.org/gizapiramitleri/g1/g1_piramitinin_saftlari_geometrisi/cyberdrawings.rar
+      EXPECT_CYBER: a09345cd4d195991d23a4a45c25969f2e562c72d7b556391f1eaed799a955da8
+      EXPECT_BENDS_RAR: 07d8ec04cb527887328ed63487e024609fa8395cc659a1fc43e29b54115adab1
+      EXPECT_CAVIGLIA_RAR: dcac91f20ea9001c927a6f6096a23be2b2a65108774b7b66abc6ed7ac9e3ee48
+      EXPECT_NICHES_RAR: 8348c4e9b66383eba2765d810571849144651a47fa60bc4c8c01fa61520debfb
+      EXPECT_SHAFTS_RAR: 20cd6baca8c18876774e701ec3d37a6dd373b7e1d72e251687eb59da382a55d8
+      EXPECT_BENDS_DWF: dfb56a82cc488edf3191947918384badb2970a47df21816d99c076b79f9e3fe5
+      EXPECT_CAVIGLIA_DWF: cd158e5d50de3f5315eb4d738a1a60c43002011a63422fae5293bc4ed155c23e
+      EXPECT_NICHES_DWF: 603454d56d44fcc0608b4f3c1c06f8a42034323443a5f2f98aebdcdda2c73e3c
+      EXPECT_SHAFTS_DWF: 31cc26c7860d3b16e3d5b35b6b06dd746fa6428bdbdf5a2c2f9a7a7a8f634f09
+      EXPECT_BENDS_DWG: 965063af493b10e42a9639ae3742abdf936f6cf951b39f83353bb0c859a7205c
+      EXPECT_CAVIGLIA_DWG: 6ce2f8795307889a13d8c5a4fbaeb181c18055e623a1a9b748f9d2150f6a0abd
+      EXPECT_NICHES_DWG: 19a1e69eba82c3b38dc45620353f31f383808ade4d7368108e92ceb01b6e9109
+      EXPECT_SHAFTS_DWG: 48f4d0b05bd364cd9d987399a3e4189ea5a29ccbac6eb1986c35f10035ee6ad6
+
+    steps:
+      - name: Prepare target-free semantic workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p raw unpacked work report toolmeta
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            p7zip-full file jq git build-essential autoconf automake libtool \
+            pkg-config libpcre2-dev libxml2-dev swig python3-dev gettext texinfo
+          python3 -m pip install --disable-pip-version-check --no-cache-dir 'ezdwf==0.0.3'
+          python3 - <<'PY' > toolmeta/ezdwf.txt
+          import ezdwf, sys
+          print('python', sys.version)
+          print('ezdwf', getattr(ezdwf, '__version__', 'unknown'))
+          PY
+
+      - name: Materialize the exact frozen R1c CAD bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 8 --retry-delay 5 "$CYBER_URL" -o raw/Cyberdrawings.rar
+          for f in cheopsshafts cavigliatunnel cheopsniches bends3d; do
+            curl --fail --location --retry 8 --retry-delay 5 "$ROMBERG_BASE/${f}.rar" -o "raw/${f}.rar"
+          done
+
+          check() {
+            local f="$1" expected="$2" actual
+            actual="$(sha256sum "$f" | awk '{print $1}')"
+            printf '%s\t%s\t%s\n' "$f" "$actual" "$expected" >> report/raw_identity.tsv
+            test "$actual" = "$expected"
+          }
+          check raw/Cyberdrawings.rar "$EXPECT_CYBER"
+          check raw/bends3d.rar "$EXPECT_BENDS_RAR"
+          check raw/cavigliatunnel.rar "$EXPECT_CAVIGLIA_RAR"
+          check raw/cheopsniches.rar "$EXPECT_NICHES_RAR"
+          check raw/cheopsshafts.rar "$EXPECT_SHAFTS_RAR"
+
+          for f in raw/*.rar; do
+            d="unpacked/$(basename "$f" .rar)"
+            mkdir -p "$d"
+            7z x -y -o"$d" "$f" >/dev/null
+          done
+
+          # Normalize the four intended DWF/DWG paths only.
+          mkdir -p work/cad
+          cp unpacked/Cyberdrawings/bends3d.dwf work/cad/bends3d.dwf
+          cp unpacked/Cyberdrawings/cavigliatunnel.dwf work/cad/cavigliatunnel.dwf
+          cp unpacked/Cyberdrawings/cheopsniches.dwf work/cad/cheopsniches.dwf
+          cp unpacked/Cyberdrawings/cheopsshafts.dwf work/cad/cheopsshafts.dwf
+          cp unpacked/bends3d/bends3d.dwg work/cad/bends3d.dwg
+          cp unpacked/cavigliatunnel/cavigliatunnel.dwg work/cad/cavigliatunnel.dwg
+          cp unpacked/cheopsniches/cheopsniches.dwg work/cad/cheopsniches.dwg
+          cp unpacked/cheopsshafts/cheopsshafts.dwg work/cad/cheopsshafts.dwg
+
+          check work/cad/bends3d.dwf "$EXPECT_BENDS_DWF"
+          check work/cad/cavigliatunnel.dwf "$EXPECT_CAVIGLIA_DWF"
+          check work/cad/cheopsniches.dwf "$EXPECT_NICHES_DWF"
+          check work/cad/cheopsshafts.dwf "$EXPECT_SHAFTS_DWF"
+          check work/cad/bends3d.dwg "$EXPECT_BENDS_DWG"
+          check work/cad/cavigliatunnel.dwg "$EXPECT_CAVIGLIA_DWG"
+          check work/cad/cheopsniches.dwg "$EXPECT_NICHES_DWG"
+          check work/cad/cheopsshafts.dwg "$EXPECT_SHAFTS_DWG"
+
+      - name: Build pinned LibreDWG reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch 0.13.4 https://github.com/LibreDWG/libredwg.git work/libredwg
+          cd work/libredwg
+          ./autogen.sh >/dev/null
+          ./configure --disable-bindings --disable-docs --disable-write --prefix="$PWD/install" >/dev/null
+          make -j2 >/dev/null
+          make install >/dev/null
+          "$PWD/install/bin/dwgread" --version | tee ../../toolmeta/libredwg.txt
+          "$PWD/install/bin/dwglayers" --version 2>>../../toolmeta/libredwg.txt || true
+
+      - name: Read DWF semantics without shaft-vector derivation
+        shell: bash
+        run: |
+          set -euo pipefail
+          for stem in bends3d cavigliatunnel cheopsniches cheopsshafts; do
+            ezdwf inspect "work/cad/${stem}.dwf" --json > "work/${stem}.dwf.inspect.json" 2>"report/${stem}.ezdwf.stderr.txt"
+          done
+
+      - name: Read DWG semantics without shaft-vector derivation
+        shell: bash
+        run: |
+          set -euo pipefail
+          DWGREAD="$PWD/work/libredwg/install/bin/dwgread"
+          DWGLAYERS="$PWD/work/libredwg/install/bin/dwglayers"
+          for stem in bends3d cavigliatunnel cheopsniches cheopsshafts; do
+            "$DWGREAD" -O JSON -o "work/${stem}.dwg.read.json" "work/cad/${stem}.dwg" \
+              2>"report/${stem}.dwgread.stderr.txt"
+            "$DWGLAYERS" -x "work/cad/${stem}.dwg" > "report/${stem}.dwglayers.txt" \
+              2>"report/${stem}.dwglayers.stderr.txt" || true
+          done
+
+      - name: Build coordinate-redacted semantic signatures and pair audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections, hashlib, json, os, re
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          ROOT=Path('work')
+          OUT=Path('report')
+          stems=['bends3d','cavigliatunnel','cheopsniches','cheopsshafts']
+
+          # Deliberate firewall: point/vertex/start/end/center/coordinate payloads are
+          # never emitted to the R1d artifact and no segment vectors or angles are derived.
+          COORD_WORDS=('point','points','vertex','vertices','start','end','center','centre',
+                       'coord','position','insert','origin','extmin','extmax','bbox','bounds')
+          TYPE_KEYS={'type','object','kind','entity_type','dxftype','class','classname'}
+          TEXT_KEYS={'text','string','label','content','value','title','description'}
+
+          def digest(v):
+              b=json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()
+              return hashlib.sha256(b).hexdigest()
+
+          def semantic_summary(doc):
+              types=collections.Counter(); layers=collections.Counter(); blocks=collections.Counter()
+              texts=collections.Counter(); units=collections.Counter(); keys=collections.Counter()
+              transform_keys=collections.Counter(); transform_hashes=collections.Counter()
+              scalar_meta=collections.defaultdict(set)
+              diagnostics=[]
+
+              def walk(v,path=()):
+                  if isinstance(v,dict):
+                      # object/type candidates
+                      for k,val in v.items():
+                          lk=str(k).lower(); keys[lk]+=1
+                          if lk in TYPE_KEYS and isinstance(val,(str,int,float,bool)):
+                              types[str(val)]+=1
+                          if 'layer' in lk and isinstance(val,str) and len(val)<=200:
+                              layers[val]+=1
+                          if ('block' in lk or lk in {'name','record_name'}) and isinstance(val,str) and len(val)<=200:
+                              if re.search(r'block|model|paper|shaft|bend|king|queen|cavig|pyramid', val, re.I):
+                                  blocks[val]+=1
+                          if ('unit' in lk or 'measurement' in lk) and isinstance(val,(str,int,float,bool)):
+                              units[str(val)]+=1
+                          if lk in TEXT_KEYS and isinstance(val,str) and len(val)<=500:
+                              if re.search(r'[A-Za-z]{2}',val): texts[val]+=1
+                          if any(w in lk for w in ('transform','matrix','rotation','scale','extrusion','ucs','wcs')):
+                              transform_keys[lk]+=1
+                              # retain only a cryptographic signature of compound transform data.
+                              if isinstance(val,(dict,list,tuple)):
+                                  transform_hashes[digest(val)]+=1
+                              elif isinstance(val,(str,int,float,bool)):
+                                  scalar_meta[lk].add(str(val))
+                          # recurse, but never preserve coordinate values in output
+                          walk(val,path+(lk,))
+                  elif isinstance(v,list):
+                      for x in v: walk(x,path)
+
+              walk(doc)
+              return {
+                  'type_counts':dict(types.most_common()),
+                  'layer_candidates':dict(layers.most_common()),
+                  'block_name_candidates':dict(blocks.most_common()),
+                  'text_candidates':dict(texts.most_common(250)),
+                  'unit_candidates':dict(units.most_common()),
+                  'transform_key_counts':dict(transform_keys.most_common()),
+                  'transform_value_hash_counts':dict(transform_hashes.most_common()),
+                  'transform_scalar_values':{k:sorted(v)[:100] for k,v in scalar_meta.items()},
+                  'key_histogram_top':dict(keys.most_common(250)),
+                  'coordinate_payload_emitted':False,
+                  'shaft_vector_derived':False,
+                  'angle_derived':False,
+              }
+
+          def tokens(summary):
+              vals=[]
+              vals.extend(summary['layer_candidates'])
+              vals.extend(summary['block_name_candidates'])
+              vals.extend(summary['text_candidates'])
+              out=set()
+              for s in vals:
+                  for t in re.findall(r'[a-z0-9]+',str(s).lower()):
+                      if len(t)>=2: out.add(t)
+              return out
+
+          def broad_types(summary):
+              out=set()
+              for s in summary['type_counts']:
+                  u=str(s).upper()
+                  for b in ('LINE','POLYLINE','LWPOLYLINE','TEXT','MTEXT','ELLIPSE','CIRCLE',
+                            'ARC','POLYGON','SOLID','INSERT','BLOCK','HATCH','SPLINE','POINT','IMAGE'):
+                      if b in u: out.add(b)
+              return sorted(out)
+
+          pair_results={}
+          for stem in stems:
+              with open(ROOT/f'{stem}.dwf.inspect.json',encoding='utf-8') as f: dwf=json.load(f)
+              with open(ROOT/f'{stem}.dwg.read.json',encoding='utf-8') as f: dwg=json.load(f)
+              sdwf=semantic_summary(dwf); sdwg=semantic_summary(dwg)
+              Path(OUT/f'{stem}.dwf.semantic.json').write_text(json.dumps(sdwf,indent=2,sort_keys=True),encoding='utf-8')
+              Path(OUT/f'{stem}.dwg.semantic.json').write_text(json.dumps(sdwg,indent=2,sort_keys=True),encoding='utf-8')
+
+              a,b=tokens(sdwf),tokens(sdwg)
+              inter=a&b; union=a|b
+              ta=set(broad_types(sdwf)); tb=set(broad_types(sdwg))
+              pair_results[stem]={
+                  'dwf_semantic_token_count':len(a),
+                  'dwg_semantic_token_count':len(b),
+                  'shared_semantic_tokens':sorted(inter),
+                  'semantic_token_jaccard':(len(inter)/len(union) if union else None),
+                  'dwf_broad_entity_classes':sorted(ta),
+                  'dwg_broad_entity_classes':sorted(tb),
+                  'shared_broad_entity_classes':sorted(ta&tb),
+                  'dwf_layer_candidates':sorted(sdwf['layer_candidates']),
+                  'dwg_layer_candidates':sorted(sdwg['layer_candidates']),
+                  'shared_layer_names_exact':sorted(set(sdwf['layer_candidates']) & set(sdwg['layer_candidates'])),
+                  'dwf_unit_candidates':sdwf['unit_candidates'],
+                  'dwg_unit_candidates':sdwg['unit_candidates'],
+                  'dwf_transform_metadata_present':bool(sdwf['transform_key_counts']),
+                  'dwg_transform_metadata_present':bool(sdwg['transform_key_counts']),
+                  'coordinate_payload_emitted':False,
+                  'shaft_vector_derived':False,
+              }
+
+          frozen_ids=[
+            'GP-SH-KS-H','GP-SH-KS-B2','GP-SH-KS-B34','GP-SH-KS-MAIN-A','GP-SH-KS-MAIN-B',
+            'GP-SH-KN-H','GP-SH-KN-MAIN-A','GP-SH-KN-MAIN-B',
+            'GP-SH-QS-H','GP-SH-QS-R','GP-SH-QN-H','GP-SH-QN-POSTBEND'
+          ]
+          out={
+            'artifact_id':'V0-H1.9C-R1d-CAD-SEMANTIC-IDENTITY-EXTERNAL-RUN-v1.0',
+            'generated_utc':datetime.now(timezone.utc).isoformat(),
+            'pair_results':pair_results,
+            'frozen_12_ids':frozen_ids,
+            'mappability_decision':'DEFER_TO_POSTRUN_READ_ONLY_AUDIT',
+            'semantic_identity_decision':'DEFER_TO_POSTRUN_READ_ONLY_AUDIT',
+            'firewall':{
+              'target_access':False,
+              'target_recomputation':0,
+              'shaft_vector_extraction':0,
+              'shaft_angle_derivation':0,
+              'auc_pi_synthetic_rotations_significance':'NOT_EXECUTED',
+              'coordinate_payload_published':False,
+            },
+            'meta_stop':True,
+          }
+          Path(OUT/'H1_9C_R1d_semantic_pair_audit.json').write_text(json.dumps(out,indent=2,sort_keys=True),encoding='utf-8')
+          PY
+
+          # Delete full parser dumps: they may contain coordinates. Only redacted semantic
+          # summaries and parser diagnostics are permitted into the artifact.
+          rm -f work/*.dwf.inspect.json work/*.dwg.read.json
+
+      - name: Freeze R1d output hashes
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          find report toolmeta -type f -print0 | sort -z | xargs -0 sha256sum > report/R1d_output_SHA256.txt || true
+          cat report/H1_9C_R1d_semantic_pair_audit.json || true
+
+      - name: Upload semantic-only R1d artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d_cad_semantic_identity
+          path: |
+            report/
+            toolmeta/
+          if-no-files-found: warn
+          retention-days: 30
