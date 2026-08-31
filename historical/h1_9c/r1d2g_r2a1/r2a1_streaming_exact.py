@@ -11,7 +11,7 @@ import shutil
 import tempfile
 import time
 
-R2A1_SCHEMA_VERSION = "H1.9C-R1d2g-R2A1-exact-streaming-disk-v1"
+R2A1_SCHEMA_VERSION = "H1.9C-R1d2g-R2A1b-exact-streaming-disk-certificate-v2"
 MAPPING_SIGNATURE_SCHEMA_VERSION = "H1.9C-R1d2g-a-canonical-mapping-signature-v1"
 ALLOWED_RAILS = ("FX", "I")
 
@@ -65,6 +65,83 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: f.read(1 << 20), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def verify_final_canonical_set(
+    path: Path, *, expected_sha256: str, expected_unique_count: int
+) -> dict[str, Any]:
+    """Re-read the durable final set and independently verify bytes, count and order."""
+    path = Path(path)
+    h = hashlib.sha256()
+    count = 0
+    previous: tuple[str, str, bytes] | None = None
+    with path.open("rb") as f:
+        for raw in f:
+            h.update(raw)
+            if not raw.endswith(b"\n"):
+                raise ImplementationInvariantError("final canonical set line missing newline")
+            payload = canonical_json_bytes(json.loads(raw.decode("utf-8")))
+            full = sha256_bytes(payload)
+            record = ("M_" + full[:32], full, payload)
+            if previous is not None and record <= previous:
+                raise ImplementationInvariantError(
+                    "final canonical set is not strictly sorted and duplicate-free"
+                )
+            previous = record
+            count += 1
+    observed_sha256 = h.hexdigest()
+    if observed_sha256 != str(expected_sha256):
+        raise ImplementationInvariantError(
+            f"final canonical set SHA-256 mismatch: {observed_sha256} != {expected_sha256}"
+        )
+    if count != int(expected_unique_count):
+        raise ImplementationInvariantError(
+            f"final canonical set count mismatch: {count} != {expected_unique_count}"
+        )
+    return {
+        "verified": True,
+        "sha256": observed_sha256,
+        "unique_count": count,
+    }
+
+
+def _certificate_payload_sha256(certificate: Mapping[str, Any]) -> str:
+    payload = {k: v for k, v in certificate.items() if k != "certificate_sha256"}
+    return sha256_bytes(canonical_json_bytes(payload))
+
+
+def _write_verified_certificate(path: Path, certificate: Mapping[str, Any]) -> Path:
+    """Persist deterministic certificate bytes, then re-read and verify before PASS cleanup."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    expected = dict(certificate)
+    expected_sha = str(expected.get("certificate_sha256", ""))
+    if not expected_sha or expected_sha != _certificate_payload_sha256(expected):
+        raise ImplementationInvariantError("certificate SHA-256 pre-write verification failed")
+    blob = canonical_json_bytes(expected) + b"\n"
+    tmp_path = path.with_name(path.name + ".tmp")
+    try:
+        tmp_path.write_bytes(blob)
+        os.replace(tmp_path, path)
+        observed_blob = path.read_bytes()
+        if observed_blob != blob:
+            raise ImplementationInvariantError("certificate byte re-read mismatch")
+        observed = json.loads(observed_blob.decode("utf-8"))
+        if canonical_json_bytes(observed) != canonical_json_bytes(expected):
+            raise ImplementationInvariantError("certificate semantic re-read mismatch")
+        if str(observed.get("certificate_sha256", "")) != _certificate_payload_sha256(observed):
+            raise ImplementationInvariantError("certificate SHA-256 re-read verification failed")
+    except Exception:
+        tmp_path.unlink(missing_ok=True)
+        path.unlink(missing_ok=True)
+        raise
+    return path
+
+
+def _cleanup_claim_outputs(output_dir: Path, stem: str) -> None:
+    root = Path(output_dir)
+    for suffix in (".canonical.jsonl", ".c14b_certificate.json"):
+        (root / f"{stem}{suffix}").unlink(missing_ok=True)
 
 
 def canonical_mapping_object(mapping: Mapping[str, Any]) -> dict[str, Any]:
@@ -481,6 +558,8 @@ def solve_prepared_axis_streaming(
     require_supporting_occurrence: bool,
     path_node_counts: Mapping[str, int],
     boundary_hash: str,
+    frozen_transition_domain_sha256: str,
+    frozen_occurrence_ledger_sha256: str,
     output_dir: Path,
     guards: ResourceGuards = ResourceGuards(),
     chunk_record_limit: int = 50_000,
@@ -581,16 +660,26 @@ def solve_prepared_axis_streaming(
                     writer.add(mapping)
         stats.mapping_expansion_naturally_exhausted = True
         merge = writer.finalize()
+        final_path = Path(merge["final_canonical_set_path"])
+        final_verification = verify_final_canonical_set(
+            final_path,
+            expected_sha256=str(merge["final_canonical_set_sha256"]),
+            expected_unique_count=int(merge["unique_canonical_mapping_count"]),
+        )
+        stable_final_filename = final_path.name
         certificate = {
             "schema_version": R2A1_SCHEMA_VERSION,
             "certificate_type": "R2A1_C14B_EXACT_STREAMING_COMPLETENESS",
             "axis_id": axis_id,
             "rail": rail,
+            "frozen_transition_domain_sha256": str(frozen_transition_domain_sha256),
+            "frozen_occurrence_ledger_sha256": str(frozen_occurrence_ledger_sha256),
+            "frozen_boundary_semantics_hash": str(boundary_hash),
             "accepted_transition_count": stats.accepted_transition_count,
             "start_anchor_inventory_count": len(starts),
             "end_anchor_inventory_count": len(ends),
-            "start_anchor_inventory_sha256": sha256_bytes(canonical_json_bytes(starts)),
-            "end_anchor_inventory_sha256": sha256_bytes(canonical_json_bytes(ends)),
+            "start_anchor_inventory_sha256": sha256_bytes(canonical_json_bytes(sorted(starts, key=canonical_json_bytes))),
+            "end_anchor_inventory_sha256": sha256_bytes(canonical_json_bytes(sorted(ends, key=canonical_json_bytes))),
             "explored_state_count": stats.explored_state_count,
             "simple_chain_count": stats.simple_chain_count,
             "raw_mapping_candidate_count": stats.raw_mapping_candidate_count,
@@ -599,7 +688,8 @@ def solve_prepared_axis_streaming(
             "exact_duplicate_collapse_count": merge["exact_duplicate_collapse_count"],
             "unique_canonical_mapping_count": merge["unique_canonical_mapping_count"],
             "final_canonical_set_sha256": merge["final_canonical_set_sha256"],
-            "final_canonical_set_path": merge["final_canonical_set_path"],
+            "final_canonical_set_filename": stable_final_filename,
+            "final_canonical_set_reread_verified": final_verification["verified"],
             "chain_iterator_naturally_exhausted": stats.chain_iterator_naturally_exhausted,
             "mapping_expansion_naturally_exhausted": stats.mapping_expansion_naturally_exhausted,
             "external_merge_complete": merge["external_merge_complete"],
@@ -617,23 +707,22 @@ def solve_prepared_axis_streaming(
             "resource_exhaustion": False,
             "status": "PASS",
         }
-        certificate["certificate_sha256"] = sha256_bytes(
-            canonical_json_bytes(
-                {k: v for k, v in certificate.items() if k != "certificate_sha256"}
-            )
-        )
+        certificate["certificate_sha256"] = _certificate_payload_sha256(certificate)
+        certificate_path = Path(output_dir) / f"{axis_id}__{rail}.c14b_certificate.json"
+        _write_verified_certificate(certificate_path, certificate)
         writer.cleanup_chunks()
         return {
             "axis_id": axis_id,
             "rail": rail,
             "C14b": "PASS",
-            "canonical_set_path": merge["final_canonical_set_path"],
+            "canonical_set_path": str(final_path),
+            "certificate_path": str(certificate_path),
+            "certificate_persisted_and_verified": True,
             "certificate": certificate,
         }
     except ResourceExhaustion as exc:
         writer.cleanup_chunks()
-        for p in Path(output_dir).glob(f"{axis_id}__{rail}.canonical.jsonl"):
-            p.unlink(missing_ok=True)
+        _cleanup_claim_outputs(Path(output_dir), f"{axis_id}__{rail}")
         return {
             "axis_id": axis_id,
             "rail": rail,
@@ -645,6 +734,7 @@ def solve_prepared_axis_streaming(
         }
     except HashPrefixCollision as exc:
         writer.cleanup_chunks()
+        _cleanup_claim_outputs(Path(output_dir), f"{axis_id}__{rail}")
         return {
             "axis_id": axis_id,
             "rail": rail,
@@ -654,6 +744,7 @@ def solve_prepared_axis_streaming(
         }
     except Exception as exc:
         writer.cleanup_chunks()
+        _cleanup_claim_outputs(Path(output_dir), f"{axis_id}__{rail}")
         return {
             "axis_id": axis_id,
             "rail": rail,
