@@ -1,0 +1,97 @@
+name: H1.9C-R1d2g-R2A1 Implementation Preflight Only
+
+on:
+  push:
+    paths:
+      - 'historical/h1_9c/r1d2g_r2a1/**'
+      - '.github/workflows/h1_9c_r1d2g_r2a1_implementation_preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  R2A1_MODE: IMPLEMENTATION_ONLY
+  R2A2_SCIENTIFIC_EXECUTION_AUTHORIZED: 'false'
+
+jobs:
+  implementation-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assert scientific execution firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$R2A1_MODE" = "IMPLEMENTATION_ONLY"
+          test "$R2A2_SCIENTIFIC_EXECUTION_AUTHORIZED" = "false"
+
+      - name: Run R2A1 exact implementation tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -v historical/h1_9c/r1d2g_r2a1/tests
+
+      - name: Static forbidden-surface scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('historical/h1_9c/r1d2g_r2a1')
+          files=[p for p in root.rglob('*.py') if 'tests' not in p.parts]
+          text='\n'.join(p.read_text(encoding='utf-8') for p in files)
+          forbidden=[
+              'p_ROT|C',
+              'target_cmb',
+              'geometry_promotion=True',
+              'automatic_PASS_promotion_from_singleton_intersection=True',
+          ]
+          hits=[x for x in forbidden if x in text]
+          if hits:
+              raise SystemExit('Forbidden scientific surface in R2A1 implementation: '+repr(hits))
+          print('FORBIDDEN_SURFACE_SCAN=PASS')
+          PY
+
+      - name: Build implementation-only evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r2a1_preflight
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, platform, sys
+          root=Path('.')
+          impl=Path('historical/h1_9c/r1d2g_r2a1/r2a1_streaming_exact.py')
+          tests=Path('historical/h1_9c/r1d2g_r2a1/tests/test_r2a1_streaming_exact.py')
+          def h(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+          report={
+            'stage':'H1.9C-R1d2g-R2A1',
+            'mode':'IMPLEMENTATION_ONLY',
+            'scientific_execution_performed':False,
+            'R2A2_scientific_execution_authorized':False,
+            'implementation_sha256':h(impl),
+            'tests_sha256':h(tests),
+            'python':sys.version,
+            'platform':platform.platform(),
+            'preflight_verdict':'PASS',
+            'next_required_stage':'H1.9C-R1d2g-R2A1a READ_ONLY_IMPLEMENTATION_COMPLIANCE_AUDIT',
+            'META_STOP':True,
+          }
+          out=Path('r2a1_preflight/R2A1_implementation_preflight.json')
+          out.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          # Correct manifest hygiene: enumerate claim-bearing files explicitly; manifest is not in this list.
+          files=[impl,tests,out]
+          man=Path('r2a1_preflight/R2A1_SHA256.txt')
+          man.write_text(''.join(f'{h(p)}  {p.as_posix()}\n' for p in files),encoding='utf-8')
+          assert 'r2a1_preflight/R2A1_SHA256.txt' not in man.read_text()
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d2g_R2A1_implementation_preflight
+          path: r2a1_preflight/
+          if-no-files-found: error
+          retention-days: 30
