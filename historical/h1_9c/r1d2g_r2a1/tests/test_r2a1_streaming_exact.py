@@ -4,6 +4,7 @@ import hashlib
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from historical.h1_9c.r1d2g_r2a1.r2a1_streaming_exact import (
@@ -113,7 +114,7 @@ class R2A1Tests(unittest.TestCase):
             result = solve_prepared_axis_streaming(
                 axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
                 transition_rows=transitions, starts=starts, ends=ends, supporting_glyphs=[],
-                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH", frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
                 output_dir=Path(td), guards=ResourceGuards(max_explored_states=10000, max_seconds=30),
                 chunk_record_limit=2,
             )
@@ -166,7 +167,7 @@ class R2A1Tests(unittest.TestCase):
             result = solve_prepared_axis_streaming(
                 axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
                 transition_rows=transitions, starts=starts, ends=ends, supporting_glyphs=[],
-                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH", frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
                 output_dir=Path(td), guards=ResourceGuards(max_explored_states=1, max_seconds=30),
                 chunk_record_limit=2,
             )
@@ -192,13 +193,13 @@ class R2A1Tests(unittest.TestCase):
             fx = solve_prepared_axis_streaming(
                 axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
                 transition_rows=transitions_fx, starts=starts, ends=ends, supporting_glyphs=[],
-                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH", frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
                 output_dir=td/"FX", guards=ResourceGuards(max_explored_states=10000, max_seconds=30), chunk_record_limit=2,
             )
             ii = solve_prepared_axis_streaming(
                 axis_id="AX", rail="I", prerequisite_ready=True, prerequisite_blockers=[],
                 transition_rows=transitions_i, starts=starts, ends=ends, supporting_glyphs=[],
-                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH", frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
                 output_dir=td/"I", guards=ResourceGuards(max_explored_states=10000, max_seconds=30), chunk_record_limit=3,
             )
             rec = compare_completed_rails(axis_id="AX", fx_result=fx, i_result=ii)
@@ -217,11 +218,102 @@ class R2A1Tests(unittest.TestCase):
                     starts=list(reversed(starts)) if i else starts,
                     ends=list(reversed(ends)) if i else ends,
                     supporting_glyphs=[], require_supporting_occurrence=False,
-                    path_node_counts=counts, boundary_hash="BH", output_dir=root/f"r{i}",
+                    path_node_counts=counts, boundary_hash="BH", frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH", output_dir=root/f"r{i}",
                     guards=ResourceGuards(max_explored_states=10000, max_seconds=30), chunk_record_limit=chunk,
                 )
                 outputs.append(Path(r["canonical_set_path"]).read_bytes())
             self.assertEqual(outputs[0], outputs[1])
+
+    def test_required_certificate_input_bindings_and_persistence(self):
+        transitions, starts, ends, counts = self.fixture("FX")
+        with tempfile.TemporaryDirectory() as td:
+            result = solve_prepared_axis_streaming(
+                axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
+                transition_rows=transitions, starts=starts, ends=ends, supporting_glyphs=[],
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
+                output_dir=Path(td), guards=ResourceGuards(max_explored_states=10000, max_seconds=30),
+                chunk_record_limit=2,
+            )
+            self.assertEqual(result["C14b"], "PASS")
+            cert = result["certificate"]
+            self.assertEqual(cert["frozen_transition_domain_sha256"], "TDH")
+            self.assertEqual(cert["frozen_occurrence_ledger_sha256"], "OLH")
+            self.assertEqual(cert["frozen_boundary_semantics_hash"], "BH")
+            self.assertTrue(cert["final_canonical_set_reread_verified"])
+            self.assertTrue(result["certificate_persisted_and_verified"])
+            certificate_path = Path(result["certificate_path"])
+            self.assertTrue(certificate_path.is_file())
+            self.assertEqual(json.loads(certificate_path.read_text()), cert)
+
+    def test_path_independent_certificate_determinism(self):
+        transitions, starts, ends, counts = self.fixture("FX")
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            cert_bytes = []
+            cert_hashes = []
+            final_bytes = []
+            for i, chunk in enumerate([2, 5]):
+                result = solve_prepared_axis_streaming(
+                    axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
+                    transition_rows=list(reversed(transitions)) if i else transitions,
+                    starts=list(reversed(starts)) if i else starts,
+                    ends=list(reversed(ends)) if i else ends,
+                    supporting_glyphs=[], require_supporting_occurrence=False,
+                    path_node_counts=counts, boundary_hash="BH",
+                    frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
+                    output_dir=root/f"different-output-root-{i}",
+                    guards=ResourceGuards(max_explored_states=10000, max_seconds=30),
+                    chunk_record_limit=chunk,
+                )
+                self.assertEqual(result["C14b"], "PASS")
+                cert_bytes.append(Path(result["certificate_path"]).read_bytes())
+                cert_hashes.append(result["certificate"]["certificate_sha256"])
+                final_bytes.append(Path(result["canonical_set_path"]).read_bytes())
+            self.assertEqual(final_bytes[0], final_bytes[1])
+            self.assertEqual(cert_bytes[0], cert_bytes[1])
+            self.assertEqual(cert_hashes[0], cert_hashes[1])
+
+    def test_certificate_and_final_set_are_verified_before_chunk_cleanup(self):
+        transitions, starts, ends, counts = self.fixture("FX")
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            result = solve_prepared_axis_streaming(
+                axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
+                transition_rows=transitions, starts=starts, ends=ends, supporting_glyphs=[],
+                require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
+                output_dir=root, guards=ResourceGuards(max_explored_states=10000, max_seconds=30),
+                chunk_record_limit=2,
+            )
+            self.assertEqual(result["C14b"], "PASS")
+            self.assertTrue(Path(result["canonical_set_path"]).is_file())
+            self.assertTrue(Path(result["certificate_path"]).is_file())
+            self.assertFalse(any(root.glob("*.chunk.*.tsv")))
+            self.assertTrue(result["certificate"]["final_canonical_set_reread_verified"])
+            self.assertTrue(result["certificate_persisted_and_verified"])
+
+    def test_forced_certificate_persistence_failure_fails_closed(self):
+        transitions, starts, ends, counts = self.fixture("FX")
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            with patch(
+                "historical.h1_9c.r1d2g_r2a1.r2a1_streaming_exact._write_verified_certificate",
+                side_effect=OSError("forced certificate persistence failure"),
+            ):
+                result = solve_prepared_axis_streaming(
+                    axis_id="AX", rail="FX", prerequisite_ready=True, prerequisite_blockers=[],
+                    transition_rows=transitions, starts=starts, ends=ends, supporting_glyphs=[],
+                    require_supporting_occurrence=False, path_node_counts=counts, boundary_hash="BH",
+                    frozen_transition_domain_sha256="TDH", frozen_occurrence_ledger_sha256="OLH",
+                    output_dir=root, guards=ResourceGuards(max_explored_states=10000, max_seconds=30),
+                    chunk_record_limit=2,
+                )
+            self.assertEqual(result["C14b"], "FAIL_IMPLEMENTATION")
+            self.assertFalse(result["partial_outputs_claim_grade"])
+            self.assertFalse(any(root.glob("*.canonical.jsonl")))
+            self.assertFalse(any(root.glob("*.c14b_certificate.json")))
+            self.assertFalse(any(root.glob("*.chunk.*.tsv")))
 
     def test_sha_manifest_excludes_itself(self):
         with tempfile.TemporaryDirectory() as td:
