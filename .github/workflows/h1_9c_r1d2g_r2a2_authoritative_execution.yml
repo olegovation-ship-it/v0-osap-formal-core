@@ -1,0 +1,118 @@
+name: H1.9C-R1d2g-R2A2 Authoritative Six-ID Execution
+
+on:
+  push:
+    branches: [h1-9c-r1d2g-r2a2-execution]
+    paths:
+      - '.github/workflows/h1_9c_r1d2g_r2a2_authoritative_execution.yml'
+      - 'historical/h1_9c/r1d2g_r2a2/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: h1-9c-r1d2g-r2a2-authoritative-execution
+  cancel-in-progress: false
+
+env:
+  AUTHORIZED_SOLVER_HEAD: 084fdb54bc1f58eb4250977030dafff93f88bf6f
+  AUTHORIZED_SOLVER_SHA256: 59f2c18ba9c887a7b0c40e7dea20a35df38f94b274b4fcd0a9826c09fa37d714
+  SOURCE_ARTIFACT_ID: '9768876622'
+  SOURCE_ARTIFACT_SHA256: 4c403f7ae38b89834cc351e7b4a060c05b9e7a6206862b79795265a2304a16fb
+
+jobs:
+  execute:
+    name: ${{ matrix.axis }} / ${{ matrix.rail }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        axis:
+          - GP-SH-KN-H
+          - GP-SH-KN-MAIN-A
+          - GP-SH-KN-MAIN-B
+          - GP-SH-KS-B34
+          - GP-SH-KS-H
+          - GP-SH-KS-MAIN-A
+        rail: [FX, I]
+    steps:
+      - name: Checkout orchestration
+        uses: actions/checkout@v4
+
+      - name: Checkout authorized solver payload
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.AUTHORIZED_SOLVER_HEAD }}
+          path: authorized_payload
+
+      - name: Assert exact solver payload identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C authorized_payload rev-parse HEAD)" = "$AUTHORIZED_SOLVER_HEAD"
+          got="$(sha256sum authorized_payload/historical/h1_9c/r1d2g_r2a1/r2a1_streaming_exact.py | awk '{print $1}')"
+          test "$got" = "$AUTHORIZED_SOLVER_SHA256"
+
+      - name: Download and verify frozen C18 source artifact
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p frozen_source
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}/zip" > frozen_source/source.zip
+          got="$(sha256sum frozen_source/source.zip | awk '{print $1}')"
+          test "$got" = "$SOURCE_ARTIFACT_SHA256"
+          unzip -q frozen_source/source.zip -d frozen_source/unpacked
+          test -f frozen_source/unpacked/report/R1d2g_a1_glyph_occurrence_ordinal_ledger.jsonl
+
+      - name: Execute exact bounded real-domain rail
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 historical/h1_9c/r1d2g_r2a2/r2a2_execute.py \
+            --axis '${{ matrix.axis }}' \
+            --rail '${{ matrix.rail }}' \
+            --source-report-dir frozen_source/unpacked/report \
+            --solver-path authorized_payload/historical/h1_9c/r1d2g_r2a1/r2a1_streaming_exact.py \
+            --output-dir "r2a2_output/${{ matrix.axis }}/${{ matrix.rail }}"
+
+      - name: Upload per-rail claim-bearing artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: R2A2_${{ matrix.axis }}_${{ matrix.rail }}
+          path: r2a2_output/${{ matrix.axis }}/${{ matrix.rail }}/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+  aggregate:
+    name: Aggregate C14b / C15 execution ledger
+    needs: [execute]
+    if: always() && needs.execute.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout orchestration
+        uses: actions/checkout@v4
+      - name: Download all per-rail artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: R2A2_*
+          path: gathered
+      - name: Build exact FX/I merge-join ledger
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 historical/h1_9c/r1d2g_r2a2/r2a2_aggregate.py --input-root gathered --output-dir r2a2_summary
+      - name: Upload authoritative R2A2 summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: H1_9C_R1d2g_R2A2_authoritative_summary
+          path: r2a2_summary/
+          if-no-files-found: error
+          retention-days: 30
