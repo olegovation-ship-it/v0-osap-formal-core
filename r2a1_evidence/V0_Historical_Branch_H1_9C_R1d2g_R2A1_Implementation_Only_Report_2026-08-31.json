@@ -1,0 +1,65 @@
+{
+  "controlling_R2A0_contract": {
+    "json_sha256": "564eb174de2b59c25d852195508abc7f81403e2f6175ef7190816995881ae092",
+    "md_sha256": "429e68e9d28cd271f3a19b93b514cffc88e10ccc6423b02a1080e1546f4e3282"
+  },
+  "date": "2026-08-31",
+  "firewall": {
+    "AUC_PI": false,
+    "geometry_extraction": false,
+    "geometry_promotion": "0/12",
+    "mapping_promotion": false,
+    "scientific_R2A2_execution_authorized": false,
+    "synthetic_rotations": false,
+    "target_CMB_access": false
+  },
+  "github_deployment": {
+    "base_main_sha": "5e19a9e15b17c3b572b49040cfac75ddbca1edbd",
+    "classification": "EXTERNAL_PERMISSION_BLOCKER_NON_SCIENTIFIC",
+    "create_branch_attempt": "BLOCKED_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+    "create_file_attempt": "BLOCKED_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+    "repository": "olegovation-ship-it/v0-osap-formal-core",
+    "repository_mutated": false,
+    "scientific_execution_attempted": false
+  },
+  "implementation_files": {
+    "implementation": {
+      "path": "historical/h1_9c/r1d2g_r2a1/r2a1_streaming_exact.py",
+      "sha256": "9015b9f4ba799ea0c805cd8132c463d280bbc0874a724e5db5dfca2571e1c9c0"
+    },
+    "readme": {
+      "path": "historical/h1_9c/r1d2g_r2a1/README.md",
+      "sha256": "c3c661aabe33c0f096309fb53adc9c51c08eb7107dbe76bb73fdf9d59093a548"
+    },
+    "tests": {
+      "path": "historical/h1_9c/r1d2g_r2a1/tests/test_r2a1_streaming_exact.py",
+      "sha256": "b6bce77397a92988a12a480579d4ed0ff873b6eea93ad19bdaa2172c281292da"
+    },
+    "workflow": {
+      "path": ".github/workflows/h1_9c_r1d2g_r2a1_implementation_preflight.yml",
+      "sha256": "d21fa00fa67ecce9591a04534e96f165dfae3d7a0cc6127ac8c51c010fe9a958"
+    }
+  },
+  "mode": "IMPLEMENTATION_ONLY",
+  "next_required_action": "DEPLOY_THIS_EXACT_PACKAGE_TO_GITHUB_WITH_WRITE_CAPABILITY_THEN_PERFORM_R2A1a_READ_ONLY_IMPLEMENTATION_COMPLIANCE_AUDIT",
+  "preflight": {
+    "FX_I_complete_merge_join": "PASS",
+    "FX_I_incomplete_empty_equality_firewall": "PASS",
+    "compileall": "PASS",
+    "deterministic_output": "PASS",
+    "forbidden_scientific_surface_scan": "PASS",
+    "forced_hash_prefix_collision": "FAIL_CLOSED_PASS",
+    "forced_resource_interruption": "NOT_REACHED_FAIL_CLOSED_PASS",
+    "frozen_canonical_signature_reference": "M_f98de138a8f5e90ee8fa490f505f2ef9",
+    "frozen_mapping_constructor_compatibility": "PASS",
+    "independent_small_graph_crosscheck": "PASS",
+    "legacy_eager_vs_streaming_exact_set_fixture": "PASS",
+    "multi_chunk_global_dedup": "PASS",
+    "sha_manifest_self_exclusion": "PASS",
+    "unittest": "PASS_10_OF_10"
+  },
+  "schema_version": "V0-H1.9C-R1d2g-R2A1-implementation-only-v1",
+  "stage": "H1.9C-R1d2g-R2A1",
+  "status": "IMPLEMENTATION_PACKAGE_PASS_REPOSITORY_DEPLOYMENT_BLOCKED",
+  "terminal_statement": "R1d2g-R2A1_IMPLEMENTATION_ONLY_PACKAGE_COMPLETE / LOCAL_PREFLIGHT_PASS_10_OF_10 / GITHUB_REPOSITORY_DEPLOYMENT_NOT_REACHED_PERMISSION_403 / SCIENTIFIC_EXECUTION_NOT_AUTHORIZED / GEOMETRY_PROMOTION=0/12 / META_STOP"
+}

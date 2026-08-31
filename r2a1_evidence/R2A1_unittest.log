@@ -1,0 +1,15 @@
+test_deterministic_final_set (test_r2a1_streaming_exact.R2A1Tests.test_deterministic_final_set) ... ok
+test_duplicate_collapse_across_chunks (test_r2a1_streaming_exact.R2A1Tests.test_duplicate_collapse_across_chunks) ... ok
+test_forced_prefix_collision_fails_closed (test_r2a1_streaming_exact.R2A1Tests.test_forced_prefix_collision_fails_closed) ... ok
+test_frozen_canonical_signature_compatibility (test_r2a1_streaming_exact.R2A1Tests.test_frozen_canonical_signature_compatibility) ... ok
+test_fx_i_comparison_delayed_until_both_pass (test_r2a1_streaming_exact.R2A1Tests.test_fx_i_comparison_delayed_until_both_pass) ... ok
+test_fx_i_complete_identical (test_r2a1_streaming_exact.R2A1Tests.test_fx_i_complete_identical) ... ok
+test_independent_bruteforce_chain_crosscheck (test_r2a1_streaming_exact.R2A1Tests.test_independent_bruteforce_chain_crosscheck) ... ok
+test_interruption_is_not_empty_set_pass (test_r2a1_streaming_exact.R2A1Tests.test_interruption_is_not_empty_set_pass) ... ok
+test_legacy_eager_exact_set_equivalence (test_r2a1_streaming_exact.R2A1Tests.test_legacy_eager_exact_set_equivalence) ... ok
+test_sha_manifest_excludes_itself (test_r2a1_streaming_exact.R2A1Tests.test_sha_manifest_excludes_itself) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.007s
+
+OK
